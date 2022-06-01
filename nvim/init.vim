@@ -59,7 +59,9 @@ set shortmess=I                             " Removes the start screen
 set noerrorbells belloff=all                " Disables beeping 
 
 " Indentation
-set tabstop=4 softtabstop=4 shiftwidth=4    " Sets the width of a tab to 4 spaces
+set tabstop=2                               " Dictates the width used to display an actual tabulation character (\t).
+set softtabstop=0                           " Dictates how wide an indentation is supposed to span.             The special values of 0 means to replicate the value of 'tabstop'.
+set shiftwidth=0                            " Sets the width used for shifting commands, such as <<, >>, or ==. The special value of 0 means to replicate the value of 'tabstop'.
 set expandtab                               " Inserts spaces (equal to the number set in tabstop, etc) when tabbing
 set autoindent                              " Adds indents automatically
 set smartindent                             " ^...in a way that mostly works correctly most of the time
