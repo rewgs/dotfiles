@@ -43,7 +43,7 @@
 " object model of vim) brings me to the last line. Weird! Let's keep this
 " consistent:
 
-" test line for fuckin about: THIS IS A TEST ADDED FROM DEBIAN VM
+" test line for fuckin about
 
 " =============================================================================
 " BASIC VIM SETTINGS:
