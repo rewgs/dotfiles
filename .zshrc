@@ -71,9 +71,9 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # commands specific to certain operating systems
-case `uname` in
+case "$OSTYPE" in
   # --------- Linux-specific ----------
-  Linux)
+  linux*)
 
     # ------------- PyEnv -------------
     export PYENV_ROOT="$HOME/.pyenv"
@@ -88,7 +88,7 @@ case `uname` in
   ;;
 
   # --------- macOS-specific ----------
-  Darwin)
+  darwin*)
 
     # ----------- HomeBrew ------------
     export PATH="/opt/homebrew/sbin:$PATH"
