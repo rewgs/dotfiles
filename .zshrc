@@ -2,7 +2,7 @@
 # Basics
 # =============================================================================
 
-export ZSH="/home/rewgs/.oh-my-zsh"       # Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"             # Path to your oh-my-zsh installation.
 ZSH_THEME="robbyrussell"                  # theme
 source $ZSH/oh-my-zsh.sh
 
@@ -113,6 +113,7 @@ case `uname` in
       pyenv
     )
 
+    # Not sure why this is here...is this redundant?
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 
