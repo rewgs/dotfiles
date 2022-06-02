@@ -44,15 +44,16 @@ alias 'rm -r'='rm -ri'                  # requires that the user confirm deletio
 alias 'c'='clear'
 alias 'b'='br'                          # invokes broot in power-user mode (br)
 alias 'z'='nvim $HOME/.zshrc'
+alias 'sz'='source $HOME/.zshrc'
 
 # colors for ls
 case "$OSTYPE" in
   linux*)
-    alias 'ls'='ls -alh --color'
+    alias 'ls'='ls -alh --color'        # --color is the flag on Linux
   ;;
 
   darwin*)
-    alias 'ls'='ls -alhG'
+    alias 'ls'='ls -alhG'               # -G is the flag on macOS/BSD
   ;;
 esac
 
@@ -70,8 +71,9 @@ alias 'dv'='deactivate'                 # deactivates a Python virtual environme
 # Colors for ls command
 # =============================================================================
 
-# Notes
+# notes:
 # LS_COLORS key value pairs are sep[arated by a colon. Each color has two or more parts.
+# The .dir_colors file in $HOME defines the defaults.
 
 # types:
 # no            global default
@@ -135,11 +137,12 @@ alias 'dv'='deactivate'                 # deactivates a Python virtual environme
 # 107   white background
 
 # example:
-# di=0;34       directory; normal font; green
-# di=1;34       directory; bold font; green
+# di=0;34;40      directory; normal font, green; black background
+# di=1;34;40      directory; bold font, green; black background
 
-LS_COLORS='ow=01;36;40 : di=00;31;46'; export LS_COLORS
-
+# note: white space matters here! Don't try and make this more readable...unfortunately it won't work
+LS_COLORS='ow=01;93;40:ln=00;35;40:ex=00;31;40:*.mp3=00;32;40:*.wav=00;32;40:*.aif=00;32;40:*.aiff=00;32;40'
+export LS_COLORS
 
 
 # =============================================================================
