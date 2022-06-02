@@ -58,8 +58,17 @@ case "$OSTYPE" in
 esac
 
 # locations
-alias 'p'='cd /mnt/p'
-alias 'bear'='cd /mnt/p/sns/development'
+case "$OSTYPE" in
+  linux*)
+    alias 'p'='cd /mnt/p'
+    alias 'bear'='cd /mnt/p/sns/development'
+  ;;
+  darwin*)
+    alias 'p'='cd $HOME/Personal/'
+    alias 'bear'='cd $HOME/Personal/SNS'
+  ;;
+esac
+
 
 # pyenv
 alias 'av'='source venv/bin/activate'   # activates a Python virtual environment. Only works if cwd is project root, and if the virtual environment is called venv.
