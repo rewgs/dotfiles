@@ -25,6 +25,7 @@ source $ZSH/oh-my-zsh.sh
 # =============================================================================
 # Plugins
 # =============================================================================
+
 # Standard plugins location:  $ZSH/plugins/
 # Custom plugins location:    $ZSH_CUSTOM/plugins/
 plugins=(git)
@@ -37,11 +38,22 @@ plugins=(git)
 
 # basic commands
 alias 'up'='sudo apt update && sudo apt upgrade -y'
-alias 'ls'='ls -alGh'
 alias 'rm'='rm -i'                      # requires that the user confirm deletion (files)
 alias 'rm -r'='rm -ri'                  # requires that the user confirm deletion (directories)
 alias 'c'='clear'
 alias 'b'='br'                          # invokes broot in power-user mode (br)
+alias 'z'='nvim $HOME/.zshrc'
+
+# colors for ls
+case "$OSTYPE" in
+  linux*)
+    alias 'ls'='ls -alh --color'
+  ;;
+
+  darwin*)
+    alias 'ls'='ls -alhG'
+  ;;
+esac
 
 # locations
 alias 'p'='cd /mnt/p'
@@ -57,18 +69,75 @@ alias 'dv'='deactivate'                 # deactivates a Python virtual environme
 # Colors for ls command
 # =============================================================================
 
-case "$OSTYPE" in
-  linux*)
-    LS_COLORS='ow=01;36;40' ; export LS_COLORS  # for Windows Terminal
+# Notes
+# LS_COLORS key value pairs are sep[arated by a colon. Each color has two or more parts.
 
-  ;;
+# types:
+# no            global default
+# fi            normal file
+# di            directory
+# ln            symbolic link
+# pi            named pipe
+# do            door
+# bd            block device
+# cd            character device
+# or            symbolic link to a non-existent file (i.e. "orphan")
+# so            socket
+# tw            directory that is stick and other-writable (+t,o+w)
+# ow            directory that is other--writable (o+w) and not sticky
+# st            directory with the sticky bit set (+t) and not other-writable
+# ex            executable file
+# mi            missing (non-existent file pointed to by a symbolic link [visible when you type ls -l])
+# lc            opening terminal code ("leftcode")
+# rc            closing terminal code ("rightcode")
+# *.extension   specified by extension type, for eample *.mp3
 
-  darwin*)
-    export LS_COLORS
+# colors:
+# 00    default color
+# 01    bold
+# 04    underlined
+# 05    flashing text
+# 07    reverse filed (i.e. exchange foreground and background color
+# 08    concealed (i.e. invisible)
 
-  ;;
-esac
+# 31    red
+# 32    green
+# 33    orange
+# 34    blue
+# 35    purple
+# 36    cyan
+# 37    grey
+# 90    dark grey
+# 91    light red
+# 92    light green
+# 93    yellow
+# 94    light blue
+# 95    light purple
+# 96    turqoise
+# 97    white
 
+# 40    black background
+# 41    red background
+# 42    green background
+# 43    orange background
+# 44    blue background
+# 45    purple background
+# 46    cyan background
+# 47    grey background
+# 100   dark grey background
+# 101   light red background
+# 102   light green background
+# 103   yellow background
+# 104   light blue background
+# 105   light purple background
+# 106   turqoise background
+# 107   white background
+
+# example:
+# di=0;34       directory; normal font; green
+# di=1;34       directory; bold font; green
+
+LS_COLORS='ow=01;36;40 : di=00;31;46'; export LS_COLORS
 
 
 
