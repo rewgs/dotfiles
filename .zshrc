@@ -37,7 +37,8 @@ plugins=(git)
 # =============================================================================
 
 # basic commands
-alias 'up'='sudo apt update && sudo apt upgrade -y'
+alias 'up'='sudo apt update \
+           && sudo apt upgrade -y'
 alias 'rm'='rm -i'                      # requires that the user confirm deletion (files)
 alias 'rm -r'='rm -ri'                  # requires that the user confirm deletion (directories)
 alias 'c'='clear'
