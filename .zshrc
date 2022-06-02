@@ -37,7 +37,7 @@ plugins=(git)
 
 # basic commands
 alias 'up'='sudo apt update && sudo apt upgrade -y'
-alias 'ls'='ls -al'
+alias 'ls'='ls -alGh'
 alias 'rm'='rm -i'                      # requires that the user confirm deletion (files)
 alias 'rm -r'='rm -ri'                  # requires that the user confirm deletion (directories)
 alias 'c'='clear'
@@ -54,9 +54,21 @@ alias 'dv'='deactivate'                 # deactivates a Python virtual environme
 
 
 # =============================================================================
-# Colors (for Windows Terminal, I believe)
+# Colors for ls command
 # =============================================================================
-LS_COLORS='ow=01;36;40' ; export LS_COLORS
+
+case "$OSTYPE" in
+  linux*)
+    LS_COLORS='ow=01;36;40' ; export LS_COLORS  # for Windows Terminal
+
+  ;;
+
+  darwin*)
+    export LS_COLORS
+
+  ;;
+esac
+
 
 
 
