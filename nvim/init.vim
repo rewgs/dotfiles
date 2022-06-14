@@ -83,13 +83,16 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set modifiable
+set virtualedit=all                         " Makes it so that, when navigating up and down, the cursor stays in the same column.
 
 " TURNING OFF WORD WRAP COMPLETELY: a saga
 set nowrap
 
 " enables line highlighting when in Insert mode
-autocmd InsertEnter * set cul
-autocmd InsertLeave * set nocul
+autocmd InsertEnter * set cursorline
+" autocmd InsertEnter * set cursorcolumn
+autocmd InsertLeave * set nocursorline
+" autocmd InsertLeave * set nocursorcolumn
 
 
 " =============================================================================
