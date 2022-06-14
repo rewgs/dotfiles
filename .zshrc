@@ -64,8 +64,8 @@ case "$OSTYPE" in
     alias 'bear'='cd /mnt/p/sns/development'
   ;;
   darwin*)
-    alias 'p'='cd $HOME/Personal/'
-    alias 'bear'='cd $HOME/Personal/SNS'
+    alias 'p'='cd $HOME/Work/'
+    alias 'bear'='cd $HOME/Work/SNS/development/'
   ;;
 esac
 
@@ -74,7 +74,15 @@ esac
 alias 'av'='source venv/bin/activate'   # activates a Python virtual environment. Only works if cwd is project root, and if the virtual environment is called venv.
 alias 'dv'='deactivate'                 # deactivates a Python virtual environment. 
 
-
+# multipass (macOS only)
+case "$OSTYPE" in
+  darwin*)
+    alias 'mpls'='multipass list'          # lists all multipass VMs
+    alias 'mpsh'='multipass shell ubuntu'  # starts and enters a shell
+    alias 'mpst'='multipass start ubuntu'  # starts ubuntu VM but doesn't enter it
+    alias 'mpsp'='multipass stop ubuntu'   # stops ubuntu VM
+  ;;
+esac
 
 # =============================================================================
 # Colors for ls command
