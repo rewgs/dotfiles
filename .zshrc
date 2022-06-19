@@ -37,14 +37,26 @@ plugins=(git)
 # =============================================================================
 
 # basic commands
-alias 'up'='sudo apt update \
-           && sudo apt upgrade -y'
 alias 'rm'='rm -i'                      # requires that the user confirm deletion (files)
 alias 'rm -r'='rm -ri'                  # requires that the user confirm deletion (directories)
 alias 'c'='clear'
 alias 'b'='br'                          # invokes broot in power-user mode (br)
 alias 'z'='nvim $HOME/.zshrc'
 alias 'sz'='source $HOME/.zshrc'
+
+# editors
+alias 'h'='hx'    # helix
+alias 'n'='nvim'  # neovim
+
+# updates
+case "$OSTYPE" in
+  darwin*)
+    alias 'up'='brew update && brew upgrade'
+  ;;
+  linux*)
+    alias 'up'='sudo apt update && sudo apt upgrade -y'
+  ;;
+esac
 
 # colors for ls
 case "$OSTYPE" in
