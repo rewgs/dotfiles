@@ -1,10 +1,11 @@
-theme = "onedark"
-# theme = "gruvbox"
+#theme = "onedark"
+theme = "gruvbox"
 
 [editor]
 line-number = "relative"
 mouse = false
 true-color = true
+# indent-style = "2"  # this isn't an option, but it should be
 
 [editor.cursor-shape]
 insert = "bar"
@@ -13,3 +14,11 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+# At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
+# Refer to keymap here: https://docs.helix-editor.com/keymap.html
+[keys.insert]
+
+[keys.normal]
+
+[keys.select]
