@@ -15,9 +15,14 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
+[editor.lsp]
+display-messages = true
+
 # At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
 # Refer to keymap here: https://docs.helix-editor.com/keymap.html
 [keys.insert]
+j = { k = "normal_mode" }
+k = { j = "normal_mode" }
 
 [keys.normal]
 
