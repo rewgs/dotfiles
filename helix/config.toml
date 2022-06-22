@@ -20,11 +20,23 @@ display-messages = true
 
 # At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
 # Refer to keymap here: https://docs.helix-editor.com/keymap.html
+
 [keys.insert]
 #j = { k = "normal_mode" }
 #k = { j = "normal_mode" }
 
+
 [keys.normal]
+a = "goto_line_start"             # stock: Home
+e = "goto_line_end"               # stock: End
+s = "extend_line"                 # stock: x
+
+b = "move_prev_long_word_start"		# stock: B
+f = "move_next_long_word_start"  	# stock: W
+B = "move_prev_word_start"       	# stock: b
+F = "move_next_word_start"				# stock: w		
+
+w = "select_textobject_inner"     # stock: mi
 
 [keys.select]
 
