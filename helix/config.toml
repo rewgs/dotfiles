@@ -21,9 +21,19 @@ display-messages = true
 # At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
 # Refer to keymap here: https://docs.helix-editor.com/keymap.html
 [keys.insert]
-j = { k = "normal_mode" }
-k = { j = "normal_mode" }
+#j = { k = "normal_mode" }
+#k = { j = "normal_mode" }
 
 [keys.normal]
 
 [keys.select]
+
+
+
+# REMAPPING
+# miw = w
+# w = f
+# b = g
+# gh = a
+# gl = s
+# x = e
