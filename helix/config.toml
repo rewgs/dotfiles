@@ -44,18 +44,15 @@ display-messages = true
 # NOTE that some commands are unchangeable:
 #  . = repeat last change
 
-";" = "collapse_selection"
 # a = "goto_line_start"             # stock: Home
 # f = "goto_line_end"               # stock: End
-s = "extend_line"                 # stock: x; i.e. this selects a line
+o = "extend_line"                 # stock: x; i.e. this selects a line
 
 B = "goto_prev_paragraph"
 b = "goto_next_paragraph"
 
-W = "move_prev_long_word_start"		# stock: B
-w = "move_next_long_word_start"  	# stock: W
-# B = "move_prev_word_start"       	# stock: b
-# W = "move_next_word_start"				# stock: w		
+p = "move_prev_long_word_start"		
+#"semicolon" = "move_next_long_word_start"  	
 
 J = "copy_selection_on_next_line"
 K = "copy_selection_on_prev_line"
@@ -65,8 +62,8 @@ c = "toggle_comments"    					# stock: Ctrl-c
 e = "change_selection"
 a = "select_all"
 
-#'Ctrl-[' = "unindent"                  # stock: Shift+, (i.e. <)
-#'Ctrl-]' = "indent"                    # stock: Shift+. (i.e. >)
+'[' = "unindent"                  # stock: Shift+, (i.e. <)
+']' = "indent"                    # stock: Shift+. (i.e. >)
 
 # these two commands increment/decrement the number under the cursor
 # not sure why these aren't working...
