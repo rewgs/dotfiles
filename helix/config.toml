@@ -5,7 +5,6 @@
 #theme = "onedark"
 theme = "gruvbox"
 
-
 # -----------------------------------------------------------------------------
 # editor
 # -----------------------------------------------------------------------------
@@ -30,7 +29,6 @@ display-messages = true
 # At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
 # Refer to keymap here: https://docs.helix-editor.com/keymap.html
 
-
 # -----------------------------------------------------------------------------
 # keymaps
 # -----------------------------------------------------------------------------
@@ -44,24 +42,21 @@ display-messages = true
 # NOTE that some commands are unchangeable:
 #  . = repeat last change
 
-# a = "goto_line_start"             # stock: Home
-# f = "goto_line_end"               # stock: End
-o = "extend_line"                 # stock: x; i.e. this selects a line
-
+L = "append_to_line"
+H = "prepend_to_line"
+a = "kill_to_line_start"
+s = "kill_to_line_end"
+b = "move_prev_long_word_start"		
+f = "move_next_long_word_start"  	
+N = "open_above"
+n = "open_below"
+o = "extend_line"                
 B = "goto_prev_paragraph"
-b = "goto_next_paragraph"
-
-p = "move_prev_long_word_start"		
-#"semicolon" = "move_next_long_word_start"  	
-
+F = "goto_next_paragraph"
 J = "copy_selection_on_next_line"
 K = "copy_selection_on_prev_line"
-
-c = "toggle_comments"    					# stock: Ctrl-c
-
-e = "change_selection"
-a = "select_all"
-
+c = "toggle_comments"    				
+e = "change_selection"  # I think of this as "edit" -- delete and then enter insert mode in one movement. Also it's the same finger as i on the right hand.
 '[' = "unindent"                  # stock: Shift+, (i.e. <)
 ']' = "indent"                    # stock: Shift+. (i.e. >)
 
