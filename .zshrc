@@ -46,6 +46,7 @@ alias 'sz'='source $HOME/.zshrc'
 
 # editors
 alias 'h'='hx'    # helix
+alias 'k'='kak'   # kakoune
 alias 'n'='nvim'  # neovim
 
 # updates

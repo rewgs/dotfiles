@@ -1,5 +1,14 @@
+# -----------------------------------------------------------------------------
+# themes
+# -----------------------------------------------------------------------------
+    
 #theme = "onedark"
 theme = "gruvbox"
+
+
+# -----------------------------------------------------------------------------
+# editor
+# -----------------------------------------------------------------------------
 
 [editor]
 line-number = "relative"
@@ -21,31 +30,47 @@ display-messages = true
 # At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
 # Refer to keymap here: https://docs.helix-editor.com/keymap.html
 
+
+# -----------------------------------------------------------------------------
+# keymaps
+# -----------------------------------------------------------------------------
+
 [keys.insert]
 #j = { k = "normal_mode" }
 #k = { j = "normal_mode" }
 
-
+  
 [keys.normal]
-a = "goto_line_start"             # stock: Home
-e = "goto_line_end"               # stock: End
-s = "extend_line"                 # stock: x
+# NOTE that some commands are unchangeable:
+#  . = repeat last change
 
-b = "move_prev_long_word_start"		# stock: B
-f = "move_next_long_word_start"  	# stock: W
-B = "move_prev_word_start"       	# stock: b
-F = "move_next_word_start"				# stock: w		
+";" = "collapse_selection"
+# a = "goto_line_start"             # stock: Home
+# f = "goto_line_end"               # stock: End
+s = "extend_line"                 # stock: x; i.e. this selects a line
 
-w = "select_textobject_inner"     # stock: mi
+B = "goto_prev_paragraph"
+b = "goto_next_paragraph"
 
-[keys.select]
+W = "move_prev_long_word_start"		# stock: B
+w = "move_next_long_word_start"  	# stock: W
+# B = "move_prev_word_start"       	# stock: b
+# W = "move_next_word_start"				# stock: w		
 
+J = "copy_selection_on_next_line"
+K = "copy_selection_on_prev_line"
 
+c = "toggle_comments"    					# stock: Ctrl-c
 
-# REMAPPING
-# miw = w
-# w = f
-# b = g
-# gh = a
-# gl = s
-# x = e
+e = "change_selection"
+a = "select_all"
+
+#'Ctrl-[' = "unindent"                  # stock: Shift+, (i.e. <)
+#'Ctrl-]' = "indent"                    # stock: Shift+. (i.e. >)
+
+# these two commands increment/decrement the number under the cursor
+# not sure why these aren't working...
+#"-" = "decrement"                  # stock: Ctrl-a
+#"=" = "increment"                  # stock: Ctrl-x
+
+#[keys.select]
