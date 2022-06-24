@@ -47,8 +47,8 @@ alias 'sz'='source $HOME/.zshrc'
 # editors
 alias 'h'='hx'    # helix
 alias 'k'='kak'   # kakoune
-alias 'n'='nvim'  # neovim
-
+alias 'v'='nvim'  # neovim
+alias 'n'='nano'	# nano
 # updates
 case "$OSTYPE" in
   darwin*)

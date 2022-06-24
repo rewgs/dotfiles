@@ -299,15 +299,27 @@ include "/usr/share/nano/*.nanorc"
 #bind ^E redo main
 #set multibuffer
 
+# custom settings
+#set minibar
+set nohelp
+
 # custom keybindings
 bind ^c copy main
 bind ^x cut main
 bind ^v paste main
-bind ^z undo main
-bind ^y redo main
+
+bind ^u undo main
+bind ^U redo main
+
 bind ^f whereis main
+bind ^n findnext main
+
 bind ^q exit main
-bind ^s writeout main
+bind ^w writeout main
+
 bind ^h help main
+
 bind ^g gotoline main
 bind ^l curpos main
+
+
