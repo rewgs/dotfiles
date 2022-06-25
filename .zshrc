@@ -192,6 +192,9 @@ export LS_COLORS
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+# go
+export PATH=$PATH:/usr/local/go/bin
+
 # commands specific to certain operating systems
 case "$OSTYPE" in
   # --------- Linux-specific ----------

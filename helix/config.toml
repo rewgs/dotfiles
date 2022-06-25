@@ -48,6 +48,7 @@ w = "select_textobject_inner" # this brings up the "match inside" window, so tap
 # i = { j = "insert_mode", k = "append_mode", l = "append_to_line", h = "prepend_to_line" }  # enhanced insert mode entrance. Would love to be ii for regular insert but this crashes helix. For now ij works.
 "esc" = { i = "insert_mode", k = "append_mode", l = "append_to_line", h = "prepend_to_line" } # this works for now too. Maybe even better than ii? 
 a = "kill_to_line_start"
+# A = ["kill_to_line_start", "open_below"]   # this presumably doesn't work due to a bug, but this would be a great mapping
 s = "kill_to_line_end"
 b = "move_prev_long_word_start"		
 f = "move_next_long_word_start"  	
