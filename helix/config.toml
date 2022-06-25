@@ -45,27 +45,51 @@ w = "select_textobject_inner" # this brings up the "match inside" window, so tap
                               #  ww == select inside current word
                               #  wp == select inside current paragraph
                               #  ...etc. This is the best I can do for now.
-i = { j = "insert_mode", k = "append_mode", l = "append_to_line", h = "prepend_to_line" }  # enhanced insert mode entrance. Would love to be ii for regular insert but this crashes helix. For now ij works.
+# i = { j = "insert_mode", k = "append_mode", l = "append_to_line", h = "prepend_to_line" }  # enhanced insert mode entrance. Would love to be ii for regular insert but this crashes helix. For now ij works.
+"esc" = { i = "insert_mode", k = "append_mode", l = "append_to_line", h = "prepend_to_line" } # this works for now too. Maybe even better than ii? 
 a = "kill_to_line_start"
 s = "kill_to_line_end"
 b = "move_prev_long_word_start"		
 f = "move_next_long_word_start"  	
 N = "open_above"
 n = "open_below"
-o = "extend_line"                
+o = "extend_line" # i.e. "select line"
+# O = "extend_to_line_bounds"  # this doesn't appear to do anything different than "extend_line"
 B = "goto_prev_paragraph"
 F = "goto_next_paragraph"
 J = "copy_selection_on_next_line"
 K = "copy_selection_on_prev_line"
-c = "toggle_comments"    				
+c = "toggle_comments"
+# '#' = "toggle_comments"
 e = "change_selection"  # I think of this as "edit" -- delete and then enter insert mode in one movement. Also it's the same finger as i on the right hand.
 '[' = "unindent"                  # stock: Shift+, (i.e. <)
 ']' = "indent"                    # stock: Shift+. (i.e. >)
+'/' = { '/' = "search", s = "search_selection" }
+'<' = "search_prev"
+'>' = "search_next"
+A-j = "half_page_down"
+A-k = "half_page_up"
+'*' = "select_all"
+d = "delete_selection"
+
+# remapping f/F's functions to this, as these are way more useful most of the time
+t = "find_next_char"
+T = "find_prev_char"
+
+# these are the old usage of t/T before remapping
+A-t = "find_till_char"
+A-T = "till_prev_char"
+
+
+# dunno about these but for now I guess they work
+'left' = "delete_char_backward"
+'right' = "delete_char_forward"  
+'S-left' = "delete_word_backward"
+'S-right' = "delete_word_forward"
 
 # these two commands increment/decrement the number under the cursor
-# not sure why these aren't working...
-#"-" = "decrement"                  # stock: Ctrl-a
-#"=" = "increment"                  # stock: Ctrl-x
+'minus' = "decrement"
+#'=' = "increment"  # currently the = key is permanently mapped to "format_selection" AND is disabled
 
 [keys.select]
 
