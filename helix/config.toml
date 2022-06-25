@@ -36,14 +36,16 @@ display-messages = true
 [keys.insert]
 #j = { k = "normal_mode" }
 #k = { j = "normal_mode" }
-
   
 [keys.normal]
 # NOTE that some commands are unchangeable:
 #  . = repeat last change
 
-L = "append_to_line"
-H = "prepend_to_line"
+w = "select_textobject_inner" # this brings up the "match inside" window, so tap w again for "word"
+                              #  ww == select inside current word
+                              #  wp == select inside current paragraph
+                              #  ...etc. This is the best I can do for now.
+i = { j = "insert_mode", k = "append_mode", l = "append_to_line", h = "prepend_to_line" }  # enhanced insert mode entrance. Would love to be ii for regular insert but this crashes helix. For now ij works.
 a = "kill_to_line_start"
 s = "kill_to_line_end"
 b = "move_prev_long_word_start"		
@@ -65,4 +67,5 @@ e = "change_selection"  # I think of this as "edit" -- delete and then enter ins
 #"-" = "decrement"                  # stock: Ctrl-a
 #"=" = "increment"                  # stock: Ctrl-x
 
-#[keys.select]
+[keys.select]
+
