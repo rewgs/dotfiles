@@ -2,8 +2,8 @@
 # themes
 # -----------------------------------------------------------------------------
     
-#theme = "onedark"
-theme = "gruvbox"
+theme = "onedark"
+# theme = "gruvbox"
 
 # -----------------------------------------------------------------------------
 # editor
@@ -92,4 +92,3 @@ A-T = "till_prev_char"
 #'=' = "increment"  # currently the = key is permanently mapped to "format_selection" AND is disabled
 
 [keys.select]
-
