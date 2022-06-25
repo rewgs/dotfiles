@@ -20,7 +20,7 @@ source $ZSH/oh-my-zsh.sh
 # HIST_STAMPS="mm/dd/yyyy"                # Uncomment the following line if you want to change the command execution time stamp shown in the history command output. You can set one of the optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd" or set a custom format using the strftime function format specifications, see 'man strftime' for details.
 # ZSH_CUSTOM=/path/to/new-custom-folder   # Uncomment to use another custom folder than $ZSH/custom?
 
-
+export EDITOR="hx"
 
 # =============================================================================
 # Plugins
@@ -41,7 +41,7 @@ alias 'rm'='rm -i'                      # requires that the user confirm deletio
 alias 'rm -r'='rm -ri'                  # requires that the user confirm deletion (directories)
 alias 'c'='clear'
 alias 'b'='br'                          # invokes broot in power-user mode (br)
-alias 'z'='nvim $HOME/.zshrc'
+alias 'z'='$EDITOR $HOME/.zshrc'
 alias 'sz'='source $HOME/.zshrc'
 
 # editors
@@ -49,6 +49,7 @@ alias 'h'='hx'    # helix
 alias 'k'='kak'   # kakoune
 alias 'v'='nvim'  # neovim
 alias 'n'='nano'	# nano
+
 # updates
 case "$OSTYPE" in
   darwin*)
@@ -71,6 +72,12 @@ case "$OSTYPE" in
 esac
 
 # locations
+
+# dotfiles
+alias 'dotfiles'='cd $HOME/dotfiles/'
+alias 'dots'='cd $HOME/dotfiles/'
+alias 'd'='cd $HOME/dotfiles/'
+
 case "$OSTYPE" in
   linux*)
     alias 'p'='cd /mnt/p'
