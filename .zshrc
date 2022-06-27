@@ -36,7 +36,10 @@ plugins=(git)
 # Aliases
 # =============================================================================
 
+# -------------------------------------
 # basic commands
+# -------------------------------------
+
 alias 'rm'='rm -i'                      # requires that the user confirm deletion (files)
 alias 'rm -r'='rm -ri'                  # requires that the user confirm deletion (directories)
 alias 'c'='clear'
@@ -44,13 +47,27 @@ alias 'b'='br'                          # invokes broot in power-user mode (br)
 alias 'z'='$EDITOR $HOME/.zshrc'
 alias 'sz'='source $HOME/.zshrc'
 
+# -------------------------------------
 # editors
+# -------------------------------------
+
 alias 'h'='hx'    # helix
 alias 'k'='kak'   # kakoune
 alias 'v'='nvim'  # neovim
 alias 'n'='nano'	# nano
 
+# -------------------------------------
+# tmux
+# -------------------------------------
+alias 't'='tmux new'
+alias 'td'='tmux detach'
+alias 'tls'='tmux ls'
+alias 'tq'='exit'
+
+# -------------------------------------
 # updates
+# -------------------------------------
+
 case "$OSTYPE" in
   darwin*)
     alias 'up'='brew update && brew upgrade'
@@ -71,7 +88,9 @@ case "$OSTYPE" in
   ;;
 esac
 
+# -------------------------------------
 # locations
+# -------------------------------------
 
 # dotfiles
 alias 'dotfiles'='cd $HOME/dotfiles/'
@@ -88,7 +107,6 @@ case "$OSTYPE" in
     alias 'bear'='cd $HOME/Work/SNS/development/'
   ;;
 esac
-
 
 # pyenv
 alias 'av'='source venv/bin/activate'   # activates a Python virtual environment. Only works if cwd is project root, and if the virtual environment is called venv.
@@ -192,9 +210,6 @@ export LS_COLORS
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-# go
-export PATH=$PATH:/usr/local/go/bin
-
 # commands specific to certain operating systems
 case "$OSTYPE" in
   # --------- Linux-specific ----------
@@ -209,6 +224,12 @@ case "$OSTYPE" in
     export PYENV_ROOT="$HOME/src/pyenv"
     command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
+
+    # go
+    export PATH=$PATH:/usr/local/go/bin
+
+    # broot
+    source /home/ubuntu/.config/broot/launcher/bash/br
 
   ;;
 
@@ -247,4 +268,5 @@ esac
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 
