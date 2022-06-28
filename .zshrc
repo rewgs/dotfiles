@@ -59,10 +59,23 @@ alias 'n'='nano'	# nano
 # -------------------------------------
 # tmux
 # -------------------------------------
+
 alias 't'='tmux new'
+alias 'ta'='tmux attach -t'
 alias 'td'='tmux detach'
 alias 'tls'='tmux ls'
 alias 'tq'='exit'
+
+
+# -------------------------------------
+# w3m (command line web browser)
+# -------------------------------------
+
+case "$OSTYPE" in
+  linux*)
+    alias 'hn'='w3m www.hackernews.com'
+  ;;
+esac
 
 # -------------------------------------
 # updates
