@@ -1,13 +1,13 @@
-# -----------------------------------------------------------------------------
+# =============================================================================
 # themes
-# -----------------------------------------------------------------------------
+# =============================================================================
     
 # theme = "onedark"
 theme = "gruvbox"
 
-# -----------------------------------------------------------------------------
+# =============================================================================
 # editor
-# -----------------------------------------------------------------------------
+# =============================================================================
 
 [editor]
 line-number = "relative"
@@ -26,18 +26,40 @@ hidden = false
 [editor.lsp]
 display-messages = true
 
+[editor.whitespace]
+render = "all"  # disable any of the lines below to [en/dis]able one or more
+
+# [editor.whitespace.render]
+# space = "all"
+# tab = "all"
+# newline = "none"
+
+[editor.whitespace.characters]
+space = "."
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+
+
 # At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
 # Refer to keymap here: https://docs.helix-editor.com/keymap.html
 
-# -----------------------------------------------------------------------------
+# =============================================================================
 # keymaps
-# -----------------------------------------------------------------------------
+# =============================================================================
 
-[keys.insert]
+# -------------------------------------
+[keys.insert]             # insert mode
+# -------------------------------------
+
 #j = { k = "normal_mode" }
 #k = { j = "normal_mode" }
   
-[keys.normal]
+
+# -------------------------------------
+[keys.normal]             # normal mode
+# -------------------------------------
+
 # NOTE that some commands are unchangeable:
 #  . = repeat last change
 
@@ -46,7 +68,6 @@ display-messages = true
 "backspace" = "keep_primary_selection"
 
 # C-p = "command_palette"  # for some reason I have to do this twice?
-
 
 # enhanced insert mode entrance menu
 "esc" = { i = "insert_mode", h = "prepend_to_line", j = "open_below", k = "open_above", l = "append_to_line" }  # Would love to be ii for regular insert but this crashes helix. For now ij works. This works for now too. Maybe even better than iiI = "append_mode"?
@@ -102,6 +123,7 @@ L = "expand_selection"
 '\' = "align_selections"  # aligns selection to a column
 '&' = "join_selections"
 
+
 # search
 '/' = "search"
 '?' = "search_selection"
@@ -117,5 +139,7 @@ L = "expand_selection"
 '`'='file_picker'
 '~'='buffer_picker'
 
-[keys.select]
+# -------------------------------------
+[keys.select]             # select mode
+# -------------------------------------
 # '\' = 'align_selections'
