@@ -27,12 +27,12 @@ hidden = false
 display-messages = true
 
 [editor.whitespace]
-render = "all"  # disable any of the lines below to [en/dis]able one or more
+# render = "all"  # disable any of the lines below to [en/dis]able one or more
 
-# [editor.whitespace.render]
-# space = "all"
-# tab = "all"
-# newline = "none"
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
 
 [editor.whitespace.characters]
 nbsp = "⍽"
