@@ -27,19 +27,19 @@ hidden = false
 display-messages = true
 
 [editor.whitespace]
-render = "all"  # disable any of the lines below to [en/dis]able one or more
+# render = "all"  # disable any of the lines below to [en/dis]able one or more
 
-# editor.whitespace.render]
-# space = "none"
-# tab = "all"
-# newline = "none"
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
 
 [editor.whitespace.characters]
-# space = "."
-space = " "  # I couldn't figure out how to disable only spaces so I just changed the space character to a literal space lol
 nbsp = "⍽"
 tab = "→"
 newline = "⏎"
+# space = "."
+space = " "  # I couldn't figure out how to disable only spaces so I just changed the space character to a literal space lol
 
 
 # At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
