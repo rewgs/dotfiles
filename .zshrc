@@ -42,6 +42,7 @@ plugins=(git)
 
 alias 'rm'='rm -i'                      # requires that the user confirm deletion (files)
 alias 'rm -r'='rm -ri'                  # requires that the user confirm deletion (directories)
+alias 'mv'='mv -i'                      # prompts before overwriting already-existing file
 alias 'c'='clear'
 alias 'b'='br'                          # invokes broot in power-user mode (br)
 alias 'z'='$EDITOR $HOME/.zshrc'
