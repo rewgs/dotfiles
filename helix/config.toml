@@ -2,8 +2,8 @@
 # themes
 # =============================================================================
     
-# theme = "onedark"
-theme = "gruvbox"
+theme = "onedark"
+# theme = "gruvbox"
 
 # =============================================================================
 # editor
@@ -29,13 +29,14 @@ display-messages = true
 [editor.whitespace]
 render = "all"  # disable any of the lines below to [en/dis]able one or more
 
-# [editor.whitespace.render]
-# space = "all"
+# editor.whitespace.render]
+# space = "none"
 # tab = "all"
 # newline = "none"
 
 [editor.whitespace.characters]
-space = "."
+# space = "."
+space = " "  # I couldn't figure out how to disable only spaces so I just changed the space character to a literal space lol
 nbsp = "⍽"
 tab = "→"
 newline = "⏎"
