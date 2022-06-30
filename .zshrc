@@ -278,10 +278,3 @@ case "$OSTYPE" in
 
   ;;
 esac
-
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-
-
-source /home/rewgs/.config/broot/launcher/bash/br
