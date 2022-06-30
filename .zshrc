@@ -229,20 +229,17 @@ case "$OSTYPE" in
   # --------- Linux-specific ----------
   linux*)
 
-    # ------------- PyEnv -------------
-    export PYENV_ROOT="$HOME/.pyenv"
-    # export PATH="$PYENV_ROOT/bin:$PATH"
-    # if command -v pyenv 1>/dev/null 2>&1; then
-        # eval "$(pyenv init -)"
-    # fi
-    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
+    # broot
+    source $HOME/.config/broot/launcher/bash/br
 
     # go
     export PATH=$PATH:/usr/local/go/bin
 
-    # broot
-    source $HOME/.config/broot/launcher/bash/br
+    # PyEnv
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+
 
   ;;
 
@@ -256,13 +253,13 @@ case "$OSTYPE" in
     # ------------- Poetry ------------
     export PATH="$HOME/.poetry/bin:$PATH"
 
-
     # ------------- PyEnv -------------
-    # Fixing the Homebrew $PATH directory
-    export PATH=/opt/homebrew/bin:$PATH
-    if command -v pyenv 1>/dev/null 2>&1; then
-      eval "$(pyenv init -)"
-    fi
+    # Fixing the Homebrew $PATH directory...though maybe this isn't needed anymore since I think I'm installing from source everywhere now, including my Mac
+    # Leaving these lines here commented out in case I'm wrong.
+    # export PATH=/opt/homebrew/bin:$PATH
+    # if command -v pyenv 1>/dev/null 2>&1; then
+    #   eval "$(pyenv init -)"
+    # fi
 
     # Adding PyEnv to $PATH
     export PYENV_ROOT="$HOME/.pyenv"
