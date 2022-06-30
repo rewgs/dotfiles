@@ -37,16 +37,50 @@ plugins=(git)
 # =============================================================================
 
 # -------------------------------------
-# basic commands
+# common shell commands
 # -------------------------------------
 
+alias 'c'='clear'
+alias 'mv'='mv -i'                      # prompts before overwriting already-existing file
 alias 'rm'='rm -i'                      # requires that the user confirm deletion (files)
 alias 'rm -r'='rm -ri'                  # requires that the user confirm deletion (directories)
-alias 'mv'='mv -i'                      # prompts before overwriting already-existing file
-alias 'c'='clear'
-alias 'b'='br'                          # invokes broot in power-user mode (br)
+
+# ls (with colors)
+case "$OSTYPE" in
+  linux*)
+    alias 'ls'='ls -alh --color'        # --color is the flag on Linux
+  ;;
+  darwin*)
+    alias 'ls'='ls -alhG'               # -G is the flag on macOS/BSD
+  ;;
+esac
+
+# zshrc
 alias 'z'='$EDITOR $HOME/.zshrc'
 alias 'sz'='source $HOME/.zshrc'
+
+
+# -------------------------------------
+# applications
+# -------------------------------------
+
+# broot
+alias 'b'='br'                          # invokes broot in power-user mode (br)
+
+# multipass (macOS only)
+case "$OSTYPE" in
+  darwin*)
+    alias 'mpls'='multipass list'          # lists all multipass VMs
+    alias 'mpsh'='multipass shell ubuntu'  # starts and enters a shell
+    alias 'mpst'='multipass start ubuntu'  # starts ubuntu VM but doesn't enter it
+    alias 'mpsp'='multipass stop ubuntu'   # stops ubuntu VM
+  ;;
+esac
+
+# pyenv
+alias 'av'='source venv/bin/activate'   # activates a Python virtual environment. Only works if cwd is project root, and if the virtual environment is called venv.
+alias 'dv'='deactivate'                 # deactivates a Python virtual environment. 
+
 
 # -------------------------------------
 # editors
@@ -57,50 +91,6 @@ alias 'k'='kak'   # kakoune
 alias 'v'='nvim'  # neovim
 alias 'n'='nano'	# nano
 
-# -------------------------------------
-# tmux
-# -------------------------------------
-
-alias 't'='tmux new'
-alias 'ta'='tmux attach -t'
-alias 'td'='tmux detach'
-alias 'tls'='tmux ls'
-alias 'tq'='exit'
-
-
-# -------------------------------------
-# w3m (command line web browser)
-# -------------------------------------
-
-case "$OSTYPE" in
-  linux*)
-    alias 'hn'='w3m www.hackernews.com'
-  ;;
-esac
-
-# -------------------------------------
-# updates
-# -------------------------------------
-
-case "$OSTYPE" in
-  darwin*)
-    alias 'up'='brew update && brew upgrade'
-  ;;
-  linux*)
-    alias 'up'='sudo apt update && sudo apt upgrade -y'
-  ;;
-esac
-
-# colors for ls
-case "$OSTYPE" in
-  linux*)
-    alias 'ls'='ls -alh --color'        # --color is the flag on Linux
-  ;;
-
-  darwin*)
-    alias 'ls'='ls -alhG'               # -G is the flag on macOS/BSD
-  ;;
-esac
 
 # -------------------------------------
 # locations
@@ -122,22 +112,46 @@ case "$OSTYPE" in
   ;;
 esac
 
-# pyenv
-alias 'av'='source venv/bin/activate'   # activates a Python virtual environment. Only works if cwd is project root, and if the virtual environment is called venv.
-alias 'dv'='deactivate'                 # deactivates a Python virtual environment. 
 
-# multipass (macOS only)
+# -------------------------------------
+# tmux
+# -------------------------------------
+
+alias 't'='tmux new'
+alias 'ta'='tmux attach -t'
+alias 'td'='tmux detach'
+alias 'tls'='tmux ls'
+alias 'tq'='exit'
+
+
+# -------------------------------------
+# updates
+# -------------------------------------
+
 case "$OSTYPE" in
   darwin*)
-    alias 'mpls'='multipass list'          # lists all multipass VMs
-    alias 'mpsh'='multipass shell ubuntu'  # starts and enters a shell
-    alias 'mpst'='multipass start ubuntu'  # starts ubuntu VM but doesn't enter it
-    alias 'mpsp'='multipass stop ubuntu'   # stops ubuntu VM
+    alias 'up'='brew update && brew upgrade'
+  ;;
+  linux*)
+    alias 'up'='sudo apt update && sudo apt upgrade -y'
   ;;
 esac
 
+
+# -------------------------------------
+# w3m (command line web browser)
+# -------------------------------------
+
+case "$OSTYPE" in
+  linux*)
+    alias 'hn'='w3m www.hackernews.com'
+  ;;
+esac
+
+
+
 # =============================================================================
-# Colors for ls command
+# ls (with colors)
 # =============================================================================
 
 # notes:
@@ -226,34 +240,31 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # commands specific to certain operating systems
 case "$OSTYPE" in
-  # --------- Linux-specific ----------
   linux*)
-
     # broot
     source $HOME/.config/broot/launcher/bash/br
 
     # go
     export PATH=$PATH:/usr/local/go/bin
 
+    # HomeBrew
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
     # PyEnv
     export PYENV_ROOT="$HOME/.pyenv"
     command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
-
-
   ;;
 
-  # --------- macOS-specific ----------
   darwin*)
-
-    # ----------- HomeBrew ------------
+    # HomeBrew
     export PATH="/opt/homebrew/sbin:$PATH"
     export PATH="/opt/homebrew/cellar:$PATH"
     
-    # ------------- Poetry ------------
+    # Poetry
     export PATH="$HOME/.poetry/bin:$PATH"
 
-    # ------------- PyEnv -------------
+    # PyEnv
     # Fixing the Homebrew $PATH directory...though maybe this isn't needed anymore since I think I'm installing from source everywhere now, including my Mac
     # Leaving these lines here commented out in case I'm wrong.
     # export PATH=/opt/homebrew/bin:$PATH
@@ -272,6 +283,5 @@ case "$OSTYPE" in
     # Not sure why this is here...is this redundant?
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
-
   ;;
 esac
