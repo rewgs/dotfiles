@@ -231,11 +231,10 @@ case "$OSTYPE" in
 
     # ------------- PyEnv -------------
     export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    if command -v pyenv 1>/dev/null 2>&1; then
-        eval "$(pyenv init -)"
-    fi
-    export PYENV_ROOT="$HOME/src/pyenv"
+    # export PATH="$PYENV_ROOT/bin:$PATH"
+    # if command -v pyenv 1>/dev/null 2>&1; then
+        # eval "$(pyenv init -)"
+    # fi
     command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
 
@@ -243,7 +242,7 @@ case "$OSTYPE" in
     export PATH=$PATH:/usr/local/go/bin
 
     # broot
-    source /home/ubuntu/.config/broot/launcher/bash/br
+    source $HOME/.config/broot/launcher/bash/br
 
   ;;
 
@@ -284,3 +283,5 @@ esac
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
+
+source /home/rewgs/.config/broot/launcher/bash/br
