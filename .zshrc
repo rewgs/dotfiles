@@ -2,9 +2,16 @@
 # Basics
 # =============================================================================
 
+export EDITOR="hx"
+
 export ZSH="$HOME/.oh-my-zsh"             # Path to your oh-my-zsh installation.
-ZSH_THEME="robbyrussell"                  # theme
-source $ZSH/oh-my-zsh.sh
+
+ZSH_THEME="robbyrussell"                  
+
+plugins=(
+  git 
+  web-search
+)
 
 # CASE_SENSITIVE="true"                   # Uncomment to use case-sensitive completion.
 # HYPHEN_INSENSITIVE="true"               # Uncomment to use hyphen-insensitive completion. Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -19,16 +26,6 @@ source $ZSH/oh-my-zsh.sh
 # DISABLE_UNTRACKED_FILES_DIRTY="true"    # Uncomment the following line if you want to disable marking untracked files under VCS as dirty. This makes repository status check for large repositories much, much faster.
 # HIST_STAMPS="mm/dd/yyyy"                # Uncomment the following line if you want to change the command execution time stamp shown in the history command output. You can set one of the optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd" or set a custom format using the strftime function format specifications, see 'man strftime' for details.
 # ZSH_CUSTOM=/path/to/new-custom-folder   # Uncomment to use another custom folder than $ZSH/custom?
-
-export EDITOR="hx"
-
-# =============================================================================
-# Plugins
-# =============================================================================
-
-# Standard plugins location:  $ZSH/plugins/
-# Custom plugins location:    $ZSH_CUSTOM/plugins/
-plugins=(git)
 
 
 
@@ -67,6 +64,15 @@ alias 'sz'='source $HOME/.zshrc'
 # broot
 alias 'b'='br'                          # invokes broot in power-user mode (br)
 
+# git clients
+case "$OSTYPE" in
+  linux*)
+    alias 'g'='git-graph'
+    alias 'gg'='git-igitt'
+  ;;
+esac
+
+
 # multipass (macOS only)
 case "$OSTYPE" in
   darwin*)
@@ -101,6 +107,7 @@ alias 'dotfiles'='cd $HOME/dotfiles/'
 alias 'dots'='cd $HOME/dotfiles/'
 alias 'd'='cd $HOME/dotfiles/'
 
+# SnS
 case "$OSTYPE" in
   linux*)
     alias 'p'='cd /mnt/p'
@@ -232,13 +239,18 @@ export LS_COLORS
 # PATH additions
 # =============================================================================
 
+# -------------------------------------
 # commands for all operating systems
+# -------------------------------------
 
 # user bin folders
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+# -------------------------------------
 # commands specific to certain operating systems
+# -------------------------------------
+
 case "$OSTYPE" in
   linux*)
     # broot
@@ -285,3 +297,13 @@ case "$OSTYPE" in
     eval "$(pyenv virtualenv-init -)"
   ;;
 esac
+
+# =============================================================================
+# run commands (always make sure these are at the bottom)
+# =============================================================================
+
+source $ZSH/oh-my-zsh.sh
+
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach -t default || tmux new -s default
+fi
