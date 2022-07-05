@@ -259,8 +259,8 @@ case "$OSTYPE" in
     # go
     export PATH=$PATH:/usr/local/go/bin
 
-    # HomeBrew
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    # HomeBrew -- need to make this line only run on Debian or check CPU architecture?
+    # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
     # PyEnv
     export PYENV_ROOT="$HOME/.pyenv"
@@ -304,6 +304,10 @@ esac
 
 source $ZSH/oh-my-zsh.sh
 
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  tmux attach -t default || tmux new -s default
-fi
+case "$OSTYPE" in
+  linux*)
+    if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+      tmux attach -t default || tmux new -s default
+    fi
+  ;;
+esac
