@@ -304,6 +304,8 @@ esac
 
 source $ZSH/oh-my-zsh.sh
 
+# tmux running after sourcing .zshrc -- only on Linux
+# not sure why but this isn't letting me run tmux on macOS now...
 case "$OSTYPE" in
   linux*)
     if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
