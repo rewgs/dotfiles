@@ -13,6 +13,8 @@ plugins=(
   web-search
 )
 
+source $ZSH/oh-my-zsh.sh
+
 # CASE_SENSITIVE="true"                   # Uncomment to use case-sensitive completion.
 # HYPHEN_INSENSITIVE="true"               # Uncomment to use hyphen-insensitive completion. Case-sensitive completion must be off. _ and - will be interchangeable.
 # DISABLE_AUTO_UPDATE="true"              # Uncomment to disable bi-weekly auto-update checks.
@@ -71,7 +73,6 @@ case "$OSTYPE" in
     alias 'gg'='git-igitt'
   ;;
 esac
-
 
 # multipass (macOS only)
 case "$OSTYPE" in
@@ -301,8 +302,6 @@ esac
 # =============================================================================
 # run commands (always make sure these are at the bottom)
 # =============================================================================
-
-source $ZSH/oh-my-zsh.sh
 
 # tmux running after sourcing .zshrc -- only on Linux
 # not sure why but this isn't letting me run tmux on macOS now...
