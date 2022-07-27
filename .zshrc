@@ -87,6 +87,7 @@ esac
 # pyenv
 alias 'av'='source venv/bin/activate'   # activates a Python virtual environment. Only works if cwd is project root, and if the virtual environment is called venv.
 alias 'dv'='deactivate'                 # deactivates a Python virtual environment. 
+alias 'gav'='source ~/global_venv_3.10.5/bin/activate'
 
 
 # -------------------------------------
