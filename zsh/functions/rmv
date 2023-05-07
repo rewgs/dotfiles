@@ -1,0 +1,13 @@
+# What this function is:
+# Like rm, but works the same for both files and directories
+# (i.e. rmv file and rmv directory both work).
+# Always confirms before deletion.
+
+# TODO: make this take more than one argument.
+function rmv () {
+    if [[ -d "$1" ]]; then
+        rm -rfI "$1"
+    else
+        rm -i "$1"
+    fi
+}

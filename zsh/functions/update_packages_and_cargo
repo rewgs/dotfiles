@@ -1,0 +1,12 @@
+function update_packages_and_cargo () {
+    if [[ $(uname) == "Darwin" ]]; then
+        brew update
+        brew upgrade
+    elif [[ $(uname) == "Linux" ]]; then
+        sudo apt update
+        sudo apt upgrade -y
+    fi
+    
+    cargo install cargo-update
+    cargo install install-update --all
+}

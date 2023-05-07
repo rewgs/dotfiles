@@ -1,0 +1,146 @@
+# =============================================================================
+# themes
+# =============================================================================
+    
+theme = "onedark"
+# theme = "gruvbox"
+
+# =============================================================================
+# editor
+# =============================================================================
+
+[editor]
+line-number = "relative"
+mouse = false
+true-color = true
+# indent-style = "2"  # this isn't an option, but it should be
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-messages = true
+
+[editor.whitespace]
+# render = "all"  # disable any of the lines below to [en/dis]able one or more
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.whitespace.characters]
+nbsp = "⍽"
+tab = " "
+newline = "⏎"
+# space = "."
+space = " "  # I couldn't figure out how to disable only spaces so I just changed the space character to a literal space lol
+
+
+# At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
+# Refer to keymap here: https://docs.helix-editor.com/keymap.html
+
+# =============================================================================
+# keymaps
+# =============================================================================
+
+# -------------------------------------
+[keys.insert]             # insert mode
+# -------------------------------------
+
+#j = { k = "normal_mode" }
+#k = { j = "normal_mode" }
+  
+
+# -------------------------------------
+[keys.normal]             # normal mode
+# -------------------------------------
+
+# NOTE that some commands are unchangeable:
+#  . = repeat last change
+
+#"space" = "command_mode"
+# "ret" = "keep_primary_selection"
+"backspace" = "keep_primary_selection"
+
+# C-p = "command_palette"  # for some reason I have to do this twice?
+
+# enhanced insert mode entrance menu
+"esc" = { i = "insert_mode", h = "prepend_to_line", j = "open_below", k = "open_above", l = "append_to_line" }  # Would love to be ii for regular insert but this crashes helix. For now ij works. This works for now too. Maybe even better than iiI = "append_mode"?
+
+# traversal
+b = "move_prev_long_word_start"		
+f = "move_next_long_word_start"  	
+# B = "goto_prev_paragraph"
+# F = "goto_next_paragraph"
+B = "select_prev_sibling"
+F = "select_next_sibling"
+A-j = "half_page_down"
+A-k = "half_page_up"
+t = "find_next_char"
+T = "find_prev_char"
+A-t = "find_till_char"
+A-T = "till_prev_char"
+
+# editing (without entering Insert mode)
+d = "delete_selection"
+a = "kill_to_line_start"
+# A = ["kill_to_line_start", "open_below"]   # this presumably doesn't work due to a bug, but this would be a great mapping
+# A = ["goto_prep_paragraph", "delete_selection"] # also doesn't work???
+s = "kill_to_line_end"
+N = "add_newline_above"
+n = "add_newline_below"
+c = "toggle_comments"
+"[" = "unindent"                 
+"]" = "indent"                   
+"minus" = "decrement"    
+#'plus' = "increment"     # not working, presumably due to a bug?
+# these don't feel good...not using for the time being
+# 'left' = "delete_char_backward"
+# 'right' = "delete_char_forward"  
+# 'S-left' = "delete_word_backward"
+# 'S-right' = "delete_word_forward"
+
+# traverse AND edit
+e = "change_selection"  # I think of this as "edit" -- delete and then enter insert mode in one movement. Also it's the same finger as i on the right hand.
+
+# selection
+w = "select_textobject_inner" # this brings up the "match inside" window, so tap w again for "word"
+                              #  ww == select inside current word
+                              #  wp == select inside current paragraph
+                              #  ...etc. This is the best I can do for now.
+o = "extend_line" # i.e. "select line"
+H = "shrink_selection"
+J = "copy_selection_on_next_line"
+K = "copy_selection_on_prev_line"
+L = "expand_selection"
+# O = "extend_to_line_bounds"  # this doesn't appear to do anything different than "extend_line"
+'*' = "select_all"
+'\' = "align_selections"  # aligns selection to a column
+'&' = "join_selections"
+
+
+# search
+'/' = "search"
+'?' = "search_selection"
+'tab' = "search_next"
+'S-tab' = "search_prev"
+
+# switch case
+'!'='switch_to_lowercase'
+'@'='switch_case'
+'#'='switch_to_uppercase'
+
+# pickers
+'`'='file_picker'
+'~'='buffer_picker'
+
+# -------------------------------------
+[keys.select]             # select mode
+# -------------------------------------
+# '\' = 'align_selections'

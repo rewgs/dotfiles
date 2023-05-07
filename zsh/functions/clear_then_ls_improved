@@ -1,0 +1,19 @@
+# TODO: make the sorting case-insensitive
+
+function clear_then_ls_improved () {
+    if [[ $(uname) == "Darwin" ]]; then
+        clear
+        if [[ $# -eq 0 ]]; then
+            gls --color -alh --group-directories-first
+        else
+            gls "${1}" --color -alh --group-directories-first
+        fi
+    elif [[ $(uname) == "Linux" ]]; then
+        clear
+        if [[ $# -eq 0 ]]; then
+            ls -alh --color
+        else
+            ls "${1}" -alh --color
+        fi
+    fi
+}

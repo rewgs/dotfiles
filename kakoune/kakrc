@@ -1,0 +1,23 @@
+colorscheme gruvbox
+
+set global ui_options ncurses_assistant=none	# turns off Clippy
+
+# -----------------------------------------------------------------------------
+# Keymap
+# -----------------------------------------------------------------------------
+
+# Remaps x/X to s/S
+map global normal s x
+map global normal S X
+
+# Remaps c ("change") to e (I think of it as "edit")
+# This is a better keymap for this function, I think. It's the same finger as i for Insert mode, just on a different hand.
+map global normal e c
+
+# Remaps comment-line to 'c' and comment-block to 'C'
+map global normal c :comment-line<ret> -docstring 'comment line'
+map global normal C :comment-block<ret> -docstring 'comment block'	# this isn't working for some reason
+
+
+map global normal D '<a-l>d' -docstring 'delete to end of line'		# could make this 's' like Pro Tools (and 'a' = 'delete to beginning of line' or whatever that's called)
+

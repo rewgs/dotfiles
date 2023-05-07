@@ -1,0 +1,5 @@
+function git_commit_readme () {
+    git add README.md
+    git commit -m 'Updated README.md (note: this is an automated commit message).'
+    git push
+}

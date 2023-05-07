@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+# This will trash your local changes and reset to the latest commit.
+function force_reset_repo() {  
+  git fetch --all
+
+  # $1 will usually be nothing, origin/master, or origin/main
+  # Therefore, if any of those are entered, just run the command.
+  if [$1 == '']|| [$1 == 'origin'] || [$1 == 'origin/main'] || [$1 == 'origin/master']
+  then
+    git reset --hard '$1'
+  fi
+}

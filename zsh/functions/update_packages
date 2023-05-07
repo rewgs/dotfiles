@@ -1,0 +1,9 @@
+function update_packages () {
+    if [[ $(uname) == "Darwin" ]]; then
+        brew update
+        brew upgrade
+    elif [[ $(uname) == "Linux" ]]; then
+        sudo apt update
+        sudo apt upgrade -y
+    fi
+}

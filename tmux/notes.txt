@@ -1,0 +1,10 @@
+tpm location: $HOME/src/
+
+Need the following symbolic links:
+ln -s $HOME/dotfiles/tmux/tmux.conf $HOME/.tmux.conf
+ln -s $HOME/src/tpm/ $HOME/.tmux/plugins/tpm
+ln -s $HOME/src/tpm/ $HOME/tpm
+
+To install tpm plugins: Prefix + I
+To reload/"source" tmux.conf: Prefix + R
+

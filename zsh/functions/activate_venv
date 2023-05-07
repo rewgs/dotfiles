@@ -1,0 +1,6 @@
+function activate_venv () {
+    source .venv/bin/activate
+    which_python=$(which python)
+    python_version=$(python --version)
+    echo "Using ${python_version} located at ${which_python}"
+}

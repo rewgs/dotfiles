@@ -1,0 +1,5 @@
+function create_new_venv_v3.9_with_gui_fix_for_mac () {
+    /opt/homebrew/bin/python3.9 -m venv .venv
+    activate_venv
+    pip install --upgrade pip
+}

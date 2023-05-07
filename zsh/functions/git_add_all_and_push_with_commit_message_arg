@@ -1,0 +1,5 @@
+function git_add_all_and_push_with_commit_message_arg () {
+    git add --all
+    git commit -m "${1}"
+    git push
+}

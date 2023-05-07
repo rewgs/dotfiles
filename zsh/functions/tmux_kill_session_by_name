@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+function tmux_kill_session_by_name() {
+    tmux kill-session -t "$1"
+}

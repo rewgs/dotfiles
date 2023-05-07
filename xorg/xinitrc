@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# restores wallpaper via nitrogen; `&` means that it's running as a background process
+# exec --no-startup-id hsetroot -solid "#282828"
+hsetroot -solid "#282828" &
+picom &
+# exec dwm
+exec i3
+
+# . /etc/X11/Xsession
