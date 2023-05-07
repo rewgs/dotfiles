@@ -83,6 +83,8 @@ compdef _dotnet_zsh_complete dotnet
 # ║ aliases                                                                    ║           
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
+alias es="exec $SHELL"
+
 # aws
 if [[ $(uname) == "Linux" ]]; then
     alias wasabi="aws s3 --profile wasabi"
