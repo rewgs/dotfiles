@@ -8,5 +8,5 @@ function update_packages_and_cargo () {
     fi
     
     cargo install cargo-update
-    cargo install install-update --all
+    cargo install-update -a
 }
