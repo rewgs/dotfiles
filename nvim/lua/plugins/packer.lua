@@ -27,9 +27,6 @@ return require('packer').startup(function(use)
     }
     use 'nvim-telescope/telescope-file-browser.nvim'
     use "dimaportenko/telescope-simulators.nvim"
-    use('nvim-telescope/telescope.nvim', {
-        tag = '0.1.0'
-    })
 
     -- lsp and snippets
     use 'neovim/nvim-lspconfig'
@@ -44,8 +41,6 @@ return require('packer').startup(function(use)
     use 'saadparwaiz1/cmp_luasnip'      -- need to configure
     use 'rafamadriz/friendly-snippets'  -- need to configure
 
-    use 'nvim-telescope/telescope-file-browser.nvim'
-    use "dimaportenko/telescope-simulators.nvim"
     use 'rainbowhxch/accelerated-jk.nvim'
     use 'ThePrimeagen/harpoon'
     use 'nvim-lualine/lualine.nvim'
