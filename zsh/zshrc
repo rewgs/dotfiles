@@ -255,11 +255,12 @@ if [[ $(uname) == "Darwin" ]]; then
     
     # rust
     export PATH="$PATH:$HOME/.cargo/bin"
+
 elif [[ $(uname) == "Linux" ]]; then
     # user bin folders
     export PATH=$HOME/bin:$PATH
     export PATH=$HOME/.local/bin:$PATH
-    export PATH=usr/local/bin:$PATH
+    export PATH=/usr/local/bin:$PATH
     
     # broot
     # source $HOME/.config/broot/launcher/bash/br
