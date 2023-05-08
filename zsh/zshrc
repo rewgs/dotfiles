@@ -157,7 +157,11 @@ alias nv=create_new_venv
 alias nvhb=create_new_venv_v3.9_with_gui_fix_for_mac
 
 # tailscale
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+if [[ $(uname) == "Darwin" ]]; then
+    alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+fi
+
+alias tshosts=tailscale_get_magic_dns_hostnames
 
 # tmux
 alias t="tmux new"

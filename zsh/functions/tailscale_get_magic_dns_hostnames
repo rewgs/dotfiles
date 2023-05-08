@@ -1,0 +1,18 @@
+function tailscale_get_magic_dns_hostnames () {
+    if ! command -v jq &> /dev/null; then
+        if [[ $(uname) == "Darwin" ]]; then
+            brew install jq
+        elif [[ $(uname) == "Linux" ]]; then
+            sudo apt install jq
+        fi
+    fi
+    
+    if [[ $(uname) == "Darwin" ]]; then
+        # For some reason `tailscale` isn't resolving correctly on macOS, even though I'm explicitly pointing to it in .zshrc.
+        # So, for now, I'm just pointing to it in this function too ¯\_(ツ)_/¯  
+        tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+        $tailscale status -json | jq -r '.Peer[].DNSName' | grep .
+    elif [[ $(uname) == "Linux" ]]; then
+        tailscale status -json | jq -r '.Peer[].DNSName' | grep .
+    fi
+}
