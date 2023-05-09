@@ -9,9 +9,9 @@ function ls_improved () {
         fi
     elif [[ $(uname) == "Linux" ]]; then
         if [[ $# -eq 0 ]]; then
-            ls -alh --color
+            ls -alh --color --group-directories-first
         else
-            ls "${1}" -alh --color
+            ls "${1}" -alh --color --group-directories-first
         fi
     fi
 }

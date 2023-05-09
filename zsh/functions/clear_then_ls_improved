@@ -11,9 +11,9 @@ function clear_then_ls_improved () {
     elif [[ $(uname) == "Linux" ]]; then
         clear
         if [[ $# -eq 0 ]]; then
-            ls -alh --color
+            ls -alh --color --group-directories-first
         else
-            ls "${1}" -alh --color
+            ls "${1}" -alh --color --group-directories-first
         fi
     fi
 }
