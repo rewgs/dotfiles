@@ -1,0 +1,10 @@
+function new_tmux_session_name_optional () {
+    if [[ $# -eq 0 ]]; then
+        tmux new-session
+    elif [[ $# -eq 1 ]]; then
+        tmux new -s "$1"
+    else
+        echo "Too many arguments. Plese enter only 1."
+        new_tmux_session_name_optional
+    fi
+}

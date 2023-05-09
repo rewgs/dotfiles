@@ -164,8 +164,7 @@ fi
 alias tshosts=tailscale_get_magic_dns_hostnames
 
 # tmux
-alias t="tmux new"
-alias tn=tmux_create_new_session_with_name
+alias t=new_tmux_session_name_optional
 alias tls="tmux list-session"
 alias ta="tmux attach -t"
 alias td="tmux detach"

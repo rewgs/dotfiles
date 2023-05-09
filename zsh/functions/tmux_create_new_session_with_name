@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-function tmux_create_new_session_with_name() {
-    tmux new -s "$1"
-}
