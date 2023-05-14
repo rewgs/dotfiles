@@ -18,7 +18,7 @@ end
 config.front_end = 'WebGpu'
 
 -------------------------------------------------------------------------------
--- window appearanc
+-- window appearance
 -------------------------------------------------------------------------------
 config.window_decorations = 'RESIZE'    -- removes the titlebar but allows the window to remain resizable
 config.enable_tab_bar = true 
