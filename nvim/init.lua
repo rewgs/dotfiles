@@ -9,6 +9,7 @@ require('plugins.packer')   -- this must come first
 
 -- themes
 require('plugins.config.themes.everforest')
+require('plugins.config.themes.gruvbox')
 require('plugins.config.themes.onedark')
 require('plugins.config.accelerated-jk')
 
