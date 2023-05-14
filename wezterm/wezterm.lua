@@ -1,3 +1,6 @@
+-------------------------------------------------------------------------------
+-- basics
+-------------------------------------------------------------------------------
 -- get OS
 local os = os.execute('uname')
 
@@ -7,42 +10,62 @@ local wezterm = require 'wezterm'
 -- this table will hold the configuration
 local config = {}
 
--- this table will hold the configuration
-local config = {}
-
 -- provides clearer error messages
 if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
+config.front_end = 'WebGpu'
+
+-------------------------------------------------------------------------------
+-- window appearanc
+-------------------------------------------------------------------------------
 config.window_decorations = 'RESIZE'    -- removes the titlebar but allows the window to remain resizable
--- config.color_scheme = 'OneDark (base16)'
--- config.color_scheme = 'GruvboxDark'
+config.enable_tab_bar = true 
+config.hide_tab_bar_if_only_one_tab = true 
+config.native_macos_fullscreen_mode = true
+
+
+-------------------------------------------------------------------------------
+-- color scheme
+-------------------------------------------------------------------------------
+config.color_scheme = 'GruvboxDark'
 -- config.color_scheme = 'GruvboxDarkHard'
 -- config.color_scheme = 'Gruvbox dark, hard (base16)'
 -- config.color_scheme = 'Gruvbox dark, medium (base16)'
 -- config.color_scheme = 'Gruvbox dark, pale (base16)'
 -- config.color_scheme = 'Gruvbox dark, soft (base16)'
 -- config.color_scheme = 'Gruvbox Material (Gogh)'
+-- config.color_scheme = 'OneDark (base16)'
 
-config.font = wezterm.font { family = 'FiraCode Nerd Font' }
--- config.font = wezterm.font { family = 'JetBrains Mono' }
+
+-------------------------------------------------------------------------------
+-- font
+-------------------------------------------------------------------------------
+config.font = wezterm.font { 
+    family = 'FiraCode Nerd Font'
+    -- family = 'JetBrains Mono'  
+}
 config.font_size = 14
 config.line_height = 1
-config.front_end = 'WebGpu'
 
-config.enable_tab_bar = true 
-config.hide_tab_bar_if_only_one_tab = true 
-config.native_macos_fullscreen_mode = true
 
-config.font = wezterm.font 'FiraCode Nerd Font'
--- config.font = wezterm.font 'JetBrains Mono'
-config.font_size = 14
-
-config.color_scheme = 'OneDark (base16)'
-
+-------------------------------------------------------------------------------
+-- key bindings
+-------------------------------------------------------------------------------
 if os == 'Darwin' then
     config.keys = {
+        ---------------------------------------------------------------------------
+        -- basics 
+        ---------------------------------------------------------------------------
+
+        -- reloads WezTerm config
+        {
+            key = 'r',
+            mods = 'SUPER|SHIFT',
+            action = wezterm.action.ReloadConfiguration,
+        },
+
         ---------------------------------------------------------------------------
         -- disable default assignments
         ---------------------------------------------------------------------------
@@ -258,13 +281,6 @@ if os == 'Linux' then
             key = 'r',
             mods = 'CTRL|SHIFT',
             action = wezterm.action.ReloadConfiguration,
-        },
-
-        -- toggles fullscreen mode
-        {
-            key = 'f',
-            mods = 'SUPER',
-            action = wezterm.action.ToggleFullScreen,
         },
     }
 end
