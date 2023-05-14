@@ -1,3 +1,6 @@
+-- get OS
+local os = os.execute('uname')
+
 -- pull in the wezterm API
 local wezterm = require 'wezterm'
 
@@ -13,7 +16,14 @@ if wezterm.config_builder then
 end
 
 config.window_decorations = 'RESIZE'    -- removes the titlebar but allows the window to remain resizable
-config.color_scheme = 'OneDark (base16)'
+-- config.color_scheme = 'OneDark (base16)'
+-- config.color_scheme = 'GruvboxDark'
+-- config.color_scheme = 'GruvboxDarkHard'
+-- config.color_scheme = 'Gruvbox dark, hard (base16)'
+-- config.color_scheme = 'Gruvbox dark, medium (base16)'
+-- config.color_scheme = 'Gruvbox dark, pale (base16)'
+-- config.color_scheme = 'Gruvbox dark, soft (base16)'
+-- config.color_scheme = 'Gruvbox Material (Gogh)'
 
 config.font = wezterm.font { family = 'FiraCode Nerd Font' }
 -- config.font = wezterm.font { family = 'JetBrains Mono' }
@@ -31,225 +41,233 @@ config.font_size = 14
 
 config.color_scheme = 'OneDark (base16)'
 
-config.keys = {
-    -- DISABLE DEFAULT ASSIGNMENTS --
-    -- disables the default SUPER-m hide action, allowing SUPER-m to be recognized and handled by the tab
-    -- {
-    --     key = 'm',
-    --     mods = 'SUPER',
-    --     action = wezterm.action.DisableDefaultAssignment,
-    -- },
+if os == 'Darwin' then
+    config.keys = {
+        ---------------------------------------------------------------------------
+        -- disable default assignments
+        ---------------------------------------------------------------------------
 
-    -- disables the default SUPER-w close window action
-    {
-        key = 'w',
-    {
-        key = 'm',
-        mods = 'SUPER',
-        action = wezterm.action.DisableDefaultAssignment,
-    },
-
-    -- disables the default SUPER-h hide window action
-    {
-        key = 'h',
-    -- disables the default SUPER-w close window action
-    {
-        key = 'w',
-        mods = 'SUPER',
-        action = wezterm.action.DisableDefaultAssignment,
-    },
-
-    -- toggles fullscreen mode
-    {
-        key = 'f',
-        mods = 'SUPER',
-        action = wezterm.action.ToggleFullScreen,
-    {
-        key = 'h',
-        mods = 'SUPER',
-        action = wezterm.action.DisableDefaultAssignment,
-    },
-
-    -- tmux: new window (i.e. tab)
-    {
-        key = 't',
-        mods = 'SUPER',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 't' },
+        -- disables the default SUPER-m hide action, allowing SUPER-m to be recognized and handled by the tab
+        {
+            key = 'm',
+            mods = 'SUPER',
+            action = wezterm.action.DisableDefaultAssignment,
         },
-    },
-
-    -- tmux: close pane
-    {
-        key = 'w',
-        mods = 'SUPER',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'w' },
+ 
+        -- disables the default SUPER-w close window action
+        {
+            key = 'w',
+            mods = 'SUPER',
+            action = wezterm.action.DisableDefaultAssignment,
         },
-    },
 
-    -- tmux: split vertically
-    {
-        key = '\\',
-        mods = 'SUPER',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = '\\' },
-        },
-    },
+        ---------------------------------------------------------------------------
+        -- tmux 
+        ---------------------------------------------------------------------------
 
-    -- tmux: split horizontally
-    {
-        key = '-',
-        mods = 'SUPER',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = '-' },
+        -- tmux: new window (i.e. tab)
+        {
+            key = 't',
+            mods = 'SUPER',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 't' },
+            },
         },
-    },
 
-    -- tmux: navigate left
-    {
-        key = 'h',
-        mods = 'SUPER',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'h' },
+        -- tmux: close pane
+        {
+            key = 'w',
+            mods = 'SUPER',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'w' },
+            },
         },
-    },
 
-    -- tmux: navigate down
-    {
-        key = 'j',
-        mods = 'SUPER',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'j' },
+        -- tmux: split vertically
+        {
+            key = '\\',
+            mods = 'SUPER',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = '\\' },
+            },
         },
-    },
 
-    -- tmux: navigate up
-    {
-        key = 'k',
-        mods = 'SUPER',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'k' },
+        -- tmux: split horizontally
+        {
+            key = '-',
+            mods = 'SUPER',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = '-' },
+            },
         },
-    },
 
-    -- tmux: navigate right
-    {
-        key = 'l',
-        mods = 'SUPER',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'l' },
+        -- tmux: navigate left
+        {
+            key = 'h',
+            mods = 'SUPER',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'h' },
+            },
         },
-    },
 
-    -- tmux: resize left
-    {
-        key = 'H',
-        mods = 'SUPER|SHIFT',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'H' },
+        -- tmux: navigate down
+        {
+            key = 'j',
+            mods = 'SUPER',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'j' },
+            },
         },
-    },
 
-    -- tmux: resize down
-    {
-        key = 'J',
-        mods = 'SUPER|SHIFT',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'J' },
+        -- tmux: navigate up
+        {
+            key = 'k',
+            mods = 'SUPER',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'k' },
+            },
         },
-    },
 
-    -- tmux: resize up
-    {
-        key = 'K',
-        mods = 'SUPER|SHIFT',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'K' },
+        -- tmux: navigate right
+        {
+            key = 'l',
+            mods = 'SUPER',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'l' },
+            },
         },
-    },
 
-    -- tmux: resize right
-    {
-        key = 'L',
-        mods = 'SUPER|SHIFT',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'L' },
+        -- tmux: resize left
+        {
+            key = 'H',
+            mods = 'SUPER|SHIFT',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'H' },
+            },
         },
-    },
 
-    -- tmux: rename session
-    {
-        key = 'R',
-        mods = 'SUPER|SHIFT',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'R' },
+        -- tmux: resize down
+        {
+            key = 'J',
+            mods = 'SUPER|SHIFT',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'J' },
+            },
         },
-    },
 
-    -- tmux: rename window (i.e. tab)
-    {
-        key = 'r',
-        mods = 'SUPER',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'r' },
+        -- tmux: resize up
+        {
+            key = 'K',
+            mods = 'SUPER|SHIFT',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'K' },
+            },
         },
-    },
 
-    -- tmux: select next window (i.e. tab)
-    {
-        key = 'Tab',
-        mods = 'CTRL',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'n' },
+        -- tmux: resize right
+        {
+            key = 'L',
+            mods = 'SUPER|SHIFT',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'L' },
+            },
         },
-    },
 
-    -- tmux: select previous window (i.e. tab)
-    {
-        key = 'Tab',
-        mods = 'CTRL|SHIFT',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'p' },
+        -- tmux: rename session
+        {
+            key = 'R',
+            mods = 'SUPER|SHIFT',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'R' },
+            },
         },
-    },
 
-    -- tmux: save session
-    {
-        key = 's',
-        mods = 'SUPER|CTRL',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 's', mods = 'CTRL' },
+        -- tmux: rename window (i.e. tab)
+        {
+            key = 'r',
+            mods = 'SUPER',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'r' },
+            },
         },
-    },
 
-    -- tmux: restore session
-    {
-        key = 'r',
-        mods = 'SUPER|CTRL',
-        action = wezterm.action.Multiple {
-            wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
-            wezterm.action.SendKey { key = 'r', mods = 'CTRL' },
+        -- tmux: select next window (i.e. tab)
+        {
+            key = 'Tab',
+            mods = 'CTRL',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'n' },
+            },
         },
-    },
-}
+
+        -- tmux: select previous window (i.e. tab)
+        {
+            key = 'Tab',
+            mods = 'CTRL|SHIFT',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'p' },
+            },
+        },
+
+        -- tmux: save session
+        {
+            key = 's',
+            mods = 'SUPER|CTRL',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 's', mods = 'CTRL' },
+            },
+        },
+
+        -- tmux: restore session
+        {
+            key = 'r',
+            mods = 'SUPER|CTRL',
+            action = wezterm.action.Multiple {
+                wezterm.action.SendKey { key = 'p', mods = 'CTRL' },
+                wezterm.action.SendKey { key = 'r', mods = 'CTRL' },
+            },
+        },
+    }
+end
+
+if os == 'Linux' then
+    config.keys = {
+        ---------------------------------------------------------------------------
+        -- basics 
+        ---------------------------------------------------------------------------
+
+        -- reloads WezTerm config
+        {
+            key = 'r',
+            mods = 'CTRL|SHIFT',
+            action = wezterm.action.ReloadConfiguration,
+        },
+
+        -- toggles fullscreen mode
+        {
+            key = 'f',
+            mods = 'SUPER',
+            action = wezterm.action.ToggleFullScreen,
+        },
+    }
+end
 
 -- returns the config to wezterm
 return config
