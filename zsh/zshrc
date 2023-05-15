@@ -156,6 +156,12 @@ alias dv="deactivate"
 alias nv=create_new_venv
 alias nvhb=create_new_venv_v3.9_with_gui_fix_for_mac
 
+# sed
+if [[ $(uname) == "Darwin" ]]; then
+    alias sed="gsed"
+fi
+
+
 # tailscale
 if [[ $(uname) == "Darwin" ]]; then
     alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"

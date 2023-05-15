@@ -30,6 +30,7 @@ homebrew_installations () {
         bettercap \
         --cask font-fira-code-nerd-font \
         git \
+        gnu-sed \
         jesseduffield/lazygit/lazygit \
         neofetch
 }
