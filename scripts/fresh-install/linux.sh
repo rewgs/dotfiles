@@ -7,12 +7,26 @@ install_oh_my_zsh () {
 
 
 install_lazygit () {
-    if [[ if -d $HOME/src ]]; then
-        cd $HOME/src
-        git clone git@github.com:jesseduffield/lazygit.git
-        cd lazygit
-        go install
-    fi
+    if [[ if -d $HOME/src ]]; then cd $HOME/src; fi
+    git clone git@github.com:jesseduffield/lazygit.git
+    cd lazygit
+    go install
+}
+
+
+install_tmux_from_source () {
+    # install dependencies
+    sudo apt install -y \
+        bison \
+        byacc \
+        libevent-dev \
+
+    if [[ if -d $HOME/src ]]; then cd $HOME/src; fi
+    git clone git@github.com:tmux/tmux.git
+    cd tmux
+    sh autogen.sh
+    ./configure && make
+    sudo make clean install
 }
 
 
