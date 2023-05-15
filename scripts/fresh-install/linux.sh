@@ -18,6 +18,7 @@ install_lazygit () {
 
 apt_installations () {
     sudo apt update && sudo apt upgrade -y
+
     sudo apt install \
         bettercap \
         build-essential \
@@ -26,5 +27,9 @@ apt_installations () {
         curl \
         git \
         htop \
-        wget \
+        lua \
+        tldr \
+        wget
+
+    sudo apt update && sudo apt upgrade -y
 }
