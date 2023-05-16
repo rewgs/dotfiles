@@ -561,12 +561,6 @@
       "Text" : "10 33",
       "Label" : ""
     },
-    "0x5c-0x100000-0x2a" : {
-      "Version" : 1,
-      "Action" : 11,
-      "Text" : "10 5c",
-      "Label" : ""
-    },
     "0xf704-0x20000-0x0" : {
       "Version" : 0,
       "Action" : 10,

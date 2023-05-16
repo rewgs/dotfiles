@@ -1,10 +1,12 @@
 # Common commans
-To install tpm plugins: Prefix+I
 To reload/"source" tmux.conf: Prefix+Alt+r
 
 
 # tpm
 Location: $HOME/src/
+prefix + I - downloads TPM plugins and reloads TMUX environment
+prefix + U - updates a plugin (or all of them) and reloads TMUX environment
+prefix + alt + u - remove unused TPM plugins and reloads TMUX environment
 
 Requires the following symbolic links:
 - ln -s $HOME/dotfiles/tmux/tmux.conf $HOME/.tmux.conf
