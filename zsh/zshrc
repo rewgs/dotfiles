@@ -282,3 +282,7 @@ fi
 # fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# start i3 from tty
+# if [[ $(uname) == "Linux" ]]; then
+# fi
