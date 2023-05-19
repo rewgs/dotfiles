@@ -116,7 +116,7 @@ fi
 
 # i3 config
 if [[ $(uname) == "Linux" ]]; then
-    alias i3c="$EDITOR $HOME/dotfiles/window-managers/i3/config"
+    alias i3c="$EDITOR $HOME/dotfiles/i3/config"
 fi
 
 # other editors
