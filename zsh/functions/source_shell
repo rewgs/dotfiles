@@ -1,0 +1,7 @@
+function source_shell () {
+    if [[ $SHELL == "/usr/bin/bash" ]]; then
+        source "$HOME/.bashrc"
+    elif [[ $SHELL == "/usr/bin/zsh" ]]; then
+        source "$HOME/.zshrc"
+    fi
+}

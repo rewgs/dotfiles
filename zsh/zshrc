@@ -93,11 +93,12 @@ fi
 # zshrc
 alias z="$EDITOR $HOME/.zshrc"
 alias sz="source $HOME/.zshrc"
+alias ss="source_shell"
 
 # common commands and funtions
 alias c="clear"
-alias ls=ls_improved
-alias cls=clear_then_ls_improved
+alias ls="ls_improved"
+alias cls="clear_then_ls_improved"
 alias eh="echo 'You are using $HOST'"
 alias mkd="mkdir"
 alias mv="mv -i"       # prompts before overwriting already-existing file; TODO: make this take multiple arguments
