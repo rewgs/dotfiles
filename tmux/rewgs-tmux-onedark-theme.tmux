@@ -10,6 +10,7 @@ onedark_green="#98c379"
 onedark_visual_grey="#3e4452"
 onedark_comment_grey="#5c6370"
 
+
 function get () {
    local option=$1
    local default_value=$2
@@ -22,17 +23,20 @@ function get () {
    fi
 }
 
+
 function set () {
    local option=$1
    local value=$2
    tmux set-option -gq "$option" "$value"
 }
 
+
 function setw () {
    local option=$1
    local value=$2
    tmux set-window-option -gq "$option" "$value"
 }
+
 
 set "status" "on"
 set "status-justify" "left"
