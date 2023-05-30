@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 # TODO:
@@ -8,82 +8,37 @@
 # download this script
 
 
-function install_oh_my_zsh () {
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-}
-
-
-function install_lazygit () {
-    if [[ if -d $HOME/src ]]; then cd $HOME/src; fi
-    git clone git@github.com:jesseduffield/lazygit.git
-    cd lazygit
-    go install
-}
-
-
-function install_tmux_from_source () {
-    # install dependencies
-    sudo apt install -y \
-        bison \
-        byacc \
-        libevent-dev \
-
-    if [[ if -d $HOME/src ]]; then cd $HOME/src; fi
-    git clone git@github.com:tmux/tmux.git
-    cd tmux
-    sh autogen.sh
-    ./configure && make
-    sudo make clean install
-}
-
-
-function install_phpenv_build_prerequisites () {
-    sudo apt install -y \
-        libcurl4-gnutls-dev \
-        libjpeg-dev \
-        libonig-dev \
-        libtidy-dev \
-        libzip-dev \
-}
-
-
 function install_from_package_manager () {
-    # `uname --all` is bound to include some reference to the distro name
-    if [[ $(uname --all) == *"Ubuntu"* ]]; then
-        sudo apt update && sudo apt upgrade -y
-    
-        sudo apt install \
-            bettercap \
-            build-essential \
-    		cmake \
-            cmatrix \
-            cowsay \
-            curl \
-    		docker \
-            docker-compose \
-            git \
-    		hsetroot \
-            htop \
-    		libvirt-daemon \
-    		llvm \
-            lua \
-    		make \
-    		neofetch \
-    		ncdu \
-    		picom \
-    		qemu-kvm \
-    		shellcheck \
-    		tgt \
-            tldr \
-    		tmux \
-    		tree \
-    		vim \
-            wget \
-    		xorg \
-    		zsh
-    
-        sudo apt update && sudo apt upgrade -y
-    fi
+	sudo apt install -y \
+		build-essential \
+		cmake \
+		cmatrix \
+		cowsay \
+		curl \
+		docker \
+		git \
+		hsetroot \
+		htop \
+		libvirt-daemon \
+		llvm \
+		make \
+		neofetch \
+		ncdu \
+		picom \
+		qemu-kvm \
+		shellcheck \
+		tgt \
+		tmux \
+		tree \
+		vim \
+		wget \
+		xorg \
+		zsh
+}
+
+
+function install_oh_my_zsh () {
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
 }
 
 
@@ -199,6 +154,17 @@ function install_pyenv_build_dependencies () {
 
 
 function main () {
+	# sudo apt update && sudo apt upgrade -y
+	# install_from_package_manager
+	# install_oh_my_zsh
+	# install_github_cli
+	install_rust
+	install_npm_apps
+	# install_neovim_dependencies
+	# build_neovim_from_source
+	# install_packer_nvim
+	# install_tmux_package_manager
+	# install_fira_code_nerd_font
 }
 
 main
