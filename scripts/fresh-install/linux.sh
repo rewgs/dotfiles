@@ -53,6 +53,7 @@ function install_from_package_manager () {
         sudo apt update && sudo apt upgrade -y
     
         sudo apt install \
+            apache2 \
             bettercap \
             build-essential \
     		cmake \
