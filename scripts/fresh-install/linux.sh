@@ -47,6 +47,26 @@ function install_phpenv_build_prerequisites () {
 }
 
 
+function install_firefox_without_snap () {
+    # assumes that snap has already been removed and `sudo snap remove firefox` run
+
+    # depends on software-properties-common package (installed in `install_from_package_manager()`
+    sudo add-apt-repository ppa:mozillateam/ppa
+
+    # alters the Firefox package priority to ensure the PPA/deb/apt version is preferred
+    echo '
+    Package: *
+    Pin: release o=LP-PPA-mozillateam
+    Pin-Priority: 1001
+    ' | sudo tee /etc/apt/preferences.d/mozilla-firefox
+
+    # ensures future Firefox upgrades are installed
+    echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
+
+    sudo apt update && sudo apt install firefox
+}
+
+
 function install_from_package_manager () {
     # `uname --all` is bound to include some reference to the distro name
     if [[ $(uname --all) == *"Ubuntu"* ]]; then
@@ -74,6 +94,7 @@ function install_from_package_manager () {
     		picom \
     		qemu-kvm \
     		shellcheck \
+            software-properties-common \
     		tgt \
             tldr \
     		tmux \
