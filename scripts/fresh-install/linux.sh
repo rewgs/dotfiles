@@ -11,8 +11,7 @@
 
 # not used for automation; simply here for easy copy/paste
 function download_this_script () {
-    wget --no-check-certificate --content-disposition 
-
+    wget --no-check-certificate --content-disposition https://github.com/rewgs/dotfiles/blob/main/scripts/fresh-install/linux.sh
 }
 
 function install_from_package_manager () {
