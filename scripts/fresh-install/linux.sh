@@ -9,11 +9,6 @@
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-# not used for automation; simply here for easy copy/paste
-function download_this_script () {
-    wget --no-check-certificate --content-disposition https://github.com/rewgs/dotfiles/blob/main/scripts/fresh-install/linux.sh
-}
-
 function install_from_package_manager () {
     # `uname --all` is bound to include some reference to the distro name
     if [ $(uname --all) == *"Ubuntu"* ] || [ $(uname --all) == *"Debian"* ]; then
