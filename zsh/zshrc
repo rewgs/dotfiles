@@ -88,6 +88,8 @@ alias es="exec $SHELL"
 # aws
 if [[ $(uname) == "Linux" ]]; then
     alias wasabi="aws s3 --profile wasabi"
+    alias wsb="aws s3 --profile wasabi"
+    alias s3="aws s3 --profile wasabi"
 fi
 
 # zshrc
@@ -137,6 +139,10 @@ alias gg="git-igitt"
 alias gap=git_add_all_and_push_with_commit_message_arg
 alias grm=git_commit_readme
 
+# linode
+alias sshnextcloud="ssh root@nextcloud.rewgs.com"
+alias sshrewgs="ssh root@rewgs.com"
+
 # multipass
 alias mpls="multipass list"          # lists all multipass VMs
 alias mpsh="multipass shell ubuntu"  # starts and ssh's into main VM
@@ -161,7 +167,6 @@ alias nvhb=create_new_venv_v3.9_with_gui_fix_for_mac
 if [[ $(uname) == "Darwin" ]]; then
     alias sed="gsed"
 fi
-
 
 # tailscale
 if [[ $(uname) == "Darwin" ]]; then
@@ -190,12 +195,8 @@ fi
 alias x="xplr"
 
 # connections and computers
-alias mm="ssh rewgs@rewgs-mac-mini.local"
+alias macmini="ssh rewgs@rewgs-mac-mini.local"
 alias nas="ssh rewgs@rewgs-nas"
-alias old="ssh rewgs@rewgs-old"
-alias linux="ssh rewgs@rewgs-ubuntu"
-alias snsftp="sftp -P 2200 aruger@files.sparksandshadows.com"
-alias proxmox="ssh root@rewgs-pc.attlocal.net"  # why isn't the host `pve`?
 
 # dotfiles
 alias dotfiles="cd $HOME/dotfiles/"
