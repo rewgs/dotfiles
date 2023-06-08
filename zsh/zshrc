@@ -48,6 +48,7 @@ fi
 # oh my zsh
 ZSH_THEME="robbyrussell"
 plugins=(
+    docker
     git 
     web-search
 )
@@ -112,9 +113,10 @@ alias nvinit="$EDITOR $HOME/.config/nvim/init.lua"
 
 # docker
 if [[ $(uname) == "Linux" ]]; then
-    alias dcls="sudo docker container ls"
-    alias ncst="sudo docker start nextcloud-aio-mastercontainer"
-    alias ncsp="sudo docker stop nextcloud-aio-mastercontainer"
+    alias docker="sudo docker"
+    alias dcls="docker container ls"
+    alias ncst="docker start nextcloud-aio-mastercontainer"
+    alias ncsp="docker stop nextcloud-aio-mastercontainer"
 fi
 
 # i3 config
