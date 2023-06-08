@@ -9,9 +9,10 @@
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-function install_from_package_manager () {
+install_from_package_manager() {
     # `uname --all` is bound to include some reference to the distro name
-    if [ $(uname --all) == *"Ubuntu"* ] || [ $(uname --all) == *"Debian"* ]; then
+    # FIXME: POSIX sh doesn't support globbing. Convert the following line to case statements.
+    # if [ "$(uname --all)" = *"Ubuntu"* ] || [ "$(uname --all)" = *"Debian"* ]; then
         sudo apt update && sudo apt upgrade -y
     
         sudo apt install \
@@ -50,12 +51,13 @@ function install_from_package_manager () {
     		zsh
     
         sudo apt update && sudo apt upgrade -y
-    fi
+    # fi
 }
 
 
-function remove_snap () {
-    if [ $(uname --all) == *"Ubuntu"* ]; then
+remove_snap() {
+    # FIXME: POSIX sh doesn't support globbing. Convert the following line to case statements.
+    # if [ "$(uname --all)" = *"Ubuntu"* ]; then
         # Returns list of snaps installed.
         # This is a very simple usage of awk, so the first item is `Name`, i.e. the 
         #   name of the first column. It will have to be skipped over when 
@@ -83,13 +85,13 @@ function remove_snap () {
         sudo apt autoremove --purge snapd
 
         sudo rm -rf ~/snap
-    fi
+    # fi
 }
 
 
-function build_tmux_from_source () {
+build_tmux_from_source() {
     # for building new and updating
-    cd $HOME/src/tmux
+    cd "$HOME"/src/tmux
     git pull
     sh autogen.sh
     ./configure && make
@@ -97,32 +99,32 @@ function build_tmux_from_source () {
 }
 
 
-function install_tmux_from_source () {
+install_tmux_from_source() {
     # install dependencies
     sudo apt install -y \
         bison \
         byacc \
         libevent-dev
 
-    if [ ! -d $HOME/src ]; then mkdir $HOME/src; fi
-    cd $HOME/src; 
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
     git clone https://github.com/tmux/tmux.git
 
     build_tmux_from_source
 }
 
 
-function install_tmux_package_manager () {
-    if [ ! -d $HOME/src ]; then mkdir $HOME/src; fi
-    cd $HOME/src; 
+install_tmux_package_manager() {
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
     git clone https://github.com/tmux-plugins/tpm.git
 
-    if [ ! -d $HOME/.tmux/plugins ]; then mkdir -p $HOME/.tmux/plugins; fi
-	ln -s $HOME/src/tpm $HOME/.tmux/plugins/tpm
+    if [ ! -d "$HOME"/.tmux/plugins ]; then mkdir -p "$HOME"/.tmux/plugins; fi
+	ln -s "$HOME"/src/tpm "$HOME"/.tmux/plugins/tpm
 }
 
 
-function install_neovim_dependencies () {
+install_neovim_dependencies() {
 	sudo apt-get install -y \
 		ninja-build \
 		gettext \
@@ -137,39 +139,39 @@ function install_neovim_dependencies () {
 }
 
 
-function build_neovim_from_source () {
-    cd $HOME/src/neovim
+build_neovim_from_source() {
+    cd "$HOME"/src/neovim
 	git checkout stable
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
 	sudo make install
 }
 
 
-function install_neovim_from_source () {
-    if [ ! -d $HOME/src ]; then mkdir $HOME/src; fi
-    cd $HOME/src; 
+install_neovim_from_source() {
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
     git clone https://github.com/neovim/neovim.git
 
     build_neovim_from_source
 }
 
 
-function install_packer_nvim () {
+install_packer_nvim() {
 	git clone --depth 1 \
 		https://github.com/wbthomason/packer.nvim \
 		~/.local/share/nvim/site/pack/packer/start/packer.nvim
 }
 
 
-function install_nvm_from_source () {
-    if [ ! -d $HOME/src ]; then mkdir $HOME/src; fi
-    cd $HOME/src; 
+install_nvm_from_source() {
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
     git clone https://github.com/nvm-sh/nvm.git
-    ln -s $HOME/src/nvm/ $HOME/.nvm
+    ln -s "$HOME"/src/nvm/ "$HOME"/.nvm
 }
 
 
-function install_phpenv_build_prerequisites () {
+install_phpenv_build_prerequisites() {
     sudo apt install -y \
         libcurl4-gnutls-dev \
         libjpeg-dev \
@@ -179,16 +181,16 @@ function install_phpenv_build_prerequisites () {
 }
 
 
-function install_phpenv_from_source () {
-    if [ ! -d $HOME/src ]; then mkdir $HOME/src; fi
-    cd $HOME/src; 
+install_phpenv_from_source() {
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
     git clone https://github.com/phpenv/phpenv.git
-    cd $HOME/src/phpenv
-    ln -s $HOME/src/phpenv/ $HOME/.phpenv
+    cd "$HOME"/src/phpenv
+    ln -s "$HOME"/src/phpenv/ "$HOME"/.phpenv
 }
 
 
-function install_pyenv_build_dependencies () {
+install_pyenv_build_dependencies() {
 	sudo apt update; 
 	sudo apt install -y \
 		build-essential \
@@ -208,31 +210,31 @@ function install_pyenv_build_dependencies () {
 }
 
 
-function install_pyenv_from_source () {
-    if [ ! -d $HOME/src ]; then mkdir $HOME/src; fi
-    cd $HOME/src; 
+install_pyenv_from_source() {
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
     git clone https://github.com/pyenv/pyenv.git
-    cd $HOME/src/pyenv
-    ln -s $HOME/src/pyenv/ $HOME/.pyenv
+    cd "$HOME"/src/pyenv
+    ln -s "$HOME"/src/pyenv/ "$HOME"/.pyenv
 }
 
 
-function install_oh_my_zsh () {
+install_oh_my_zsh() {
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     exec $SHELL
 }
 
 
-function prep_for_nvm_nodejs_installs () {
-    echo 'export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"' >> $HOME/.zshrc
-    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $HOME/.zshrc
+prep_for_nvm_nodejs_installs() {
+    echo 'export NVM_DIR=\\"\$([ -z \"\${XDG_CONFIG_HOME-}\" ] && printf %s \"\${HOME}/.nvm\" || printf %s \"\${XDG_CONFIG_HOME}/nvm\")\"' >> "$HOME"/.zshrc
+    echo '[ -s \"\$NVM_DIR/nvm.sh\\" ] && \\. \"\$NVM_DIR/nvm.sh\"' >> "$HOME"/.zshrc
 }
 
 
-function install_nodejs () {
+install_nodejs() {
     # assumes that the following lines have been added to .bashrc, .zshrc, etc:
 
-    # export NVM_DIR="$HOME/.nvm"
+    # export NVM_DIR=""$HOME"/.nvm"
     # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
@@ -245,14 +247,14 @@ function install_nodejs () {
 }
 
 
-function prep_for_pyenv_python_installs () {
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $HOME/.zshrc
-    command -v pyenv >/dev/null || echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $HOME/.zshrc
-    echo 'eval "$(pyenv init -)"' >> $HOME/.zshrc
+prep_for_pyenv_python_installs() {
+    echo 'export PYENV_ROOT=""$HOME"/.pyenv"' >> "$HOME"/.zshrc
+    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> "$HOME"/.zshrc
+    echo 'eval "$(pyenv init -)"' >> "$HOME"/.zshrc
 }
 
 
-function install_python () {
+install_python() {
     # gets the system version (minus the word "Python"), then installs that 
     #   version with pyenv and sets it to "global."
     system_python_version=$(python3 --version | sed 's/^3')
@@ -265,45 +267,45 @@ function install_python () {
 }
 
 
-function install_rust () {
+install_rust() {
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 }
 
 
-function download_dotfiles () {
-    cd $HOME
+download_dotfiles() {
+    cd "$HOME"
     git clone https://github.com/rewgs/dotfiles.git
 }
 
 
 # TODO: make sure this works on macOS!
-function make_dotfiles_symlinks () {
+make_dotfiles_symlinks() {
     # ╔════════════════════════════════════════════════════════════════════════════╗
     # ║ make directories                                                           ║
     # ╚════════════════════════════════════════════════════════════════════════════╝
     
-    if [[ ! -d $HOME/.config ]]; then
-        mkdir $HOME/.config
+    if [[ ! -d "$HOME"/.config ]]; then
+        mkdir "$HOME"/.config
     fi
     
-    if [[ ! -d $HOME/dotfile_backups/bash ]]; then
-        mkdir -p $HOME/dotfile_backups/bash
+    if [[ ! -d "$HOME"/dotfile_backups/bash ]]; then
+        mkdir -p "$HOME"/dotfile_backups/bash
     fi
     
-    if [[ ! -d $HOME/dotfile_backups/nvim ]]; then
-        mkdir -p $HOME/dotfile_backups/nvim
+    if [[ ! -d "$HOME"/dotfile_backups/nvim ]]; then
+        mkdir -p "$HOME"/dotfile_backups/nvim
     fi
     
-    if [[ ! -d $HOME/dotfile_backups/sh ]]; then
-        mkdir -p $HOME/dotfile_backups/sh
+    if [[ ! -d "$HOME"/dotfile_backups/sh ]]; then
+        mkdir -p "$HOME"/dotfile_backups/sh
     fi
     
-    if [[ ! -d $HOME/dotfile_backups/tmux ]]; then
-        mkdir -p $HOME/dotfile_backups/tmux
+    if [[ ! -d "$HOME"/dotfile_backups/tmux ]]; then
+        mkdir -p "$HOME"/dotfile_backups/tmux
     fi
     
-    if [[ ! -d $HOME/dotfile_backups/zsh ]]; then
-        mkdir -p $HOME/dotfile_backups/zsh
+    if [[ ! -d "$HOME"/dotfile_backups/zsh ]]; then
+        mkdir -p "$HOME"/dotfile_backups/zsh
     fi
     
     # ╔════════════════════════════════════════════════════════════════════════════╗
@@ -311,139 +313,139 @@ function make_dotfiles_symlinks () {
     # ╚════════════════════════════════════════════════════════════════════════════╝
     
     # bash
-    if [[ -f $HOME/.bashrc ]]; then
-        mv $HOME/.bashrc $HOME/dotfile_backups/bashrc
-        ln -s $HOME/dotfiles/bash/bashrc $HOME/.bashrc
-    elif [[ -h $HOME/.bashrc ]]; then
-        rm $HOME/.bashrc
-        ln -s $HOME/dotfiles/bash/bashrc $HOME/.bashrc
+    if [[ -f "$HOME"/.bashrc ]]; then
+        mv "$HOME"/.bashrc "$HOME"/dotfile_backups/bashrc
+        ln -s "$HOME"/dotfiles/bash/bashrc "$HOME"/.bashrc
+    elif [[ -h "$HOME"/.bashrc ]]; then
+        rm "$HOME"/.bashrc
+        ln -s "$HOME"/dotfiles/bash/bashrc "$HOME"/.bashrc
     else
-        ln -s $HOME/dotfiles/bash/bashrc $HOME/.bashrc
+        ln -s "$HOME"/dotfiles/bash/bashrc "$HOME"/.bashrc
     fi
     
-    if [[ -f $HOME/.bash_profile ]]; then
-        mv $HOME/.bash_profile $HOME/dotfile_backups/bash_profile
-        ln -s $HOME/dotfiles/bash/bash_profile $HOME/.bash_profile
-    elif [[ -h $HOME/.bash_profile ]]; then
-        rm $HOME/.bash_profile
-        ln -s $HOME/dotfiles/bash/bash_profile $HOME/.bash_profile
+    if [[ -f "$HOME"/.bash_profile ]]; then
+        mv "$HOME"/.bash_profile "$HOME"/dotfile_backups/bash_profile
+        ln -s "$HOME"/dotfiles/bash/bash_profile "$HOME"/.bash_profile
+    elif [[ -h "$HOME"/.bash_profile ]]; then
+        rm "$HOME"/.bash_profile
+        ln -s "$HOME"/dotfiles/bash/bash_profile "$HOME"/.bash_profile
     else
-        ln -s $HOME/dotfiles/bash/bash_profile $HOME/.bash_profile
+        ln -s "$HOME"/dotfiles/bash/bash_profile "$HOME"/.bash_profile
     fi
     
 
     # nvim
-    if [[ -d $HOME/.config/nvim ]]; then
-        mv $HOME/.config/nvim $HOME/dotfile_backups/nvim
-        ln -s $HOME/dotfiles/nvim/ $HOME/.config/nvim
-    elif [[ -h $HOME/.config/nvim ]]; then
-        rm $HOME/.config/nvim/
-        ln -s $HOME/dotfiles/nvim/ $HOME/.config/nvim
+    if [[ -d "$HOME"/.config/nvim ]]; then
+        mv "$HOME"/.config/nvim "$HOME"/dotfile_backups/nvim
+        ln -s "$HOME"/dotfiles/nvim/ "$HOME"/.config/nvim
+    elif [[ -h "$HOME"/.config/nvim ]]; then
+        rm "$HOME"/.config/nvim/
+        ln -s "$HOME"/dotfiles/nvim/ "$HOME"/.config/nvim
     else
-        ln -s $HOME/dotfiles/nvim/ $HOME/.config/nvim
+        ln -s "$HOME"/dotfiles/nvim/ "$HOME"/.config/nvim
     fi
     
 
     # sh
-    if [[ -f $HOME/.profile ]]; then
-        mv $HOME/.profile $HOME/dotfile_backups/sh/
-        ln -s $HOME/dotfiles/sh/profile $HOME/.profile
-    elif [[ -h $HOME/.profile ]]; then
-        rm $HOME/.profile
-        ln -s $HOME/dotfiles/sh/profile $HOME/.profile
+    if [[ -f "$HOME"/.profile ]]; then
+        mv "$HOME"/.profile "$HOME"/dotfile_backups/sh/
+        ln -s "$HOME"/dotfiles/sh/profile "$HOME"/.profile
+    elif [[ -h "$HOME"/.profile ]]; then
+        rm "$HOME"/.profile
+        ln -s "$HOME"/dotfiles/sh/profile "$HOME"/.profile
     else
-        ln -s $HOME/dotfiles/sh/profile $HOME/.profile
+        ln -s "$HOME"/dotfiles/sh/profile "$HOME"/.profile
     fi
     
     # tmux
-    if [[ -f $HOME/.tmux.conf ]]; then
-        mv $HOME/.tmux.conf $HOME/dotfile_backups/tmux/
-        ln -s $HOME/dotfiles/tmux/tmux.conf $HOME/.tmux.conf
-    elif [[ -h $HOME/.tmux.conf ]]; then
-        rm $HOME/.tmux.conf
-        ln -s $HOME/dotfiles/tmux/tmux.conf $HOME/.tmux.conf
+    if [[ -f "$HOME"/.tmux.conf ]]; then
+        mv "$HOME"/.tmux.conf "$HOME"/dotfile_backups/tmux/
+        ln -s "$HOME"/dotfiles/tmux/tmux.conf "$HOME"/.tmux.conf
+    elif [[ -h "$HOME"/.tmux.conf ]]; then
+        rm "$HOME"/.tmux.conf
+        ln -s "$HOME"/dotfiles/tmux/tmux.conf "$HOME"/.tmux.conf
     else
-        ln -s $HOME/dotfiles/tmux/tmux.conf $HOME/.tmux.conf
+        ln -s "$HOME"/dotfiles/tmux/tmux.conf "$HOME"/.tmux.conf
     fi
      
-    if [[ ! -d $HOME/src/tpm ]]; then
-        ln -s $HOME/src/tpm/ $HOME/.tmux/plugins/tpm
-    elif [[ -h $HOME/.tmux/plugins/tpm ]]; then
-        rm $HOME/.tmux/plugins/tpm
-        ln -s $HOME/src/tpm/ $HOME/.tmux/plugins/tpm
+    if [[ ! -d "$HOME"/src/tpm ]]; then
+        ln -s "$HOME"/src/tpm/ "$HOME"/.tmux/plugins/tpm
+    elif [[ -h "$HOME"/.tmux/plugins/tpm ]]; then
+        rm "$HOME"/.tmux/plugins/tpm
+        ln -s "$HOME"/src/tpm/ "$HOME"/.tmux/plugins/tpm
     else
-        ln -s $HOME/src/tpm/ $HOME/.tmux/plugins/tpm
+        ln -s "$HOME"/src/tpm/ "$HOME"/.tmux/plugins/tpm
     fi
     
     
     # zsh
-    if [[ -f $HOME/.zshenv ]]; then
-        mv $HOME/.zshenv $HOME/dotfile_backups/zsh/
-        ln -s $HOME/dotfiles/zsh/zshenv $HOME/.zshenv
-    elif [[ -h $HOME/.zshenv ]]; then
-        rm $HOME/.zshenv
-        ln -s $HOME/dotfiles/zsh/zshenv $HOME/.zshenv
+    if [[ -f "$HOME"/.zshenv ]]; then
+        mv "$HOME"/.zshenv "$HOME"/dotfile_backups/zsh/
+        ln -s "$HOME"/dotfiles/zsh/zshenv "$HOME"/.zshenv
+    elif [[ -h "$HOME"/.zshenv ]]; then
+        rm "$HOME"/.zshenv
+        ln -s "$HOME"/dotfiles/zsh/zshenv "$HOME"/.zshenv
     else
-        ln -s $HOME/dotfiles/zsh/zshenv $HOME/.zshenv
+        ln -s "$HOME"/dotfiles/zsh/zshenv "$HOME"/.zshenv
     fi
     
-    if [[ -f $HOME/.zprofile ]]; then
-        mv $HOME/.zprofile $HOME/dotfile_backups/zsh/
-        ln -s $HOME/dotfiles/zsh/zprofile $HOME/.zprofile
-    elif [[ -h $HOME/.zprofile ]]; then
-        rm $HOME/.zprofile
-        ln -s $HOME/dotfiles/zsh/zprofile $HOME/.zprofile
+    if [[ -f "$HOME"/.zprofile ]]; then
+        mv "$HOME"/.zprofile "$HOME"/dotfile_backups/zsh/
+        ln -s "$HOME"/dotfiles/zsh/zprofile "$HOME"/.zprofile
+    elif [[ -h "$HOME"/.zprofile ]]; then
+        rm "$HOME"/.zprofile
+        ln -s "$HOME"/dotfiles/zsh/zprofile "$HOME"/.zprofile
     else
-        ln -s $HOME/dotfiles/zsh/zprofile $HOME/.zprofile
+        ln -s "$HOME"/dotfiles/zsh/zprofile "$HOME"/.zprofile
     fi
     
-    if [[ -f $HOME/.zshrc ]]; then
-        mv $HOME/.zshrc $HOME/dotfile_backups/zsh/
-        ln -s $HOME/dotfiles/zsh/zshrc $HOME/.zshrc
-    elif [[ -h $HOME/.zshrc ]]; then
-        rm $HOME/.zshrc
-        ln -s $HOME/dotfiles/zsh/zshrc $HOME/.zshrc
+    if [[ -f "$HOME"/.zshrc ]]; then
+        mv "$HOME"/.zshrc "$HOME"/dotfile_backups/zsh/
+        ln -s "$HOME"/dotfiles/zsh/zshrc "$HOME"/.zshrc
+    elif [[ -h "$HOME"/.zshrc ]]; then
+        rm "$HOME"/.zshrc
+        ln -s "$HOME"/dotfiles/zsh/zshrc "$HOME"/.zshrc
     else
-        ln -s $HOME/dotfiles/zsh/zshrc $HOME/.zshrc
+        ln -s "$HOME"/dotfiles/zsh/zshrc "$HOME"/.zshrc
     fi
     
-    if [[ -f $HOME/.zlogin ]]; then
-        mv $HOME/.zlogin $HOME/dotfile_backups/zsh/
-        ln -s $HOME/dotfiles/zsh/zlogin $HOME/.zlogin
-    elif [[ -h $HOME/.zlogin ]]; then
-        rm $HOME/.zlogin
-        ln -s $HOME/dotfiles/zsh/zlogin $HOME/.zlogin
+    if [[ -f "$HOME"/.zlogin ]]; then
+        mv "$HOME"/.zlogin "$HOME"/dotfile_backups/zsh/
+        ln -s "$HOME"/dotfiles/zsh/zlogin "$HOME"/.zlogin
+    elif [[ -h "$HOME"/.zlogin ]]; then
+        rm "$HOME"/.zlogin
+        ln -s "$HOME"/dotfiles/zsh/zlogin "$HOME"/.zlogin
     else
-        ln -s $HOME/dotfiles/zsh/zlogin $HOME/.zlogin
+        ln -s "$HOME"/dotfiles/zsh/zlogin "$HOME"/.zlogin
     fi
     
-    if [[ -f $HOME/.zlogout ]]; then
-        mv $HOME/.zlogout $HOME/dotfile_backups/zsh/
-        ln -s $HOME/dotfiles/zsh/zlogout $HOME/.zlogout
-    elif [[ -h $HOME/.zlogout ]]; then
-        rm $HOME/.zlogout
-        ln -s $HOME/dotfiles/zsh/zlogout $HOME/.zlogout
+    if [[ -f "$HOME"/.zlogout ]]; then
+        mv "$HOME"/.zlogout "$HOME"/dotfile_backups/zsh/
+        ln -s "$HOME"/dotfiles/zsh/zlogout "$HOME"/.zlogout
+    elif [[ -h "$HOME"/.zlogout ]]; then
+        rm "$HOME"/.zlogout
+        ln -s "$HOME"/dotfiles/zsh/zlogout "$HOME"/.zlogout
     else
-        ln -s $HOME/dotfiles/zsh/zlogout $HOME/.zlogout
+        ln -s "$HOME"/dotfiles/zsh/zlogout "$HOME"/.zlogout
     fi
 }
 
 
-function install_lazygit_from_source () {
-    if [ ! -d $HOME/src ]; then mkdir $HOME/src; fi
-    cd $HOME/src; 
+install_lazygit_from_source() {
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
     git clone https://github.com/jesseduffield/lazygit.git
-    cd $HOME/src/lazygit
+    cd "$HOME"/src/lazygit
     go install
 }
 
 
-function install_npm_apps () {
+install_npm_apps() {
 	npm install gtop -g
 }
 
 
-function install_rust_apps () {
+install_rust_apps() {
 	cargo install \
 	    cargo-audi \
 	    cargo-edit \
@@ -453,7 +455,7 @@ function install_rust_apps () {
 }
 
 
-function install_github_cli () {
+install_github_cli() {
     # add repository
 	type -p curl >/dev/null || sudo apt install curl -y
 	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
@@ -464,7 +466,7 @@ function install_github_cli () {
 }
 
 
-function install_firefox_without_snap () {
+install_firefox_without_snap() {
     # assumes that snap has already been removed and `sudo snap remove firefox` run
 
     # depends on software-properties-common package (installed in `install_from_package_manager()`
@@ -484,7 +486,7 @@ function install_firefox_without_snap () {
 }
 
 
-function install_fira_code_nerd_font () {
+install_fira_code_nerd_font() {
     mkdir ~/.fonts
     cd ~/.fonts
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraCode.zip
@@ -501,7 +503,7 @@ function install_fira_code_nerd_font () {
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
 # for servers or any other machine I'm not coding on but want to feel "at home"
-function basic_setup () {
+basic_setup() {
     # basics
     install_from_package_manager
     remove_snap
@@ -538,7 +540,7 @@ function basic_setup () {
 }
 
 
-function personal_setup_cli () {
+personal_setup_cli() {
     download_dotfiles
     make_dotfiles_symlinks
 
@@ -549,7 +551,7 @@ function personal_setup_cli () {
 }
 
 
-function personal_setup_gui () {
+personal_setup_gui() {
     install_firefox_without_snap
     install_fira_code_nerd_font
 }
@@ -561,7 +563,7 @@ function personal_setup_gui () {
 # ║ These don't overlap at all -- instead they cascade/build upon each other.  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-function main () {
+main() {
     basic_setup
     personal_setup_cli
     # personal_setup_gui
