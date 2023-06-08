@@ -17,6 +17,7 @@ install_from_package_manager() {
     
         sudo apt install \
             apache2 \
+            apt-transport-https \
             bettercap \
             btop \
             build-essential \
@@ -27,12 +28,13 @@ install_from_package_manager() {
     		docker \
             docker-compose \
             git \
+            gnupg2 \
             golang-go \
     		hsetroot \
             htop \
     		libvirt-daemon \
     		llvm \
-            lua \
+            lua5.4 \
             lynx \
     		make \
     		neofetch \
