@@ -15,7 +15,7 @@ install_from_package_manager() {
     # if [ "$(uname --all)" = *"Ubuntu"* ] || [ "$(uname --all)" = *"Debian"* ]; then
         sudo apt update && sudo apt upgrade -y
     
-        sudo apt install \
+        sudo apt install -y \
             apache2 \
             apt-transport-https \
             bettercap \
@@ -45,7 +45,6 @@ install_from_package_manager() {
             software-properties-common \
             tgt \
             tldr \
-            tmux \
             tree \
             vim \
             wget \
@@ -567,7 +566,7 @@ personal_setup_gui() {
 
 main() {
     basic_setup
-    personal_setup_cli
+    # personal_setup_cli
     # personal_setup_gui
 }
 
