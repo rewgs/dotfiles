@@ -64,7 +64,7 @@ remove_snap() {
         # This is a very simple usage of awk, so the first item is `Name`, i.e. the 
         #   name of the first column. It will have to be skipped over when 
         #   iterating over these later.
-        snap_list=$(snap list | awk '{print $1}')
+        snap_list="$(snap list | awk '{print $1}')"
 
         # stop snap services
         sudo systemctl disable snapd.service
