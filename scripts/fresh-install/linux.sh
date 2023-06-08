@@ -21,36 +21,36 @@ install_from_package_manager() {
             bettercap \
             btop \
             build-essential \
-    		cmake \
+            cmake \
             cmatrix \
             cowsay \
             curl \
-    		docker \
+            docker \
             docker-compose \
             git \
             gnupg2 \
             golang-go \
-    		hsetroot \
+            hsetroot \
             htop \
-    		libvirt-daemon \
-    		llvm \
+            libvirt-daemon \
+            llvm \
             lua5.4 \
             lynx \
-    		make \
-    		neofetch \
-    		ncdu \
-    		picom \
-    		qemu-kvm \
-    		shellcheck \
+            make \
+            neofetch \
+            ncdu \
+            picom \
+            qemu-kvm \
+            shellcheck \
             software-properties-common \
-    		tgt \
+            tgt \
             tldr \
-    		tmux \
-    		tree \
-    		vim \
+            tmux \
+            tree \
+            vim \
             wget \
-    		xorg \
-    		zsh
+            xorg \
+            zsh
     
         sudo apt update && sudo apt upgrade -y
     # fi
