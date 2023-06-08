@@ -531,11 +531,11 @@ basic_setup() {
 
     install_oh_my_zsh
 
-    prep_for_nvm_nodejs_installs
-    install_nodejs
+    # prep_for_nvm_nodejs_installs      # don't need anymore
+    # install_nodejs                    # moved to next macro
 
-    prep_for_pyenv_python_installs
-    install_python
+    # prep_for_pyenv_python_installs    # don't need anymore
+    # install_python                    # moved to next macro
 
     install_rust
 }
@@ -544,6 +544,9 @@ basic_setup() {
 personal_setup_cli() {
     download_dotfiles
     make_dotfiles_symlinks
+
+    install_nodejs
+    install_python
 
     install_lazygit_from_source
     install_npm_apps
