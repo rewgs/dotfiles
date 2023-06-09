@@ -277,6 +277,9 @@ install_pyenv_from_source() {
 
 
 prep_for_nvm_nodejs_installs() {
+    echo 'export NVM_DIR=\\"\$([ -z \"\${XDG_CONFIG_HOME-}\" ] && printf %s \"\${HOME}/.nvm\" || printf %s \"\${XDG_CONFIG_HOME}/nvm\")\"' >> "$HOME"/.bashrc
+    echo '[ -s \"\$NVM_DIR/nvm.sh\\" ] && \\. \"\$NVM_DIR/nvm.sh\"' >> "$HOME"/.bashrc
+
     echo 'export NVM_DIR=\\"\$([ -z \"\${XDG_CONFIG_HOME-}\" ] && printf %s \"\${HOME}/.nvm\" || printf %s \"\${XDG_CONFIG_HOME}/nvm\")\"' >> "$HOME"/.zshrc
     echo '[ -s \"\$NVM_DIR/nvm.sh\\" ] && \\. \"\$NVM_DIR/nvm.sh\"' >> "$HOME"/.zshrc
 }
@@ -300,10 +303,16 @@ install_nodejs() {
 
 
 prep_for_pyenv_python_installs() {
+    # bash
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
     echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
     echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n eval "$(pyenv init -)"\nfi' >> ~/.bashrc
 
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
+    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
+    echo 'eval "$(pyenv init -)"' >> ~/.profile
+
+    # zsh
     echo 'export PYENV_ROOT=""$HOME"/.pyenv"' >> "$HOME"/.zshrc
     echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> "$HOME"/.zshrc
     echo 'eval "$(pyenv init -)"' >> "$HOME"/.zshrc
@@ -311,6 +320,16 @@ prep_for_pyenv_python_installs() {
 
 
 install_python() {
+    # This is what is added to .zshrc in order to run nvm. It's in there, so I shouldn't need to 
+    #   add this, but for whatever reason, `nvm` isn't found when running this function unless this 
+    #   is included, even though .zshrc has been sourced. Doesn't make any sense, but this works, 
+    #   so it's a problem for another day.
+    # NOTE: this might be problematic in some way...
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    # if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)\"
+    eval "$(pyenv init -)"
+
     # gets the system version (minus the word "Python"), then installs that 
     #   version with pyenv and sets it to "global."
     system_python_version=$(python3 --version)
