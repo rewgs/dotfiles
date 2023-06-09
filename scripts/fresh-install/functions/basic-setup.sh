@@ -291,7 +291,7 @@ install_nodejs() {
 
     # installs lts version
     nvm install --lts   
-    nvm use --lts
+    # nvm use --lts
 }
 
 

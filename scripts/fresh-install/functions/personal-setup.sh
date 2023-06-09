@@ -254,6 +254,7 @@ personal_setup_cli() {
     install_oh_my_zsh
     make_dotfiles_symlinks
     chsh -s $(which zsh)    # oh my zsh installer doesn't do this due to the --unattended flag, so this is required
+    nvm use --lts
     exec $SHELL
 }
 
