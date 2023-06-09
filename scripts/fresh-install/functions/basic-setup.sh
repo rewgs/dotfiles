@@ -161,7 +161,7 @@ install_tmux_from_source() {
 
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
-    git clone https://github.com/tmux/tmux.git
+    git clone --depth 1 https://github.com/tmux/tmux.git
 
     build_tmux_from_source
 }
@@ -170,7 +170,7 @@ install_tmux_from_source() {
 install_tmux_package_manager() {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
-    git clone https://github.com/tmux-plugins/tpm.git
+    git clone --depth 1 https://github.com/tmux-plugins/tpm.git
 
     if [ ! -d "$HOME"/.tmux/plugins ]; then mkdir -p "$HOME"/.tmux/plugins; fi
 	ln -s "$HOME"/src/tpm "$HOME"/.tmux/plugins/tpm
@@ -203,7 +203,7 @@ build_neovim_from_source() {
 install_neovim_from_source() {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
-    git clone https://github.com/neovim/neovim.git
+    git clone --depth 1 https://github.com/neovim/neovim.git
 
     build_neovim_from_source
 }
@@ -219,7 +219,7 @@ install_packer_nvim() {
 install_nvm_from_source() {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
-    git clone https://github.com/nvm-sh/nvm.git
+    git clone --depth 1 https://github.com/nvm-sh/nvm.git
     ln -s "$HOME"/src/nvm/ "$HOME"/.nvm
 }
 
@@ -237,7 +237,7 @@ install_phpenv_build_prerequisites() {
 install_phpenv_from_source() {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
-    git clone https://github.com/phpenv/phpenv.git
+    git clone --depth 1 https://github.com/phpenv/phpenv.git
     ln -s "$HOME"/src/phpenv/ "$HOME"/.phpenv
 }
 
@@ -265,7 +265,7 @@ install_pyenv_build_dependencies() {
 install_pyenv_from_source() {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
-    git clone https://github.com/pyenv/pyenv.git
+    git clone --depth 1 https://github.com/pyenv/pyenv.git
     ln -s "$HOME"/src/pyenv/ "$HOME"/.pyenv
 }
 
