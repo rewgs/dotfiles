@@ -41,16 +41,20 @@ test $? -eq 0 || exit 1 "You should have sudo privilege to run this script."
 
 install_from_package_manager() {
     sleep 1
-    echo "Installing packages from package manager..."
     sleep 1
 
     # `uname --all` is bound to include some reference to the distro name
     # FIXME: POSIX sh doesn't support globbing. Convert the following line to case statements.
     # if [ "$(uname --all)" = *"Ubuntu"* ] || [ "$(uname --all)" = *"Debian"* ]; then
-        sudo apt update &> ~/apt-log.txt
-        sudo apt upgrade -y &> ~/apt-log.txt
+    	echo "Checking for updates..."
+        sudo apt-get update -qq
+	if [ $? -eq 0 ]; then 
+		echo "Upgrading packages..."
+		sudo apt-get upgrade -qq -y
+	fi
     
-        sudo apt install -y \
+    	echo "Installing packages from package manager..."
+        sudo apt-get install -y \
             apache2 \
             apt-transport-https \
             bettercap \
@@ -85,13 +89,17 @@ install_from_package_manager() {
             wget \
             xorg \
             zsh \
-            &> ~/apt-log.txt
+	    > /dev/null 2> /dev/null	# for some reason, `&> /dev/null` isn't silent, but this is
 
-        sudo apt update &> ~/apt-log.txt
-        sudo apt upgrade -y &> ~/apt-log.txt
+    	echo "Checking for updates one more time..."
+        sudo apt-get update -qq
+	if [ $? -eq 0 ]; then 
+		echo "Upgrading packages one more time..."
+		sudo apt-get upgrade -qq -y
+	fi
     # fi
 
-    echo "Package manager basic installations complete! Moving on...\n"
+    echo "Package manager basic installations complete! Moving on..."
     sleep 5
 }
 
@@ -609,8 +617,9 @@ personal_setup_gui() {
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
 main() {
+    install_github_cli
     # basic_setup
-    personal_setup_cli
+    # personal_setup_cli
     # personal_setup_gui
 }
 
