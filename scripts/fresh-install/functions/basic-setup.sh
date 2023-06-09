@@ -192,8 +192,9 @@ install_neovim_dependencies() {
 }
 
 
-build_neovim_from_source() {
+update_neovim_from_source() {
     cd "$HOME"/src/neovim
+    git pull
 	git checkout stable
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
 	sudo make install
@@ -201,11 +202,15 @@ build_neovim_from_source() {
 
 
 install_neovim_from_source() {
-    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
-    cd "$HOME"/src
-    git clone https://github.com/neovim/neovim.git
+    install_neovim_dependencies
 
-    build_neovim_from_source
+    if [ ! -d ~/src ]; then mkdir ~/src; fi
+    cd ~/src
+    # git clone https://github.com/neovim/neovim.git
+    git clone --depth 1 --branch stable
+    cd ~/src/neovim
+	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	sudo make install
 }
 
 
@@ -329,7 +334,7 @@ main() {
     install_tmux_package_manager
 
     # neovim
-    install_neovim_dependencies
+    # install_neovim_dependencies
     install_neovim_from_source
     install_packer_nvim
 
