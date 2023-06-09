@@ -106,7 +106,10 @@ install_from_package_manager() {
 
 
 remove_snap() {
-    # FIXME: POSIX sh doesn't support globbing. Convert the following line to case statements.
+    # FIXME: 
+    # - POSIX sh doesn't support globbing. Convert the following line to case statements.
+    # - ^ isn't urgent, as right now I'm only running this on apt-based distros.
+    #   Will matter more once I adapt this to be distro-agnostic.
     # if [ "$(uname --all)" = *"Ubuntu"* ]; then
         # Returns list of snaps installed.
         # This is a very simple usage of awk, so the first item is `Name`, i.e. the 
