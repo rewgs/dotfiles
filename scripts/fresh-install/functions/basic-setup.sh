@@ -1,0 +1,361 @@
+#!/bin/sh
+
+
+# -u: If a variable does not exist, report the error and stop (e.g., unbound 
+#   variable)
+# -e: Terminate whenever an error occurs (e.g., command not found)
+# -o pipefail: 	If a sub-command fails, the entire pipeline command fails, 
+#   terminating the script (e.g., command not found)
+# set -eu -o pipefail
+set -eu # apparently `-o pipefail` isn't legal in POSIX shell
+
+
+# -n: Non-interactive. Prevents sudo from prompting for a password. If one is 
+#   required, sudo displays an error message and exits.
+# true: Builtin command that returns a successful (zero) exit status.
+sudo -n true
+
+
+# test: Takes an expression as an argument, evaluates it as '0' (true) or '1' 
+#   (false), and returns the result to the bash variable $?
+# $?: A variable used to find the return value as the exit status of the last 
+#   executed command.
+# -eq 0: Equal to 0 -- in this case, the previous command (i.e. if `sudo -n 
+#   true` returned 0).
+# exit: Exits the shell with a status of N. If N is unspecified, it uses the 
+#   exit code of the last executed command.
+# 1: Value result is false and used here as an argument to the exit command to 
+#   use as an exit code. If the exit code is false, the following message is 
+#   printed to the terminal.
+test $? -eq 0 || exit 1 "You should have sudo privilege to run this script."
+
+
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ functions                                                                  ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+install_from_package_manager() {
+    sleep 1
+    sleep 1
+
+    # `uname --all` is bound to include some reference to the distro name
+    # FIXME: POSIX sh doesn't support globbing. Convert the following line to case statements.
+    # if [ "$(uname --all)" = *"Ubuntu"* ] || [ "$(uname --all)" = *"Debian"* ]; then
+    	echo "Checking for updates..."
+        sudo apt-get update -qq
+	if [ $? -eq 0 ]; then 
+		echo "Upgrading packages..."
+		sudo apt-get upgrade -qq -y
+	fi
+    
+    	echo "Installing packages from package manager..."
+        sudo apt-get install -y \
+            apache2 \
+            apt-transport-https \
+            automake \
+            bettercap \
+            btop \
+            build-essential \
+            cmake \
+            cmatrix \
+            cowsay \
+            curl \
+            docker \
+            docker-compose \
+            git \
+            gnupg2 \
+            golang-go \
+            hsetroot \
+            htop \
+            libvirt-daemon \
+            llvm \
+            lua5.4 \
+            lynx \
+            make \
+            neofetch \
+            ncdu \
+            picom \
+            qemu-kvm \
+            shellcheck \
+            software-properties-common \
+            tgt \
+            tldr \
+            tree \
+            vim \
+            wget \
+            xorg \
+            zsh \
+	    > /dev/null 2> /dev/null # for some reason, `&> /dev/null` isn't silent, but this is
+
+    	echo "Checking for updates one more time..."
+        sudo apt-get update -qq
+	if [ $? -eq 0 ]; then 
+		echo "Upgrading packages one more time..."
+		sudo apt-get upgrade -qq -y
+	fi
+    # fi
+
+    echo "Package manager basic installations complete! Moving on..."
+    sleep 5
+}
+
+
+remove_snap() {
+    # FIXME: 
+    # - POSIX sh doesn't support globbing. Convert the following line to case statements.
+    # - ^ isn't urgent, as right now I'm only running this on apt-based distros.
+    #   Will matter more once I adapt this to be distro-agnostic.
+    # if [ "$(uname --all)" = *"Ubuntu"* ]; then
+        # Returns list of snaps installed.
+        # This is a very simple usage of awk, so the first item is `Name`, i.e. the 
+        #   name of the first column. It will have to be skipped over when 
+        #   iterating over these later.
+        snap_list="$(snap list | awk '{print $1}')"
+
+        # stop snap services
+        sudo systemctl disable snapd.service
+        sudo systemctl disable snapd.socket
+        sudo systemctl disable snapd.seeded.service
+
+        # In an effort to keep this POSIX compliant, arrays are avoided. Instead, 
+        #   utilizes `tr` to simulate.
+        # `tr ' ' '\n'` performs replaces spaces with new-lines, which are the 
+        #   default delimiter for `read`.
+        echo "$snap_list" | tr ' ' '\n' | while read item; do
+            # As mentioned above, the first item `Name` is skipped.
+            if "$item" != "Name"; then
+                # can this take a -y flag?
+                sudo snap remove "$item"
+            fi
+        done
+
+        sudo rm -rf /var/cache/snapd
+
+        # this -y flag might be positioned incorrectly
+        sudo apt autoremove --purge -y snapd
+
+        sudo rm -rf ~/snap
+    # fi
+}
+
+
+build_tmux_from_source() {
+    # for building new and updating
+    cd "$HOME"/src/tmux
+    git pull
+    sh autogen.sh
+    ./configure && make
+
+    # apparently there's no 'clean' option?
+    # sudo make clean install   
+    sudo make install
+}
+
+
+install_tmux_from_source() {
+    # install dependencies
+    sudo apt install -y \
+        bison \
+        byacc \
+        libevent-dev
+
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
+    git clone https://github.com/tmux/tmux.git
+
+    build_tmux_from_source
+}
+
+
+install_tmux_package_manager() {
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
+    git clone https://github.com/tmux-plugins/tpm.git
+
+    if [ ! -d "$HOME"/.tmux/plugins ]; then mkdir -p "$HOME"/.tmux/plugins; fi
+	ln -s "$HOME"/src/tpm "$HOME"/.tmux/plugins/tpm
+}
+
+
+install_neovim_dependencies() {
+	sudo apt-get install -y \
+		ninja-build \
+		gettext \
+		libtool \
+		libtool-bin \
+		autoconf \
+		automake \
+		g++ \
+		pkg-config \
+		unzip \
+		doxygen
+}
+
+
+build_neovim_from_source() {
+    cd "$HOME"/src/neovim
+	git checkout stable
+	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	sudo make install
+}
+
+
+install_neovim_from_source() {
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
+    git clone https://github.com/neovim/neovim.git
+
+    build_neovim_from_source
+}
+
+
+install_packer_nvim() {
+	git clone --depth 1 \
+		https://github.com/wbthomason/packer.nvim \
+		~/.local/share/nvim/site/pack/packer/start/packer.nvim
+}
+
+
+install_nvm_from_source() {
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
+    git clone https://github.com/nvm-sh/nvm.git
+    ln -s "$HOME"/src/nvm/ "$HOME"/.nvm
+}
+
+
+install_phpenv_build_prerequisites() {
+    sudo apt install -y \
+        libcurl4-gnutls-dev \
+        libjpeg-dev \
+        libonig-dev \
+        libtidy-dev \
+        libzip-dev
+}
+
+
+install_phpenv_from_source() {
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
+    git clone https://github.com/phpenv/phpenv.git
+    ln -s "$HOME"/src/phpenv/ "$HOME"/.phpenv
+}
+
+
+install_pyenv_build_dependencies() {
+	sudo apt update; 
+	sudo apt install -y \
+		build-essential \
+		libssl-dev \
+		zlib1g-dev \
+		libbz2-dev \
+		libreadline-dev \
+		libsqlite3-dev \
+		curl \
+		libncursesw5-dev \
+		xz-utils \
+		tk-dev \
+		libxml2-dev \
+		libxmlsec1-dev \
+		libffi-dev \
+		liblzma-dev
+}
+
+
+install_pyenv_from_source() {
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
+    git clone https://github.com/pyenv/pyenv.git
+    ln -s "$HOME"/src/pyenv/ "$HOME"/.pyenv
+}
+
+
+install_oh_my_zsh() {
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    # FIXME: the following doesn't work!
+    # `< /dev/tty` forces that new shell to start reading input from the terminal. 
+    #   Without this, the script would exit, returning to your calling script. I 
+    #   don't want this to happen - I want more functions to run aftr this.
+    # exec zsh < /dev/tty
+}
+
+
+prep_for_nvm_nodejs_installs() {
+    echo 'export NVM_DIR=\\"\$([ -z \"\${XDG_CONFIG_HOME-}\" ] && printf %s \"\${HOME}/.nvm\" || printf %s \"\${XDG_CONFIG_HOME}/nvm\")\"' >> "$HOME"/.zshrc
+    echo '[ -s \"\$NVM_DIR/nvm.sh\\" ] && \\. \"\$NVM_DIR/nvm.sh\"' >> "$HOME"/.zshrc
+}
+
+
+install_nodejs() {
+    # This is what is added to .zshrc in order to run nvm. It's in there, so I shouldn't need to 
+    #   add this, but for whatever reason, `nvm` isn't found when running this function unless this 
+    #   is included, even though .zshrc has been sourced. Doesn't make any sense, but this works, 
+    #   so it's a problem for another day.
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+    # installs absolute latest version
+    nvm install node    
+
+    # installs lts version
+    nvm install --lts   
+    nvm use --lts
+}
+
+
+prep_for_pyenv_python_installs() {
+    echo 'export PYENV_ROOT=""$HOME"/.pyenv"' >> "$HOME"/.zshrc
+    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> "$HOME"/.zshrc
+    echo 'eval "$(pyenv init -)"' >> "$HOME"/.zshrc
+}
+
+
+install_python() {
+    # gets the system version (minus the word "Python"), then installs that 
+    #   version with pyenv and sets it to "global."
+    system_python_version=$(python3 --version)
+
+    # `s/.* //` deletes from the beginning to the first space
+    python_version=$(echo "$system_python_version" | sed 's/.* //')
+
+    pyenv install "$python_version"
+    pyenv global "$python_version"
+}
+
+
+install_rust() {
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+}
+
+
+main() {
+    install_from_package_manager
+    remove_snap
+
+    # tmux
+    install_tmux_from_source
+    install_tmux_package_manager
+
+    # neovim
+    install_neovim_dependencies
+    install_neovim_from_source
+    install_packer_nvim
+
+    # nodejs
+    install_nvm_from_source
+
+    # phpenv
+    install_phpenv_build_prerequisites
+    install_phpenv_from_source
+
+    # pyenv
+    install_pyenv_build_dependencies
+    install_pyenv_from_source
+
+    install_rust
+    install_oh_my_zsh
+}
+
+
+main
