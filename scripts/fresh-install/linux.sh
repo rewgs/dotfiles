@@ -574,6 +574,8 @@ main() {
     basic_setup
     # personal_setup_cli
     # personal_setup_gui
+
+    cd "$HOME"
 }
 
 main
