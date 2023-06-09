@@ -203,7 +203,7 @@ build_neovim_from_source() {
 install_neovim_from_source() {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
-    git clone --depth 1 https://github.com/neovim/neovim.git
+    git clone https://github.com/neovim/neovim.git
 
     build_neovim_from_source
 }
