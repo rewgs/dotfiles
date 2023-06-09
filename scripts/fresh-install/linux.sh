@@ -193,7 +193,6 @@ install_phpenv_from_source() {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone https://github.com/phpenv/phpenv.git
-    cd "$HOME"/src/phpenv
     ln -s "$HOME"/src/phpenv/ "$HOME"/.phpenv
 }
 
@@ -222,7 +221,6 @@ install_pyenv_from_source() {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone https://github.com/pyenv/pyenv.git
-    cd "$HOME"/src/pyenv
     ln -s "$HOME"/src/pyenv/ "$HOME"/.pyenv
 }
 
@@ -515,29 +513,42 @@ install_fira_code_nerd_font() {
 basic_setup() {
     # basics
     install_from_package_manager
+    sleep 5
     remove_snap
+    sleep 5
 
     # tmux
     install_tmux_from_source
+    sleep 5
     install_tmux_package_manager
+    sleep 5
 
     # neovim
     install_neovim_dependencies
+    sleep 5
     install_neovim_from_source
+    sleep 5
     install_packer_nvim
+    sleep 5
 
     # nodejs
     install_nvm_from_source
+    sleep 5
 
     # phpenv
     install_phpenv_build_prerequisites
+    sleep 5
     install_phpenv_from_source
+    sleep 5
 
     # pyenv
     install_pyenv_build_dependencies
+    sleep 5
     install_pyenv_from_source
+    sleep 5
 
     install_rust
+    sleep 5
 
     # must be last, as $SHELL is new
     install_oh_my_zsh
@@ -546,11 +557,17 @@ basic_setup() {
 
 personal_setup_cli() {
     make_dotfiles_symlinks
+    sleep 5
     install_nodejs
+    sleep 5
     install_python
+    sleep 5
     install_lazygit_from_source
+    sleep 5
     install_npm_apps
+    sleep 5
     install_rust_apps
+    sleep 5
     install_github_cli
 }
 
