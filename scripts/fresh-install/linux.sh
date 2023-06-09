@@ -96,7 +96,10 @@ build_tmux_from_source() {
     git pull
     sh autogen.sh
     ./configure && make
-    sudo make clean install
+
+    # apparently there's no 'clean' option?
+    # sudo make clean install   
+    sudo make install
 }
 
 
