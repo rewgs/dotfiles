@@ -79,12 +79,14 @@ remove_snap() {
         echo "$snap_list" | tr ' ' '\n' | while read item; do
             # As mentioned above, the first item `Name` is skipped.
             if "$item" != "Name"; then
+                # can this take a -y flag?
                 sudo snap remove "$item"
             fi
         done
 
         sudo rm -rf /var/cache/snapd
 
+        # can this take a -y flag?
         sudo apt autoremove --purge snapd
 
         sudo rm -rf ~/snap
