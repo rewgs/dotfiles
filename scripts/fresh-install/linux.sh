@@ -11,7 +11,8 @@
 #   variable)
 # -e: Terminate whenever an error occurs (e.g., command not found)
 # -o pipefail: 	If a sub-command fails, the entire pipeline command fails, terminating the script (e.g., command not found)
-set -eu -o pipefail
+# set -eu -o pipefail
+set -eu # apparently `-o pipefail` isn't legal in POSIX shell
 
 
 # -n: Non-interactive. Prevents sudo from prompting for a password. If one is 
@@ -41,11 +42,13 @@ test $? -eq 0 || exit 1 "You should have sudo privilege to run this script."
 install_from_package_manager() {
     sleep 1
     echo "Installing packages from package manager..."
+    sleep 1
 
     # `uname --all` is bound to include some reference to the distro name
     # FIXME: POSIX sh doesn't support globbing. Convert the following line to case statements.
     # if [ "$(uname --all)" = *"Ubuntu"* ] || [ "$(uname --all)" = *"Debian"* ]; then
-        sudo apt update && sudo apt upgrade -y &> ~/apt-log.txt
+        sudo apt update &> ~/apt-log.txt
+        sudo apt upgrade -y &> ~/apt-log.txt
     
         sudo apt install -y \
             apache2 \
@@ -83,8 +86,9 @@ install_from_package_manager() {
             xorg \
             zsh \
             &> ~/apt-log.txt
-    
-        sudo apt update && sudo apt upgrade -y &> ~/apt-log.txt
+
+        sudo apt update &> ~/apt-log.txt
+        sudo apt upgrade -y &> ~/apt-log.txt
     # fi
 
     echo "Package manager basic installations complete! Moving on...\n"
