@@ -45,7 +45,7 @@ install_from_package_manager() {
     # `uname --all` is bound to include some reference to the distro name
     # FIXME: POSIX sh doesn't support globbing. Convert the following line to case statements.
     # if [ "$(uname --all)" = *"Ubuntu"* ] || [ "$(uname --all)" = *"Debian"* ]; then
-        sudo apt update && sudo apt upgrade -y
+        sudo apt update && sudo apt upgrade -y &> ~/apt-log.txt
     
         sudo apt install -y \
             apache2 \
@@ -81,9 +81,10 @@ install_from_package_manager() {
             vim \
             wget \
             xorg \
-            zsh
+            zsh \
+            &> ~/apt-log.txt
     
-        sudo apt update && sudo apt upgrade -y
+        sudo apt update && sudo apt upgrade -y &> ~/apt-log.txt
     # fi
 
     echo "Package manager basic installations complete! Moving on...\n"
