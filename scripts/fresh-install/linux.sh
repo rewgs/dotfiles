@@ -7,11 +7,41 @@
 # - copy or symlink my tmux theme to ~/.tmux/plugins, and/or don't use the onedark package anymore?
 
 
+# -u: If a variable does not exist, report the error and stop (e.g., unbound 
+#   variable)
+# -e: Terminate whenever an error occurs (e.g., command not found)
+# -o pipefail: 	If a sub-command fails, the entire pipeline command fails, terminating the script (e.g., command not found)
+set -eu -o pipefail
+
+
+# -n: Non-interactive. Prevents sudo from prompting for a password. If one is 
+#   required, sudo displays an error message and exits.
+# true: Builtin command that returns a successful (zero) exit status.
+sudo -n true
+
+
+# test: Takes an expression as an argument, evaluates it as '0' (true) or '1' 
+#   (false), and returns the result to the bash variable $?
+# $?: A variable used to find the return value as the exit status of the last 
+#   executed command.
+# -eq 0: Equal to 0 -- in this case, the previous command (i.e. if `sudo -n 
+#   true` returned 0).
+# exit: Exits the shell with a status of N. If N is unspecified, it uses the 
+#   exit code of the last executed command.
+# 1: Value result is false and used here as an argument to the exit command to 
+#   use as an exit code. If the exit code is false, the following message is 
+#   printed to the terminal.
+test $? -eq 0 || exit 1 "You should have sudo privilege to run this script."
+
+
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
 install_from_package_manager() {
+    sleep 1
+    echo "Installing packages from package manager..."
+
     # `uname --all` is bound to include some reference to the distro name
     # FIXME: POSIX sh doesn't support globbing. Convert the following line to case statements.
     # if [ "$(uname --all)" = *"Ubuntu"* ] || [ "$(uname --all)" = *"Debian"* ]; then
@@ -55,6 +85,9 @@ install_from_package_manager() {
     
         sudo apt update && sudo apt upgrade -y
     # fi
+
+    echo "Package manager basic installations complete! Moving on...\n"
+    sleep 5
 }
 
 
@@ -227,7 +260,11 @@ install_pyenv_from_source() {
 
 install_oh_my_zsh() {
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    exec $SHELL
+
+    # `< /dev/tty` forces that new shell to start reading input from the terminal. 
+    #   Without this, the script would exit, returning to your calling script. I 
+    #   don't want this to happen - I want more functions to run aftr this.
+    exec zsh < /dev/tty
 }
 
 
@@ -513,42 +550,29 @@ install_fira_code_nerd_font() {
 basic_setup() {
     # basics
     install_from_package_manager
-    sleep 5
     remove_snap
-    sleep 5
 
     # tmux
     install_tmux_from_source
-    sleep 5
     install_tmux_package_manager
-    sleep 5
 
     # neovim
     install_neovim_dependencies
-    sleep 5
     install_neovim_from_source
-    sleep 5
     install_packer_nvim
-    sleep 5
 
     # nodejs
     install_nvm_from_source
-    sleep 5
 
     # phpenv
     install_phpenv_build_prerequisites
-    sleep 5
     install_phpenv_from_source
-    sleep 5
 
     # pyenv
     install_pyenv_build_dependencies
-    sleep 5
     install_pyenv_from_source
-    sleep 5
 
     install_rust
-    sleep 5
 
     # must be last, as $SHELL is new
     install_oh_my_zsh
@@ -557,17 +581,11 @@ basic_setup() {
 
 personal_setup_cli() {
     make_dotfiles_symlinks
-    sleep 5
     install_nodejs
-    sleep 5
     install_python
-    sleep 5
-    # install_lazygit_from_source   # not working now so not running
-    # sleep 5
+    install_lazygit_from_source   # not working now so not running
     install_npm_apps
-    sleep 5
     install_rust_apps
-    sleep 5
     install_github_cli
 }
 
@@ -585,7 +603,7 @@ personal_setup_gui() {
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
 main() {
-    basic_setup
+    # basic_setup
     personal_setup_cli
     # personal_setup_gui
 }
