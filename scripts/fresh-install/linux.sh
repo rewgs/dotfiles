@@ -10,7 +10,8 @@
 # -u: If a variable does not exist, report the error and stop (e.g., unbound 
 #   variable)
 # -e: Terminate whenever an error occurs (e.g., command not found)
-# -o pipefail: 	If a sub-command fails, the entire pipeline command fails, terminating the script (e.g., command not found)
+# -o pipefail: 	If a sub-command fails, the entire pipeline command fails, 
+#   terminating the script (e.g., command not found)
 # set -eu -o pipefail
 set -eu # apparently `-o pipefail` isn't legal in POSIX shell
 
@@ -605,6 +606,7 @@ personal_setup_gui() {
     install_firefox_without_snap
     install_fira_code_nerd_font
 }
+
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ main                                                                       ║
