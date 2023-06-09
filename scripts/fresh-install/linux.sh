@@ -1,4 +1,4 @@
 #!/bin/sh
 
-source ./functions/basic-setup.sh
-source ./functions/personal-setup.sh
+. ./functions/basic-setup.sh
+. ./functions/personal-setup.sh
