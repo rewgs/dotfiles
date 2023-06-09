@@ -5,53 +5,6 @@
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-prep_for_nvm_nodejs_installs() {
-    echo 'export NVM_DIR=\\"\$([ -z \"\${XDG_CONFIG_HOME-}\" ] && printf %s \"\${HOME}/.nvm\" || printf %s \"\${XDG_CONFIG_HOME}/nvm\")\"' >> "$HOME"/.zshrc
-    echo '[ -s \"\$NVM_DIR/nvm.sh\\" ] && \\. \"\$NVM_DIR/nvm.sh\"' >> "$HOME"/.zshrc
-}
-
-
-install_nodejs() {
-    # This is what is added to .zshrc in order to run nvm. It's in there, so I shouldn't need to 
-    #   add this, but for whatever reason, `nvm` isn't found when running this function unless this 
-    #   is included, even though .zshrc has been sourced. Doesn't make any sense, but this works, 
-    #   so it's a problem for another day.
-    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-    # installs absolute latest version
-    nvm install node    
-
-    # installs lts version
-    nvm install --lts   
-    nvm use --lts
-}
-
-
-prep_for_pyenv_python_installs() {
-    echo 'export PYENV_ROOT=""$HOME"/.pyenv"' >> "$HOME"/.zshrc
-    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> "$HOME"/.zshrc
-    echo 'eval "$(pyenv init -)"' >> "$HOME"/.zshrc
-}
-
-
-install_python() {
-    # gets the system version (minus the word "Python"), then installs that 
-    #   version with pyenv and sets it to "global."
-    system_python_version=$(python3 --version)
-
-    # `s/.* //` deletes from the beginning to the first space
-    python_version=$(echo "$system_python_version" | sed 's/.* //')
-
-    pyenv install "$python_version"
-    pyenv global "$python_version"
-}
-
-
-download_dotfiles() {
-    cd "$HOME"
-    git clone https://github.com/rewgs/dotfiles.git
-}
 
 
 # TODO: make sure this works on macOS!
@@ -243,6 +196,18 @@ install_github_cli() {
 }
 
 
+install_oh_my_zsh() {
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+    # FIXME: the following doesn't work!
+    # `< /dev/tty` forces that new shell to start reading input from the terminal. 
+    #   Without this, the script would exit, returning to your calling script. I 
+    #   don't want this to happen - I want more functions to run aftr this.
+    # exec zsh < /dev/tty
+}
+
+
+
 install_firefox_without_snap() {
     # assumes that snap has already been removed and `sudo snap remove firefox` run
 
@@ -280,13 +245,16 @@ install_fira_code_nerd_font() {
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
 personal_setup_cli() {
-    make_dotfiles_symlinks
-    install_nodejs
-    install_python
+    # install_nodejs
+    # install_python
     # install_lazygit_from_source   # not working now so not running
     install_npm_apps
     install_rust_apps
     install_github_cli
+    install_oh_my_zsh
+    make_dotfiles_symlinks
+    chsh -s $(which zsh)    # oh my zsh installer doesn't do this due to the --unattended flag, so this is required
+    exec $SHELL
 }
 
 

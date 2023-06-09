@@ -270,15 +270,6 @@ install_pyenv_from_source() {
 }
 
 
-install_oh_my_zsh() {
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-    # FIXME: the following doesn't work!
-    # `< /dev/tty` forces that new shell to start reading input from the terminal. 
-    #   Without this, the script would exit, returning to your calling script. I 
-    #   don't want this to happen - I want more functions to run aftr this.
-    # exec zsh < /dev/tty
-}
 
 
 prep_for_nvm_nodejs_installs() {
@@ -344,6 +335,8 @@ main() {
 
     # nodejs
     install_nvm_from_source
+    prep_for_nvm_nodejs_installs
+    install_nodejs
 
     # phpenv
     install_phpenv_build_prerequisites
@@ -352,9 +345,11 @@ main() {
     # pyenv
     install_pyenv_build_dependencies
     install_pyenv_from_source
+    prep_for_pyenv_python_installs
+    install_python
 
     install_rust
-    install_oh_my_zsh
+    # install_oh_my_zsh
 }
 
 
