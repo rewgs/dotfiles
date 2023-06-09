@@ -206,8 +206,7 @@ install_neovim_from_source() {
 
     if [ ! -d ~/src ]; then mkdir ~/src; fi
     cd ~/src
-    # git clone https://github.com/neovim/neovim.git
-    git clone --depth 1 --branch stable
+    git clone --depth 1 https://github.com/neovim/neovim.git --branch stable
     cd ~/src/neovim
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
 	sudo make install
