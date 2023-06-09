@@ -562,7 +562,6 @@ install_fira_code_nerd_font() {
 
 # for servers or any other machine I'm not coding on but want to feel "at home"
 basic_setup() {
-    # basics
     install_from_package_manager
     remove_snap
 
@@ -587,8 +586,6 @@ basic_setup() {
     install_pyenv_from_source
 
     install_rust
-
-    # must be last, as $SHELL is new
     install_oh_my_zsh
 }
 
@@ -597,7 +594,7 @@ personal_setup_cli() {
     make_dotfiles_symlinks
     install_nodejs
     install_python
-    install_lazygit_from_source   # not working now so not running
+    # install_lazygit_from_source   # not working now so not running
     install_npm_apps
     install_rust_apps
     install_github_cli
@@ -617,9 +614,8 @@ personal_setup_gui() {
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
 main() {
-    install_github_cli
-    # basic_setup
-    # personal_setup_cli
+    basic_setup
+    personal_setup_cli
     # personal_setup_gui
 }
 
