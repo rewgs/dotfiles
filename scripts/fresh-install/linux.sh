@@ -542,7 +542,7 @@ basic_setup() {
 
 
 personal_setup_cli() {
-    download_dotfiles
+    # download_dotfiles                 # don't need, since now this is the first thing I'm doing before even running this script
     make_dotfiles_symlinks
 
     install_nodejs
