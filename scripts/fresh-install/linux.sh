@@ -537,15 +537,15 @@ basic_setup() {
     install_pyenv_build_dependencies
     install_pyenv_from_source
 
-    install_oh_my_zsh
-
     install_rust
+
+    # must be last, as $SHELL is new
+    install_oh_my_zsh
 }
 
 
 personal_setup_cli() {
     make_dotfiles_symlinks
-
     install_nodejs
     install_python
     install_lazygit_from_source
@@ -568,11 +568,10 @@ personal_setup_gui() {
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
 main() {
-    basic_setup
+    # basic_setup
     # personal_setup_cli
     # personal_setup_gui
 
-    cd "$HOME"
 }
 
 main
