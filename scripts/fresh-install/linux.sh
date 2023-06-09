@@ -86,8 +86,8 @@ remove_snap() {
 
         sudo rm -rf /var/cache/snapd
 
-        # can this take a -y flag?
-        sudo apt autoremove --purge snapd
+        # this -y flag might be positioned incorrectly
+        sudo apt autoremove --purge -y snapd
 
         sudo rm -rf ~/snap
     # fi
