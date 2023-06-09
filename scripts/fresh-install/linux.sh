@@ -562,8 +562,8 @@ personal_setup_cli() {
     sleep 5
     install_python
     sleep 5
-    install_lazygit_from_source
-    sleep 5
+    # install_lazygit_from_source   # not working now so not running
+    # sleep 5
     install_npm_apps
     sleep 5
     install_rust_apps
@@ -585,10 +585,9 @@ personal_setup_gui() {
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
 main() {
-    # basic_setup
-    # personal_setup_cli
+    basic_setup
+    personal_setup_cli
     # personal_setup_gui
-
 }
 
 main
