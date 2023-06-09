@@ -2,7 +2,9 @@
 
 
 # TODO:
-# make ssh key, add to github account via `gh`
+# - make ssh key, add to github account via `gh`
+# - make it so that this can all run in one go, i.e. can continue past `exec $SHELL`
+# - copy or symlink my tmux theme to ~/.tmux/plugins, and/or don't use the onedark package anymore?
 
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
@@ -236,11 +238,12 @@ prep_for_nvm_nodejs_installs() {
 
 
 install_nodejs() {
-    # assumes that the following lines have been added to .bashrc, .zshrc, etc:
-
-    # export NVM_DIR=""$HOME"/.nvm"
-    # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    # This is what is added to .zshrc in order to run nvm. It's in there, so I shouldn't need to 
+    #   add this, but for whatever reason, `nvm` isn't found when running this function unless this 
+    #   is included, even though .zshrc has been sourced. Doesn't make any sense, but this works, 
+    #   so it's a problem for another day.
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
     # installs absolute latest version
     nvm install node    
@@ -261,7 +264,7 @@ prep_for_pyenv_python_installs() {
 install_python() {
     # gets the system version (minus the word "Python"), then installs that 
     #   version with pyenv and sets it to "global."
-    system_python_version=$(python3 --version | sed 's/^3')
+    system_python_version=$(python3 --version)
 
     # `s/.* //` deletes from the beginning to the first space
     python_version=$(echo "$system_python_version" | sed 's/.* //')
