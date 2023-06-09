@@ -495,7 +495,8 @@ install_rust_apps() {
 	    cargo-edit \
 	    cargo-make \
 	    cargo-tarpaulin \
-	    cargo-watch
+	    cargo-watch \
+        ytop
 }
 
 
