@@ -58,6 +58,7 @@ install_from_package_manager() {
         sudo apt-get install -y \
             apache2 \
             apt-transport-https \
+            automake \
             bettercap \
             btop \
             build-essential \
