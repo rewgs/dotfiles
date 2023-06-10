@@ -197,7 +197,11 @@ install_github_cli() {
 
 
 install_oh_my_zsh() {
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    # interactive
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    # unattended -- can't use right now
+    # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
     # FIXME: the following doesn't work!
     # `< /dev/tty` forces that new shell to start reading input from the terminal. 
@@ -251,10 +255,20 @@ personal_setup_cli() {
     install_npm_apps
     install_rust_apps
     install_github_cli
+
+    # since the below isn't working, this script will run and then exit after 
+    #   installing oh my zsh. Will need to run dotfile symlink function 
+    #   separately. So, I've commented out the function call below and placed it 
+    #   by itself in `main()` so that I can easily comment out `personal_setup_cli()`
     install_oh_my_zsh
-    make_dotfiles_symlinks
-    chsh -s $(which zsh)    # oh my zsh installer doesn't do this due to the --unattended flag, so this is required
-    nvm use --lts
+
+    # make_dotfiles_symlinks
+
+    # oh my zsh installer doesn't do this due to the --unattended flag, so this is required
+    # FIXME: this doesn't work for some reason
+    # chsh -s $(which zsh)
+
+    echo "All finished!"
     exec $SHELL
 }
 
@@ -274,6 +288,7 @@ personal_setup_gui() {
 
 main() {
     personal_setup_cli
+    make_dotfiles_symlinks
     # personal_setup_gui
 }
 
