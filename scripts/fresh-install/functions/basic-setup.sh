@@ -193,11 +193,11 @@ install_neovim_dependencies() {
 
 
 update_neovim_from_source() {
-    cd "$HOME"/src/neovim
-    git pull
+	cd "$HOME"/src/neovim
 	git checkout stable
-	make CMAKE_BUILD_TYPE=RelWithDebInfo
-	sudo make install
+	git pull
+	sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
+	sudo make clean install
 }
 
 
