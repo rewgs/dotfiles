@@ -253,7 +253,10 @@ personal_setup_cli() {
     # install_python
     # install_lazygit_from_source   # not working now so not running
     install_npm_apps
-    install_rust_apps
+
+    # can't find a way to make cargo seen, so commenting out for now
+    # install_rust_apps
+
     install_github_cli
 
     # since the below isn't working, this script will run and then exit after 
