@@ -3,6 +3,6 @@
 
 cd ~/dotfiles/scripts/fresh-install
 . ./functions/basic-setup.sh
-source ~/.cargo/env
+. ~/.cargo/env
 cd ~/dotfiles/scripts/fresh-install
 . ./functions/personal-setup.sh
