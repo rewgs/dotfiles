@@ -157,6 +157,8 @@ make_dotfiles_symlinks() {
     else
         ln -s "$HOME"/dotfiles/zsh/zlogout "$HOME"/.zlogout
     fi
+
+    echo "Symlinking dotfiles complete!"
 }
 
 
