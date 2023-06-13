@@ -63,6 +63,7 @@ install_from_package_manager() {
             docker \
             docker-compose \
             git \
+            glances \
             gnupg2 \
             golang-go \
             hsetroot \
@@ -357,7 +358,7 @@ main() {
     install_tmux_package_manager
 
     # neovim
-    # install_neovim_dependencies
+    install_neovim_dependencies
     install_neovim_from_source
     install_packer_nvim
 
