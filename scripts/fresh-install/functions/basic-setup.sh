@@ -240,10 +240,17 @@ install_phpenv_build_prerequisites() {
 
 
 install_phpenv_from_source() {
-    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
-    cd "$HOME"/src
+    # install phpenv
+    if [ ! -d ~/src ]; then mkdir ~/src; fi
+    cd ~/src
     git clone --depth 1 https://github.com/phpenv/phpenv.git
-    ln -s "$HOME"/src/phpenv/ "$HOME"/.phpenv
+    ln -s ~/src/phpenv/ ~/.phpenv
+
+    # install php-build -- required to use the `phpenv install` command, which is 99% of what I do with phpenv
+    cd ~/src
+    git clone --depth 1 https://github.com/php-build/php-build.git
+    if [ ! -d ~/.phpenv/plugins ]; then mkdir -p ~/.phpenv/plugins; fi
+    ln -s ~/src/php-build/ ~/.phpenv/plugins/php-build
 }
 
 
