@@ -7,6 +7,7 @@ function update_packages_and_cargo () {
         sudo apt upgrade -y
     fi
     
+    rustup update
     cargo install cargo-update
     cargo install-update -a
 }
