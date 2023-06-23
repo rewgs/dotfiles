@@ -167,6 +167,10 @@ alias dv="deactivate"
 alias nv=create_new_venv
 alias nvhb=create_new_venv_v3.9_with_gui_fix_for_mac
 
+# rustup
+alias rustbook="rustup docs --book"
+alias rustdocs="rustup doc"
+
 # sed
 if [[ $(uname) == "Darwin" ]]; then
     alias sed="gsed"
