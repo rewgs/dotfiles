@@ -1,0 +1,3 @@
+function remove_all_docker_containers () {
+    docker rm -fv $(docker ps -aq)
+}
