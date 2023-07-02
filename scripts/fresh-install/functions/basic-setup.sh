@@ -56,6 +56,7 @@ install_from_package_manager() {
             bettercap \
             btop \
             build-essential \
+            cbonsai \
             cmake \
             cmatrix \
             cowsay \
