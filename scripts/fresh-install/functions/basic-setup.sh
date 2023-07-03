@@ -36,13 +36,13 @@ test $? -eq 0 || exit 1 "You should have sudo privilege to run this script."
 
 install_from_package_manager() {
     sleep 1
-    sleep 1
 
     # `uname --all` is bound to include some reference to the distro name
     # FIXME: POSIX sh doesn't support globbing. Convert the following line to case statements.
     # if [ "$(uname --all)" = *"Ubuntu"* ] || [ "$(uname --all)" = *"Debian"* ]; then
     	echo "Checking for updates..."
         sudo apt-get update -qq
+    # `$?` is used to find the return value of the last executed command
 	if [ $? -eq 0 ]; then 
 		echo "Upgrading packages..."
 		sudo apt-get upgrade -qq -y
@@ -87,6 +87,7 @@ install_from_package_manager() {
             wget \
             xorg \
             zsh \
+
 	    > /dev/null 2> /dev/null # for some reason, `&> /dev/null` isn't silent, but this is
 
     	echo "Checking for updates one more time..."
