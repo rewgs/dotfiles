@@ -177,6 +177,9 @@ if [[ $(uname) == "Darwin" ]]; then
     alias sed="gsed"
 fi
 
+# ssh
+alias dlssh=download_file_from_server_as_name
+
 # tailscale
 if [[ $(uname) == "Darwin" ]]; then
     alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
