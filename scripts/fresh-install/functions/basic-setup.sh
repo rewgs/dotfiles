@@ -81,6 +81,7 @@ install_from_package_manager() {
             shellcheck \
             software-properties-common \
             tgt \
+            thefuck \
             tldr \
             tree \
             vim \
