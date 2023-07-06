@@ -35,6 +35,7 @@ homebrew_installations {
         "cowsay"                                    # cowsay
         "--cask firefox"                            # firefox
         "--cask font-fira-code-nerd-font"           # fira code nerd font
+        "gh"                                        # github cli
         "git"                                       # git
         "glances"                                   # glances
         "gnu-sed"                                   # gnu sed
@@ -58,6 +59,11 @@ homebrew_installations {
 }
 
 
+install_rust {
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+}
+
+
 mac_fresh_install {
     install_homebrew
     install_xcode_command_line_tools
@@ -65,7 +71,6 @@ mac_fresh_install {
 
     yabai --start-service
     skhd --start-service
-
 }
  
 mac_fresh_install 
