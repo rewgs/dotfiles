@@ -23,35 +23,36 @@ function install_xcode_command_line_tools () {
 function homebrew_installations () {
     typeset -a brew_apps
     brew_apps=(
-        "bettercap"                                 # bettercap
-        "bpytop"                                    # bpytop
-        "btop"                                      # btop
-        "cmatrix"                                   # cmatrix
-        "coreutils"                                 # coreutils
-        "cowsay"                                    # cowsay
-        "gh"                                        # github cli
-        "git"                                       # git
-        "glances"                                   # glances
-        "gnu-sed"                                   # gnu sed
-        "htop"                                      # htop
-        "jesseduffield/lazygit/lazygit"             # lazygit
-        "neofetch"                                  # neofetch
-        "shellcheck"                                # shellcheck
-        "brew install koekeishiya/formulae/skhd"    # skhd
-        "thefuck"                                   # thefuck
-        "tldr"                                      # tldr
-        "koekeishiya/formulae/yabai"                # yabai
+        "bettercap"
+        "bpytop"
+        "btop"
+        "cmatrix"
+        "coreutils"
+        "cowsay"
+        "gh"
+        "git"
+        "glances"
+        "gnu-sed"
+        "htop"
+        "jesseduffield/lazygit/lazygit"
+        "neofetch"
+        "shellcheck"
+        "brew install koekeishiya/formulae/skhd"
+        "thefuck"
+        "tldr"
+        "koekeishiya/formulae/yabai"
     )
 
     typeset -a brew_casks
     brew_casks=(
-        "amethyst"                           # amethyst
-        "blackhole-2ch"                      # blackhole - 2ch
-        "blackhole-16ch"                     # blackhole - 16ch
-        "firefox"                            # firefox
-        "font-fira-code-nerd-font"           # fira code nerd font
-        "google-chrome"                      # google chrome
-        "reaper"                             # reaper
+        "amethyst"
+        "blackhole-2ch"
+        "blackhole-16ch"
+        "firefox"
+        "font-fira-code-nerd-font"
+        "google-chrome"
+        "karabiner-elements"
+        "reaper"
     )
 
     typeset -a neovim_build_prerequisites
