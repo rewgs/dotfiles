@@ -54,6 +54,14 @@ function homebrew_installations () {
         "reaper"                             # reaper
     )
 
+    typeset -a neovim_build_prerequisites
+    neovim_build_prerequisites=(
+        "cmake"
+        "curl"
+        "gettext"
+        "ninja"
+    )
+
     typeset -a pyenv_build_dependencies
     pyenv_build_dependencies=(
         "openssl"
@@ -64,13 +72,14 @@ function homebrew_installations () {
         "zlib"
     )
 
-    typeset -a neovim_build_prerequisites
-    neovim_build_prerequisites=(
-        "cmake"
-        "curl"
-        "gettext"
-        "ninja"
+    typeset -a tmux_build_dependencies
+    tmux_build_dependencies=(
+        "automake"
+        "bison"
+        "byacc"
+        "libevent"
     )
+
 
     brew update && brew upgrade
     for (( i = 1; i <= $#brew_apps; i++)) do
@@ -84,6 +93,9 @@ function homebrew_installations () {
     done
     for (( i = 1; i <= $#pyenv_build_dependencies; i++)) do
         brew install "$pyenv_build_dependencies[i]"
+    done
+    for (( i = 1; i <= $#tmux_build_dependencies; i++)) do
+        brew install "$tmux_build_dependencies[i]"
     done
 }
 
