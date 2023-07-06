@@ -78,6 +78,8 @@ function homebrew_installations () {
         "bison"
         "byacc"
         "libevent"
+        "pkg-config"
+        "utf8proc"
     )
 
 
@@ -109,6 +111,15 @@ function install_neovim () {
     cd ~/src/neovim
     git checkout stable
     make CMAKE_BUILD_TYPE=RelWithDebInfo
+    sudo make install
+}
+
+
+function install_tmux () {
+    cd ~/src/tmux
+    sh autogen.sh
+    .configure --enable-utf8proc
+    make
     sudo make install
 }
 
