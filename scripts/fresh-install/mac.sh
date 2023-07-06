@@ -22,7 +22,6 @@ install_xcode_command_line_tools {
 
 homebrew_installations {
     typeset -a brew_apps
-
     brew_apps=(
         "--cask amethyst"                           # amethyst
         "bettercap"                                 # bettercap
@@ -51,10 +50,33 @@ homebrew_installations {
         "koekeishiya/formulae/yabai"                # yabai
     )
 
-    brew update && brew upgrade -y
+    typeset -a pyenv_build_dependencies
+    pyenv_build_dependencies=(
+        "openssl"
+        "readline"
+        "sqlite3"
+        "tcl-tk"
+        "xz"
+        "zlib"
+    )
 
-    for (( = 1; i <= $#array; i++)) do
+    typeset -a neovim_build_prerequisites
+    neovim_build_prerequisites=(
+        "cmake"
+        "curl"
+        "gettext"
+        "ninja"
+    )
+
+    brew update && brew upgrade -y
+    for (( = 1; i <= $#brew_apps; i++)) do
         brew install $brew_apps[i]
+    done
+    for (( = 1; i <= $#neovim_build_prerequisites; i++)) do
+        brew install $neovim_build_prerequisites[i]
+    done
+    for (( = 1; i <= $#pyenv_build_dependencies; i++)) do
+        brew install $pyenv_build_dependencies[i]
     done
 }
 
@@ -64,10 +86,21 @@ install_rust {
 }
 
 
+install_neovim {
+    cd ~/src/neovim
+    git checkout stable
+    make CMAKE_BUILD_TYPE=RelWithDebInfo
+    sudo make install
+}
+
+
 mac_fresh_install {
     install_homebrew
     install_xcode_command_line_tools
     install_oh_my_zsh
+
+    install_neovim
+    install_rust
 
     yabai --start-service
     skhd --start-service
