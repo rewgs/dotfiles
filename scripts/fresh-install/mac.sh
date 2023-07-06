@@ -5,22 +5,22 @@
 # github
 
 
-install_homebrew { 
+function install_homebrew () { 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
 
-install_oh_my_zsh {
+function install_oh_my_zsh () {
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
 
-install_xcode_command_line_tools {
+function install_xcode_command_line_tools () {
     xcode-select --install
 }
 
 
-homebrew_installations {
+function homebrew_installations () {
     typeset -a brew_apps
     brew_apps=(
         "--cask amethyst"                           # amethyst
@@ -81,12 +81,12 @@ homebrew_installations {
 }
 
 
-install_rust {
+function install_rust () {
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 }
 
 
-install_neovim {
+function install_neovim () {
     cd ~/src/neovim
     git checkout stable
     make CMAKE_BUILD_TYPE=RelWithDebInfo
@@ -94,16 +94,18 @@ install_neovim {
 }
 
 
-mac_fresh_install {
-    install_homebrew
-    install_xcode_command_line_tools
-    install_oh_my_zsh
+function mac_fresh_install () {
+    # install_homebrew
+    # install_xcode_command_line_tools
+    # install_oh_my_zsh
 
-    install_neovim
-    install_rust
+    homebrew_installations
 
-    yabai --start-service
-    skhd --start-service
+    # install_neovim
+    # install_rust
+
+    # yabai --start-service
+    # skhd --start-service
 }
  
 mac_fresh_install 
