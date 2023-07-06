@@ -90,16 +90,16 @@ function homebrew_installations () {
     for (( i = 1; i <= $#brew_apps; i++)) do
         brew install "$brew_apps[i]"
     done
-    for (( i = 1; i <= $#brew_casks; i++)) do
+    for (( i = 1; i <= $#brew_casks; i++ )) do
         brew install --cask "$brew_casks[i]"
     done
-    for (( i = 1; i <= $#neovim_build_prerequisites; i++)) do
+    for (( i = 1; i <= $#neovim_build_prerequisites; i++ )) do
         brew install "$neovim_build_prerequisites[i]"
     done
-    for (( i = 1; i <= $#pyenv_build_dependencies; i++)) do
+    for (( i = 1; i <= $#pyenv_build_dependencies; i++ )) do
         brew install "$pyenv_build_dependencies[i]"
     done
-    for (( i = 1; i <= $#tmux_build_dependencies; i++)) do
+    for (( i = 1; i <= $#tmux_build_dependencies; i++ )) do
         brew install "$tmux_build_dependencies[i]"
     done
 }
@@ -124,6 +124,34 @@ function install_tmux () {
     .configure --enable-utf8proc
     make
     sudo make install
+}
+
+
+function clone_repositories () {
+    # library for helping one work with 
+    typeset -A hyperkey_spoon
+    hyperkey_spoon=(
+        [name]="HyperKey.spoon"
+        [url]="git@github.com:dbalatero/HyperKey.spoon.git"
+        [src]="~/src/$hyperkey_spoon[name]/"
+        [dst]="~/.hammerspoon/Spoons/$hyperkey_spoon[name]"
+        [symlink]="ln -s $hyperkey_spoon[src] $hyperkey_spoon[dst]"
+    )
+
+    typeset -a repos
+    repos=(
+        $hyperkey_spoon
+    }
+
+    cd ~/src
+    for (( i = 1; i <= $#repos; i++ )) do
+        repo=$repos[i]
+        git clone $repo[url] $repo[src]
+
+        if [ $repo[symlink] ]; then
+            $repo[symlink]
+        fi
+    done
 }
 
 
