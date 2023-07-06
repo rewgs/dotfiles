@@ -23,31 +23,35 @@ function install_xcode_command_line_tools () {
 function homebrew_installations () {
     typeset -a brew_apps
     brew_apps=(
-        "--cask amethyst"                           # amethyst
         "bettercap"                                 # bettercap
-        "--cask blackhole-2ch"                      # blackhole - 2ch
-        "--cask blackhole-16ch"                     # blackhole - 16ch
         "bpytop"                                    # bpytop
         "btop"                                      # btop
         "cmatrix"                                   # cmatrix
         "coreutils"                                 # coreutils
         "cowsay"                                    # cowsay
-        "--cask firefox"                            # firefox
-        "--cask font-fira-code-nerd-font"           # fira code nerd font
         "gh"                                        # github cli
         "git"                                       # git
         "glances"                                   # glances
         "gnu-sed"                                   # gnu sed
-        "--cask google-chrome"                      # google chrome
         "htop"                                      # htop
         "jesseduffield/lazygit/lazygit"             # lazygit
         "neofetch"                                  # neofetch
-        "--cask reaper"                             # reaper
         "shellcheck"                                # shellcheck
         "brew install koekeishiya/formulae/skhd"    # skhd
         "thefuck"                                   # thefuck
         "tldr"                                      # tldr
         "koekeishiya/formulae/yabai"                # yabai
+    )
+
+    typeset -a brew_casks
+    brew_casks=(
+        "amethyst"                           # amethyst
+        "blackhole-2ch"                      # blackhole - 2ch
+        "blackhole-16ch"                     # blackhole - 16ch
+        "firefox"                            # firefox
+        "font-fira-code-nerd-font"           # fira code nerd font
+        "google-chrome"                      # google chrome
+        "reaper"                             # reaper
     )
 
     typeset -a pyenv_build_dependencies
@@ -71,6 +75,9 @@ function homebrew_installations () {
     brew update && brew upgrade -y
     for (( i = 1; i <= $#brew_apps; i++)) do
         brew install "$brew_apps[i]"
+    done
+    for (( i = 1; i <= $#brew_casks; i++)) do
+        brew install --cask "$brew_casks[i]"
     done
     for (( i = 1; i <= $#neovim_build_prerequisites; i++)) do
         brew install "$neovim_build_prerequisites[i]"
