@@ -51,6 +51,7 @@ function homebrew_installations () {
         "firefox"
         "font-fira-code-nerd-font"
         "google-chrome"
+        "hammerspoon"
         "hyperkey"
         "karabiner-elements"
         "reaper"
