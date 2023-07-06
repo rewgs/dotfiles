@@ -70,16 +70,13 @@ function homebrew_installations () {
 
     brew update && brew upgrade -y
     for (( i = 1; i <= $#brew_apps; i++)) do
-        # brew install $brew_apps[i]
-        echo $brew_apps[i]
+        brew install "$brew_apps[i]"
     done
     for (( i = 1; i <= $#neovim_build_prerequisites; i++)) do
-        # brew install $neovim_build_prerequisites[i]
-        echo $neovim_build_prerequisites[i]
+        brew install "$neovim_build_prerequisites[i]"
     done
     for (( i = 1; i <= $#pyenv_build_dependencies; i++)) do
-        # brew install $pyenv_build_dependencies[i]
-        echo $pyenv_build_dependencies[i]
+        brew install "$pyenv_build_dependencies[i]"
     done
 }
 
