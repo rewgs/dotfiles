@@ -1,10 +1,38 @@
 -- good reference here: https://github.com/NateEag/dotfiles/blob/d8c81c3890af65bf4316718426d88e13398e6eaa/src/.hammerspoon/init.lua
 
-ANIMATION_DURATION = 0
-
-hyper_keys = {'command', 'ctrl'}
 
 cli_installed = hs.ipc.cliStatus()
+
+
+---------------------------------------------------------------------------------------------------
+-- HYPER KEY
+---------------------------------------------------------------------------------------------------
+
+-- Note: this requires that the "CapsLock to Hyper" Karabiner Elements Complex Modification be 
+-- setup and running before the Hyper key will work.
+local hyper = {'cmd', 'alt', 'ctrl', 'shift'}
+
+-- Load and create a new switcher
+local HyperKey = hs.loadSpoon("HyperKey")
+hyperKey = HyperKey:new(hyper, {
+  overlayTimeoutMs = 1000, -- wait 1000ms instead
+})
+
+-- Bind some applications to keys
+hyperKey
+  :bind('c'):toApplication('/Applications/Google Chrome.app')
+  :bind('s'):toApplication('/Applications/Spotify.app')
+  :bind('t'):toApplication('/Applications/iTerm.app')
+
+-- Bind some functions to keys
+local reloadHammerspoon = function()
+  hs.application.launchOrFocus("Hammerspoon")
+  hs.reload()
+end
+
+-- hyperKey
+--   :bind('h'):toFunction("Reload Hammerspoon", reloadHammerspoon)
+--   :bind('l'):toFunction("Lock screen", hs.caffeinate.startScreensaver)
 
 
 
