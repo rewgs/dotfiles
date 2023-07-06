@@ -72,7 +72,7 @@ function homebrew_installations () {
         "ninja"
     )
 
-    brew update && brew upgrade -y
+    brew update && brew upgrade
     for (( i = 1; i <= $#brew_apps; i++)) do
         brew install "$brew_apps[i]"
     done
