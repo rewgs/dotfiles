@@ -389,7 +389,6 @@ function main() {
     install_python
 
     install_rust
-    # install_oh_my_zsh
 }
 
 
