@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 
 # -u: If a variable does not exist, report the error and stop (e.g., unbound 
