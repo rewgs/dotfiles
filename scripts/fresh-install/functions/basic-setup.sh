@@ -359,9 +359,35 @@ function install_rust() {
 }
 
 
+function install_github_cli() {
+    # add repository
+	type -p curl >/dev/null || sudo apt install curl -y
+	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+	&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+
+	sudo apt update && sudo apt install gh -y
+}
+
+
+function install_oh_my_zsh() {
+    # interactive
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    # unattended -- can't use right now
+    # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+    # FIXME: the following doesn't work!
+    # `< /dev/tty` forces that new shell to start reading input from the terminal. 
+    #   Without this, the script would exit, returning to your calling script. I 
+    #   don't want this to happen - I want more functions to run aftr this.
+    # exec zsh < /dev/tty
+}
+
 function main() {
-    install_from_package_manager
     remove_snap
+    install_from_package_manager
+    install_github_cli
 
     # tmux
     install_tmux_from_source
@@ -378,9 +404,8 @@ function main() {
     install_nodejs
 
     # phpenv
-    # NOTE: php-build is broken at the moment so this isn't worth installing
-    # install_phpenv_build_prerequisites
-    # install_phpenv_from_source
+    install_phpenv_build_prerequisites
+    install_phpenv_from_source
 
     # pyenv
     install_pyenv_build_dependencies
@@ -389,6 +414,12 @@ function main() {
     install_python
 
     install_rust
+
+    # since the below isn't working, this script will run and then exit after 
+    #   installing oh my zsh. Will need to run dotfile symlink function 
+    #   separately. So, I've commented out the function call below and placed it 
+    #   by itself in `main()` so that I can easily comment out `personal_setup_cli()`
+    install_oh_my_zsh
 }
 
 

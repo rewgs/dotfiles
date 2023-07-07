@@ -8,7 +8,7 @@
 
 
 # TODO: make sure this works on macOS!
-make_dotfiles_symlinks() {
+function make_dotfiles_symlinks () {
     # ╔════════════════════════════════════════════════════════════════════════════╗
     # ║ make directories                                                           ║
     # ╚════════════════════════════════════════════════════════════════════════════╝
@@ -106,7 +106,6 @@ make_dotfiles_symlinks() {
         ln -s "$HOME"/src/tpm/ "$HOME"/.tmux/plugins/tpm
     fi
     
-    
     # zsh
     if [ -f "$HOME"/.zshenv ]; then
         mv "$HOME"/.zshenv "$HOME"/dotfile_backups/zsh/
@@ -162,7 +161,7 @@ make_dotfiles_symlinks() {
 }
 
 
-install_lazygit_from_source() {
+function install_lazygit_from_source () {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone https://github.com/jesseduffield/lazygit.git
@@ -171,50 +170,39 @@ install_lazygit_from_source() {
 }
 
 
-install_npm_apps() {
-	npm install gtop -g
+function install_npm_apps () {
+    typeset -a npm_apps
+    npm_apps=(
+        "gtop -g"
+    )
+
+    for (( i = 1; i <= $#npm_apps; i++)) do
+        npm install "$npm_apps[i]"
+    done
 }
 
 
-install_rust_apps() {
-	cargo install \
-	    cargo-audi \
-	    cargo-edit \
-	    cargo-make \
-	    cargo-tarpaulin \
-	    cargo-watch \
-        ytop
-}
+function install_rust_apps () {
+    typeset -a rust_apps
+    rust_apps=(
+	    "cargo-audi"
+	    "cargo-edit"
+	    "cargo-make"
+	    "cargo-tarpaulin"
+	    "cargo-watch"
+        "ytop"
+    )
 
-
-install_github_cli() {
-    # add repository
-	type -p curl >/dev/null || sudo apt install curl -y
-	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-	&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-
-	sudo apt update && sudo apt install gh -y
-}
-
-
-install_oh_my_zsh() {
-    # interactive
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-    # unattended -- can't use right now
-    # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-
-    # FIXME: the following doesn't work!
-    # `< /dev/tty` forces that new shell to start reading input from the terminal. 
-    #   Without this, the script would exit, returning to your calling script. I 
-    #   don't want this to happen - I want more functions to run aftr this.
-    # exec zsh < /dev/tty
+    for (( i = 1; i <= $#rust_apps; i++)) do
+        cargo install "$rust_apps[i]"
+    done
 }
 
 
 
-install_firefox_without_snap() {
+
+
+function install_firefox_without_snap () {
     # assumes that snap has already been removed and `sudo snap remove firefox` run
 
     # depends on software-properties-common package (installed in `install_from_package_manager()`
@@ -234,7 +222,7 @@ install_firefox_without_snap() {
 }
 
 
-install_fira_code_nerd_font() {
+function install_fira_code_nerd_font () {
     mkdir ~/.fonts
     cd ~/.fonts
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraCode.zip
@@ -250,35 +238,23 @@ install_fira_code_nerd_font() {
 # ║ These are comprised of the individual functions above.                     ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-personal_setup_cli() {
-    # install_nodejs
-    # install_python
-    # install_lazygit_from_source   # not working now so not running
+function personal_setup_cli () {
+    # not working now so not running
+    # install_lazygit_from_source
+
     install_npm_apps
 
     # can't find a way to make cargo seen, so commenting out for now
     # install_rust_apps
 
-    install_github_cli
-
-    # since the below isn't working, this script will run and then exit after 
-    #   installing oh my zsh. Will need to run dotfile symlink function 
-    #   separately. So, I've commented out the function call below and placed it 
-    #   by itself in `main()` so that I can easily comment out `personal_setup_cli()`
-    install_oh_my_zsh
-
-    # make_dotfiles_symlinks
-
-    # oh my zsh installer doesn't do this due to the --unattended flag, so this is required
-    # FIXME: this doesn't work for some reason
-    # chsh -s $(which zsh)
+    make_dotfiles_symlinks
 
     echo "All finished!"
     exec $SHELL
 }
 
 
-personal_setup_gui() {
+function personal_setup_gui () {
     install_firefox_without_snap
     install_fira_code_nerd_font
 }
@@ -291,9 +267,8 @@ personal_setup_gui() {
 # ║ These don't overlap at all -- instead they cascade/build upon each other.  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-main() {
+function main() {
     personal_setup_cli
-    make_dotfiles_symlinks
     # personal_setup_gui
 }
 
