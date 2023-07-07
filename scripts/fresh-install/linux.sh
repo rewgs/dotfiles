@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 
 cd ~/dotfiles/scripts/fresh-install
