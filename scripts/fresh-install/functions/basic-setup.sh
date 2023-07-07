@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 
 # -u: If a variable does not exist, report the error and stop (e.g., unbound 
@@ -34,77 +34,71 @@ test $? -eq 0 || exit 1 "You should have sudo privilege to run this script."
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-install_from_package_manager() {
-    sleep 1
+function install_from_package_manager() {
+    echo "Checking for updates..."
+    sudo apt-get update -qq
 
-    # `uname --all` is bound to include some reference to the distro name
-    # FIXME: POSIX sh doesn't support globbing. Convert the following line to case statements.
-    # if [ "$(uname --all)" = *"Ubuntu"* ] || [ "$(uname --all)" = *"Debian"* ]; then
-    	echo "Checking for updates..."
-        sudo apt-get update -qq
     # `$?` is used to find the return value of the last executed command
 	if [ $? -eq 0 ]; then 
 		echo "Upgrading packages..."
 		sudo apt-get upgrade -qq -y
 	fi
+
+    typeset -a apps 
+    apps=(
+        "apache2"
+        "apt-transport-https"
+        "automake"
+        "bettercap"
+        "bpytop"
+        "btop"
+        "build-essential"
+        "cbonsai"
+        "cmake"
+        "cmatrix"
+        "cowsay"
+        "curl"
+        "docker"
+        "docker-compose"
+        "git"
+        "glances"
+        "gnupg2"
+        "golang-go"
+        "hsetroot"
+        "htop"
+        "libvirt-daemon"
+        "llvm"
+        "lua5.4"
+        "lynx"
+        "make"
+        "neofetch"
+        "ncdu"
+        "picom"
+        "qemu-kvm"
+        "shellcheck"
+        "software-properties-common"
+        "tgt"
+        "thefuck"
+        "tldr"
+        "tree"
+        "vim"
+        "wget"
+        "xorg"
+        "zsh"
+    )
     
-    	echo "Installing packages from package manager..."
-        sudo apt-get install -y \
-            apache2 \
-            apt-transport-https \
-            automake \
-            bettercap \
-            btop \
-            build-essential \
-            cbonsai \
-            cmake \
-            cmatrix \
-            cowsay \
-            curl \
-            docker \
-            docker-compose \
-            git \
-            glances \
-            gnupg2 \
-            golang-go \
-            hsetroot \
-            htop \
-            libvirt-daemon \
-            llvm \
-            lua5.4 \
-            lynx \
-            make \
-            neofetch \
-            ncdu \
-            picom \
-            qemu-kvm \
-            shellcheck \
-            software-properties-common \
-            tgt \
-            thefuck \
-            tldr \
-            tree \
-            vim \
-            wget \
-            xorg \
-            zsh \
-
-	    > /dev/null 2> /dev/null # for some reason, `&> /dev/null` isn't silent, but this is
-
-    	echo "Checking for updates one more time..."
-        sudo apt-get update -qq
-	if [ $? -eq 0 ]; then 
-		echo "Upgrading packages one more time..."
-		sudo apt-get upgrade -qq -y
-	fi
-    # fi
+    echo "Installing packages from package manager..."
+    for a in ${apps[@]}; do
+        sudo apt-get install -y "$a"
+	    # > /dev/null 2> /dev/null # for some reason, `&> /dev/null` isn't silent, but this is
+    done
 
     echo "Package manager basic installations complete! Moving on..."
-    sleep 5
+    sleep 3
 }
 
 
-remove_snap() {
+function remove_snap() {
     # FIXME: 
     # - POSIX sh doesn't support globbing. Convert the following line to case statements.
     # - ^ isn't urgent, as right now I'm only running this on apt-based distros.
@@ -143,7 +137,7 @@ remove_snap() {
 }
 
 
-build_tmux_from_source() {
+function build_tmux_from_source() {
     # for building new and updating
     cd "$HOME"/src/tmux
     git pull
@@ -156,7 +150,7 @@ build_tmux_from_source() {
 }
 
 
-install_tmux_from_source() {
+function install_tmux_from_source() {
     # install dependencies
     sudo apt install -y \
         bison \
@@ -171,7 +165,7 @@ install_tmux_from_source() {
 }
 
 
-install_tmux_package_manager() {
+function install_tmux_package_manager() {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone --depth 1 https://github.com/tmux-plugins/tpm.git
@@ -181,7 +175,7 @@ install_tmux_package_manager() {
 }
 
 
-install_neovim_dependencies() {
+function install_neovim_dependencies() {
 	sudo apt-get install -y \
 		ninja-build \
 		gettext \
@@ -196,7 +190,7 @@ install_neovim_dependencies() {
 }
 
 
-update_neovim_from_source() {
+function update_neovim_from_source() {
 	cd "$HOME"/src/neovim
 	git checkout stable
 	git pull
@@ -205,7 +199,7 @@ update_neovim_from_source() {
 }
 
 
-install_neovim_from_source() {
+function install_neovim_from_source() {
     install_neovim_dependencies
 
     if [ ! -d ~/src ]; then mkdir ~/src; fi
@@ -217,14 +211,14 @@ install_neovim_from_source() {
 }
 
 
-install_packer_nvim() {
+function install_packer_nvim() {
 	git clone --depth 1 \
 		https://github.com/wbthomason/packer.nvim \
 		~/.local/share/nvim/site/pack/packer/start/packer.nvim
 }
 
 
-install_nvm_from_source() {
+function install_nvm_from_source() {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone --depth 1 https://github.com/nvm-sh/nvm.git
@@ -232,7 +226,7 @@ install_nvm_from_source() {
 }
 
 
-install_phpenv_build_prerequisites() {
+function install_phpenv_build_prerequisites() {
     sudo apt install -y \
         apache2-dev \
         libcurl4-gnutls-dev \
@@ -240,11 +234,11 @@ install_phpenv_build_prerequisites() {
         libonig-dev \
         libtidy-dev \
         libzip-dev \
-        re2c \
+        re2c
 }
 
 
-install_phpenv_from_source() {
+function install_phpenv_from_source() {
     # install phpenv
     if [ ! -d ~/src ]; then mkdir ~/src; fi
     cd ~/src
@@ -263,7 +257,7 @@ install_phpenv_from_source() {
 }
 
 
-install_pyenv_build_dependencies() {
+function install_pyenv_build_dependencies() {
 	sudo apt update; 
 	sudo apt install -y \
 		build-essential \
@@ -283,7 +277,7 @@ install_pyenv_build_dependencies() {
 }
 
 
-install_pyenv_from_source() {
+function install_pyenv_from_source() {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone --depth 1 https://github.com/pyenv/pyenv.git
@@ -293,7 +287,7 @@ install_pyenv_from_source() {
 
 
 
-prep_for_nvm_nodejs_installs() {
+function prep_for_nvm_nodejs_installs() {
     echo 'export NVM_DIR=\\"\$([ -z \"\${XDG_CONFIG_HOME-}\" ] && printf %s \"\${HOME}/.nvm\" || printf %s \"\${XDG_CONFIG_HOME}/nvm\")\"' >> "$HOME"/.bashrc
     echo '[ -s \"\$NVM_DIR/nvm.sh\\" ] && \\. \"\$NVM_DIR/nvm.sh\"' >> "$HOME"/.bashrc
 
@@ -302,7 +296,7 @@ prep_for_nvm_nodejs_installs() {
 }
 
 
-install_nodejs() {
+function install_nodejs() {
     # This is what is added to .zshrc in order to run nvm. It's in there, so I shouldn't need to 
     #   add this, but for whatever reason, `nvm` isn't found when running this function unless this 
     #   is included, even though .zshrc has been sourced. Doesn't make any sense, but this works, 
@@ -319,7 +313,7 @@ install_nodejs() {
 }
 
 
-prep_for_pyenv_python_installs() {
+function prep_for_pyenv_python_installs() {
     # bash
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
     echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
@@ -336,7 +330,7 @@ prep_for_pyenv_python_installs() {
 }
 
 
-install_python() {
+function install_python() {
     # This is what is added to .zshrc in order to run nvm. It's in there, so I shouldn't need to 
     #   add this, but for whatever reason, `nvm` isn't found when running this function unless this 
     #   is included, even though .zshrc has been sourced. Doesn't make any sense, but this works, 
@@ -359,13 +353,13 @@ install_python() {
 }
 
 
-install_rust() {
+function install_rust() {
     curl https://sh.rustup.rs -sSf | sh -s -- -y
     # source ~/.cargo/env
 }
 
 
-main() {
+function main() {
     install_from_package_manager
     remove_snap
 
