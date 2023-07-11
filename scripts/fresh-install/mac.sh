@@ -20,6 +20,36 @@ function install_xcode_command_line_tools () {
 }
 
 
+function install_from_app_store () {
+    typeset -a apps
+    apps=(
+        "Adblock Plus"
+        "BetterSnapTool"
+        "Bitwarden"
+        "Developer"
+        "Keynote"
+        "LanScan"
+        "Logic Pro"
+        "Microsoft Remote Desktop"
+        "Numbers"
+        "Pages"
+        "Slack"
+        "Tailscale"
+        "The Unarchiver"
+        "UTM"
+        "Vimari"
+        "WhatsApp"
+        "Xcode"
+    )
+    for (( i = 1; i <= $#apps; i++)) do
+        app_id=$(mas search "$apps[i]")
+        mas install "$app_id"
+    done
+
+
+}
+
+
 function homebrew_installations () {
     typeset -a brew_apps
     brew_apps=(
@@ -35,6 +65,7 @@ function homebrew_installations () {
         "gnu-sed"
         "htop"
         "jesseduffield/lazygit/lazygit"
+        "mas" # https://github.com/mas-cli/mas
         "neofetch"
         "shellcheck"
         "brew install koekeishiya/formulae/skhd"
@@ -54,6 +85,7 @@ function homebrew_installations () {
         "hammerspoon"
         "hyperkey"
         "karabiner-elements"
+        "obs"
         "reaper"
     )
 
