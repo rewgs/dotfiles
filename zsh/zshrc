@@ -252,10 +252,8 @@ export PATH="$HOME/.config/broot/launcher/bash:$PATH"
 export PATH="$HOME/src/flutter/bin:$PATH"
 
 # golang
-if [[ $(uname) == "Linux" ]]; then
-    export GOROOT="$HOME/go"
-    export PATH="$GOROOT/bin:$PATH"
-fi
+export GOROOT="$HOME/go"
+export PATH="$GOROOT/bin:$PATH"
 
 # nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
