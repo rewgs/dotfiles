@@ -7,7 +7,7 @@
 
 function install_from_package_manager() {
     echo "Checking for updates..."
-    sudo pkg update
+    pkg update
 
     # `$?` is used to find the return value of the last executed command
 	if [ $? -eq 0 ]; then 
@@ -23,7 +23,6 @@ function install_from_package_manager() {
         "bettercap"
         "bpytop"
         "btop"
-        "build-essential"
         "cbonsai"
         "cmake"
         "cmatrix"
@@ -33,6 +32,7 @@ function install_from_package_manager() {
         "docker-compose"
         "git"
         "glances"
+        "gmake" # equivalent of `make`
         "gnupg2"
         "golang-go"
         "hsetroot"
@@ -41,7 +41,6 @@ function install_from_package_manager() {
         "llvm"
         "lua5.4"
         "lynx"
-        "make"
         "neofetch"
         "ncdu"
         "picom"
