@@ -18,25 +18,9 @@ return require('packer').startup(function(use)
     use 'nvim-telescope/telescope-file-browser.nvim'
     use "dimaportenko/telescope-simulators.nvim"
 
-    -- lsp and snippets
-    use 'neovim/nvim-lspconfig'
-    use 'williamboman/mason.nvim'
-    use 'williamboman/mason-lspconfig.nvim'
-    use {'neoclide/coc.nvim', branch = 'release'}
-    -- (the following is what was recommended in this video:
-    -- https://www.youtube.com/watch?v=h4g0m0Iwmys&list=WL&index=125)
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-nvim-lsp'          -- need to configure
-    use 'L3MON4D3/LuaSnip'              -- need to configure
-    use 'saadparwaiz1/cmp_luasnip'      -- need to configure
-    use 'rafamadriz/friendly-snippets'  -- need to configure
-
     use 'rainbowhxch/accelerated-jk.nvim'
-    use 'ThePrimeagen/harpoon'
     use 'nvim-lualine/lualine.nvim'
     use 'terrortylor/nvim-comment'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
-    use 'mbbill/undotree'
     use('mg979/vim-visual-multi', { branch = 'master' })
 end)
