@@ -6,25 +6,15 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 return require('packer').startup(function(use)
-
     use 'wbthomason/packer.nvim'
-
     use 'nvim-lua/plenary.nvim'
     
     -- themes
-    use({ "neanias/everforest-nvim",
-        config = function()
-        require("everforest").setup()
-        end,
-    })
     use 'ellisonleao/gruvbox.nvim'
     use 'navarasu/onedark.nvim'
 
     -- telescope and telescope plugins
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.1', requires = {{ 'nvim-lua/plenary.nvim' }}}
     use 'nvim-telescope/telescope-file-browser.nvim'
     use "dimaportenko/telescope-simulators.nvim"
 
@@ -45,23 +35,8 @@ return require('packer').startup(function(use)
     use 'ThePrimeagen/harpoon'
     use 'nvim-lualine/lualine.nvim'
     use 'terrortylor/nvim-comment'
-
-    use {
-        'nvim-treesitter/nvim-treesitter', 
-        run = ':TSUpdate' 
-    }
-
-    use 'windwp/nvim-ts-autotag'
-
-    use {
-        'kevinhwang91/nvim-ufo', 
-        requires = 'kevinhwang91/promise-async'
-    }
-
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
     use 'mbbill/undotree'
-
-    use('mg979/vim-visual-multi', {
-        branch = 'master'
-    })
-
+    use('mg979/vim-visual-multi', { branch = 'master' })
 end)

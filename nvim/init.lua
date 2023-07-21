@@ -8,7 +8,6 @@ require('settings')
 require('plugins.packer')   -- this must come first
 
 -- themes
-require('plugins.config.themes.everforest')
 require('plugins.config.themes.gruvbox')
 require('plugins.config.themes.onedark')
 require('plugins.config.accelerated-jk')
@@ -27,7 +26,6 @@ require('plugins.config.telescope-simulators')
 require('plugins.config.lualine')
 require('plugins.config.nvim-comment')
 require('plugins.config.nvim-treesitter')
-require('plugins.config.nvim-ts-autotag')
 require('plugins.config.nvim-ufo')
 require('plugins.config.undotree')
 
