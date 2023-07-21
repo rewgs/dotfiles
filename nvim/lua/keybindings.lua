@@ -148,7 +148,7 @@ nmap('n', '<leader>sim', ':Telescope simulators run<CR>', { silent = true })
 -- keybindings list here: https://github.com/VonHeikemen/lsp-zero.nvim/tree/v2.x#keybindings
 local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
-vmap('n', '<leader>h', lsp.hover, {})
+vmap('n', '<leader>zh', lsp.hover, {})
 vmap('n', '<leader>df', lsp.definition, {})
 vmap('n', '<leader>rf', lsp.references, {})
 vmap('n', '<leader>rn', lsp.rename, {})
