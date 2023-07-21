@@ -19,6 +19,7 @@ require('plugins.config.telescope-simulators')
 -- all others
 require('plugins.config.lualine')
 require('plugins.config.nvim-treesitter')
+require('plugins.config.lsp')
 require('plugins.config.nvim-comment')
 require('color-scheme')
 require('keybindings')

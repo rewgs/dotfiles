@@ -13,6 +13,28 @@ return require('packer').startup(function(use)
     use 'ellisonleao/gruvbox.nvim'
     use 'navarasu/onedark.nvim'
 
+    -- lsp-zero
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
+        requires = {
+            -- lsp support
+            {'neovim/nvim-lspconfig'},  -- required
+            {                           -- optional
+              'williamboman/mason.nvim',
+              run = function()
+                pcall(vim.cmd, 'MasonUpdate')
+              end,
+            },
+            {'williamboman/mason-lspconfig.nvim'}, -- optional
+            
+            -- autocompletion
+            {'hrsh7th/nvim-cmp'},     -- required
+            {'hrsh7th/cmp-nvim-lsp'}, -- required
+            {'L3MON4D3/LuaSnip'},     -- required
+      }
+    }
+
     -- telescope and telescope plugins
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.1', requires = {{ 'nvim-lua/plenary.nvim' }}}
     use 'nvim-telescope/telescope-file-browser.nvim'

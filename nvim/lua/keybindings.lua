@@ -2,9 +2,9 @@
 -- basics
 ---------------------------------------------------------------------------------------------------
 
--- I'm not totally sure on what the difference is between these, but 
+-- I'm not totally sure on what the difference is between these, but
 -- some remaps require `nmap` and others require `vmap`.
--- Default to the former, and try the latter if it doesn't work ¯\_(ツ)_/¯ 
+-- Default to the former, and try the latter if it doesn't work ¯\_(ツ)_/¯
 local nmap = vim.api.nvim_set_keymap
 local vmap = vim.keymap.set
 
@@ -64,7 +64,7 @@ nmap('i', '((', '()<Esc>i', { silent = true })
 nmap('i', '()', '()<Esc>i', { silent = true })
 
 
--- remap Escape to clear search results 
+-- remap Escape to clear search results
 nmap('n', '<Esc>', '<C-l>', { silent = true })
 -- vim.api.nvim_set_keymap('n', '<Esc>', '<C-l>', { silent = true })
 
@@ -74,45 +74,45 @@ nmap('n', '<leader>_', ':split<CR>', { silent = true })
 
 
 -- new buffer -- vertical split (space \)
-nmap('n', '<leader>|', ':vsplit<CR>',              {silent = true})
-nmap('n', '<leader>|', ':vsplit<CR>',              {silent = true})
+nmap('n', '<leader>|', ':vsplit<CR>', { silent = true })
+nmap('n', '<leader>|', ':vsplit<CR>', { silent = true })
 
 
 -- TODO: continue re-organizing from here on...
 
 -- navigation
-nmap('n', '<leader>h', '<C-w>h', {silent = true})
-nmap('n', '<leader>j', '<C-w>j', {silent = true})
-nmap('n', '<leader>k', '<C-w>k', {silent = true})
-nmap('n', '<leader>l', '<C-w>l', {silent = true})
+nmap('n', '<leader>h', '<C-w>h', { silent = true })
+nmap('n', '<leader>j', '<C-w>j', { silent = true })
+nmap('n', '<leader>k', '<C-w>k', { silent = true })
+nmap('n', '<leader>l', '<C-w>l', { silent = true })
 
 -- move windows
-nmap('n', '<leader>H', '<C-w>H', {silent = true})
-nmap('n', '<leader>J', '<C-w>J', {silent = true})
-nmap('n', '<leader>K', '<C-w>K', {silent = true})
-nmap('n', '<leader>L', '<C-w>L', {silent = true})
+nmap('n', '<leader>H', '<C-w>H', { silent = true })
+nmap('n', '<leader>J', '<C-w>J', { silent = true })
+nmap('n', '<leader>K', '<C-w>K', { silent = true })
+nmap('n', '<leader>L', '<C-w>L', { silent = true })
 
 -- next window
-nmap('n', '<leader>`', '<C-w>w', {silent = true})
+nmap('n', '<leader>`', '<C-w>w', { silent = true })
 
 -- close buffer
-nmap('n', '<leader>w', '<C-w>q', {silent = true})
-nmap('n', '<Leader>h', '<C-w>h', {silent = true})
-nmap('n', '<Leader>j', '<C-w>j', {silent = true})
-nmap('n', '<Leader>k', '<C-w>k', {silent = true})
-nmap('n', '<Leader>l', '<C-w>l', {silent = true})
+nmap('n', '<leader>w', '<C-w>q', { silent = true })
+nmap('n', '<Leader>h', '<C-w>h', { silent = true })
+nmap('n', '<Leader>j', '<C-w>j', { silent = true })
+nmap('n', '<Leader>k', '<C-w>k', { silent = true })
+nmap('n', '<Leader>l', '<C-w>l', { silent = true })
 
 -- move windows
-nmap('n', '<Leader>H', '<C-w>H', {silent = true})
-nmap('n', '<Leader>J', '<C-w>J', {silent = true})
-nmap('n', '<Leader>K', '<C-w>K', {silent = true})
-nmap('n', '<Leader>L', '<C-w>L', {silent = true})
+nmap('n', '<Leader>H', '<C-w>H', { silent = true })
+nmap('n', '<Leader>J', '<C-w>J', { silent = true })
+nmap('n', '<Leader>K', '<C-w>K', { silent = true })
+nmap('n', '<Leader>L', '<C-w>L', { silent = true })
 
 -- next window
-nmap('n', '<Leader>`', '<C-w>w', {silent = true})
+nmap('n', '<Leader>`', '<C-w>w', { silent = true })
 
 -- close buffer
-nmap('n', '<Leader>w', '<C-w>q', {silent = true})
+nmap('n', '<Leader>w', '<C-w>q', { silent = true })
 
 -- Alias W to w
 -- TODO: get this to work!
@@ -120,13 +120,13 @@ nmap('n', '<Leader>w', '<C-w>q', {silent = true})
 
 
 ---------------------------------------------------------------------------------------------------
--- plugins 
+-- plugins
 ---------------------------------------------------------------------------------------------------
 
 -- nvim-comment
 -- apparently control+/ is C-_
-vmap('n', '<C-_>', ':CommentToggle<CR>', {silent = true})
-vmap('v', '<C-_>', ':CommentToggle<CR>', {silent = true})
+vmap('n', '<C-_>', ':CommentToggle<CR>', { silent = true })
+vmap('v', '<C-_>', ':CommentToggle<CR>', { silent = true })
 
 -- telescope
 local t = require('telescope.builtin')
@@ -138,8 +138,21 @@ vmap('n', '<leader>b', t.buffers, {})
 vmap('n', '<leader>fh', t.help_tags, {})
 
 -- nvim.ufo (folding)
-nmap('n', '<leader>fo', ':foldopen<CR>', {silent = true})
-nmap('n', '<leader>fc', ':foldclose<CR>', {silent = true})
+nmap('n', '<leader>fo', ':foldopen<CR>', { silent = true })
+nmap('n', '<leader>fc', ':foldclose<CR>', { silent = true })
 
 -- telescope-simulators.nvim
-nmap('n', '<leader>sim', ':Telescope simulators run<CR>', {silent = true})
+nmap('n', '<leader>sim', ':Telescope simulators run<CR>', { silent = true })
+
+-- lsp-zero
+-- keybindings list here: https://github.com/VonHeikemen/lsp-zero.nvim/tree/v2.x#keybindings
+local lsp = vim.lsp.buf
+local diagnostic = vim.diagnostic
+vmap('n', '<leader>h', lsp.hover, {})
+vmap('n', '<leader>df', lsp.definition, {})
+vmap('n', '<leader>rf', lsp.references, {})
+vmap('n', '<leader>rn', lsp.rename, {})
+vmap('n', '<leader>fm', lsp.format, {})
+vmap('n', '<leader>dg', diagnostic.open_float, {})
+vmap('n', '<leader>dn', diagnostic.goto_next, {})
+vmap('n', '<leader>dp', diagnostic.goto_prev, {})
