@@ -9,11 +9,11 @@ local nmap = vim.api.nvim_set_keymap
 local vmap = vim.keymap.set
 
 
--- remap leader from `\` to `;`
-vim.g.mapleader = ';'
+-- remap leader from `\` to spacebar
+vim.g.mapleader = ' '
 
 -- Invoke commands with spacebar or semi-colon
-nmap('n', '<Space>', ':', { noremap = true })
+-- nmap('n', '<Space>', ':', { noremap = true })
 
 -- goes down a line, then opens a new line above (which will usually automatically add a tab)
 -- stealing alt+j from above, as I'm getting more and more used to the default C-d and C-u
@@ -97,22 +97,22 @@ nmap('n', '<leader>`', '<C-w>w', { silent = true })
 
 -- close buffer
 nmap('n', '<leader>w', '<C-w>q', { silent = true })
-nmap('n', '<Leader>h', '<C-w>h', { silent = true })
-nmap('n', '<Leader>j', '<C-w>j', { silent = true })
-nmap('n', '<Leader>k', '<C-w>k', { silent = true })
-nmap('n', '<Leader>l', '<C-w>l', { silent = true })
+nmap('n', '<leader>h', '<C-w>h', { silent = true })
+nmap('n', '<leader>j', '<C-w>j', { silent = true })
+nmap('n', '<leader>k', '<C-w>k', { silent = true })
+nmap('n', '<leader>l', '<C-w>l', { silent = true })
 
 -- move windows
-nmap('n', '<Leader>H', '<C-w>H', { silent = true })
-nmap('n', '<Leader>J', '<C-w>J', { silent = true })
-nmap('n', '<Leader>K', '<C-w>K', { silent = true })
-nmap('n', '<Leader>L', '<C-w>L', { silent = true })
+nmap('n', '<leader>H', '<C-w>H', { silent = true })
+nmap('n', '<leader>J', '<C-w>J', { silent = true })
+nmap('n', '<leader>K', '<C-w>K', { silent = true })
+nmap('n', '<leader>L', '<C-w>L', { silent = true })
 
 -- next window
-nmap('n', '<Leader>`', '<C-w>w', { silent = true })
+nmap('n', '<leader>`', '<C-w>w', { silent = true })
 
 -- close buffer
-nmap('n', '<Leader>w', '<C-w>q', { silent = true })
+nmap('n', '<leader>w', '<C-w>q', { silent = true })
 
 -- Alias W to w
 -- TODO: get this to work!
