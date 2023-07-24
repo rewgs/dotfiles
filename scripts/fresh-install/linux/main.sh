@@ -439,8 +439,9 @@ function make_dotfiles_symlinks () {
         mkdir "$HOME/.config"
     fi
     if [ -d "$HOME/.config/nvim" ] || [ -h "$HOME/.config/nvim" ]; then
-        ln -s "$HOME/dotfiles/nvim/" "$HOME/.config/nvim"
+        rm "$HOME/.config/nvim"
     fi
+    ln -s "$HOME/dotfiles/nvim/" "$HOME/.config/nvim"
 
     # sh
     if [ -f "$HOME/.profile" ] || [ -h "$HOME/.profile" ]; then
