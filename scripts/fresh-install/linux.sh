@@ -304,7 +304,6 @@ function install_nodejs() {
 
     # installs lts version
     nvm install --lts   
-    nvm use --lts
 }
 
 
@@ -391,6 +390,8 @@ function install_fira_code_nerd_font () {
 
 
 function install_npm_apps () {
+    nvm use --lts
+
     typeset -a npm_apps
     npm_apps=(
         "gtop -g"
@@ -453,66 +454,27 @@ function make_dotfiles_symlinks () {
     fi
     ln -s "$HOME/dotfiles/tmux/tmux.conf" "$HOME/.tmux.conf"
      
-    # tpm - REDO THIS NEXT
-    if [ ! -d "$HOME"/src/tpm ]; then
-        ln -s "$HOME"/src/tpm/ "$HOME"/.tmux/plugins/tpm
-    elif [ -h "$HOME"/.tmux/plugins/tpm ]; then
+    # tpm
+    if [ -h "$HOME"/.tmux/plugins/tpm ]; then
         rm "$HOME"/.tmux/plugins/tpm
-        ln -s "$HOME"/src/tpm/ "$HOME"/.tmux/plugins/tpm
-    else
-        ln -s "$HOME"/src/tpm/ "$HOME"/.tmux/plugins/tpm
     fi
+    ln -s "$HOME/src/tpm/" "$HOME/.tmux/plugins/tpm"
     
     # zsh
-    if [ -f "$HOME"/.zshenv ]; then
-        mv "$HOME"/.zshenv "$HOME"/dotfile_backups/zsh/
-        ln -s "$HOME"/dotfiles/zsh/zshenv "$HOME"/.zshenv
-    elif [ -h "$HOME"/.zshenv ]; then
-        rm "$HOME"/.zshenv
-        ln -s "$HOME"/dotfiles/zsh/zshenv "$HOME"/.zshenv
-    else
-        ln -s "$HOME"/dotfiles/zsh/zshenv "$HOME"/.zshenv
-    fi
-    
-    if [ -f "$HOME"/.zprofile ]; then
-        mv "$HOME"/.zprofile "$HOME"/dotfile_backups/zsh/
-        ln -s "$HOME"/dotfiles/zsh/zprofile "$HOME"/.zprofile
-    elif [ -h "$HOME"/.zprofile ]; then
-        rm "$HOME"/.zprofile
-        ln -s "$HOME"/dotfiles/zsh/zprofile "$HOME"/.zprofile
-    else
-        ln -s "$HOME"/dotfiles/zsh/zprofile "$HOME"/.zprofile
-    fi
-    
-    if [ -f "$HOME"/.zshrc ]; then
-        mv "$HOME"/.zshrc "$HOME"/dotfile_backups/zsh/
-        ln -s "$HOME"/dotfiles/zsh/zshrc "$HOME"/.zshrc
-    elif [ -h "$HOME"/.zshrc ]; then
-        rm "$HOME"/.zshrc
-        ln -s "$HOME"/dotfiles/zsh/zshrc "$HOME"/.zshrc
-    else
-        ln -s "$HOME"/dotfiles/zsh/zshrc "$HOME"/.zshrc
-    fi
-    
-    if [ -f "$HOME"/.zlogin ]; then
-        mv "$HOME"/.zlogin "$HOME"/dotfile_backups/zsh/
-        ln -s "$HOME"/dotfiles/zsh/zlogin "$HOME"/.zlogin
-    elif [ -h "$HOME"/.zlogin ]; then
-        rm "$HOME"/.zlogin
-        ln -s "$HOME"/dotfiles/zsh/zlogin "$HOME"/.zlogin
-    else
-        ln -s "$HOME"/dotfiles/zsh/zlogin "$HOME"/.zlogin
-    fi
-    
-    if [ -f "$HOME"/.zlogout ]; then
-        mv "$HOME"/.zlogout "$HOME"/dotfile_backups/zsh/
-        ln -s "$HOME"/dotfiles/zsh/zlogout "$HOME"/.zlogout
-    elif [ -h "$HOME"/.zlogout ]; then
-        rm "$HOME"/.zlogout
-        ln -s "$HOME"/dotfiles/zsh/zlogout "$HOME"/.zlogout
-    else
-        ln -s "$HOME"/dotfiles/zsh/zlogout "$HOME"/.zlogout
-    fi
+    typeset -a zsh_dots
+    zsh_dots=(
+        "zlogin"
+        "zlogout"
+        "zprofile"
+        "zshenv"
+        "zshrc"
+    )
+    for d in "$zsh_dots[@]"; do
+        if [ -f "$HOME/.$d"] || [ -h "$HOME/.$d"]; then
+            rm "$HOME/.$d"
+        fi
+        ln -s "$HOME/dotfiles/zsh/$d" "$HOME/.$d"
+    done
 
     echo "Symlinking dotfiles complete!"
 }
@@ -567,7 +529,6 @@ function main() {
     install_nvm_from_source
     prep_for_nvm_nodejs_installs
     install_nodejs
-    install_npm_apps
 
     # phpenv
     install_phpenv_build_prerequisites
@@ -578,9 +539,6 @@ function main() {
     install_pyenv_from_source
     prep_for_pyenv_python_installs
     install_python
-
-    # rust
-    install_rust
 
     install_fira_code_nerd_font
 
@@ -595,3 +553,6 @@ function main() {
 
 
 main
+# install_npm_apps
+# install_rust
+# install_cargo_apps
