@@ -560,8 +560,7 @@ function main() {
 
 
     if $# != 1; then
-        echo "Please enter only a 1 or 2."
-        read which_part
+        read -p "Please enter only a 1 or 2:" which_part
         main($which_part)
     fi
 
@@ -570,8 +569,7 @@ function main() {
     elif "$1" -eq "2"; then
         part 2
     else
-        echo "Please enter only a 1 or 2."
-        read which_part
+        read -p "Please enter only a 1 or 2:" which_part
         main($which_part)
     fi
 }
