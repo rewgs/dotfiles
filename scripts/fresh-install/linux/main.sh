@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 
 # -u: If a variable does not exist, report the error and stop (e.g., unbound 
@@ -28,7 +28,7 @@ test $? -eq 0 || exit 1 "You should have sudo privilege to run this script."
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-function install_from_package_manager() {
+function install_from_package_manager () {
     echo "Checking for updates..."
     sudo apt-get update -qq
 
@@ -92,7 +92,7 @@ function install_from_package_manager() {
 }
 
 
-function remove_snap() {
+function remove_snap () {
     # FIXME: 
     # - POSIX sh doesn't support globbing. Convert the following line to case statements.
     # - ^ isn't urgent, as right now I'm only running this on apt-based distros.
@@ -131,7 +131,7 @@ function remove_snap() {
 }
 
 
-function build_tmux_from_source() {
+function build_tmux_from_source () {
     # for building new and updating
     cd "$HOME"/src/tmux
     git pull
@@ -144,7 +144,7 @@ function build_tmux_from_source() {
 }
 
 
-function install_tmux_from_source() {
+function install_tmux_from_source () {
     # install dependencies
     sudo apt install -y \
         bison \
@@ -159,7 +159,7 @@ function install_tmux_from_source() {
 }
 
 
-function install_tmux_package_manager() {
+function install_tmux_package_manager () {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone --depth 1 https://github.com/tmux-plugins/tpm.git
@@ -169,7 +169,7 @@ function install_tmux_package_manager() {
 }
 
 
-# function install_neovim_dependencies() {
+# function install_neovim_dependencies () {
 # 	sudo apt-get install -y \
 # 		ninja-build \
 # 		gettext \
@@ -184,7 +184,7 @@ function install_tmux_package_manager() {
 # }
 
 
-# function update_neovim_from_source() {
+# function update_neovim_from_source () {
 # 	cd "$HOME"/src/neovim
 # 	git checkout stable
 # 	git pull
@@ -193,7 +193,7 @@ function install_tmux_package_manager() {
 # }
 
 
-# function install_neovim_from_source() {
+# function install_neovim_from_source () {
 #     install_neovim_dependencies
 
 #     if [ ! -d ~/src ]; then mkdir ~/src; fi
@@ -205,14 +205,14 @@ function install_tmux_package_manager() {
 # }
 
 
-# function install_packer_nvim() {
+# function install_packer_nvim () {
 # 	git clone --depth 1 \
 # 		https://github.com/wbthomason/packer.nvim \
 # 		~/.local/share/nvim/site/pack/packer/start/packer.nvim
 # }
 
 
-function install_nvm_from_source() {
+function install_nvm_from_source () {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone --depth 1 https://github.com/nvm-sh/nvm.git
@@ -220,7 +220,7 @@ function install_nvm_from_source() {
 }
 
 
-function install_phpenv_build_prerequisites() {
+function install_phpenv_build_prerequisites () {
     sudo apt install -y \
         apache2-dev \
         libcurl4-gnutls-dev \
@@ -232,7 +232,7 @@ function install_phpenv_build_prerequisites() {
 }
 
 
-function install_phpenv_from_source() {
+function install_phpenv_from_source () {
     # install phpenv
     if [ ! -d ~/src ]; then mkdir ~/src; fi
     cd ~/src
@@ -252,7 +252,7 @@ function install_phpenv_from_source() {
 }
 
 
-function install_pyenv_build_dependencies() {
+function install_pyenv_build_dependencies () {
 	sudo apt update; 
 	sudo apt install -y \
 		build-essential \
@@ -272,7 +272,7 @@ function install_pyenv_build_dependencies() {
 }
 
 
-function install_pyenv_from_source() {
+function install_pyenv_from_source () {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone --depth 1 https://github.com/pyenv/pyenv.git
@@ -282,7 +282,7 @@ function install_pyenv_from_source() {
 
 
 
-function prep_for_nvm_nodejs_installs() {
+function prep_for_nvm_nodejs_installs () {
     echo 'export NVM_DIR=\\"\$([ -z \"\${XDG_CONFIG_HOME-}\" ] && printf %s \"\${HOME}/.nvm\" || printf %s \"\${XDG_CONFIG_HOME}/nvm\")\"' >> "$HOME"/.bashrc
     echo '[ -s \"\$NVM_DIR/nvm.sh\\" ] && \\. \"\$NVM_DIR/nvm.sh\"' >> "$HOME"/.bashrc
 
@@ -291,7 +291,7 @@ function prep_for_nvm_nodejs_installs() {
 }
 
 
-function install_nodejs() {
+function install_nodejs () {
     # This is what is added to .zshrc in order to run nvm. It's in there, so I shouldn't need to 
     #   add this, but for whatever reason, `nvm` isn't found when running this function unless this 
     #   is included, even though .zshrc has been sourced. Doesn't make any sense, but this works, 
@@ -307,7 +307,7 @@ function install_nodejs() {
 }
 
 
-function prep_for_pyenv_python_installs() {
+function prep_for_pyenv_python_installs () {
     # bash
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
     echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
@@ -324,7 +324,7 @@ function prep_for_pyenv_python_installs() {
 }
 
 
-function install_python() {
+function install_python () {
     # This is what is added to .zshrc in order to run nvm. It's in there, so I shouldn't need to 
     #   add this, but for whatever reason, `nvm` isn't found when running this function unless this 
     #   is included, even though .zshrc has been sourced. Doesn't make any sense, but this works, 
@@ -347,13 +347,13 @@ function install_python() {
 }
 
 
-function install_rust() {
+function install_rust () {
     curl https://sh.rustup.rs -sSf | sh -s -- -y
     # source ~/.cargo/env
 }
 
 
-function install_github_cli() {
+function install_github_cli () {
     # add repository
 	type -p curl >/dev/null || sudo apt install curl -y
 	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
@@ -364,7 +364,7 @@ function install_github_cli() {
 }
 
 
-function install_oh_my_zsh() {
+function install_oh_my_zsh () {
     # interactive
     # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -510,8 +510,8 @@ function install_firefox_without_snap () {
 }
 
 
-function main() {
-    function part1() {
+function main () {
+    function part1 () {
         # This isn't really working. Commenting out for now.
         # remove_snap
 
@@ -552,7 +552,7 @@ function main() {
     }
 
 
-    function part2() {
+    function part2 () {
         install_npm_apps
         install_rust
         install_cargo_apps
@@ -560,8 +560,8 @@ function main() {
 
 
     if $# != 1; then
-        read -p "Please enter only a 1 or 2:" which_part
-        main "$which_part"
+        read -p "Please enter only a 1 or 2:" part
+        main "$part"
     fi
 
     if "$1" -eq "1"; then
@@ -569,8 +569,8 @@ function main() {
     elif "$1" -eq "2"; then
         part 2
     else
-        read -p "Please enter only a 1 or 2:" which_part
-        main "$which_part"
+        read -p "Please enter only a 1 or 2:" part
+        main "$part"
     fi
 }
 main
