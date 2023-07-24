@@ -396,8 +396,8 @@ function install_npm_apps () {
         "gtop -g"
     )
 
-    for (( i = 1; i <= $#npm_apps; i++)) do
-        npm install "$npm_apps[i]"
+    for app in "${npm_apps[@]}"; do
+        npm install "$app"
     done
 }
 
@@ -413,8 +413,8 @@ function install_cargo_apps () {
         "ytop"
     )
 
-    for (( i = 1; i <= $#cargo_apps; i++)) do
-        cargo install "$cargo_apps[i]"
+    for app in "${cargo_apps[@]}"; do
+        cargo install "$app"
     done
 }
 
@@ -635,7 +635,6 @@ function main() {
 
     # rust
     install_rust
-    install_cargo_apps
 
     install_fira_code_nerd_font
 
