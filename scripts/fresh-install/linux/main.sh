@@ -521,7 +521,7 @@ function main() {
     install_tmux_package_manager
 
     # neovim
-    source neovim.sh
+    source ./neovim.sh
     install_neovim
     # install_neovim_dependencies
     # install_neovim_from_source
