@@ -169,47 +169,47 @@ function install_tmux_package_manager() {
 }
 
 
-function install_neovim_dependencies() {
-	sudo apt-get install -y \
-		ninja-build \
-		gettext \
-		libtool \
-		libtool-bin \
-		autoconf \
-		automake \
-		g++ \
-		pkg-config \
-		unzip \
-		doxygen
-}
+# function install_neovim_dependencies() {
+# 	sudo apt-get install -y \
+# 		ninja-build \
+# 		gettext \
+# 		libtool \
+# 		libtool-bin \
+# 		autoconf \
+# 		automake \
+# 		g++ \
+# 		pkg-config \
+# 		unzip \
+# 		doxygen
+# }
 
 
-function update_neovim_from_source() {
-	cd "$HOME"/src/neovim
-	git checkout stable
-	git pull
-	sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
-	sudo make clean install
-}
+# function update_neovim_from_source() {
+# 	cd "$HOME"/src/neovim
+# 	git checkout stable
+# 	git pull
+# 	sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
+# 	sudo make clean install
+# }
 
 
-function install_neovim_from_source() {
-    install_neovim_dependencies
+# function install_neovim_from_source() {
+#     install_neovim_dependencies
 
-    if [ ! -d ~/src ]; then mkdir ~/src; fi
-    cd ~/src
-    git clone --depth 1 https://github.com/neovim/neovim.git --branch stable
-    cd ~/src/neovim
-	make CMAKE_BUILD_TYPE=RelWithDebInfo
-	sudo make install
-}
+#     if [ ! -d ~/src ]; then mkdir ~/src; fi
+#     cd ~/src
+#     git clone --depth 1 https://github.com/neovim/neovim.git --branch stable
+#     cd ~/src/neovim
+# 	make CMAKE_BUILD_TYPE=RelWithDebInfo
+# 	sudo make install
+# }
 
 
-function install_packer_nvim() {
-	git clone --depth 1 \
-		https://github.com/wbthomason/packer.nvim \
-		~/.local/share/nvim/site/pack/packer/start/packer.nvim
-}
+# function install_packer_nvim() {
+# 	git clone --depth 1 \
+# 		https://github.com/wbthomason/packer.nvim \
+# 		~/.local/share/nvim/site/pack/packer/start/packer.nvim
+# }
 
 
 function install_nvm_from_source() {
@@ -521,9 +521,11 @@ function main() {
     install_tmux_package_manager
 
     # neovim
-    install_neovim_dependencies
-    install_neovim_from_source
-    install_packer_nvim
+    source neovim.sh
+    install_neovim
+    # install_neovim_dependencies
+    # install_neovim_from_source
+    # install_packer_nvim
 
     # nodejs
     install_nvm_from_source
@@ -545,7 +547,7 @@ function main() {
     make_dotfiles_symlinks
 
     install_oh_my_zsh
-    chsh -s $(which zsh)
+    sudo chsh -s $(which zsh) $(whoami)
 
     echo "All done! Restarting now..."
     sudo reboot
