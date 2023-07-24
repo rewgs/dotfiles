@@ -367,10 +367,10 @@ function install_github_cli() {
 
 function install_oh_my_zsh() {
     # interactive
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-    # unattended -- can't use right now
-    # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    # unattended
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
     # FIXME: the following doesn't work!
     # `< /dev/tty` forces that new shell to start reading input from the terminal. 
@@ -641,11 +641,11 @@ function main() {
 
     make_dotfiles_symlinks
 
-    # since the below isn't working, this script will run and then exit after 
-    #   installing oh my zsh. Will need to run dotfile symlink function 
-    #   separately. So, I've commented out the function call below and placed it 
-    #   by itself in `main()` so that I can easily comment out `personal_setup_cli()`
     install_oh_my_zsh
+    chsh -s $(which zsh)
+
+    echo "All done! Restarting now..."
+    sudo reboot
 }
 
 
