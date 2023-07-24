@@ -470,7 +470,7 @@ function make_dotfiles_symlinks () {
         "zshrc"
     )
     for z in "$zsh_dots[@]"; do
-        if [ -f "$HOME/.$z"] || [ -h "$HOME/.$z"]; then
+        if [ -f "$HOME/.$z" ] || [ -h "$HOME/.$z" ]; then
             rm "$HOME/.$z"
         fi
         ln -s "$HOME/dotfiles/zsh/$z" "$HOME/.$z"
