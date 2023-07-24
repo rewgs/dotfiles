@@ -1,13 +1,13 @@
 #!/usr/bin/bash
 
-
 # -u: If a variable does not exist, report the error and stop (e.g., unbound 
 #   variable)
 # -e: Terminate whenever an error occurs (e.g., command not found)
 # -o pipefail: 	If a sub-command fails, the entire pipeline command fails, 
 #   terminating the script (e.g., command not found)
 # set -eu -o pipefail
-set -eu # apparently `-o pipefail` isn't legal in POSIX shell
+# Commenting this out because apparently it's making my main() fail when it has no args...
+# set -eu # apparently `-o pipefail` isn't legal in POSIX shell
 
 
 # test: Takes an expression as an argument, evaluates it as '0' (true) or '1' 
@@ -559,11 +559,13 @@ function main () {
     }
 
 
-    if $# != 1; then
-        read -p "Please enter only a 1 or 2:" part
-        main "$part"
-    fi
+    # Commenting this out once I fix the following block.
+    # if $# != 1; then
+    #     read -p "Please enter only a 1 or 2:" part
+    #     main "$part"
+    # fi
 
+    # FIXME: this is failing no matter what. How can I get this to work?
     if "$1" -eq "1"; then
         part1
     elif "$1" -eq "2"; then
