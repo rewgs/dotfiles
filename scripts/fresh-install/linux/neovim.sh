@@ -35,14 +35,19 @@ function install_neovim_from_source() {
 
 
 function install_packer_nvim() {
-	git clone --depth 1 \
-		https://github.com/wbthomason/packer.nvim \
-		~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    src="https://github.com/wbthomason/packer.nvim"
+    dst="$HOME/.local/share/nvim/site/pack/packer/start/"
+
+    if [ ! -d "$dst" ]; then
+        mkdir -p "$dst"
+    fi
+
+	git clone --depth 1 "$src" $"dst"
 }
 
 
 function install_neovim() {
-    install_neovim_dependencies
-    install_neovim_from_source
+    # install_neovim_dependencies
+    # install_neovim_from_source
     install_packer_nvim
 }

@@ -469,11 +469,11 @@ function make_dotfiles_symlinks () {
         "zshenv"
         "zshrc"
     )
-    for d in "$zsh_dots[@]"; do
-        if [ -f "$HOME/.$d"] || [ -h "$HOME/.$d"]; then
-            rm "$HOME/.$d"
+    for z in "$zsh_dots[@]"; do
+        if [ -f "$HOME/.$z"] || [ -h "$HOME/.$z"]; then
+            rm "$HOME/.$z"
         fi
-        ln -s "$HOME/dotfiles/zsh/$d" "$HOME/.$d"
+        ln -s "$HOME/dotfiles/zsh/$z" "$HOME/.$z"
     done
 
     echo "Symlinking dotfiles complete!"
@@ -523,9 +523,6 @@ function main() {
     # neovim
     source ./neovim.sh
     install_neovim
-    # install_neovim_dependencies
-    # install_neovim_from_source
-    # install_packer_nvim
 
     # nodejs
     install_nvm_from_source
@@ -544,10 +541,9 @@ function main() {
 
     install_fira_code_nerd_font
 
-    make_dotfiles_symlinks
-
     install_oh_my_zsh
     sudo chsh -s $(which zsh) $(whoami)
+    make_dotfiles_symlinks
 
     echo "All done! Restarting now..."
     sudo reboot
