@@ -561,7 +561,7 @@ function main() {
 
     if $# != 1; then
         read -p "Please enter only a 1 or 2:" which_part
-        main($which_part)
+        main "$which_part"
     fi
 
     if "$1" -eq "1"; then
@@ -570,7 +570,7 @@ function main() {
         part 2
     else
         read -p "Please enter only a 1 or 2:" which_part
-        main($which_part)
+        main "$which_part"
     fi
 }
 main
