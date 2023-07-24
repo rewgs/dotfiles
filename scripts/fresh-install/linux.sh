@@ -10,12 +10,6 @@
 set -eu # apparently `-o pipefail` isn't legal in POSIX shell
 
 
-# -n: Non-interactive. Prevents sudo from prompting for a password. If one is 
-#   required, sudo displays an error message and exits.
-# true: Builtin command that returns a successful (zero) exit status.
-sudo -n true
-
-
 # test: Takes an expression as an argument, evaluates it as '0' (true) or '1' 
 #   (false), and returns the result to the bash variable $?
 # $?: A variable used to find the return value as the exit status of the last 
@@ -246,14 +240,15 @@ function install_phpenv_from_source() {
     ln -s ~/src/phpenv/ ~/.phpenv
 
     # install php-build -- required to use the `phpenv install` command, which is 99% of what I do with phpenv
-    cd ~/src
-    git clone --depth 1 https://github.com/php-build/php-build.git
-    if [ ! -d ~/.phpenv/plugins ]; then mkdir -p ~/.phpenv/plugins; fi
-    ln -s ~/src/php-build/ ~/.phpenv/plugins/php-build
+    # Not working so commenting out for now.
+    # cd ~/src
+    # git clone --depth 1 https://github.com/php-build/php-build.git
+    # if [ ! -d ~/.phpenv/plugins ]; then mkdir -p ~/.phpenv/plugins; fi
+    # ln -s ~/src/php-build/ ~/.phpenv/plugins/php-build
 
     # required for phpenv to see php-build
     # should also be run after each new version of php is installed
-    phpenv rehash
+    # phpenv rehash
 }
 
 
@@ -384,8 +379,232 @@ function install_oh_my_zsh() {
     # exec zsh < /dev/tty
 }
 
+
+function install_fira_code_nerd_font () {
+    mkdir ~/.fonts
+    cd ~/.fonts
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraCode.zip
+    unzip FiraCode.zip
+    rm FiraCode.zip
+    fc-cache -fv
+}
+
+
+function install_npm_apps () {
+    typeset -a npm_apps
+    npm_apps=(
+        "gtop -g"
+    )
+
+    for (( i = 1; i <= $#npm_apps; i++)) do
+        npm install "$npm_apps[i]"
+    done
+}
+
+
+function install_cargo_apps () {
+    typeset -a cargo_apps
+    cargo_apps=(
+	    "cargo-audi"
+	    "cargo-edit"
+	    "cargo-make"
+	    "cargo-tarpaulin"
+	    "cargo-watch"
+        "ytop"
+    )
+
+    for (( i = 1; i <= $#cargo_apps; i++)) do
+        cargo install "$cargo_apps[i]"
+    done
+}
+
+
+function make_dotfiles_symlinks () {
+    # ╔═════════════════════════════════════════════════════════╗
+    # ║ make directories                                        ║
+    # ╚═════════════════════════════════════════════════════════╝
+    
+    if [ ! -d "$HOME"/.config ]; then
+        mkdir "$HOME"/.config
+    fi
+    
+    if [ ! -d "$HOME"/dotfile_backups/bash ]; then
+        mkdir -p "$HOME"/dotfile_backups/bash
+    fi
+    
+    if [ ! -d "$HOME"/dotfile_backups/nvim ]; then
+        mkdir -p "$HOME"/dotfile_backups/nvim
+    fi
+    
+    if [ ! -d "$HOME"/dotfile_backups/sh ]; then
+        mkdir -p "$HOME"/dotfile_backups/sh
+    fi
+    
+    if [ ! -d "$HOME"/dotfile_backups/tmux ]; then
+        mkdir -p "$HOME"/dotfile_backups/tmux
+    fi
+    
+    if [ ! -d "$HOME"/dotfile_backups/zsh ]; then
+        mkdir -p "$HOME"/dotfile_backups/zsh
+    fi
+    
+    # ╔═════════════════════════════════════════════════════════╗
+    # ║ create symlinks (and backup if target already present)  ║
+    # ╚═════════════════════════════════════════════════════════╝
+    
+    # bash
+    if [ -f "$HOME"/.bashrc ]; then
+        mv "$HOME"/.bashrc "$HOME"/dotfile_backups/bashrc
+        ln -s "$HOME"/dotfiles/bash/bashrc "$HOME"/.bashrc
+    elif [ -h "$HOME"/.bashrc ]; then
+        rm "$HOME"/.bashrc
+        ln -s "$HOME"/dotfiles/bash/bashrc "$HOME"/.bashrc
+    else
+        ln -s "$HOME"/dotfiles/bash/bashrc "$HOME"/.bashrc
+    fi
+    
+    if [ -f "$HOME"/.bash_profile ]; then
+        mv "$HOME"/.bash_profile "$HOME"/dotfile_backups/bash_profile
+        ln -s "$HOME"/dotfiles/bash/bash_profile "$HOME"/.bash_profile
+    elif [ -h "$HOME"/.bash_profile ]; then
+        rm "$HOME"/.bash_profile
+        ln -s "$HOME"/dotfiles/bash/bash_profile "$HOME"/.bash_profile
+    else
+        ln -s "$HOME"/dotfiles/bash/bash_profile "$HOME"/.bash_profile
+    fi
+    
+
+    # nvim
+    if [ -d "$HOME"/.config/nvim ]; then
+        mv "$HOME"/.config/nvim "$HOME"/dotfile_backups/nvim
+        ln -s "$HOME"/dotfiles/nvim/ "$HOME"/.config/nvim
+    elif [ -h "$HOME"/.config/nvim ]; then
+        rm "$HOME"/.config/nvim/
+        ln -s "$HOME"/dotfiles/nvim/ "$HOME"/.config/nvim
+    else
+        ln -s "$HOME"/dotfiles/nvim/ "$HOME"/.config/nvim
+    fi
+    
+
+    # sh
+    if [ -f "$HOME"/.profile ]; then
+        mv "$HOME"/.profile "$HOME"/dotfile_backups/sh/
+        ln -s "$HOME"/dotfiles/sh/profile "$HOME"/.profile
+    elif [ -h "$HOME"/.profile ]; then
+        rm "$HOME"/.profile
+        ln -s "$HOME"/dotfiles/sh/profile "$HOME"/.profile
+    else
+        ln -s "$HOME"/dotfiles/sh/profile "$HOME"/.profile
+    fi
+    
+    # tmux
+    if [ -f "$HOME"/.tmux.conf ]; then
+        mv "$HOME"/.tmux.conf "$HOME"/dotfile_backups/tmux/
+        ln -s "$HOME"/dotfiles/tmux/tmux.conf "$HOME"/.tmux.conf
+    elif [ -h "$HOME"/.tmux.conf ]; then
+        rm "$HOME"/.tmux.conf
+        ln -s "$HOME"/dotfiles/tmux/tmux.conf "$HOME"/.tmux.conf
+    else
+        ln -s "$HOME"/dotfiles/tmux/tmux.conf "$HOME"/.tmux.conf
+    fi
+     
+    if [ ! -d "$HOME"/src/tpm ]; then
+        ln -s "$HOME"/src/tpm/ "$HOME"/.tmux/plugins/tpm
+    elif [ -h "$HOME"/.tmux/plugins/tpm ]; then
+        rm "$HOME"/.tmux/plugins/tpm
+        ln -s "$HOME"/src/tpm/ "$HOME"/.tmux/plugins/tpm
+    else
+        ln -s "$HOME"/src/tpm/ "$HOME"/.tmux/plugins/tpm
+    fi
+    
+    # zsh
+    if [ -f "$HOME"/.zshenv ]; then
+        mv "$HOME"/.zshenv "$HOME"/dotfile_backups/zsh/
+        ln -s "$HOME"/dotfiles/zsh/zshenv "$HOME"/.zshenv
+    elif [ -h "$HOME"/.zshenv ]; then
+        rm "$HOME"/.zshenv
+        ln -s "$HOME"/dotfiles/zsh/zshenv "$HOME"/.zshenv
+    else
+        ln -s "$HOME"/dotfiles/zsh/zshenv "$HOME"/.zshenv
+    fi
+    
+    if [ -f "$HOME"/.zprofile ]; then
+        mv "$HOME"/.zprofile "$HOME"/dotfile_backups/zsh/
+        ln -s "$HOME"/dotfiles/zsh/zprofile "$HOME"/.zprofile
+    elif [ -h "$HOME"/.zprofile ]; then
+        rm "$HOME"/.zprofile
+        ln -s "$HOME"/dotfiles/zsh/zprofile "$HOME"/.zprofile
+    else
+        ln -s "$HOME"/dotfiles/zsh/zprofile "$HOME"/.zprofile
+    fi
+    
+    if [ -f "$HOME"/.zshrc ]; then
+        mv "$HOME"/.zshrc "$HOME"/dotfile_backups/zsh/
+        ln -s "$HOME"/dotfiles/zsh/zshrc "$HOME"/.zshrc
+    elif [ -h "$HOME"/.zshrc ]; then
+        rm "$HOME"/.zshrc
+        ln -s "$HOME"/dotfiles/zsh/zshrc "$HOME"/.zshrc
+    else
+        ln -s "$HOME"/dotfiles/zsh/zshrc "$HOME"/.zshrc
+    fi
+    
+    if [ -f "$HOME"/.zlogin ]; then
+        mv "$HOME"/.zlogin "$HOME"/dotfile_backups/zsh/
+        ln -s "$HOME"/dotfiles/zsh/zlogin "$HOME"/.zlogin
+    elif [ -h "$HOME"/.zlogin ]; then
+        rm "$HOME"/.zlogin
+        ln -s "$HOME"/dotfiles/zsh/zlogin "$HOME"/.zlogin
+    else
+        ln -s "$HOME"/dotfiles/zsh/zlogin "$HOME"/.zlogin
+    fi
+    
+    if [ -f "$HOME"/.zlogout ]; then
+        mv "$HOME"/.zlogout "$HOME"/dotfile_backups/zsh/
+        ln -s "$HOME"/dotfiles/zsh/zlogout "$HOME"/.zlogout
+    elif [ -h "$HOME"/.zlogout ]; then
+        rm "$HOME"/.zlogout
+        ln -s "$HOME"/dotfiles/zsh/zlogout "$HOME"/.zlogout
+    else
+        ln -s "$HOME"/dotfiles/zsh/zlogout "$HOME"/.zlogout
+    fi
+
+    echo "Symlinking dotfiles complete!"
+}
+
+
+function install_lazygit_from_source () {
+    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
+    cd "$HOME"/src
+    git clone https://github.com/jesseduffield/lazygit.git
+    cd "$HOME"/src/lazygit
+    go install
+}
+
+
+function install_firefox_without_snap () {
+    # assumes that snap has already been removed and `sudo snap remove firefox` run
+
+    # depends on software-properties-common package (installed in `install_from_package_manager()`
+    sudo add-apt-repository ppa:mozillateam/ppa
+
+    # alters the Firefox package priority to ensure the PPA/deb/apt version is preferred
+    echo '
+    Package: *
+    Pin: release o=LP-PPA-mozillateam
+    Pin-Priority: 1001
+    ' | sudo tee /etc/apt/preferences.d/mozilla-firefox
+
+    # ensures future Firefox upgrades are installed
+    echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
+
+    sudo apt update && sudo apt install firefox
+}
+
+
 function main() {
-    remove_snap
+    # This isn't really working. Commenting out for now.
+    # remove_snap
+
     install_from_package_manager
     install_github_cli
 
@@ -402,6 +621,7 @@ function main() {
     install_nvm_from_source
     prep_for_nvm_nodejs_installs
     install_nodejs
+    install_npm_apps
 
     # phpenv
     install_phpenv_build_prerequisites
@@ -413,7 +633,13 @@ function main() {
     prep_for_pyenv_python_installs
     install_python
 
+    # rust
     install_rust
+    install_cargo_apps
+
+    install_fira_code_nerd_font
+
+    make_dotfiles_symlinks
 
     # since the below isn't working, this script will run and then exit after 
     #   installing oh my zsh. Will need to run dotfile symlink function 
