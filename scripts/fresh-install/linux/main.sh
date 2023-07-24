@@ -511,47 +511,68 @@ function install_firefox_without_snap () {
 
 
 function main() {
-    # This isn't really working. Commenting out for now.
-    # remove_snap
+    function part1() {
+        # This isn't really working. Commenting out for now.
+        # remove_snap
 
-    install_from_package_manager
-    install_github_cli
+        install_from_package_manager
+        install_github_cli
 
-    # tmux
-    install_tmux_from_source
-    install_tmux_package_manager
+        # tmux
+        install_tmux_from_source
+        install_tmux_package_manager
 
-    # neovim
-    source ./neovim.sh
-    install_neovim
+        # neovim
+        . ./neovim.sh
+        install_neovim
 
-    # nodejs
-    install_nvm_from_source
-    prep_for_nvm_nodejs_installs
-    install_nodejs
+        # nodejs
+        install_nvm_from_source
+        prep_for_nvm_nodejs_installs
+        install_nodejs
 
-    # phpenv
-    install_phpenv_build_prerequisites
-    install_phpenv_from_source
+        # phpenv
+        install_phpenv_build_prerequisites
+        install_phpenv_from_source
 
-    # pyenv
-    install_pyenv_build_dependencies
-    install_pyenv_from_source
-    prep_for_pyenv_python_installs
-    install_python
+        # pyenv
+        install_pyenv_build_dependencies
+        install_pyenv_from_source
+        prep_for_pyenv_python_installs
+        install_python
 
-    install_fira_code_nerd_font
+        install_fira_code_nerd_font
 
-    install_oh_my_zsh
-    sudo chsh -s $(which zsh) $(whoami)
-    make_dotfiles_symlinks
+        install_oh_my_zsh
+        sudo chsh -s $(which zsh) $(whoami)
+        make_dotfiles_symlinks
 
-    echo "All done! Restarting now..."
-    sudo reboot
+        echo "All done! Restarting now..."
+        sudo reboot
+    }
+
+
+    function part2() {
+        install_npm_apps
+        install_rust
+        install_cargo_apps
+    }
+
+
+    if $# != 1; then
+        echo "Please enter only a 1 or 2."
+        read which_part
+        main($which_part)
+    fi
+
+    if "$1" -eq "1"; then
+        part1
+    elif "$1" -eq "2"; then
+        part 2
+    else
+        echo "Please enter only a 1 or 2."
+        read which_part
+        main($which_part)
+    fi
 }
-
-
 main
-# install_npm_apps
-# install_rust
-# install_cargo_apps
