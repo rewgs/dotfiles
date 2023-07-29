@@ -41,6 +41,7 @@ function install_from_package_manager () {
     typeset -a apps 
     apps=(
         "apache2"
+        "apt-file" # this is SO useful. `apt-file search "header.h"` will help find the -dev package that contains it.
         "apt-transport-https"
         "automake"
         "bettercap"
