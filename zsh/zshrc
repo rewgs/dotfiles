@@ -306,8 +306,17 @@ fi
   # tmux attach -t default || tmux new -s default
 # fi
 
+# start tmux; alt
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   exec tmux
+# fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# start i3 from tty
-# if [[ $(uname) == "Linux" ]]; then
-# fi
+# start i3 if not tty; not sure if this works
+if [[ $(uname) == "Linux" ]]; then
+    # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+    if command -v i3 &> /dev/null; then
+        exec i3
+    fi
+fi
