@@ -272,5 +272,6 @@ client.focused_inactive $fav_gray   $fav_gray   $darkgray   $gray       $fav_gra
 client.unfocused        $fav_gray   $fav_gray   $darkgray   $gray       $fav_gray
 client.urgent           $red        $red        $white      $red        $red
 
+
 # https://github.com/eliep/i3-layouts
 exec i3-layouts
