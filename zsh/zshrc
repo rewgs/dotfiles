@@ -313,16 +313,16 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# NOT WORKING
 # start i3 if not tty; not sure if this works
-if [[ $(uname) == "Linux" ]]; then
-    # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-    if command -v i3 &> /dev/null; then
-        exec i3
-    fi
-fi
+# if [[ $(uname) == "Linux" ]]; then
+#     if command -v i3 &> /dev/null; then
+#         exec i3
+#     fi
+# fi
 
 # scales the display to 2x
 # this is only for Parallels on M1 Mac
-if [[ $(uname) == "Linux" ]] && [[ $(echo $HOST) == "ubuntu-linux-22-04-desktop" ]]; then
-    sway output "Virtual-1" scale 2
-fi
+# if [[ $(uname) == "Linux" ]] && [[ $(echo $HOST) == "ubuntu-linux-22-04-desktop" ]]; then
+#     sway output "Virtual-1" scale 2
+# fi
