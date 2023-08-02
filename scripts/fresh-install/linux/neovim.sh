@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function install_neovim_dependencies() {
 	sudo apt-get install -y \
 		ninja-build \
@@ -41,12 +43,13 @@ function install_packer_nvim() {
 
 	git clone --depth 1 \
         https://github.com/wbthomason/packer.nvim \
-        $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+        "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
 }
 
 
 function install_neovim() {
-    # install_neovim_dependencies
-    # install_neovim_from_source
+    install_neovim_dependencies
+    install_neovim_from_source
     install_packer_nvim
 }
+install_neovim

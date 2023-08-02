@@ -1,28 +1,4 @@
-#!/usr/bin/bash
-
-# -u: If a variable does not exist, report the error and stop (e.g., unbound 
-#   variable)
-# -e: Terminate whenever an error occurs (e.g., command not found)
-# -o pipefail: 	If a sub-command fails, the entire pipeline command fails, 
-#   terminating the script (e.g., command not found)
-# set -eu -o pipefail
-# Commenting this out because apparently it's making my main() fail when it has no args...
-# set -eu # apparently `-o pipefail` isn't legal in POSIX shell
-
-
-# test: Takes an expression as an argument, evaluates it as '0' (true) or '1' 
-#   (false), and returns the result to the bash variable $?
-# $?: A variable used to find the return value as the exit status of the last 
-#   executed command.
-# -eq 0: Equal to 0 -- in this case, the previous command (i.e. if `sudo -n 
-#   true` returned 0).
-# exit: Exits the shell with a status of N. If N is unspecified, it uses the 
-#   exit code of the last executed command.
-# 1: Value result is false and used here as an argument to the exit command to 
-#   use as an exit code. If the exit code is false, the following message is 
-#   printed to the terminal.
-test $? -eq 0 || exit 1 "You should have sudo privilege to run this script."
-
+#!/usr/bin/env bash
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ functions                                                                  ║
