@@ -281,12 +281,11 @@ if [[ $(uname) == "Darwin" ]]; then
 elif [[ $(uname) == "Linux" ]]; then
     # This checks if the current shell is WSL.
     if [[ $(grep -i Microsoft /proc/version) ]]; then
-        export PYENV_ROOT="/home/"$(whoami)"/.pyenv"
-        export PATH="$PYENV_ROOT/bin:$PATH"
-
         # On a machine that has pyenv-win installed on the Windows side, as this messes with the 
         # usual $PYENV_ROOT and tries to run `eval "$(pyenv init -)"` in 
         # `/mnt/c/Users/"$(whoami)"/.pyenv` and thus returns a `bad interpreter` error.
+        export PYENV_ROOT="/home/"$(whoami)"/.pyenv"
+        export PATH="$PYENV_ROOT/bin:$PATH"
         eval "$(pyenv init -)"
     else 
         # The usual works just fine on non-WSL Linux (this is the same as the "Darwin" branch above).
