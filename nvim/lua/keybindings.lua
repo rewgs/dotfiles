@@ -137,10 +137,6 @@ vmap('n', '<leader> ', t.live_grep, {})
 vmap('n', '<leader>b', t.buffers, {})
 vmap('n', '<leader>fh', t.help_tags, {})
 
--- nvim.ufo (folding)
-nmap('n', '<leader>fo', ':foldopen<CR>', { silent = true })
-nmap('n', '<leader>fc', ':foldclose<CR>', { silent = true })
-
 -- telescope-simulators.nvim
 nmap('n', '<leader>sim', ':Telescope simulators run<CR>', { silent = true })
 

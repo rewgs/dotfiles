@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
               end,
             },
             {'williamboman/mason-lspconfig.nvim'}, -- optional
-            
+
             -- autocompletion
             {'hrsh7th/nvim-cmp'},     -- required
             {'hrsh7th/cmp-nvim-lsp'}, -- required
@@ -40,6 +40,8 @@ return require('packer').startup(function(use)
     use 'nvim-telescope/telescope-file-browser.nvim'
     use "dimaportenko/telescope-simulators.nvim"
 
+    -- all others
+    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
     use 'rainbowhxch/accelerated-jk.nvim'
     use 'nvim-lualine/lualine.nvim'
     use 'terrortylor/nvim-comment'

@@ -67,6 +67,7 @@ function homebrew_installations () {
         "jesseduffield/lazygit/lazygit"
         "mas" # https://github.com/mas-cli/mas
         "neofetch"
+        "orbstack"
         "shellcheck"
         "brew install koekeishiya/formulae/skhd"
         "thefuck"
