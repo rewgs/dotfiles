@@ -52,9 +52,11 @@ function install_from_package_manager () {
         "thefuck"
         "tldr"
         "tree"
+        "unzip"
         "vim"
         "wget"
         "xorg"
+        "zip"
         "zsh"
     )
     
