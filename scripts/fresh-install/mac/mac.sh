@@ -86,6 +86,7 @@ function homebrew_installations () {
         "hammerspoon"
         "hyperkey"
         "karabiner-elements"
+        "keyboard-maestro"
         "obs"
         "reaper"
     )
