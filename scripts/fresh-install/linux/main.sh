@@ -42,8 +42,10 @@ function install_from_package_manager () {
         "lua5.4"
         "lynx"
         "make"
-        "neofetch"
+        "ncat"
         "ncdu"
+        "neofetch"
+        "nmap"
         "picom"
         "qemu-kvm"
         "shellcheck"
@@ -61,7 +63,7 @@ function install_from_package_manager () {
     )
     
     echo "Installing packages from package manager..."
-    for a in ${apps[@]}; do
+    for a in "${apps[@]}"; do
         sudo apt-get install -y "$a"
 	    # > /dev/null 2> /dev/null # for some reason, `&> /dev/null` isn't silent, but this is
     done
@@ -550,6 +552,10 @@ function main () {
         install_cargo_apps
     }
 
+    echo "Uncomment either the part1() or part2() function and then run this again."
+    # part1
+    # part2
+
 
     # Commenting this out once I fix the following block.
     # if $# != 1; then
@@ -558,13 +564,13 @@ function main () {
     # fi
 
     # FIXME: this is failing no matter what. How can I get this to work?
-    if "$1" -eq "1"; then
-        part1
-    elif "$1" -eq "2"; then
-        part 2
-    else
-        read -p "Please enter only a 1 or 2:" part
-        main "$part"
-    fi
+    # if "$1" -eq "1"; then
+    #     part1
+    # elif "$1" -eq "2"; then
+    #     part 2
+    # else
+    #     read -p "Please enter only a 1 or 2:" part
+    #     main "$part"
+    # fi
 }
 main
