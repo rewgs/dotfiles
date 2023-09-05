@@ -4,6 +4,11 @@
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
+function get_distro () {
+    ( lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1
+}
+
+
 function install_from_package_manager () {
     echo "Checking for updates..."
     sudo apt-get update -qq
@@ -505,72 +510,45 @@ function install_tailscale () {
 
 
 function main () {
-    function part1 () {
-        # This isn't really working. Commenting out for now.
-        # remove_snap
-
-        install_from_package_manager
-        install_github_cli
-
-        # tmux
-        install_tmux_from_source
-        install_tmux_package_manager
-
-        # neovim
-        . ./neovim.sh
-        install_neovim
-
-        # nodejs
-        install_nvm_from_source
-        prep_for_nvm_nodejs_installs
-        install_nodejs
-
-        # phpenv
-        install_phpenv_build_prerequisites
-        install_phpenv_from_source
-
-        # pyenv
-        install_pyenv_build_dependencies
-        install_pyenv_from_source
-        prep_for_pyenv_python_installs
-        install_python
-
-        install_fira_code_nerd_font
-
-        install_oh_my_zsh
-        sudo chsh -s $(which zsh) $(whoami)
-        make_dotfiles_symlinks
-
-        echo "All done! Restarting now..."
-        sudo reboot
-    }
-
-
-    function part2 () {
-        install_npm_apps
-        install_rust
-        install_cargo_apps
-    }
-
-    echo "Uncomment either the part1() or part2() function and then run this again."
-    # part1
-    # part2
-
-
-    # Commenting this out once I fix the following block.
-    # if $# != 1; then
-    #     read -p "Please enter only a 1 or 2:" part
-    #     main "$part"
-    # fi
-
-    # FIXME: this is failing no matter what. How can I get this to work?
-    # if "$1" -eq "1"; then
-    #     part1
-    # elif "$1" -eq "2"; then
-    #     part 2
-    # else
-    #     read -p "Please enter only a 1 or 2:" part
-    #     main "$part"
-    # fi
+    # This isn't really working. Commenting out for now.
+    # remove_snap
+    
+    install_from_package_manager
+    install_github_cli
+    
+    # tmux
+    install_tmux_from_source
+    install_tmux_package_manager
+    
+    # neovim
+    source ./neovim.sh
+    install_neovim
+    
+    # nodejs
+    install_nvm_from_source
+    prep_for_nvm_nodejs_installs
+    install_nodejs
+    
+    # phpenv
+    install_phpenv_build_prerequisites
+    install_phpenv_from_source
+    
+    # pyenv
+    install_pyenv_build_dependencies
+    install_pyenv_from_source
+    prep_for_pyenv_python_installs
+    install_python
+    
+    install_oh_my_zsh
+    sudo chsh -s $(which zsh) $(whoami)
+    make_dotfiles_symlinks
+    
+    echo "All done! Restarting now..."
+    sudo reboot
+    
+    install_npm_apps
+    install_rust
+    install_cargo_apps
+    install_fira_code_nerd_font
 }
 main
