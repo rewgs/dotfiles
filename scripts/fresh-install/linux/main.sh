@@ -1,15 +1,6 @@
 #!/usr/bin/env bash
 
-# ╔════════════════════════════════════════════════════════════════════════════╗
-# ║ functions                                                                  ║
-# ╚════════════════════════════════════════════════════════════════════════════╝
-
-function get_distro () {
-    ( lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1
-}
-
-
-function install_from_package_manager () {
+function install_apps_from_package_manager () {
     typeset -a apps 
     apps=(
         "apache2"
@@ -80,53 +71,14 @@ function install_from_package_manager () {
             sudo pacman -Syuq --noconfirm
 	    fi
 
-        echo "Installing packages from package manager..."
-        for a in "${apps[@]}"; do
-            sudo pacman -Syuq --noconfirm "$a"
-        done
+        # echo "Installing packages from package manager..."
+        # for a in "${apps[@]}"; do
+            # sudo pacman -Syuq --noconfirm "$a"
+        # done
     fi
 
     echo "Package manager basic installations complete! Moving on..."
-    sleep 3
-}
-
-
-function remove_snap () {
-    # FIXME: 
-    # - POSIX sh doesn't support globbing. Convert the following line to case statements.
-    # - ^ isn't urgent, as right now I'm only running this on apt-based distros.
-    #   Will matter more once I adapt this to be distro-agnostic.
-    # if [ "$(uname --all)" = *"Ubuntu"* ]; then
-        # Returns list of snaps installed.
-        # This is a very simple usage of awk, so the first item is `Name`, i.e. the 
-        #   name of the first column. It will have to be skipped over when 
-        #   iterating over these later.
-        snap_list="$(snap list | awk '{print $1}')"
-
-        # stop snap services
-        sudo systemctl disable snapd.service
-        sudo systemctl disable snapd.socket
-        sudo systemctl disable snapd.seeded.service
-
-        # In an effort to keep this POSIX compliant, arrays are avoided. Instead, 
-        #   utilizes `tr` to simulate.
-        # `tr ' ' '\n'` performs replaces spaces with new-lines, which are the 
-        #   default delimiter for `read`.
-        echo "$snap_list" | tr ' ' '\n' | while read item; do
-            # As mentioned above, the first item `Name` is skipped.
-            if "$item" != "Name"; then
-                # can this take a -y flag?
-                sudo snap remove "$item"
-            fi
-        done
-
-        sudo rm -rf /var/cache/snapd
-
-        # this -y flag might be positioned incorrectly
-        sudo apt autoremove --purge -y snapd
-
-        sudo rm -rf ~/snap
-    # fi
+    sleep 2
 }
 
 
@@ -192,10 +144,11 @@ function make_dotfiles_symlinks () {
 
 
 function main () {
+    source ./utils.sh
     # This isn't really working. Commenting out for now.
     # remove_snap
     
-    install_from_package_manager
+    install_apps_from_package_manager
 
     source ./misc_installs.sh
     install_github_cli
