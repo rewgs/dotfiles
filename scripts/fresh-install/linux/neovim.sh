@@ -24,7 +24,7 @@ function update_neovim_from_source() {
 }
 
 
-function install_neovim_from_source() {
+function build_neovim_from_source() {
     install_neovim_dependencies
 
     if [ ! -d ~/src ]; then mkdir ~/src; fi
@@ -45,11 +45,3 @@ function install_packer_nvim() {
         https://github.com/wbthomason/packer.nvim \
         "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
 }
-
-
-function install_neovim() {
-    install_neovim_dependencies
-    install_neovim_from_source
-    install_packer_nvim
-}
-install_neovim
