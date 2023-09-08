@@ -167,7 +167,7 @@ fi
 # OrbStack
 if [[ $(uname) == "Darwin" ]]; then
     alias archvm="orb -m arch -u rewgs"
-    alias ubuntuvm="orb -m Ubuntu-2204-LTS -u rewgs"
+    alias ubuntuvm="orb -m ubuntu -u rewgs"
 fi
 
 # python

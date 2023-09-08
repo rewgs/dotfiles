@@ -157,7 +157,15 @@ function main () {
     source ./tmux.sh
     install_tmux_from_source
     install_tmux_package_manager
+
+    # for some reason, the following isn't running:
+    # - neovim
+    # - nodejs
+    # - phpenv
+    # - pyenv
+    # ...but then install_oh_my_zsh runs. wtf?
     
+    # neovim
     source ./neovim.sh
     install_neovim_dependencies
     build_neovim_from_source
@@ -182,11 +190,11 @@ function main () {
     install_python
     
     install_oh_my_zsh
-    sudo chsh -s $(which zsh) $(whoami)
+    sudo chsh -s "$(which zsh)" "$(whoami)"
     make_dotfiles_symlinks
     
-    # echo "All done! Restarting now..."
-    # sudo reboot
+    echo "All done! Restarting now..."
+    sudo reboot
     
     source ./rust.sh
     install_rust
