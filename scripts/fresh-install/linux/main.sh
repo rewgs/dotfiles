@@ -32,6 +32,7 @@ function install_apps_from_package_manager () {
         "ncat"
         "ncdu"
         "neofetch"
+        "net-tools"
         "nmap"
         "picom"
         "qemu-kvm"
