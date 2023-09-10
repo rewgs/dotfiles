@@ -1,3 +1,9 @@
+function install_google_chrome () {
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
+}
+
+
 function install_lazygit_from_source () {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
