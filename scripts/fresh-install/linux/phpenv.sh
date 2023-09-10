@@ -19,11 +19,10 @@ function install_phpenv_from_source () {
     ln -s ~/src/phpenv/ ~/.phpenv
 
     # install php-build -- required to use the `phpenv install` command, which is 99% of what I do with phpenv
-    # Not working so commenting out for now.
-    # cd ~/src
-    # git clone --depth 1 https://github.com/php-build/php-build.git
-    # if [ ! -d ~/.phpenv/plugins ]; then mkdir -p ~/.phpenv/plugins; fi
-    # ln -s ~/src/php-build/ ~/.phpenv/plugins/php-build
+    cd ~/src
+    git clone --depth 1 https://github.com/php-build/php-build.git
+    if [ ! -d ~/.phpenv/plugins ]; then mkdir -p ~/.phpenv/plugins; fi
+    ln -s ~/src/php-build/ ~/.phpenv/plugins/php-build
 
     # required for phpenv to see php-build
     # should also be run after each new version of php is installed
