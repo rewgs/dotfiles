@@ -211,10 +211,11 @@ function main () {
     install_pyenv_build_dependencies
     install_pyenv_from_source
     echo "pyenv installation finished!" | cat >> "$log_file"
-    echo "Installing Python" | cat >> "$log_file"
+    # echo "Installing Python" | cat >> "$log_file"
     prep_for_pyenv_python_installs
-    install_python
-    echo "Python installation finished!" | cat >> "$log_file"
+    # python isn't being installed for some reason
+    # install_python
+    # echo "Python installation finished!" | cat >> "$log_file"
     
     echo "Installing ohmyzsh..." | cat >> "$log_file"
     install_oh_my_zsh
@@ -229,12 +230,15 @@ function main () {
     echo "All done! Restarting now..."
     sudo reboot
     
+    cd "$current" || return
     source ./rust.sh
     install_rust
-
     install_cargo_apps
-    install_npm_apps
 
+    # not working for some reason
+    # install_npm_apps
+
+    cd "$current" || return
     source ./gui.sh
     install_fira_code_nerd_font
 }
