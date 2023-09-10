@@ -71,10 +71,10 @@ function install_apps_from_package_manager () {
             sudo pacman -Syuq --noconfirm
 	    fi
 
-        # echo "Installing packages from package manager..."
-        # for a in "${apps[@]}"; do
-            # sudo pacman -Syuq --noconfirm "$a"
-        # done
+        echo "Installing packages from package manager..."
+        for a in "${apps[@]}"; do
+            sudo pacman -Syuq --noconfirm "$a"
+        done
     fi
 
     echo "Package manager basic installations complete! Moving on..."

@@ -1,6 +1,42 @@
 function install_google_chrome () {
+    # typeset -a deps 
+    # deps=(
+    #     "libasound2"
+    #     "libatk-bridge"
+    #     "libatk"
+    #     "libatspi"
+    #     "libc"
+    #     "libcairo"
+    #     "libcups"
+    #     "libcurl"
+    #     "libdbus"
+    #     "libdrm"
+    #     "libexpat"
+    #     "libgbm"
+    #     "libglib"
+    #     "libgtk"
+    #     "libnspr"
+    #     "libnss"
+    #     "libpango"
+    #     "libvulkan"
+    #     "libx11"
+    #     "libxcb"
+    #     "libxcomposite"
+    #     "libxdamage"
+    #     "libxext"
+    #     "libxfixes"
+    #     "libxkbcommon"
+    #     "libxrandr"
+    # )
+
+    # sudo apt update
+    # for d in "${deps[@]}"; do
+    #     sudo apt install "$d" -y
+    # done
+
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo dpkg -i google-chrome-stable_current_amd64.deb
+    sudo apt --fix-broken install
 }
 
 
