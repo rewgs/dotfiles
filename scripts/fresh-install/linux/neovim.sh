@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function install_neovim_dependencies() {
+function install_neovim_dependencies () {
 	sudo apt-get install -y \
 		ninja-build \
 		gettext \
@@ -15,7 +15,7 @@ function install_neovim_dependencies() {
 }
 
 
-function update_neovim_from_source() {
+function update_neovim_from_source () {
 	cd "$HOME"/src/neovim
 	git checkout stable
 	git pull
@@ -24,7 +24,7 @@ function update_neovim_from_source() {
 }
 
 
-function build_neovim_from_source() {
+function build_neovim_from_source () {
     install_neovim_dependencies
 
     if [ ! -d ~/src ]; then mkdir ~/src; fi
@@ -36,7 +36,7 @@ function build_neovim_from_source() {
 }
 
 
-function install_packer_nvim() {
+function install_packer_nvim () {
     if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/" ]; then
         mkdir -p "$HOME/.local/share/nvim/site/pack/packer/start/"
     fi
