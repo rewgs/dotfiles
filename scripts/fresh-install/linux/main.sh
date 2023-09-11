@@ -1,5 +1,31 @@
 #!/usr/bin/env bash
 
+
+function prevent_prompts () {
+    # Prevents prompts for restarting services
+    sed -i "s/#\$nrconf{restart} = 'i';/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
+
+    # Prevents prompts for restarting due to kernel updates
+    sudo sed -i "s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g" /etc/needrestart/needrestart.conf
+}
+
+
+# This replaces the need for `NEEDRESTART_SUSPEND=1` prior to `apt get install "$a"`
+# Couldn't get anything to actually work
+function uninstall_apps_with_package_manager () {
+    if [[ $(get_distro) == *"Debian"* ]] || [[ $(get_distro) == *"Ubuntu"* ]] ; then
+        typset -a apps
+        apps=(
+            "needrestart"
+        )
+
+        for a in "${apps[@]}"; do
+            sudo apt-get remove "$a"
+        done
+    fi
+}
+
+
 function install_apps_from_package_manager () {
     typeset -a apps 
     apps=(
@@ -51,21 +77,24 @@ function install_apps_from_package_manager () {
     )
 
     if [[ $(get_distro) == *"Debian"* ]] || [[ $(get_distro) == *"Ubuntu"* ]] ; then
-        echo "Checking for updates..."
+        prevent_prompts
 
+        echo "Checking for updates..."
         sudo apt-get update -qq
 	    if [ $? -eq 0 ]; then # `$?` is used to find the return value of the last executed command
 	    	echo "Upgrading packages..."
             # note: NEEDRESTART_SUSPEND=1 is required in Ubuntu 22.04 LTS in order to prevent a 
             # prompt which asks the user which service(s) should be restarted, if any.
-	    	sudo NEEDRESTART_SUSPEND=1 apt-get upgrade -qq -y
+	    	# sudo NEEDRESTART_SUSPEND=1 apt-get upgrade -qq -y
+	    	sudo apt-get upgrade -qq -y
 	    fi
 
         echo "Installing packages from package manager..."
         for a in "${apps[@]}"; do
             # note: NEEDRESTART_SUSPEND=1 is required in Ubuntu 22.04 LTS in order to prevent a 
             # prompt which asks the user which service(s) should be restarted, if any.
-            sudo NEEDRESTART_SUSPEND=1 apt-get install -y "$a"
+            # sudo NEEDRESTART_SUSPEND=1 apt-get install -y "$a"
+            sudo apt-get install -y "$a"
 	        # > /dev/null 2> /dev/null # for some reason, `&> /dev/null` isn't silent, but this is
         done
     elif [[ $(get_distro) == *"Arch"* ]] ; then
@@ -156,6 +185,11 @@ function main () {
     source ./utils.sh
     # This isn't really working. Commenting out for now.
     # remove_snap
+
+    # cd "$current" || return
+    # echo "Running uninstall_apps_with_package_manager()" | cat >> "$log_file"
+    # install_apps_from_package_manager
+    # echo "uninstall_apps_with_package_manager() finished!" | cat >> "$log_file"
     
     cd "$current" || return
     echo "Running install_apps_from_package_manager()" | cat >> "$log_file"
