@@ -56,11 +56,15 @@ function install_apps_from_package_manager () {
         sudo apt-get update -qq
 	    if [ $? -eq 0 ]; then # `$?` is used to find the return value of the last executed command
 	    	echo "Upgrading packages..."
+            # note: NEEDRESTART_SUSPEND=1 is required in Ubuntu 22.04 LTS in order to prevent a 
+            # prompt which asks the user which service(s) should be restarted, if any.
 	    	sudo NEEDRESTART_SUSPEND=1 apt-get upgrade -qq -y
 	    fi
 
         echo "Installing packages from package manager..."
         for a in "${apps[@]}"; do
+            # note: NEEDRESTART_SUSPEND=1 is required in Ubuntu 22.04 LTS in order to prevent a 
+            # prompt which asks the user which service(s) should be restarted, if any.
             sudo NEEDRESTART_SUSPEND=1 apt-get install -y "$a"
 	        # > /dev/null 2> /dev/null # for some reason, `&> /dev/null` isn't silent, but this is
         done
