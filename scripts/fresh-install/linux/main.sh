@@ -56,12 +56,12 @@ function install_apps_from_package_manager () {
         sudo apt-get update -qq
 	    if [ $? -eq 0 ]; then # `$?` is used to find the return value of the last executed command
 	    	echo "Upgrading packages..."
-	    	sudo apt-get upgrade -qq -y
+	    	sudo NEEDRESTART_SUSPEND=1 apt-get upgrade -qq -y
 	    fi
 
         echo "Installing packages from package manager..."
         for a in "${apps[@]}"; do
-            sudo apt-get install -y "$a"
+            sudo NEEDRESTART_SUSPEND=1 apt-get install -y "$a"
 	        # > /dev/null 2> /dev/null # for some reason, `&> /dev/null` isn't silent, but this is
         done
     elif [[ $(get_distro) == *"Arch"* ]] ; then
@@ -145,10 +145,6 @@ function make_dotfiles_symlinks () {
 
 
 function main () {
-    # Prevents `apt upgrade` from prompting to restart services
-    export NEEDRESTART_SUSPEND=y
-    sudo --preserve-env=NEEDRESTART_SUSPEND
-
     current=$(pwd)
     log_file="$current/installation_log.txt"
 
