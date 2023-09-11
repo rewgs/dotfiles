@@ -145,8 +145,9 @@ function make_dotfiles_symlinks () {
 
 
 function main () {
-    export NEEDRESTART_MODE=a
-    sudo --preserve-env=NEEDRESTART_MODE
+    # Prevents `apt upgrade` from prompting to restart services
+    export NEEDRESTART_SUSPEND=y
+    sudo --preserve-env=NEEDRESTART_SUSPEND
 
     current=$(pwd)
     log_file="$current/installation_log.txt"
