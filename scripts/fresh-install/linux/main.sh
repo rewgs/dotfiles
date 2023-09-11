@@ -145,6 +145,9 @@ function make_dotfiles_symlinks () {
 
 
 function main () {
+    export NEEDRESTART_MODE=a
+    sudo --preserve-env=NEEDRESTART_MODE
+
     current=$(pwd)
     log_file="$current/installation_log.txt"
 
