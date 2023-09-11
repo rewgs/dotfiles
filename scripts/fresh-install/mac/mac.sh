@@ -92,6 +92,20 @@ function homebrew_installations () {
         "reaper"
     )
 
+    # Due to zsh not having nested arrays, the simplest way to keep tap and 
+    # package installation commands together is to simply list them in order; 
+    # therefore, always list the tap before the installation.
+    typeset -a brew_taps
+    brew_taps=(
+        # bun
+        "tap oven-sh/bun"
+        "install bun"
+
+        # next app (place-holder)
+        # tap dev/app
+        # install app
+    )
+
     typeset -a neovim_build_prerequisites
     neovim_build_prerequisites=(
         "cmake"
@@ -127,6 +141,9 @@ function homebrew_installations () {
     done
     for (( i = 1; i <= $#brew_casks; i++ )) do
         brew install --cask "$brew_casks[i]"
+    done
+    for (( i = 1; i <= $#brew_taps; i++ ))do
+        brew "$brew_taps[i]"
     done
     for (( i = 1; i <= $#neovim_build_prerequisites; i++ )) do
         brew install "$neovim_build_prerequisites[i]"
