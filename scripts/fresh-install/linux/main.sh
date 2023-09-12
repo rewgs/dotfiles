@@ -188,7 +188,7 @@ function main () {
 
     # cd "$current" || return
     # echo "Running uninstall_apps_with_package_manager()" | cat >> "$log_file"
-    # install_apps_from_package_manager
+    # uninstall_apps_with_package_manager
     # echo "uninstall_apps_with_package_manager() finished!" | cat >> "$log_file"
     
     cd "$current" || return
