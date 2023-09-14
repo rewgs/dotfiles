@@ -32,6 +32,7 @@ function install_apps_from_package_manager () {
         "apache2"
         "apt-file" # this is SO useful. `apt-file search "header.h"` will help find the -dev package that contains it.
         "apt-transport-https"
+        "arp-scan"
         "automake"
         "bettercap"
         "bpytop"
