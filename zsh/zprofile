@@ -37,4 +37,12 @@ elif [[ $(uname) == "Linux" ]]; then
 fi
 
 # Added by OrbStack: command-line tools and integration
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+if [[ $(uname) == "Darwin" ]]; then
+    source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+fi
+
+if [[ $(uname) == "Linux" ]]; then
+    if [ "$(tty)" = "/dev/tty1" ] ; then
+      exec sway
+    fi
+fi
