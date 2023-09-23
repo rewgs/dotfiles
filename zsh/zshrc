@@ -324,25 +324,7 @@ fi
 # ║ run commands                                                               ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-# start tmux
-# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  # tmux attach -t default || tmux new -s default
-# fi
-
-# start tmux; alt
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#   exec tmux
-# fi
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# NOT WORKING
-# start i3 if not tty; not sure if this works
-# if [[ $(uname) == "Linux" ]]; then
-#     if command -v i3 &> /dev/null; then
-        # startx
-#     fi
-# fi
 
 # scales the display to 2x
 # this is only for Parallels on M1 Mac
