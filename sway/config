@@ -9,6 +9,11 @@ set $term st
 set $center_display "DP-3"
 set $right_display "DP-1"
 
+
+#======================================
+# workspaces
+#======================================
+
 # Define names for default workspaces for which we configure key bindings later on.
 # Use variables to avoid repeating the names in multiple places.
 set $ws01 "1"
@@ -22,6 +27,52 @@ set $ws08 "8"
 set $ws09 "9"
 set $ws10 "10"
 
+#======================================
+# color schemes
+#======================================
+
+set $black #000000
+set $white #ffffff
+set $fav_gray #282828
+set $ubuntu_orange #E95420
+set $burnt_orange #ff6600
+
+#--------------------------------------
+# gruvbox
+#--------------------------------------
+# set $bg         #282828
+# set $red        #cc241d
+# set $green      #98971a
+# set $yellow     #d79921
+# set $blue       #458588
+# set $purple     #b16286
+# set $aqua       #689d68
+# set $gray       #a89984
+# set $darkgray   #1d2021
+
+#--------------------------------------
+# onedark
+#--------------------------------------
+set $bg 	#282c34
+
+# dark red
+set $red 	#be5046
+# light red
+# set $red #e06c75
+
+set $green #98c379
+
+# dark yellow
+set $yellow #d19a66
+# light yellow
+# set $yellow #e5c07b
+
+set $blue #61afef
+set $purple #c678dd
+set $aqua #56b6c2
+set $gray #5c6370
+set $lightgray #abb2bf
+set $darkgray #4b5263
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ basics                                                                     ║
@@ -37,6 +88,17 @@ gaps inner 10
 gaps outer 5
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ color scheme                                                               ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+# title bar & border colors
+# class                 border      background  text        indicator   child_border
+client.focused          $fav_gray   $fav_gray   $lightgray  $gray       $gray
+client.focused_inactive $fav_gray   $fav_gray   $darkgray   $gray       $fav_gray
+client.unfocused        $fav_gray   $fav_gray   $darkgray   $gray       $fav_gray
+client.urgent           $red        $red        $white      $red        $red
+
+# ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ workspaces                                                                 ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -45,7 +107,7 @@ workspace $ws02 output $center_display
 workspace $ws03 output $center_display 
 workspace $ws04 output $center_display 
 workspace $ws05 output $center_display 
-workspace $ws06 output $right_display 
+workspace $ws06 output $center_display
 workspace $ws07 output $right_display 
 workspace $ws08 output $right_display 
 workspace $ws09 output $right_display 
@@ -270,8 +332,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Status Bar:
-# Read `man 5 sway-bar` for more information about this section.
+
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ status bar                                                                 ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
 bar {
     position top
 
@@ -280,11 +345,28 @@ bar {
     status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
 
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        # bar background color
+        # background #323232
+        background $fav_gray
+
+        # text color used for blocks that do not have a color specified.
+        # statusline #ffffff
+        statusline $lightgray
+
+        # workspaces section            
+        # workspace         border      background  text
+        focused_workspace   $gray       $gray       $lightgray
+        inactive_workspace  $fav_gray   $fav_gray   $lightgray
+        # inactive_workspace #32323200 #32323200 #5c5c5c
+        active_workspace    $fav_gray   $fav_gray   $lightgray
+        urgent_workspace    $red        $red        $bg
+
     }
 }
 
+
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ fin                                                                        ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
 
 include @sysconfdir@/sway/config.d/*
