@@ -1,4 +1,0 @@
-# set Super key to $mod
-set $mod Mod4
-
-bindsym $mod+Return exec st
