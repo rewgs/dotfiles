@@ -128,7 +128,7 @@ set $right l
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | wmenu | xargs swaymsg exec --
-set $menu /usr/bin/dmenu | xargs swaymsg exec --
+set $menu /usr/bin/dmenu_run | xargs swaymsg exec --
 
 # switch to workspace
 # bindsym $mod+1 workspace number $ws01
