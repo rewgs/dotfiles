@@ -29,7 +29,7 @@ config.native_macos_fullscreen_mode = true
 -------------------------------------------------------------------------------
 -- color scheme
 -------------------------------------------------------------------------------
-config.color_scheme = 'GruvboxDark'
+-- config.color_scheme = 'GruvboxDark'
 -- config.color_scheme = 'GruvboxDarkHard'
 -- config.color_scheme = 'Gruvbox dark, hard (base16)'
 -- config.color_scheme = 'Gruvbox dark, medium (base16)'
@@ -37,13 +37,15 @@ config.color_scheme = 'GruvboxDark'
 -- config.color_scheme = 'Gruvbox dark, soft (base16)'
 -- config.color_scheme = 'Gruvbox Material (Gogh)'
 -- config.color_scheme = 'OneDark (base16)'
+-- config.color_scheme = 'OneDark (Gogh)'
+config.color_scheme = 'OneHalfDark'
 
 
 -------------------------------------------------------------------------------
 -- font
 -------------------------------------------------------------------------------
 config.font = wezterm.font { 
-    family = 'FiraCode Nerd Font'
+    family = 'Fira Code'
     -- family = 'JetBrains Mono'  
 }
 config.font_size = 14
