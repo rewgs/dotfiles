@@ -21,8 +21,8 @@ config.front_end = 'WebGpu'
 -- window appearance
 -------------------------------------------------------------------------------
 config.window_decorations = 'RESIZE'    -- removes the titlebar but allows the window to remain resizable
-config.enable_tab_bar = true 
-config.hide_tab_bar_if_only_one_tab = true 
+config.enable_tab_bar = true
+config.hide_tab_bar_if_only_one_tab = true
 config.native_macos_fullscreen_mode = true
 
 
@@ -44,13 +44,12 @@ config.color_scheme = 'OneHalfDark'
 -------------------------------------------------------------------------------
 -- font
 -------------------------------------------------------------------------------
-config.font = wezterm.font { 
-    family = 'Fira Code'
+config.font = wezterm.font {
+    family = 'FiraCode Nerd Font'
     -- family = 'JetBrains Mono'  
 }
 config.font_size = 14
 config.line_height = 1
-
 
 -------------------------------------------------------------------------------
 -- key bindings
@@ -78,7 +77,7 @@ if os == 'Darwin' then
             mods = 'SUPER',
             action = wezterm.action.DisableDefaultAssignment,
         },
- 
+
         -- disables the default SUPER-w close window action
         {
             key = 'w',

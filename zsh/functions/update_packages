@@ -3,7 +3,12 @@ function update_packages () {
         brew update
         brew upgrade
     elif [[ $(uname) == "Linux" ]]; then
-        sudo apt update
-        sudo apt upgrade -y
+        distro=$( ( lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1)
+        if [[ $(get_distro) == *"Debian"* ]] || [[ $(get_distro) == *"Ubuntu"* ]] ; then
+            sudo apt update
+            sudo apt upgrade -y
+        elif [[ $(get_distro) == *"Arch"* ]] ; then
+            sudo pacman -Syq
+        fi
     fi
 }
