@@ -346,19 +346,16 @@ bar {
 
     colors {
         # bar background color
-        # background #323232
         background $fav_gray
 
         # text color used for blocks that do not have a color specified.
-        # statusline #ffffff
         statusline $lightgray
 
         # workspaces section            
         # workspace         border      background  text
         focused_workspace   $gray       $gray       $lightgray
-        inactive_workspace  $fav_gray   $fav_gray   $lightgray
-        # inactive_workspace #32323200 #32323200 #5c5c5c
-        active_workspace    $fav_gray   $fav_gray   $lightgray
+        inactive_workspace  $fav_gray   $fav_gray   $darkgray
+        active_workspace    $fav_gray   $fav_gray   $darkgray
         urgent_workspace    $red        $red        $bg
 
     }
