@@ -2,6 +2,10 @@
 # ║ variables                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
+# clipman
+# github.com/yory8/clipman
+# exec wl-paste -t text --watch clipman store --no-persist
+
 set $mod Mod4
 
 set $term wezterm
@@ -86,6 +90,7 @@ font pango:FiraCode 12
 # gaps
 gaps inner 10
 gaps outer 5
+
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ color scheme                                                               ║

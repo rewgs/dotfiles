@@ -71,6 +71,7 @@ function install_apps_from_package_manager () {
         "tree"
         "unzip"
         "vim"
+        "wl-clipboard" # dead simple clipboard utility for Wayland-based window managers; https://github.com/bugaevc/wl-clipboard
         "wget"
         "xorg"
         "zip"
