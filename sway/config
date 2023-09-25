@@ -327,8 +327,8 @@ bar {
         # workspaces section            
         # workspace         border      background      text
         focused_workspace   $clear         $clear          $dark_gray
-        inactive_workspace  $bg         $bg             $dark_gray
-        active_workspace    $bg         $bg             $dark_gray
+        inactive_workspace  $bg         $bg             $light_gray
+        active_workspace    $bg         $bg             $light_gray
         urgent_workspace    $dark_red   $dark_red       $dark_gray
 
     }
