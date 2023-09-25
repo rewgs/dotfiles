@@ -1,0 +1,20 @@
+set $bg 	#282c34
+
+# dark red
+set $red 	#be5046
+# light red
+# set $red #e06c75
+
+set $green #98c379
+
+# dark yellow
+set $yellow #d19a66
+# light yellow
+# set $yellow #e5c07b
+
+set $blue #61afef
+set $purple #c678dd
+set $aqua #56b6c2
+set $gray #5c6370
+set $lightgray #abb2bf
+set $darkgray #4b5263
