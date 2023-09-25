@@ -3,3 +3,4 @@ set $white #ffffff
 set $fav_gray #282828
 set $ubuntu_orange #E95420
 set $burnt_orange #ff6600
+set $clear #ffffff00

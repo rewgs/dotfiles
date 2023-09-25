@@ -70,11 +70,13 @@ gaps outer 5
 # borders
 # Set default border style for new tiled windows.
 # default_border normal|none|pixel [<n>]
-default_border pixel 2
+default_border pixel 3
 
 # Set default border style for new floating windows. This only applies to windows that are spawned in floating mode, not windows that become floating afterwards
 # default_floating_border normal|none|pixel [<n>]
-default_floating_border pixel 2
+default_floating_border pixel 3
+# ^ This isn't working...floating windows still don't have borders
+for_window [floating] border pixel 3
 
 # titlebar_padding 1
 # titlebar_border_thickness 0
@@ -87,7 +89,7 @@ default_floating_border pixel 2
 # class                     border          background      text            indicator       child_border
 client.focused              $fg             $bg             $light_gray     $fg             $dark_orange
 client.focused_inactive     $fav_gray       $fav_gray       $dark_gray      $gray           $fav_gray
-client.unfocused            $fav_gray       $bg             $dark_gray      $gray           $fav_gray
+client.unfocused            $bg             $bg             $dark_gray      $gray           $clear
 client.urgent               $dark_red       $dark_red       $white          $dark_red       $dark_red
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
@@ -169,7 +171,7 @@ bindsym $mod+Shift+grave       exec swayr prev-window all-workspaces
 output $center_display resolution 3840x2160@59.997Hz position 0,0 scale 1
 output $right_display resolution 3840x2160@59.997Hz position 3840,0 scale 1
 
-output * bg "~/Pictures/wallpapers/stormy.*" fill
+output * bg "~/Pictures/wallpapers/search.*" fill
 
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
@@ -323,12 +325,11 @@ bar {
         statusline $light_gray
 
         # workspaces section            
-        # workspace         border      background  text
-        # focused_workspace   $gray       $gray       $light_gray
-        focused_workspace   $bg       $dark_blue       $bg
-        inactive_workspace  $bg         $bg         $dark_gray
-        active_workspace    $bg         $bg         $dark_gray
-        urgent_workspace    $dark_red   $dark_red   $bg
+        # workspace         border      background      text
+        focused_workspace   $clear         $clear          $light_gray
+        inactive_workspace  $bg         $bg             $dark_gray
+        active_workspace    $bg         $bg             $dark_gray
+        urgent_workspace    $dark_red   $dark_red       $dark_gray
 
     }
 }
