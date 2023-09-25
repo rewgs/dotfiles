@@ -35,7 +35,8 @@ include ./colorschemes/onedark
 
 include ./scratchpad
 
-include ./extensions/swaymonad/config
+# Disabling for now until I can get a better handle on this
+# include ./extensions/swaymonad/config
 
 
 #======================================
@@ -89,8 +90,8 @@ for_window [floating] border pixel 3
 
 # title bar & border colors
 # class                     border          background      text            indicator       child_border
-client.focused              $fg             $bg             $light_gray     $fg             $dark_orange
-client.focused_inactive     $fav_gray       $fav_gray       $dark_gray      $gray           $fav_gray
+client.focused              $fg             $bg             $light_gray     $fg             $dark_blue
+client.focused_inactive     $bg             $bg             $dark_gray      $gray           $clear
 client.unfocused            $bg             $bg             $dark_gray      $gray           $clear
 client.urgent               $dark_red       $dark_red       $white          $dark_red       $dark_red
 

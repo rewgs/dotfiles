@@ -1,5 +1,4 @@
-# exec_always "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/swaymonad/swaymonad.py"
-exec_always "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/extensions/swaymonad/swaymonad/swaymonad.py"
+# exec_always "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/extensions/swaymonad/swaymonad/swaymonad.py"
 
 bindsym $mod+Ctrl+Return nop promote_window
 
