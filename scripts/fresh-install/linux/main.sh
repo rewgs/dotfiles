@@ -27,58 +27,58 @@ function uninstall_apps_with_package_manager () {
 
 
 function install_apps_from_package_manager () {
-    typeset -a apps 
-    apps=(
-        "apache2"
-        "apt-file" # this is SO useful. `apt-file search "header.h"` will help find the -dev package that contains it.
-        "apt-transport-https"
-        "arp-scan"
-        "automake"
-        "bettercap"
-        "bpytop"
-        "btop"
-        "build-essential"
-        "cbonsai"
-        "cmake"
-        "cmatrix"
-        "cowsay"
-        "curl"
-        "docker"
-        "docker-compose"
-        "git"
-        "glances"
-        "gnupg2"
-        "golang-go"
-        "hsetroot"
-        "htop"
-        "libvirt-daemon"
-        "llvm"
-        "lua5.4"
-        "lynx"
-        "make"
-        "ncat"
-        "ncdu"
-        "neofetch"
-        "net-tools"
-        "nmap"
-        "picom"
-        "qemu-kvm"
-        "shellcheck"
-        "software-properties-common"
-        "tgt"
-        "thefuck"
-        "tldr"
-        "tree"
-        "unzip"
-        "vim"
-        "wl-clipboard" # dead simple clipboard utility for Wayland-based window managers; https://github.com/bugaevc/wl-clipboard
-        "wget"
-        "xorg"
-        "zip"
-        "zsh"
-    )
-
     if [[ $(get_distro) == *"Debian"* ]] || [[ $(get_distro) == *"Ubuntu"* ]] ; then
+        typeset -a apps 
+        apps=(
+            "apache2"
+            "apt-file" # this is SO useful. `apt-file search "header.h"` will help find the -dev package that contains it.
+            "apt-transport-https"
+            "arp-scan"
+            "automake"
+            "bettercap"
+            "bpytop"
+            "btop"
+            "build-essential"
+            "cbonsai"
+            "cmake"
+            "cmatrix"
+            "cowsay"
+            "curl"
+            "docker"
+            "docker-compose"
+            "git"
+            "glances"
+            "gnupg2"
+            "golang-go"
+            "hsetroot"
+            "htop"
+            "libvirt-daemon"
+            "llvm"
+            "lua5.4"
+            "lynx"
+            "make"
+            "ncat"
+            "ncdu"
+            "neofetch"
+            "net-tools"
+            "nmap"
+            "picom"
+            "qemu-kvm"
+            "shellcheck"
+            "software-properties-common"
+            "tgt"
+            "thefuck"
+            "tldr"
+            "tree"
+            "unzip"
+            "vim"
+            "wl-clipboard" # dead simple clipboard utility for Wayland-based window managers; https://github.com/bugaevc/wl-clipboard
+            "wget"
+            "xorg"
+            "zip"
+            "zsh"
+        )
+
         prevent_prompts
 
         echo "Checking for updates..."
@@ -91,7 +91,7 @@ function install_apps_from_package_manager () {
 	    	sudo apt-get upgrade -qq -y
 	    fi
 
-        echo "Installing packages from package manager..."
+        echo "Installing packages via apt..."
         for a in "${apps[@]}"; do
             # note: NEEDRESTART_SUSPEND=1 is required in Ubuntu 22.04 LTS in order to prevent a 
             # prompt which asks the user which service(s) should be restarted, if any.
@@ -99,7 +99,66 @@ function install_apps_from_package_manager () {
             sudo apt-get install -y "$a"
 	        # > /dev/null 2> /dev/null # for some reason, `&> /dev/null` isn't silent, but this is
         done
+
     elif [[ $(get_distro) == *"Arch"* ]] ; then
+        typeset -a apps 
+        apps=(
+            "apache2"
+            "apt-file" # this is SO useful. `apt-file search "header.h"` will help find the -dev package that contains it.
+            "apt-transport-https"
+            "arp-scan"
+            "automake"
+            "bettercap"
+            "bpytop"
+            "btop"
+            "build-essential"
+            "cbonsai"
+            "cmake"
+            "cmatrix"
+            "cowsay"
+            "curl"
+            "docker"
+            "docker-compose"
+            "git"
+            "glances"
+            "gnupg2"
+            "golang-go"
+            "hsetroot"
+            "htop"
+            "libvirt-daemon"
+            "llvm"
+            "lua5.4"
+            "lynx"
+            "make"
+            "ncat"
+            "ncdu"
+            "neofetch"
+            "net-tools"
+            "nmap"
+            "paru" # Pacman helper
+            "picom"
+            "qemu-kvm"
+            "shellcheck"
+            "software-properties-common"
+            "tgt"
+            "thefuck"
+            "tldr"
+            "tree"
+            "unzip"
+            "vim"
+            "wl-clipboard" # dead simple clipboard utility for Wayland-based window managers; https://github.com/bugaevc/wl-clipboard
+            "wget"
+            "xorg"
+            "zip"
+            "zsh"
+        )
+
+
+        typeset -a aur_apps
+        aur_apps=(
+            "xrdp"
+        )
+
         echo "Checking for updates..."
         sudo pacman -Syq
 	    if [ $? -eq 0 ]; then # `$?` is used to find the return value of the last executed command
@@ -107,9 +166,14 @@ function install_apps_from_package_manager () {
             sudo pacman -Syuq --noconfirm
 	    fi
 
-        echo "Installing packages from package manager..."
+        echo "Installing packages via Pacman..."
         for a in "${apps[@]}"; do
             sudo pacman -Syuq --noconfirm "$a"
+        done
+
+        echo "Installing packages via the AUR..."
+        for a in "${aur_apps[@]}"; do
+            sudo paru -Syuq --noconfirm "$a"
         done
     fi
 
