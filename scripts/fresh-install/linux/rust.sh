@@ -12,6 +12,10 @@ function install_cargo_apps () {
 	    "cargo-make"
 	    "cargo-tarpaulin"
 	    "cargo-watch"
+
+        # Great menu switcher for swaywm; commented out so that it's not installed on installs without sway
+        # https://sr.ht/~tsdh/swayr/#swayr-installation
+        # "swayr"
         "ytop"
     )
 
