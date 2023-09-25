@@ -1,0 +1,53 @@
+# exec_always "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/swaymonad/swaymonad.py"
+exec_always "pkill -f 'python3? .+/swaymonad.py';  ~/.config/sway/extensions/swaymonad/swaymonad/swaymonad.py"
+
+bindsym $mod+Ctrl+Return nop promote_window
+
+bindsym $mod+Ctrl+j nop focus_next_window
+bindsym $mod+Ctrl+k nop focus_prev_window
+
+bindsym $mod+Ctrl+Shift+Left nop move left
+bindsym $mod+Ctrl+Shift+Down nop move down
+bindsym $mod+Ctrl+Shift+Up nop move up
+bindsym $mod+Ctrl+Shift+Right nop move right
+
+bindsym $mod+Ctrl+Shift+j nop swap_with_next_window
+bindsym $mod+Ctrl+Shift+k nop swap_with_prev_window
+
+bindsym $mod+Ctrl+x nop reflectx
+bindsym $mod+Ctrl+y nop reflecty
+bindsym $mod+Ctrl+t nop transpose
+
+bindsym $mod+Ctrl+f nop fullscreen
+
+bindsym $mod+Ctrl+Comma nop increment_masters
+bindsym $mod+Ctrl+Period nop decrement_masters
+
+# mode "resize" {
+#   bindsym Left resize shrink width 10px
+#   bindsym Down resize grow height 10px
+#   bindsym Up resize shrink height 10px
+#   bindsym Right resize grow width 10px
+# 
+#   # bindsym n resize set width (n-1/n)
+#   bindsym 2 resize set width 50ppt  # 1/2, 1/2
+#   bindsym 3 resize set width 66ppt  # 2/3, 1/3
+#   bindsym 4 resize set width 75ppt  # 3/4, 1/4
+# 
+#   bindsym Return mode "default"
+#   bindsym Escape mode "default"
+# }
+# bindsym $mod+Ctrl+r mode "resize"
+
+mode "layout" {
+  bindsym t nop set_layout tall
+  bindsym 3 nop set_layout 3_col
+  bindsym n nop set_layout nop
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Ctrl+l mode "layout"
+
+mouse_warping container
+focus_wrapping no
