@@ -171,7 +171,7 @@ bindsym $mod+Shift+grave       exec swayr prev-window all-workspaces
 output $center_display resolution 3840x2160@59.997Hz position 0,0 scale 1
 output $right_display resolution 3840x2160@59.997Hz position 3840,0 scale 1
 
-output * bg "~/Pictures/wallpapers/search.*" fill
+output * bg "~/Pictures/wallpapers/Faded Rocks.jpg" fill
 
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
@@ -326,7 +326,7 @@ bar {
 
         # workspaces section            
         # workspace         border      background      text
-        focused_workspace   $clear         $clear          $light_gray
+        focused_workspace   $clear         $clear          $dark_gray
         inactive_workspace  $bg         $bg             $dark_gray
         active_workspace    $bg         $bg             $dark_gray
         urgent_workspace    $dark_red   $dark_red       $dark_gray
