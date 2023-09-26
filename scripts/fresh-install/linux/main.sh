@@ -79,6 +79,20 @@ function install_apps_from_package_manager () {
             "zsh"
         )
 
+        # Due to zsh not having nested arrays, the simplest way to keep ppas 
+        # and packages commands is to put them in separate arrays, add the ppas, 
+        # then install the apps.
+        typeset -a third_party_ppas
+        third_party_ppas=(
+            "nschloe/waybar" # status bar for swaywm
+        )
+
+        typeset -a ppa_apps
+        ppa_apps=(
+            "waybar" # status bar for swaywm
+        )
+
+
         prevent_prompts
 
         echo "Checking for updates..."
@@ -98,6 +112,16 @@ function install_apps_from_package_manager () {
             # sudo NEEDRESTART_SUSPEND=1 apt-get install -y "$a"
             sudo apt-get install -y "$a"
 	        # > /dev/null 2> /dev/null # for some reason, `&> /dev/null` isn't silent, but this is
+        done
+
+        for p in "${third_party_ppas}"; do
+            sudo add-apt-repository ppa:"$p"
+        done
+
+        sudo apt update
+
+        for a in "${ppa_apps}"; do
+            sudo apt-get install -y "$a"
         done
 
     elif [[ $(get_distro) == *"Arch"* ]] ; then
