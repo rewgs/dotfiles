@@ -64,7 +64,7 @@ set $ws10 "10"
 focus_follows_mouse no
 
 # Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.
- font pango:FiraCode 12
+ font pango:FiraCode NF 12
 
 # gaps
 gaps inner 10
@@ -90,7 +90,7 @@ for_window [floating] border pixel 3
 
 # title bar & border colors
 # class                     border          background      text            indicator       child_border
-client.focused              $fg             $bg             $light_gray     $fg             $dark_blue
+client.focused              $fg             $bg             $light_gray     $fg             $dark_orange
 client.focused_inactive     $bg             $bg             $dark_gray      $gray           $clear
 client.unfocused            $bg             $bg             $dark_gray      $gray           $clear
 client.urgent               $dark_red       $dark_red       $white          $dark_red       $dark_red
@@ -126,6 +126,7 @@ set $right l
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | wmenu | xargs swaymsg exec --
 set $menu /usr/bin/dmenu_run | xargs swaymsg exec --
+# set $menu rofi -show run | xargs swaymsg exec --
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
@@ -290,16 +291,16 @@ bindsym $mod+p focus parent
 
 mode "resize" {
     # big
-    bindsym $left resize shrink width 100px
-    bindsym $down resize grow height 100px
-    bindsym $up resize shrink height 100px
-    bindsym $right resize grow width 100px
+    bindsym w resize grow width 100px
+    bindsym t resize grow height 100px
+    bindsym Shift+w resize shrink width 100px
+    bindsym Shift+t resize shrink height 100px
 
     # small
-    bindsym Alt+$left resize shrink width 10px
-    bindsym Alt+$down resize grow height 10px
-    bindsym Alt+$up resize shrink height 10px
-    bindsym Alt+$right resize grow width 10px
+    bindsym Alt+w resize grow width 10px
+    bindsym Alt+t resize grow height 10px
+    bindsym Alt+Shift+w resize shrink width 10px
+    bindsym Alt+Shift+t resize shrink height 10px
 
     # Return to default mode
     bindsym Return mode "default"
@@ -313,6 +314,7 @@ bindsym $mod+r mode "resize"
 # ║ status bar                                                                 ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
+# built-in
 bar {
     position top
 

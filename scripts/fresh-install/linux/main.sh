@@ -84,12 +84,12 @@ function install_apps_from_package_manager () {
         # then install the apps.
         typeset -a third_party_ppas
         third_party_ppas=(
-            "nschloe/waybar" # status bar for swaywm
+            "nschloe/waybar" # status bar for swaywm; uses X11 though, not Wayland
         )
 
         typeset -a ppa_apps
         ppa_apps=(
-            "waybar" # status bar for swaywm
+            "waybar"
         )
 
 
