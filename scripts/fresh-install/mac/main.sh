@@ -216,13 +216,25 @@ function clone_repositories () {
 
 
 function mac_fresh_install () {
+    current=$(pwd)
+    log_file="$current/installation_log.txt"
+
+    cd "$current" || return
+
     # install_homebrew
     # install_xcode_command_line_tools
     # install_oh_my_zsh
 
     homebrew_installations
 
-    # install_neovim
+    # neovim
+    cd "$current" || return
+    source ./neovim.sh
+    install_neovim_build_prerequisites
+    build_neovim_from_source
+    install_packer_nvim
+    echo "neovim installation finished!" | cat >> "$log_file"
+
     # install_rust
 
     # yabai --start-service
