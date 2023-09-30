@@ -201,7 +201,7 @@ function clone_repositories () {
     typeset -a repos
     repos=(
         $hyperkey_spoon
-    }
+    )
 
     cd ~/src
     for (( i = 1; i <= $#repos; i++ )) do
