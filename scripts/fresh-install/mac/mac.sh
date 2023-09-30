@@ -3,6 +3,14 @@
 
 # ssh keys
 # github
+#
+# - Notes on Tailscale:
+#   - The App Store version *will not work!* `ssh` is not allowed with it, so do not install it.
+#   - install golang
+#   - `go install tailscale.com/cmd/tailscale{,d}@main` 
+#   - Add ~/go/bin to PATH: place `export PATH=$PATH:$(go env GOPATH)/bin` in .zshrc
+#   - Run `sudo tailscaled install-system-daemon` so that `tailscaled` runs in the background at startup
+#   - Authenticate as usual with `tailscale up` and `tailscale up --ssh`
 
 
 function install_homebrew () { 
