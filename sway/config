@@ -179,7 +179,12 @@ bindsym $mod+Shift+grave       exec swayr prev-window all-workspaces
 output $center_display resolution 3840x2160@59.997Hz position 0,0 scale 1
 # output $right_display resolution 3840x2160@59.997Hz position 3840,0 scale 1
 
-output * bg "~/Pictures/wallpapers/Faded Rocks.jpg" fill
+# available modes: stretch, fill, fit, center, tile
+# output * bg "~/Pictures/wallpapers/Faded Rocks.jpg" fill
+# output * bg "~/Pictures/wallpapers/grass.png" fill
+# output * bg "~/Pictures/wallpapers/layers.png" tile
+# output * bg "~/Pictures/wallpapers/sakura.jpg" fill
+output * bg "~/Pictures/wallpapers/light 4k.jpg" fill
 
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
