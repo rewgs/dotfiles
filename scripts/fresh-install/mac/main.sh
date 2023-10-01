@@ -3,6 +3,14 @@
 
 # ssh keys
 # github
+#
+# - Notes on Tailscale:
+#   - The App Store version *will not work!* `ssh` is not allowed with it, so do not install it.
+#   - install golang
+#   - `go install tailscale.com/cmd/tailscale{,d}@main` 
+#   - Add ~/go/bin to PATH: place `export PATH=$PATH:$(go env GOPATH)/bin` in .zshrc
+#   - Run `sudo tailscaled install-system-daemon` so that `tailscaled` runs in the background at startup
+#   - Authenticate as usual with `tailscale up` and `tailscale up --ssh`
 
 
 function install_homebrew () { 
@@ -193,7 +201,7 @@ function clone_repositories () {
     typeset -a repos
     repos=(
         $hyperkey_spoon
-    }
+    )
 
     cd ~/src
     for (( i = 1; i <= $#repos; i++ )) do
@@ -208,13 +216,25 @@ function clone_repositories () {
 
 
 function mac_fresh_install () {
+    current=$(pwd)
+    log_file="$current/installation_log.txt"
+
+    cd "$current" || return
+
     # install_homebrew
     # install_xcode_command_line_tools
     # install_oh_my_zsh
 
     homebrew_installations
 
-    # install_neovim
+    # neovim
+    cd "$current" || return
+    source ./neovim.sh
+    install_neovim_build_prerequisites
+    build_neovim_from_source
+    install_packer_nvim
+    echo "neovim installation finished!" | cat >> "$log_file"
+
     # install_rust
 
     # yabai --start-service
