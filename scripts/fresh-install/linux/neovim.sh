@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function install_neovim_dependencies () {
+function apt_install_neovim_dependencies () {
 	sudo apt-get install -y \
 		ninja-build \
 		gettext \
@@ -12,6 +12,15 @@ function install_neovim_dependencies () {
 		pkg-config \
 		unzip \
 		doxygen
+}
+
+function pacman_install_neovim_dependencies () {
+    sudo pacman -S \
+        base-devel \
+        cmake \
+        curl \
+        ninja \
+        unzip
 }
 
 
