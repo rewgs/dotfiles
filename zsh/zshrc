@@ -151,9 +151,11 @@ alias gp="git pull"
 alias gfarp="git fetch --all && git reset --hard && git pull"
 alias grm=git_commit_readme
 
-# linode
-alias sshnextcloud="ssh root@nextcloud.rewgs.com"
-alias sshrewgs="ssh root@rewgs.com"
+# linode cli
+alias linhelp="linode-cli --help"
+alias linlinhelp="linode-cli linodes --help"
+alias createlinhelp="linode-cli linodes create --help"
+alias linls="linode-cli linodes list"
 
 # multipass
 if [[ $(uname) == "Darwin" ]]; then
