@@ -1,7 +1,7 @@
 function install_pyenv_build_dependencies () {
     # TODO: make this work on arch
-	sudo apt update; 
-	sudo apt install -y \
+	apt update; 
+	apt install -y \
 		build-essential \
 		libssl-dev \
 		zlib1g-dev \

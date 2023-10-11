@@ -16,9 +16,9 @@ function remove_snap () {
         snap_list="$(snap list | awk '{print $1}')"
 
         # stop snap services
-        sudo systemctl disable snapd.service
-        sudo systemctl disable snapd.socket
-        sudo systemctl disable snapd.seeded.service
+        systemctl disable snapd.service
+        systemctl disable snapd.socket
+        systemctl disable snapd.seeded.service
 
         # In an effort to keep this POSIX compliant, arrays are avoided. Instead, 
         #   utilizes `tr` to simulate.
@@ -28,15 +28,15 @@ function remove_snap () {
             # As mentioned above, the first item `Name` is skipped.
             if "$item" != "Name"; then
                 # can this take a -y flag?
-                sudo snap remove "$item"
+                snap remove "$item"
             fi
         done
 
-        sudo rm -rf /var/cache/snapd
+        rm -rf /var/cache/snapd
 
         # this -y flag might be positioned incorrectly
-        sudo apt autoremove --purge -y snapd
+        apt autoremove --purge -y snapd
 
-        sudo rm -rf ~/snap
+        rm -rf ~/snap
     # fi
 }

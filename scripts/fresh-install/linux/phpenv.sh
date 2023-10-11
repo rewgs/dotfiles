@@ -1,6 +1,6 @@
 function install_phpenv_build_prerequisites () {
     # TODO: make this run on arch like tmux and neovim files
-    sudo apt install -y \
+    apt install -y \
         apache2-dev \
         libcurl4-gnutls-dev \
         libjpeg-dev \

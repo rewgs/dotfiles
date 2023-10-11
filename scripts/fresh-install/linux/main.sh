@@ -6,7 +6,7 @@ function prevent_prompts () {
     sed -i "s/#\$nrconf{restart} = 'i';/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
 
     # Prevents prompts for restarting due to kernel updates
-    sudo sed -i "s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g" /etc/needrestart/needrestart.conf
+    sed -i "s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g" /etc/needrestart/needrestart.conf
 }
 
 
@@ -20,7 +20,7 @@ function uninstall_apps_with_package_manager () {
         )
 
         for a in "${apps[@]}"; do
-            sudo apt-get remove "$a"
+            apt-get remove "$a"
         done
     fi
 }
@@ -96,32 +96,32 @@ function install_apps_from_package_manager () {
         prevent_prompts
 
         echo "Checking for updates..."
-        sudo apt-get update -qq
+        apt-get update -qq
 	    if [ $? -eq 0 ]; then # `$?` is used to find the return value of the last executed command
 	    	echo "Upgrading packages..."
             # note: NEEDRESTART_SUSPEND=1 is required in Ubuntu 22.04 LTS in order to prevent a 
             # prompt which asks the user which service(s) should be restarted, if any.
-	    	# sudo NEEDRESTART_SUSPEND=1 apt-get upgrade -qq -y
-	    	sudo apt-get upgrade -qq -y
+	    	# NEEDRESTART_SUSPEND=1 apt-get upgrade -qq -y
+	    	apt-get upgrade -qq -y
 	    fi
 
         echo "Installing packages via apt..."
         for a in "${apps[@]}"; do
             # note: NEEDRESTART_SUSPEND=1 is required in Ubuntu 22.04 LTS in order to prevent a 
             # prompt which asks the user which service(s) should be restarted, if any.
-            # sudo NEEDRESTART_SUSPEND=1 apt-get install -y "$a"
-            sudo apt-get install -y "$a"
+            # NEEDRESTART_SUSPEND=1 apt-get install -y "$a"
+            apt-get install -y "$a"
 	        # > /dev/null 2> /dev/null # for some reason, `&> /dev/null` isn't silent, but this is
         done
 
         for p in "${third_party_ppas}"; do
-            sudo add-apt-repository ppa:"$p"
+            add-apt-repository ppa:"$p"
         done
 
-        sudo apt update
+        apt update
 
         for a in "${ppa_apps}"; do
-            sudo apt-get install -y "$a"
+            apt-get install -y "$a"
         done
 
     elif [[ $(get_distro) == *"Arch"* ]] ; then
@@ -184,20 +184,20 @@ function install_apps_from_package_manager () {
         )
 
         echo "Checking for updates..."
-        sudo pacman -Syq
+        pacman -Syq
 	    if [ $? -eq 0 ]; then # `$?` is used to find the return value of the last executed command
 	    	echo "Upgrading packages..."
-            sudo pacman -Syuq --noconfirm
+            pacman -Syuq --noconfirm
 	    fi
 
         echo "Installing packages via Pacman..."
         for a in "${apps[@]}"; do
-            sudo pacman -Syuq --noconfirm "$a"
+            pacman -Syuq --noconfirm "$a"
         done
 
         echo "Installing packages via the AUR..."
         for a in "${aur_apps[@]}"; do
-            sudo paru -Syuq --noconfirm "$a"
+            paru -Syuq --noconfirm "$a"
         done
     fi
 
@@ -350,14 +350,14 @@ function main () {
     install_oh_my_zsh
     echo "ohmyzsh installation finished!" | cat >> "$log_file"
     echo "Changing shell to zsh..." | cat >> "$log_file"
-    sudo chsh -s "$(which zsh)" "$(whoami)"
+    chsh -s "$(which zsh)" "$(whoami)"
     echo "Shell should now be zsh!" | cat >> "$log_file"
     echo "Symlinking to dotfiles..." | cat >> "$log_file"
     make_dotfiles_symlinks
     echo "Dotfiles symlinked!" | cat >> "$log_file"
     
     echo "All done! Restarting now..."
-    sudo reboot
+    reboot
     
     cd "$current" || return
     source ./rust.sh

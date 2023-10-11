@@ -6,8 +6,8 @@ function build_tmux_from_source () {
     ./configure && make
 
     # apparently there's no 'clean' option?
-    # sudo make clean install   
-    sudo make install
+    # make clean install   
+    make install
 }
 
 
@@ -21,11 +21,11 @@ function install_tmux_from_source () {
 
     if [[ $(get_distro) == *"Debian"* ]] || [[ $(get_distro) == *"Ubuntu"* ]] ; then
         for d in "${deps[@]}"; do
-            sudo apt-get install -y "$d"
+            apt-get install -y "$d"
         done
     elif [[ $(get_distro) == *"Arch"* ]] ; then
         for d in "${deps[@]}"; do
-            sudo pacman -Syuq --noconfirm "$d"
+            pacman -Syuq --noconfirm "$d"
         done
     fi
 

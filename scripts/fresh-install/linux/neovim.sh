@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function apt_install_neovim_dependencies () {
-	sudo apt-get install -y \
+	apt-get install -y \
 		ninja-build \
 		gettext \
 		libtool \
@@ -15,7 +15,7 @@ function apt_install_neovim_dependencies () {
 }
 
 function pacman_install_neovim_dependencies () {
-    sudo pacman -S \
+    pacman -S \
         base-devel \
         cmake \
         curl \
@@ -28,8 +28,8 @@ function update_neovim_from_source () {
 	cd "$HOME"/src/neovim
 	git checkout stable
 	git pull
-	sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
-	sudo make clean install
+	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	make clean install
 }
 
 
@@ -41,7 +41,7 @@ function build_neovim_from_source () {
     git clone --depth 1 https://github.com/neovim/neovim.git --branch stable
     cd ~/src/neovim
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
-	sudo make install
+	make install
 }
 
 
