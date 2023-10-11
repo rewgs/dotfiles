@@ -316,6 +316,8 @@ elif [[ $(uname) == "Linux" ]]; then
 fi
 
 # reaper
+# if [[ $(uname) == "Darwin" ]]; then
+#     export reaper="/Applications/REAPER.app/Contents/MacOS/REAPER"
 if [[ $(uname) == "Linux" ]]; then
     export PATH="$HOME/opt/REAPER:$PATH"
 fi

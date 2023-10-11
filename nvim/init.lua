@@ -7,9 +7,12 @@ require('settings')
 require('plugins.packer')   -- this must come first
 
 -- themes
+require('plugins.config.themes.edge')
+require('plugins.config.themes.everforest')
+require('plugins.config.themes.gruvbox-material')
 require('plugins.config.themes.gruvbox')
 require('plugins.config.themes.onedark')
-require('plugins.config.accelerated-jk')
+require('plugins.config.themes.sonokai')
 
 -- telescope
 require('plugins.config.telescope')
@@ -17,9 +20,11 @@ require('plugins.config.telescope-file-browser')
 require('plugins.config.telescope-simulators')
 
 -- all others
+require('plugins.config.accelerated-jk')
 require('plugins.config.lualine')
 require('plugins.config.nvim-treesitter')
 require('plugins.config.lsp')
 require('plugins.config.nvim-comment')
+require('plugins.config.scnvim')
 require('color-scheme')
 require('keybindings')
