@@ -12,6 +12,7 @@
 # ║ basic interactive shell settings                                           ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
+
 LS_COLORS="ow=01;93;40:ln=00;35;40:ex=00;31;40:*.mp3=00;32;40:*.wav=00;32;40:*.aif=00;32;40:*.aiff=00;32;40"
 export LS_COLORS
 
@@ -82,6 +83,7 @@ compdef _dotnet_zsh_complete dotnet
 
 # configures the `fuck` command
 eval $(thefuck --alias)
+
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ aliases                                                                    ║           
@@ -352,3 +354,20 @@ fi
 # if [[ $(uname) == "Linux" ]] && [[ $(echo $HOST) == "ubuntu-linux-22-04-desktop" ]]; then
 #     sway output "Virtual-1" scale 2
 # fi
+
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ vi mode                                                                    ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+bindkey -v
+export KEYTIMEOUT=1
+
+# places the vi mode to the left
+# https://stackoverflow.com/questions/3622943/zsh-vi-mode-status-line
+function zle-line-init zle-keymap-select {
+    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+    RPS2=$RPS1
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
