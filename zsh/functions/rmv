@@ -4,7 +4,7 @@
 function rmv () {
     for arg in "$@"; do
         if [[ -d "$arg" ]]; then
-            sudo rm -rfI "$arg"
+            rm -rfI "$arg"
         else
             rm -i "$arg"
         fi
