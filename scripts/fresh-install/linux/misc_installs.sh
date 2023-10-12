@@ -106,3 +106,8 @@ function install_oh_my_zsh () {
     #   don't want this to happen - I want more functions to run aftr this.
     # exec zsh < /dev/tty
 }
+
+
+function install_rclone () {
+    curl https://rclone.org/install.sh | sudo bash
+}
