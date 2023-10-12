@@ -122,7 +122,6 @@ alias nvinit="$EDITOR $HOME/.config/nvim/init.lua"
 
 # docker
 if [[ $(uname) == "Linux" ]]; then
-    alias docker="sudo docker"
     alias dcls="docker container ls"
     alias ncst="docker start nextcloud-aio-mastercontainer"
     alias ncsp="docker stop nextcloud-aio-mastercontainer"
@@ -208,7 +207,7 @@ alias tshosts=tailscale_get_magic_dns_hostnames
 
 # tar
 # if [[ $(uname) == "Linux" ]]; then
-#     alias untar="sudo tar -xvzf"
+#     alias untar="tar -xvzf"
 # fi
 
 # tmux
