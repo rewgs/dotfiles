@@ -109,5 +109,5 @@ function install_oh_my_zsh () {
 
 
 function install_rclone () {
-    curl https://rclone.org/install.sh | sudo bash
+    curl https://rclone.org/install.sh | bash
 }
