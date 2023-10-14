@@ -4,6 +4,7 @@ function run_as_sudo {
     local firstArg="$1"
 
     if [[ $(uname) == "Darwin" ]]; then
+        # NOTE: macOS doesn't have a `type -t`, just `type`
         if [[ $(type $firstArg) == *function* ]]; then
             shift && command sudo zsh -c "$(declare -f $firstArg);$firstArg $*"
         elif [[ $(type $firstArg) = *alias* ]]; then
