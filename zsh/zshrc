@@ -318,9 +318,12 @@ elif [[ $(uname) == "Linux" ]]; then
 fi
 
 # reaper
-# if [[ $(uname) == "Darwin" ]]; then
-#     export reaper="/Applications/REAPER.app/Contents/MacOS/REAPER"
-if [[ $(uname) == "Linux" ]]; then
+if [[ $(uname) == "Darwin" ]]; then
+    alias reaper_exec="/Applications/REAPER.app/Contents/MacOS/REAPER"
+    alias REAPER="cd $HOME/Library/Application\ Support/REAPER"
+    alias ReaScripts="cd $HOME/Library/Application\ Support/REAPER/Scripts"
+    alias rewgsReaScripts="cd $HOME/Library/Application\ Support/REAPER/Scripts/rewgs-reaper-scripts"
+elif [[ $(uname) == "Linux" ]]; then
     export PATH="$HOME/opt/REAPER:$PATH"
 fi
 
@@ -400,4 +403,3 @@ function cursor_mode {
     zle -N zle-line-init
 }
 cursor_mode
-
