@@ -5,6 +5,5 @@ function run_function_as_sudo () {
     # local arg_type="$(type -w "$arg")"
 
     # Runs $arg as function
-    # shift && command sudo "$SHELL" -c "($declare -f "$arg"); $arg $*"
-    sudo "$SHELL" -c "($declare -f "$arg"); 
+    shift && command sudo "$SHELL" -c "($declare -f "$arg"); $arg $*"
 }
