@@ -1,10 +1,9 @@
 # source: https://unix.stackexchange.com/questions/269078/executing-a-bash-script-function-with-sudo
-
 function run_as_sudo {
     if [[ $(uname) == "Darwin" ]]; then
         # NOTE: macOS doesn't have a `type -t`, just `type`
         if [[ $(type $1) == *function* ]]; then
-            shift && command sudo zsh -c "$(declare -f $1); $1 $*"
+            shift && command sudo bash -c "$(declare -f $1); $1 $*"
         elif [[ $(type $1) = *alias* ]]; then
             alias sudo='\sudo '
 
@@ -16,10 +15,10 @@ function run_as_sudo {
             command sudo "$@"
         fi
     elif [[ $(uname) == "Linux" ]]; then
-        # NOTE: `type -w` is zsh's equivalent of bash's `type -t`
-        if [[ $(type -t $1) = function ]]; then
-            shift && command sudo zsh -c "$(declare -f $1); $1 $*"
-        elif [[ $(type -t $1) = alias ]]; then
+        # NOTE: `type -w` is bash's equivalent of bash's `type -t`
+        if [[ $(type -w $1) = function ]]; then
+            shift && command sudo bash -c "$(declare -f $1); $1 $*"
+        elif [[ $(type -w $1) = alias ]]; then
             alias sudo='\sudo '
             eval "sudo $@"
         else
