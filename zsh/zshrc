@@ -115,7 +115,7 @@ alias eh="echo 'You are using $HOST'"
 alias mkd="mkdir"
 alias mv="mv -i"       # prompts before overwriting already-existing file; TODO: make this take multiple arguments
 alias rm=rmv         # aliasing rm to my custom function rmv; TODO: make this take multiple arguments
-alias sdo=run_function_as_sudo
+alias sdo=run_as_sudo
 
 # neovim
 alias v="nvim"

@@ -1,0 +1,57 @@
+function run_as_sudo {
+    local firstArg="$1"
+
+    if [[ $(uname) == "Darwin" ]]; then
+        if [[ $(type $firstArg) == *function* ]]; then
+            shift && command sudo zsh -c "$(declare -f $firstArg);$firstArg $*"
+        elif [[ $(type $firstArg) = *alias* ]]; then
+            alias sudo='\sudo '
+
+            # Ignore any editor errors along the lines of "argument mixes string and array."
+            # This line expands positional parameters, i.e. "$1" "$2" ... and so on.
+            # See: https://stackoverflow.com/questions/3898665/what-is-in-bash
+            eval "sudo $@"
+        else
+            command sudo "$@"
+        fi
+    elif [[ $(uname) == "Linux" ]]; then
+        # NOTE: `type -w` is zsh's equivalent of bash's `type -t`
+        if [[ $(type -t $firstArg) = function ]]; then
+            shift && command sudo zsh -c "$(declare -f $firstArg);$firstArg $*"
+        elif [[ $(type -t $firstArg) = alias ]]; then
+            alias sudo='\sudo '
+            eval "sudo $@"
+        else
+            command sudo "$@"
+        fi
+    fi
+}
+
+# mac
+# function run_as_sudo {
+#     local firstArg=$1
+#     if [[ $(type $firstArg) == *function* ]]; then
+#         shift && command sudo bash -c "$(declare -f $firstArg);$firstArg $*"
+#     elif [[ $(type $firstArg) = *alias* ]]; then
+#         alias sudo='\sudo '
+#         eval "sudo $@"
+#     else
+#         command sudo "$@"
+#     fi
+# }
+
+# linux
+# function run_as_sudo {
+#     local firstArg=$1
+#     if [ $(type -t $firstArg) = function ]
+#     then
+#         shift && command sudo bash -c "$(declare -f $firstArg);$firstArg $*"
+#     elif [ $(type -t $firstArg) = alias ]
+#     then
+#         alias sudo='\sudo '
+#         eval "sudo $@"
+#     else
+#         command sudo "$@"
+#     fi
+# }
+
