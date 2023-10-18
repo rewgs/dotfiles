@@ -24,7 +24,7 @@ return require('packer').startup(function(use)
         requires = {
             -- lsp support
             { 'neovim/nvim-lspconfig' }, -- required
-            {                          -- optional
+            {                            -- optional
                 'williamboman/mason.nvim',
                 run = function()
                     pcall(vim.cmd, 'MasonUpdate')
@@ -33,9 +33,9 @@ return require('packer').startup(function(use)
             { 'williamboman/mason-lspconfig.nvim' }, -- optional
 
             -- autocompletion
-            { 'hrsh7th/nvim-cmp' },   -- required
+            { 'hrsh7th/nvim-cmp' },     -- required
             { 'hrsh7th/cmp-nvim-lsp' }, -- required
-            { 'L3MON4D3/LuaSnip' },   -- required
+            { 'L3MON4D3/LuaSnip' },     -- required
         }
     }
 
