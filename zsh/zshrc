@@ -180,6 +180,7 @@ fi
 # typically should only be used in an activated venv
 alias pipfreeze="pip freeze > requirements.txt"
 alias pipinstallreqs="pip install -r requirements.txt"
+alias pyserve="python3 -m http.server 8080"
 
 # pyenv
 alias av=activate_venv
