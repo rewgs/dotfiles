@@ -60,11 +60,13 @@ function make_dotfiles_symlinks () {
 
 
 function prevent_prompts () {
-    # Prevents prompts for restarting services
-    sed -i "s/#\$nrconf{restart} = 'i';/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
+    if [[ -f /etc/needrestart/needrestart.conf ]]; then
+        # Prevents prompts for restarting services
+        sed -i "s/#\$nrconf{restart} = 'i';/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
 
-    # Prevents prompts for restarting due to kernel updates
-    sed -i "s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g" /etc/needrestart/needrestart.conf
+        # Prevents prompts for restarting due to kernel updates
+        sed -i "s/#\$nrconf{kernelhints} = -1;/\$nrconf{kernelhints} = -1;/g" /etc/needrestart/needrestart.conf
+    fi
 }
 
 
