@@ -194,4 +194,7 @@ function install_apps_from_package_manager () {
 
     echo "Package manager basic installations complete! Moving on..."
     sleep 2
+
+    local result="success"
+    echo "$result"
 }
