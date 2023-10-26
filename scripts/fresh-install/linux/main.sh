@@ -16,6 +16,7 @@ function step_1 () {
     # echo "uninstall_apps_with_package_manager() finished!" | cat >> "$log_file"
     
     cd "$current" || return
+    source ./apps.sh
     echo "Running install_apps_from_package_manager()" | cat >> "$log_file"
     install_apps_from_package_manager
     echo "install_apps_from_package_manager() finished!" | cat >> "$log_file"
