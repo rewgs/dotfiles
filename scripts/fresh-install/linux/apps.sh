@@ -3,18 +3,18 @@
 
 # This replaces the need for `NEEDRESTART_SUSPEND=1` prior to `apt get install "$a"`
 # Couldn't get anything to actually work
-function uninstall_apps_with_package_manager () {
-    if [[ $(get_distro) == *"Debian"* ]] || [[ $(get_distro) == *"Ubuntu"* ]] ; then
-        typset -a apps
-        apps=(
-            "needrestart"
-        )
+# function uninstall_apps_with_package_manager () {
+#     if [[ $(get_distro) == *"Debian"* ]] || [[ $(get_distro) == *"Ubuntu"* ]] ; then
+#         typset -a apps
+#         apps=(
+#             "needrestart"
+#         )
 
-        for a in "${apps[@]}"; do
-            apt-get remove "$a"
-        done
-    fi
-}
+#         for a in "${apps[@]}"; do
+#             apt-get remove "$a"
+#         done
+#     fi
+# }
 
 
 function install_apps_from_package_manager () {

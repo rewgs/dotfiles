@@ -9,6 +9,8 @@ function step_1 () {
     source ./apps.sh
     if [ "$(install_apps_from_package_manager)" = "success" ]; then
         echo "Success: install_apps_from_package_manager()" | cat >> "$log_file"
+    else
+        echo "Failure: install_apps_from_package_manager()" | cat >> "$log_file"
     fi
 }
 
