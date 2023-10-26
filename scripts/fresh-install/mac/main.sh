@@ -64,6 +64,7 @@ function homebrew_installations () {
         "bettercap"
         "bpytop"
         "btop"
+        "chromium --no-quarantine"
         "cmatrix"
         "coreutils"
         "cowsay"
