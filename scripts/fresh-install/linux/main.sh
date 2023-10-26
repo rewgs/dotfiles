@@ -92,8 +92,8 @@ function step_1 () {
     
     echo "All done! Restarting now..."
     reboot
-    
 }
+
 
 function step_2 () {
     current=$(pwd)
@@ -113,5 +113,6 @@ function step_2 () {
     zsh -c install_fira_code_nerd_font
 }
 
-sudo bash -ivc step_1
+
+step_1
 # step_2
