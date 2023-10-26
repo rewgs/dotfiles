@@ -105,13 +105,13 @@ function install_apps_from_package_manager () {
 	        # > /dev/null 2> /dev/null # for some reason, `&> /dev/null` isn't silent, but this is
         done
 
-        for p in "${third_party_ppas}"; do
+        for p in "${third_party_ppas[@]}"; do
             add-apt-repository ppa:"$p"
         done
 
         apt update
 
-        for a in "${ppa_apps}"; do
+        for a in "${ppa_apps[@]}"; do
             apt-get install -y "$a"
         done
 
