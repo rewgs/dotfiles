@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Not sure why this isn't working. Just freezes. Ctrl+c throws a warning about how `apt` doesn't 
+# have a stable CLI interface, which tells me that this is indeed running the `apt` commands. So 
+# why is it freezing?
 function step_1 () {
     current=$(pwd)
     log_file="$current/installation_log.txt"

@@ -70,7 +70,7 @@ function install_apps_from_package_manager () {
             "zsh"
         )
 
-        # Due to zsh not having nested arrays, the simplest way to keep ppas 
+        # Due to bash not having nested arrays, the simplest way to keep ppas 
         # and packages commands is to put them in separate arrays, add the ppas, 
         # then install the apps.
         typeset -a third_party_ppas
