@@ -1,0 +1,12 @@
+# directories
+__pycache__
+.code
+.idea
+.venv
+.vscode
+venv
+
+# files
+.DS_Store
+*.pyc
+
