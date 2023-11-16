@@ -146,9 +146,14 @@ local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
 vmap('n', '<leader>zh', lsp.hover, {})
 vmap('n', '<leader>df', lsp.definition, {})
-vmap('n', '<leader>rf', lsp.references, {})
-vmap('n', '<leader>rn', lsp.rename, {})
-vmap('n', '<leader>fm', lsp.format, {})
 vmap('n', '<leader>dg', diagnostic.open_float, {})
 vmap('n', '<leader>dn', diagnostic.goto_next, {})
 vmap('n', '<leader>dp', diagnostic.goto_prev, {})
+vmap('n', '<leader>fm', lsp.format, {})
+vmap('n', '<leader>rf', lsp.references, {})
+vmap('n', '<leader>rn', lsp.rename, {})
+
+-- folding via nvim-ufo
+local ufo = require('ufo')
+vmap('n', '<leader>O', ufo.openAllFolds)
+vmap('n', '<leader>C', ufo.closeAllFolds)
