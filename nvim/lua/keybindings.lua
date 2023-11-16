@@ -155,5 +155,7 @@ vmap('n', '<leader>rn', lsp.rename, {})
 
 -- folding via nvim-ufo
 local ufo = require('ufo')
-vmap('n', '<leader>O', ufo.openAllFolds)
-vmap('n', '<leader>C', ufo.closeAllFolds)
+vmap('n', '<leader>fc', ':foldclose<CR>')
+vmap('n', '<leader>fC', ufo.closeAllFolds)
+vmap('n', '<leader>fo', ':foldopen<CR>')
+vmap('n', '<leader>fO', ufo.openAllFolds)
