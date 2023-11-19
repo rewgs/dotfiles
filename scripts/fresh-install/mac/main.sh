@@ -90,6 +90,7 @@ function homebrew_installations () {
         "amethyst"
         "blackhole-2ch"
         "blackhole-16ch"
+        "dozer" # FOSS menu bar organizer a la Bartender: https://github.com/Mortennn/Dozer
         "firefox"
         "font-fira-code-nerd-font"
         "google-chrome"

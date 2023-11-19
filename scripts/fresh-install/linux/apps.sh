@@ -87,8 +87,7 @@ function install_apps_from_package_manager () {
         prevent_prompts
 
         echo "Checking for updates..."
-        apt-get update -qq
-	    if [ $? -eq 0 ]; then # `$?` is used to find the return value of the last executed command
+        if [[ $(apt-get update -qq) -eq 0 ]]; then
 	    	echo "Upgrading packages..."
             # note: NEEDRESTART_SUSPEND=1 is required in Ubuntu 22.04 LTS in order to prevent a 
             # prompt which asks the user which service(s) should be restarted, if any.
@@ -118,16 +117,15 @@ function install_apps_from_package_manager () {
     elif [[ $(get_distro) == *"Arch"* ]] ; then
         typeset -a apps 
         apps=(
-            "apache2"
-            "apt-file" # this is SO useful. `apt-file search "header.h"` will help find the -dev package that contains it.
-            "apt-transport-https"
+            # NOTE: commented-out packages are incorrect package names (as these were copied from 
+            # apt script above); need to find correct package name for Pacman
+            "apache"
             "arp-scan"
             "automake"
+            "base-devel" # equivalent to apt's built-essential
             "bettercap"
             "bpytop"
             "btop"
-            "build-essential"
-            "cbonsai"
             "cmake"
             "cmatrix"
             "cowsay"
@@ -136,26 +134,26 @@ function install_apps_from_package_manager () {
             "docker-compose"
             "git"
             "glances"
-            "gnupg2"
-            "golang-go"
+            "gnu-ncat"
+            "gnupg"
+            "go"
             "hsetroot"
             "htop"
-            "libvirt-daemon"
+            "libvirt"
             "llvm"
-            "lua5.4"
+            "lua"
             "lynx"
             "make"
-            "ncat"
             "ncdu"
             "neofetch"
             "net-tools"
             "nmap"
-            "paru" # Pacman helper
+            # "paru" # Pacman helper; can't install this with Pacman, need to install manually: https://github.com/Morganamilo/paru
             "picom"
-            "qemu-kvm"
-            "shellcheck"
+            "qemu-full"
+            # "shellcheck" # not available for ARM?
             "software-properties-common"
-            "tgt"
+            # "tgt"
             "thefuck"
             "tldr"
             "tree"
@@ -171,25 +169,30 @@ function install_apps_from_package_manager () {
 
         typeset -a aur_apps
         aur_apps=(
+            "cbonsai"
             "xrdp"
         )
 
         echo "Checking for updates..."
-        pacman -Syq
-	    if [ $? -eq 0 ]; then # `$?` is used to find the return value of the last executed command
+        if [ $(pacman -Syq) -eq 0 ]; then
 	    	echo "Upgrading packages..."
-            pacman -Syuq --noconfirm
+            # the `--needed` flag maybe makes this conditional unnecessary?
+            pacman -Syuq --needed --noconfirm
 	    fi
 
         echo "Installing packages via Pacman..."
         for a in "${apps[@]}"; do
-            pacman -Syuq --noconfirm "$a"
+            # `pacman -Q` queries the installed local package database; `-i` returns information on the package.
+            # If exit code is 0, package is installed; otherwise, it's not.
+            if [[ ! $(pacman -Qi "$a") ]]; then
+                pacman -Syuq --noconfirm "$a"
+            fi
         done
 
-        echo "Installing packages via the AUR..."
-        for a in "${aur_apps[@]}"; do
-            paru -Syuq --noconfirm "$a"
-        done
+        # echo "Installing packages via the AUR..."
+        # for a in "${aur_apps[@]}"; do
+        #     paru -Syuq --noconfirm "$a"
+        # done
     fi
 
     echo "Package manager basic installations complete! Moving on..."
