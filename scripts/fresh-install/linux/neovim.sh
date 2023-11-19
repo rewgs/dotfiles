@@ -3,7 +3,7 @@
 function apt_install_neovim_dependencies () {
     source ./utils.sh
     distro=get_distro
-    if [[ "$distro" == *"Debian"* ]] || [[ "$distro" == **]]
+    if [[ "$distro" == *"Debian"* ]] || [[ "$distro" == ** ]]
 	apt-get install -y \
 		ninja-build \
 		gettext \
