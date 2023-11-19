@@ -7,6 +7,7 @@ function step_1 () {
     cd "$this_repo" || return
     source ./distros.sh
     distro=$(get_distro)
+    # echo "Distro: $distro"
 
     cd "$this_repo" || return
     source ./packages/packages.sh

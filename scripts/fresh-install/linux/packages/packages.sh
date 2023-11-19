@@ -14,13 +14,13 @@ function get_package_manager {
     )
 
     for a in "${apt_distros[@]}"; do
-        if [[ "$distro" == "$a" ]]; then
+        if [[ "$distro" == *"$a"* ]]; then
             echo "apt"
         fi
     done
 
     for p in "${pacman_distros[@]}"; do
-        if [[ "$distro" == "$p" ]]; then
+        if [[ "$distro" == *"$p"* ]]; then
             echo "pacman"
         fi
     done
@@ -56,7 +56,7 @@ function update_packages {
 function install_packages {
     distro="$1"
     package_manager=$(get_package_manager "$distro")
-    echo "$package_manager"
+    echo "$distro uses package manager $package_manager"
 
     # update_packages "$package_manager"
 
