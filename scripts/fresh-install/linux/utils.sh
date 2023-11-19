@@ -70,11 +70,6 @@ function prevent_prompts () {
 }
 
 
-function get_distro () {
-    ( lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1
-}
-
-
 function remove_snap () {
     # FIXME: 
     # - POSIX sh doesn't support globbing. Convert the following line to case statements.

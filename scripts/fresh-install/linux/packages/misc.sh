@@ -1,4 +1,4 @@
-function install_google_chrome () {
+function install_google_chrome {
     # typeset -a deps 
     # deps=(
     #     "libasound2"
@@ -40,7 +40,7 @@ function install_google_chrome () {
 }
 
 
-function install_lazygit_from_source () {
+function install_lazygit_from_source {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone https://github.com/jesseduffield/lazygit.git
@@ -49,7 +49,7 @@ function install_lazygit_from_source () {
 }
 
 
-function install_firefox_without_snap () {
+function install_firefox_without_snap {
     # assumes that snap has already been removed and `snap remove firefox` run
 
     # depends on software-properties-common package (installed in `install_from_package_manager()`
@@ -69,7 +69,7 @@ function install_firefox_without_snap () {
 }
 
 
-function install_tailscale () {
+function install_tailscale {
     # Add Tailscale’s package signing key and repository:
     curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg | tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
     curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list | tee /etc/apt/sources.list.d/tailscale.list
@@ -82,7 +82,7 @@ function install_tailscale () {
 }
 
 
-function install_github_cli () {
+function install_github_cli {
     # add repository
 	type -p curl >/dev/null || apt install curl -y
 	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
@@ -93,7 +93,7 @@ function install_github_cli () {
 }
 
 
-function install_oh_my_zsh () {
+function install_oh_my_zsh {
     # interactive
     # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -108,6 +108,6 @@ function install_oh_my_zsh () {
 }
 
 
-function install_rclone () {
+function install_rclone {
     curl https://rclone.org/install.sh | bash
 }
