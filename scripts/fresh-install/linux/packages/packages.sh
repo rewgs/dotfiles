@@ -1,10 +1,17 @@
-#!/usr/bin/false
-# ^ this prevents this file from being directly invoked; it can only be sourced
-
-
 function get_package_manager {
-    source ../distros.sh
-    distro=$(get_distro)
+    distro="$1"
+
+    declare -r -a apt_distros
+    apt_distros=(
+        "Debian"
+        "Ubuntu"
+    )
+    
+    declare -r -a pacman_distros
+    pacman_distros=(
+        "Arch"
+        "Manjaro"
+    )
 
     for a in "${apt_distros[@]}"; do
         if [[ "$distro" == "$a" ]]; then
@@ -47,9 +54,9 @@ function update_packages {
 
 
 function install_packages {
-    package_manager=$(get_package_manager)
+    distro="$1"
+    package_manager=$(get_package_manager "$distro")
     update_packages "$package_manager"
-    package_manager="$1"
 
     echo "Installing packages..."
     if [[ "$package_manager" == "apt" ]]; then
