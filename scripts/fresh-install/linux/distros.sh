@@ -1,11 +1,11 @@
-declare -r -a _apt_distros
-_apt_distros=(
+declare -r -a apt_distros
+apt_distros=(
     "Debian"
     "Ubuntu"
 )
 
-declare -r -a _pacman_distros
-_pacman_distros=(
+declare -r -a pacman_distros
+pacman_distros=(
     "Arch"
     "Manjaro"
 )

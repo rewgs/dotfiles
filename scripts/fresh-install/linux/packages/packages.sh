@@ -3,16 +3,16 @@
 
 
 function get_package_manager {
-    source ../distros/distros.sh
+    source ../distros.sh
     distro=$(get_distro)
 
-    for a in "${_apt_distros[@]}"; do
+    for a in "${apt_distros[@]}"; do
         if [[ "$distro" == "$a" ]]; then
             echo "apt"
         fi
     done
 
-    for p in "${_pacman_distros[@]}"; do
+    for p in "${pacman_distros[@]}"; do
         if [[ "$distro" == "$p" ]]; then
             echo "pacman"
         fi
