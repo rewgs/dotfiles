@@ -1,4 +1,4 @@
-function install_phpenv_build_prerequisites () {
+install_phpenv_build_prerequisites () {
     # TODO: make this run on arch like tmux and neovim files
     apt install -y \
         apache2-dev \
@@ -11,7 +11,7 @@ function install_phpenv_build_prerequisites () {
 }
 
 
-function install_phpenv_from_source () {
+install_phpenv_from_source () {
     # install phpenv
     if [ ! -d ~/src ]; then mkdir ~/src; fi
     cd ~/src

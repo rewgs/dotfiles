@@ -1,4 +1,4 @@
-function prevent_prompts () {
+prevent_prompts () {
     if [[ -f /etc/needrestart/needrestart.conf ]]; then
         # Prevents prompts for restarting services
         sed -i "s/#\$nrconf{restart} = 'i';/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
@@ -9,7 +9,7 @@ function prevent_prompts () {
 }
 
 
-function remove_snap () {
+remove_snap () {
     # FIXME: 
     # - POSIX sh doesn't support globbing. Convert the following line to case statements.
     # - ^ isn't urgent, as right now I'm only running this on apt-based distros.

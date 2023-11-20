@@ -1,4 +1,4 @@
-function install_google_chrome {
+install_google_chrome () {
     # typeset -a deps 
     # deps=(
     #     "libasound2"
@@ -40,7 +40,7 @@ function install_google_chrome {
 }
 
 
-function install_lazygit_from_source {
+install_lazygit_from_source () {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone https://github.com/jesseduffield/lazygit.git
@@ -49,7 +49,7 @@ function install_lazygit_from_source {
 }
 
 
-function install_firefox_without_snap {
+install_firefox_without_snap () {
     # assumes that snap has already been removed and `snap remove firefox` run
 
     # depends on software-properties-common package (installed in `install_from_package_manager()`
@@ -69,7 +69,7 @@ function install_firefox_without_snap {
 }
 
 
-function install_tailscale {
+install_tailscale () {
     # Add Tailscale’s package signing key and repository:
     curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg | tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
     curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list | tee /etc/apt/sources.list.d/tailscale.list

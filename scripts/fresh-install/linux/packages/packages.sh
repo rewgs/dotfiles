@@ -1,5 +1,5 @@
 # FIXME: Always returns an empty string
-function get_package_manager {
+get_package_manager () {
     distro="$1"
     package_manager=""
 
@@ -31,7 +31,7 @@ function get_package_manager {
 }
 
 
-function update_packages {
+update_packages () {
     package_manager="$1"
     echo "Checking for updates..."
 
@@ -55,7 +55,7 @@ function update_packages {
 }
 
 
-function install_packages {
+install_packages () {
     distro="$1"
     package_manager=$(get_package_manager "$distro")
     # echo "$distro uses package manager $package_manager"

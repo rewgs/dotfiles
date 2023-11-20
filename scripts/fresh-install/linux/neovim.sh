@@ -1,34 +1,34 @@
-#!/usr/bin/env bash
+# FIXME
+# apt_install_neovim_dependencies () {
+#     source ./utils.sh
+#     distro=get_distro
+#     if [[ "$distro" == *"Debian"* ]] || [[ "$distro" == ** ]]
+# 	apt-get install -y \
+# 		ninja-build \
+# 		gettext \
+# 		libtool \
+# 		libtool-bin \
+# 		autoconf \
+# 		automake \
+# 		g++ \
+# 		pkg-config \
+# 		unzip \
+# 		doxygen
+# }
 
-function apt_install_neovim_dependencies () {
-    source ./utils.sh
-    distro=get_distro
-    if [[ "$distro" == *"Debian"* ]] || [[ "$distro" == ** ]]
-	apt-get install -y \
-		ninja-build \
-		gettext \
-		libtool \
-		libtool-bin \
-		autoconf \
-		automake \
-		g++ \
-		pkg-config \
-		unzip \
-		doxygen
-}
-
-function pacman_install_neovim_dependencies () {
-    pacman -S \
-        base-devel \
-        cmake \
-        curl \
-        ninja \
-        unzip
-}
+# FIXME
+# pacman_install_neovim_dependencies () {
+#     pacman -S \
+#         base-devel \
+#         cmake \
+#         curl \
+#         ninja \
+#         unzip
+# }
 
 
-function update_neovim_from_source () {
-	cd "$HOME"/src/neovim
+update_neovim_from_source () {
+	cd "$HOME"/src/neovim || return
 	git checkout stable
 	git pull
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
@@ -36,19 +36,19 @@ function update_neovim_from_source () {
 }
 
 
-function build_neovim_from_source () {
+build_neovim_from_source () {
     install_neovim_dependencies
 
     if [ ! -d ~/src ]; then mkdir ~/src; fi
-    cd ~/src
+    cd ~/src || return
     git clone --depth 1 https://github.com/neovim/neovim.git --branch stable
-    cd ~/src/neovim
+    cd ~/src/neovim || return
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
 	make install
 }
 
 
-function install_packer_nvim () {
+install_packer_nvim () {
     if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/" ]; then
         mkdir -p "$HOME/.local/share/nvim/site/pack/packer/start/"
     fi

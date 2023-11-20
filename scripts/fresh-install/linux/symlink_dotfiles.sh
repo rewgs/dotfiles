@@ -1,4 +1,4 @@
-function make_bash_symlinks {
+make_bash_symlinks () {
     declare -r -a dot_files
     dot_files=(
         "bashrc"
@@ -14,7 +14,7 @@ function make_bash_symlinks {
     done
 }
 
-function make_neovim_symlinks {
+make_neovim_symlinks () {
     if [ ! -d "$HOME/.config" ]; then
         mkdir "$HOME/.config"
     fi
@@ -26,7 +26,7 @@ function make_neovim_symlinks {
     ln -s "$HOME/dotfiles/nvim/" "$HOME/.config/nvim"
 }
 
-function make_sh_symlinks {
+make_sh_symlinks () {
     if [ -f "$HOME/.profile" ] || [ -L "$HOME/.profile" ]; then
         rm "$HOME/.profile"
     fi
@@ -34,7 +34,7 @@ function make_sh_symlinks {
     ln -s "$HOME/dotfiles/sh/profile" "$HOME/.profile"
 }
 
-function make_tmux_symlinks {
+make_tmux_symlinks () {
     # tmux
     if [[ -f "$HOME/.tmux.conf" ]] || [[ -L "$HOME/.tmux.conf" ]]; then
         rm "$HOME/.tmux.conf"
@@ -51,7 +51,7 @@ function make_tmux_symlinks {
     ln -s "$HOME/src/tpm/" "$HOME/.tmux/plugins/tpm"
 }
 
-function make_zsh_symlinks {
+make_zsh_symlinks () {
     declare -r -a dot_files
     dot_files=(
         "zlogin"
@@ -69,7 +69,7 @@ function make_zsh_symlinks {
     done
 }
 
-function make_all_symlinks {
+make_all_symlinks () {
     make_bash_symlinks
     make_neovim_symlinks
     make_sh_symlinks

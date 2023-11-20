@@ -1,4 +1,4 @@
-function build_tmux_from_source () {
+build_tmux_from_source () {
     # for building new and updating
     cd "$HOME"/src/tmux
     git pull
@@ -11,7 +11,7 @@ function build_tmux_from_source () {
 }
 
 
-function install_tmux_from_source () {
+install_tmux_from_source () {
     typeset -a deps
     deps=(
         "bison"
@@ -40,7 +40,7 @@ function install_tmux_from_source () {
 }
 
 
-function install_tmux_package_manager () {
+install_tmux_package_manager () {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone --depth 1 https://github.com/tmux-plugins/tpm.git

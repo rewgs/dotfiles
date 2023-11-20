@@ -1,10 +1,10 @@
-function install_rust () {
+install_rust () {
     curl https://sh.rustup.rs -sSf | sh -s -- -y
     # source ~/.cargo/env
 }
 
 
-function install_cargo_apps () {
+install_cargo_apps () {
     typeset -a cargo_apps
     cargo_apps=(
 	    "cargo-audi"

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function basic_environment_setup {
+basic_environment_setup () {
     cd "$1" || return
     source ./distros.sh
     # distro=$(get_distro)
@@ -22,7 +22,7 @@ function basic_environment_setup {
     reboot
 }
 
-function main_tools_setup {
+main_tools_setup () {
     # tmux
     cd "$1" || return
     source ./tmux.sh
@@ -39,7 +39,7 @@ function main_tools_setup {
     echo "Success: packer.nvim installation" | cat >> "$log_file"
 }
 
-function install_languages {
+install_languages () {
     # nodejs
     cd "$1" || return
     source ./nodejs.sh
@@ -76,19 +76,28 @@ function install_languages {
     zsh -c install_npm_apps
 }
 
-function setup_gui {
+setup_gui () {
     cd "$1" || return
     source ./gui.sh
     zsh -c install_fira_code_nerd_font
 }
 
 
-function main {
-    this_repo=$(pwd)
+main () {
+    this_repo=$( realpath "$(pwd)" )
     # log_file="$this_repo/installation_log.txt"
 
     basic_environment_setup "$this_repo"
     # main_tools_setup "$this_repo"
     # install_languages "$this_repo"
     # setup_gui "$this_repo"
+}
+
+alt_main_using_run () {
+    this_repo=$( realpath "$(pwd)" )
+    source ./run.sh
+
+    run basic_environment_setup \
+        "$this_repo" \
+        "$(realpath ./packages/packages.sh)"
 }

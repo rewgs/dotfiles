@@ -1,4 +1,4 @@
-function install_pyenv_build_dependencies () {
+install_pyenv_build_dependencies () {
     # TODO: make this work on arch
 	apt update; 
 	apt install -y \
@@ -19,7 +19,7 @@ function install_pyenv_build_dependencies () {
 }
 
 
-function install_pyenv_from_source () {
+install_pyenv_from_source () {
     if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
     cd "$HOME"/src
     git clone --depth 1 https://github.com/pyenv/pyenv.git
