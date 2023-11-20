@@ -23,7 +23,6 @@ function get_package_manager {
     done
 
     for p in "${pacman_distros[@]}"; do
-        echo "$p"
         if [[ "$distro" == *"$p"* ]]; then
             _package_manager="pacman"
             echo "$_package_manager"
