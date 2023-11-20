@@ -53,11 +53,11 @@ update_packages () {
 }
 
 install_packages () {
-    dir="$1"
-    cd "$dir" || return
-    # distro="$1"
-    . distros.sh
-    package_manager=$(get_package_manager $(get_distro) )
+    this_dir="$1"
+    . "$this_dir/distros.sh"
+
+    cd "$this_dir" || return
+    package_manager=$(get_package_manager "$(get_distro)" )
     # echo "$distro uses package manager $package_manager"
     update_packages "$package_manager"
 

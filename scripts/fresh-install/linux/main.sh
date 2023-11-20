@@ -1,20 +1,18 @@
 #!/usr/bin/env bash
 
+this_dir="$(dirname "$(readlink -f "$0")" )"
+
 basic_environment_setup () {
-    dir="$1"
+    cd "$this_dir" || return
+    . "$this_dir/packages/packages.sh"
+    install_packages "$this_dir"
 
-    cd "$dir" || return
-    . distros.sh
-    . packages/packages.sh
-    # install_packages "$(get_distro)"
-    install_packages "$dir"
-
-    cd "$dir" || return
+    cd "$this_dir" || return
     . packages/misc.sh
     install_oh_my_zsh
     chsh -s "$(which zsh)" "$(whoami)"
 
-    cd "$dir" || return
+    cd "$this_dir" || return
     . symlink_dotfiles.sh
     make_zsh_symlinks
     
@@ -26,13 +24,13 @@ main_tools_setup () {
     dir="$1"
 
     # tmux
-    cd "$dir" || return
+    cd "$this_dir" || return
     . tmux.sh
     install_tmux_from_source
     install_tmux_package_manager
 
     # neovim
-    cd "$dir" || return
+    cd "$this_dir" || return
     . neovim.sh
     install_neovim_dependencies
     build_neovim_from_source
@@ -45,7 +43,7 @@ install_languages () {
     dir="$1"
 
     # nodejs
-    cd "$dir" || return
+    cd "$this_dir" || return
     . nodejs.sh
     install_nvm_from_source
     echo "Success: nvm installation" | cat >> "$log_file"
@@ -54,14 +52,14 @@ install_languages () {
     echo "Success: nodejs installation" | cat >> "$log_file"
     
     # phpenv
-    cd "$dir" || return
+    cd "$this_dir" || return
     . phpenv.sh
     install_phpenv_build_prerequisites
     install_phpenv_from_source
     echo "Success: phpenv installation" | cat >> "$log_file"
     
     # pyenv
-    cd "$dir" || return
+    cd "$this_dir" || return
     . pyenv.sh
     install_pyenv_build_dependencies
     install_pyenv_from_source
@@ -70,7 +68,7 @@ install_languages () {
     install_python
     echo "Success: python installation" | cat >> "$log_file"
 
-    cd "$dir" || return
+    cd "$this_dir" || return
     . rust.sh
     zsh -c install_rust
     zsh -c install_cargo_apps
@@ -83,18 +81,17 @@ install_languages () {
 setup_gui () {
     dir="$1"
 
-    cd "$dir" || return
+    cd "$this_dir" || return
     . gui.sh
     zsh -c install_fira_code_nerd_font
 }
 
 
 main () {
-    this_repo=$( realpath "$(pwd)" )
-    log_file="$this_repo/installation_log.txt"
+    # log_file="$this_dir/installation_log.txt"
 
-    basic_environment_setup "$this_repo"
-    # main_tools_setup "$this_repo"
-    # install_languages "$this_repo"
-    # setup_gui "$this_repo"
+    basic_environment_setup
+    # main_tools_setup "$this_dir"
+    # install_languages "$this_dir"
+    # setup_gui "$this_dir"
 }
