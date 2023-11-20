@@ -1,7 +1,5 @@
-#!/bin/zsh
-
 # This will trash your local changes and reset to the latest commit.
-function force_reset_repo() {  
+force_reset_repo() {  
   git fetch --all
 
   # $1 will usually be nothing, origin/master, or origin/main

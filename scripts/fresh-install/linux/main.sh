@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
 basic_environment_setup () {
-    cd "$1" || return
-    source ./distros.sh
-    # distro=$(get_distro)
+    dir="$1"
 
-    cd "$1" || return
-    source ./packages/packages.sh
-    install_packages "$(get_distro)"
+    cd "$dir" || return
+    . distros.sh
+    . packages/packages.sh
+    # install_packages "$(get_distro)"
+    install_packages "$dir"
 
-    cd "$1" || return
-    source ./packages/misc.sh
+    cd "$dir" || return
+    . packages/misc.sh
     install_oh_my_zsh
     chsh -s "$(which zsh)" "$(whoami)"
 
-    cd "$1" || return
-    source ./symlink_dotfiles.sh
+    cd "$dir" || return
+    . symlink_dotfiles.sh
     make_zsh_symlinks
     
     echo "All done! Restarting now..."
@@ -23,15 +23,17 @@ basic_environment_setup () {
 }
 
 main_tools_setup () {
+    dir="$1"
+
     # tmux
-    cd "$1" || return
-    source ./tmux.sh
+    cd "$dir" || return
+    . tmux.sh
     install_tmux_from_source
     install_tmux_package_manager
 
     # neovim
-    cd "$1" || return
-    source ./neovim.sh
+    cd "$dir" || return
+    . neovim.sh
     install_neovim_dependencies
     build_neovim_from_source
     echo "Success: neovim installation" | cat >> "$log_file"
@@ -40,9 +42,11 @@ main_tools_setup () {
 }
 
 install_languages () {
+    dir="$1"
+
     # nodejs
-    cd "$1" || return
-    source ./nodejs.sh
+    cd "$dir" || return
+    . nodejs.sh
     install_nvm_from_source
     echo "Success: nvm installation" | cat >> "$log_file"
     prep_for_nvm_nodejs_installs
@@ -50,15 +54,15 @@ install_languages () {
     echo "Success: nodejs installation" | cat >> "$log_file"
     
     # phpenv
-    cd "$1" || return
-    source ./phpenv.sh
+    cd "$dir" || return
+    . phpenv.sh
     install_phpenv_build_prerequisites
     install_phpenv_from_source
     echo "Success: phpenv installation" | cat >> "$log_file"
     
     # pyenv
-    cd "$1" || return
-    source ./pyenv.sh
+    cd "$dir" || return
+    . pyenv.sh
     install_pyenv_build_dependencies
     install_pyenv_from_source
     echo "Success: pyenv installation" | cat >> "$log_file"
@@ -66,38 +70,31 @@ install_languages () {
     install_python
     echo "Success: python installation" | cat >> "$log_file"
 
-    cd "$1" || return
-    source ./rust.sh
+    cd "$dir" || return
+    . rust.sh
     zsh -c install_rust
     zsh -c install_cargo_apps
 
     # not working for some reason
-    source ./nodejs.sh
+    . nodejs.sh
     zsh -c install_npm_apps
 }
 
 setup_gui () {
-    cd "$1" || return
-    source ./gui.sh
+    dir="$1"
+
+    cd "$dir" || return
+    . gui.sh
     zsh -c install_fira_code_nerd_font
 }
 
 
 main () {
     this_repo=$( realpath "$(pwd)" )
-    # log_file="$this_repo/installation_log.txt"
+    log_file="$this_repo/installation_log.txt"
 
     basic_environment_setup "$this_repo"
     # main_tools_setup "$this_repo"
     # install_languages "$this_repo"
     # setup_gui "$this_repo"
-}
-
-alt_main_using_run () {
-    this_repo=$( realpath "$(pwd)" )
-    source ./run.sh
-
-    run basic_environment_setup \
-        "$this_repo" \
-        "$(realpath ./packages/packages.sh)"
 }

@@ -1,4 +1,4 @@
-function activate_venv () {
+activate_venv () {
     source .venv/bin/activate
     which_python=$(which python)
     python_version=$(python --version)

@@ -1,4 +1,3 @@
-# FIXME: Always returns an empty string
 get_package_manager () {
     distro="$1"
     package_manager=""
@@ -30,7 +29,6 @@ get_package_manager () {
     done
 }
 
-
 update_packages () {
     package_manager="$1"
     echo "Checking for updates..."
@@ -54,16 +52,18 @@ update_packages () {
     fi
 }
 
-
 install_packages () {
-    distro="$1"
-    package_manager=$(get_package_manager "$distro")
+    dir="$1"
+    cd "$dir" || return
+    # distro="$1"
+    . distros.sh
+    package_manager=$(get_package_manager $(get_distro) )
     # echo "$distro uses package manager $package_manager"
     update_packages "$package_manager"
 
     echo "Installing packages..."
     if [[ "$package_manager" == "apt" ]]; then
-        source ./packages/apt_packages.sh
+        . packages/apt_packages.sh
         for p in "${packages[@]}"; do
             # note: NEEDRESTART_SUSPEND=1 is required in Ubuntu 22.04 LTS in order to prevent a 
             # prompt which asks the user which service(s) should be restarted, if any.
@@ -83,7 +83,7 @@ install_packages () {
         done
 
     elif [[ "$package_manager" == "pacman" ]]; then
-        source ./packages/pacman_packages.sh
+        . packages/pacman_packages.sh
         for p in "${packages[@]}"; do
             # `pacman -Q` queries the installed local package database; `-i` returns information on the package.
             # If exit code is 0, package is installed; otherwise, it's not.

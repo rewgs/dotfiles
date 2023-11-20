@@ -1,4 +1,5 @@
-function create_new_venv () {
+# TODO: add version argument
+create_new_venv () {
     python -m venv .venv
     activate_venv
     pip install --upgrade pip

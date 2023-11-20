@@ -1,6 +1,5 @@
 # TODO: make the sorting case-insensitive
-
-function clear_then_ls_improved () {
+clear_then_ls_improved () {
     if [[ $(uname) == "Darwin" ]]; then
         clear
         if [[ $# -eq 0 ]]; then
