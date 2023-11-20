@@ -1,31 +1,33 @@
 # FIXME: Always returns an empty string
 function get_package_manager {
-    distro="$1"
-    echo "$distro"
+    # distro="$1"
+    echo "Running get_package_manager; distro: $1"
 
-    declare -r -a apt_distros
-    apt_distros=(
-        "Debian"
-        "Ubuntu"
-    )
+    # declare -r -a apt_distros
+    # apt_distros=(
+    #     "Debian"
+    #     "Ubuntu"
+    # )
     
-    declare -r -a pacman_distros
-    pacman_distros=(
-        "Arch"
-        "Manjaro"
-    )
+    # declare -r -a pacman_distros
+    # pacman_distros=(
+    #     "Arch"
+    #     "Manjaro"
+    # )
 
-    for a in "${apt_distros[@]}"; do
-        if [[ "$distro" == *"$a"* ]]; then
-            echo "apt"
-        fi
-    done
+    # for a in "${apt_distros[@]}"; do
+    #     if [[ "$distro" == *"$a"* ]]; then
+    #         echo "apt"
+    #     fi
+    # done
 
-    for p in "${pacman_distros[@]}"; do
-        if [[ "$distro" == *"$p"* ]]; then
-            echo "pacman"
-        fi
-    done
+    # for p in "${pacman_distros[@]}"; do
+    #     if [[ "$distro" == *"$p"* ]]; then
+    #         echo "pacman"
+    #     fi
+    # done
+
+    # echo "Unknown package manager"
 }
 
 
