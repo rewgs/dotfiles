@@ -58,7 +58,7 @@ function install_packages {
     package_manager=$(get_package_manager "$distro")
     echo "$distro uses package manager $package_manager"
 
-    update_packages "$package_manager"
+    # update_packages "$package_manager"
 
     # echo "Installing packages..."
     # if [[ "$package_manager" == "apt" ]]; then
