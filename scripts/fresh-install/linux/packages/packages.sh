@@ -1,5 +1,7 @@
+# FIXME: Always returns an empty string
 function get_package_manager {
     distro="$1"
+    echo "$distro"
 
     declare -r -a apt_distros
     apt_distros=(
@@ -24,8 +26,6 @@ function get_package_manager {
             echo "pacman"
         fi
     done
-
-    echo "Package manager unknown!"
 }
 
 
@@ -58,7 +58,7 @@ function install_packages {
     package_manager=$(get_package_manager "$distro")
     echo "$distro uses package manager $package_manager"
 
-    # update_packages "$package_manager"
+    update_packages "$package_manager"
 
     # echo "Installing packages..."
     # if [[ "$package_manager" == "apt" ]]; then
