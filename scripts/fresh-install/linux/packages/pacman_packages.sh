@@ -1,4 +1,4 @@
-declare -r -a packages 
+declare -a packages 
 packages=(
     # NOTE: commented-out packages are incorrect package names (as these were copied from 
     # apt script above); need to find correct package name for Pacman
@@ -50,7 +50,7 @@ packages=(
 )
 
 
-declare -r -a aur_packages
+declare -a aur_packages
 aur_packages=(
     "cbonsai"
     "xrdp"
