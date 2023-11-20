@@ -3,29 +3,30 @@ function get_package_manager {
     distro="$1"
     _package_manager=""
 
-    declare -r -a apt_distros
+    declare -a apt_distros
     apt_distros=(
         "Debian"
         "Ubuntu"
     )
     
-    declare -r -a pacman_distros
+    declare -a pacman_distros
     pacman_distros=(
         "Arch"
         "Manjaro"
     )
 
     for a in "${apt_distros[@]}"; do
-        echo "$a"
         if [[ "$distro" == *"$a"* ]]; then
-            echo "apt"
+            _package_manager="apt"
+            echo "$_package_manager"
         fi
     done
 
     for p in "${pacman_distros[@]}"; do
         echo "$p"
         if [[ "$distro" == *"$p"* ]]; then
-            echo "pacman"
+            _package_manager="pacman"
+            echo "$_package_manager"
         fi
     done
 }
