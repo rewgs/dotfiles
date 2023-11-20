@@ -1,4 +1,4 @@
-declare -r -a packages
+declare -a packages
 packages=(
     "apache2"
     "apt-file" # this is SO useful. `apt-file search "header.h"` will help find the -dev package that contains it.
@@ -52,12 +52,12 @@ packages=(
 # Due to bash not having nested arrays, the simplest way to keep ppas 
 # and packages commands is to put them in separate arrays, add the ppas, 
 # then install the packages.
-declare -r -a third_party_ppas
+declare -a third_party_ppas
 third_party_ppas=(
     "nschloe/waybar" # status bar for swaywm; uses X11 though, not Wayland
 )
 
-declare -r -a ppa_packages
+declare -a ppa_packages
 ppa_packages=(
     "waybar"
 )
