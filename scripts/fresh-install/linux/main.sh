@@ -1,29 +1,28 @@
 #!/usr/bin/env bash
 
-function step_1 () {
+function step_1 {
     this_repo=$(pwd)
     # log_file="$this_repo/installation_log.txt"
     
     cd "$this_repo" || return
     source ./distros.sh
     distro=$(get_distro)
-    # echo "Distro: $distro"
 
     cd "$this_repo" || return
     source ./packages/packages.sh
     install_packages "$distro"
 
-    # cd "$this_repo" || return
-    # source ./packages/misc.sh
-    # install_oh_my_zsh
-    # chsh -s "$(which zsh)" "$(whoami)"
+    cd "$this_repo" || return
+    source ./packages/misc.sh
+    install_oh_my_zsh
+    chsh -s "$(which zsh)" "$(whoami)"
 
-    # cd "$this_repo" || return
-    # source ./symlink_dotfiles.sh
-    # make_zsh_symlinks
+    cd "$this_repo" || return
+    source ./symlink_dotfiles.sh
+    make_zsh_symlinks
     
-    # echo "All done! Restarting now..."
-    # reboot
+    echo "All done! Restarting now..."
+    reboot
 
     # tmux
     # cd "$this_repo" || return
@@ -69,7 +68,7 @@ function step_1 () {
 }
 
 
-function step_2 () {
+function step_2 {
     this_repo=$(pwd)
     log_file="$this_repo/installation_log.txt"
 
