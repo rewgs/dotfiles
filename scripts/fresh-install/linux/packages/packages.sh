@@ -63,7 +63,7 @@ function install_packages {
 
     echo "Installing packages..."
     if [[ "$package_manager" == "apt" ]]; then
-        source ./apt_packages.sh
+        source ./packages/apt_packages.sh
         for p in "${packages[@]}"; do
             # note: NEEDRESTART_SUSPEND=1 is required in Ubuntu 22.04 LTS in order to prevent a 
             # prompt which asks the user which service(s) should be restarted, if any.
@@ -83,7 +83,7 @@ function install_packages {
         done
 
     elif [[ "$package_manager" == "pacman" ]]; then
-        source ./pacman_packages.sh
+        source ./packages/pacman_packages.sh
         for p in "${packages[@]}"; do
             # `pacman -Q` queries the installed local package database; `-i` returns information on the package.
             # If exit code is 0, package is installed; otherwise, it's not.
