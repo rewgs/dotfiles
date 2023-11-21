@@ -382,10 +382,10 @@ else
     echo "TODO: write logic for this!"
 fi
 
-echo "This file: $this_file"
-echo "This file name: $this_file_name"
-echo "This file's parent dir: $this_dir"
-echo "This file's parent dir name: $this_dir_name"
+# echo "This file: $this_file"
+# echo "This file name: $this_file_name"
+# echo "This file's parent dir: $this_dir"
+# echo "This file's parent dir name: $this_dir_name"
 
 # readling `~/.zshrc` symlink
 # This shouldn't run, since `(g)readlink -f` is resolving to the absolute path.
@@ -409,11 +409,12 @@ elif [[ "$this_file_name" == "zshrc" ]]; then
     # Autoloads all functions in the user functions directory.
     # Don't forget that the functions need the .zsh extension removed 
     # before they're able to be used!
-    echo "Autoloading zsh functions..."
+    # echo "Autoloading zsh functions..."
     for func in "$user_zsh_functions"/*; do
-        echo "\t$(basename "$func")"
+        # echo "\t$(basename "$func")"
         autoload -Uz "$func"
     done
+    echo "ZSH user functions loaded!"
 
 elif [[ "$this_file" == "$(which zsh)" ]] && [[ "$this_file_name" == "zsh" ]]; then
     echo "\`exec\`-ing $this_file..."
