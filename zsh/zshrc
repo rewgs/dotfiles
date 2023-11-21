@@ -347,6 +347,7 @@ fi
 # `source ~/.zshrc`.
 
 if [[ $(uname) == "Darwin" ]]; then
+    # if greadlink is found
     # Gets the absolute dir path of the file being run.
     # If running `exec $SHELL`, $this_file_name == $(basename $(which zsh));
     # if running `source ~/.zshrc`, $this_file_name == ".zshrc" (if reading 
@@ -354,10 +355,21 @@ if [[ $(uname) == "Darwin" ]]; then
     #
     # Uses greadlink in place of readlink so that I can get Linux-like `-f` functionality.
     # If greadlink not installed, run `brew install coreutils`.
-    this_file=$(greadlink -f $0)
-    this_file_name=$(basename "$this_file")
-    this_dir=$(greadlink -f $(dirname "$this_file"))
-    this_dir_name=$(basename "$this_dir")
+
+    # This runs when starting a new shell
+    if [[ "$0" == "-zsh" ]]; then
+        # Basically, this just ignores that $0 == "-zsh", and instead execs 
+        # $SHELL, which changes $0 to $(which zsh), which then sources this file 
+        # (see the `elif` about 55 lines below).
+        exec $SHELL
+
+    # This runs when calling directly either via `exec $SOURCE` or `source .zshrc`
+    else
+        this_file=$(greadlink -f "$0")
+        this_file_name=$(basename "$this_file")
+        this_dir=$(greadlink -f $(dirname "$this_file"))
+        this_dir_name=$(basename "$this_dir")
+    fi
 
 elif [[ $(uname) == "Linux" ]]; then
     this_file=$(greadlink -f $0)
