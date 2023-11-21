@@ -21,12 +21,15 @@ export LS_COLORS
 
 # configures Homebrew autocomplete in zsh; must be done before sourcing oh-my-zsh
 if [[ $(uname) == "Darwin" ]]; then
-    eval $(/opt/homebrew/bin/brew shellenv)
+    if [[ $(arch) == "arm64" ]];
+        eval $(/opt/homebrew/bin/brew shellenv)
 
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+        FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-    autoload -Uz compinit
-    compinit
+        autoload -Uz compinit
+        compinit
+    # elif [[ $(arch) == "i386"]]
+    fi
 fi
 
 
