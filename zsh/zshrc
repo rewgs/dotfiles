@@ -358,15 +358,13 @@ if [[ $(uname) == "Darwin" ]]; then
     # If greadlink not installed, run `brew install coreutils`.
     this_file=$(greadlink -f $0)
     this_file_name=$(basename "$this_file")
-
-    this_dir=$(greadlink -f $(dirname "$this_file_name"))
+    this_dir=$(greadlink -f $(dirname "$this_file"))
     this_dir_name=$(basename "$this_dir")
 
 elif [[ $(uname) == "Linux" ]]; then
-    this_file=$(readlink -f $0)
+    this_file=$(greadlink -f $0)
     this_file_name=$(basename "$this_file")
-
-    this_dir=$(readlink -f $(dirname "$this_file_name"))
+    this_dir=$(greadlink -f $(dirname "$this_file"))
     this_dir_name=$(basename "$this_dir")
 
 else
@@ -379,22 +377,22 @@ echo "This file name: $this_file_name"
 echo "This file's parent dir: $this_dir"
 echo "This file's parent dir name: $this_dir_name"
 
-# readling ~/.zshrc symlink
+# readling `~/.zshrc` symlink
 # This shouldn't run, since `(g)readlink -f` is resolving to the absolute path.
-if [[ "$this_file_name" == ".zshrc" ]] && [[ "$this_dir" == "$HOME" ]]; then
+# if [[ "$this_file_name" == ".zshrc" ]] && [[ "$this_dir" == "$HOME" ]]; then
+if [[ "$this_file_name" == ".zshrc" ]]; then
     echo "\`source\`-ing..."
 
     # TODO: need to `find` dotfiles dir and then read from there
     echo "Running from $this_dir"
 
-# readling .../dotfiles/zshrc absolute path
-elif [[ "$this_file_name" == "zshrc" ]] && [[ "$this_dir_name" == "dotfiles" ]]; then 
+# reading `.../dotfiles/zshrc` absolute path
+# elif [[ "$this_file_name" == "zshrc" ]] && [[ "$this_dir_name" == "dotfiles" ]]; then 
+elif [[ "$this_file_name" == "zshrc" ]]; then 
     echo "\`source\`-ing..."
 
     # Sets the directory for user functions
-    zsh_dotfiles="$this_dir/zsh"
-    # echo "ZSH dotfiles dir: $zsh_dotfiles"
-    user_zsh_functions="$zsh_dotfiles/functions"
+    user_zsh_functions="$this_dir/functions"
     echo "Adding user zsh functions dir $user_zsh_functions to FPATH..."
     FPATH="${user_zsh_functions}:$FPATH"
 
@@ -411,6 +409,8 @@ elif [[ "$this_file" == "$(which zsh)" ]] && [[ "$this_file_name" == "zsh" ]]; t
     echo "\`exec\`-ing $this_file..."
     echo "\`source\`-ing..."
     source "$HOME/.zshrc"
+else
+    echo "Taking the else...something went wrong."
 fi
 
 
