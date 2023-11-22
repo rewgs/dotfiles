@@ -60,13 +60,18 @@ make_zsh_symlinks () {
         "zshenv"
         "zshrc"
     )
-
     for d in "${dot_files[@]}"; do
         if [ -f "$HOME/.$d" ] || [ -L "$HOME/.$d" ]; then
             rm "$HOME/.$d"
         fi
         ln -s "$HOME/dotfiles/zsh/$d" "$HOME/.$d"
     done
+
+    if [ ! -d "$HOME/.config" ]; then
+        mkdir -p "$HOME/.config/zsh"
+    fi
+    ln -s "$HOME/dotfiles/zsh/conf" "$HOME/.config/zsh/conf"
+    ln -s "$HOME/dotfiles/zsh/conf" "$HOME/.config/zsh/functions"
 }
 
 make_all_symlinks () {
