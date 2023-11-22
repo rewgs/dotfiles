@@ -71,7 +71,6 @@ make_zsh_symlinks () {
         mkdir -p "$HOME/.config/zsh"
     fi
     ln -s "$HOME/dotfiles/zsh/conf" "$HOME/.config/zsh/conf"
-    ln -s "$HOME/dotfiles/zsh/conf" "$HOME/.config/zsh/functions"
 }
 
 make_all_symlinks () {

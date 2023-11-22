@@ -1,22 +1,23 @@
-# ╔═════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ .zshrc is for interactive shells. You set options for the interactive shell there with the setopt   ║
-# ║ and unsetopt commands. You can also load shell modules, set your history options, change your       ║
-# ║ prompt, set up zle and completion, et cetera. You also set any variables that are only used in the  ║
-# ║ interactive shell (e.g. $LS_COLORS).                                                                ║
-# ║                                                                                                     ║
-# ║ In an effort to keep this maintainable, this file has been split into multiple files. .zshrc        ║
-# ║ now sources other files definied in $CONFIGS.                                                       ║
-# ╚═════════════════════════════════════════════════════════════════════════════════════════════════════╝
+# ╔═════════════════════════════════════════════════════════════════════════════╗
+# ║ .zshrc is for interactive shells. You set options for the interactive shell ║
+# ║ there with the setopt and unsetopt commands. You can also load shell        ║
+# ║ modules, set your history options, change your prompt, set up zle and       ║
+# ║ completion, etc. You also set any variables that are only used in the       ║
+# ║ interactive shell (e.g. $LS_COLORS).                                        ║
+# ║                                                                             ║
+# ║ In an effort to keep this maintainable, this file has been split into       ║
+# ║ multiple files. .zshrc now sources other files definied in $CONFIGS.        ║
+# ╚═════════════════════════════════════════════════════════════════════════════╝
 
+# This is symlinked to dotfiles/zsh/conf
 CONFIGS="$HOME/.config/zsh"
+
 declare -a config_files
 config_files=(
     "init.zsh"
     "oh-my.zsh"
     "misc.zsh"
-    # "aliases.zsh"
     "path.zsh"
-    "fpath.zsh"
     "rc.zsh"
     "vi.zsh"
 )
@@ -24,6 +25,14 @@ for c in "${config_files[@]}"; do
     source "$CONFIGS/$c"
 done
 
+# aliases
 for a in "$CONFIGS/aliases"/*; do
     source "$a"
+done
+
+# functions
+zfuncs="$HOME/.config/zsh/functions"
+FPATH="${zfuncs}:$FPATH"
+for f in "$zfuncs"/*; do
+    autoload -Uz "$f"
 done
