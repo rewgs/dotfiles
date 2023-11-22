@@ -1,3 +1,5 @@
+require('reload')
+
 -- local mod1 = { 'shift', 'cmd' }
 local SUPER = { 'ctrl', 'cmd' }
 -- local mod3 = { 'rightcmd', 'rightalt' }
