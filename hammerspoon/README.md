@@ -1,5 +1,10 @@
 # TODO
 
+### Global
+- `cmd+ctrl` == HYPER
+- `cmd+ctrl+shift` == SHYPER
+- See here: https://evantravers.com/articles/2020/06/08/hammerspoon-a-better-better-hyper-key/
+
 ### Window Management:
 - fancyzones-like visual grids
     - keybinding creates a grid, shows overlay
@@ -29,7 +34,9 @@
     - minimized: super+J
 
 
-### Remapping - replace BetterTouchTool
+
+
+### App Remapping - replace BetterTouchTool
 - VS Code: Remap `cmd+h` to `cmd+opt+ctrl+h`
 - PyCharm: Remap `cmd+h` to `cmd+opt+ctrl+shift+h`
 - Sublime Text: Remap `cmd+h` to `cmd+opt+ctrl+shift+h`
