@@ -1,0 +1,2 @@
+alias up=update_packages
+alias cup=update_packages_and_cargo

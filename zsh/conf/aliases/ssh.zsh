@@ -1,0 +1,1 @@
+alias dlssh=download_file_from_server_as_name
