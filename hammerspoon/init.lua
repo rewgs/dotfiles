@@ -1,7 +1,11 @@
 require('reload')
 
-local SUPER = { 'ctrl', 'cmd' }
-local S_SUPER = { 'shift', 'ctrl', 'cmd' }
+local hyper = { 'cmd', 'ctrl' }
+local sHyper = { 'cmd', 'ctrl', 'shift' }
+local oHyper = { 'cmd', 'ctrl', 'option' }
+local soHyper = { 'cmd', 'ctrl', 'option', 'shift' }
+
+hs.window.animationDuration = 0
 
 local function moveWindow(X, Y, W, H)
     local window = hs.window.focusedWindow()
@@ -26,7 +30,7 @@ end
 
 -- adapts the above function, generalizes it
 -- @type string
-local function new_window(application) --> @type none
+local function newWindow(application) --> @type none
     local app = hs.application.get(application)
     if app then
         app:activate(false)
@@ -42,13 +46,13 @@ local BROWSER = 'Google Chrome'
 local app_maps = {
     { key = 'b',      app = BROWSER },
     { key = 'c',      app = 'Visual Studio Code' },
-    { key = 'd',      app = 'Discord' }, -- would like to key-chord this so that super+m,{something} calls different messaging apps, e.g. super+m,d calls Discord
+    { key = 'd',      app = 'Discord' }, -- would like to key-chord this so that hyper+m,{something} calls different messaging apps, e.g. hyper+m,d calls Discord
     { key = 'f',      app = 'Finder' },
     { key = 't',      app = TERMINAL },
     { key = 'return', app = TERMINAL }
 }
 for _, map in ipairs(app_maps) do
-    hs.hotkey.bind(SUPER, map.key,
+    hs.hotkey.bind(hyper, map.key,
         function()
             hs.application.launchOrFocus(map.app)
         end
@@ -58,39 +62,55 @@ end
 -- mapping = {{modifier, key, function}}
 local key_maps = {
     -- Create new Finder window in active workspace
-    { SUPER,  'f',      function() hs.application.find("Finder"):selectMenuItem({ "File", "New Finder Window" }) end },
+    { hyper,  'f',      function() hs.application.find("Finder"):selectMenuItem({ "File", "New Finder Window" }) end },
 
     -- Create new terminal window in active workspace
-    { S_SUPER, 't',      function() newTerminal() end },
-    { S_SUPER, 'return', function() newTerminal() end },
+    { sHyper, 't',      function() newTerminal() end },
+    { sHyper, 'return', function() newTerminal() end },
 
-    -- Move window to the left
-    { SUPER,  'h',      function() moveWindow(0, 0, 0.5, 1) end },
-    { SUPER,  'left',   function() moveWindow(0, 0, 0.5, 1) end },
+    -- left half
+    { hyper,  'h',      function() moveWindow(0, 0, 0.5, 1) end },
+    { hyper,  'left',   function() moveWindow(0, 0, 0.5, 1) end },
 
-    -- Move window to the right
-    { SUPER,  'l',      function() moveWindow(0.5, 0, 0.5, 1) end },
-    { SUPER,  'right',  function() moveWindow(0.5, 0, 0.5, 1) end },
+    -- left third
+    { sHyper,  'h',      function() moveWindow(0, 0, 0.3, 1) end },
+    { sHyper,  'left',   function() moveWindow(0, 0, 0.3, 1) end },
 
-    -- Move window to upper right
-    { SUPER,  'i',      function() moveWindow(0.5, 0, 0.5, 0.5) end },
+    -- left two-thirds
+    { soHyper,  'h',      function() moveWindow(0, 0, 0.6, 1) end },
+    { soHyper,  'left',   function() moveWindow(0, 0, 0.6, 1) end },
 
-    -- Move window to lower right
-    { SUPER,  'k',      function() moveWindow(0.5, 0.5, 0.5, 0.5) end },
+    -- right half
+    { hyper,  'l',      function() moveWindow(0.5, 0, 0.5, 1) end },
+    { hyper,  'right',  function() moveWindow(0.5, 0, 0.5, 1) end },
 
-    -- Move window to upper left
-    { SUPER,  'u',      function() moveWindow(0, 0, 0.5, 0.5) end },
+    -- right third
+    { sHyper,  'l',      function() moveWindow(0.6, 0, 0.4, 1) end },
+    { sHyper,  'right',   function() moveWindow(0.6, 0, 0.4, 1) end },
 
-    -- Move window to lower left
-    { SUPER,  'j',      function() moveWindow(0, 0.5, 0.5, 0.5) end },
+    -- right two-thirds
+    { soHyper,  'l',      function() moveWindow(0.3, 0, 0.7, 1) end },
+    { soHyper,  'right',   function() moveWindow(0.3, 0, 0.7, 1) end },
+
+    -- upper right quarter
+    { hyper,  'i',      function() moveWindow(0.5, 0, 0.5, 0.5) end },
+
+    -- lower right quarter
+    { hyper,  'k',      function() moveWindow(0.5, 0.5, 0.5, 0.5) end },
+
+    -- upper left quarter
+    { hyper,  'u',      function() moveWindow(0, 0, 0.5, 0.5) end },
+
+    -- lower left quarter
+    { hyper,  'j',      function() moveWindow(0, 0.5, 0.5, 0.5) end },
 
     -- Maximize window
-    { SUPER,  'p',      function() hs.window.focusedWindow():maximize() end },
-    { SUPER,  'up',     function() hs.window.focusedWindow():maximize() end },
+    { sHyper,  'm',     function() hs.window.focusedWindow():maximize() end },
+    { hyper,  'up',     function() hs.window.focusedWindow():maximize() end },
 
     -- Almost maximized window
-    { SUPER,  'm',      function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
-    { SUPER,  'down',   function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
+    { hyper,  'm',   function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
+    { hyper,  'down',   function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
 }
 for _, map in ipairs(key_maps) do
     hs.hotkey.bind(map[1], map[2], map[3])
