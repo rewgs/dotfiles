@@ -9,8 +9,8 @@
 # ╚═════════════════════════════════════════════════════════════════════════════════════════════════════╝
 
 CONFIGS="$HOME/.config/zsh"
-declare -a configs
-configs=(
+declare -a config_files
+config_files=(
     "init.zsh"
     "oh-my.zsh"
     "misc.zsh"
@@ -20,7 +20,7 @@ configs=(
     "rc.zsh"
     "vi.zsh"
 )
-for c in "${configs[@]}"; do
+for c in "${config_files[@]}"; do
     source "$CONFIGS/$c"
 done
 
