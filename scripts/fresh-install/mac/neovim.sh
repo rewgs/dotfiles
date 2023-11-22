@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-function install_neovim_build_prerequisites () {
+install_neovim_build_prerequisites () {
     typeset -a neovim_build_prerequisites
     neovim_build_prerequisites=(
         "cmake"
@@ -15,7 +15,7 @@ function install_neovim_build_prerequisites () {
 }
 
 
-function update_neovim_from_source () {
+update_neovim_from_source () {
 	cd "$HOME"/.src/neovim || cd "$HOME"/.src/neovim
 	git checkout stable
 	git pull
@@ -24,12 +24,11 @@ function update_neovim_from_source () {
 }
 
 
-function build_neovim_from_source () {
-    install_neovim_dependencies
+build_neovim_from_source () {
+    install_neovim_build_prerequisites
 
     if [ ! -d ~/.src ]; then
         mkdir ~/.src
-    fi
     fi
 
     cd ~/.src
@@ -40,7 +39,7 @@ function build_neovim_from_source () {
 }
 
 
-function install_packer_nvim () {
+install_packer_nvim () {
     if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/" ]; then
         mkdir -p "$HOME/.local/share/nvim/site/pack/packer/start/"
     fi
