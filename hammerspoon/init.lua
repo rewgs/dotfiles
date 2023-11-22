@@ -1,95 +1,79 @@
--- good reference here: https://github.com/NateEag/dotfiles/blob/d8c81c3890af65bf4316718426d88e13398e6eaa/src/.hammerspoon/init.lua
+-- local mod1 = { 'shift', 'cmd' }
+local SUPER = { 'ctrl', 'cmd' }
+-- local mod3 = { 'rightcmd', 'rightalt' }
+-- local mod4 = { 'shift', 'ctrl', 'cmd' }
 
+-- local function moveWindow(X, Y, W, H)
+--     local window = hs.window.focusedWindow()
+--     local screenFrame = window:screen():frame()
+--     window:setFrame({
+--         x = screenFrame.x + screenFrame.w * X,
+--         y = screenFrame.y + screenFrame.h * Y,
+--         w = screenFrame.w * W,
+--         h = screenFrame.h * H
+--     })
+-- end
 
-cli_installed = hs.ipc.cliStatus()
+-- local function newTerminal()
+--     local application = hs.application.get('iTerm2')
+--     if application then
+--         application:activate(false)
+--         hs.eventtap.keyStroke({ 'cmd' }, 'N')
+--     else
+--         hs.application.launchOrFocus('iTerm2')
+--     end
+-- end
 
+local TERMINAL = 'iTerm'
+local BROWSER = 'Google Chrome'
 
----------------------------------------------------------------------------------------------------
--- HYPER KEY
----------------------------------------------------------------------------------------------------
+local mappings = {
+    { key = 'T', app = TERMINAL },
+    { key = 'D', app = 'Discord' },
+    { key = 'C', app = 'Visual Studio Code' },
+    -- { key = 'E', app = 'CotEditor' },
+    { key = 'B', app = BROWSER },
+}
 
--- Note: this requires that the "CapsLock to Hyper" Karabiner Elements Complex Modification be 
--- setup and running before the Hyper key will work.
-local hyper = {'cmd', 'alt', 'ctrl', 'shift'}
-
--- Load and create a new switcher
-local HyperKey = hs.loadSpoon("HyperKey")
-hyperKey = HyperKey:new(hyper, {
-  overlayTimeoutMs = 1000, -- wait 1000ms instead
-})
-
--- Bind some applications to keys
-hyperKey
-  :bind('c'):toApplication('/Applications/Google Chrome.app')
-  :bind('s'):toApplication('/Applications/Spotify.app')
-  :bind('t'):toApplication('/Applications/iTerm.app')
-
--- Bind some functions to keys
-local reloadHammerspoon = function()
-  hs.application.launchOrFocus("Hammerspoon")
-  hs.reload()
+for _, map in ipairs(mappings) do
+    hs.hotkey.bind(SUPER, map.key, function() hs.application.launchOrFocus(map.app) end)
 end
 
--- hyperKey
---   :bind('h'):toFunction("Reload Hammerspoon", reloadHammerspoon)
---   :bind('l'):toFunction("Lock screen", hs.caffeinate.startScreensaver)
+-- mapping = {{modifier, key, function}}
+-- local mappings = {
+-- Create new Finder window in active workspace
+-- { mod1, 'F',      function() hs.application.find("Finder"):selectMenuItem({ "Fichier", "Nouvelle fenêtre Finder" }) end },
+-- { SUPER, 'F',      function() hs.application.find("Finder"):selectMenuItem({ "Fichier", "Nouvelle fenêtre Finder" }) end },
+-- { mod3, 'F',      function() hs.application.find("Finder"):selectMenuItem({ "Fichier", "Nouvelle fenêtre Finder" }) end },
 
+-- Move window to the left
+-- { SUPER, 'H',      function() moveWindow(0, 0, 0.5, 1) end },
+-- { SUPER, 'left',   function() moveWindow(0, 0, 0.5, 1) end },
 
+-- Move window to the right
+-- { SUPER, 'L',      function() moveWindow(0.5, 0, 0.5, 1) end },
+-- { SUPER, 'right',  function() moveWindow(0.5, 0, 0.5, 1) end },
 
+-- Move window to upper right
+-- { SUPER, 'I',      function() moveWindow(0.5, 0, 0.5, 0.5) end },
 
+-- Move window to lower right
+-- { SUPER, 'K',      function() moveWindow(0.5, 0.5, 0.5, 0.5) end },
 
--- snap window left half		WORKING
--- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "H", function()
---   local win = hs.window.focusedWindow()
---   local f = win:frame()
---   local screen = win:screen()
---   local max = screen:frame()
---
---   f.x = max.x
---   f.y = max.y
---   f.w = max.w / 2
---   f.h = max.h
---   win:setFrame(f)
--- end)
+-- Move window to upper left
+-- { SUPER, 'U',      function() moveWindow(0, 0, 0.5, 0.5) end },
 
--- snap window right half		NOT WORKING
--- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "L", function()
---   local win = hs.window.focusedWindow()
---   local f = win:frame()
---   local screen = win:screen()
---   local max = screen:frame()
---
---   f.x = max.x
---   f.y = max.y
---   f.w = max.w
---   f.h = max.h
---   win:setFrame(f)
--- end)
+-- Move window to lower left
+-- { SUPER, 'J',      function() moveWindow(0, 0.5, 0.5, 0.5) end },
 
--- snap window top half			WORKING
--- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "K", function()
---   local win = hs.window.focusedWindow()
---   local f = win:frame()
---   local screen = win:screen()
---   local max = screen:frame()
---
---   f.x = max.x
---   f.y = max.y
---   f.w = max.w
---   f.h = max.h / 2
---   win:setFrame(f)
--- end)
+-- Maximize window
+-- { SUPER, 'P',      function() hs.window.focusedWindow():maximize() end },
+-- { SUPER, 'up',     function() hs.window.focusedWindow():maximize() end },
 
--- snap window bottom half		NOT WORKING
--- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "J", function()
---   local win = hs.window.focusedWindow()
---   local f = win:frame()
---   local screen = win:screen()
---   local max = screen:frame()
---
---   f.x = max.x
---   f.y = max.y
---   f.w = max.w
---   f.h = max.h
---   win:setFrame(f)
--- end)
+-- Almost maximized window
+-- { SUPER, 'M',      function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
+-- { SUPER, 'down',   function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
+-- }
+-- for _, map in ipairs(mappings) do
+--     hs.hotkey.bind(map[1], map[2], map[3])
+-- end
