@@ -28,16 +28,14 @@ local SUPER = { 'ctrl', 'cmd' }
 
 local TERMINAL = 'iTerm'
 local BROWSER = 'Google Chrome'
-
-local mappings = {
-    { key = 'T', app = TERMINAL },
-    { key = 'D', app = 'Discord' },
-    { key = 'C', app = 'Visual Studio Code' },
-    -- { key = 'E', app = 'CotEditor' },
-    { key = 'B', app = BROWSER },
+local app_maps = {
+    { key = 'c', app = 'Visual Studio Code' },
+    { key = 'b', app = BROWSER },
+    { key = 'd', app = 'Discord' }, -- would like to key-chord this so that super+m,{something} calls different messaging apps, e.g. super+m,d calls Discord
+    { key = 't', app = TERMINAL },
 }
 
-for _, map in ipairs(mappings) do
+for _, map in ipairs(app_maps) do
     hs.hotkey.bind(SUPER, map.key, function() hs.application.launchOrFocus(map.app) end)
 end
 
