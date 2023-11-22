@@ -16,9 +16,6 @@
 LS_COLORS="ow=01;93;40:ln=00;35;40:ex=00;31;40:*.mp3=00;32;40:*.wav=00;32;40:*.aif=00;32;40:*.aiff=00;32;40"
 export LS_COLORS
 
-
-
-
 # configures Homebrew autocomplete in zsh; must be done before sourcing oh-my-zsh
 if [[ $(uname) == "Darwin" ]] && [[ $(arch) == "arm64" ]]; then
     eval $(/opt/homebrew/bin/brew shellenv)
@@ -384,7 +381,7 @@ else
     # echo "This file's parent dir: $this_dir"
     # echo "This file's parent dir name: $this_dir_name"
     
-    # readling `~/.zshrc` symlink
+    # reading `~/.zshrc` symlink
     # This shouldn't run, since `(g)readlink -f` is resolving to the absolute path.
     # if [[ "$this_file_name" == ".zshrc" ]] && [[ "$this_dir" == "$HOME" ]]; then
     if [[ "$this_file_name" == ".zshrc" ]]; then
@@ -396,11 +393,11 @@ else
     # reading `.../dotfiles/zshrc` absolute path
     # elif [[ "$this_file_name" == "zshrc" ]] && [[ "$this_dir_name" == "dotfiles" ]]; then 
     elif [[ "$this_file_name" == "zshrc" ]]; then 
-        echo "\`source\`-ing..."
+        # echo "\`source\`-ing..."
     
         # Sets the directory for user functions
         user_zsh_functions="$this_dir/functions"
-        echo "Adding user zsh functions dir $user_zsh_functions to FPATH..."
+        # echo "Adding user zsh functions dir $user_zsh_functions to FPATH..."
         FPATH="${user_zsh_functions}:$FPATH"
     
         # Autoloads all functions in the user functions directory.
@@ -411,12 +408,12 @@ else
             # echo "\t$(basename "$func")"
             autoload -Uz "$func"
         done
-        echo "ZSH user functions loaded!"
+        # echo "ZSH user functions loaded!"
     
     # elif [[ "$this_file" == "$(which zsh)" ]] && [[ "$this_file_name" == "zsh" ]]; then
     elif [[ "$this_file_name" == "zsh" ]]; then
-        echo "\`exec\`-ing $this_file..."
-        echo "\`source\`-ing..."
+        # echo "\`exec\`-ing $this_file..."
+        # echo "\`source\`-ing..."
         source "$HOME/.zshrc"
     else
         echo "Taking the else...something went wrong."

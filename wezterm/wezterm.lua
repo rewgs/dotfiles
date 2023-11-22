@@ -20,7 +20,7 @@ config.front_end = 'WebGpu'
 -------------------------------------------------------------------------------
 -- window appearance
 -------------------------------------------------------------------------------
-config.window_decorations = 'RESIZE'    -- removes the titlebar but allows the window to remain resizable
+config.window_decorations = 'RESIZE' -- removes the titlebar but allows the window to remain resizable
 config.enable_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = true
 config.native_macos_fullscreen_mode = true
@@ -46,7 +46,8 @@ config.color_scheme = 'OneHalfDark'
 -------------------------------------------------------------------------------
 config.font = wezterm.font {
     family = 'FiraCode Nerd Font'
-    -- family = 'JetBrains Mono'  
+    -- family = 'JetBrains Mono'
+    -- family = 'Berkeley Mono'
 }
 config.font_size = 14
 config.line_height = 1
@@ -57,7 +58,7 @@ config.line_height = 1
 if os == 'Darwin' then
     config.keys = {
         ---------------------------------------------------------------------------
-        -- basics 
+        -- basics
         ---------------------------------------------------------------------------
 
         -- reloads WezTerm config
@@ -86,7 +87,7 @@ if os == 'Darwin' then
         },
 
         ---------------------------------------------------------------------------
-        -- tmux 
+        -- tmux
         ---------------------------------------------------------------------------
 
         -- tmux: new window (i.e. tab)
@@ -274,7 +275,7 @@ end
 if os == 'Linux' then
     config.keys = {
         ---------------------------------------------------------------------------
-        -- basics 
+        -- basics
         ---------------------------------------------------------------------------
 
         -- reloads WezTerm config
