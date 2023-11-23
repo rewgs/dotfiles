@@ -1,10 +1,8 @@
+# Notes
+
+- Hyper (i.e. Command + Control) is defined via Karabiner-Elements. Caps Lock is mapped to Hyper when held down, Escape when tapped.
+
 # TODO
-
-### Global
-- `cmd+ctrl` == HYPER
-- `cmd+ctrl+shift` == SHYPER
-- See here: https://evantravers.com/articles/2020/06/08/hammerspoon-a-better-better-hyper-key/
-
 
 ### Window Management:
 - fancyzones-like visual grids
