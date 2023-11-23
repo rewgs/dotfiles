@@ -29,7 +29,7 @@
                                         ]
                                     }
                                 },
-                                "to": [
+                                "to_if_held_down": [
                                     {
                                         "key_code": "left_command",
                                         "modifiers": [
@@ -37,7 +37,7 @@
                                         ]
                                     }
                                 ],
-                                "to_if_alone": [
+                                "to": [
                                     {
                                         "key_code": "escape"
                                     }
