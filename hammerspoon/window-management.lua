@@ -27,8 +27,27 @@ local function newWindow(application) --> @type none
     end
 end
 
+-- Doesn't really work yet. Needs to:
+-- 1. Get coordinates of all windows.
+-- 2. Cycle through all grids (clockwise, I guess?)
+-- 3. Move the window with coordinates closest to the current grid box to it.
+local function snapAllWindowsToGrid()
+    -- @type table
+    local visibleWindows = hs.window.visibleWindows()
+
+    for _, window in ipairs(visibleWindows) do
+        hs.grid.snap(window) --> hs.grid
+    end
+end
+
 -- mapping = {{modifier, key, function}}
 local key_bindings = {
+    -- Effectively toggles between running hs.grid.show() when the grid is
+    -- hidden, and hs.grid.hide() when the grid is visible.
+    { mod.hyper,   'g',      function() hs.grid.toggleShow() end },
+
+    { mod.hyper, 's', function() snapAllWindowsToGrid() end },
+
     -- Create new Finder window in active workspace
     { mod.hyper,   'f',      function() hs.application.find("Finder"):selectMenuItem({ "File", "New Finder Window" }) end },
 
@@ -41,28 +60,28 @@ local key_bindings = {
     { mod.hyper,   'left',   function() moveWindow(0, 0, 0.5, 1) end },
 
     -- left third
-    { mod.oHyper,  'h',      function() moveWindow(0, 0, 0.33, 1) end },
-    { mod.oHyper,  'left',   function() moveWindow(0, 0, 0.33, 1) end },
+    { mod.oHyper,  'h',      function() moveWindow(0, 0, 0.334, 1) end },
+    { mod.oHyper,  'left',   function() moveWindow(0, 0, 0.334, 1) end },
 
     -- left two-thirds
-    { mod.soHyper, 'h',      function() moveWindow(0, 0, 0.66, 1) end },
-    { mod.soHyper, 'left',   function() moveWindow(0, 0, 0.66, 1) end },
+    { mod.soHyper, 'h',      function() moveWindow(0, 0, 0.666, 1) end },
+    { mod.soHyper, 'left',   function() moveWindow(0, 0, 0.666, 1) end },
 
     -- right half
     { mod.hyper,   'l',      function() moveWindow(0.5, 0, 0.5, 1) end },
     { mod.hyper,   'right',  function() moveWindow(0.5, 0, 0.5, 1) end },
 
     -- right third
-    { mod.oHyper,  'l',      function() moveWindow(0.66, 0, 0.37, 1) end },
-    { mod.oHyper,  'right',  function() moveWindow(0.66, 0, 0.37, 1) end },
+    { mod.oHyper,  'l',      function() moveWindow(0.666, 0, 0.334, 1) end },
+    { mod.oHyper,  'right',  function() moveWindow(0.666, 0, 0.334, 1) end },
 
     -- right two-thirds
-    { mod.soHyper, 'l',      function() moveWindow(0.33, 0, 0.67, 1) end },
-    { mod.soHyper, 'right',  function() moveWindow(0.33, 0, 0.67, 1) end },
+    { mod.soHyper, 'l',      function() moveWindow(0.3334, 0, 0.666, 1) end },
+    { mod.soHyper, 'right',  function() moveWindow(0.3334, 0, 0.666, 1) end },
 
     -- middle third
-    { mod.oHyper,  'k',      function() moveWindow(0.33, 0, 0.33, 1) end },
-    { mod.oHyper,  'up',     function() moveWindow(0.33, 0, 0.33, 1) end },
+    { mod.oHyper,  'k',      function() moveWindow(0.334, 0, 0.334, 1) end },
+    { mod.oHyper,  'up',     function() moveWindow(0.334, 0, 0.334, 1) end },
 
     -- TODO: upper right quarter
     -- { mod.hyper,   'i',      function() moveWindow(0.5, 0, 0.5, 0.5) end },
@@ -77,11 +96,13 @@ local key_bindings = {
     -- { mod.hyper,   'j',      function() moveWindow(0, 0.5, 0.5, 0.5) end },
 
     -- maximize window
+    { mod.hyper,   'k',      function() hs.window.focusedWindow():maximize() end },
     { mod.sHyper,  'm',      function() hs.window.focusedWindow():maximize() end },
     { mod.hyper,   'up',     function() hs.window.focusedWindow():maximize() end },
 
     -- almost maximized window
-    { mod.hyper,   'm',      function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
+    { mod.hyper,   'j',      function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
+    -- { mod.hyper,   'm',      function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
     { mod.hyper,   'down',   function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
 }
 

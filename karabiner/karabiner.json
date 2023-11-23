@@ -10,18 +10,17 @@
         {
             "complex_modifications": {
                 "parameters": {
-                    "basic.simultaneous_threshold_milliseconds": 50,
-                    "basic.to_delayed_action_delay_milliseconds": 500,
-                    "basic.to_if_alone_timeout_milliseconds": 1000,
-                    "basic.to_if_held_down_threshold_milliseconds": 500,
+                    "basic.simultaneous_threshold_milliseconds": 40,
+                    "basic.to_delayed_action_delay_milliseconds": 100,
+                    "basic.to_if_alone_timeout_milliseconds": 200,
+                    "basic.to_if_held_down_threshold_milliseconds": 100,
                     "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
                     {
-                        "description": "CapsLock to Hyper",
                         "manipulators": [
                             {
-                                "description": "capslock = esc(click) | hyper(hold)",
+                                "description": "Change caps_lock to command + control",
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": {
@@ -32,91 +31,15 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_shift",
+                                        "key_code": "left_command",
                                         "modifiers": [
-                                            "right_command",
-                                            "right_control",
-                                            "right_option"
+                                            "left_control"
                                         ]
                                     }
                                 ],
                                 "to_if_alone": [
                                     {
                                         "key_code": "escape"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "escape = capslock switch",
-                                "from": {
-                                    "key_code": "escape",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "right_control",
-                                            "right_shift",
-                                            "right_option"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "caps_lock",
-                                        "modifiers": [
-                                            "left_control"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "spacebar = language switch",
-                                "from": {
-                                    "key_code": "spacebar",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "right_control",
-                                            "right_shift",
-                                            "right_option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "spacebar",
-                                        "modifiers": [
-                                            "left_control"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "command + spacebar = emoji",
-                                "from": {
-                                    "key_code": "spacebar",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "right_command",
-                                            "right_control",
-                                            "right_shift",
-                                            "right_option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "spacebar",
-                                        "modifiers": [
-                                            "left_control",
-                                            "left_command"
-                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -130,13 +53,13 @@
                     "disable_built_in_keyboard_if_exists": false,
                     "fn_function_keys": [],
                     "identifiers": {
-                        "is_keyboard": false,
-                        "is_pointing_device": true,
-                        "product_id": 33030,
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 610,
                         "vendor_id": 1452
                     },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": false,
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
                     "simple_modifications": [],
                     "treat_as_built_in_keyboard": false
                 },
@@ -146,11 +69,39 @@
                     "identifiers": {
                         "is_keyboard": true,
                         "is_pointing_device": false,
-                        "product_id": 33029,
+                        "product_id": 597,
                         "vendor_id": 1452
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": true,
+                    "simple_modifications": [],
+                    "treat_as_built_in_keyboard": false
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 641,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": [],
+                    "treat_as_built_in_keyboard": false
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
+                        "product_id": 641,
+                        "vendor_id": 1452
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
                     "simple_modifications": [],
                     "treat_as_built_in_keyboard": false
                 }
@@ -162,7 +113,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "display_brightness_decrement"
+                            "key_code": "vk_consumer_brightness_down"
                         }
                     ]
                 },
@@ -172,7 +123,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "display_brightness_increment"
+                            "key_code": "vk_consumer_brightness_up"
                         }
                     ]
                 },
@@ -182,7 +133,7 @@
                     },
                     "to": [
                         {
-                            "apple_vendor_keyboard_key_code": "mission_control"
+                            "key_code": "vk_mission_control"
                         }
                     ]
                 },
@@ -192,7 +143,7 @@
                     },
                     "to": [
                         {
-                            "apple_vendor_keyboard_key_code": "spotlight"
+                            "key_code": "vk_launchpad"
                         }
                     ]
                 },
@@ -202,7 +153,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "dictation"
+                            "key_code": "vk_consumer_illumination_down"
                         }
                     ]
                 },
@@ -212,7 +163,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "f6"
+                            "key_code": "vk_consumer_illumination_up"
                         }
                     ]
                 },
@@ -222,7 +173,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "rewind"
+                            "key_code": "vk_consumer_previous"
                         }
                     ]
                 },
@@ -232,7 +183,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "play_or_pause"
+                            "key_code": "vk_consumer_play"
                         }
                     ]
                 },
@@ -242,7 +193,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "fast_forward"
+                            "key_code": "vk_consumer_next"
                         }
                     ]
                 },
@@ -252,7 +203,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "mute"
+                            "key_code": "mute"
                         }
                     ]
                 },
@@ -262,7 +213,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "volume_decrement"
+                            "key_code": "volume_down"
                         }
                     ]
                 },
@@ -272,21 +223,26 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "volume_increment"
+                            "key_code": "volume_up"
                         }
                     ]
                 }
             ],
             "name": "Default profile",
+            "one_to_many_mappings": {},
             "parameters": {
                 "delay_milliseconds_before_open_device": 1000
             },
             "selected": true,
             "simple_modifications": [],
+            "standalone_keys": {},
             "virtual_hid_keyboard": {
+                "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,
                 "indicate_sticky_modifier_keys_state": true,
-                "mouse_key_xy_scale": 100
+                "keyboard_type": "ansi",
+                "mouse_key_xy_scale": 100,
+                "standalone_keys_delay_milliseconds": 200
             }
         }
     ]
