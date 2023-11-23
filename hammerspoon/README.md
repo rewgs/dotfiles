@@ -5,6 +5,7 @@
 - `cmd+ctrl+shift` == SHYPER
 - See here: https://evantravers.com/articles/2020/06/08/hammerspoon-a-better-better-hyper-key/
 
+
 ### Window Management:
 - fancyzones-like visual grids
     - keybinding creates a grid, shows overlay
@@ -32,8 +33,6 @@
         - half: j
     - maximized: super+K
     - minimized: super+J
-
-
 
 
 ### App Remapping - replace BetterTouchTool
