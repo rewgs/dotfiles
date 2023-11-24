@@ -8,7 +8,7 @@ This contains any and all dotfiles, configuration files, etc.
 
 **window manager:**
 - Linux: sway, usually
-- macOS: ad-hoc functionality and key bindings via Karabiner-Elements and Hammerspoon:
+- macOS: ad-hoc functionality and key bindings via Karabiner-Elements and Hammerspoon. I've tried `yabai`/`skhd` but I feel they're too invasive.
     - Karabiner-Elements handles remaps:
         - Caps Lock to "Hyper" (Command + Control) when held down, and Escape when tapped. NOTE: For this to work, System Settings/Keyboard/Keyboard Shortcuts/Modifier Keys/Caps Lock must NOT be remapped -- just leave it alone.
         - Escape to Caps Lock
