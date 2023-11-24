@@ -3,9 +3,7 @@ This contains any and all dotfiles, configuration files, etc.
 `scripts/` contains scripts for installing apps and packages, as well as symlinking dotfiles to their necessary locations.
 
     shell: zsh
-    
     editor: nvim
-    
     window manager:
     - Linux: sway, usually
     - macOS: ad-hoc functionality and key bindings via Karabiner-Elements and Hammerspoon:
