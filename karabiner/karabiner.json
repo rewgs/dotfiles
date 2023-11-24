@@ -49,7 +49,7 @@
                     {
                         "manipulators": [
                             {
-                                "description": "Escape to Caps Lock",
+                                "description": "Cmd+Ctrl+Escape to Caps Lock",
                                 "from": {
                                     "key_code": "escape",
                                     "modifiers": {
