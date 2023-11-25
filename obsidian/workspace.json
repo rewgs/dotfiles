@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "ea2d260fff18c5fe",
+        "id": "660224286e6fa781",
         "type": "tabs",
         "children": [
           {
-            "id": "796293defe3ec72f",
+            "id": "95a7bc0ddf092549",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "adventures in window management.md",
+                "file": "purchases/tech.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": true
@@ -70,8 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "40c88abe36c1837e",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "adventures in window management.md",
+                "file": "purchases/tech.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "adventures in window management.md",
+                "file": "purchases/tech.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "adventures in window management.md"
+                "file": "purchases/tech.md"
               }
             }
           }
@@ -149,10 +148,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "796293defe3ec72f",
+  "active": "95a7bc0ddf092549",
   "lastOpenFiles": [
-    "work/README.md",
+    "purchases/music.md",
+    "purchases/README.md",
+    "work/music.md",
+    "weekday-schedule.md",
+    "tips.md",
+    "travel.md",
+    "misc.md",
+    "overview.md",
     "README.md",
+    "Untitled.md",
+    "work/README.md",
     "finances/README.md",
     "finances/kids.md",
     "finances/house.md",

@@ -2,5 +2,6 @@
   "vimMode": true,
   "livePreview": false,
   "showLineNumber": true,
-  "readableLineLength": false
+  "readableLineLength": false,
+  "promptDelete": false
 }
