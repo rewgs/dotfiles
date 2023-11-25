@@ -27,6 +27,7 @@ local function newWindow(application) --> @type none
     end
 end
 
+
 -- Doesn't really work yet. Needs to:
 -- 1. Get coordinates of all windows.
 -- 2. Cycle through all grids (clockwise, I guess?)
@@ -40,78 +41,159 @@ local function snapAllWindowsToGrid()
     end
 end
 
+
+windowLeftMode = hs.hotkey.modal.new(mod.hyper, 'h')
+local leftBindings = {
+    -- half
+    { '', 'h', function()
+        moveWindow(0, 0, 0.5, 1)
+        windowLeftMode:exit()
+    end },
+    -- one-third
+    { '', 'i', function()
+        moveWindow(0, 0, 0.334, 1)
+        windowLeftMode:exit()
+    end },
+    -- two-thirds; not working as Shift can't be added?
+    -- { '', 'h', function()
+    --     moveWindow(0, 0, 0.666, 1)
+    --     sModeWindowLeft:exit()
+    -- end },
+    -- top left quarter
+    { '', 'k', function()
+        moveWindow(0, 0, 0.5, 0.5)
+        windowLeftMode:exit()
+    end },
+    -- bottom left quarter
+    { '', 'j', function()
+        moveWindow(0, 0.5, 0.5, 0.5)
+        windowLeftMode:exit()
+    end },
+}
+for _, bind in ipairs(leftBindings) do
+    windowLeftMode:bind(bind[1], bind[2], bind[3])
+end
+
+windowDownMode = hs.hotkey.modal.new(mod.hyper, 'j')
+local downBindings = {
+    -- centered
+    { '', 'j', function()
+        moveWindow(0.1, 0.1, 0.8, 0.8)
+        windowDownMode:exit()
+    end },
+    -- bottom half
+    { '', 'm', function()
+        moveWindow(0, 0.5, 1, 0.5)
+        windowDownMode:exit()
+    end }
+}
+for _, bind in ipairs(downBindings) do
+    windowDownMode:bind(bind[1], bind[2], bind[3])
+end
+
+windowUpMode = hs.hotkey.modal.new(mod.hyper, 'k')
+local upBindings = {
+    -- FIXME: This usually doesn't fire, but often it requires the windowUpMode binding to be set a second time before working...
+    -- maximized
+    { mod.hyper, 'k', function()
+        hs.window.focusedWindow():maximize()
+        windowUpMode:exit()
+    end },
+    -- top half
+    { '', 'm', function()
+        moveWindow(0, 0, 1, 0.5)
+        windowUpMode:exit()
+    end }
+}
+for _, bind in ipairs(upBindings) do
+    windowUpMode:bind(bind[1], bind[2], bind[3])
+end
+
+windowRightMode = hs.hotkey.modal.new(mod.hyper, 'l')
+local rightBindings = {
+    -- half
+    { mod.hyper, 'l', function()
+        moveWindow(0.5, 0, 0.5, 1)
+        windowRightMode:exit()
+    end },
+}
+for _, bind in ipairs(rightBindings) do
+    windowRightMode:bind(bind[1], bind[2], bind[3])
+end
+
+
 -- TODO: add resizing of windows, make mod.sHyper+[h|j|k|l]
 -- mapping = {{modifier, key, function}}
-local key_bindings = {
-    -- Effectively toggles between running hs.grid.show() when the grid is
-    -- hidden, and hs.grid.hide() when the grid is visible.
-    { mod.hyper,   'g',      function() hs.grid.toggleShow() end },
+-- local key_bindings = {
+--     -- Effectively toggles between running hs.grid.show() when the grid is
+--     -- hidden, and hs.grid.hide() when the grid is visible.
+--     -- { mod.hyper,   'g',      function() hs.grid.toggleShow() end },
 
-    { mod.hyper,   's',      function() snapAllWindowsToGrid() end },
+--     -- { mod.hyper,   's',      function() snapAllWindowsToGrid() end },
 
-    -- Create new Finder window in active workspace
-    -- { mod.hyper,   'f',      function() hs.application.find("Finder"):selectMenuItem({ "File", "New Finder Window" }) end },
+--     -- Create new Finder window in active workspace
+--     -- { mod.hyper,   'f',      function() hs.application.find("Finder"):selectMenuItem({ "File", "New Finder Window" }) end },
 
-    -- Create new terminal window in active workspace
-    -- { mod.hyper,  't',      function() newWindow(TERMINAL) end },
-    -- { mod.hyper,  'return', function() newWindow(TERMINAL) end },
+--     -- Create new terminal window in active workspace
+--     -- { mod.hyper,  't',      function() newWindow(TERMINAL) end },
+--     -- { mod.hyper,  'return', function() newWindow(TERMINAL) end },
 
-    -- left half
-    { mod.hyper,   'h',      function() moveWindow(0, 0, 0.5, 1) end },
-    { mod.hyper,   'left',   function() moveWindow(0, 0, 0.5, 1) end },
+--     -- left half
+--     { mod.hyper,   'h',      function() moveWindow(0, 0, 0.5, 1) end },
+--     { mod.hyper,   'left',   function() moveWindow(0, 0, 0.5, 1) end },
 
-    -- FIXME: conflicting with left half
-    -- left third
-    -- { mod.hyper,  'h',      function() moveWindow(0, 0, 0.334, 1) end },
-    -- { mod.hyper,  'left',   function() moveWindow(0, 0, 0.334, 1) end },
+--     -- FIXME: conflicting with left half
+--     -- left third
+--     -- { mod.hyper,  'h',      function() moveWindow(0, 0, 0.334, 1) end },
+--     -- { mod.hyper,  'left',   function() moveWindow(0, 0, 0.334, 1) end },
 
-    -- left two-thirds
-    -- { mod.sHyper, 'h',      function() moveWindow(0, 0, 0.666, 1) end },
-    -- { mod.sHyper, 'left',   function() moveWindow(0, 0, 0.666, 1) end },
+--     -- left two-thirds
+--     -- { mod.sHyper, 'h',      function() moveWindow(0, 0, 0.666, 1) end },
+--     -- { mod.sHyper, 'left',   function() moveWindow(0, 0, 0.666, 1) end },
 
-    -- right half
-    { mod.hyper,   'l',      function() moveWindow(0.5, 0, 0.5, 1) end },
-    { mod.hyper,   'right',  function() moveWindow(0.5, 0, 0.5, 1) end },
+--     -- right half
+--     { mod.hyper,   'l',      function() moveWindow(0.5, 0, 0.5, 1) end },
+--     { mod.hyper,   'right',  function() moveWindow(0.5, 0, 0.5, 1) end },
 
-    -- FIXME: conflicting with right half
-    -- right third
-    -- { mod.hyper,  'l',      function() moveWindow(0.666, 0, 0.334, 1) end },
-    -- { mod.hyper,  'right',  function() moveWindow(0.666, 0, 0.334, 1) end },
+--     -- FIXME: conflicting with right half
+--     -- right third
+--     -- { mod.hyper,  'l',      function() moveWindow(0.666, 0, 0.334, 1) end },
+--     -- { mod.hyper,  'right',  function() moveWindow(0.666, 0, 0.334, 1) end },
 
-    -- right two-thirds
-    -- { mod.sHyper, 'l',      function() moveWindow(0.3334, 0, 0.666, 1) end },
-    -- { mod.sHyper, 'right',  function() moveWindow(0.3334, 0, 0.666, 1) end },
+--     -- right two-thirds
+--     -- { mod.sHyper, 'l',      function() moveWindow(0.3334, 0, 0.666, 1) end },
+--     -- { mod.sHyper, 'right',  function() moveWindow(0.3334, 0, 0.666, 1) end },
 
-    -- FIXME: conflicting with maximize
-    -- middle third
-    -- { mod.hyper,  'k',      function() moveWindow(0.334, 0, 0.334, 1) end },
-    -- { mod.hyper,  'up',     function() moveWindow(0.334, 0, 0.334, 1) end },
+--     -- FIXME: conflicting with maximize
+--     -- middle third
+--     -- { mod.hyper,  'k',      function() moveWindow(0.334, 0, 0.334, 1) end },
+--     -- { mod.hyper,  'up',     function() moveWindow(0.334, 0, 0.334, 1) end },
 
-    -- TODO: upper right quarter
-    -- { mod.hyper,   'i',      function() moveWindow(0.5, 0, 0.5, 0.5) end },
+--     -- TODO: upper right quarter
+--     -- { mod.hyper,   'i',      function() moveWindow(0.5, 0, 0.5, 0.5) end },
 
-    -- TODO: lower right quarter
-    -- { mod.hyper,   'k',      function() moveWindow(0.5, 0.5, 0.5, 0.5) end },
+--     -- TODO: lower right quarter
+--     -- { mod.hyper,   'k',      function() moveWindow(0.5, 0.5, 0.5, 0.5) end },
 
-    -- TODO: upper left quarter
-    -- { mod.hyper,   'u',      function() moveWindow(0, 0, 0.5, 0.5) end },
+--     -- TODO: upper left quarter
+--     -- { mod.hyper,   'u',      function() moveWindow(0, 0, 0.5, 0.5) end },
 
-    -- TODO: lower left quarter
-    -- { mod.hyper,   'j',      function() moveWindow(0, 0.5, 0.5, 0.5) end },
+--     -- TODO: lower left quarter
+--     -- { mod.hyper,   'j',      function() moveWindow(0, 0.5, 0.5, 0.5) end },
 
-    -- maximize window
-    { mod.hyper,   'k',      function() hs.window.focusedWindow():maximize() end },
-    { mod.sHyper,  'm',      function() hs.window.focusedWindow():maximize() end },
-    { mod.hyper,   'up',     function() hs.window.focusedWindow():maximize() end },
+--     -- maximize window
+--     { mod.hyper,   'k',      function() hs.window.focusedWindow():maximize() end },
+--     { mod.sHyper,  'm',      function() hs.window.focusedWindow():maximize() end },
+--     { mod.hyper,   'up',     function() hs.window.focusedWindow():maximize() end },
 
-    -- almost maximized window
-    { mod.hyper,   'j',      function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
-    -- { mod.hyper,   'm',      function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
-    { mod.hyper,   'down',   function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
-}
+--     -- almost maximized window
+--     { mod.hyper,   'j',      function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
+--     -- { mod.hyper,   'm',      function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
+--     { mod.hyper,   'down',   function() moveWindow(0.1, 0.1, 0.8, 0.8) end },
+-- }
 
-for _, map in ipairs(key_bindings) do
-    hs.hotkey.bind(map[1], map[2], map[3])
-end
+-- for _, map in ipairs(key_bindings) do
+--     hs.hotkey.bind(map[1], map[2], map[3])
+-- end
 
 -- return key_bindings
