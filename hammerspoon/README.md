@@ -1,6 +1,6 @@
 # Notes
 
-- Hyper (i.e. Command + Control) is defined via Karabiner-Elements. Caps Lock is mapped to Hyper when held down, Escape when tapped.
+- Hyper (i.e. Command + Control + Option) is defined via Karabiner-Elements. Caps Lock is mapped to Hyper when held down, Escape when tapped.
 
 # TODO
 
@@ -8,29 +8,15 @@
 - fancyzones-like visual grids
     - keybinding creates a grid, shows overlay
     - other keybinding snaps all open windows to closest grid square
-- manual:
-    - left: super+h
-        - half: h
-        - thirds: 3
-            - one-third: 1
-            - two-thirds: 2
-        - quarters: 4
-            - top quarter: k
-            - bottom quarter: j
-        - ninths: 
-            - top ninth:
-            - middle ninth:
-            - bottom ninth:
-    - right: super+l
-        - half: l
-        - one-third: j
-        - two-thirds: k
-    - top: super+k
-        - half: k
-    - bottom: super+j
-        - half: j
-    - maximized: super+K
-    - minimized: super+J
+- key bindings:
+    - `hyper+h` : First part of key-chord for snapping to the left...
+        - `h`   : Snap to the nearest left-ward box in current grid
+    - `hyper+j` : First part of key-chord for snapping downward...
+        - `j`   : Snap to the nearest down-ward box in current grid
+    - `hyper+k` : First part of key-chord for snapping upward...
+        - `k`   : Snap to the nearest up-ward box in current grid
+    - `hyper+l` : First part of key-chord for snapping to the right...
+        - `l`   : Snap to the nearest right-ward box in current grid
 
 
 ### App Remapping - replace BetterTouchTool

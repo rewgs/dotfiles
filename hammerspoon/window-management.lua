@@ -50,11 +50,11 @@ local key_bindings = {
     { mod.hyper,   's',      function() snapAllWindowsToGrid() end },
 
     -- Create new Finder window in active workspace
-    { mod.hyper,   'f',      function() hs.application.find("Finder"):selectMenuItem({ "File", "New Finder Window" }) end },
+    -- { mod.hyper,   'f',      function() hs.application.find("Finder"):selectMenuItem({ "File", "New Finder Window" }) end },
 
     -- Create new terminal window in active workspace
-    { mod.hyper,  't',      function() newWindow(TERMINAL) end },
-    { mod.hyper,  'return', function() newWindow(TERMINAL) end },
+    -- { mod.hyper,  't',      function() newWindow(TERMINAL) end },
+    -- { mod.hyper,  'return', function() newWindow(TERMINAL) end },
 
     -- left half
     { mod.hyper,   'h',      function() moveWindow(0, 0, 0.5, 1) end },
