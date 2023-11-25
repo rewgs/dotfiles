@@ -40,48 +40,52 @@ local function snapAllWindowsToGrid()
     end
 end
 
+-- TODO: add resizing of windows, make mod.sHyper+[h|j|k|l]
 -- mapping = {{modifier, key, function}}
 local key_bindings = {
     -- Effectively toggles between running hs.grid.show() when the grid is
     -- hidden, and hs.grid.hide() when the grid is visible.
     { mod.hyper,   'g',      function() hs.grid.toggleShow() end },
 
-    { mod.hyper, 's', function() snapAllWindowsToGrid() end },
+    { mod.hyper,   's',      function() snapAllWindowsToGrid() end },
 
     -- Create new Finder window in active workspace
     { mod.hyper,   'f',      function() hs.application.find("Finder"):selectMenuItem({ "File", "New Finder Window" }) end },
 
     -- Create new terminal window in active workspace
-    { mod.oHyper,  't',      function() newWindow(TERMINAL) end },
-    { mod.oHyper,  'return', function() newWindow(TERMINAL) end },
+    { mod.hyper,  't',      function() newWindow(TERMINAL) end },
+    { mod.hyper,  'return', function() newWindow(TERMINAL) end },
 
     -- left half
     { mod.hyper,   'h',      function() moveWindow(0, 0, 0.5, 1) end },
     { mod.hyper,   'left',   function() moveWindow(0, 0, 0.5, 1) end },
 
+    -- FIXME: conflicting with left half
     -- left third
-    { mod.oHyper,  'h',      function() moveWindow(0, 0, 0.334, 1) end },
-    { mod.oHyper,  'left',   function() moveWindow(0, 0, 0.334, 1) end },
+    -- { mod.hyper,  'h',      function() moveWindow(0, 0, 0.334, 1) end },
+    -- { mod.hyper,  'left',   function() moveWindow(0, 0, 0.334, 1) end },
 
     -- left two-thirds
-    { mod.soHyper, 'h',      function() moveWindow(0, 0, 0.666, 1) end },
-    { mod.soHyper, 'left',   function() moveWindow(0, 0, 0.666, 1) end },
+    -- { mod.sHyper, 'h',      function() moveWindow(0, 0, 0.666, 1) end },
+    -- { mod.sHyper, 'left',   function() moveWindow(0, 0, 0.666, 1) end },
 
     -- right half
     { mod.hyper,   'l',      function() moveWindow(0.5, 0, 0.5, 1) end },
     { mod.hyper,   'right',  function() moveWindow(0.5, 0, 0.5, 1) end },
 
+    -- FIXME: conflicting with right half
     -- right third
-    { mod.oHyper,  'l',      function() moveWindow(0.666, 0, 0.334, 1) end },
-    { mod.oHyper,  'right',  function() moveWindow(0.666, 0, 0.334, 1) end },
+    -- { mod.hyper,  'l',      function() moveWindow(0.666, 0, 0.334, 1) end },
+    -- { mod.hyper,  'right',  function() moveWindow(0.666, 0, 0.334, 1) end },
 
     -- right two-thirds
-    { mod.soHyper, 'l',      function() moveWindow(0.3334, 0, 0.666, 1) end },
-    { mod.soHyper, 'right',  function() moveWindow(0.3334, 0, 0.666, 1) end },
+    -- { mod.sHyper, 'l',      function() moveWindow(0.3334, 0, 0.666, 1) end },
+    -- { mod.sHyper, 'right',  function() moveWindow(0.3334, 0, 0.666, 1) end },
 
+    -- FIXME: conflicting with maximize
     -- middle third
-    { mod.oHyper,  'k',      function() moveWindow(0.334, 0, 0.334, 1) end },
-    { mod.oHyper,  'up',     function() moveWindow(0.334, 0, 0.334, 1) end },
+    -- { mod.hyper,  'k',      function() moveWindow(0.334, 0, 0.334, 1) end },
+    -- { mod.hyper,  'up',     function() moveWindow(0.334, 0, 0.334, 1) end },
 
     -- TODO: upper right quarter
     -- { mod.hyper,   'i',      function() moveWindow(0.5, 0, 0.5, 0.5) end },

@@ -20,7 +20,7 @@
                     {
                         "manipulators": [
                             {
-                                "description": "Caps Lock to Escape when tapped/Cmd+Ctrl when held",
+                                "description": "Caps Lock to Escape when tapped/Command+Control+Option when held",
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": {
@@ -33,7 +33,8 @@
                                     {
                                         "key_code": "left_command",
                                         "modifiers": [
-                                            "left_control"
+                                            "left_control",
+                                            "left_option"
                                         ]
                                     }
                                 ],

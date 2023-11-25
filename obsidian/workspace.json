@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "infrastructure/backups.md",
+                "file": "work/music.md",
                 "mode": "preview",
                 "backlinks": false,
                 "source": true
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "infrastructure/backups.md",
+                "file": "work/music.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "infrastructure/backups.md",
+                "file": "work/music.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "infrastructure/backups.md"
+                "file": "work/music.md"
               }
             }
           }
@@ -149,13 +149,17 @@
   },
   "active": "796293defe3ec72f",
   "lastOpenFiles": [
+    "work/README.md",
+    "README.md",
+    "finances/README.md",
+    "finances/kids.md",
+    "finances/house.md",
     "networking.md",
     "nextcloud-aio.md",
     "notes on shell.md",
     "roadmap/README.md",
     "roadmap/finances.md",
     "roadmap/tips.md",
-    "roadmap.md",
-    "README.md"
+    "roadmap.md"
   ]
 }
