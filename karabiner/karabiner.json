@@ -48,14 +48,18 @@
                         ]
                     },
                     {
+                        "description": "Change right_shift + left_shift to caps_lock",
                         "manipulators": [
                             {
-                                "description": "Cmd+Ctrl+Escape to Caps Lock",
+                                "type": "basic",
                                 "from": {
-                                    "key_code": "escape",
+                                    "key_code": "left_shift",
                                     "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ],
                                         "optional": [
-                                            "any"
+                                            "caps_lock"
                                         ]
                                     }
                                 },
@@ -63,8 +67,26 @@
                                     {
                                         "key_code": "caps_lock"
                                     }
-                                ],
-                                "type": "basic"
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "right_shift",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_shift"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "caps_lock"
+                                    }
+                                ]
                             }
                         ]
                     }
