@@ -6,17 +6,30 @@
 
 ### Window Management:
 - fancyzones-like visual grids
-    - keybinding creates a grid, shows overlay
-    - other keybinding snaps all open windows to closest grid square
+    - define grids with lua; `hyper+[something]` calls it
+    - `hyper+g`: shows grid overlay
+    - `hyper+s`: snaps all open windows to closest grid square
 - key bindings:
-    - `hyper+h` : First part of key-chord for snapping to the left...
-        - `h`   : Snap to the nearest left-ward box in current grid
-    - `hyper+j` : First part of key-chord for snapping downward...
-        - `j`   : Snap to the nearest down-ward box in current grid
-    - `hyper+k` : First part of key-chord for snapping upward...
-        - `k`   : Snap to the nearest up-ward box in current grid
-    - `hyper+l` : First part of key-chord for snapping to the right...
-        - `l`   : Snap to the nearest right-ward box in current grid
+    - left: `h`,
+        - half: `h`
+        - one-third: `i`
+        - two-thirds: `H`
+        - top left quarter: `k`
+        - bottom left quarter: `j`
+    - smaller: `j`,
+        - centered: `j`
+        - bottom half: `m`
+    - larger: `k`
+        - maximized: `k`
+        - top half: `m`
+    - right: `l`,
+        - half: `l`
+        - one-third: `i`
+        - two-thirds: `L`
+        - top right quarter: `k`
+        - bottom right quarter: `j`
+
+
 
 
 ### App Remapping - replace BetterTouchTool
