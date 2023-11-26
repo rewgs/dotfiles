@@ -131,8 +131,8 @@ vmap('v', '<C-_>', ':CommentToggle<CR>', { silent = true })
 -- telescope
 local t = require('telescope.builtin')
 -- nmap('n', '<leader>fb', ':Telescope file_browser', { noremap = true }) -- not working
-vmap('n', '<leader>fF', t.find_files, {})
-vmap('n', '<leader>ff', t.git_files, {}) -- only searches for files being tracked by current git repo
+vmap('n', '<leader>ff', t.find_files, {})
+vmap('n', '<leader>fg', t.git_files, {}) -- only searches for files being tracked by current git repo
 vmap('n', '<leader> ', t.live_grep, {})
 vmap('n', '<leader>b', t.buffers, {})
 vmap('n', '<leader>fh', t.help_tags, {})
