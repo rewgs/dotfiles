@@ -14,6 +14,7 @@ build_tmux_from_source () {
 install_tmux_from_source () {
     typeset -a deps
     deps=(
+        "automake"
         "bison"
         "byacc"
         "libevent-dev"
