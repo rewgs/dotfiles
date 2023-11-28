@@ -9,25 +9,6 @@
     - define grids with lua; `hyper+[something]` calls it
     - `hyper+g`: shows grid overlay
     - `hyper+s`: snaps all open windows to closest grid square
-- key bindings:
-    - left: `h`,
-        - half: `h`
-        - one-third: `i`
-        - two-thirds: `H`
-        - top left quarter: `k`
-        - bottom left quarter: `j`
-    - smaller: `j`,
-        - centered: `j`
-        - bottom half: `m`
-    - larger: `k`
-        - maximized: `k`
-        - top half: `m`
-    - right: `l`,
-        - half: `l`
-        - one-third: `i`
-        - two-thirds: `L`
-        - top right quarter: `k`
-        - bottom right quarter: `j`
 
 
 
