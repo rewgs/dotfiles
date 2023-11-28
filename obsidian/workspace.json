@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "purchases/tech.md",
+                "file": "rigs/general/Cubase/quick controls.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": true
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "purchases/tech.md",
+                "file": "rigs/general/Cubase/quick controls.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "purchases/tech.md",
+                "file": "rigs/general/Cubase/quick controls.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "purchases/tech.md"
+                "file": "rigs/general/Cubase/quick controls.md"
               }
             }
           }
@@ -150,6 +150,13 @@
   },
   "active": "95a7bc0ddf092549",
   "lastOpenFiles": [
+    "rigs/general/MIDI control/Arturia.md",
+    "rigs/general/MIDI control",
+    "workflow/README.md",
+    "tools/README.md",
+    "template/README.md",
+    "blog/posts/hello-world.md",
+    "rigs/general/Cubase/quick controls.md",
     "purchases/music.md",
     "purchases/README.md",
     "work/music.md",
@@ -169,7 +176,6 @@
     "notes on shell.md",
     "roadmap/README.md",
     "roadmap/finances.md",
-    "roadmap/tips.md",
-    "roadmap.md"
+    "roadmap/tips.md"
   ]
 }
