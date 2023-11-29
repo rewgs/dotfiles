@@ -61,17 +61,18 @@ local key_bindings = {
     { mod.hyper,  'k', function() hs.window.focusedWindow():maximize() end }, -- maximized
     { mod.hyper,  'l', function() moveWindow(0.5, 0, 0.5, 1) end },           -- right half
 
-    { mod.sHyper, 'h', function() moveWindow(0, 0, 0.334, 1) end },           -- left 1/3
-    { mod.sHyper, 'j', function() moveWindow(0, 0, 0.666, 1) end },           -- left 2/3
-    { mod.sHyper, 'k', function() moveWindow(0.3334, 0, 0.666, 1) end },      -- right 2/3
-    { mod.sHyper, 'l', function() moveWindow(0.666, 0, 0.334, 1) end },       -- right 1/3
+    { mod.sHyper, '[', function() moveWindow(0, 0, 0.334, 1) end },           -- left 1/3
+    { mod.sHyper,  '\\', function() moveWindow(0.334, 0, 0.334, 1) end },     -- middle third
+    { mod.sHyper, ']', function() moveWindow(0.666, 0, 0.334, 1) end },       -- right 1/3
+
+    { mod.sHyper, 'h', function() moveWindow(0, 0, 0.666, 1) end },           -- left 2/3
+    { mod.sHyper, 'l', function() moveWindow(0.3334, 0, 0.666, 1) end },      -- right 2/3
 
     { mod.hyper,  'y', function() moveWindow(0, 0, 0.5, 0.5) end },           -- upper left quarter
     { mod.hyper,  'o', function() moveWindow(0.5, 0, 0.5, 0.5) end },         -- upper right quarter
     { mod.hyper,  'n', function() moveWindow(0, 0.5, 0.5, 0.5) end },         -- lower left quarter
     { mod.hyper,  '.', function() moveWindow(0.5, 0.5, 0.5, 0.5) end },       -- lower right quarter
 
-    { mod.hyper,  'i', function() moveWindow(0.334, 0, 0.334, 1) end },       -- middle third
 }
 for _, map in ipairs(key_bindings) do
     hs.hotkey.bind(map[1], map[2], map[3])
