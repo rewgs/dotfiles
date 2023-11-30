@@ -11,13 +11,8 @@
             "id": "95a7bc0ddf092549",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "rigs/general/Cubase/quick controls.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": true
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "rigs/general/Cubase/quick controls.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "rigs/general/Cubase/quick controls.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "rigs/general/Cubase/quick controls.md"
-              }
+              "state": {}
             }
           }
         ],

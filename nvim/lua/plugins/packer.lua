@@ -51,5 +51,11 @@ return require('packer').startup(function(use)
     use 'terrortylor/nvim-comment'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use('mg979/vim-visual-multi', { branch = 'master' })
+    use { "ibhagwan/fzf-lua",
+        -- optional for icon support
+        requires = { "nvim-tree/nvim-web-devicons" }
+    }
     use { 'davidgranstrom/scnvim' }
+    -- use { 'madskjeldgaard/reaper-nvim' }
+    -- use { 'davidgranstrom/osc.nvim' }
 end)
