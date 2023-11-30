@@ -1,6 +1,14 @@
 # Notes
 
 - Hyper (i.e. Command + Control + Option) is defined via Karabiner-Elements. Caps Lock is mapped to Hyper when held down, Escape when tapped.
+- `Spoons/` is a symlink to the git cloned [repo](https://github.com/Hammerspoon/Spoons) `~/Spoons/Spoons`, in which all `.spoon.zip` files have been unzipped. Otherwise, I'd have to manually point to the Spoons like so:
+
+``` lua
+-- Look for Spoons in ~/.hammerspoon/MySpoons as well
+package.path = package.path .. ";" ..  hs.configdir .. "/MySpoons/?.spoon/init.lua"
+```
+
+More info [here](https://github.com/Hammerspoon/hammerspoon/blob/master/SPOONS.md#loading-a-spoon).
 
 # TODO
 
