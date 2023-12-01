@@ -162,3 +162,14 @@ vmap('n', '<leader>fc', ':foldclose<CR>')
 vmap('n', '<leader>fC', ufo.closeAllFolds)
 vmap('n', '<leader>fo', ':foldopen<CR>')
 vmap('n', '<leader>fO', ufo.openAllFolds)
+
+-- todo-comments
+vmap('n', '<leader>tt', ':TodoTrouble<CR>')
+
+vmap("n", "<leader>tn", function()
+    require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vmap("n", "<leader>tp", function()
+    require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
