@@ -29,5 +29,7 @@ require('plugins.config.scnvim')
 require('plugins.config.luasnip')
 require('plugins.config.nvim-cmp')
 require('plugins.config.nvim-ufo')
+require('plugins.config.todo-comments')
+
 require('color-scheme')
 require('keybindings')
