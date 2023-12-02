@@ -11,8 +11,13 @@
             "id": "95a7bc0ddf092549",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "weekday-schedule.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": true
+              }
             }
           }
         ]
@@ -81,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "weekday-schedule.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "weekday-schedule.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +125,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "weekday-schedule.md"
+              }
             }
           }
         ],
@@ -141,6 +150,24 @@
   },
   "active": "95a7bc0ddf092549",
   "lastOpenFiles": [
+    "README.md",
+    "travel.md",
+    "purchases/tech.md",
+    "purchases/clothes.md",
+    "purchases/fitness.md",
+    "purchases/home.md",
+    "purchases/misc.md",
+    "purchases/music.md",
+    "purchases/office.md",
+    "purchases/README.md",
+    "finances/retirement.md",
+    "finances/plan.md",
+    "finances/kids.md",
+    "finances/house.md",
+    "finances/health.md",
+    "finances/brainstorm.md",
+    "finances/README.md",
+    "overview.md",
     "rigs/general/MIDI control/Arturia.md",
     "rigs/general/MIDI control",
     "workflow/README.md",
@@ -148,25 +175,7 @@
     "template/README.md",
     "blog/posts/hello-world.md",
     "rigs/general/Cubase/quick controls.md",
-    "purchases/music.md",
-    "purchases/README.md",
     "work/music.md",
-    "weekday-schedule.md",
-    "tips.md",
-    "travel.md",
-    "misc.md",
-    "overview.md",
-    "README.md",
-    "Untitled.md",
-    "work/README.md",
-    "finances/README.md",
-    "finances/kids.md",
-    "finances/house.md",
-    "networking.md",
-    "nextcloud-aio.md",
-    "notes on shell.md",
-    "roadmap/README.md",
-    "roadmap/finances.md",
-    "roadmap/tips.md"
+    "weekday-schedule.md"
   ]
 }
