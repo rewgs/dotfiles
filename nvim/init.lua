@@ -4,7 +4,23 @@ require('settings')
 -- plugins
 -- (order is intentional)
 ---------------------------------------
-require('plugins.packer')   -- this must come first
+
+-- package manager -- this must come first
+
+-- packer
+require('plugins.packer')
+
+-- lazy
+-- local lazypath = vim.fnstdpath("data") .. "/lazy/lazy.nvim" if not vim.loop.fs_stat(lazypath) then
+--     vim.fn.system({
+--         "git", "clone", "--filter=blob:none",
+--         "https://github.com/folke/lazy.nvim.git",
+--         "--branch=stable", -- latest stable release
+--         lazypath,
+--     })
+-- end
+-- vim.opt.rtp:prepend(lazypath)
+-- require("lazy").setup(plugins, opts)
 
 -- themes
 require('plugins.config.themes.edge')
@@ -32,5 +48,6 @@ require('plugins.config.nvim-ufo')
 require('plugins.config.trouble')
 require('plugins.config.todo-comments')
 
+-- color scheme and keybindings rely on plugins, thus must come last
 require('color-scheme')
 require('keybindings')
