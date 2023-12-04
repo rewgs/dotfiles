@@ -66,12 +66,13 @@ function homebrew_installations () {
         "btop"
         "chromium --no-quarantine"
         "cmatrix"
-        "coreutils"
+        "coreutils" # required for gnu ls (i.e. `gls`, which my `ls_improved()` function uses)
         "cowsay"
         "gh"
         "git"
         "glances"
         "gnu-sed"
+        "go"
         "htop"
         "jesseduffield/lazygit/lazygit"
         "mas" # https://github.com/mas-cli/mas
