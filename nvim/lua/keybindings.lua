@@ -78,8 +78,6 @@ nmap('n', '<leader>|', ':vsplit<CR>', { silent = true })
 nmap('n', '<leader>|', ':vsplit<CR>', { silent = true })
 
 
--- TODO: continue re-organizing from here on...
-
 -- navigation
 nmap('n', '<leader>h', '<C-w>h', { silent = true })
 nmap('n', '<leader>j', '<C-w>j', { silent = true })
@@ -118,6 +116,12 @@ nmap('n', '<leader>w', '<C-w>q', { silent = true })
 -- TODO: get this to work!
 -- nmap('n', '<s-w>', 'w', {noremap = true})
 
+-- move indented line to end of previous line
+-- This mess explained:
+-- Moves to beginning of text (`^`), deletes to the end (`d$`), moves up one 
+-- line, pastes to the end of the line after a space, moves down to the line 
+-- copied from, deletes it, moves back up to the end of the line copied to.
+nmap('n', '<leader>m', '^d$kA<Space><Esc>pjddk$', { silent = true })
 
 ---------------------------------------------------------------------------------------------------
 -- plugins
