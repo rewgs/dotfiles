@@ -1,14 +1,16 @@
-# directories
-__pycache__
+# editors
 .code
 .idea
 .obsidian
-.venv
 .vscode
-venv
 
-# files
-._* # ZFS cache files
-.DS_Store
+# python
+__pycache__
+.ruff_cache
+.venv
+venv
 *.pyc
 
+# random files
+._* # ZFS cache files
+.DS_Store
