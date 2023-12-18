@@ -101,6 +101,7 @@ function homebrew_installations () {
         "keyboard-maestro"
         "obs"
         "reaper"
+        "rectangle"
     )
 
     # Due to zsh not having nested arrays, the simplest way to keep tap and 
