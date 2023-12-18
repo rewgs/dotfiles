@@ -52,7 +52,7 @@ make_tmux_symlinks () {
 }
 
 make_zsh_symlinks () {
-    declare -r -a dot_files
+    declare -a dot_files
     dot_files=(
         "zlogin"
         "zlogout"
