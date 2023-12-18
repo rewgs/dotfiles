@@ -95,7 +95,7 @@
       "int" : 0
     },
     "landscapeSnapAreas" : {
-      "string" : "[1,{\"action\":15},4,{\"compound\":-2},3,{\"action\":16},5,{\"compound\":-3},2,{\"action\":2},6,{\"action\":13},7,{\"compound\":-4},8,{\"action\":14}]"
+      "string" : "[1,{\"action\":15},4,{\"action\":0},3,{\"action\":16},5,{\"action\":1},2,{\"action\":2},6,{\"action\":13},7,{\"compound\":-4},8,{\"action\":14}]"
     },
     "launchOnLogin" : {
       "bool" : true
@@ -215,7 +215,7 @@
       "int" : 0
     },
     "unsnapRestore" : {
-      "int" : 0
+      "int" : 2
     },
     "windowSnapping" : {
       "int" : 0
