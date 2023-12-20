@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "programming/README.md",
-                "mode": "source",
+                "mode": "preview",
                 "backlinks": false,
                 "source": true
               }
@@ -150,9 +150,11 @@
   },
   "active": "95a7bc0ddf092549",
   "lastOpenFiles": [
+    "programming/learning.md",
+    "programming/README.md",
+    "programming/ccs.md",
     "music/README.md",
     "finances/README.md",
-    "programming/README.md",
     "README.md",
     "work/README.md",
     "programming",
@@ -175,8 +177,6 @@
     "purchases/README.md",
     "finances/retirement.md",
     "finances/plan.md",
-    "finances/kids.md",
-    "finances/house.md",
     "rigs/general/MIDI control"
   ]
 }
