@@ -1,6 +1,6 @@
 This contains any and all dotfiles, configuration files, etc.
 
-`scripts/` contains scripts for installing apps and packages, as well as symlinking dotfiles to their necessary locations.
+[`scripts`](./scripts) contains scripts for installing apps and packages, as well as symlinking dotfiles to their necessary locations.
 
 **shell:** zsh
 
