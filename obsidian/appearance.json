@@ -4,5 +4,8 @@
   "textFontFamily": "FiraCode Nerd Font",
   "monospaceFontFamily": "FiraCode Nerd Font",
   "baseFontSize": 14,
-  "interfaceFontFamily": "Inter"
+  "interfaceFontFamily": "Inter",
+  "enabledCssSnippets": [
+    "disable-wrap"
+  ]
 }

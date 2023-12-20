@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "weekday-schedule.md",
-                "mode": "preview",
+                "file": "programming/README.md",
+                "mode": "source",
                 "backlinks": false,
                 "source": true
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "weekday-schedule.md",
+                "file": "programming/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "weekday-schedule.md",
+                "file": "programming/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "weekday-schedule.md"
+                "file": "programming/README.md"
               }
             }
           }
@@ -150,7 +150,20 @@
   },
   "active": "95a7bc0ddf092549",
   "lastOpenFiles": [
+    "music/README.md",
+    "finances/README.md",
+    "programming/README.md",
     "README.md",
+    "work/README.md",
+    "programming",
+    "rigs/README.md",
+    "index.md",
+    "tools/README.md",
+    "tools/bitwarden.md",
+    "netcat.md",
+    "finances/brainstorm.md",
+    "fitness.md",
+    "weekday-schedule.md",
     "travel.md",
     "purchases/tech.md",
     "purchases/clothes.md",
@@ -164,18 +177,6 @@
     "finances/plan.md",
     "finances/kids.md",
     "finances/house.md",
-    "finances/health.md",
-    "finances/brainstorm.md",
-    "finances/README.md",
-    "overview.md",
-    "rigs/general/MIDI control/Arturia.md",
-    "rigs/general/MIDI control",
-    "workflow/README.md",
-    "tools/README.md",
-    "template/README.md",
-    "blog/posts/hello-world.md",
-    "rigs/general/Cubase/quick controls.md",
-    "work/music.md",
-    "weekday-schedule.md"
+    "rigs/general/MIDI control"
   ]
 }
