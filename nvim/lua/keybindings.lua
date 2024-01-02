@@ -130,7 +130,8 @@ vmap('v', '<C-_>', ':CommentToggle<CR>', { silent = true })
 
 -- telescope
 local t = require('telescope.builtin')
--- nmap('n', '<leader>fb', ':Telescope file_browser', { noremap = true }) -- not working
+nmap('n', '<leader>fb', ':Telescope file_browser<CR>', { noremap = true })
+nmap("n", "<leader>fB", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true }) -- open file_browser with the path of the current buffer
 vmap('n', '<leader>ff', t.find_files, {})
 vmap('n', '<leader>fg', t.git_files, {}) -- only searches for files being tracked by current git repo
 vmap('n', '<leader> ', t.live_grep, {})

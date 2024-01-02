@@ -4,12 +4,11 @@ TERMINAL = 'iTerm'
 BROWSER = 'Google Chrome'
 
 local app_maps = {
-    { key = 'b',      app = BROWSER },
-    { key = 'c',      app = 'Visual Studio Code' },
+    { key = 'i',      app = BROWSER },
+    { key = 'v',      app = 'Visual Studio Code' },
+    -- TODO: make this show desktop
     { key = 'd',      app = 'Discord' }, -- would like to key-chord this so that mod.hyper+m,{something} calls different messaging apps, e.g. mod.hyper+m,d calls Discord
     { key = 'f',      app = 'Finder' },
-    { key = 'q',      app = 'Cubase 12' },
-    { key = 't',      app = TERMINAL },
     { key = 'return', app = TERMINAL }
 }
 

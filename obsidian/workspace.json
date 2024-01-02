@@ -4,20 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "660224286e6fa781",
+        "id": "e22c66366a3a1837",
         "type": "tabs",
         "children": [
           {
-            "id": "95a7bc0ddf092549",
+            "id": "8818e95c12120755",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "programming/README.md",
-                "mode": "preview",
-                "backlinks": false,
-                "source": true
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "programming/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "programming/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,13 +118,10 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "programming/README.md"
-              }
+              "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -148,35 +138,39 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "95a7bc0ddf092549",
+  "active": "8818e95c12120755",
   "lastOpenFiles": [
-    "programming/learning.md",
-    "programming/README.md",
-    "programming/ccs.md",
-    "music/README.md",
-    "finances/README.md",
-    "README.md",
-    "work/README.md",
-    "programming",
-    "rigs/README.md",
-    "index.md",
-    "tools/README.md",
-    "tools/bitwarden.md",
-    "netcat.md",
-    "finances/brainstorm.md",
-    "fitness.md",
+    "tech/programming/misc.md",
+    "tech/programming/README.md",
+    "tech/Linux PC.md",
+    "tech/programming/MaxMSP.md",
+    "tech/nas.md",
     "weekday-schedule.md",
-    "travel.md",
-    "purchases/tech.md",
-    "purchases/clothes.md",
-    "purchases/fitness.md",
-    "purchases/home.md",
-    "purchases/misc.md",
+    "tech",
+    "recipes/pasta.md",
+    "goals/jobs/craigslist javascript developer/takeaways.md",
+    "goals/jobs/craigslist javascript developer/job-post.md",
+    "goals/2024.md",
+    "music/README.md",
+    "recipes",
+    "tech/programming/learning.md",
+    "tech/programming/ccs.md",
+    "tech/nvim/plugins.md",
+    "tech/nvim",
     "purchases/music.md",
-    "purchases/office.md",
+    "tech/programming/live coding.md",
+    "read.md",
+    "read",
+    "purchases/tech.md",
+    "purchases/misc.md",
     "purchases/README.md",
-    "finances/retirement.md",
-    "finances/plan.md",
+    "purchases/office.md",
+    "purchases/home.md",
+    "purchases/fitness.md",
+    "purchases/clothes.md",
+    "travel.md",
+    "finances/README.md",
+    "tech/programming",
     "rigs/general/MIDI control"
   ]
 }

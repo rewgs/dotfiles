@@ -59,8 +59,8 @@ function install_from_app_store () {
 
 
 function homebrew_installations () {
-    typeset -a brew_apps
-    brew_apps=(
+    typeset -a brew_packages
+    brew_packages=(
         "bettercap"
         "bpytop"
         "btop"
@@ -79,6 +79,7 @@ function homebrew_installations () {
         "neofetch"
         "netcat"
         "orbstack"
+        "ripgrep"
         "shellcheck"
         "brew install koekeishiya/formulae/skhd"
         "thefuck"
@@ -148,8 +149,8 @@ function homebrew_installations () {
 
 
     brew update && brew upgrade
-    for (( i = 1; i <= $#brew_apps; i++)) do
-        brew install "$brew_apps[i]"
+    for (( i = 1; i <= $#brew_packages; i++)) do
+        brew install "$brew_packages[i]"
     done
     for (( i = 1; i <= $#brew_casks; i++ )) do
         brew install --cask "$brew_casks[i]"

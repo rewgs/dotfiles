@@ -40,8 +40,13 @@ return require('packer').startup(function(use)
     }
 
     -- telescope and telescope plugins
-    use { 'nvim-telescope/telescope.nvim', tag = '0.1.1', requires = { { 'nvim-lua/plenary.nvim' } } }
-    use 'nvim-telescope/telescope-file-browser.nvim'
+    use {
+        "nvim-telescope/telescope-file-browser.nvim",
+        requires = {
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim"
+        }
+    }
     use "dimaportenko/telescope-simulators.nvim"
 
     -- all others

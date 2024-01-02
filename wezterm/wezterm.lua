@@ -45,12 +45,12 @@ config.color_scheme = 'OneHalfDark'
 -- font
 -------------------------------------------------------------------------------
 config.font = wezterm.font {
-    family = 'FiraCode Nerd Font'
+    family = 'FiraCode Nerd Font',
+    weight = 'Regular'
     -- family = 'JetBrains Mono'
     -- family = 'Berkeley Mono'
 }
 config.font_size = 14
-config.line_height = 1
 
 -------------------------------------------------------------------------------
 -- key bindings

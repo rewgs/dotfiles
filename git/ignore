@@ -4,6 +4,9 @@
 .obsidian
 .vscode
 
+# js
+node_modules
+
 # python
 __pycache__
 .ruff_cache

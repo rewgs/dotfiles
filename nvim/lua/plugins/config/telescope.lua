@@ -1,22 +1,22 @@
--- local status_ok, telescope = pcall(require, "telescope")
--- if not status_ok then
---     return
--- end
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+    return
+end
 
 require("telescope").setup {
     extensions = {
         file_browser = {
-            theme = 'onedark',
+            theme = 'ivy',
             -- disables netrw and use telescope-file-browser in its place
-	        -- hijack_netrw = true,
-	        -- mappings = {
-	        --     ['i'] = {
-	        --     -- your custom insert mode mappings
-	        --     },
-	        --     ['n'] = {
-	        --     -- your custom normal mode mappings
-	        --     },
-	        -- },
+	        hijack_netrw = true,
+	        mappings = {
+	            ['i'] = {
+	            -- your custom insert mode mappings
+	            },
+	            ['n'] = {
+	            -- your custom normal mode mappings
+	            },
+	        },
 	    },
 	},
 }

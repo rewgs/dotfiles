@@ -16,7 +16,6 @@ require('plugins.config.themes.sonokai')
 
 -- telescope
 require('plugins.config.telescope')
-require('plugins.config.telescope-file-browser')
 require('plugins.config.telescope-simulators')
 
 -- all others
@@ -28,7 +27,7 @@ require('plugins.config.nvim-comment')
 require('plugins.config.scnvim')
 require('plugins.config.luasnip')
 require('plugins.config.nvim-cmp')
-require('plugins.config.nvim-ufo')
+-- require('plugins.config.nvim-ufo')
 require('plugins.config.trouble')
 require('plugins.config.todo-comments')
 
