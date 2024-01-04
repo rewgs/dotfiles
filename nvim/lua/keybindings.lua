@@ -63,7 +63,6 @@ nmap('i', '{}', '{}<Esc>i', { silent = true })
 nmap('i', '((', '()<Esc>i', { silent = true })
 nmap('i', '()', '()<Esc>i', { silent = true })
 
-
 -- remap Escape to clear search results
 nmap('n', '<Esc>', '<C-l>', { silent = true })
 -- vim.api.nvim_set_keymap('n', '<Esc>', '<C-l>', { silent = true })
@@ -72,45 +71,36 @@ nmap('n', '<Esc>', '<C-l>', { silent = true })
 nmap('n', '<leader>_', ':split<CR>', { silent = true })
 nmap('n', '<leader>_', ':split<CR>', { silent = true })
 
-
--- new buffer -- vertical split (space \)
+-- new buffer -- vertical split (space |)
 nmap('n', '<leader>|', ':vsplit<CR>', { silent = true })
 nmap('n', '<leader>|', ':vsplit<CR>', { silent = true })
 
+-- resize buffer
+-- nmap('n', '<leader>K', ':exe "resize " . (winheight(0) * 0.05)<CR>', { silent = true })
+-- nmap('n', '<leader>J', ':exe "resize " . (winheight(0) * 0.05)<CR>', { silent = true })
+nmap('n', '<leader>ww', ':vertical resize +5<CR>', { silent = true })
+nmap('n', '<leader>wW', ':vertical resize -5<CR>', { silent = true })
+nmap('n', '<leader>wt', ':horizontal resize +5<CR>', { silent = true })
+nmap('n', '<leader>wT', ':horizontal resize -5<CR>', { silent = true })
 
--- navigation
+
+-- buffer navigation
 nmap('n', '<leader>h', '<C-w>h', { silent = true })
 nmap('n', '<leader>j', '<C-w>j', { silent = true })
 nmap('n', '<leader>k', '<C-w>k', { silent = true })
 nmap('n', '<leader>l', '<C-w>l', { silent = true })
 
--- move windows
+-- move buffer position
 nmap('n', '<leader>H', '<C-w>H', { silent = true })
 nmap('n', '<leader>J', '<C-w>J', { silent = true })
 nmap('n', '<leader>K', '<C-w>K', { silent = true })
 nmap('n', '<leader>L', '<C-w>L', { silent = true })
 
--- next window
+-- next buffer
 nmap('n', '<leader>`', '<C-w>w', { silent = true })
 
 -- close buffer
-nmap('n', '<leader>w', '<C-w>q', { silent = true })
-nmap('n', '<leader>h', '<C-w>h', { silent = true })
-nmap('n', '<leader>j', '<C-w>j', { silent = true })
-nmap('n', '<leader>k', '<C-w>k', { silent = true })
-nmap('n', '<leader>l', '<C-w>l', { silent = true })
-
--- move windows
-nmap('n', '<leader>H', '<C-w>H', { silent = true })
-nmap('n', '<leader>J', '<C-w>J', { silent = true })
-nmap('n', '<leader>K', '<C-w>K', { silent = true })
-nmap('n', '<leader>L', '<C-w>L', { silent = true })
-
--- next window
-nmap('n', '<leader>`', '<C-w>w', { silent = true })
-
--- close buffer
-nmap('n', '<leader>w', '<C-w>q', { silent = true })
+nmap('n', '<leader>x', '<C-w>q', { silent = true })
 
 -- Alias W to w
 -- TODO: get this to work!
