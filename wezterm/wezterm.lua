@@ -15,7 +15,12 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-config.front_end = 'WebGpu'
+if os == 'Linux' then
+    config.enable_wayland = true
+end
+
+-- config.front_end = 'WebGpu'
+config.front_end = 'OpenGL'
 
 -------------------------------------------------------------------------------
 -- window appearance
