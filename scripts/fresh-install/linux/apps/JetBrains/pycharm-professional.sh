@@ -1,12 +1,11 @@
 #!/usr/bin/env zsh
 
-# NOTE: toolbox does not work on Linux ARM.
-#
 web="https://download.jetbrains.com"
-pro="toolbox"
-src="jetbrains-toolbox-2.1.3.18901.tar.gz"
+pro="python"
+src="pycharm-professional-2023.3.2-aarch64.tar.gz"
+url="$web/$pro/$src"
 
-out="$HOME/jt.tar.gz"
+out="$HOME/pycharm-pro.tar.gz"
 dst="$HOME/opt/JetBrains/"
 
 wget "$url" -O "$out"
