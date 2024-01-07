@@ -44,7 +44,7 @@ build_neovim_from_source () {
     git clone --depth 1 https://github.com/neovim/neovim.git --branch stable
     cd ~/src/neovim || return
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
-	make install
+	sudo make install
 }
 
 

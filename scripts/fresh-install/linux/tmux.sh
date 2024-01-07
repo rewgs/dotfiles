@@ -7,7 +7,7 @@ build_tmux_from_source () {
 
     # apparently there's no 'clean' option?
     # make clean install   
-    make install
+    sudo make install
 }
 
 

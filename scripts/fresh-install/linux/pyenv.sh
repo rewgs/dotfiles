@@ -1,5 +1,4 @@
-install_pyenv_build_dependencies () {
-    # TODO: make this work on arch
+install_apt_build_dependencies () {
 	apt update; 
 	apt install -y \
 		build-essential \
@@ -16,6 +15,15 @@ install_pyenv_build_dependencies () {
 		libxmlsec1-dev \
 		libffi-dev \
 		liblzma-dev
+}
+
+install_pacman_build_dependencies () {
+    sudo pacman -S --needed \
+        base-devel \
+        openssl \
+        zlib \
+        xz \
+        tk
 }
 
 

@@ -1,4 +1,4 @@
-install_phpenv_build_prerequisites () {
+install_apt_build_prerequisites () {
     # TODO: make this run on arch like tmux and neovim files
     apt install -y \
         apache2-dev \
@@ -7,6 +7,15 @@ install_phpenv_build_prerequisites () {
         libonig-dev \
         libtidy-dev \
         libzip-dev \
+        re2c
+}
+
+install_pacman_build_prerequisites () {
+    sudo pacman -S --needed \
+        libxslt \
+        libzip \
+        oniguruma \
+        tidy \
         re2c
 }
 
