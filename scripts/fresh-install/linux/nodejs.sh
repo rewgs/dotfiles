@@ -28,6 +28,9 @@ install_nodejs () {
 
     # installs lts version
     nvm install --lts   
+
+    # sets latest version as default for each shell
+    nvm alias default node
 }
 
 
