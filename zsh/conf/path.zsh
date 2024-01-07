@@ -23,6 +23,8 @@ export PATH="$GOPATH/bin:$PATH"
 # jetbrains
 if [[ $(uname) == "Darwin" ]]; then
     export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
+elif [[ $(uname) == "Linux" ]]; then
+    export PATH="$HOME/opt/JetBrains:$PATH"
 fi
 
 # nvm

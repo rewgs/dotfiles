@@ -32,6 +32,6 @@ set $dark_magenta #9a52af
 
 # white
 set $light_gray #abb2bf
-set $other_gray = #828997
+set $other_gray #828997
 set $gray #5c6370
 set $dark_gray #4b5263

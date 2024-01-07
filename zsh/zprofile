@@ -43,6 +43,6 @@ fi
 
 if [[ $(uname) == "Linux" ]]; then
     if [ "$(tty)" = "/dev/tty1" ] ; then
-      exec sway
+      exec Hyprland
     fi
 fi

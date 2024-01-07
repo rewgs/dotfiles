@@ -55,5 +55,6 @@ packages=(
 declare -a aur_packages
 aur_packages=(
     "cbonsai"
+    "code" # VS Code
     "xrdp"
 )
