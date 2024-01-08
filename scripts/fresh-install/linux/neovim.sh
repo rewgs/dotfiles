@@ -1,30 +1,68 @@
-# FIXME
-# apt_install_neovim_dependencies () {
-#     source ./utils.sh
-#     distro=get_distro
-#     if [[ "$distro" == *"Debian"* ]] || [[ "$distro" == ** ]]
-# 	apt-get install -y \
-# 		ninja-build \
-# 		gettext \
-# 		libtool \
-# 		libtool-bin \
-# 		autoconf \
-# 		automake \
-# 		g++ \
-# 		pkg-config \
-# 		unzip \
-# 		doxygen
-# }
+#!/usr/bin/bash
 
-# FIXME
-# pacman_install_neovim_dependencies () {
-#     pacman -S \
-#         base-devel \
-#         cmake \
-#         curl \
-#         ninja \
-#         unzip
-# }
+build_neovim_from_source () {
+	if [[ ! -d "$HOME/src" ]]; then mkdir "$HOME/src"; fi
+    cd "$HOME/src" || return
+
+    if [[ ! -d "$HOME/src/neovim" ]]; then 
+    	git clone --depth 1 https://github.com/neovim/neovim.git --branch stable
+	fi
+    cd "$HOME/src/neovim" || return
+
+    git checkout stable
+    git pull
+
+    if [[ ! -d "$HOME/src/neovim/cmake.deps" ]]; then
+    	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	fi
+    sudo make install
+}
+
+
+install_neovim_build_dependencies () {
+	typeset -a apt_deps
+	apt_deps=(
+		"autoconf"
+		"automake"
+		"cmake"
+		"doxygen"
+		"g++"
+		"gettext"
+		"libtool"
+		"libtool-bin"
+		"ninja-build"
+		"pkg-config"
+		"unzip"
+	)
+
+	typeset -a pacman_deps
+	pacman_deps=(
+		"base-devel"
+		"cmake"
+		"curl"
+		"ninja"
+		"unzip"
+	)
+
+	this_dir="$(dirname "$(readlink -f "$0")" )"
+	. "$this_dir/distros.sh"
+
+	if [[ $(get_distro) == *"Debian"* ]] || [[ $(get_distro) == *"Ubuntu"* ]]; then
+		for d in "${apt_deps[@]}"; do
+			sudo apt-get install -y "$d"
+		done
+	elif [[ $(get_distro) == *"Arch"* ]]; then
+		for d in "${pacman_deps[@]}"; do
+			sudo pacman -Syuq --needed --noconfirm "$d"
+		done
+	fi
+}
+
+
+install_neovim_from_source () {
+	install_neovim_build_dependencies
+	build_neovim_from_source
+}
 
 
 update_neovim_from_source () {
@@ -32,28 +70,26 @@ update_neovim_from_source () {
 	git checkout stable
 	git pull
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
-	make clean install
+	sudo make clean install
 }
 
-
-build_neovim_from_source () {
-    install_neovim_dependencies
-
-    if [ ! -d ~/src ]; then mkdir ~/src; fi
-    cd ~/src || return
-    git clone --depth 1 https://github.com/neovim/neovim.git --branch stable
-    cd ~/src/neovim || return
-	make CMAKE_BUILD_TYPE=RelWithDebInfo
-	sudo make install
-}
 
 
 install_packer_nvim () {
-    if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/" ]; then
+    if [[ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/" ]]; then
         mkdir -p "$HOME/.local/share/nvim/site/pack/packer/start/"
     fi
 
+    if [[ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]]; then
 	git clone --depth 1 \
         https://github.com/wbthomason/packer.nvim \
         "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
+fi
 }
+
+
+main () {
+	install_neovim_from_source
+	install_packer_nvim
+}
+# main

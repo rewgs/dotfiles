@@ -1,39 +1,78 @@
-install_apt_build_prerequisites () {
-    # TODO: make this run on arch like tmux and neovim files
-    apt install -y \
-        apache2-dev \
-        libcurl4-gnutls-dev \
-        libjpeg-dev \
-        libonig-dev \
-        libtidy-dev \
-        libzip-dev \
-        re2c
+#!/usr/bin/bash
+
+install_phpenv_build_dependencies () {
+    typeset -a apt_deps
+    apt_deps=(
+        "apache2-dev"
+        "libcurl4-gnutls-dev"
+        "libjpeg-dev"
+        "libonig-dev"
+        "libtidy-dev"
+        "libzip-dev"
+        "re2c"
+    )
+
+    typeset -a pacman_deps
+    pacman_deps=(
+        "libxslt"
+        "libzip"
+        "oniguruma"
+        "tidy"
+        "re2c"
+    )
+
+	. "$1/distros.sh"
+	if [[ $(get_distro) == *"Debian"* ]] || [[ $(get_distro) == *"Ubuntu"* ]]; then
+		for d in "${apt_deps[@]}"; do
+			sudo apt-get install -y "$d"
+		done
+	elif [[ $(get_distro) == *"Arch"* ]]; then
+		for d in "${pacman_deps[@]}"; do
+			sudo pacman -Syuq --needed --noconfirm "$d"
+		done
+	fi
 }
 
-install_pacman_build_prerequisites () {
-    sudo pacman -S --needed \
-        libxslt \
-        libzip \
-        oniguruma \
-        tidy \
-        re2c
+
+get_phpenv_src () {
+    if [[ ! -d "$HOME/src" ]]; then 
+        mkdir "$HOME/src" 
+    fi
+    cd "$HOME/src" || return
+
+    if [[ ! -d "$HOME/src/phpenv" ]]; then
+        git clone --depth 1 https://github.com/phpenv/phpenv.git
+    fi
 }
 
+
+get_phpbuild_src () {
+    if [[ ! -d "$HOME/src" ]]; then 
+        mkdir "$HOME/src" 
+    fi
+    cd "$HOME/src" || return
+
+    if [[ ! -d "$HOME/src/php-build" ]]; then
+        git clone --depth 1 https://github.com/php-build/php-build.git
+    fi
+}
 
 install_phpenv_from_source () {
-    # install phpenv
-    if [ ! -d ~/src ]; then mkdir ~/src; fi
-    cd ~/src
-    git clone --depth 1 https://github.com/phpenv/phpenv.git
-    ln -s ~/src/phpenv/ ~/.phpenv
+    get_phpenv_src
+    get_phpbuild_src
 
-    # install php-build -- required to use the `phpenv install` command, which is 99% of what I do with phpenv
-    cd ~/src
-    git clone --depth 1 https://github.com/php-build/php-build.git
-    if [ ! -d ~/.phpenv/plugins ]; then mkdir -p ~/.phpenv/plugins; fi
-    ln -s ~/src/php-build/ ~/.phpenv/plugins/php-build
-
-    # required for phpenv to see php-build
-    # should also be run after each new version of php is installed
-    # phpenv rehash
+	. "$1/symlink_dotfiles.sh"
+    symlink_phpenv
+    symlink_phpbuild
 }
+
+
+main () {
+	this_dir="$(dirname "$(readlink -f "$0")" )"
+
+    install_phpenv_build_dependencies "$this_dir"
+    install_phpenv_from_source "$this_dir"
+}
+main
+
+main

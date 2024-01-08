@@ -1,17 +1,10 @@
+#!/usr/bin/bash
+
 install_nvm_from_source () {
-    if [ ! -d "$HOME"/src ]; then mkdir "$HOME"/src; fi
-    cd "$HOME"/src
+    if [[ ! -d "$HOME"/src ]]; then mkdir "$HOME"/src; fi
+    cd "$HOME/src"
     git clone --depth 1 https://github.com/nvm-sh/nvm.git
     ln -s "$HOME"/src/nvm/ "$HOME"/.nvm
-}
-
-
-prep_for_nvm_nodejs_installs () {
-    echo 'export NVM_DIR=\\"\$([ -z \"\${XDG_CONFIG_HOME-}\" ] && printf %s \"\${HOME}/.nvm\" || printf %s \"\${XDG_CONFIG_HOME}/nvm\")\"' >> "$HOME"/.bashrc
-    echo '[ -s \"\$NVM_DIR/nvm.sh\\" ] && \\. \"\$NVM_DIR/nvm.sh\"' >> "$HOME"/.bashrc
-
-    echo 'export NVM_DIR=\\"\$([ -z \"\${XDG_CONFIG_HOME-}\" ] && printf %s \"\${HOME}/.nvm\" || printf %s \"\${XDG_CONFIG_HOME}/nvm\")\"' >> "$HOME"/.zshrc
-    echo '[ -s \"\$NVM_DIR/nvm.sh\\" ] && \\. \"\$NVM_DIR/nvm.sh\"' >> "$HOME"/.zshrc
 }
 
 
@@ -20,8 +13,8 @@ install_nodejs () {
     #   add this, but for whatever reason, `nvm` isn't found when running this function unless this 
     #   is included, even though .zshrc has been sourced. Doesn't make any sense, but this works, 
     #   so it's a problem for another day.
-    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    # export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
     # installs absolute latest version
     nvm install node    
@@ -35,8 +28,6 @@ install_nodejs () {
 
 
 install_npm_apps () {
-    nvm use --lts
-
     typeset -a npm_apps
     npm_apps=(
         "gtop -g"
@@ -46,3 +37,16 @@ install_npm_apps () {
         npm install "$app"
     done
 }
+
+
+main_1 () {
+    install_nvm_from_source
+}
+
+main_2 () {
+    install_nodejs
+    install_npm_apps
+}
+
+# main_1
+# main_2 # requires shell to be sourced before running

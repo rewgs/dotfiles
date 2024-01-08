@@ -1,4 +1,6 @@
-make_bash_symlinks () {
+#!/usr/bin/bash
+
+symlink_bash () {
     declare -r -a dot_files
     dot_files=(
         "bashrc"
@@ -14,7 +16,7 @@ make_bash_symlinks () {
     done
 }
 
-make_neovim_symlinks () {
+symlink_neovim () {
     if [ ! -d "$HOME/.config" ]; then
         mkdir "$HOME/.config"
     fi
@@ -26,7 +28,30 @@ make_neovim_symlinks () {
     ln -s "$HOME/dotfiles/nvim/" "$HOME/.config/nvim"
 }
 
-make_sh_symlinks () {
+symlink_phpenv () {
+    src="$HOME/src/phpenv/"
+    dst="$HOME/.phpenv"
+
+    if [[ -L "$dst" ]]; then ln -s "$src" "$dst"; fi
+}
+
+symlink_phpbuild () {
+    src="$HOME/src/php-build/"
+    par="$HOME/.phpenv/plugins"
+    dst="$par/php-build"
+
+    if [[ ! -d "$par" ]]; then mkdir -p "$par"; fi
+    if [[ -L "$dst" ]]; then ln -s "$src" "$dst"; fi
+}
+
+symlink_pyenv () {
+    src="$HOME/src/pyenv"
+    dst="$HOME/.pyenv"
+
+    if [[ -L "$dst" ]]; then ln -s "$src" "$dst"; fi
+}
+
+symlink_sh () {
     if [ -f "$HOME/.profile" ] || [ -L "$HOME/.profile" ]; then
         rm "$HOME/.profile"
     fi
@@ -34,7 +59,7 @@ make_sh_symlinks () {
     ln -s "$HOME/dotfiles/sh/profile" "$HOME/.profile"
 }
 
-make_tmux_symlinks () {
+symlink_tmux () {
     # tmux
     if [[ -f "$HOME/.tmux.conf" ]] || [[ -L "$HOME/.tmux.conf" ]]; then
         rm "$HOME/.tmux.conf"
@@ -51,7 +76,7 @@ make_tmux_symlinks () {
     ln -s "$HOME/src/tpm/" "$HOME/.tmux/plugins/tpm"
 }
 
-make_zsh_symlinks () {
+symlink_zsh () {
     declare -a dot_files
     dot_files=(
         "zlogin"
@@ -70,13 +95,15 @@ make_zsh_symlinks () {
     if [ ! -d "$HOME/.config" ]; then
         mkdir -p "$HOME/.config/zsh"
     fi
-    ln -s "$HOME/dotfiles/zsh/conf" "$HOME/.config/zsh/conf"
+    ln -s "$HOME/dotfiles/zsh/conf/" "$HOME/.config/zsh"
 }
 
 make_all_symlinks () {
-    make_bash_symlinks
-    make_neovim_symlinks
-    make_sh_symlinks
-    make_tmux_symlinks
-    make_zsh_symlinks
+    symlink_bash
+    symlink_neovim
+    symlink_sh
+    symlink_tmux
+    symlink_zsh
+    symlink_pyenv
+    symlink_phpenv
 }

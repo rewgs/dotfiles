@@ -17,7 +17,9 @@ packages=(
     "docker-compose"
     "foot"
     "fuzzel"
+    "fzf"
     "git"
+    "github-cli"
     "glances"
     # "gnu-ncat"
     "gnupg"
@@ -36,6 +38,7 @@ packages=(
     # "paru" # Pacman helper; can't install this with Pacman, need to install manually: https://github.com/Morganamilo/paru
     "picom"
     "qemu-full"
+    "ripgrep"
     # "shellcheck" # not available for ARM?
     "software-properties-common"
     # "tgt"
