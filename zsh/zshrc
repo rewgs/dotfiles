@@ -27,12 +27,6 @@ for c in "${config_files[@]}"; do
     source "$ZSH_CONFIG/$c"
 done
 
-# aliases
-for a in "$ZSH_CONFIG/aliases"/*; do
-    source "$a"
-done
-
-
 # zsh functions
 ZFUNCS="$ZSH_CONFIG/functions"
 FPATH="${ZFUNCS}:$FPATH"
@@ -56,3 +50,8 @@ done
 # - Do the above ^ for individual files, files of a given group (i.e. all bash 
 #   files, all zsh files, etc), or *all* dotfiles.
 # verify_dotfiles
+
+# aliases
+for a in "$ZSH_CONFIG/aliases"/*; do
+    source "$a"
+done
