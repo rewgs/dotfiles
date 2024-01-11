@@ -1,5 +1,4 @@
 # TODO: make the sorting case-insensitive
-
 function ls_improved () {
     if [[ $(uname) == "Darwin" ]]; then
         if [[ $# -eq 0 ]]; then

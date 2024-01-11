@@ -1,7 +1,39 @@
+# TODO:
+# - Finish check_exist()
+# - Add dotfiles for...
+#   - git
+#   - nvim
+#   - tmux
+#   - ...
+
 set -e
 
-verify_dotfiles::test () {
+verify_dotfiles::test_dotfiles_path () {
     echo "$DOTFILES"
+}
+
+verify_dotfiles::check_exist () {
+    local files="$1"
+    local exist=()
+
+    for f in "${files[@]}"; do
+        if [[ -f "$f" ]] || [[ -d "$f" ]]; then
+            exist+=("$f")
+        fi
+    done
+
+    echo "${exist[@]}"
+}
+
+verify_dotfiles::test_check_exist () {
+    local dot_files=(
+        "bashrc"
+        "bash_profile"
+    )
+    exist=$(check_exist "${dot_files[@]}")
+    for f in "${exist[@]}"; do
+        echo "$f"
+    done
 }
 
 verify_dotfiles::bash () {
@@ -24,7 +56,7 @@ verify_dotfiles::bash () {
     done
 }
 
-verify_zsh_symlinks () {
+verify_dotfiles::zsh () {
     local dot_files=(
         "zlogin"
         "zlogout"
@@ -59,12 +91,13 @@ verify_zsh_symlinks () {
 # must also be the same as the script/zsh function name. Hence, instead of 
 # `main()`, I have `verify_dotfiles()`.
 verify_dotfiles () {
-    cd "$ZFUNCS" || return
+    # don't need this right?
+    # cd "$ZFUNCS" || return
 
-    echo "Verifying bash symlinks..."
-    verify_dotfiles::bash
+    # echo "Verifying bash symlinks..."
+    # verify_dotfiles::bash
 
-    echo "Verifying zsh symlinks..."
-    verify_zsh_symlinks
+    # echo "Verifying zsh symlinks..."
+    # verify_dotfiles::zsh
 }
 verify_dotfiles
