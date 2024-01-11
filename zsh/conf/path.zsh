@@ -18,7 +18,9 @@ export PATH="$HOME/src/flutter/bin:$PATH"
 
 # golang
 export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
+export GOBIN="$GOPATH/bin"
+export PATH="$GOPATH:$PATH"
+export PATH="$GOBIN:$PATH"
 
 # jetbrains
 if [[ $(uname) == "Darwin" ]]; then

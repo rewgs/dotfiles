@@ -6,13 +6,14 @@
 # ║ interactive shell (e.g. $LS_COLORS).                                        ║
 # ║                                                                             ║
 # ║ In an effort to keep this maintainable, this file has been split into       ║
-# ║ multiple files. .zshrc now sources other files definied in $CONFIGS.        ║
+# ║ multiple files. .zshrc now sources other files definied in $ZSH_CONFIG.     ║
 # ╚═════════════════════════════════════════════════════════════════════════════╝
 
-# This is symlinked to dotfiles/zsh/conf
-CONFIGS="$HOME/.config/zsh"
+export XDG_CONFIG_HOME="$HOME/.config"
 
-declare -a config_files
+# This is symlinked to dotfiles/zsh/conf
+export ZSH_CONFIG="$XDG_CONFIG_HOME/zsh"
+
 config_files=(
     "init.zsh"
     "oh-my.zsh"
@@ -21,18 +22,37 @@ config_files=(
     "rc.zsh"
     "vi.zsh"
 )
+
 for c in "${config_files[@]}"; do
-    source "$CONFIGS/$c"
+    source "$ZSH_CONFIG/$c"
 done
 
 # aliases
-for a in "$CONFIGS/aliases"/*; do
+for a in "$ZSH_CONFIG/aliases"/*; do
     source "$a"
 done
 
-# functions
-zfuncs="$HOME/.config/zsh/functions"
-FPATH="${zfuncs}:$FPATH"
-for f in "$zfuncs"/*; do
-    autoload -Uz "$f"
+
+# zsh functions
+ZFUNCS="$ZSH_CONFIG/functions"
+FPATH="${ZFUNCS}:$FPATH"
+
+# dotfiles function
+# source this first so that all other functions can see the $DOTFILES var
+source "$ZFUNCS/get_dotfiles_path"
+export DOTFILES=$(get_dotfiles_path)
+
+# load all other functions
+for function in "$ZFUNCS"/*; do
+    autoload -Uz "$function"
 done
+
+# NOTE: this is destructive! Stock dotfiles *files*, such as .bashrc, .zshrc, 
+# etc, WILL BE DELETED! 
+# They will be replaced by symlinks pointing to $DOTFILES/$file. 
+# THIS WILL HAPPEN SILENTLY.
+# TODO: 
+# - Add user verifcation for file deletion and symlinking.
+# - Do the above ^ for individual files, files of a given group (i.e. all bash 
+#   files, all zsh files, etc), or *all* dotfiles.
+# verify_dotfiles

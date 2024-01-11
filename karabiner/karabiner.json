@@ -33,8 +33,8 @@
                                     {
                                         "key_code": "left_command",
                                         "modifiers": [
-                                            "left_control",
-                                            "left_option"
+                                            "left_option",
+                                            "left_control"
                                         ]
                                     }
                                 ],

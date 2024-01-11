@@ -1,14 +1,20 @@
 #!/usr/bin/bash
 
+
+check_for_user_config_dir () {
+    if [[ ! -d "$XDG_CONFIG_HOME" ]]; then
+        mkdir "$XDG_CONFIG_HOME"
+    fi
+}
+
 symlink_bash () {
-    declare -r -a dot_files
-    dot_files=(
+    local dot_files=(
         "bashrc"
         "bash_profile"
     )
 
     for d in "${dot_files[@]}"; do
-        if [ -f "$HOME/.$d" ] || [ -L "$HOME/.$d" ]; then
+        if [[ -f "$HOME/.$d" ]] || [[ -L "$HOME/.$d" ]]; then
             rm "$HOME/.$d"
         fi
 
@@ -16,43 +22,50 @@ symlink_bash () {
     done
 }
 
+symlink_git () {
+    local SRC="$HOME/dotfiles/git/"
+    local DST="$XDG_CONFIG_HOME/git"
+
+    check_for_user_config_dir
+
+    if [[ -L "$DST" ]]; then rm "$DST"; fi
+    if [[ ! -L "$DST" ]]; then ln -s "$SRC" "$DST"; fi
+}
+
 symlink_neovim () {
-    if [ ! -d "$HOME/.config" ]; then
-        mkdir "$HOME/.config"
+    check_for_user_config_dir
+
+    if [[ -d "$XDG_CONFIG_HOME/nvim" ]] || [[ -L "$XDG_CONFIG_HOME/nvim" ]]; then
+        rm "$XDG_CONFIG_HOME/nvim"
     fi
 
-    if [ -d "$HOME/.config/nvim" ] || [ -L "$HOME/.config/nvim" ]; then
-        rm "$HOME/.config/nvim"
-    fi
-
-    ln -s "$HOME/dotfiles/nvim/" "$HOME/.config/nvim"
+    ln -s "$HOME/dotfiles/nvim/" "$XDG_CONFIG_HOME/nvim"
 }
 
 symlink_phpenv () {
-    src="$HOME/src/phpenv/"
-    dst="$HOME/.phpenv"
-
-    if [[ -L "$dst" ]]; then ln -s "$src" "$dst"; fi
+    local SRC="$HOME/src/phpenv/"
+    local DST="$HOME/.phpenv"
+    if [[ -L "$DST" ]]; then ln -s "$SRC" "$DST"; fi
 }
 
 symlink_phpbuild () {
-    src="$HOME/src/php-build/"
-    par="$HOME/.phpenv/plugins"
-    dst="$par/php-build"
+    local SRC="$HOME/src/php-build/"
+    local PAR="$HOME/.phpenv/plugins"
+    local DST="$PAR/php-build"
 
-    if [[ ! -d "$par" ]]; then mkdir -p "$par"; fi
-    if [[ -L "$dst" ]]; then ln -s "$src" "$dst"; fi
+    if [[ ! -d "$PAR" ]]; then mkdir -p "$PAR"; fi
+    if [[ -L "$DST" ]]; then ln -s "$SRC" "$DST"; fi
 }
 
 symlink_pyenv () {
-    src="$HOME/src/pyenv"
-    dst="$HOME/.pyenv"
+    local SRC="$HOME/src/pyenv"
+    local DST="$HOME/.pyenv"
 
-    if [[ -L "$dst" ]]; then ln -s "$src" "$dst"; fi
+    if [[ -L "$DST" ]]; then ln -s "$SRC" "$DST"; fi
 }
 
 symlink_sh () {
-    if [ -f "$HOME/.profile" ] || [ -L "$HOME/.profile" ]; then
+    if [[ -f "$HOME/.profile" ]] || [[ -L "$HOME/.profile" ]]; then
         rm "$HOME/.profile"
     fi
 
@@ -77,29 +90,32 @@ symlink_tmux () {
 }
 
 symlink_zsh () {
-    declare -a dot_files
-    dot_files=(
+    local dot_files=(
         "zlogin"
         "zlogout"
         "zprofile"
         "zshenv"
         "zshrc"
     )
+
     for d in "${dot_files[@]}"; do
-        if [ -f "$HOME/.$d" ] || [ -L "$HOME/.$d" ]; then
+        if [[ -f "$HOME/.$d" ]] || [[ -L "$HOME/.$d" ]]; then
             rm "$HOME/.$d"
         fi
+
         ln -s "$HOME/dotfiles/zsh/$d" "$HOME/.$d"
     done
 
-    if [ ! -d "$HOME/.config" ]; then
-        mkdir -p "$HOME/.config/zsh"
+    if [[ ! -d "$XDG_CONFIG_HOME" ]]; then
+        mkdir -p "$XDG_CONFIG_HOME"
     fi
-    ln -s "$HOME/dotfiles/zsh/conf/" "$HOME/.config/zsh"
+
+    ln -s "$HOME/dotfiles/zsh/conf/" "$XDG_CONFIG_HOME/zsh"
 }
 
 make_all_symlinks () {
     symlink_bash
+    symlink_git
     symlink_neovim
     symlink_sh
     symlink_tmux

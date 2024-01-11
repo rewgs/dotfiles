@@ -1,0 +1,70 @@
+set -e
+
+verify_dotfiles::test () {
+    echo "$DOTFILES"
+}
+
+verify_dotfiles::bash () {
+    local dot_files=(
+        "bashrc"
+        "bash_profile"
+    )
+
+    for d in "${dot_files[@]}"; do
+        local src="$DOTFILES/bash/$d"
+        local dst="$HOME/.$d"
+
+        if [[ -f "$dst" ]]; then
+            rm "$dst"
+        fi
+
+        if [[ ! -L "$dst" ]]; then
+            ln -s "$src" "$dst"
+        fi
+    done
+}
+
+verify_zsh_symlinks () {
+    local dot_files=(
+        "zlogin"
+        "zlogout"
+        "zprofile"
+        "zshenv"
+        "zshrc"
+    )
+
+    for d in "${dot_files[@]}"; do
+        local src="$DOTFILES/zsh/$d"
+        local dst="$HOME/.$d"
+
+        if [[ -f "$HOME/.$d" ]]; then
+            rm "$HOME/.$d"
+        fi
+
+        if [[ ! -L "$HOME/.$d" ]]; then
+            ln -s "$src" "$dst"
+        fi
+    done
+
+    if [[ ! -d "$XDG_CONFIG_HOME" ]]; then
+        mkdir -p "$XDG_CONFIG_HOME"
+    fi
+
+    if [[ ! -L "$XDG_CONFIG_HOME/zsh" ]]; then
+        ln -s "$DOTFILES/zsh/conf/" "$XDG_CONFIG_HOME/zsh"
+    fi
+}
+
+# For $0 to equal the script/zsh function name, the "main" function 
+# must also be the same as the script/zsh function name. Hence, instead of 
+# `main()`, I have `verify_dotfiles()`.
+verify_dotfiles () {
+    cd "$ZFUNCS" || return
+
+    echo "Verifying bash symlinks..."
+    verify_dotfiles::bash
+
+    echo "Verifying zsh symlinks..."
+    verify_zsh_symlinks
+}
+verify_dotfiles

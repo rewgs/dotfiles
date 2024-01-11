@@ -1,5 +1,5 @@
 # Sets the directory for user functions
-user_zsh_functions="$HOME/.config/zsh/functions"
+user_zsh_functions="$ZSH_CONFIG/functions"
 
 # echo "Adding user zsh functions dir $user_zsh_functions to FPATH..."
 FPATH="${user_zsh_functions}:$FPATH"

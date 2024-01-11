@@ -1,4 +1,8 @@
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# configures the `fuck` command
+eval $(thefuck --alias)
 
 # scales the display to 2x
 # this is only for Parallels on M1 Mac

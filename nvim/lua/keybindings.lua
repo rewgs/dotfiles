@@ -76,12 +76,14 @@ nmap('n', '<leader>|', ':vsplit<CR>', { silent = true })
 nmap('n', '<leader>|', ':vsplit<CR>', { silent = true })
 
 -- resize buffer
--- nmap('n', '<leader>K', ':exe "resize " . (winheight(0) * 0.05)<CR>', { silent = true })
--- nmap('n', '<leader>J', ':exe "resize " . (winheight(0) * 0.05)<CR>', { silent = true })
-nmap('n', '<leader>ww', ':vertical resize +5<CR>', { silent = true })
-nmap('n', '<leader>wW', ':vertical resize -5<CR>', { silent = true })
-nmap('n', '<leader>wt', ':horizontal resize +5<CR>', { silent = true })
-nmap('n', '<leader>wT', ':horizontal resize -5<CR>', { silent = true })
+nmap('n', '<leader>ww', ':vertical resize +10<CR>', { silent = true })
+nmap('n', '<leader>wW', ':vertical resize -10<CR>', { silent = true })
+nmap('n', '<leader>wt', ':horizontal resize +10<CR>', { silent = true })
+nmap('n', '<leader>wT', ':horizontal resize -10<CR>', { silent = true })
+nmap('n', '<leader>Ww', ':vertical resize +20<CR>', { silent = true })
+nmap('n', '<leader>WW', ':vertical resize -20<CR>', { silent = true })
+nmap('n', '<leader>Wt', ':horizontal resize +20<CR>', { silent = true })
+nmap('n', '<leader>WT', ':horizontal resize -20<CR>', { silent = true })
 
 
 -- buffer navigation
