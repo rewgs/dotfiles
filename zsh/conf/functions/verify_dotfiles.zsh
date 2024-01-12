@@ -13,7 +13,7 @@ verify_dotfiles::test_dotfiles_path () {
 }
 
 verify_dotfiles::check_exist () {
-    local files="$1"
+    local files=("${1[@]}")
     local exist=()
 
     for f in "${files[@]}"; do
@@ -93,6 +93,8 @@ verify_dotfiles::zsh () {
 verify_dotfiles () {
     # don't need this right?
     # cd "$ZFUNCS" || return
+
+    verify_dotfiles::test_check_exist
 
     # echo "Verifying bash symlinks..."
     # verify_dotfiles::bash
