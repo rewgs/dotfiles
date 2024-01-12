@@ -1,8 +1,7 @@
 from os import environ as env
 from time import sleep
 
-from dots import Dots
-from dotfiles.bash_shell import bashrc, bash_profile
+from dfmgr.manager import Manager
 
 
 def main():
@@ -12,9 +11,8 @@ def main():
         sleep(3)
         exit()
 
-    bash_shell = Dots("bash", (bashrc, bash_profile))
-
-
+    mgr = Manager()
+    mgr.print_dot_apps()
 
 if __name__ == "__main__":
     main()

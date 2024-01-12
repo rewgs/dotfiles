@@ -4,7 +4,6 @@ from pathlib import PurePath
 import subprocess
 from os import environ as env
 
-
 @dataclass
 class Dot:
     """
@@ -15,12 +14,10 @@ class Dot:
     dst: Path
 
 
-class Dots:
+class DotApp:
     """
     Describes the collection of all dotfiles for a given application, e.g. zsh, 
     neovim, etc, as well as information regarding the application itself.
-
-    Called "Ellipsis" because many dots form an ellipsis.
     """
 
     def __get_exec_path(self):
@@ -56,6 +53,3 @@ class Dots:
                 else:
                     # TODO: add prompt for user input
                     print(f"{d.dst.as_posix()} is a symlink! Recreate?")
-
-
-

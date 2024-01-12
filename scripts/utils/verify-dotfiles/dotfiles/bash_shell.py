@@ -2,7 +2,7 @@ from pathlib import Path
 from pathlib import PurePath
 from os import environ as env
 
-from dots import Dot
+from dfmgr.dots import Dot
 
 bashrc = Dot(
     name="bashrc",
