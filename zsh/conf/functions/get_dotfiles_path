@@ -1,5 +1,3 @@
-set -e
-
 # For $0 to equal the script/zsh function name, the "main" function 
 # must also be the same as the script/zsh function name. Hence, instead of 
 # `main()`, I have `verify_dotfiles_symlinks()`.
@@ -9,19 +7,19 @@ get_dotfiles_path () {
 
     local PARENT_DIR_PATH=$(dirname "$THIS_SCRIPT")
     local PARENT_DIR_NAME="$(basename $PARENT_DIR_PATH)"
-    if [[ ! "$PARENT_DIR_NAME" == "functions" ]]; then return 1; fi
+    if [[ "$PARENT_DIR_NAME" != "functions" ]]; then return 1; fi
 
     local CONF_DIR_PATH="$(dirname $PARENT_DIR_PATH)"
     local CONF_DIR_NAME="$(basename $CONF_DIR_PATH)"
-    if [[ ! "$CONF_DIR_NAME" == "conf" ]]; then return 1; fi
+    if [[ "$CONF_DIR_NAME" != "conf" ]]; then return 1; fi
 
     local ZSH_DIR_PATH="$(dirname $CONF_DIR_PATH)"
     local ZSH_DIR_NAME="$(basename $ZSH_DIR_PATH)"
-    if [[ ! "$ZSH_DIR_NAME" == "zsh" ]]; then return 1; fi
+    if [[ "$ZSH_DIR_NAME" != "zsh" ]]; then return 1; fi
 
     local DOTFILES_DIR_PATH="$(dirname $ZSH_DIR_PATH)"
     local DOTFILES_DIR_NAME="$(basename $DOTFILES_DIR_PATH)"
-    if [[ ! "$DOTFILES_DIR_NAME" == *"dotfiles"* ]]; then return 1; fi
+    if [[ "$DOTFILES_DIR_NAME" != *"dotfiles"* ]]; then return 1; fi
 
     echo "$(realpath $DOTFILES_DIR_PATH)"
 }
