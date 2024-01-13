@@ -9,3 +9,5 @@ eval $(thefuck --alias)
 # if [[ $(uname) == "Linux" ]] && [[ $(echo $HOST) == "ubuntu-linux-22-04-desktop" ]]; then
 #     sway output "Virtual-1" scale 2
 # fi
+
+source /Users/rewgs/.config/broot/launcher/bash/br

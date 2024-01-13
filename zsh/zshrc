@@ -38,7 +38,9 @@ export DOTFILES=$(get_dotfiles_path)
 
 # load all other functions
 for function in "$ZFUNCS"/*; do
-    autoload -Uz "$function"
+    if [[ "$(basename $function)" != "get_dotfiles_path" ]]; then 
+        autoload -Uz "$function"; 
+    fi
 done
 
 # NOTE: this is destructive! Stock dotfiles *files*, such as .bashrc, .zshrc, 
