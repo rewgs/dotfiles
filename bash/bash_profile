@@ -37,3 +37,5 @@ fi
 export PYENV_ROOT="$HOME/.pyenv" >> ~/.bash_profile
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH" >> ~/.bash_profile
 eval "$(pyenv init -)" >> ~/.bash_profile
+
+# source /Users/rewgs/.config/broot/launcher/bash/br
