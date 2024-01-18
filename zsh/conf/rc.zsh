@@ -10,4 +10,6 @@ eval $(thefuck --alias)
 #     sway output "Virtual-1" scale 2
 # fi
 
-source /Users/rewgs/.config/broot/launcher/bash/br
+if [[ $(uname) == "Darwin" ]]; then
+    source /Users/rewgs/.config/broot/launcher/bash/br
+fi

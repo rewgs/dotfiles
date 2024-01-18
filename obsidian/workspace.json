@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "e22c66366a3a1837",
+        "id": "8884a3b7ce00cd79",
         "type": "tabs",
         "children": [
           {
-            "id": "8818e95c12120755",
+            "id": "6127be51517e3054",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tech/programming/projects.md",
+                "file": "purchases/clothes.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": true
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tech/programming/projects.md",
+                "file": "purchases/clothes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "tech/programming/projects.md",
+                "file": "purchases/clothes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tech/programming/projects.md"
+                "file": "purchases/clothes.md"
               }
             }
           }
@@ -147,16 +147,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8818e95c12120755",
+  "active": "6127be51517e3054",
   "lastOpenFiles": [
+    "purchases/clothes.md",
+    "purchases/tech.md",
+    "purchases/home.md",
+    "purchases/misc.md",
+    "purchases/office.md",
+    "purchases/music.md",
+    "tech/programming/projects.md",
     "tech/misc.md",
     "tech/programming/misc.md",
-    "tech/programming/projects.md",
-    "purchases/tech.md",
     "purchases/photography.md",
-    "purchases/office.md",
-    "purchases/misc.md",
-    "purchases/music.md",
     "tech/Linux PC.md",
     "tech/nas.md",
     "health and fitness/health.md",
@@ -177,8 +179,6 @@
     "tech/programming/live coding.md",
     "read.md",
     "read",
-    "purchases/README.md",
-    "purchases/home.md",
     "tech/programming",
     "rigs/general/MIDI control"
   ]

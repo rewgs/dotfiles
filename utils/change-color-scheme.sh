@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 # Changes the color schemes of neovim (including lualine), tmux, and all terminals.

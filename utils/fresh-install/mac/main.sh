@@ -63,6 +63,7 @@ function homebrew_installations () {
     brew_packages=(
         "bettercap"
         "bpytop"
+        "broot"
         "btop"
         "chromium --no-quarantine"
         "cmatrix"
@@ -78,30 +79,30 @@ function homebrew_installations () {
         "mas" # https://github.com/mas-cli/mas
         "neofetch"
         "netcat"
-        "orbstack"
+        # "orbstack"
         "ripgrep"
         "shellcheck"
-        "brew install koekeishiya/formulae/skhd"
+        # "brew install koekeishiya/formulae/skhd"
         "thefuck"
         "tldr"
-        "koekeishiya/formulae/yabai"
+        # "koekeishiya/formulae/yabai"
     )
 
     typeset -a brew_casks
     brew_casks=(
-        "amethyst"
+        # "amethyst"
         "blackhole-2ch"
         "blackhole-16ch"
-        "dozer" # FOSS menu bar organizer a la Bartender: https://github.com/Mortennn/Dozer
+        # "dozer" # FOSS menu bar organizer a la Bartender: https://github.com/Mortennn/Dozer
         "firefox"
         "font-fira-code-nerd-font"
         "google-chrome"
         "hammerspoon"
-        "hyperkey"
+        # "hyperkey"
         "karabiner-elements"
         "keyboard-maestro"
         "obs"
-        "reaper"
+        # "reaper"
         "rectangle"
     )
 

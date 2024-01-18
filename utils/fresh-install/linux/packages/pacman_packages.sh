@@ -60,4 +60,5 @@ aur_packages=(
     "cbonsai"
     "code" # VS Code
     "xrdp"
+    "yay"
 )
