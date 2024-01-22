@@ -13,3 +13,5 @@ eval $(thefuck --alias)
 if [[ $(uname) == "Darwin" ]]; then
     source /Users/rewgs/.config/broot/launcher/bash/br
 fi
+
+nvm use node > /dev/null
