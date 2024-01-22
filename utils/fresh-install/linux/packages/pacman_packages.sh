@@ -26,6 +26,7 @@ packages=(
     "go"
     "hsetroot"
     "htop"
+    "lf"
     "libvirt"
     "llvm"
     "lua"

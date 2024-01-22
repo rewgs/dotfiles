@@ -24,6 +24,7 @@ packages=(
     "golang-go"
     "hsetroot"
     "htop"
+    "lf"
     "libvirt-daemon"
     "llvm"
     "lua5.4"
@@ -57,6 +58,7 @@ packages=(
 # then install the packages.
 declare -a third_party_ppas
 third_party_ppas=(
+    "keithw/mosh-dev" # need to install mosh from this ppa for now in order to get true color support; see here: https://github.com/mobile-shell/mosh/issues/945
     "nschloe/waybar" # status bar for swaywm; uses X11 though, not Wayland
 )
 

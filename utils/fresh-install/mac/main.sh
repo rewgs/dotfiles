@@ -77,6 +77,7 @@ function homebrew_installations () {
         "htop"
         "jesseduffield/lazygit/lazygit"
         "mas" # https://github.com/mas-cli/mas
+        "--HEAD mosh" # need to install from HEAD for now in order to get true color support; see here: https://github.com/mobile-shell/mosh/issues/945
         "neofetch"
         "netcat"
         # "orbstack"
