@@ -1,4 +1,4 @@
-# connections and computers
+# personal connections and computers
 alias macmini="ssh rewgs@rewgs-mac-mini.local"
 alias nas="ssh rewgs@rewgs-nas"
 
