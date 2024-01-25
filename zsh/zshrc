@@ -41,7 +41,7 @@ recursively_source_functions () {
     for file in "$dir"/*; do
         if [[ -d "$file" ]] || [[ -L "$file" ]]; then
             # echo "Entering $file..."
-            recursively_source_functions $(realpath "$file")
+            recursively_source_functions "$(realpath $file)"
         else # [[ -f "$file" ]]; then
             if [[ "$(basename $file)" != "get_dotfiles_path" ]]; then 
                 autoload -Uz "$file"; 
@@ -55,7 +55,7 @@ recursively_source_aliases () {
     for file in "$dir"/*; do
         if [[ -d "$file" ]] || [[ -L "$file" ]]; then
             # echo "Entering $file..."
-            recursively_source_aliases $(realpath "$file")
+            recursively_source_aliases "$(realpath $file)"
         else # [[ -f "$file" ]]; then
             # echo "Sourcing $file..."
             source "$file"
