@@ -1,4 +1,15 @@
-/hammerspoon/Spoons/
+# hammerspoon
+/hammerspoon/Spoons
+
+# nvim
 /nvim/plugin/
-/scripts/fresh-install/linux/installation_log.txt
+
+# sway
 /sway/extensions/swaymonad/swaymonad
+
+# logs
+/utils/fresh-install/linux/installation_log.txt
+
+# zsh
+/zsh/conf/aliases/sns
+/zsh/conf/functions/sns
