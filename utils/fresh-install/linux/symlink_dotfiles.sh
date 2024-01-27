@@ -42,19 +42,6 @@ symlink_neovim () {
     ln -s "$HOME/dotfiles/nvim/" "$XDG_CONFIG_HOME/nvim"
 }
 
-# only run this after installing nvm
-symlink_nvm () {
-    check_for_user_config_dir
-
-    if [[ -d "$XDG_CONFIG_HOME/nvm" ]] || [[ -L "$XDG_CONFIG_HOME/nvm" ]]; then
-        rm "$XDG_CONFIG_HOME/nvm"
-    fi
-
-    if [[ -d "$HOME/src/nvm" ]]; then
-        ln -s "$HOME/src/nvm" "$XDG_CONFIG_HOME/nvm"
-    fi
-    
-}
 
 symlink_phpenv () {
     local SRC="$HOME/src/phpenv/"
