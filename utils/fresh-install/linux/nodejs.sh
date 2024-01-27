@@ -4,7 +4,7 @@ install_nvm_from_source () {
     if [[ ! -d "$HOME"/src ]]; then mkdir "$HOME"/src; fi
     cd "$HOME/src"
     git clone --depth 1 https://github.com/nvm-sh/nvm.git
-    ln -s "$HOME/src/nvm/" "$HOME/.nvm"
+    ln -s "$HOME/src/nvm/" "$HOME/.config/nvm"
 }
 
 
