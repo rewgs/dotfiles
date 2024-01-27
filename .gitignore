@@ -4,6 +4,9 @@
 # nvim
 /nvim/plugin/
 
+# obsidian
+/obsidian/workspace.json
+
 # sway
 /sway/extensions/swaymonad/swaymonad
 
