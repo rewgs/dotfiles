@@ -7,6 +7,7 @@
 # ".zprofile is meant as an alternative to .zlogin for ksh fans; the two are not intended to be 
 # used together, although this could certainly be done if desired."
 
+_WINDOW_MANAGER_="Hyprland"
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ PATH                                                                       ║
@@ -41,8 +42,12 @@ if [[ $(uname) == "Darwin" ]]; then
     source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 fi
 
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ LOGIN                                                                      ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
 if [[ $(uname) == "Linux" ]]; then
     if [ "$(tty)" = "/dev/tty1" ] ; then
-      exec Hyprland
+      exec "_WINDOW_MANAGER_"
     fi
 fi
