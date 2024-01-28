@@ -13,8 +13,10 @@ packages=(
     "cmatrix"
     "cowsay"
     "curl"
+    "discord"
     "docker"
     "docker-compose"
+    "element-desktop"
     "foot"
     "fuzzel"
     "fzf"
@@ -36,10 +38,12 @@ packages=(
     "neofetch"
     "net-tools"
     "nmap"
+    "obsidian"
     "picom"
     "qemu-full"
     "ripgrep"
-    # "shellcheck" # not available for ARM?
+    "shellcheck" # not available for ARM
+    "signal-desktop"
     "tailscale" # run `sudo systemctl enable --now tailscaled` to start, and then `sudo tailscale up` and `sudo tailscale up --ssh`
     # "tgt"
     "thefuck"
@@ -53,7 +57,3 @@ packages=(
     "zip"
     "zsh"
 )
-
-
-
-
