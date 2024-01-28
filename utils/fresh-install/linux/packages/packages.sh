@@ -1,3 +1,5 @@
+# NOTE: This script is 100% broken at the moment. Do not attempt to run.
+
 get_package_manager () {
     distro="$1"
     package_manager=""
