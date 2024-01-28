@@ -40,6 +40,7 @@ packages=(
     "qemu-full"
     "ripgrep"
     # "shellcheck" # not available for ARM?
+    "tailscale" # run `sudo systemctl enable --now tailscaled` to start, and then `sudo tailscale up` and `sudo tailscale up --ssh`
     # "tgt"
     "thefuck"
     "tldr"
@@ -54,10 +55,5 @@ packages=(
 )
 
 
-declare -a aur_packages
-aur_packages=(
-    "cbonsai"
-    "code" # VS Code
-    "xrdp"
-    "yay"
-)
+
+
