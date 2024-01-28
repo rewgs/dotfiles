@@ -1,5 +1,6 @@
-#!/usr/bin/bash
+#!/bin/bash
 
+# FIXME: Need to make sure this script can see `get_distro()`
 install_phpenv_build_dependencies () {
     typeset -a apt_deps
     apt_deps=(
