@@ -1,59 +1,3 @@
-# NOTE: This script is 100% broken at the moment. Do not attempt to run.
-
-get_package_manager () {
-    distro="$1"
-    package_manager=""
-
-    declare -a apt_distros
-    apt_distros=(
-        "Debian"
-        "Ubuntu"
-    )
-    
-    declare -a pacman_distros
-    pacman_distros=(
-        "Arch"
-        "Manjaro"
-    )
-
-    for a in "${apt_distros[@]}"; do
-        if [[ "$distro" == *"$a"* ]]; then
-            package_manager="apt"
-            echo "$package_manager"
-        fi
-    done
-
-    for p in "${pacman_distros[@]}"; do
-        if [[ "$distro" == *"$p"* ]]; then
-            package_manager="pacman"
-            echo "$package_manager"
-        fi
-    done
-}
-
-update_packages () {
-    package_manager="$1"
-    echo "Checking for updates..."
-
-    if [[ "$package_manager" == "apt" ]]; then
-        if [[ $(apt-get update -qq) -eq 0 ]]; then
-	    	echo "Upgrading packages..."
-            # note: NEEDRESTART_SUSPEND=1 is required in Ubuntu 22.04 LTS in order to prevent a 
-            # prompt which asks the user which service(s) should be restarted, if any.
-	    	# NEEDRESTART_SUSPEND=1 apt-get upgrade -qq -y
-	    	sudo apt-get upgrade -qq -y
-	    fi
-    elif [[ "$package_manager" == "pacman" ]]; then
-        if [[ $(pacman -Syq) -eq 0 ]]; then
-	    	echo "Upgrading packages..."
-            # the `--needed` flag maybe makes this conditional unnecessary?
-            sudo pacman -Syuq --needed --noconfirm
-	    fi
-    else
-        echo "Package manager $package_manager is not supported!"
-    fi
-}
-
 install_packages () {
     this_dir="$1"
     . "$this_dir/distros.sh"
@@ -85,6 +29,7 @@ install_packages () {
         done
 
     elif [[ "$package_manager" == "pacman" ]]; then
+        local AUR_HELPER="paru"
         . packages/pacman_packages.sh
         for p in "${packages[@]}"; do
             # `pacman -Q` queries the installed local package database; `-i` returns information on the package.
@@ -94,9 +39,10 @@ install_packages () {
             fi
         done
 
+        # TODO: check if $AUR_HELPER is installed; if not, install before running this
         echo "Installing packages via the AUR..."
         for p in "${aur_packages[@]}"; do
-            sudo paru -Syuq --noconfirm "$p"
+            sudo "$AUR_HELPER" -Syuq --noconfirm "$p"
         done
     else
         echo "Package manager $package_manager is not supported!"

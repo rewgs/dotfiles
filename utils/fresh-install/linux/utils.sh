@@ -1,3 +1,10 @@
+#!/bin/bash
+
+get_distro () {
+    ( lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1
+}
+
+
 prevent_prompts () {
     if [[ -f /etc/needrestart/needrestart.conf ]]; then
         # Prevents prompts for restarting services
