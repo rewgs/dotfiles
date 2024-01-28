@@ -55,7 +55,7 @@ config.font = wezterm.font {
     -- family = 'JetBrains Mono'
     -- family = 'Berkeley Mono'
 }
-config.font_size = 14
+config.font_size = 16
 
 -------------------------------------------------------------------------------
 -- key bindings
