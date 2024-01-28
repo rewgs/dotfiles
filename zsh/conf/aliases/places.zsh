@@ -7,6 +7,11 @@ alias dotfiles="cd $DOTFILES"
 alias dots="cd $DOTFILES"
 alias d="cd $DOTFILES"
 
+# work dirs
+if [[ $(uname) == "Darwin" ]]; then
+    alias naswork="cd /Volumes/main/projects"
+fi
+
 # sns dirs
 alias work="cd $HOME/work/"
 alias sns="cd $HOME/work/sns/"

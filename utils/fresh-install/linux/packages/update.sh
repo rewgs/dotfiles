@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+# FIXME: update to work with new folder structure
 update_packages () {
     package_manager="$1"
     echo "Checking for updates..."

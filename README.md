@@ -1,6 +1,6 @@
 This contains any and all dotfiles, configuration files, etc.
 
-[`scripts`](./scripts) contains scripts for installing apps and packages, as well as symlinking dotfiles to their necessary locations.
+[`utils`](./utils) contains scripts for installing apps and packages, as well as symlinking dotfiles to their necessary locations.
 
 **shell:** zsh
 
@@ -15,3 +15,6 @@ This contains any and all dotfiles, configuration files, etc.
     - Hammerspoon handles window management:
         - Hyper is the primary modifier, a la Super/Windows Key.
         - Hyper + Shift ("sHyper") is also available.
+
+# TODO
+- Add `hammerspoons/Spoons` git submodule

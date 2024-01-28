@@ -1,3 +1,6 @@
+#!/bin/bash
+
+# FIXME: update to work with new folder structure
 install_packages () {
     this_dir="$1"
     . "$this_dir/distros.sh"
