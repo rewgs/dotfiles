@@ -1,6 +1,13 @@
+# Installing
+
+Unlike most dotfiles in this repo, the `hammerspoon` directory isn't symlinked to where Hammerspoon is looking for it (`~/.hammerspoon`). Instead, the `~/.hammerspoon` directory is a real directory, and all the files within `$DOTFILES/hammerspoon/hs-config` are symlinked to it. This is done because the `Spoons` directory of the [Spoons](https://github.com/Hammerspoon/Spoons/) repo needs to be symlinked to it as well, and I don't really want to git submodule it, so this is simpler in my mind.
+
+The `setup.sh` script takes care of all of the above symlinking.
+
 # Notes
 
 - Hyper (i.e. Command + Control + Option) is defined via Karabiner-Elements. Caps Lock is mapped to Hyper when held down, Escape when tapped.
+- Unlike 
 - `Spoons/` is a symlink to the git cloned [repo](https://github.com/Hammerspoon/Spoons) `~/Spoons/Spoons`, in which all `.spoon.zip` files have been unzipped. Otherwise, I'd have to manually point to the Spoons like so:
 
 ``` lua
