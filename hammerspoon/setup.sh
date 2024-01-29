@@ -63,5 +63,10 @@ setup () {
     else
         echo "$HOME/Spoons repo does not exist and could not be cloned. Hammerspoon won't work correctly without this!"
     fi
+
+    # unzip WindowHalfsAndThirds.spoon if necessary
+    if [[ -f "WindowHalfsAndThirds.spoon.zip" ]] && [[ ! -d "WindowHalfsAndThirds.spoon" ]]; then
+        unzip "$HOME/src/Spoons/Spoons/WindowHalfsAndThirds.spoon.zip" -d "$HOME/src/Spoons/Spoons/"
+    fi
 }
 setup
