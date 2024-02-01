@@ -6,4 +6,4 @@
 
 Window manager specified in/launched from `.zprofile` (if tty)
 
-Run `[setup.sh](./setup.sh)` to symlink.
+Run [`setup.sh`](./setup.sh) to symlink.
