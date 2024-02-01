@@ -13,7 +13,11 @@ get_dotfiles_path () {
     local CONF_DIR_NAME="$(basename $CONF_DIR_PATH)"
     if [[ "$CONF_DIR_NAME" != "conf" ]]; then return 1; fi
 
-    local ZSH_DIR_PATH="$(dirname $CONF_DIR_PATH)"
+    local DOTS_DIR_PATH="$(dirname $CONF_DIR_PATH)"
+    local DOTS_DIR_NAME="$(basename $DOTS_DIR_PATH)"
+    if [[ "$DOTS_DIR_NAME" != "dots" ]]; then return 1; fi
+
+    local ZSH_DIR_PATH="$(dirname $DOTS_DIR_PATH)"
     local ZSH_DIR_NAME="$(basename $ZSH_DIR_PATH)"
     if [[ "$ZSH_DIR_NAME" != "zsh" ]]; then return 1; fi
 

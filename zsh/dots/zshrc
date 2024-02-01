@@ -11,8 +11,7 @@
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# This is symlinked to dotfiles/zsh/conf
-export ZSH_CONFIG="$XDG_CONFIG_HOME/zsh"
+export ZSH_CONFIG="$XDG_CONFIG_HOME/zsh" # This is symlinked to dotfiles/zsh/conf
 
 config_files=(
     "init.zsh"
@@ -35,6 +34,7 @@ FPATH="${ZFUNCS}:$FPATH"
 # source this first so that all other functions can see the $DOTFILES var
 source "$ZFUNCS/get_dotfiles_path"
 export DOTFILES=$(get_dotfiles_path)
+# echo "Dotfiles path: $DOTFILES"
 
 recursively_source_functions () {
     local dir="$1"

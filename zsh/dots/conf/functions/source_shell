@@ -1,0 +1,9 @@
+source_shell () {
+    if [[ $SHELL == *"bash"* ]]; then
+        source "$HOME/.bashrc"
+    fi
+
+    if [[ $SHELL == *"zsh"* ]]; then
+        source "$HOME/.zshrc"
+    fi
+}

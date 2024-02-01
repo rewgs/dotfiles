@@ -90,29 +90,29 @@ symlink_tmux () {
     ln -s "$HOME/src/tpm/" "$HOME/.tmux/plugins/tpm"
 }
 
-symlink_zsh () {
-    local dot_files=(
-        "zlogin"
-        "zlogout"
-        "zprofile"
-        "zshenv"
-        "zshrc"
-    )
+# symlink_zsh () {
+#     local dot_files=(
+#         "zlogin"
+#         "zlogout"
+#         "zprofile"
+#         "zshenv"
+#         "zshrc"
+#     )
 
-    for d in "${dot_files[@]}"; do
-        if [[ -f "$HOME/.$d" ]] || [[ -L "$HOME/.$d" ]]; then
-            rm "$HOME/.$d"
-        fi
+#     for d in "${dot_files[@]}"; do
+#         if [[ -f "$HOME/.$d" ]] || [[ -L "$HOME/.$d" ]]; then
+#             rm "$HOME/.$d"
+#         fi
 
-        ln -s "$HOME/dotfiles/zsh/$d" "$HOME/.$d"
-    done
+#         ln -s "$HOME/dotfiles/zsh/$d" "$HOME/.$d"
+#     done
 
-    if [[ ! -d "$XDG_CONFIG_HOME" ]]; then
-        mkdir -p "$XDG_CONFIG_HOME"
-    fi
+#     if [[ ! -d "$XDG_CONFIG_HOME" ]]; then
+#         mkdir -p "$XDG_CONFIG_HOME"
+#     fi
 
-    ln -s "$HOME/dotfiles/zsh/conf/" "$XDG_CONFIG_HOME/zsh"
-}
+#     ln -s "$HOME/dotfiles/zsh/conf/" "$XDG_CONFIG_HOME/zsh"
+# }
 
 make_all_symlinks () {
     symlink_bash
@@ -120,7 +120,7 @@ make_all_symlinks () {
     symlink_neovim
     symlink_sh
     symlink_tmux
-    symlink_zsh
+    # symlink_zsh
     symlink_pyenv
     symlink_phpenv
 }
