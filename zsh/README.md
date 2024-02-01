@@ -5,3 +5,5 @@
 5. `.zlogout`: loaded...sometimes
 
 Window manager specified in/launched from `.zprofile` (if tty)
+
+Run `[setup.sh](./setup.sh)` to symlink.
