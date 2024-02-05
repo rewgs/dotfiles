@@ -1,4 +1,7 @@
-include ./rewgs-endeavour/main
+# which machine; choose one
+# include ./rewgs-endeavour/main
+# include ./rewgs-nas/main
+
 include ./colorschemes/general
 include ./colorschemes/onedark
 include ./scratchpad

@@ -6,8 +6,4 @@ include ./workspaces
 include ./key-bindings
 include ./idle
 include ./input
-include ../colorschemes/onedark
-include ../colorschemes/general
-include ./statusbar
-include ../scratchpad
 include @sysconfdir@/sway/config.d/*
