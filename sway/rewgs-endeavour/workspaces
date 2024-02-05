@@ -11,13 +11,13 @@ set $ws08 "8"
 set $ws09 "9"
 set $ws10 "10"
 
-workspace $ws01 output $display 
-workspace $ws02 output $display 
-workspace $ws03 output $display 
-workspace $ws04 output $display 
-workspace $ws05 output $display 
-workspace $ws06 output $display
-workspace $ws07 output $display 
-workspace $ws08 output $display 
-workspace $ws09 output $display 
-workspace $ws10 output $display 
+workspace $ws01 output $center_display 
+workspace $ws02 output $center_display 
+workspace $ws03 output $center_display 
+workspace $ws04 output $center_display 
+workspace $ws05 output $center_display 
+workspace $ws06 output $center_display
+workspace $ws07 output $right_display 
+workspace $ws08 output $right_display 
+workspace $ws09 output $right_display 
+workspace $ws10 output $right_display 

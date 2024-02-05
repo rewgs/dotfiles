@@ -22,6 +22,10 @@ end
 -- config.front_end = 'WebGpu'
 config.front_end = 'OpenGL'
 
+-- disable updates notification
+check_for_updates = false
+config.show_update_window = false
+
 -------------------------------------------------------------------------------
 -- window appearance
 -------------------------------------------------------------------------------
@@ -55,7 +59,7 @@ config.font = wezterm.font {
     -- family = 'JetBrains Mono'
     -- family = 'Berkeley Mono'
 }
-config.font_size = 16
+config.font_size = 14
 
 -------------------------------------------------------------------------------
 -- key bindings

@@ -1,6 +1,12 @@
 # which machine; choose one
-# include ./rewgs-endeavour/main
+include ./rewgs-endeavour/main
 # include ./rewgs-nas/main
+# include ./rewgs-thinkpad/main
+
+include ./exts
+include ./idle
+include ./input
+include ./binds
 
 include ./colorschemes/general
 include ./colorschemes/onedark

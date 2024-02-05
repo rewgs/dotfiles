@@ -44,6 +44,7 @@ packages=(
     "ripgrep"
     "shellcheck" # not available for ARM
     "signal-desktop"
+    # "sway"
     "tailscale" # run `sudo systemctl enable --now tailscaled` to start, and then `sudo tailscale up` and `sudo tailscale up --ssh`
     # "tgt"
     "thefuck"

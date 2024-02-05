@@ -1,3 +1,9 @@
+# foot symlink
+/foot/foot.ini
+
+# fuzzel symlink
+/fuzzel/fuzzel.ini
+
 # hammerspoon
 /hammerspoon/Spoons
 
