@@ -42,28 +42,3 @@ client.focused              $fg             $bg             $light_gray     $fg 
 client.focused_inactive     $bg             $bg             $dark_gray      $gray           $clear
 client.unfocused            $bg             $bg             $dark_gray      $gray           $clear
 client.urgent               $dark_red       $dark_red       $white          $dark_red       $dark_red
-
-# status
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M %p'; do sleep 1; done
-
-    colors {
-        # bar background color
-        background $bg
-
-        # text color used for blocks that do not have a color specified.
-        statusline $light_gray
-
-        # workspaces section            
-        # workspace         border      background      text
-        focused_workspace   $clear      $clear          $dark_gray
-        inactive_workspace  $bg         $bg             $light_gray
-        active_workspace    $bg         $bg             $light_gray
-        urgent_workspace    $dark_red   $dark_red       $dark_gray
-
-    }
-}

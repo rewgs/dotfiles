@@ -1,0 +1,10 @@
+include ./extensions
+include ./vars
+include ./output
+include ./settings
+include ./workspaces
+include ./key-bindings
+include ./idle
+include ./input
+include @sysconfdir@/sway/colorschemes/onedark
+include @sysconfdir@/sway/config.d/*

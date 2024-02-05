@@ -14,5 +14,6 @@
 #   .zlogout    (sometimes)
 
 export EDITOR='nvim'
+export BROWSER='google-chrome-stable'
 
 . "$HOME/.cargo/env"
