@@ -19,16 +19,15 @@ More info [here](https://github.com/Hammerspoon/hammerspoon/blob/master/SPOONS.m
 
 # TODO
 
-### Window Management:
+Rename hs-config to hammerspoon. Needlessly complicated.
+
+window management:
 - fancyzones-like visual grids
     - define grids with lua; `hyper+[something]` calls it
     - `hyper+g`: shows grid overlay
     - `hyper+s`: snaps all open windows to closest grid square
 
-
-
-
-### App Remapping - replace BetterTouchTool
+app remapping - replace BetterTouchTool
 - VS Code: Remap `cmd+h` to `cmd+opt+ctrl+h`
 - PyCharm: Remap `cmd+h` to `cmd+opt+ctrl+shift+h`
 - Sublime Text: Remap `cmd+h` to `cmd+opt+ctrl+shift+h`
@@ -47,7 +46,7 @@ More info [here](https://github.com/Hammerspoon/hammerspoon/blob/master/SPOONS.m
     - `ctrl+8` to `cmd+opt+ctrl+8`
     - `ctrl+9` to `cmd+opt+ctrl+9`
     - `cmd+h` to `cmd+opt+ctrl+h`
+- any terminal: `cmd` = tmux prefix
 
-
-# References
+# references
 - https://github.com/NateEag/dotfiles/blob/d8c81c3890af65bf4316718426d88e13398e6eaa/src/.hammerspoon/init.lua
