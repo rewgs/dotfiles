@@ -1,2 +1,5 @@
 set $mod Mod4
 set $term foot
+
+# Your preferred application launcher
+set $menu $(which fuzzel)

@@ -4,8 +4,6 @@ set $down j
 set $up k
 set $right l
 
-# Your preferred application launcher
-set $menu $(which fuzzel)
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
@@ -36,23 +34,22 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 # swayr
-# note: `grave` == `backtick`
-bindsym $mod+Alt+grave       exec swayr switch-window
-# bindsym $mod+      exec swayr quit-window
-bindsym $mod+u         exec swayr switch-to-urgent-or-lru-window
-bindsym $mod+grave        exec swayr next-window all-workspaces
-bindsym $mod+Shift+grave       exec swayr prev-window all-workspaces
+bindsym $mod+Alt+grave exec swayr switch-window # note: `grave` == `backtick`
+bindsym $mod+u exec swayr switch-to-urgent-or-lru-window
+bindsym $mod+grave exec swayr next-window all-workspaces
+bindsym $mod+Shift+grave exec swayr prev-window all-workspaces
 # bindsym $mod+Shift+Space exec swayr switch-workspace-or-window
-# bindsym $mod+c           exec swayr execute-swaymsg-command
-# bindsym $mod+Shift+c     exec swayr execute-swayr-command
+# bindsym $mod+c exec swayr execute-swaymsg-command
+# bindsym $mod+Shift+c exec swayr execute-swayr-command
 
 # Start a terminal
 bindsym $mod+Return exec $term
+bindsym $mod+t exec $term
 
 # Kill focused window
 bindsym $mod+w kill
 
-# Start your launcher
+# Start launcher
 bindsym $mod+Space exec $menu
 
 # Drag floating windows by holding down $mod and left mouse button.
@@ -69,24 +66,17 @@ bindsym $mod+Shift+r reload
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-# Moving around:
 # Move focus
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-# Move focused window (coarse)
-bindsym $mod+Shift+$left move left 100px
-bindsym $mod+Shift+$down move down 100px
-bindsym $mod+Shift+$up move up 100px
-bindsym $mod+Shift+$right move right 100px
-
-# Move focused window (fine)
-bindsym $mod+Shift+Alt+$left move left 10px
-bindsym $mod+Shift+Alt+$down move down 10px
-bindsym $mod+Shift+Alt+$up move up 10px
-bindsym $mod+Shift+Alt+$right move right 10px
+# Move focused window
+bindsym $mod+Ctrl+$left move left
+bindsym $mod+Ctrl+$down move down
+bindsym $mod+Ctrl+$up move up
+bindsym $mod+Ctrl+$right move right
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ layout                                                                     ║
@@ -100,13 +90,13 @@ bindsym $mod+Shift+backslash split h
 
 # change container layout (toggle split, stacking, tabbed)
 # bindsym $mod+s layout stacking
-bindsym $mod+o layout stacking
+bindsym $mod+Shift+o layout stacking
 
 # bindsym $mod+w layout tabbed
-bindsym $mod+t layout tabbed
+bindsym $mod+Shift+t layout tabbed
 
 # bindsym $mod+e layout toggle split
-bindsym $mod+s layout toggle split
+bindsym $mod+Shift+s layout toggle split
 
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
@@ -120,7 +110,6 @@ bindsym $mod+Shift+f floating toggle
 # Move focus to the parent container
 # bindsym $mod+a focus parent
 bindsym $mod+p focus parent
-
 
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
@@ -147,4 +136,15 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# scratchpad
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
 
+# Move the currently focused window to the scratchpad
+# bindsym $mod+Shift+minus move scratchpad
+# bindsym $mod+Shift+s move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+# bindsym $mod+minus scratchpad show
+# bindsym $mod+Shift+space move scratchpad

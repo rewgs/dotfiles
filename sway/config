@@ -10,4 +10,4 @@ include ./binds
 
 include ./colorschemes/general
 include ./colorschemes/onedark
-include ./scratchpad
+include @sysconfdir@/sway/config.d/*
