@@ -21,12 +21,12 @@ customHotkeys = {
     third_up        = { mod.sHyper, "t" },
     third_down      = { mod.sHyper, "b" },
 
-    third_left      = { mod.sHyper, "[" }, -- moves *to* the left in thirds
-    third_right     = { mod.sHyper, "]" }, -- moves *to* the right in thirds
-    middle_third_h  = { mod.sHyper, "\\" },
+    third_left      = { mod.hyper, "[" }, -- moves *to* the left in thirds
+    third_right     = { mod.hyper, "]" }, -- moves *to* the right in thirds
+    middle_third_h  = { mod.hyper, "\\" },
 
-    left_two_third  = { mod.hyper, "[" },
-    right_two_third = { mod.hyper, "]" },
+    left_two_third  = { mod.sHyper, "h" },
+    right_two_third = { mod.sHyper, "l" },
 
     top_left        = { mod.hyper, "y" },
     top_right       = { mod.hyper, "o" },
