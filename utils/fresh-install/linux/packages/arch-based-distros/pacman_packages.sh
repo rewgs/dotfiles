@@ -7,6 +7,7 @@ packages=(
     "automake"
     "base-devel" # equivalent to apt's built-essential
     "bettercap"
+    "bitwarden"
     "bpytop"
     "btop"
     "cmake"
@@ -38,6 +39,7 @@ packages=(
     "neofetch"
     "net-tools"
     "nmap"
+    "obs-studio"
     "obsidian"
     "picom"
     "qemu-full"
