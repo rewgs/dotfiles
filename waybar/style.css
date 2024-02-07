@@ -1,29 +1,29 @@
+/* :root { */
+/*     --onedark-black: #282c34; */
+/*     --onedark-blue: #61afef; */
+/*     --onedark-yellow: #e5c07b; */
+/*     --onedark-red: #e06c75; */
+/*     --onedark-white: #aab2bf; */
+/*     --onedark-green: #98c379; */
+/*     --onedark-visual-grey: #3e4452; */
+/*     --onedark-comment-grey: #5c6370; */
+/* } */
+
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: "FiraCode NF";
+    font-size: 14px;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    /* background-color: rgba(43, 48, 59, 0.5); */
+    background-color: #282c34;
+    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+    border-bottom: #282c34;
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
 }
-
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
 
 window#waybar.termite {
     background-color: #3F3F3F;
@@ -89,8 +89,8 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #mpd {
-    padding: 0 10px;
-    color: #ffffff;
+    /* vertical, horizontal */
+    padding: 5 10px;
 }
 
 #window,
@@ -109,7 +109,8 @@ button:hover {
 }
 
 #clock {
-    background-color: #64727D;
+    background-color: #3e4452;
+    color: #ffffff;
 }
 
 #battery {
@@ -145,7 +146,8 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
+    background-color: #98c379;
+    /* background-color: #2ecc71; */
     color: #000000;
 }
 
@@ -162,15 +164,19 @@ label:focus {
 }
 
 #network {
-    background-color: #2980b9;
+    /* background-color: #2980b9; */
+    color: #282c34;
+    background-color: #61afef;
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    color: #282c34;
+    background-color: #e06c75;
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
+    background-color: #e5c07b;
+    /* background-color: #f1c40f; */
     color: #000000;
 }
 
@@ -211,7 +217,8 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
+    background-color: #282c34;
+    /* background-color: #2980b9; */
 }
 
 #tray > .passive {
@@ -220,7 +227,7 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: #e06c75;
 }
 
 #idle_inhibitor {
