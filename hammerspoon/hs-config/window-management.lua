@@ -14,7 +14,7 @@ customHotkeys = {
 
     center          = { mod.hyper, "c" }, -- retains size
 
-    max             = { mod.hyper, "m" },
+    -- max             = { mod.hyper, "m" },
 
     top_half        = { mod.hyper, "t" },
     bottom_half     = { mod.hyper, "b" },
