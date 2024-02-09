@@ -28,9 +28,9 @@ customHotkeys = {
     left_two_third  = { mod.sHyper, "h" },
     right_two_third = { mod.sHyper, "l" },
 
-    top_left        = { mod.hyper, "y" },
+    top_left        = { mod.hyper, "u" },
     top_right       = { mod.hyper, "o" },
-    bottom_left     = { mod.hyper, "n" },
+    bottom_left     = { mod.hyper, "m" },
     bottom_right    = { mod.hyper, "." },
 
     undo            = { mod.hyper, "z" },
