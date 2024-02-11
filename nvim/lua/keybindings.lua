@@ -148,13 +148,6 @@ vmap('n', '<leader>rn', lsp.rename, {})
 -- fzf
 vmap('n', '<leader>fz', ':FzfLua files<CR>')
 
--- folding via nvim-ufo
-local ufo = require('ufo')
-vmap('n', '<leader>fc', ':foldclose<CR>')
-vmap('n', '<leader>fC', ufo.closeAllFolds)
-vmap('n', '<leader>fo', ':foldopen<CR>')
-vmap('n', '<leader>fO', ufo.openAllFolds)
-
 -- todo-comments
 vmap('n', '<leader>tt', ':TodoTrouble<CR>')
 

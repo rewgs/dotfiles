@@ -51,7 +51,6 @@ return require('packer').startup(function(use)
     -- use "dimaportenko/telescope-simulators.nvim"
 
     -- all others
-    use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
     use 'rainbowhxch/accelerated-jk.nvim'
     use 'nvim-lualine/lualine.nvim'
     use 'terrortylor/nvim-comment'
