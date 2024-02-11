@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
-    -- themes
+    -- theme
     use 'navarasu/onedark.nvim'
 
     -- telescope and telescope plugins

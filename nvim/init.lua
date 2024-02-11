@@ -6,7 +6,8 @@ require('settings')
 require('packer.packer')   -- this must come first
 
 -- themes
-require('packer.config.themes.onedark')
+require('packer.config.onedark')
+require('onedark').load()
 
 -- telescope
 require('packer.config.telescope')
@@ -23,5 +24,4 @@ require('packer.config.todo-comments')
 ---------------------------------------
 -- else
 ---------------------------------------
-require('color-scheme')
 require('keybindings')
