@@ -7,7 +7,6 @@ require('packer.packer')   -- this must come first
 
 -- themes
 require('packer.config.onedark')
--- require('onedark').load()
 
 -- telescope
 require('packer.config.telescope')
