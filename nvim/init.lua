@@ -1,24 +1,27 @@
 require('settings')
 
 ---------------------------------------
--- plugins
--- (order is intentional)
+-- plugins via packer
 ---------------------------------------
-require('plugins.packer')   -- this must come first
+require('packer.packer')   -- this must come first
 
 -- themes
-require('plugins.config.themes.onedark')
+require('packer.config.themes.onedark')
 
 -- telescope
-require('plugins.config.telescope')
+require('packer.config.telescope')
 
 -- all others
-require('plugins.config.accelerated-jk')
-require('plugins.config.lualine')
-require('plugins.config.nvim-treesitter')
-require('plugins.config.nvim-comment')
-require('plugins.config.trouble')
-require('plugins.config.todo-comments')
+require('packer.config.accelerated-jk')
+require('packer.config.lualine')
+require('packer.config.nvim-treesitter')
+require('packer.config.nvim-comment')
+require('packer.config.trouble')
+require('packer.config.todo-comments')
 
+
+---------------------------------------
+-- else
+---------------------------------------
 require('color-scheme')
 require('keybindings')
