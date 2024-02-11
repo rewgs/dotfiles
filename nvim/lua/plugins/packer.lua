@@ -6,16 +6,16 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 return require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
+    -- use 'wbthomason/packer.nvim'
     use 'nvim-lua/plenary.nvim'
 
     -- themes
-    use 'ellisonleao/gruvbox.nvim'
+    -- use 'ellisonleao/gruvbox.nvim'
     use 'navarasu/onedark.nvim'
-    use 'sainnhe/edge'
-    use 'sainnhe/everforest'
-    use 'sainnhe/gruvbox-material'
-    use 'sainnhe/sonokai'
+    -- use 'sainnhe/edge'
+    -- use 'sainnhe/everforest'
+    -- use 'sainnhe/gruvbox-material'
+    -- use 'sainnhe/sonokai'
 
     -- lsp-zero
     use {
@@ -42,14 +42,13 @@ return require('packer').startup(function(use)
     -- telescope and telescope plugins
     use {
         'nvim-telescope/telescope.nvim',
-        -- tag = '0.1.5',
         branch = '0.1.x',
         requires = {
             { 'nvim-lua/plenary.nvim' }
         }
     }
     use "nvim-telescope/telescope-file-browser.nvim"
-    use "dimaportenko/telescope-simulators.nvim"
+    -- use "dimaportenko/telescope-simulators.nvim"
 
     -- all others
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }

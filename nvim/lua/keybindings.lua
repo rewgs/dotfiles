@@ -116,8 +116,8 @@ nmap('n', '<leader>i', ':join<CR>', { silent = true })
 ---------------------------------------------------------------------------------------------------
 
 -- nvim-comment
-vmap('n', '<C-/>', ':CommentToggle<CR>', { silent = true })
-vmap('v', '<C-/>', ':CommentToggle<CR>', { silent = true })
+vmap('n', '<C-_>', ':CommentToggle<CR>', { silent = true })
+vmap('v', '<C-_>', ':CommentToggle<CR>', { silent = true })
 
 -- telescope
 local t = require('telescope.builtin')
