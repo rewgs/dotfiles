@@ -1,0 +1,25 @@
+# Wrapper for what is essentially the following:
+# find $dir -name "*.ext" | wc -l
+
+# TODO:
+# - Support more than one dir
+# - Support more than one file extension
+
+count_num_files_with_extension () {
+    # NOTE: The `-z` flag checks if the argument is empty
+    if [[ -z "$1" ]]; then
+        echo "No file extension specified!"
+    else
+        local ext="$1"
+
+        if [[ -z "$2" ]]; then
+            local dir="."
+            count=$(find "$dir" -name "*$ext" -maxdepth 1 | wc -l)
+            echo "$count"
+        else
+            local dir="$2"
+            count=$(find "$dir" -name "*$ext" -maxdepth 1 | wc -l)
+            echo "$count"
+        fi
+    fi
+}
