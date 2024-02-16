@@ -4,9 +4,10 @@
 function rmv () {
     for arg in "$@"; do
         if [[ -d "$arg" ]]; then
-            rm -rfI "$arg"
+            # TODO: does this work correctly on Linux? Seems like it still asks to check each file one by one.
+            rm --recursive --verbose -I "$arg"
         else
-            rm -i "$arg"
+            rm --verbose -i "$arg"
         fi
     done
 }
