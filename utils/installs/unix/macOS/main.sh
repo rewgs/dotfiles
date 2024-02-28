@@ -92,6 +92,7 @@ function homebrew_installations () {
     typeset -a brew_casks
     brew_casks=(
         # "amethyst"
+        "barrier"
         "blackhole-2ch"
         "blackhole-16ch"
         # "dozer" # FOSS menu bar organizer a la Bartender: https://github.com/Mortennn/Dozer
