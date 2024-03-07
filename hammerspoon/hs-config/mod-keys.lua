@@ -1,5 +1,5 @@
 mod = {
-    hyper = { 'cmd', 'ctrl', },
+    hyper = { 'cmd', 'ctrl' },
     sHyper = { 'cmd', 'ctrl', 'shift' }
 }
 
