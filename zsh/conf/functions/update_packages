@@ -1,4 +1,4 @@
-function update_packages () {
+update_packages () {
     if [[ $(uname) == "Darwin" ]]; then
         brew update
         brew upgrade
