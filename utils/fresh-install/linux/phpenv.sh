@@ -8,6 +8,7 @@ install_phpenv_build_dependencies () {
         "libcurl4-gnutls-dev"
         "libjpeg-dev"
         "libonig-dev"
+		"libssl-dev"
         "libtidy-dev"
         "libzip-dev"
         "re2c"

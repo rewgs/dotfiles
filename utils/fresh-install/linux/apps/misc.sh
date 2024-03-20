@@ -82,7 +82,7 @@ install_tailscale () {
 }
 
 
-function install_oh_my_zsh {
+install_oh_my_zsh () {
     # interactive
     # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -97,6 +97,6 @@ function install_oh_my_zsh {
 }
 
 
-function install_rclone {
+install_rclone () {
     curl https://rclone.org/install.sh | bash
 }
