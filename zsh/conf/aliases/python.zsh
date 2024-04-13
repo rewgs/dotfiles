@@ -9,3 +9,5 @@ alias av=activate_venv
 alias dv="deactivate"
 alias nv=create_new_venv
 alias nvhb=create_new_venv_v3.9_with_gui_fix_for_mac
+
+alias pm="python main.py"
