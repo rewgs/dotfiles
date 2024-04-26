@@ -21,10 +21,9 @@ require('onedark').setup {
         variables = 'none'
     },
 
-    -- Lualine options --
-    -- lualine = {
-    --    transparent = false, -- lualine center bar transparency
-    -- },
+    lualine = {
+       transparent = true, -- lualine center bar transparency
+    },
 
     -- Custom Highlights --
     colors = {},  -- Override default colors
@@ -37,3 +36,4 @@ require('onedark').setup {
         background = true, -- use background color for virtual text
     },
 }
+require('onedark').load()

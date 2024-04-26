@@ -19,8 +19,8 @@ export PATH="$HOME/src/flutter/bin:$PATH"
 # golang
 export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
-export PATH="$GOPATH:$PATH"
-export PATH="$GOBIN:$PATH"
+# export PATH="$GOPATH:$PATH"
+# export PATH="$GOBIN:$PATH"
 
 # jetbrains
 if [[ $(uname) == "Darwin" ]]; then
@@ -78,18 +78,15 @@ fi
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# homebrew
 if [[ $(uname) == "Darwin" ]]; then
-    # homebrew
     export PATH="$PATH:/opt/homebrew/bin"
     export PATH="$PATH:/opt/homebrew/sbin"
     export PATH="$PATH:/opt/homebrew/Cellar"
-    
-    # nim
-    export PATH="$PATH:$HOME/.nimble/bin"
-    
-    # poetry
-    export PATH="$PATH:$HOME/.poetry/bin"
-# elif [[ $(uname) == "Linux" ]]; then
-# else
-#     echo "Unsupported operating system!"
 fi
+
+# nim
+export PATH="$PATH:$HOME/.nimble/bin"
+    
+# poetry
+export PATH="$PATH:$HOME/.poetry/bin"

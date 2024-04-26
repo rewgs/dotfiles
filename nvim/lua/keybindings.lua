@@ -132,28 +132,22 @@ vmap('n', '<leader>fh', t.help_tags, {})
 -- telescope-simulators.nvim
 nmap('n', '<leader>sim', ':Telescope simulators run<CR>', { silent = true })
 
+-- NOTE: old, redoing
 -- lsp-zero
 -- keybindings list here: https://github.com/VonHeikemen/lsp-zero.nvim/tree/v2.x#keybindings
-local lsp = vim.lsp.buf
-local diagnostic = vim.diagnostic
-vmap('n', '<leader>zh', lsp.hover, {})
-vmap('n', '<leader>df', lsp.definition, {})
-vmap('n', '<leader>dg', diagnostic.open_float, {})
-vmap('n', '<leader>dn', diagnostic.goto_next, {})
-vmap('n', '<leader>dp', diagnostic.goto_prev, {})
-vmap('n', '<leader>fm', lsp.format, {})
-vmap('n', '<leader>rf', lsp.references, {})
-vmap('n', '<leader>rn', lsp.rename, {})
+-- local lsp = vim.lsp.buf
+-- local diagnostic = vim.diagnostic
+-- vmap('n', '<leader>zh', lsp.hover, {})
+-- vmap('n', '<leader>df', lsp.definition, {})
+-- vmap('n', '<leader>dg', diagnostic.open_float, {})
+-- vmap('n', '<leader>dn', diagnostic.goto_next, {})
+-- vmap('n', '<leader>dp', diagnostic.goto_prev, {})
+-- vmap('n', '<leader>fm', lsp.format, {})
+-- vmap('n', '<leader>rf', lsp.references, {})
+-- vmap('n', '<leader>rn', lsp.rename, {})
 
 -- fzf
 vmap('n', '<leader>fz', ':FzfLua files<CR>')
-
--- folding via nvim-ufo
-local ufo = require('ufo')
-vmap('n', '<leader>fc', ':foldclose<CR>')
-vmap('n', '<leader>fC', ufo.closeAllFolds)
-vmap('n', '<leader>fo', ':foldopen<CR>')
-vmap('n', '<leader>fO', ufo.openAllFolds)
 
 -- todo-comments
 vmap('n', '<leader>tt', ':TodoTrouble<CR>')

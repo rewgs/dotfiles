@@ -1,35 +1,26 @@
 require('settings')
 
 ---------------------------------------
--- plugins
--- (order is intentional)
+-- plugins via packer
 ---------------------------------------
-require('plugins.packer')   -- this must come first
+require('packer.packer')   -- this must come first
 
 -- themes
-require('plugins.config.themes.edge')
-require('plugins.config.themes.everforest')
-require('plugins.config.themes.gruvbox-material')
-require('plugins.config.themes.gruvbox')
-require('plugins.config.themes.onedark')
-require('plugins.config.themes.sonokai')
+require('packer.config.onedark')
 
 -- telescope
-require('plugins.config.telescope')
-require('plugins.config.telescope-simulators')
+require('packer.config.telescope')
 
 -- all others
-require('plugins.config.accelerated-jk')
-require('plugins.config.lualine')
-require('plugins.config.nvim-treesitter')
-require('plugins.config.lsp')
-require('plugins.config.nvim-comment')
-require('plugins.config.scnvim')
-require('plugins.config.luasnip')
-require('plugins.config.nvim-cmp')
--- require('plugins.config.nvim-ufo')
-require('plugins.config.trouble')
-require('plugins.config.todo-comments')
+require('packer.config.accelerated-jk')
+require('packer.config.lualine')
+require('packer.config.nvim-treesitter')
+require('packer.config.nvim-comment')
+require('packer.config.trouble')
+require('packer.config.todo-comments')
 
-require('color-scheme')
+
+---------------------------------------
+-- else
+---------------------------------------
 require('keybindings')
