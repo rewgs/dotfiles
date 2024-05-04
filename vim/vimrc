@@ -120,4 +120,4 @@ autocmd InsertLeave * set nocul
 " but the cursor keys won't work by default.
 set noesckeys
 
-colorscheme retrobox
+" colorscheme retrobox
