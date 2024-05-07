@@ -1,13 +1,24 @@
 # Like rm, but works the same for both files and directories (i.e. rmv file and rmv directory both 
 # work). Always confirms before deletion.
 
-function rmv () {
-    for arg in "$@"; do
-        if [[ -d "$arg" ]]; then
-            # TODO: does this work correctly on Linux? Seems like it still asks to check each file one by one.
-            rm --recursive --verbose -I "$arg"
-        else
-            rm --verbose -i "$arg"
-        fi
-    done
+rmv () {
+    if [[ $(uname) == "Darwin" ]]; then
+        for arg in "$@"; do
+            if [[ -d "$arg" ]]; then
+                sudo rm -r -I "$arg"
+            else
+                rm -i "$arg"
+            fi
+        done
+    fi
+
+    if [[ $(uname) == "Linux" ]]; then
+        for arg in "$@"; do
+            if [[ -d "$arg" ]]; then
+                sudo rm -rf -I "$arg"
+            else
+                rm -i "$arg"
+            fi
+        done
+    fi
 }
