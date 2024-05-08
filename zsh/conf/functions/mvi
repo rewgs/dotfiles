@@ -1,6 +1,9 @@
 # mv, improved.
 # Always confirms before deletion. Works on any number of files.
 #
+# FIXME:
+# - `$src` doesn't account for a single arg with spaces in it. A file named with two words (e.g. `some file.md`) is split into two args (e.g. `some` and `file.md`).
+#
 # TODO:
 # - Somehow enable case-sensitive renaming on macOS? Perhaps via string literals...
 
