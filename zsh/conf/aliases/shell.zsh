@@ -16,6 +16,7 @@ fi
 alias cls=clear_then_ls_improved
 alias eh="echo 'You are using $HOST'"
 alias mkd="mkdir"
-alias mv="mv -i"       # prompts before overwriting already-existing file; TODO: make this take multiple arguments
-alias rm=rmv         # aliasing rm to my custom function rmv; TODO: make this take multiple arguments
+# alias mv="mv -i"
+alias mv=mvi # `mvi()` is a function of mine, located at `$DOTFILES/zsh/conf/functions/`.
+alias rm=rmi # `rmi()` is a function of mine, located at `$DOTFILES/zsh/conf/functions/`.
 alias sdo=run_as_sudo
