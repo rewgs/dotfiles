@@ -1,0 +1,39 @@
+# mv, improved.
+# Always confirms before deletion. Works on any number of files.
+#
+# TODO:
+# - Somehow enable case-sensitive renaming on macOS? Perhaps via string literals...
+
+mvi() {
+    # There are lots of peculiar bash-isms going on here, so let's break them down:
+    #
+    # $dst:
+    # - `$@`: all positional arguments.
+    # - `$#`: the number of positional arguments
+    # - And, for example, `${@:2}` means "get all the positional arguments from the 2nd one onwards."
+    # - So, somewhat confusingly, ${@:$#}` means "get all the positional arguments from the last one onwards," i.e. "only get the last argument."
+    # - In typical `mv` usage, the final argument is either what the former argument(s) is/are being renamed to, or where it/they is/are being moved to.
+    #
+    # $src:
+    # - `${@%"$dst"}`: Remove from all the args (@) the shortest part of "$dst" that matches the back end (%) of the args (@).
+    # - i.e. this simply removes the element that matches "$dst" from the quasi-array that is the positional arguments, `@`,
+    # - i.e. "$src" == all the args except the last one, separated by spaces.
+
+    dst=${@:$#}
+    # echo "$dst"
+
+    src=${@%"$dst"}
+    # echo "$src"
+
+    # This is another weird one. As $src is a string with one or more "words" in it, ideally that 
+    # string could be split at its spaces into mutliple strings, and then those strings could 
+    # comprise a new array for the purpose of looping over them.
+    # I honestly don't totally understand how or why this works, but it does. It works in both bash 
+    # and zsh, and provides a nice, almost Pythonic way of looping over space-separated substrings 
+    # in a string as if they're elements of an array.
+    # Source: the answer by user232326 at https://unix.stackexchange.com/questions/295033/loop-over-a-string-in-zsh-and-bash
+    for s in $( echo "$src" ); do
+        # echo "$s"
+        mv -i "$s" "$dst"
+    done
+}
