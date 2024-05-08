@@ -1,7 +1,8 @@
-# Like rm, but works the same for both files and directories (i.e. rmv file and rmv directory both 
-# work). Always confirms before deletion.
+# rm, improved.
+# Behaves the same whether it's run on a file or a directory. Always confirms before deletion.
 
-rmv () {
+rmi () {
+    # macOS
     if [[ $(uname) == "Darwin" ]]; then
         for arg in "$@"; do
             if [[ -d "$arg" ]]; then
@@ -12,6 +13,7 @@ rmv () {
         done
     fi
 
+    # Linux
     if [[ $(uname) == "Linux" ]]; then
         for arg in "$@"; do
             if [[ -d "$arg" ]]; then
