@@ -6,7 +6,8 @@ rmi () {
     if [[ $(uname) == "Darwin" ]]; then
         for arg in "$@"; do
             if [[ -d "$arg" ]]; then
-                sudo rm -r -I "$arg"
+                # sudo rm -r -I "$arg"
+                rm -r -I "$arg"
             else
                 rm -i "$arg"
             fi
