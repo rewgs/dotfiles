@@ -1,5 +1,3 @@
-# python
-# typically should only be used in an activated venv
 alias pipfreeze="pip freeze > requirements.txt"
 alias pf="pip freeze > requirements.txt"
 

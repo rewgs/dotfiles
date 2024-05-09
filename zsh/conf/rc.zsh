@@ -14,4 +14,5 @@ if [[ $(uname) == "Darwin" ]]; then
     source /Users/rewgs/.config/broot/launcher/bash/br
 fi
 
+# nvm
 nvm use node > /dev/null
