@@ -17,6 +17,7 @@ install_tmux_from_source () {
         "bison"
         "byacc"
         "libevent-dev"
+        "ncurses-dev"
     )
 
     typeset -a pacman_deps
