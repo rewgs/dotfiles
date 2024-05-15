@@ -1,11 +1,6 @@
 # Sets up PowerShell Core on Linux, macOS, or Windows.
 
 
-$private:_thisFile = $MyInvocation.MyCommand.Path
-# Write-Output $_thisFile
-# Write-Output $_thisFile.GetType() # string
-
-
 function Install-Oh-My-Posh {
 #     # if ($IsLinux) {
 #     # }
@@ -54,4 +49,9 @@ function Main([string]$thisFile) {
     # Install-Oh-My-Posh
     Symlink-Profile $thisFile
 }
+
+
+$private:_thisFile = $MyInvocation.MyCommand.Path
+# Write-Output $_thisFile
+# Write-Output $_thisFile.GetType() # string
 Main $_thisFile
