@@ -4,8 +4,23 @@
 # - appending :$PATH assures that the system looks in this custom path *before* 
 #   searching default locations.
 
-# user bin folders
-export PATH="$HOME/bin:$PATH"
+# bin repo
+export REWGS_BIN="$HOME/bin"
+# export PATH="$REWGS_BIN:$PATH"
+# for dir in "$REWGS_BIN/*/"; do
+#     PATH+=":$dir"
+# done
+if [[ $(uname) == "Darwin" ]]; then
+    # export PATH=$PATH:$(find "$REWGS_BIN" -type d -maxdepth 1 | paste -sd ":" -)
+    export PATH=$PATH:$(find "$REWGS_BIN" -type d | paste -sd ":" -)
+fi
+if [[ $(uname) == "Linux" ]]; then
+    # export PATH=$PATH:$(find "$REWGS_BIN" -maxdepth 1 -type d | paste -sd ":" -)
+    export PATH=$PATH:$(find "$REWGS_BIN" -type d | paste -sd ":" -)
+fi
+
+
+# other user bin directories
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
