@@ -1,24 +1,30 @@
 # Sets up PowerShell Core on Linux, macOS, or Windows.
 
 
+$private:_thisFile = $MyInvocation.MyCommand.Path
+# Write-Output $_thisFile
+# Write-Output $_thisFile.GetType() # string
+
+
 function Install-Oh-My-Posh {
-    # if ($IsLinux) {
-    # }
-    # TODO: make these `else if` once $IsLinux branch is written; `else` branch
+#     # if ($IsLinux) {
+#     # }
+#     # TODO: make these `else if` once $IsLinux branch is written; `else` branch
     if ($IsMacOS) {
         brew update
         brew install jandedobbeleer/oh-my-posh/oh-my-posh
     }
-    if ($IsWindows) {
-        Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
+#     if ($IsWindows) {
+#         Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
+#     }
+    else {
+        Write-Output "Invalid operating system! Exiting now."
+        exit
     }
-    # else {
-    # }
 }
 
 
-function Symlink-Profile {
-    $thisFile = $MyInvocation.MyCommand.Path
+function Symlink-Profile([string]$thisFile) {
     $thisDir = Split-Path -Parent $thisFile
     $profileFile = "Microsoft.PowerShell_profile.ps1"
     $src = Join-Path -Path $thisDir -ChildPath $profileFile
@@ -44,8 +50,8 @@ function Symlink-Profile {
 }
 
 
-function Main {
-    Install-Oh-My-Posh
-    # Symlink-Profile
+function Main([string]$thisFile) {
+    # Install-Oh-My-Posh
+    Symlink-Profile $thisFile
 }
-Main
+Main $_thisFile
