@@ -1,6 +1,22 @@
 # Sets up PowerShell Core on Linux, macOS, or Windows.
 
 
+function Install-Oh-My-Posh {
+    # if ($IsLinux) {
+    # }
+    # TODO: make these `else if` once $IsLinux branch is written; `else` branch
+    if ($IsMacOS) {
+        brew update
+        brew install jandedobbeleer/oh-my-posh/oh-my-posh
+    }
+    if ($IsWindows) {
+        Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
+    }
+    # else {
+    # }
+}
+
+
 function Symlink-Profile {
     $thisFile = $MyInvocation.MyCommand.Path
     $thisDir = Split-Path -Parent $thisFile
@@ -28,7 +44,8 @@ function Symlink-Profile {
 }
 
 
-# function Main {
-#     Symlink-Profile
-# }
-# Main
+function Main {
+    Install-Oh-My-Posh
+    # Symlink-Profile
+}
+Main
