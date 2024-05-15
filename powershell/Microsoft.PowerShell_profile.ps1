@@ -24,28 +24,34 @@ function grep {
   $input | out-string -stream | select-string $args
 }
 
-function Update-Oh-My-Posh {
+function Update-OhMyPosh {
     if ($IsWindows) {
         Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
     }
 }
 
-function Open-Profile-With-Nvim {
+function Open-ProfileWithNvim {
     nvim $PROFILE
 }
 
-function Clear-And-List {
+function Invoke-ClearAndList {
     clear
     ls
 }
 
-function Delete-Aliases {
-    $private:aliasesToDelete = @(
+function Remove-Aliases {
+    $private:aliasesToRemove = @(
         "cls"
     )
-    foreach ($a in $aliasesToDelete) {
+    foreach ($a in $aliasesToRemove) {
         del alias:$a -force
     }
+}
+
+function Invoke-GitFetchResetAndPull {
+    git fetch --all
+    git reset --hard
+    git pull
 }
 
 
@@ -54,9 +60,10 @@ function Delete-Aliases {
 # =============================================================================
 
 # This must be run first to avoid any conflicts (e.g. with `cls`, which by default is the same as `clear`)
-Delete-Aliases
+Remove-Aliases
 
 New-Alias -Name "c" -Value "clear"
-New-Alias -Name "cls" -Value Clear-And-List
+New-Alias -Name "cls" -Value Invoke-ClearAndList
 New-Alias -Name "v" -Value "nvim"
-New-Alias -Name "vp" -Value Open-Profile-With-Nvim
+New-Alias -Name "vp" -Value Open-ProfileWithNvim
+New-Alias -Name "gfarp" -Value Invoke-GitFetchResetAndPull
