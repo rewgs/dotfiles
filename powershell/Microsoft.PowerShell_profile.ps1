@@ -54,6 +54,10 @@ function Invoke-GitFetchResetAndPull {
     git pull
 }
 
+function Open-Dotfiles {
+    cd $HOME/dotfiles
+}
+
 
 # =============================================================================
 # aliases 
@@ -67,3 +71,4 @@ New-Alias -Name "cls" -Value Invoke-ClearAndList
 New-Alias -Name "v" -Value "nvim"
 New-Alias -Name "vp" -Value Open-ProfileWithNvim
 New-Alias -Name "gfarp" -Value Invoke-GitFetchResetAndPull
+New-Alias -Name "d" -Value Open-Dotfiles
