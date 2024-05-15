@@ -1,4 +1,9 @@
 [
   "obsidian-relative-line-numbers",
-  "obsidian-vimrc-support"
+  "obsidian-vimrc-support",
+  "obsidian-excalidraw-plugin",
+  "obsidian-minimal-settings",
+  "obsidian-tasks-plugin",
+  "calendar",
+  "obsidian-kanban"
 ]
