@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# Runs the file $1 based on its file extension.
+# For example, `.py` will be called with `python3`; 
+# `.rb` will be called with ruby; etc.
