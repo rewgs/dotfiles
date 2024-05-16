@@ -8,7 +8,9 @@ BROWSER = 'Google Chrome'
 
 local bindings = {
     { mod = HYPER,  key = 'v',      app = 'Visual Studio Code' },
-    { mod = HYPER,  key = 'd',      app = 'Discord' },
+
+    -- this is "Show Desktop" instead
+    -- { mod = HYPER,  key = 'd',      app = 'Discord' },
     { mod = HYPER,  key = 'f',      app = 'Finder' },
     { mod = HYPER,  key = 'return', app = TERMINAL },
     { mod = SHYPER, key = 'e',      app = 'Bartender 4' },
