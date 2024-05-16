@@ -1,9 +1,11 @@
--- local mod_keys = require('mod-keys')
--- require('mod-keys')
--- local utils = require('utils')
+local yabaiOutput, _, _, _ = hs.execute("which yabai", true)
+local YABAI = string.gsub(yabaiOutput, "%s+", "")
 
--- local HYPER = mod.hyper
--- local SHYPER = mod.sHyper
+require('mod-keys')
+local utils = require('utils')
+
+local HYPER = mod.hyper
+local SHYPER = mod.sHyper
 
 -- local DISPLAYS = {"yabai", "--message", "query", "--displays"}
 -- local SPACES = {"yabai", "--message", "query", "--spaces"}
@@ -13,62 +15,69 @@
 -- local SELECTED_SPACE = utils.copy_array(SPACES).insert("--space")
 -- local SELECTED_WINDOW = utils.copy_array(WINDOWS).insert("--window")
 
+local commands = {
+    service = {
+        restart = "--restart-service"
+    },
+    space = {
+        create = "--message space --create",
+        destroy = "--message space --destroy",
+    },
+    window = {
+        focus = {
+            west = "--message window --focus west",
+            south = "--message window --focus south",
+            north = "--message window --focus north",
+            east = "--message window --focus east",
+        },
+        move = {
+            west = "--message window --move west",
+            south = "--message window --move south",
+            north = "--message window --move north",
+            east = "--message window --move east",
+        },
+        resize = {
+            wider_left = "--message window --resize top:0:-10",
+        },
+    },
+}
 
--- local bindings = {
-    -- { mod = HYPER, key = 'p', command = { "yabai", "--message", "window", "--focus", "prev"} }
+local bindings = {
+    -- service
+    -- TODO: make this its own function, show alert stating that yabai service has been restarted.
+    { mod = SHYPER, key = 'r', command = commands.service.restart },
 
---     focus_prev_window = { 
---         modkey = HYPER, 
---         key = "p", 
---         command = { "yabai", "--message", "window", "--focus", "prev"}
---     },
---     focus_next_window = { 
---         modkey = HYPER, 
---         key = "n", 
---         command = { "yabai", "--message", "window", "--focus", "next"}
---     },
---     focus_west = {
---         modkey = HYPER,
---         key = "h",
---         command = { "yabai", "--message", "window", "--focus", "west" }
---     },
---     focus_south = {
---         modkey = HYPER,
---         key = "j",
---         command = { "yabai", "--message", "window", "--focus", "south" }
---     },
---     focus_north = {
---         modkey = HYPER,
---         key = "k",
---         command = { "yabai", "--message", "window", "--focus", "north" }
---     },
---     focus_south = {
---         modkey = HYPER,
---         key = "l",
---         command = { "yabai", "--message", "window", "--focus", "south" }
---     },
--- }
+    -- space
+    { mod = HYPER,  key = 's', command = commands.space.create },
+    { mod = SHYPER, key = 's', command = commands.space.destroy },
+
+    -- window
+    -- focus
+    { mod = HYPER, key = 'h', command = commands.window.focus.west },
+    { mod = HYPER, key = 'j', command = commands.window.focus.south },
+    { mod = HYPER, key = 'k', command = commands.window.focus.north },
+    { mod = HYPER, key = 'l', command = commands.window.focus.east },
+    -- move
+    -- { mod = SHYPER, key = 'h', command = commands.window.move.west },
+    -- { mod = SHYPER, key = 'j', command = commands.window.move.south },
+    -- { mod = SHYPER, key = 'k', command = commands.window.move.north },
+    -- { mod = SHYPER, key = 'l', command = commands.window.move.east },
+    -- resize
+    { mod = SHYPER, key = 'h', command = commands.window.resize.wider_left}
+}
 
 
--- local function bind_keys(kbs)
---     for _, b in ipairs(kbs) do
---         hs.hotkey.bind(b.modkey, b.key, 
---             function() 
---                 -- output:  the stdout of the command as a string. May contain an 
---                 --          extra terminating new-line (\n).
---                 -- status:  true if the command terminated successfully or nil otherwise.
---                 -- type:    a string value of "exit" or "signal" indicating whether the command terminated 
---                 --          of its  own accord or if it was terminated by a signal (killed, segfault, etc).
---                 -- rc:      if the command exited of its own accord, then this number will represent the exit 
---                 --          code (usually 0 for success, not 0 for an error, though this is very command 
---                 --          specific, so check man pages when there is a question). If the command was 
---                 --          killed by a signal, then this number corresponds to the signal type that caused 
---                 --          the command to terminate.
---                 -- output, status, type, rc = hs.execute(b.command)
---                 -- hs.execute(b.command)
---                 -- if status then return end
---             end
---         )
---     end
--- end
--- bind_keys(bindings)
+
+local function bind_keys(kbs)
+    for _, binding in ipairs(kbs) do
+        local mod = binding.mod
+        local key = binding.key
+        local command = binding.command
+        hs.hotkey.bind(mod, key, function() 
+            local yabai_command = string.format("%s %s", YABAI, command)
+            -- print(string.format("yabai: %s", yabai_command))
+            os.execute(yabai_command)
+        end)
+    end
+end
+bind_keys(bindings)

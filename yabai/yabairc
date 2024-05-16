@@ -1,57 +1,44 @@
 #!/usr/bin/env sh
-
-: '
-For this to work you must configure sudo such that it will be able to run the command without password
-
-See this wiki page for information:
-https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+#
+# For this to work you must configure sudo such that it will be able to run the command without password.
+# See this wiki page for information:
+# https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
 
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
-'
 
-#------------------------------------------------------------------------------
-# global variables
-#------------------------------------------------------------------------------
+PADDING=10
 
-# PD is short for "padding"
-PD=20 
-
-#------------------------------------------------------------------------------
 # global settings
-#------------------------------------------------------------------------------
 yabai -m config                                 \
+    external_bar                 off:40:0       \
+    menubar_opacity              1.0            \
     mouse_follows_focus          off            \
     focus_follows_mouse          off            \
+    display_arrangement_order    default        \
     window_origin_display        default        \
     window_placement             second_child   \
-    window_topmost               off            \
-    window_shadow                off            \
+    window_zoom_persist          on             \
+    window_shadow                on             \
     window_animation_duration    0.0            \
+    window_animation_easing      ease_out_circ  \
     window_opacity_duration      0.0            \
     active_window_opacity        1.0            \
     normal_window_opacity        0.90           \
     window_opacity               off            \
     insert_feedback_color        0xffd75f5f     \
-    active_window_border_color   0xff775759     \
-    normal_window_border_color   0xff555555     \
-    window_border_width          10             \
-    window_border_radius         0              \
-    window_border_blur           off            \
-    window_border_hidpi          on             \
-    window_border                off            \
     split_ratio                  0.50           \
     split_type                   auto           \
     auto_balance                 off            \
-    top_padding                  $PD            \
-    bottom_padding               $PD            \
-    left_padding                 $PD            \
-    right_padding                $PD            \
-    window_gap                   06             \
+    top_padding                  $PADDING       \
+    bottom_padding               $PADDING       \
+    left_padding                 $PADDING       \
+    right_padding                $PADDING       \
+    window_gap                   $PADDING       \
     layout                       bsp            \
     mouse_modifier               fn             \
     mouse_action1                move           \
     mouse_action2                resize         \
-    mouse_drop_action            swap           \
+    mouse_drop_action            swap
 
-echo "debug: yabai configuration loaded!"
+echo "yabai configuration loaded!"

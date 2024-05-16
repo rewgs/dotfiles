@@ -1,6 +1,6 @@
 require('mod-keys')
 
-hs.hotkey.bind(mod.hyper, 'R', function()
+hs.hotkey.bind(mod.hyper, 'r', function()
     hs.reload()
 end)
-hs.alert.show('config reloaded')
+hs.alert.show('config reloaded', 3)
