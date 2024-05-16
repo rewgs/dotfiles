@@ -1,72 +1,46 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 #
 # Sets up hammerspoon dotfiles.
-# Requires to be run with zsh, as this script relies on the $DOTFILES env var.
 
 
-verify_spoons () {
-    local repo="https://github.com/Hammerspoon/Spoons.git"
-    local src="$HOME/src"
-    local dst="${src}/Spoons"
+main() {
+    symlink_dots() {
+        local SRC="$1/dots"
+        local DST="$HOME/.hammerspoon"
 
-    if [[ ! -d "$src" ]]; then mkdir "$src"; fi
+        if [[ ! -d "$SRC" ]]; then exit 1; fi
 
-    if [[ ! -d "$dst" ]]; then
-        cd "$src" || return
-        git clone --depth 1 "$repo"
-    fi
+        if [[ -L "$DST" ]]; then rm -f "$DST"; fi
+        if [[ -d "$DST" ]]; then rm -rf "$DST"; fi
 
-    if [[ -d "${dst}/Spoons" ]]; then
-        true; return
-    else
-        false; return
-    fi
-}
+        if [[ ! -L "$DST" ]]; then ln -s "$SRC" "$DST"; fi
+    }
+
+    install_spoon() {
+        local SPOONS_REPO="$1/dots/Spoons"
+        local SPOONS_DIR="$SPOONS_REPO/Spoons"
+        
+        local SPOON="$2.spoon"
+
+        local SRC="$SPOONS_DIR/$SPOON.zip"
+        local DST="$SPOONS_REPO/$SPOON"
+
+        if [[ ! -f "$SRC" ]]; then exit 1; fi
+        if [[ -f "$SRC" ]] && [[ ! -d "$DST" ]]; then unzip "$SRC" -d "$SPOONS_REPO"; fi
+    }
 
 
-setup () {
-    local src="$DOTFILES/hammerspoon/hs-config"
-    local dst="$HOME/.hammerspoon"
+    local THIS_DIR=$(realpath $(dirname "$BASH_SOURCE"))
+    local SPOONS=(
+        "WindowHalfsAndThirds"
+    )
 
-    if [[ ! -d "$src" ]]; then exit; fi
-    if [[ ! -d "$dst" ]]; then mkdir "$dst"; fi
+    symlink_dots "$THIS_DIR"
 
-    # symlink dotfiles
-    dotfiles=("$src/"*.lua)
-    for d in "${dotfiles[@]}"; do
-        local dotfile=$(realpath "$d")
-        local dotname=$(basename "$dotfile")
-        local dot_dst="${dst}/${dotname}"
-
-        if [[ ! -L "$dot_dst" ]]; then
-            echo "Linking:"
-            echo "\t{$dotfile}"
-            echo "\tto:"
-            echo "\t{$dot_dst}"
-            ln -s "$dotfile" "$dot_dst"
-        else
-            echo "Symlink ${dot_dst} already exists. Skipping."
-        fi
+    for spoon in "${SPOONS[@]}"; do
+        install_spoon "$THIS_DIR" "$spoon"
     done
 
-    # symlink Spoons
-    if $(verify_spoons); then
-        if [[ ! -L "${dst}/Spoons" ]]; then
-            echo "Linking:"
-            echo "\t$HOME/src/Spoons/Spoons}"
-            echo "\tto:"
-            echo "\t${dst}/Spoons"
-            ln -s "$HOME/src/Spoons/Spoons" "${dst}/Spoons"
-        else
-            echo "Symlink ${dst}/Spoons already exists. Skipping "
-        fi
-    else
-        echo "$HOME/Spoons repo does not exist and could not be cloned. Hammerspoon won't work correctly without this!"
-    fi
-
-    # unzip WindowHalfsAndThirds.spoon if necessary
-    if [[ -f "WindowHalfsAndThirds.spoon.zip" ]] && [[ ! -d "WindowHalfsAndThirds.spoon" ]]; then
-        unzip "$HOME/src/Spoons/Spoons/WindowHalfsAndThirds.spoon.zip" -d "$HOME/src/Spoons/Spoons/"
-    fi
+    exit 0
 }
-setup
+main

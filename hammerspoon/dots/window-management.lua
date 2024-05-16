@@ -1,8 +1,7 @@
 require('mod-keys')
+hs.loadSpoon("WindowHalfsAndThirds")
 
 hs.window.animationDuration = 0
-
-hs.loadSpoon("WindowHalfsAndThirds")
 
 -- Loads defualt key bindings
 -- spoon.WindowHalfsAndThirds:bindHotkeys(spoon.WindowHalfsAndThirds.defaultHotkeys)
