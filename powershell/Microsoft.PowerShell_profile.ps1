@@ -3,7 +3,9 @@
 # =============================================================================
 
 # # initializes Oh-My-Posh
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/onehalf.minimal.omp.json" | Invoke-Expression
+$private:themeName = "onehalf.minimal"
+$private:theme = "$themeName.omp.json"
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/$theme" | Invoke-Expression
 
 # vi mode
 Set-PSReadLineOption -EditMode Vi
@@ -20,9 +22,15 @@ Set-PSReadLineOption -EditMode Vi
 # functions
 # =============================================================================
 
+function Reset-Shell {
+    . $PROFILE
+}
+
+
 function grep {
   $input | out-string -stream | select-string $args
 }
+
 
 function Update-OhMyPosh {
     if ($IsWindows) {
@@ -30,29 +38,24 @@ function Update-OhMyPosh {
     }
 }
 
+
 function Open-ProfileWithNvim {
     nvim $PROFILE
 }
 
+
 function Invoke-ClearAndList {
     clear
-    ls
+    ls -al
 }
 
-function Remove-Aliases {
-    $private:aliasesToRemove = @(
-        "cls"
-    )
-    foreach ($a in $aliasesToRemove) {
-        del alias:$a -force
-    }
-}
 
 function Invoke-GitFetchResetAndPull {
     git fetch --all
     git reset --hard
     git pull
 }
+
 
 function Open-Dotfiles {
     cd $HOME/dotfiles
@@ -62,13 +65,58 @@ function Open-Dotfiles {
 # =============================================================================
 # aliases 
 # =============================================================================
+#
+# NOTE: Aliases can not have spaces in the field following `-Value`!
+# Instead, must be wrapped in a function and that function invoked.
 
-# This must be run first to avoid any conflicts (e.g. with `cls`, which by default is the same as `clear`)
-Remove-Aliases
+function Remove-Aliases {
+    $aliases = @(
+        "cls"
+    )
 
-New-Alias -Name "c" -Value "clear"
-New-Alias -Name "cls" -Value Invoke-ClearAndList
-New-Alias -Name "v" -Value "nvim"
-New-Alias -Name "vp" -Value Open-ProfileWithNvim
-New-Alias -Name "gfarp" -Value Invoke-GitFetchResetAndPull
-New-Alias -Name "d" -Value Open-Dotfiles
+    foreach ($a in $aliases) {
+        if (Test-Path -Path alias:$a) {
+            # del alias:$a -force
+            Remove-Alias $a
+        }
+    }
+}
+
+
+function Add-Aliases {
+    $aliases = @(
+        @{ name = 'es';    value = 'Reset-Shell' },
+        @{ name = 'c';     value = 'clear' },
+        @{ name = 'cls';   value = 'Invoke-ClearAndList' },
+        @{ name = 'v';     value = 'nvim' },
+        @{ name = 'vp';    value = 'Open-ProfileWithNvim' },
+        @{ name = 'gfarp'; value = 'Invoke-GitFetchResetAndPull' },
+        @{ name = 'd';     value = 'Open-Dotfiles' }
+    )
+
+    foreach ($a in $aliases) {
+        # NOTE: the `$()` around `$a['key']`. 
+        # Unlike most languages, PowerShell will *not* expand a variable in a string. 
+        # Instead, the variable must be an expression, i.e. wrapped in `$()`
+        $name = $($a.name)
+        $value = $($a.value)
+
+        # Write-Output "$name; $value"
+
+        if (Test-Path -Path alias:$name) {
+            # Write-Output "Removing alias $name"
+            # del alias:$name -force
+            Remove-Alias $name
+        }
+        if (-Not (Test-Path -Path alias:$name)) {
+            # Write-Output "Adding alias $name"
+            New-Alias -Scope Global -Name $name -Value $value
+        }
+    }
+}
+
+function Initialize-Aliases {
+    Remove-Aliases
+    Add-Aliases
+}
+Initialize-Aliases
