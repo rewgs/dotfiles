@@ -5,7 +5,7 @@
 /fuzzel/fuzzel.ini
 
 # hammerspoon
-/hammerspoon/Spoons
+/hammerspoon/dots/Spoons/*.spoon
 
 # nvim
 /nvim/plugin/
