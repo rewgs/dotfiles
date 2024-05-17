@@ -18,6 +18,11 @@ Set-PSReadLineOption -EditMode Vi
     # write-Host -NoNewLine (oh-my-posh --shell pwsh --config ~/.jandedobbeleer.omp.json)
 # }
 
+# Makes autocomplete more zsh-ish
+Set-PSReadLineKeyHandler -Chord "Tab" -Function MenuComplete
+Set-PSReadLineKeyHandler -Chord "RightArrow" -Function ForwardWord
+
+
 # =============================================================================
 # functions
 # =============================================================================
@@ -30,6 +35,16 @@ function Reset-Shell {
 function grep {
   $input | out-string -stream | select-string $args
 }
+
+
+function touch {
+	param(
+		[parameter(mandatory=$true, position=0)]
+		[string]$filename
+	)
+	echo $null >> $filename
+}
+
 
 
 function Update-OhMyPosh {
@@ -46,7 +61,7 @@ function Open-ProfileWithNvim {
 
 function Invoke-ClearAndList {
     clear
-    ls -al
+    ls
 }
 
 
