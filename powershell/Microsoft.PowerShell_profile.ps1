@@ -18,7 +18,8 @@ Set-PSReadLineOption -EditMode Vi
     # write-Host -NoNewLine (oh-my-posh --shell pwsh --config ~/.jandedobbeleer.omp.json)
 # }
 
-Set-PSReadLineKeyHandler -Chord "Tab" -Function AcceptSuggestion
+# Makes autocomplete more zsh-ish
+Set-PSReadLineKeyHandler -Chord "Tab" -Function MenuComplete
 Set-PSReadLineKeyHandler -Chord "RightArrow" -Function ForwardWord
 
 
