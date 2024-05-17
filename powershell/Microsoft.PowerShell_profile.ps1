@@ -32,6 +32,16 @@ function grep {
 }
 
 
+function touch {
+	param(
+		[parameter(mandatory=$true, position=0)]
+		[string]$filename
+	)
+	echo $null >> $filename
+}
+
+
+
 function Update-OhMyPosh {
     if ($IsWindows) {
         Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
@@ -46,7 +56,7 @@ function Open-ProfileWithNvim {
 
 function Invoke-ClearAndList {
     clear
-    ls -al
+    ls
 }
 
 
