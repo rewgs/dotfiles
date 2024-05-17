@@ -8,7 +8,7 @@
 /hammerspoon/dots/Spoons/*.spoon
 
 # nvim
-/nvim/plugin/
+/nvim/dots/plugin/
 
 # obsidian
 /obsidian/workspace.json
