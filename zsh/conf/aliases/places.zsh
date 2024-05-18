@@ -2,6 +2,9 @@
 alias macmini="ssh rewgs@rewgs-mac-mini.local"
 alias nas="ssh rewgs@rewgs-nas"
 
+# personal bin
+alias b="cd $HOME/bin"
+
 # dotfiles
 alias dotfiles="cd $DOTFILES"
 alias dots="cd $DOTFILES"
