@@ -32,8 +32,8 @@ export PATH="$HOME/.config/broot/launcher/bash:$PATH"
 export PATH="$HOME/src/flutter/bin:$PATH"
 
 # golang
-export GOPATH="$HOME/go"
-export GOBIN="$GOPATH/bin"
+# export GOPATH="$HOME/go"
+# export GOBIN="$GOPATH/bin"
 # export PATH="$GOPATH:$PATH"
 # export PATH="$GOBIN:$PATH"
 
