@@ -7,7 +7,7 @@ rmi () {
         for arg in "$@"; do
             if [[ -d "$arg" ]]; then
                 # sudo rm -r -I "$arg"
-                rm -r -I "$arg"
+                rm -rf -I "$arg"
             else
                 rm -i "$arg"
             fi
