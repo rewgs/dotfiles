@@ -15,6 +15,3 @@ This contains any and all dotfiles, configuration files, etc.
     - Hammerspoon handles window management:
         - Hyper is the primary modifier, a la Super/Windows Key.
         - Hyper + Shift ("sHyper") is also available.
-
-# TODO
-- Add `hammerspoons/Spoons` git submodule
