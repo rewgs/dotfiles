@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------
 -- basics
 -------------------------------------------------------------------------------
+
 -- get OS
 local os = os.execute('uname')
 
@@ -24,20 +25,19 @@ config.front_end = 'OpenGL'
 
 -- disable updates notification
 check_for_updates = false
-config.show_update_window = false
+-- config.show_update_window = false
+
 
 -------------------------------------------------------------------------------
 -- window appearance
 -------------------------------------------------------------------------------
-config.window_decorations = 'RESIZE' -- removes the titlebar but allows the window to remain resizable
-config.enable_tab_bar = true
-config.hide_tab_bar_if_only_one_tab = true
-config.native_macos_fullscreen_mode = true
 
+config.enable_tab_bar = false
 
 -------------------------------------------------------------------------------
 -- color scheme
 -------------------------------------------------------------------------------
+
 -- config.color_scheme = 'GruvboxDark'
 -- config.color_scheme = 'GruvboxDarkHard'
 -- config.color_scheme = 'Gruvbox dark, hard (base16)'
@@ -53,6 +53,7 @@ config.color_scheme = 'OneHalfDark'
 -------------------------------------------------------------------------------
 -- font
 -------------------------------------------------------------------------------
+
 config.font = wezterm.font {
     family = 'FiraCode Nerd Font',
     weight = 'Regular'
@@ -64,6 +65,7 @@ config.font_size = 14
 -------------------------------------------------------------------------------
 -- key bindings
 -------------------------------------------------------------------------------
+
 if os == 'Darwin' then
     config.keys = {
         ---------------------------------------------------------------------------
