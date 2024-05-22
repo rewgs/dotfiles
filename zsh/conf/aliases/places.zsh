@@ -4,6 +4,7 @@ alias nas="ssh rewgs@rewgs-nas"
 
 # personal bin
 alias b="cd $HOME/bin"
+alias B="cd $HOME/second-brain"
 
 # dotfiles
 alias dotfiles="cd $DOTFILES"
