@@ -1,9 +1,11 @@
 # Symlinks the 'dots' dir to '$env:LOCALAPPDATA\nvim'
 #
+# WARNING: This script will not work correctly until the following TODO is fixed.
+# TODO: Take into account extra dir for package manager in $DOTFILES/nvim/dots/$package_manager path.
+#
 # TODO: fix "No C compiler found" error:
 # https://www.reddit.com/r/neovim/comments/14oozmu/neovim_cant_find_c_compiler/
 # https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support
-
 
 $script:_THIS_FILE = $MyInvocation.MyCommand.Definition
 $script:_THIS_DIR = split-path -parent $_THIS_FILE
