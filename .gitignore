@@ -9,6 +9,7 @@
 
 # nvim
 /nvim/dots/plugin/
+/nvim/plugin/
 
 # obsidian
 /obsidian/workspace.json
