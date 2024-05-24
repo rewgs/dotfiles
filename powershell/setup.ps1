@@ -2,10 +2,21 @@
 
 
 function Install-Oh-My-Posh {
-#     # if ($IsLinux) {
-#     # }
-#     # TODO: make these `else if` once $IsLinux branch is written; `else` branch
+    if ($IsLinux) {
+        # TODO: check if homebrew is installed first
+        # install homebrew
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+        brew update
+        brew install jandedobbeleer/oh-my-posh/oh-my-posh
+    }
+
+    # TODO: make these `else if` once $IsLinux branch is written; `else` branch
     if ($IsMacOS) {
+        # TODO: check if homebrew is installed first
+        # install homebrew
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
         brew update
         brew install jandedobbeleer/oh-my-posh/oh-my-posh
     }
