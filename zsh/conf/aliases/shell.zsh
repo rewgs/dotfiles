@@ -2,7 +2,7 @@ alias es="exec $SHELL && source_shell"
 
 
 # zshrc
-alias z="$EDITOR $HOME/.zshrc"
+# alias z="$EDITOR $HOME/.zshrc"
 alias sz="source $HOME/.zshrc"
 alias ss="source_shell"
 
