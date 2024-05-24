@@ -1,0 +1,13 @@
+# Deletes the given branch both locally and remotely.
+git_delete_branch() {
+    local branch_name="$1"
+    local remote_name="$2" || "origin"
+
+    # remote
+    git push -d "$remote_name" "$branch_name"
+
+    # local
+    git branch -d "$branch_name"
+
+    exit 0
+}
