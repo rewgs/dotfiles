@@ -1,6 +1,6 @@
-declare -a packages
+#!/bin/bash
 
-packages=(
+APT_PACKAGES=(
     "apache2"
     "apt-file" # this is SO useful. `apt-file search "header.h"` will help find the -dev package that contains it.
     "apt-transport-https"
@@ -38,6 +38,7 @@ packages=(
     "nmap"
     "picom"
     "qemu-kvm"
+    "rename"
     "ripgrep"
     "shellcheck"
     "software-properties-common"
@@ -57,13 +58,11 @@ packages=(
 # Due to bash not having nested arrays, the simplest way to keep ppas 
 # and packages commands is to put them in separate arrays, add the ppas, 
 # then install the packages.
-declare -a third_party_ppas
-third_party_ppas=(
+THIRD_PARTY_PPAS=(
     "keithw/mosh-dev" # need to install mosh from this ppa for now in order to get true color support; see here: https://github.com/mobile-shell/mosh/issues/945
     "nschloe/waybar" # status bar for swaywm; uses X11 though, not Wayland
 )
 
-declare -a ppa_packages
-ppa_packages=(
+PPA_PACKAGES=(
     "waybar"
 )
