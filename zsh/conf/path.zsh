@@ -98,6 +98,8 @@ if [[ $(uname) == "Darwin" ]]; then
     export PATH="$PATH:/opt/homebrew/bin"
     export PATH="$PATH:/opt/homebrew/sbin"
     export PATH="$PATH:/opt/homebrew/Cellar"
+elif [[ $(uname) == "Linux" ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # nim
