@@ -4,6 +4,7 @@ declare -a packages
 packages=(
     "cbonsai"
     "kmonad-bin"
+    "powershell-bin"
     "slack-desktop"
     "uhk-agent-appimage"
     "visual-studio-code-bin"
