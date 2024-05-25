@@ -21,3 +21,17 @@ Requires the following symbolic links:
     - The iTerm2 key command is Command+h.
     - This sends the key code 10 68, or Control+p h.
     - Therefore, the Command key is essentially the tmux prefix.
+
+# Notes:
+
+## Modifer Keys: 
+- C- = Control
+- S- = Shift
+- M- = Alt ("Meta")
+
+## Flags:
+- -n = no prefix required
+- -r = repeatable
+
+# control codes
+https://www.windmill.co.uk/ascii-control-codes.html

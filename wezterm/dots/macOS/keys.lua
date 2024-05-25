@@ -74,6 +74,18 @@ local actions = {
                     wezterm.action.SendKey({ key = '_' }),
                 },
             },
+            swap = {
+                clockwise = wezterm.action.Multiple {
+                    wezterm.action.DisableDefaultAssignment,
+                    wezterm.action.SendKey(TMUX_PREFIX),
+                    wezterm.action.SendKey({ key = '=', mods = 'ALT' }),
+                },
+                counter_clockwise = wezterm.action.Multiple {
+                    wezterm.action.DisableDefaultAssignment,
+                    wezterm.action.SendKey(TMUX_PREFIX),
+                    wezterm.action.SendKey({ key = '-', mods = 'ALT' }),
+                },
+            },
         },
         session = {
             rename = wezterm.action.Multiple {
@@ -161,6 +173,10 @@ local keys = {
     -- pane - split
     { key = '|',    mods = 'SUPER|SHIFT',   action = actions.tmux.pane.split.horizontal },   -- NOTE: weirdly, SHIFT must be included even if `key` requires SHIFT.
     { key = '_',    mods = 'SUPER|SHIFT',   action = actions.tmux.pane.split.vertical },
+
+    -- pane - swap
+    { key = '=',    mods = 'SUPER|ALT',     action = actions.tmux.pane.swap.clockwise },
+    { key = '-',    mods = 'SUPER|ALT',     action = actions.tmux.pane.swap.counter_clockwise },
 
     -- session
     { key = 'R',    mods = 'SUPER|SHIFT',   action = actions.tmux.session.rename },
