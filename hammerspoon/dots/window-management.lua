@@ -15,10 +15,10 @@ customHotkeys = {
 
     -- max             = { mod.hyper, "m" },
 
-    top_half        = { mod.hyper, "t" },
-    bottom_half     = { mod.hyper, "b" },
-    third_up        = { mod.sHyper, "t" },
-    third_down      = { mod.sHyper, "b" },
+    top_half        = { mod.sHyper, "t" },
+    bottom_half     = { mod.sHyper, "b" },
+    third_up        = { mod.soHyper, "t" },
+    third_down      = { mod.soHyper, "b" },
 
     third_left      = { mod.hyper, "[" }, -- moves *to* the left in thirds
     third_right     = { mod.hyper, "]" }, -- moves *to* the right in thirds
@@ -32,9 +32,9 @@ customHotkeys = {
     bottom_left     = { mod.hyper, "m" },
     bottom_right    = { mod.hyper, "." },
 
-    undo            = { mod.hyper, "z" },
-    larger          = { mod.hyper, "w" },  -- i.e. "wider"
-    smaller         = { mod.sHyper, "w" }, -- i.e. "opposite of wider"
+    undo            = { mod.soHyper, "z" },
+    larger          = { mod.soHyper, "w" },  -- i.e. "wider"
+    smaller         = { mod.soHyper, "w" }, -- i.e. "opposite of wider"
 }
 
 spoon.WindowHalfsAndThirds:bindHotkeys(customHotkeys)
