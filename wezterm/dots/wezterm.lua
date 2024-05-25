@@ -9,6 +9,9 @@ config.window_decorations = "RESIZE"
 if os.execute("uname") == "Linux" then
     config.enable_wayland = true
 end
+if os.execute("uname") == "Darwin" then
+    config.native_macos_fullscreen_mode = true
+end
 
 
 -- color scheme

@@ -15,6 +15,10 @@ local actions = {
             wezterm.action.DisableDefaultAssignment, 
             wezterm.action.ReloadConfiguration 
         }, 
+        toggle_fullscreen = wezterm.action.Multiple {
+            wezterm.action.DisableDefaultAssignment, 
+            wezterm.action.ToggleFullScreen
+        },
     },
     tmux = {
         pane = {
@@ -154,6 +158,7 @@ local keys = {
     -- { key = 'w',    mods = HYPER,           action = actions.meta.close_tab },
     -- { key = 'w',    mods = LEADER,          action = actions.meta.close_tab },
     { key = 'r',    mods = HYPER,           action = actions.meta.reload_config },
+    { key = 'f',    mods = 'SUPER',         action = actions.meta.toggle_fullscreen },
 
     ---------------------------------------------------------------------------
     -- tmux
