@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 #
 # Installs build dependencies, clones tmux git repo, symlinks config files.
 
@@ -67,7 +67,14 @@ tmux::update-and-compile () {
 
     git pull
     sh autogen.sh
-    ./configure && make
+
+    if [[ $(uname) == "Darwin" ]]; then
+        ./configure --enable-utf8proc
+    elif [[ $(uname) == "Linux" ]]; then
+        ./configure
+    fi
+
+    make
 }
 
 
