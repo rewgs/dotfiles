@@ -1,11 +1,9 @@
 local wezterm = require('wezterm')
 local config = wezterm.config_builder()
-local macOS = require('macOS.init')
 
 
 -- appearance
 config.front_end = 'OpenGL'
-config.check_for_updates = false
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 if os.execute("uname") == "Linux" then
@@ -26,12 +24,32 @@ config.font = wezterm.font {
     weight = 'Regular'
 }
 
--- elseif os.execute("uname") == "Linux" then
---     config.keys = {
---         -- reloads WezTerm config
---         { key = 'r', mods = 'CTRL|SHIFT', action = wezterm.action.ReloadConfiguration },
---     }
--- end
 
-macOS.apply_to_config(config)
-return config
+-- misc
+config.check_for_updates = false
+
+
+-------------------------------------------------------------------------------
+-- load OS-specific files
+-------------------------------------------------------------------------------
+
+local is_linux = function()
+	return wezterm.target_triple:find("linux") ~= nil
+end
+
+local is_macOS = function()
+	return wezterm.target_triple:find("darwin") ~= nil
+end
+
+
+if is_linux() then
+    local linux_config = require('linux.init')
+    linux_config.apply_to_config(config)
+    return config
+end
+
+if is_macOS() then
+    local macOS_config = require('macOS.init')
+    macOS_config.apply_to_config(config)
+    return config
+end

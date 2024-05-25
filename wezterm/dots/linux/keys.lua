@@ -1,17 +1,14 @@
 local wezterm = require('wezterm')
 local module = {}
 
+-- WARNING: These were copied straight from the macOS.keys file. Therefore most of these won't work/will work weirdly!
+
 local HYPER = 'SUPER|CTRL'
 local TMUX_PREFIX = { key = 'p', mods = 'CTRL' }
--- config.leader = { key = 't', mods = 'SUPER|CTRL', timeout_milliseconds = 1000 }
 
 local actions = {
-    meta = {
-        -- close_tab = wezterm.action.Multiple {
-        --     wezterm.action.DisableDefaultAssignment,
-        --     wezterm.action.CloseCurrentTab
-        -- },
-        reload_config = wezterm.action.Multiple {
+    meta = { -- i.e. Wezterm itself
+        reload_config = wezterm.action.Multiple { 
             wezterm.action.DisableDefaultAssignment, 
             wezterm.action.ReloadConfiguration 
         }, 
@@ -119,7 +116,7 @@ local actions = {
                     wezterm.action.SendKey(TMUX_PREFIX),
                     wezterm.action.SendKey({ key = '-' }),
                 },
-            },
+            }
         },
     },
 }
@@ -139,8 +136,6 @@ local keys = {
     ---------------------------------------------------------------------------
     -- meta
     ---------------------------------------------------------------------------
-    -- { key = 'w',    mods = HYPER,           action = actions.meta.close_tab },
-    -- { key = 'w',    mods = LEADER,          action = actions.meta.close_tab },
     { key = 'r',    mods = HYPER,           action = actions.meta.reload_config },
 
     ---------------------------------------------------------------------------
