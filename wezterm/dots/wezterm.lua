@@ -33,6 +33,5 @@ config.font = wezterm.font {
 --     }
 -- end
 
-
 macOS.apply_to_config(config)
 return config
