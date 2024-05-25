@@ -16,6 +16,29 @@ end
 
 -- color scheme
 config.color_scheme = 'OneHalfDark'
+local onedark = {
+    black           = "#282c34",
+    white           = "#abb2bf",
+    light_red       = "#e06c75",
+    dark_red        = "#be5046",
+    light_yellow    = "#e5c07b",
+    dark_yellow	    = "#d19a66",
+    blue            = "#61afef",
+    magenta         = "#c678dd",
+    cyan            = "#56b6c2",
+    gutter_grey	    = "#4b5263",
+    comment_grey    = "#5c6370",
+}
+config.colors = {
+    foreground = onedark.white,
+    background = onedark.black,
+    cursor_bg = onedark.white,
+    cursor_fg = onedark.black,
+    cursor_border = onedark.white,
+    selection_fg = onedark.black,
+    selection_bg = onedark.white,
+    split = onedark.black,
+}
 
 
 -- font
