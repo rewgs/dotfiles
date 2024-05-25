@@ -10,6 +10,7 @@
 /hammerspoon/dots/Spoons/*.spoon
 
 # nvim
+/nvim/dots/packer/plugin/
 /nvim/dots/plugin/
 /nvim/plugin/
 
