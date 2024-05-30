@@ -1,10 +1,14 @@
 # personal connections and computers
-alias macmini="ssh rewgs@rewgs-mac-mini.local"
 alias nas="ssh rewgs@rewgs-nas"
 
 # personal bin
-alias b="cd $HOME/bin"
-alias B="cd $HOME/second-brain"
+
+if [[ -d "$HOME/bin" ]]; then
+    alias b="cd $HOME/bin"
+fi
+if [[ -d "$HOME/second-brain" ]]; then
+    alias B="cd $HOME/second-brain"
+fi
 
 # dotfiles
 alias dotfiles="cd $DOTFILES"

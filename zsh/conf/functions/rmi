@@ -16,12 +16,22 @@ rmi () {
 
     # Linux
     if [[ $(uname) == "Linux" ]]; then
-        for arg in "$@"; do
-            if [[ -d "$arg" ]]; then
-                sudo rm -rf -I "$arg"
-            else
-                rm -i "$arg"
-            fi
-        done
+        if [[ $(whoami) == "root" ]]; then
+            for arg in "$@"; do
+                if [[ -d "$arg" ]]; then
+                    rm -rf -I "$arg"
+                else
+                    rm -i "$arg"
+                fi
+            done
+        else
+            for arg in "$@"; do
+                if [[ -d "$arg" ]]; then
+                    sudo rm -rf -I "$arg"
+                else
+                    rm -i "$arg"
+                fi
+            done
+        fi
     fi
 }
