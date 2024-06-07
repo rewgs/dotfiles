@@ -3,9 +3,9 @@
 #
 # FIXME:
 # - `$src` doesn't account for a single arg with spaces in it. A file named with two words (e.g. `some file.md`) is split into two args (e.g. `some` and `file.md`).
-#
 # TODO:
 # - Somehow enable case-sensitive renaming on macOS? Perhaps via string literals...
+# - If $dst is a directory and it doesn't exist, make it (be sure to do `mkdir -p`)
 
 mvi() {
     # There are lots of peculiar bash-isms going on here, so let's break them down:
