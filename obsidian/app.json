@@ -3,6 +3,9 @@
   "livePreview": false,
   "showLineNumber": true,
   "readableLineLength": false,
-  "promptDelete": false,
-  "alwaysUpdateLinks": true
+  "promptDelete": true,
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "relative",
+  "useMarkdownLinks": true,
+  "showUnsupportedFiles": true
 }

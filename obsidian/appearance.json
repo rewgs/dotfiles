@@ -7,5 +7,6 @@
   "interfaceFontFamily": "Inter",
   "enabledCssSnippets": [
     "disable-wrap"
-  ]
+  ],
+  "translucency": false
 }

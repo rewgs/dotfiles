@@ -5,7 +5,7 @@
   "embedUseExcalidrawFolder": false,
   "templateFilePath": "Excalidraw/Template.excalidraw",
   "scriptFolderPath": "Excalidraw/Scripts",
-  "compress": false,
+  "compress": true,
   "decompressForMDView": true,
   "autosave": true,
   "autosaveInterval": 15000,
@@ -98,7 +98,7 @@
   "mdCSS": "",
   "scriptEngineSettings": {},
   "defaultTrayMode": true,
-  "previousRelease": "2.1.8",
+  "previousRelease": "2.2.4",
   "showReleaseNotes": true,
   "showNewVersionNotification": true,
   "latexBoilerplate": "\\color{blue}",
@@ -741,5 +741,9 @@
   "areaZoomLimit": 1,
   "longPressDesktop": 500,
   "longPressMobile": 500,
-  "isDebugMode": false
+  "isDebugMode": false,
+  "onceOffCompressFlagReset": true,
+  "allowImageCacheInScene": true,
+  "renderImageInHoverPreviewForMDNotes": false,
+  "addDummyTextElement": false
 }
