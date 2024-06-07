@@ -101,7 +101,7 @@ if [[ $(uname) == "Darwin" ]]; then
     export PATH="$PATH:/opt/homebrew/sbin"
     export PATH="$PATH:/opt/homebrew/Cellar"
 elif [[ "$(uname)" == "Linux" ]] && [[ "$(uname -i)" == "x86_64" ]] && [[ "$(whoami)" != "root" ]]; then
-    if [[ -d "$HOME/linuxbrew" ]]; then
+    if [[ -d "/home/linuxbrew" ]]; then
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     fi
 fi
