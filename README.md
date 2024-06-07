@@ -1,17 +1,25 @@
-This contains any and all dotfiles, configuration files, etc.
-
-[`utils`](./utils) contains scripts for installing apps and packages, as well as symlinking dotfiles to their necessary locations.
+This contains any and all dotfiles, configuration files, etc. Each tool contains its own `setup` script to symlink dotfiles/etc.
 
 **shell:** zsh
 
 **editor:** nvim
 
-**window manager:**
-- Linux: sway, usually
-- macOS: ad-hoc functionality and key bindings via Karabiner-Elements and Hammerspoon. I've tried `yabai`/`skhd` but I feel they're too invasive.
-    - Karabiner-Elements handles remaps:
-        - Caps Lock to "Hyper" (Command + Option + Control) when held down, and Escape when tapped. NOTE: For this to work, System Settings/Keyboard/Keyboard Shortcuts/Modifier Keys/Caps Lock must NOT be remapped -- just leave it alone.
-        - Caps Lock is now enabled by taping both left and right Shift keys simultaneously. Code found [here](https://github.com/pqrs-org/Karabiner-Elements/issues/1233).
-    - Hammerspoon handles window management:
-        - Hyper is the primary modifier, a la Super/Windows Key.
-        - Hyper + Shift ("sHyper") is also available.
+# Notes on window manager
+
+## Linux
+
+`hyprland` for the moment. Keeping it pretty simple.
+
+## macOS 
+
+I achieve tiling functionality and global key bindings Hammerspoon. It's relatively basic -- mostly key bindings for
+
+I've tried `yabai`/`skhd` but I didn't click with them. Interested in trying out AeroSpace, though.
+
+Previously, I used Karabiner-Elements to remap Caps Lock to "Hyper" (Command + Control) when held down, and Escape when tapped. However, this never worked *quite* perfectly -- for example, some apps will capture the Escape signal no matter what, sometimes cancelling out of focused windows. Ultimately there were too many edge cases bugging me, so I got rid of it.
+
+Notes on using Karabiner-Elements to create a Hyper key:
+- For this to work, System Settings/Keyboard/Keyboard Shortcuts/Modifier Keys/Caps Lock must NOT be remapped -- just leave it alone.
+- Caps Lock is now enabled by taping both left and right Shift keys simultaneously. Code found [here](https://github.com/pqrs-org/Karabiner-Elements/issues/1233).
+- Hyper was the primary modifier, a la Super/Windows Key.
+- Hyper + Shift ("sHyper") was also available.
