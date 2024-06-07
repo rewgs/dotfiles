@@ -36,7 +36,9 @@ elif [[ $(uname) == "Linux" ]]; then
 fi
 
 # rbenv
-eval "$(~/.rbenv/bin/rbenv init - zsh)"
+if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
+    eval "$(~/.rbenv/bin/rbenv init - zsh)"
+fi
 
 # Added by OrbStack: command-line tools and integration
 if [[ $(uname) == "Darwin" ]]; then

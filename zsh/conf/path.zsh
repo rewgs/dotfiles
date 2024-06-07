@@ -5,18 +5,20 @@
 #   searching default locations.
 
 # bin repo
-export REWGS_BIN="$HOME/bin"
-# export PATH="$REWGS_BIN:$PATH"
-# for dir in "$REWGS_BIN/*/"; do
-#     PATH+=":$dir"
-# done
-if [[ $(uname) == "Darwin" ]]; then
-    # export PATH=$PATH:$(find "$REWGS_BIN" -type d -maxdepth 1 | paste -sd ":" -)
-    export PATH=$PATH:$(find "$REWGS_BIN" -type d | paste -sd ":" -)
-fi
-if [[ $(uname) == "Linux" ]]; then
-    # export PATH=$PATH:$(find "$REWGS_BIN" -maxdepth 1 -type d | paste -sd ":" -)
-    export PATH=$PATH:$(find "$REWGS_BIN" -type d | paste -sd ":" -)
+if [[ -d "$HOME/bin" ]] || [[ -L "$HOME/bin" ]]; then
+    export REWGS_BIN="$HOME/bin"
+    # export PATH="$REWGS_BIN:$PATH"
+    # for dir in "$REWGS_BIN/*/"; do
+    #     PATH+=":$dir"
+    # done
+
+    if [[ $(uname) == "Darwin" ]]; then
+        # export PATH=$PATH:$(find "$REWGS_BIN" -type d -maxdepth 1 | paste -sd ":" -)
+        export PATH=$PATH:$(find "$REWGS_BIN" -type d | paste -sd ":" -)
+    elif [[ $(uname) == "Linux" ]]; then
+        # export PATH=$PATH:$(find "$REWGS_BIN" -maxdepth 1 -type d | paste -sd ":" -)
+        export PATH=$PATH:$(find "$REWGS_BIN" -type d | paste -sd ":" -)
+    fi
 fi
 
 
