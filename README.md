@@ -16,6 +16,10 @@ I achieve tiling functionality and global key bindings Hammerspoon. It's relativ
 
 I've tried `yabai`/`skhd` but I didn't click with them. Interested in trying out AeroSpace, though.
 
+I use Bartender to clean up the Menu Bar, but might switch to [Ice](https://github.com/jordanbaird/Ice).
+
+I use Rectangle with all key commands disabled so that mouse-driven, Windows-esque window snapping is available.
+
 Previously, I used Karabiner-Elements to remap Caps Lock to "Hyper" (Command + Control) when held down, and Escape when tapped. However, this never worked *quite* perfectly -- for example, some apps will capture the Escape signal no matter what, sometimes cancelling out of focused windows. Ultimately there were too many edge cases bugging me, so I got rid of it.
 
 Notes on using Karabiner-Elements to create a Hyper key:
