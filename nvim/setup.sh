@@ -13,8 +13,14 @@ nvim-setup::main() {
 
     local DST="$HOME/.config/nvim"
 
-    if [[ ! -d "$(dirname $DST)" ]]; then mkdir -p "$(dirname $DST)"; fi
-    if [[ -d "$DST" ]] || [[ -L "$DST" ]]; then rm -rf "$DST"; fi
+    if [[ ! -d "$(dirname $DST)" ]]; 
+        then mkdir -p "$(dirname $DST)"; 
+    fi
+
+    if [[ -d "$DST" ]] || [[ -L "$DST" ]]; 
+        then rm -rf "$DST"; 
+    fi
+
     if [[ ! -L "$DST" ]]; then
         ln -s "$SRC" "$DST"
     fi
