@@ -15,8 +15,8 @@ customHotkeys = {
 
     -- max             = { mod.hyper, "m" },
 
-    top_half        = { mod.sHyper, "t" },
-    bottom_half     = { mod.sHyper, "b" },
+    top_half        = { mod.oHyper, "t" },
+    bottom_half     = { mod.oHyper, "b" },
     third_up        = { mod.soHyper, "t" },
     third_down      = { mod.soHyper, "b" },
 
@@ -24,8 +24,8 @@ customHotkeys = {
     third_right     = { mod.hyper, "]" }, -- moves *to* the right in thirds
     middle_third_h  = { mod.hyper, "\\" },
 
-    left_two_third  = { mod.sHyper, "h" },
-    right_two_third = { mod.sHyper, "l" },
+    left_two_third  = { mod.oHyper, "h" },
+    right_two_third = { mod.oHyper, "l" },
 
     top_left        = { mod.hyper, "u" },
     top_right       = { mod.hyper, "o" },
