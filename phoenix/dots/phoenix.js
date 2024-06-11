@@ -5,16 +5,8 @@ const SHYPER = ['command', 'control', 'shift'];
 const SOHYPER = ['command', 'option', 'control', 'shift'];
 
 
-// screen
-const screen = Screen.main().frame();
-const screenX = screen.x;
-const screenY = screen.y;
-const screenW = screen.width;
-const screenH = screen.height;
-
-
 //-----------------------------------------------------------------------------
-// PHOENIX
+// META
 //-----------------------------------------------------------------------------
 
 Phoenix.set({
@@ -33,10 +25,23 @@ Key.on('r', SOHYPER, () => {
 //-----------------------------------------------------------------------------
 
 // BUG: not working!?
-Key.on("h", HYPER, () => { Window.focusClosestNeighbor("west");  });
-Key.on("j", HYPER, () => { Window.focusClosestNeighbor("south"); });
-Key.on("k", HYPER, () => { Window.focusClosestNeighbor("north"); });
-Key.on("l", HYPER, () => { Window.focusClosestNeighbor("east");  });
+Key.on("h", OHYPER, () => { 
+    const window = Window.focused();
+    window.focusClosestNeighbor("west");
+});
+
+Key.on("j", OHYPER, () => {
+    const window = Window.focused();
+    window.focusClosestNeighbor("south"); 
+});
+Key.on("k", OHYPER, () => { 
+    const window = Window.focused();
+    window.focusClosestNeighbor("north");
+});
+Key.on("l", OHYPER, () => { 
+    const window = Window.focused();
+    window.focusClosestNeighbor("east");
+});
 
 
 
@@ -45,8 +50,13 @@ Key.on("l", HYPER, () => { Window.focusClosestNeighbor("east");  });
 // window tiling
 //--------------------------------------
 
+// maximized
+Key.on('k', HYPER, () => {
+    Window.focused().maximize();
+});
+
 // left half
-Key.on("h", OHYPER, () => {
+Key.on("h", HYPER, () => {
     // Phoenix.notify("Snapping left half");
     const window = Window.focused(),
     screenFrame = window.screen().flippedVisibleFrame();
@@ -59,7 +69,7 @@ Key.on("h", OHYPER, () => {
 });
 
 // right half
-Key.on("l", OHYPER, () => {
+Key.on("l", HYPER, () => {
     // Phoenix.notify("Snapping right half");
     const window = Window.focused();
     const screenFrame = window.screen().flippedVisibleFrame();
@@ -92,10 +102,6 @@ Key.on("l", OHYPER, () => {
 //     });
 // });
 
-// maximized
-Key.on('k', OHYPER, () => {
-    Window.focused().maximize();
-});
 
 
 //--------------------------------------
