@@ -24,24 +24,25 @@ Key.on('r', SOHYPER, () => {
 // WINDOW MANAGEMENT
 //-----------------------------------------------------------------------------
 
-// BUG: not working!?
-Key.on("h", OHYPER, () => { 
-    const window = Window.focused();
-    window.focusClosestNeighbor("west");
-});
-
-Key.on("j", OHYPER, () => {
-    const window = Window.focused();
-    window.focusClosestNeighbor("south"); 
-});
-Key.on("k", OHYPER, () => { 
-    const window = Window.focused();
-    window.focusClosestNeighbor("north");
-});
-Key.on("l", OHYPER, () => { 
-    const window = Window.focused();
-    window.focusClosestNeighbor("east");
-});
+// const focusWest = Key.on("h", OHYPER, () => { 
+//     const window = Window.focused();
+//     window.focusClosestNeighbor("west");
+// });
+//
+// const focusSouth = Key.on("j", OHYPER, () => {
+//     const window = Window.focused();
+//     window.focusClosestNeighbor("south"); 
+// });
+//
+// const focusNorth = Key.on("k", OHYPER, () => { 
+//     const window = Window.focused();
+//     window.focusClosestNeighbor("north");
+// });
+//
+// const focusEast = Key.on("l", OHYPER, () => { 
+//     const window = Window.focused();
+//     window.focusClosestNeighbor("east");
+// });
 
 
 
@@ -50,13 +51,11 @@ Key.on("l", OHYPER, () => {
 // window tiling
 //--------------------------------------
 
-// maximized
-Key.on('k', HYPER, () => {
+const maximized = Key.on('k', HYPER, () => {
     Window.focused().maximize();
 });
 
-// left half
-Key.on("h", HYPER, () => {
+const leftHalf = Key.on("h", HYPER, () => {
     // Phoenix.notify("Snapping left half");
     const window = Window.focused(),
     screenFrame = window.screen().flippedVisibleFrame();
@@ -68,8 +67,7 @@ Key.on("h", HYPER, () => {
     });
 });
 
-// right half
-Key.on("l", HYPER, () => {
+const rightHalf = Key.on("l", HYPER, () => {
     // Phoenix.notify("Snapping right half");
     const window = Window.focused();
     const screenFrame = window.screen().flippedVisibleFrame();
@@ -78,17 +76,68 @@ Key.on("l", HYPER, () => {
         y: screenFrame.y,
         width: screenFrame.width / 2,
         height: screenFrame.height,
-        });
+    });
+});
+
+const leftThird = Key.on("h", OHYPER, () => {
+    const window = Window.focused();
+    const screenFrame = window.screen().flippedVisibleFrame();
+    window.setFrame({
+        x: screenFrame.x,
+        y: screenFrame.y,
+        width: screenFrame.width / 3,
+        height: screenFrame.height,
+    });
+});
+
+const centerThird = Key.on("k", OHYPER, () => {
+    const window = Window.focused();
+    const screenFrame = window.screen().flippedVisibleFrame();
+    window.setFrame({
+        x: screenFrame.x + screenFrame.width / 3,
+        y: screenFrame.y,
+        width: screenFrame.width / 3,
+        height: screenFrame.height,
+    });
+});
+
+const rightThird = Key.on("l", OHYPER, () => {
+    const window = Window.focused();
+    const screenFrame = window.screen().flippedVisibleFrame();
+    window.setFrame({
+        x: screenFrame.x + screenFrame.width / 1.5,
+        y: screenFrame.y,
+        width: screenFrame.width / 3,
+        height: screenFrame.height,
+    });
+});
+
+const leftTwoThirds = Key.on("h", SOHYPER, () => {
+    const window = Window.focused();
+    const screenFrame = window.screen().flippedVisibleFrame();
+    window.setFrame({
+        x: screenFrame.x,
+        y: screenFrame.y,
+        width: screenFrame.width / 1.5,
+        height: screenFrame.height,
+    });
+});
+
+const rightTwoThirds = Key.on("l", SOHYPER, () => {
+    const window = Window.focused();
+    const screenFrame = window.screen().flippedVisibleFrame();
+    window.setFrame({
+        x: screenFrame.x + screenFrame.width / 3,
+        y: screenFrame.y,
+        width: screenFrame.width / 1.5,
+        height: screenFrame.height,
+    });
 });
 
 // TODO: bottom left quarter
 // TODO: bottom right quarter
 // TODO: top left quarter
 // TODO: top right quarter
-// TODO: left one-third
-// TODO: left two-thirds
-// TODO: right one-third
-// TODO: right two-thirds
 
 // Key.on("[", SOHYPER, () => {
 //     debug("Center and resize to 2/3 of screen");
