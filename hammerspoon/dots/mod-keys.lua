@@ -1,8 +1,8 @@
 mod = {
-    hyper = { 'cmd', 'ctrl' },
-    oHyper = {'cmd', 'option', 'ctrl' },
-    sHyper = { 'cmd', 'ctrl', 'shift' },
-    soHyper = { 'cmd', 'ctrl', 'shift', 'option' },
+    hyper =     { 'cmd', 'ctrl'                     },
+    oHyper =    { 'cmd', 'ctrl', 'option'           },
+    sHyper =    { 'cmd', 'ctrl', 'shift'            },
+    soHyper =   { 'cmd', 'ctrl', 'option', 'shift'  },
 }
 
 return mod

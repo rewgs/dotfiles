@@ -4,11 +4,11 @@ require('mod-keys')
 -- hs.alert.show(_INFO, 5)
 
 local HYPER = mod.hyper
-local SHYPER = mod.sHyper
+-- local SHYPER = mod.sHyper
 
 ---@type table
-local SPACES, err = hs.spaces.allSpaces()
-if SPACES == nil then hs.alert.show(err, 30) end
+-- local SPACES, err = hs.spaces.allSpaces()
+-- if SPACES == nil then hs.alert.show(err, 30) end
 
 -- debug
 -- for screen_uuid, space_table in pairs(SPACES) do
@@ -18,12 +18,12 @@ if SPACES == nil then hs.alert.show(err, 30) end
 --     end
 -- end
 
-hs.hotkey.bind(HYPER, "up", function() 
-    hs.spaces.toggleMissionControl() 
+hs.hotkey.bind(HYPER, "up", function()
+    hs.spaces.toggleMissionControl()
 end)
 
-hs.hotkey.bind(HYPER, "down", function() 
-    hs.spaces.closeMissionControl() 
+hs.hotkey.bind(HYPER, "down", function()
+    hs.spaces.closeMissionControl()
 end)
 
 hs.hotkey.bind(HYPER, "d", function()
