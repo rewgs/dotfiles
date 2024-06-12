@@ -157,9 +157,19 @@ const rightTwoThirds = Key.on("l", SOHYPER, () => {
 // spaces
 //--------------------------------------
 
-Key.on('=', HYPER, () => {
+const moveWindowToNextSpace = Key.on('=', HYPER, () => {
     const space = Space.active();
     const window = Window.focused();
     space.next().moveWindows([window]);
     window.focus();
 });
+
+const moveWindowToPrevSpace = Key.on('-', HYPER, () => {
+    const space = Space.active();
+    const window = Window.focused();
+    space.next().moveWindows([window]);
+    window.focus();
+});
+
+// const missionControl = Key.on("up", HYPER, () => {
+// })
