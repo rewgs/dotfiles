@@ -6,17 +6,10 @@ local config = wezterm.config_builder()
 config.front_end = 'OpenGL'
 config.enable_tab_bar = false
 
-if os.execute("uname") == "Linux" then
-    config.enable_wayland = true
-end
-if os.execute("uname") == "Darwin" then
-    config.window_decorations = "RESIZE"
-    config.native_macos_fullscreen_mode = true
-end
-
 
 -- color scheme
 config.color_scheme = 'OneHalfDark'
+
 local onedark = {
     black           = "#282c34",
     white           = "#abb2bf",
@@ -30,6 +23,7 @@ local onedark = {
     gutter_grey	    = "#4b5263",
     comment_grey    = "#5c6370",
 }
+
 config.colors = {
     foreground = onedark.white,
     background = onedark.black,
@@ -57,7 +51,7 @@ config.check_for_updates = false
 
 
 -------------------------------------------------------------------------------
--- load OS-specific files
+-- OS-specific
 -------------------------------------------------------------------------------
 
 local is_linux = function()
@@ -70,12 +64,18 @@ end
 
 
 if is_linux() then
-    -- local linux_config = require('linux.init')
-    -- linux_config.apply_to_config(config)
+    config.enable_wayland = true
+
+    local linux_config = require('linux.init')
+    linux_config.apply_to_config(config)
     return config
 end
 
+
 if is_macOS() then
+    config.window_decorations = "RESIZE"
+    config.native_macos_fullscreen_mode = true
+
     local macOS_config = require('macOS.init')
     macOS_config.apply_to_config(config)
     return config
