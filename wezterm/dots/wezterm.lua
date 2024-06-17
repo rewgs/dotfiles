@@ -66,6 +66,7 @@ end
 if is_linux() then
     -- TODO: put this in linux.init?
     config.enable_wayland = true
+    config.disable_default_key_bindings = true
 
     local linux_config = require('linux.init')
     linux_config.apply_to_config(config)
