@@ -64,6 +64,7 @@ end
 
 
 if is_linux() then
+    -- TODO: put this in linux.init?
     config.enable_wayland = true
 
     local linux_config = require('linux.init')
@@ -73,8 +74,9 @@ end
 
 
 if is_macOS() then
+    -- TODO: put this in macOS.init?
     config.window_decorations = "RESIZE"
-    config.native_macos_fullscreen_mode = true
+    config.native_macos_fullscreen_mode = false
 
     local macOS_config = require('macOS.init')
     macOS_config.apply_to_config(config)
