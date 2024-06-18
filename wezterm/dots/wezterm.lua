@@ -4,34 +4,23 @@ local wezterm = require('wezterm')
 -- @type config builder object
 local config = wezterm.config_builder()
 
-local common_config = require('common.init')
+local _ = require('common.helpers') -- requires only the helper functions; this is placed in common for cleanliness
+local common_config = require('common.init') -- requires all other common files
+
+-- common configs
 common_config.apply_to_config(config)
 
--- TODO: move to common/helpers.lua
-local is_linux = function()
-	return wezterm.target_triple:find("linux") ~= nil
-end
-
--- TODO: move to common/helpers.lua
-local is_macOS = function()
-	return wezterm.target_triple:find("darwin") ~= nil
-end
-
--- TODO: move to common/helpers.lua
--- local is_windows = function()
---     return wezterm.target_triple:find("windows") ~= nil
--- end
-
-
-if is_linux() then
+-- os-specific configs
+if _.is_linux() then
     local linux_config = require('linux.init')
     linux_config.apply_to_config(config)
-end
-
-
-if is_macOS() then
+elseif _.is_macOS() then
     local macOS_config = require('macOS.init')
     macOS_config.apply_to_config(config)
+-- TODO:
+-- elseif _.is_windows() then
+else
+-- TODO: panic/throw error that OS isn't (yet) supported
 end
 
 
