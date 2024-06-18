@@ -1,9 +1,11 @@
 local wezterm = require('wezterm')
+
 local module = {}
 
+
 local HYPER = 'SUPER|CTRL'
-local TMUX_PREFIX = { key = 'p', mods = 'CTRL' }
 -- config.leader = { key = 't', mods = 'SUPER|CTRL', timeout_milliseconds = 1000 }
+
 
 local actions = {
     meta = {
@@ -12,27 +14,18 @@ local actions = {
         --     wezterm.action.CloseCurrentTab
         -- },
         reload_config = wezterm.action.Multiple {
-            wezterm.action.DisableDefaultAssignment, 
-            wezterm.action.ReloadConfiguration 
-        }, 
+            wezterm.action.DisableDefaultAssignment,
+            wezterm.action.ReloadConfiguration
+        },
         toggle_fullscreen = wezterm.action.Multiple {
-            wezterm.action.DisableDefaultAssignment, 
+            wezterm.action.DisableDefaultAssignment,
             wezterm.action.ToggleFullScreen
         },
     },
 }
 
+
 local keys = {
-    ---------------------------------------------------------------------------
-    -- disabled
-    ---------------------------------------------------------------------------
-    { key = '-',    mods = 'SUPER',         action = wezterm.action.DisableDefaultAssignment },
-    { key = '-',    mods = 'SUPER|SHIFT',   action = wezterm.action.DisableDefaultAssignment },
-    { key = '=',    mods = 'SUPER',         action = wezterm.action.DisableDefaultAssignment },
-    { key = '=',    mods = 'SUPER|SHIFT',   action = wezterm.action.DisableDefaultAssignment },
-    { key = '\\',   mods = 'SUPER',         action = wezterm.action.DisableDefaultAssignment },
-    { key = '\\',   mods = 'SUPER|SHIFT',   action = wezterm.action.DisableDefaultAssignment },
-    { key = 'p',    mods = 'SUPER',         action = wezterm.action.DisableDefaultAssignment },
 
     ---------------------------------------------------------------------------
     -- meta
@@ -41,6 +34,13 @@ local keys = {
     -- { key = 'w',    mods = LEADER,          action = actions.meta.close_tab },
     { key = 'r',    mods = HYPER,           action = actions.meta.reload_config },
     { key = 'f',    mods = 'SUPER',         action = actions.meta.toggle_fullscreen },
+
+    ---------------------------------------------------------------------------
+    -- basic usage
+    ---------------------------------------------------------------------------
+    { key = 'q',    mods = 'SUPER',         action = wezterm.action.QuitApplication },
+    { key = 'n',    mods = 'SUPER',         action = wezterm.action.SpawnWindow },
+    { key = 't',    mods = 'SUPER',         action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
 
     ---------------------------------------------------------------------------
     -- multiplexing
@@ -62,6 +62,7 @@ local keys = {
     -- this action will immediately close the pane without prompting.
     { key = 'w',    mods = 'SUPER',         action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 }
+
 
 function module.apply_to_config(config)
     config.keys = keys
