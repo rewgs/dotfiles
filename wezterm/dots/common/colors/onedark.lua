@@ -3,6 +3,7 @@ local onedark = {
     white           = "#abb2bf",
     light_red       = "#e06c75",
     dark_red        = "#be5046",
+    green           = "#98c379",
     light_yellow    = "#e5c07b",
     dark_yellow	    = "#d19a66",
     blue            = "#61afef",

@@ -5,7 +5,7 @@ local keys = require('macOS.keys')
 
 function module.apply_to_config(config)
     config.window_decorations = "RESIZE"
-    config.native_macos_fullscreen_mode = true
+    config.native_macos_fullscreen_mode = false
 
     keys.apply_to_config(config)
 end
