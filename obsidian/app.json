@@ -5,7 +5,11 @@
   "readableLineLength": false,
   "promptDelete": true,
   "alwaysUpdateLinks": true,
-  "newLinkFormat": "relative",
+  "newLinkFormat": "absolute",
   "useMarkdownLinks": true,
-  "showUnsupportedFiles": true
+  "showUnsupportedFiles": true,
+  "showRibbon": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "docs",
+  "attachmentFolderPath": "./"
 }

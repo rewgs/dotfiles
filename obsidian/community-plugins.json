@@ -6,5 +6,6 @@
   "obsidian-tasks-plugin",
   "calendar",
   "obsidian-kanban",
-  "obsidian-importer"
+  "obsidian-importer",
+  "obsidian-checklist-plugin"
 ]
