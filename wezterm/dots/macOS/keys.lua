@@ -42,6 +42,10 @@ local keys = {
     { key = 'n',    mods = 'SUPER',         action = wezterm.action.SpawnWindow },
     { key = 't',    mods = 'SUPER',         action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
 
+    -- BUG: no matter what key(s)/mod(s) I use, I just can't get this to work...
+    { key = 'c',    mods = 'SUPER',    action = wezterm.action.CopyTo "Clipboard" },
+    { key = 'v',    mods = 'SUPER',    action = wezterm.action.PasteFrom "Clipboard" },
+
     ---------------------------------------------------------------------------
     -- multiplexing
     ---------------------------------------------------------------------------
