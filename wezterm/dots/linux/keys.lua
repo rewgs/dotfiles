@@ -18,10 +18,17 @@ local actions = {
 
 local keys = {
     ---------------------------------------------------------------------------
-    -- meta
+    -- wezterm
     ---------------------------------------------------------------------------
-    { key = 'r',    mods = 'ALT',           action = actions.meta.reload_config },
+    -- { key = 'r',    mods = 'ALT',           action = actions.meta.reload_config },
 
+
+    ---------------------------------------------------------------------------
+    -- clipboard
+    ---------------------------------------------------------------------------
+    -- BUG: no matter what key(s)/mod(s) I use, I just can't get this to work...
+    { key = 'c',    mods = 'CTRL|SHIFT',    action = wezterm.action.CopyTo "Clipboard" },
+    { key = 'v',    mods = 'CTRL|SHIFT',    action = wezterm.action.PasteFrom "Clipboard" },
 
     ---------------------------------------------------------------------------
     -- multiplexing
