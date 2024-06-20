@@ -22,6 +22,19 @@ local actions = {
             wezterm.action.ToggleFullScreen
         },
     },
+    tab = {
+        rename = wezterm.action.PromptInputLine {
+            description = "Rename current tab",
+            action = wezterm.action_callback(function(window, pane, line)
+                -- `line` will be `nil` if user only hits Escape without entering a value,
+                -- an empty string if user only hits Enter, 
+                -- or the actual line of text they wrote.
+                if line then
+                    window:active_tab():set_title(line)
+                end
+            end),
+        },
+    },
 }
 
 
@@ -42,9 +55,23 @@ local keys = {
     { key = 'n',    mods = 'SUPER',         action = wezterm.action.SpawnWindow },
     { key = 't',    mods = 'SUPER',         action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
 
-    -- BUG: no matter what key(s)/mod(s) I use, I just can't get this to work...
+    -- copy/paste
     { key = 'c',    mods = 'SUPER',    action = wezterm.action.CopyTo "Clipboard" },
     { key = 'v',    mods = 'SUPER',    action = wezterm.action.PasteFrom "Clipboard" },
+
+    -- tabs
+    { key = 'Tab', mods = 'CTRL', action = wezterm.action.ActivateTabRelative(1) },
+    { key = 'Tab', mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
+    { key = '1', mods = 'SUPER', action = wezterm.action.ActivateTab(0) },
+    { key = '2', mods = 'SUPER', action = wezterm.action.ActivateTab(1) },
+    { key = '3', mods = 'SUPER', action = wezterm.action.ActivateTab(2) },
+    { key = '4', mods = 'SUPER', action = wezterm.action.ActivateTab(3) },
+    { key = '5', mods = 'SUPER', action = wezterm.action.ActivateTab(4) },
+    { key = '6', mods = 'SUPER', action = wezterm.action.ActivateTab(5) },
+    { key = '7', mods = 'SUPER', action = wezterm.action.ActivateTab(6) },
+    { key = '8', mods = 'SUPER', action = wezterm.action.ActivateTab(7) },
+    { key = '9', mods = 'SUPER', action = wezterm.action.ActivateTab(8) },
+    { key = '0', mods = 'SUPER', action = wezterm.action.ActivateTab(9) },
 
     ---------------------------------------------------------------------------
     -- multiplexing
@@ -52,10 +79,24 @@ local keys = {
     -- TODO: Maybe use SplitPane() instead? https://wezfurlong.org/wezterm/config/lua/keyassignment/SplitPane.html
     { key = '|',    mods = 'SUPER|SHIFT',   action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
     { key = '-',    mods = 'SUPER|SHIFT',   action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
+
+    -- activate pane
     { key = 'h',    mods = 'SUPER',         action = wezterm.action.ActivatePaneDirection 'Left', },
     { key = 'j',    mods = 'SUPER',         action = wezterm.action.ActivatePaneDirection 'Down', },
     { key = 'k',    mods = 'SUPER',         action = wezterm.action.ActivatePaneDirection 'Up', },
     { key = 'l',    mods = 'SUPER',         action = wezterm.action.ActivatePaneDirection 'Right', },
+
+    -- adjust pane size (coarse)
+    { key = 'h',    mods = 'SUPER|SHIFT',   action = wezterm.action.AdjustPaneSize { 'Left', 10} },
+    { key = 'j',    mods = 'SUPER|SHIFT',   action = wezterm.action.AdjustPaneSize { 'Down', 10} },
+    { key = 'k',    mods = 'SUPER|SHIFT',   action = wezterm.action.AdjustPaneSize { 'Up', 10} },
+    { key = 'l',    mods = 'SUPER|SHIFT',   action = wezterm.action.AdjustPaneSize { 'Right', 10} },
+
+    { key = 'Space', mods = 'SUPER|SHIFT',  action = wezterm.action.ShowTabNavigator },
+    { key = 'r', mods = 'SUPER', action = actions.tab.rename },
+
+    -- { key = 's',    mods = 'SUPER',         action = wezterm.action.QuickSelect },
+
 
     -- Closes the current pane. 
     -- If that was the last pane in the tab, closes the tab. If that was the last tab, closes that 
