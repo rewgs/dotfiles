@@ -1,9 +1,8 @@
 local wezterm = require('wezterm')
 local module = {}
 
-
--- local HYPER = 'CTRL|ALT'
--- local SHYPER = 'CTRL|ALT|SHIFT'
+local HYPER = 'CTRL|ALT'
+local SHYPER = 'CTRL|ALT|SHIFT'
 
 
 local actions = {
@@ -13,6 +12,19 @@ local actions = {
             wezterm.action.ReloadConfiguration
         },
     },
+    tab = {
+        rename = wezterm.action.PromptInputLine {
+            description = "Rename current tab",
+            action = wezterm.action_callback(function(window, pane, line)
+                -- `line` will be `nil` if user only hits Escape without entering a value,
+                -- an empty string if user only hits Enter, 
+                -- or the actual line of text they wrote.
+                if line then
+                    window:active_tab():set_title(line)
+                end
+            end),
+        },
+    },
 }
 
 
@@ -20,26 +32,41 @@ local keys = {
     ---------------------------------------------------------------------------
     -- wezterm
     ---------------------------------------------------------------------------
-    { key = 'r',    mods = 'CTRL|ALT|SHIFT',    action = actions.meta.reload_config },
+    { key = 'r',    mods = SHYPER,    action = actions.meta.reload_config },
+    { key = 't',    mods = HYPER,         action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
 
     ---------------------------------------------------------------------------
     -- clipboard
     ---------------------------------------------------------------------------
     -- BUG: no matter what key(s)/mod(s) I use, I just can't get this to work...
-    { key = 'c',    mods = 'CTRL|SHIFT',        action = wezterm.action.CopyTo "Clipboard" },
-    { key = 'v',    mods = 'CTRL|SHIFT',        action = wezterm.action.PasteFrom "Clipboard" },
+    { key = 'c',    mods = SHYPER, action = wezterm.action.CopyTo "Clipboard" },
+    { key = 'v',    mods = SHYPER, action = wezterm.action.PasteFrom "Clipboard" },
 
     ---------------------------------------------------------------------------
     -- multiplexing
     ---------------------------------------------------------------------------
     -- TODO: Maybe use SplitPane() instead? https://wezfurlong.org/wezterm/config/lua/keyassignment/SplitPane.html
-    { key = '|',    mods = 'CTRL|SHIFT',        action = wezterm.action.SplitHorizontal({ domain = 'CurrentPaneDomain' }) },
-    { key = '_',    mods = 'CTRL|SHIFT',        action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' }) },
+    { key = '|',    mods = SHYPER,        action = wezterm.action.SplitHorizontal({ domain = 'CurrentPaneDomain' }) },
+    { key = '_',    mods = SHYPER,        action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' }) },
 
-    { key = 'h',    mods = 'CTRL',              action = wezterm.action.ActivatePaneDirection('Left') },
-    { key = 'j',    mods = 'CTRL',              action = wezterm.action.ActivatePaneDirection('Down') },
-    { key = 'k',    mods = 'CTRL',              action = wezterm.action.ActivatePaneDirection('Up') },
-    { key = 'l',    mods = 'CTRL',              action = wezterm.action.ActivatePaneDirection('Right') },
+    { key = 'h',    mods = HYPER,              action = wezterm.action.ActivatePaneDirection('Left') },
+    { key = 'j',    mods = HYPER,              action = wezterm.action.ActivatePaneDirection('Down') },
+    { key = 'k',    mods = HYPER,              action = wezterm.action.ActivatePaneDirection('Up') },
+    { key = 'l',    mods = HYPER,              action = wezterm.action.ActivatePaneDirection('Right') },
+
+    -- tabs
+    { key = 'Tab', mods = 'CTRL', action = wezterm.action.ActivateTabRelative(1) },
+    { key = 'Tab', mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
+    { key = '1', mods = HYPER, action = wezterm.action.ActivateTab(0) },
+    { key = '2', mods = HYPER, action = wezterm.action.ActivateTab(1) },
+    { key = '3', mods = HYPER, action = wezterm.action.ActivateTab(2) },
+    { key = '4', mods = HYPER, action = wezterm.action.ActivateTab(3) },
+    { key = '5', mods = HYPER, action = wezterm.action.ActivateTab(4) },
+    { key = '6', mods = HYPER, action = wezterm.action.ActivateTab(5) },
+    { key = '7', mods = HYPER, action = wezterm.action.ActivateTab(6) },
+    { key = '8', mods = HYPER, action = wezterm.action.ActivateTab(7) },
+    { key = '9', mods = HYPER, action = wezterm.action.ActivateTab(8) },
+    { key = '0', mods = HYPER, action = wezterm.action.ActivateTab(9) },
 
     -- Closes the current pane. 
     -- If that was the last pane in the tab, closes the tab. If that was the last tab, closes that 
@@ -48,7 +75,7 @@ local keys = {
     -- confirm is true, an overlay will render over the pane to ask you to confirm whether you want 
     -- to close it. See also skip_close_confirmation_for_processes_named. If confirm is false, then 
     -- this action will immediately close the pane without prompting.
-    { key = 'w',    mods = 'CTRL',              action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+    { key = 'w',    mods = HYPER,              action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 }
 
 
