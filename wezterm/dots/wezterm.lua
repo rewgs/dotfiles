@@ -9,6 +9,7 @@ local common_config = require('common.init') -- requires all other common files
 local linux_config = require('linux.init')
 local macOS_config = require('macOS.init')
 
+
 -- common configs
 common_config.apply_to_config(config)
 
