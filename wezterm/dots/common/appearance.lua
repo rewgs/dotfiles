@@ -62,11 +62,6 @@ function module.apply_to_config(config)
     config.color_scheme = stock_scheme
     -- config.colors = user_colors
 
-    -- window decorations
-    config.window_decorations = "RESIZE"
-    -- config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
-    -- config.integrated_title_button_style = "MacOsNative"
-
     -- tab bar
     config.enable_tab_bar = true
     config.hide_tab_bar_if_only_one_tab = true
