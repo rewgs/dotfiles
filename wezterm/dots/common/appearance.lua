@@ -1,8 +1,8 @@
--- local wezterm = require('wezterm')
+local wezterm = require('wezterm')
 local module = {}
 
 local stock_scheme = "OneHalfDark"
-local user_scheme = require('common.colors.onedark_soft')
+local user_scheme = require('common.colors.onedark')
 local user_colors = {
     foreground      = user_scheme.white,
     background      = user_scheme.black,
@@ -59,12 +59,20 @@ function module.apply_to_config(config)
     config.front_end = 'OpenGL'
 
     -- colors
-    -- config.color_scheme = stock_scheme
-    config.colors = user_colors
+    config.color_scheme = stock_scheme
+    -- config.colors = user_colors
+
+    -- window decorations
+    config.window_decorations = "RESIZE"
+    -- config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+    -- config.integrated_title_button_style = "MacOsNative"
 
     -- tab bar
-    config.enable_tab_bar = false
+    config.enable_tab_bar = true
     config.hide_tab_bar_if_only_one_tab = true
+    config.show_tab_index_in_tab_bar = false
+    config.tab_and_split_indices_are_zero_based = true
+    config.use_fancy_tab_bar = true
 end
 
 
