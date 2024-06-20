@@ -1,7 +1,5 @@
 local wezterm = require('wezterm')
-
 local module = {}
-
 
 local HYPER = 'SUPER|CTRL'
 -- config.leader = { key = 't', mods = 'SUPER|CTRL', timeout_milliseconds = 1000 }
@@ -9,10 +7,6 @@ local HYPER = 'SUPER|CTRL'
 
 local actions = {
     meta = {
-        -- close_tab = wezterm.action.Multiple {
-        --     wezterm.action.DisableDefaultAssignment,
-        --     wezterm.action.CloseCurrentTab
-        -- },
         reload_config = wezterm.action.Multiple {
             wezterm.action.DisableDefaultAssignment,
             wezterm.action.ReloadConfiguration
@@ -39,39 +33,20 @@ local actions = {
 
 
 local keys = {
-
     ---------------------------------------------------------------------------
-    -- meta
+    -- wezterm
     ---------------------------------------------------------------------------
-    -- { key = 'w',    mods = HYPER,           action = actions.meta.close_tab },
-    -- { key = 'w',    mods = LEADER,          action = actions.meta.close_tab },
     { key = 'r',    mods = HYPER,           action = actions.meta.reload_config },
     { key = 'f',    mods = 'SUPER',         action = actions.meta.toggle_fullscreen },
-
-    ---------------------------------------------------------------------------
-    -- basic usage
-    ---------------------------------------------------------------------------
     { key = 'q',    mods = 'SUPER',         action = wezterm.action.QuitApplication },
     { key = 'n',    mods = 'SUPER',         action = wezterm.action.SpawnWindow },
     { key = 't',    mods = 'SUPER',         action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
 
-    -- copy/paste
+    ---------------------------------------------------------------------------
+    -- clipboard
+    ---------------------------------------------------------------------------
     { key = 'c',    mods = 'SUPER',    action = wezterm.action.CopyTo "Clipboard" },
     { key = 'v',    mods = 'SUPER',    action = wezterm.action.PasteFrom "Clipboard" },
-
-    -- tabs
-    { key = 'Tab', mods = 'CTRL', action = wezterm.action.ActivateTabRelative(1) },
-    { key = 'Tab', mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
-    { key = '1', mods = 'SUPER', action = wezterm.action.ActivateTab(0) },
-    { key = '2', mods = 'SUPER', action = wezterm.action.ActivateTab(1) },
-    { key = '3', mods = 'SUPER', action = wezterm.action.ActivateTab(2) },
-    { key = '4', mods = 'SUPER', action = wezterm.action.ActivateTab(3) },
-    { key = '5', mods = 'SUPER', action = wezterm.action.ActivateTab(4) },
-    { key = '6', mods = 'SUPER', action = wezterm.action.ActivateTab(5) },
-    { key = '7', mods = 'SUPER', action = wezterm.action.ActivateTab(6) },
-    { key = '8', mods = 'SUPER', action = wezterm.action.ActivateTab(7) },
-    { key = '9', mods = 'SUPER', action = wezterm.action.ActivateTab(8) },
-    { key = '0', mods = 'SUPER', action = wezterm.action.ActivateTab(9) },
 
     ---------------------------------------------------------------------------
     -- multiplexing
@@ -97,6 +72,19 @@ local keys = {
 
     -- { key = 's',    mods = 'SUPER',         action = wezterm.action.QuickSelect },
 
+    -- tabs
+    { key = 'Tab', mods = 'CTRL', action = wezterm.action.ActivateTabRelative(1) },
+    { key = 'Tab', mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
+    { key = '1', mods = 'SUPER', action = wezterm.action.ActivateTab(0) },
+    { key = '2', mods = 'SUPER', action = wezterm.action.ActivateTab(1) },
+    { key = '3', mods = 'SUPER', action = wezterm.action.ActivateTab(2) },
+    { key = '4', mods = 'SUPER', action = wezterm.action.ActivateTab(3) },
+    { key = '5', mods = 'SUPER', action = wezterm.action.ActivateTab(4) },
+    { key = '6', mods = 'SUPER', action = wezterm.action.ActivateTab(5) },
+    { key = '7', mods = 'SUPER', action = wezterm.action.ActivateTab(6) },
+    { key = '8', mods = 'SUPER', action = wezterm.action.ActivateTab(7) },
+    { key = '9', mods = 'SUPER', action = wezterm.action.ActivateTab(8) },
+    { key = '0', mods = 'SUPER', action = wezterm.action.ActivateTab(9) },
 
     -- Closes the current pane. 
     -- If that was the last pane in the tab, closes the tab. If that was the last tab, closes that 
