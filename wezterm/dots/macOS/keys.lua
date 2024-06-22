@@ -76,6 +76,7 @@ local keys = {
     { key = 'q',    mods = 'SUPER',         action = wezterm.action.QuitApplication },
     { key = 'n',    mods = 'SUPER',         action = wezterm.action.SpawnWindow },
     { key = 't',    mods = 'SUPER',         action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
+    { key = 'm',    mods = 'SUPER',         action = wezterm.action.Hide },
 
     -- copy/paste
     { key = 'c',    mods = 'SUPER',    action = wezterm.action.CopyTo "Clipboard" },
