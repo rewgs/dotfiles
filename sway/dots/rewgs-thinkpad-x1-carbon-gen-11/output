@@ -1,0 +1,12 @@
+# Get the names of your outputs by running: swaymsg -t get_outputs
+
+set $builtin_display "eDP-1"
+set $external_display "DP-3"
+
+output $builtin_display resolution 2880x2160 position 0,0 scale 2
+output $external_display resolution 3840x2160 position -2880,0 scale 1.5
+
+# available modes: stretch, fill, fit, center, tile
+# output * bg "~/Pictures/wallpapers/dark 4k.jpg" fill
+# onedark "black"
+output * bg "#282C34" solid_color 

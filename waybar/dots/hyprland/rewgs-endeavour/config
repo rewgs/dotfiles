@@ -1,7 +1,7 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 24, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
 
     // Choose the order of the modules
@@ -12,10 +12,11 @@
         "hyprland/window"
     ],
     "modules-right": [
-        // "pulseaudio", 
-        // "network", 
-        // "cpu", 
-        // "memory", 
+        "pulseaudio", 
+        "network", 
+        "cpu", 
+        "memory", 
+        // "backlight"
         "tray",
         "clock"
     ],
@@ -25,12 +26,37 @@
         "disable-scroll": true,
         "all-outputs": false,
         "warp-on-scroll": false,
-        "format": "{name}",
+
+        // "format": "{name}",
+        // "format-icons": {},
+
+
+        // taken from wiki
+        "format": "{name}: {icon}",
+        "format-icons": {
+		    "1": "",
+		    "2": "",
+		    "3": "",
+		    "4": "",
+		    "5": "",
+            // stock
+		    // "active": "",
+		    // "default": ""
+
+            // custom
+		    "active": "",
+		    "default": ""
+	    },
+
+        // mostly default
         // "format": "{name}: {icon}",
         // "format-icons": {
+        //     "active": ""
+        //     "default": ""
+        //     // "special": ""
+        //     // "persistent": ""
         //     "urgent": "",
         //     "focused": "",
-        //     "default": ""
         // }
     },
     "tray": {

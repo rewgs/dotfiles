@@ -12,13 +12,11 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: "FiraCode NF";
-    font-size: 14px;
+    font-size: 12px;
 }
 
 window#waybar {
-    /* background-color: rgba(43, 48, 59, 0.5); */
     background-color: #282c34;
-    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     border-bottom: #282c34;
     color: #ffffff;
     transition-property: background-color;
@@ -131,7 +129,8 @@ label:focus {
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: #3e4452;
+    /* background-color: #9b59b6; */
 }
 
 #disk {

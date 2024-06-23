@@ -39,8 +39,9 @@ local keys = {
     -- clipboard
     ---------------------------------------------------------------------------
     -- BUG: no matter what key(s)/mod(s) I use, I just can't get this to work...
-    { key = 'c',    mods = SHYPER, action = wezterm.action.CopyTo "Clipboard" },
-    { key = 'v',    mods = SHYPER, action = wezterm.action.PasteFrom "Clipboard" },
+    { key = 'c',    mods = 'CTRL|SHIFT', action = wezterm.action.CopyTo "ClipboardAndPrimarySelection" },
+    { key = 'v',    mods = 'CTRL|SHIFT', action = wezterm.action.PasteFrom "Clipboard" },
+    { key = 'v',    mods = 'CTRL|SHIFT', action = wezterm.action.PasteFrom "PrimarySelection" },
 
     ---------------------------------------------------------------------------
     -- multiplexing
@@ -49,10 +50,17 @@ local keys = {
     { key = '|',    mods = SHYPER,        action = wezterm.action.SplitHorizontal({ domain = 'CurrentPaneDomain' }) },
     { key = '_',    mods = SHYPER,        action = wezterm.action.SplitVertical({ domain = 'CurrentPaneDomain' }) },
 
+    -- panes
     { key = 'h',    mods = HYPER,              action = wezterm.action.ActivatePaneDirection('Left') },
     { key = 'j',    mods = HYPER,              action = wezterm.action.ActivatePaneDirection('Down') },
     { key = 'k',    mods = HYPER,              action = wezterm.action.ActivatePaneDirection('Up') },
     { key = 'l',    mods = HYPER,              action = wezterm.action.ActivatePaneDirection('Right') },
+
+    -- resize panes
+    { key = 'h',    mods = SHYPER,   action = wezterm.action.AdjustPaneSize { 'Left', 10} },
+    { key = 'j',    mods = SHYPER,   action = wezterm.action.AdjustPaneSize { 'Down', 10} },
+    { key = 'k',    mods = SHYPER,   action = wezterm.action.AdjustPaneSize { 'Up', 10} },
+    { key = 'l',    mods = SHYPER,   action = wezterm.action.AdjustPaneSize { 'Right', 10} },
 
     -- tabs
     { key = 'Tab', mods = 'CTRL', action = wezterm.action.ActivateTabRelative(1) },
