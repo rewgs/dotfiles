@@ -10,9 +10,9 @@
 /hammerspoon/dots/Spoons/*.spoon
 
 # nvim
+lazy-lock.json
 /nvim/dots/packer/plugin/
 /nvim/dots/plugin/
-/nvim/dots/lazy/lazy-lock.json
 /nvim/plugin/
 
 # obsidian
