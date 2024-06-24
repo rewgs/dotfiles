@@ -1,14 +1,3 @@
-/* :root { */
-/*     --onedark-black: #282c34; */
-/*     --onedark-blue: #61afef; */
-/*     --onedark-yellow: #e5c07b; */
-/*     --onedark-red: #e06c75; */
-/*     --onedark-white: #aab2bf; */
-/*     --onedark-green: #98c379; */
-/*     --onedark-visual-grey: #3e4452; */
-/*     --onedark-comment-grey: #5c6370; */
-/* } */
-
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: "FiraCode NF";
@@ -16,16 +5,14 @@
 }
 
 window#waybar {
-    /* onedark "black" */
+    /* black */
     background-color: #000000; 
 
-    /* black */
-    /* background-color: #282c34;  */
-
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-    border-bottom: #282c34;
+    border-bottom: #000000;
 
-    color: #ffffff;
+    /* color: #ffffff; */
+    color: #ABB2BF;
 
     transition-property: background-color;
     transition-duration: .5s;
@@ -47,27 +34,24 @@ button:hover {
 
 #workspaces button {
     padding: 0 5px;
-    background-color: transparent;
+    background-color: #000000;
     color: #ffffff;
 }
 
 #workspaces button:hover {
-    /* background-color: #3e4452; */
-    background-color: transparent;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 /* #workspaces button.focused { */
 #workspaces button.active {
-    /* background-color: #64727D; */
-    /* background-color: #3e4452; */
     background-color: #000000;
-    color: #ffffff;
+    color: #79B3E2;
     box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.urgent {
-    /* background-color: #eb4d4b; */
-    background-color: #e06c75;
+    background-color: #D77F87;
 }
 
 #mode {
@@ -111,10 +95,7 @@ button:hover {
     /* color: #ffffff; */
 
     background-color: #000000;
-    /* visual grey */
-    /* color: #3e4452;  */
-    /* comment grey */
-    color: #5c6370;
+    color: #B2B7C1;
 }
 
 @keyframes blink {
@@ -144,13 +125,13 @@ label:focus {
     /* color: #000000; */
 
     background-color: #000000;
-    color: #98c379;
+    color: #81A273;
 }
 
 #memory {
     /* background-color: #9b59b6; */
     background-color: #000000;
-    color: #9b59b6;
+    color: #C48AD6;
 }
 
 #disk {
@@ -169,7 +150,7 @@ label:focus {
     /* background-color: #61afef; */
     /* color: #282c34; */
     background-color: #000000;
-    color: #61afef;
+    color: #79B3E2;
 }
 
 #network.disconnected {
@@ -185,7 +166,7 @@ label:focus {
     /* color: #000000; */
 
     background-color: #000000;
-    color: #e5c07b;
+    color: #DCC18D;
 }
 
 #pulseaudio.muted {

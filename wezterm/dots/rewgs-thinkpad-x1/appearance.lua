@@ -1,12 +1,16 @@
 local wezterm = require('wezterm')
 local module = {}
 
-local stock_scheme = "OneHalfDark"
+-- local stock_scheme = "OneHalfDark"
+local stock_scheme = "Nord (Gogh)"
 -- local stock_scheme = "Gruvbox (Gogh)" -- light
 -- local stock_scheme = "Gruvbox Dark (Gogh)"
 
 -- local user_scheme = require('common.colors.onedark')
-local user_scheme = require('common.colors.onedark_soft_oled')
+-- local user_scheme = require('common.colors.onedark_dark')
+-- local user_scheme = require('common.colors.onedark_soft_oled')
+-- local user_scheme = require('common.colors.rewgs_onedark_pale')
+local user_scheme = require('common.colors.rewgs_onedark_pale_oled')
 local user_colors = {
     foreground      = user_scheme.white,
     background      = user_scheme.black,
