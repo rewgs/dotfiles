@@ -5,7 +5,8 @@ local stock_scheme = "OneHalfDark"
 -- local stock_scheme = "Gruvbox (Gogh)" -- light
 -- local stock_scheme = "Gruvbox Dark (Gogh)"
 
-local user_scheme = require('common.colors.onedark')
+-- local user_scheme = require('common.colors.onedark')
+local user_scheme = require('common.colors.onedark_soft_oled')
 local user_colors = {
     foreground      = user_scheme.white,
     background      = user_scheme.black,
@@ -62,8 +63,8 @@ function module.apply_to_config(config)
     config.front_end = 'OpenGL'
 
     -- colors
-    config.color_scheme = stock_scheme
-    -- config.colors = user_colors
+    -- config.color_scheme = stock_scheme
+    config.colors = user_colors
 
     -- tab bar
     config.enable_tab_bar = true
