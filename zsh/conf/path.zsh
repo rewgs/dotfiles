@@ -100,7 +100,9 @@ if [[ $(uname) == "Darwin" ]]; then
     export PATH="$PATH:/opt/homebrew/bin"
     export PATH="$PATH:/opt/homebrew/sbin"
     export PATH="$PATH:/opt/homebrew/Cellar"
-elif [[ "$(uname)" == "Linux" ]] && [[ "$(uname -i)" == "x86_64" ]] && [[ "$(whoami)" != "root" ]]; then
+# BUG: rewgs-thinkpad-x1 `uname -i` is returning `unknown`. Probably best to do NOT arm, instead of IS x86_64?
+# elif [[ "$(uname)" == "Linux" ]] && [[ "$(uname -i)" == "x86_64" ]] && [[ "$(whoami)" != "root" ]]; then
+elif [[ "$(uname)" == "Linux" ]] && [[ "$(whoami)" != "root" ]]; then
     if [[ -d "/home/linuxbrew" ]]; then
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     fi
