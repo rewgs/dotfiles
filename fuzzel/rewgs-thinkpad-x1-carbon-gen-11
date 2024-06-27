@@ -1,4 +1,4 @@
-font=FiraCode Nerd Font:size=14
+font=FiraCode Nerd Font:size=11
 dpi-aware=no
 fuzzy=yes
 prompt=""
@@ -15,8 +15,6 @@ inner-pad=10
 # border=61afefff
 # match=abb2bfff
 # selection=61afefff
-# selection=5c6370ff
-# selection=d19a66ff # orange
 # selection-match=ffffffff
 # selection-text=282c34ff
 # text=efefefff
