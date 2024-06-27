@@ -1,3 +1,4 @@
+-- This is the same colors as my wezterm rewgs_onedark_pale_oled scheme
 return {
     "olimorris/onedarkpro.nvim",
     priority = 1000, -- ensures that this plugin is loaded before any others
@@ -6,7 +7,24 @@ return {
         -- As of now, this is simply the default configuration.
         require("onedarkpro").setup({
           colors = {
-                onedark = { bg = "#000000" } -- black
+                onedark = {
+                    -- bg = "#000000", -- black for oled
+                    bg = "#27282c", -- original "black" for this colorscheme
+                    fg = "#abb2bf",
+                    red = "#9a555b", -- dark
+                    orange = "#a58b59",
+                    yellow = "#af9564",
+                    green = "#789266",
+                    cyan = "#52787d",
+                    blue = "#4f7ea4",
+                    purple = "#8d5a9c",
+                    white = "#abb2bf",
+                    black = "#000000", -- black for oled
+                    -- black = "#27282c", -- original "black" for this colorscheme
+                    gray = "#89909d",
+                    highlight = "#e2be7d", -- unchanged, not sure what this is
+                    comment = "#8b80ba",
+                },
             }, -- Override default colors or create your own
           highlights = {}, -- Override default highlight groups or create your own
           styles = { -- For example, to apply bold and italic, use "bold,italic"

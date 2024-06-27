@@ -1,16 +1,19 @@
-local wezterm = require('wezterm')
+-- local wezterm = require('wezterm')
 local module = {}
 
 -- local stock_scheme = "OneHalfDark"
-local stock_scheme = "Nord (Gogh)"
+-- local stock_scheme = "Nord (Gogh)"
 -- local stock_scheme = "Gruvbox (Gogh)" -- light
--- local stock_scheme = "Gruvbox Dark (Gogh)"
+local stock_scheme = "Gruvbox Dark (Gogh)"
 
+local user_scheme = require('common.colors.rewgs_oled')
 -- local user_scheme = require('common.colors.onedark')
 -- local user_scheme = require('common.colors.onedark_dark')
 -- local user_scheme = require('common.colors.onedark_soft_oled')
 -- local user_scheme = require('common.colors.rewgs_onedark_pale')
-local user_scheme = require('common.colors.rewgs_onedark_pale_oled')
+-- local user_scheme = require('common.colors.rewgs_onedark_pale_oled')
+-- local user_scheme = require('common.colors.rewgs_onedark_pale_oled_darker')
+
 local user_colors = {
     foreground      = user_scheme.white,
     background      = user_scheme.black,
@@ -22,7 +25,7 @@ local user_colors = {
     scrollbar_thumb = user_scheme.black,
     split           = user_scheme.black,
 
-    ansi = {
+    ansi = { -- i.e. "darks"
         -- 'black',
         -- 'maroon',
         -- 'green',
@@ -35,11 +38,11 @@ local user_colors = {
         user_scheme.black,
         user_scheme.dark_red,
         user_scheme.green,
-        user_scheme.light_yellow,
+        user_scheme.dark_yellow,
         user_scheme.blue,
         user_scheme.magenta,
         user_scheme.cyan,
-        user_scheme.white,
+        user_scheme.comment_grey,
     },
     brights = {
         -- 'grey',
@@ -54,11 +57,11 @@ local user_colors = {
         user_scheme.gutter_grey,
         user_scheme.light_red,
         user_scheme.green,
-        user_scheme.dark_yellow,
+        user_scheme.light_yellow,
         user_scheme.blue,
         user_scheme.light_red,
         user_scheme.blue,
-        user_scheme.comment_grey,
+        user_scheme.white,
     },
 }
 
@@ -67,8 +70,8 @@ function module.apply_to_config(config)
     config.front_end = 'OpenGL'
 
     -- colors
-    -- config.color_scheme = stock_scheme
-    config.colors = user_colors
+    config.color_scheme = stock_scheme
+    -- config.colors = user_colors
 
     -- tab bar
     config.enable_tab_bar = true

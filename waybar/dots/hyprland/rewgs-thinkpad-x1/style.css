@@ -1,53 +1,121 @@
+/* gruvbox colors reference: */
+/* https://github.com/morhetz/gruvbox-contrib/blob/master/color.table */
+
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: "FiraCode NF";
-    font-size: 12px;
+    font-size: 10px;
 }
 
 window#waybar {
     /* black */
-    background-color: #000000; 
+    /* background-color: #000000;  */
+
+    /* gruvbox dark - dark0_hard */
+    /* background-color: #1d2021; */
+
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
 
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     border-bottom: #000000;
 
     /* color: #ffffff; */
-    color: #ABB2BF;
+    /* color: #ABB2BF; */
+
+    /* gruvbox dark - light0_hard */
+    color: #f9f5d7;
 
     transition-property: background-color;
     transition-duration: .5s;
 }
 
 button {
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
+
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
+
     /* Avoid rounded borders under each button name */
     border: none;
+
     border-radius: 0;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+
+    /* line under button */
+    /* white */
+    /* box-shadow: inset 0 -3px #ffffff; */
+
+    /* gruvbox dark - light0_hard */
+    /* box-shadow: inset 0 -3px #f9f5d7; */
+
+    /* gruvbox dark - light0 */
+    box-shadow: inset 0 -3px #fbf1c7;
 }
 
 #workspaces button {
+    /* black */
+    /* background-color: #000000; */
+
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
+
+    /* white */
+    /* color: #ffffff; */
+
+    /* gruvbox dark - light0_hard */
+    /* color: #f9f5d7; */
+
+    /* gruvboxdark - bright blue */
+    color: #83a598;
+
     padding: 0 5px;
-    background-color: #000000;
-    color: #ffffff;
 }
 
 #workspaces button:hover {
-    background-color: #000000;
-    color: #ffffff;
+    /* black */
+    /* background-color: #000000; */
+
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
+    
+    /* white */
+    /* color: #ffffff; */
+
+    /* gruvbox dark - light0_hard */
+    /* color: #f9f5d7; */
+
+    /* gruvbox dark - light0 */
+    color: #fbf1c7;
 }
 
 /* #workspaces button.focused { */
 #workspaces button.active {
-    background-color: #000000;
-    color: #79B3E2;
-    box-shadow: inset 0 -3px #ffffff;
+    /* black */
+    /* background-color: #000000; */
+
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
+
+    /* white */
+    /* box-shadow: inset 0 -3px #ffffff; */
+
+    /* onedark blue */
+    /* color: #79B3E2; */
+
+    /* gruvboxdark - bright blue */
+    /* color: #83a598; */
+
+    /* gruvbox dark - light0_hard */
+    /* color: #f9f5d7; */
+
+    /* gruvbox dark - light0 */
+    color: #fbf1c7;
 }
 
 #workspaces button.urgent {
@@ -88,14 +156,20 @@ button:hover {
 }
 
 #clock {
-/*     --onedark-visual-grey: #3e4452; */
-/*     --onedark-comment-grey: #5c6370; */
+    /* black */
+    /* background-color: #000000; */
 
-    /* background-color: #282c34; */
-    /* color: #ffffff; */
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
 
-    background-color: #000000;
-    color: #B2B7C1;
+    /* onedark grey */
+    /* color: #B2B7C1; */
+
+    /* gruvbox dark - light0_hard */
+    /* color: #f9f5d7; */
+
+    /* gruvboxdark - bright blue */
+    color: #83a598;
 }
 
 @keyframes blink {
@@ -121,17 +195,28 @@ label:focus {
 }
 
 #cpu {
-    /* background-color: #98c379; */
-    /* color: #000000; */
+    /* black */
+    /* background-color: #000000; */
 
-    background-color: #000000;
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
+
+    /* onedark green */
     color: #81A273;
 }
 
 #memory {
-    /* background-color: #9b59b6; */
-    background-color: #000000;
-    color: #C48AD6;
+    /* black */
+    /* background-color: #000000; */
+
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
+
+    /* onedark magenta */
+    /* color: #C48AD6; */
+
+    /* gruvbox dark - bright purple */
+    color: #d3869b;
 }
 
 #disk {
@@ -147,10 +232,14 @@ label:focus {
 }
 
 #network {
-    /* background-color: #61afef; */
-    /* color: #282c34; */
-    background-color: #000000;
-    color: #79B3E2;
+    /* black */
+    /* background-color: #000000; */
+
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
+
+    /* gruvbox dark - bright_blue; */
+    color: #83a598;
 }
 
 #network.disconnected {
@@ -162,11 +251,17 @@ label:focus {
 }
 
 #pulseaudio {
-    /* background-color: #e5c07b; */
-    /* color: #000000; */
+    /* black */
+    /* background-color: #000000; */
 
-    background-color: #000000;
-    color: #DCC18D;
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
+
+    /* gruvbox dark - bright_orange */
+    /* color: #fe8019; */
+
+    /* gruvbox dark - neutral_orange */
+    color: #d65d0e;
 }
 
 #pulseaudio.muted {
@@ -195,8 +290,11 @@ label:focus {
 }
 
 #tray {
-    /* background-color: #282c34; */
-    background-color: #000000;
+    /* black */
+    /* background-color: #000000; */
+
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
 }
 
 #tray > .passive {

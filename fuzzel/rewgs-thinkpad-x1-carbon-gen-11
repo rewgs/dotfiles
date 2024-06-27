@@ -11,24 +11,24 @@ inner-pad=10
 
 [colors]
 # onedark
-background=282c34ff
-border=61afefff
-match=abb2bfff
-selection=61afefff
+# background=282c34ff
+# border=61afefff
+# match=abb2bfff
+# selection=61afefff
 # selection=5c6370ff
 # selection=d19a66ff # orange
-selection-match=ffffffff
-selection-text=282c34ff
-text=efefefff
+# selection-match=ffffffff
+# selection-text=282c34ff
+# text=efefefff
 
 # gruvbox
-# background=282828ff
-# border=458588ff
-# match=000000ff
-# selection=458588ff # background color of selected entry
-# selection-match=ffffffff
-# selection-text=282828ff
-# text=efefefff
+background=282828ff
+border=83a598aa
+match=000000ff
+selection=83a598aa # background color of selected entry
+selection-match=fbf1c7ff
+selection-text=282828ff
+text=fbf1c7ff
 
 [border]
 width=3
