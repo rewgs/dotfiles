@@ -13,3 +13,6 @@ if [[ $(uname) == "Darwin" ]] && [[ $(arch) == "arm64" ]]; then
     autoload -Uz compinit
     compinit
 fi
+
+# configures tailscale autocomplete in zsh
+autoload -U compinit; compinit
