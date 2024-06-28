@@ -8,16 +8,19 @@ local _ = require('common.helpers') -- requires only the helper functions; this 
 local common_config = require('common.init') -- requires all other common files
 local linux_config = require('linux.init')
 local macOS_config = require('macOS.init')
+local windows_config = require('windows.init')
 
 
 -- common configs
 common_config.apply_to_config(config)
 
 -- os-specific configs
-if _.is_linux() then linux_config.apply_to_config(config)
-elseif _.is_macOS() then macOS_config.apply_to_config(config)
--- TODO:
--- elseif _.is_windows() then
+if _.is_linux() then
+    linux_config.apply_to_config(config)
+elseif _.is_macOS() then
+    macOS_config.apply_to_config(config)
+elseif _.is_windows() then
+    windows_config.apply_to_config(config)
 else
 -- TODO: panic/throw error that OS isn't (yet) supported
 end
