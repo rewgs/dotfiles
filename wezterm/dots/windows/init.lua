@@ -4,6 +4,9 @@ local font = require('windows.font')
 local keys = require('windows.keys')
 
 function module.apply_to_config(config)
+    config.default_prog = {
+        'C:\\Program Files\\PowerShell\\7\\pwsh.exe'
+    }
     config.window_decorations = 'RESIZE'
 
     font.apply_to_config(config)
