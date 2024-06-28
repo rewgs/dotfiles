@@ -7,7 +7,7 @@ function module.apply_to_config(config)
     config.default_prog = {
         'C:\\Program Files\\PowerShell\\7\\pwsh.exe'
     }
-    config.window_decorations = 'RESIZE'
+    config.window_decorations = 'TITLE|RESIZE'
 
     font.apply_to_config(config)
     keys.apply_to_config(config)
