@@ -1,1 +1,7 @@
 set selection-clipboard clipboard
+
+# opens in dark mode by default
+set recolor true
+
+# inverts colors (dark/light mode)
+map <C-i> recolor 
