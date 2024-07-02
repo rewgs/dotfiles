@@ -38,3 +38,8 @@ vim.api.nvim_set_keymap('n', '<leader>n',       ":tabnext<CR>",                 
 vim.api.nvim_set_keymap('n', '<leader><Tab>',   ":tabnext<CR>",                 { desc = "next tab" })
 vim.api.nvim_set_keymap('n', '<leader>p',       ":tabprevious<CR>",             { desc = "next tab" })
 vim.api.nvim_set_keymap('n', '<leader><S-Tab>', ":tabprevious<CR>",             { desc = "next tab" })
+
+
+-- Makes it so that up and down movement works more intuitively when navigating wrapped lines
+vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true })
+vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true })
