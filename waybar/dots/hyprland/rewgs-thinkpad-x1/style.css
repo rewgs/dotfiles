@@ -192,6 +192,15 @@ button:hover {
     }
 }
 
+#battery {
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
+
+    /* gruvbox dark - light0 */
+    color: #fbf1c7;
+
+}
+
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
@@ -233,15 +242,25 @@ label:focus {
 }
 
 #disk {
-    /* background-color: #964B00; */
-    background-color: #000000;
-    color: #964B00;
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
+
+    /* gruvbox dark - light0_hard */
+    color: #f9f5d7;
+
+    /* og */
+    /* color: #964B00; */
 }
 
 #backlight {
-    /* background-color: #90b1b1; */
-    background-color: #000000;
-    color: #90b1b1;
+    /* gruvbox dark - dark0 */
+    background-color: #282828;
+
+    /* gruvbox dark - light0_hard */
+    color: #f9f5d7;
+
+    /* og */
+    /* color: #90b1b1; */
 }
 
 #network {

@@ -16,9 +16,11 @@
         "network", 
         "cpu", 
         "memory", 
-        // "backlight"
+        // "disk"
+        "backlight",
+        "battery",
         "tray",
-        "clock"
+        "clock",
     ],
 
     // Modules configuration
@@ -35,6 +37,7 @@
         "format": "{name}: {icon}",
         // "format": {icon}",
         "format-icons": {
+		     // "0": "",
 		     "1": "",
 		     "2": "",
 		     "3": "",
@@ -100,5 +103,7 @@
         },
         "on-click": "pavucontrol"
     },
+    // "battery": {
+    // }
 }
 
