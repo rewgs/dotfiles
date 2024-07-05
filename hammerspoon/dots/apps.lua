@@ -1,19 +1,17 @@
 require('mod-keys')
 
 local HYPER = mod.hyper
-local SHYPER = mod.sHyper
+-- local SHYPER = mod.sHyper
 
-TERMINAL = 'iTerm'
-BROWSER = 'Google Chrome'
+local TERMINAL = 'wezterm'
+local BROWSER = 'Google Chrome'
+local ___ = 'return' -- makes 
 
 local bindings = {
-    { mod = HYPER,  key = 'v',      app = 'Visual Studio Code' },
-
-    -- this is "Show Desktop" instead
-    -- { mod = HYPER,  key = 'd',      app = 'Discord' },
-    { mod = HYPER,  key = 'f',      app = 'Finder' },
-    { mod = HYPER,  key = 'return', app = TERMINAL },
-    { mod = SHYPER, key = 'e',      app = 'Bartender 4' },
+    { mod = HYPER,  key = ___, app = TERMINAL   },
+    { mod = HYPER,  key = 'e', app = 'Finder'   },
+    { mod = HYPER,  key = 'i', app = BROWSER    },
+    { mod = HYPER,  key = 'o', app = 'Obsidian' },
 }
 
 local function bind_keys(kbs)

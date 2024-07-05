@@ -1,6 +1,6 @@
 require('mod-keys')
--- require('reload')
--- require('apps')
+require('reload')
+require('apps')
 -- require('window-management') -- now using Phoenix for this
 require('spaces')
 -- require('window-switcher')
