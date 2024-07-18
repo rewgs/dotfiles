@@ -5,8 +5,8 @@
 #   searching default locations.
 
 # bin repo
-if [[ -d "$HOME/bin" ]] || [[ -L "$HOME/bin" ]]; then
-    export REWGS_BIN="$HOME/bin"
+if [[ -d "$HOME/bin/src" ]] || [[ -L "$HOME/bin/src" ]]; then
+    export REWGS_BIN="$HOME/bin/src"
     # export PATH="$REWGS_BIN:$PATH"
     # for dir in "$REWGS_BIN/*/"; do
     #     PATH+=":$dir"
