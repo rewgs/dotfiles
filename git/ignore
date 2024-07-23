@@ -4,6 +4,9 @@
 .obsidian
 .vscode
 
+# nvim
+lazy-lock.json
+
 # js
 node_modules
 
