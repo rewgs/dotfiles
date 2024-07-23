@@ -32,7 +32,6 @@
         // "format": "{name}",
         // "format-icons": {},
 
-
         // taken from wiki
         "format": "{name}: {icon}",
         // "format": {icon}",
