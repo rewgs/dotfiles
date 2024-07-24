@@ -163,6 +163,13 @@ local keys = {
     { key = 'f',    mods = 'ALT',         action = actions.meta.toggle_fullscreen },
 
     ---------------------------------------------------------------------------
+    -- clipboard
+    ---------------------------------------------------------------------------
+    { key = 'c',    mods = 'CTRL|SHIFT',    action = wezterm.action.CopyTo "ClipboardAndPrimarySelection" },
+    { key = 'v',    mods = 'CTRL|SHIFT',    action = wezterm.action.PasteFrom "PrimarySelection" },
+    -- { key = 'v',    mods = 'CTRL|SHIFT',    action = wezterm.action.PasteFrom "Clipboard" },
+
+    ---------------------------------------------------------------------------
     -- tmux
     ---------------------------------------------------------------------------
     -- pane - resize
