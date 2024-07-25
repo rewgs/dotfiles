@@ -21,7 +21,6 @@ return {
             ensure_installed = {
                 "cssls",
                 "html",
-                "golangci-lint",
                 "gopls",
                 "lua_ls",
                 "pyright",
