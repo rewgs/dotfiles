@@ -1,9 +1,3 @@
-[includeIf "gitdir:$HOME/Work/SNS/development/"]
-  path = $HOME/.gitconfig-sns-gitlab
-
-[includeIf "gitdir:$HOME/Personal/code/"]
-  path = $HOME/.gitconfig-personal-github
-
 [init]
 	defaultBranch = main
 
@@ -18,11 +12,16 @@
     local = true
     httpd = lighttpd
     port = 1234
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [push]
 	autoSetpRemote = true
 	autoSetupRemote = true
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
