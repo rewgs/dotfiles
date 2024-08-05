@@ -7,6 +7,7 @@ AUR_PACKAGES=(
     "slack"
     # "slack-desktop" # forget which one is right...
     "uhk-agent-appimage"
+    "ungoogled-chromium"
     "visual-studio-code-bin"
     "xdg-utils" # after this, run xdg-settings set default-web-browser google-chrome.desktop
 )
