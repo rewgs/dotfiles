@@ -86,6 +86,7 @@ function homebrew_installations () {
         "blackhole-2ch"
         "blackhole-16ch"
         # "dozer" # FOSS menu bar organizer a la Bartender: https://github.com/Mortennn/Dozer
+        "eloston-chromium --no-quarantine" # de-Googled Chromium
         "firefox"
         "font-fira-code-nerd-font"
         "google-chrome"
