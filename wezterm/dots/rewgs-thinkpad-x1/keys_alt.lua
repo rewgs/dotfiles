@@ -71,6 +71,8 @@ local keys = {
     { key = '9', mods = 'ALT', action = wezterm.action.ActivateTab(8) },
     { key = '0', mods = 'ALT', action = wezterm.action.ActivateTab(9) },
 
+    { key = 'r', mods = 'ALT', action = actions.tab.rename },
+
     -- Closes the current pane. 
     -- If that was the last pane in the tab, closes the tab. If that was the last tab, closes that 
     -- window. If that was the last window, wezterm terminates. The act of closing a pane shuts down 
