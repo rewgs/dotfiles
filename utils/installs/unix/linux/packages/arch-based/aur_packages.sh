@@ -6,6 +6,7 @@ AUR_PACKAGES=(
     "powershell-bin"
     "slack"
     # "slack-desktop" # forget which one is right...
+    "sublime-text-4"
     "uhk-agent-appimage"
     "ungoogled-chromium"
     "visual-studio-code-bin"
