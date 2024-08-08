@@ -1,3 +1,5 @@
+Using [kanshi](https://git.sr.ht/~emersion/kanshi) to hot-reload monitors
+
 # TODO
 - Win+1 should:
     - switch to workspace 1 when focused window is on built-in display
