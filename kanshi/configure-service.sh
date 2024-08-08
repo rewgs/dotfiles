@@ -1,5 +1,8 @@
 #!/bin/bash
 #
+# NOTE: This is not being used. `exec-once` via hyprland works fine now.
+# However, I'm keeping this around just in case I ever need to refer to it again.
+#
 # Using kanshi with hyprland via `exec-once = kanshi` does not work as expected -- 
 # I can't hot-reload display configs (i.e. disable the laptop display when plugging 
 # into my external, and vice-versa), which is kind of the whole point.
