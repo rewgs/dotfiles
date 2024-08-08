@@ -2,6 +2,7 @@
 
 AUR_PACKAGES=(
     "cbonsai"
+    "kanshi" # used for display configs in wayland window managers/desktop environments
     "kmonad-bin"
     "powershell-bin"
     "slack"
