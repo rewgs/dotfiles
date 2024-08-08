@@ -29,12 +29,11 @@
         "all-outputs": false,
         "warp-on-scroll": false,
 
-        // "format": "{name}",
-        // "format-icons": {},
+        "format": "{name}",
 
         // taken from wiki
-        "format": "{name}: {icon}",
         // "format": {icon}",
+        // "format": "{name}: {icon}",
         "format-icons": {
 		     // "0": "",
 		     "1": "",
