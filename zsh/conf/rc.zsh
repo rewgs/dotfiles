@@ -2,7 +2,9 @@
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # configures the `fuck` command
-eval $(thefuck --alias)
+if command -v thefuck &> /dev/null; then
+    eval $(thefuck --alias)
+fi
 
 # scales the display to 2x
 # this is only for Parallels on M1 Mac
@@ -15,4 +17,6 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 # nvm
-nvm use node > /dev/null
+if command -v nvm &> /dev/null; then
+    nvm use node > /dev/null
+fi

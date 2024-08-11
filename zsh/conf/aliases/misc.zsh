@@ -5,6 +5,9 @@ alias n="nano"  # nano
 
 alias f="fzf"
 
+# alias fetch="neofetch"
+alias fetch="fastfetch"
+
 # sed
 if [[ $(uname) == "Darwin" ]]; then
     alias sed="gsed"
