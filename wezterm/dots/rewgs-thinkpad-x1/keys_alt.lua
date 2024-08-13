@@ -1,4 +1,7 @@
 local wezterm = require('wezterm')
+-- FIXME: Trying to use this: https://github.com/danielcopper/wezterm-session-manager
+-- Can't get this to see the path correctly...
+-- local session_manager = require(os.getenv("HOME") .. "/" .. "src/" .. "wezterm-session-manager/" .. "session-manager")
 local module = {}
 
 local actions = {
