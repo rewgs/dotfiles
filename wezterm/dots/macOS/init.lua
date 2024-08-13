@@ -5,7 +5,10 @@ local keys = require('macOS.keys')
 -- local keys = require('macOS.tmux_keys')
 
 function module.apply_to_config(config)
-    config.window_decorations = 'RESIZE'
+    -- The latter vastly helps overall system graphics performance.
+    -- Source: https://github.com/wez/wezterm/issues/2669
+    config.window_decorations = 'RESIZE|MACOS_FORCE_DISABLE_SHADOW'
+
     config.native_macos_fullscreen_mode = false
     config.quit_when_all_windows_are_closed = false
 
