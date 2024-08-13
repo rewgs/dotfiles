@@ -1,4 +1,5 @@
-# -n turns off reverse name resolution, since you just want IP addresses. On a local LAN this is probably the slowest step, too, so you get a good speed boost.
+# -n turns off reverse name resolution, since you just want IP addresses. 
+# On a local LAN this is probably the slowest step, too, so you get a good speed boost.
 # -sn means "Don't do a port scan." It's the same as the older, deprecated -sP with the mnemonic "ping scan."
 # -oG - sends "grepable" output to stdout, which gets piped to awk.
 # /Up$/ selects only lines which end with "Up", representing hosts that are online.
