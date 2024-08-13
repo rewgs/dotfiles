@@ -16,4 +16,6 @@
 export EDITOR='nvim'
 export BROWSER='google-chrome-stable'
 
-. "$HOME/.cargo/env"
+if [[ -d "$HOME/.cargo" ]]; then
+    . "$HOME/.cargo/env"
+fi
