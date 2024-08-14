@@ -12,8 +12,10 @@ fi
 #     sway output "Virtual-1" scale 2
 # fi
 
-if [[ $(uname) == "Darwin" ]]; then
-    source /Users/rewgs/.config/broot/launcher/bash/br
+if command -v broot &> /dev/null; then
+    if [[ $(uname) == "Darwin" ]]; then
+        source /Users/rewgs/.config/broot/launcher/bash/br
+    fi
 fi
 
 # nvm
