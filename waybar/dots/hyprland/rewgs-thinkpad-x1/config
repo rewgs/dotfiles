@@ -1,8 +1,8 @@
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
-    "spacing": 4, // Gaps between modules (4px)
+    "layer": "top",     // Waybar at top layer
+    "position": "top",  // Waybar position (top|bottom|left|right)
+    "height": 24,       // Waybar height (to be removed for auto height)
+    "spacing": 4,       // Gaps between modules (4px)
 
     // Choose the order of the modules
     "modules-left": [
@@ -24,21 +24,22 @@
     ],
 
     // Modules configuration
+    // "hyprland/window": {
+    // }
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
         "warp-on-scroll": false,
 
-        "format": "{name}",
-
-        // taken from wiki
+        // "format": "{name}",
         // "format": {icon}",
-        // "format": "{name}: {icon}",
+        "format": "{name}: {icon}",
         "format-icons": {
 		     // "0": "",
 		     "1": "",
-		     "2": "",
-		     "3": "",
+             "2": " ",
+		     "3": " ",
+		     // "3": "",
 		     "4": "",
 		     "5": "",
              "6": "",
@@ -46,16 +47,6 @@
              "8": "",
              "9": "",
             "10": "",
-		    "11": "",
-		    "12": "",
-		    "13": "",
-		    "14": "",
-		    "15": "",
-            "16": "",
-            "17": "",
-            "18": "",
-            "19": "",
-            "20": "",
 	    },
     },
     "tray": {
