@@ -16,7 +16,7 @@
         "network", 
         "cpu", 
         "memory", 
-        // "disk"
+        "disk",
         "backlight",
         "battery",
         "tray",
@@ -57,12 +57,19 @@
         "timezone": "America/Los_Angeles",
         "format": "{:%Y-%m-%d %I:%M %p}"
     },
+    "disk": {
+	    "interval": 30,
+	    // 1434.25 GB out of 2000.00 GB available. Alternatively 1.4TiB out of 1.9TiB available.
+	    // "format": "{specific_free:0.2f} GB out of {specific_total:0.2f} GB available. Alternatively {free} out of {total} available",
+	    "format": "disk: {specific_free:0.0f}GB/{specific_total:0.0f}GB",
+	    "unit": "GB"
+    },
     "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
+        "format": "cpu {usage}% ",
+        "tooltip": true
     },
     "memory": {
-        "format": "{}% "
+        "format": "ram {}% "
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
