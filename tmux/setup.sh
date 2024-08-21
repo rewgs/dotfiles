@@ -33,25 +33,19 @@ setup::tmux() {
 
 
 setup::tpm() {
-    local src
-    local dst
+    local src="$HOME/src/tpm"
+    local dst="$HOME/.tmux/plugins/tpm"
 
-    src="$(realpath "${HOME}/src/tpm")"
-    dst="${HOME}/.tmux/plugins/tpm"
-
-    # echo "Src: ${src}"
-    # echo "Dst: ${dst}"
-
-    if [[ ! -d "$(dirname "${src}")" ]]; then
-        mkdir -p "$(dirname "${src}")"
+    if [[ ! -d "$(dirname "$src")" ]]; then
+        mkdir -p "$(dirname "$src")"
     fi
 
-    if [[ ! -d "$(dirname "${dst}")" ]]; then
-        mkdir -p "$(dirname "${dst}")"
+    if [[ ! -d "$(dirname "$dst")" ]]; then
+        mkdir -p "$(dirname "$dst")"
     fi
 
-    if [[ ! -d "${src}" ]]; then
-        echo "tpm not found! Cloning repo to ${src}..."
+    if [[ ! -d "$src" ]]; then
+        echo "tpm not found! Cloning repo to $src..."
         git clone https://github.com/tmux-plugins/tpm.git "$(dirname "${src}")"
     fi
 
