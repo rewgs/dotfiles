@@ -52,7 +52,7 @@ setup::tpm() {
 
     if [[ ! -d "${src}" ]]; then
         echo "tpm not found! Cloning repo to ${src}..."
-        git clone https://github.com/tmux-plugins/tpm.git "${src}"
+        git clone https://github.com/tmux-plugins/tpm.git "$(dirname "${src}")"
     fi
 
     if [[ -d "${dst}" ]] || [[ -L "${dst}" ]]; then
