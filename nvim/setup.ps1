@@ -1,11 +1,11 @@
 # Symlinks the 'dots' dir to '$env:LOCALAPPDATA\nvim'
 #
 # WARNING: This script will not work correctly until the following TODO is fixed.
-# TODO: Take into account extra dir for package manager in $DOTFILES/nvim/dots/$package_manager path.
-#
-# TODO: fix "No C compiler found" error:
-# https://www.reddit.com/r/neovim/comments/14oozmu/neovim_cant_find_c_compiler/
-# https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support
+# TODO: 
+# - Take into account extra dir for package manager in $DOTFILES/nvim/dots/$package_manager path.
+# - Fix "No C compiler found" error:
+#   - https://www.reddit.com/r/neovim/comments/14oozmu/neovim_cant_find_c_compiler/
+#   - https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support
 
 $script:_THIS_FILE = $MyInvocation.MyCommand.Definition
 $script:_THIS_DIR = split-path -parent $_THIS_FILE
@@ -13,25 +13,29 @@ $script:_THIS_DIR = split-path -parent $_THIS_FILE
 # Write-Output $_THIS_DIR
 
 
-function get-packer {
-    $private:SRC = "https://github.com/wbthomason/packer.nvim.git"
-    $private:DST = "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
 
-    if (-Not (Test-Path -Path $DST)) {
-        $private:DST_DIR = split-path -parent $DST
-    	Write-Output "$DST does not exist. Cloning packer.nvim to $DST_DIR..."
-
-        if (-Not (Test-Path -Path $DST_DIR)) {
-            New-Item -ItemType "directory" -Path $DST_DIR
-        }
-
-        git clone $SRC $DST
-    }
-}
+# NOTE: No longer using Packer. Keeping this around for reference though.
+#
+# function get-packer {
+#     $private:SRC = "https://github.com/wbthomason/packer.nvim.git"
+#     $private:DST = "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+#
+#     if (-Not (Test-Path -Path $DST)) {
+#         $private:DST_DIR = split-path -parent $DST
+#     	Write-Output "$DST does not exist. Cloning packer.nvim to $DST_DIR..."
+#
+#         if (-Not (Test-Path -Path $DST_DIR)) {
+#             New-Item -ItemType "directory" -Path $DST_DIR
+#         }
+#
+#         git clone $SRC $DST
+#     }
+# }
 
 
 function symlink-dotfiles {
-    $private:SRC = Join-Path -Path $_THIS_DIR -ChildPath "dots"
+    # TODO: Give user option to enter which package manager to use, like `setup.sh`. Hard-coding path to Lazy for now though.
+    $private:SRC = Join-Path -Path $_THIS_DIR -ChildPath "dots" -AdditionalChildPath "lazy"
     $private:DST = Join-Path -Path $env:LOCALAPPDATA -ChildPath "nvim"
     # Write-Output $SRC
     # Write-Output $DST
@@ -48,7 +52,6 @@ function symlink-dotfiles {
  
 
 function main {
-    get-packer
     symlink-dotfiles
 }
 main
