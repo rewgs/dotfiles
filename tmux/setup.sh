@@ -43,7 +43,11 @@ setup::tpm() {
     # echo "Dst: ${dst}"
 
     if [[ ! -d "$(dirname "${src}")" ]]; then
-        mkdir "$(dirname "${src}")"
+        mkdir -p "$(dirname "${src}")"
+    fi
+
+    if [[ ! -d "$(dirname "${dst}")" ]]; then
+        mkdir -p "$(dirname "${dst}")"
     fi
 
     if [[ ! -d "${src}" ]]; then
