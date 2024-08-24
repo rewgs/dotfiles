@@ -43,7 +43,9 @@ export PATH="$HOME/src/flutter/bin:$PATH"
 if [[ $(uname) == "Darwin" ]]; then
     export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
 elif [[ $(uname) == "Linux" ]]; then
-    export PATH="$HOME/opt/JetBrains:$PATH"
+    # This might be old?
+    # export PATH="$HOME/opt/JetBrains:$PATH"
+    export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
 fi
 
 # nvm
