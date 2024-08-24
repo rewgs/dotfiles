@@ -46,13 +46,3 @@ fi
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 fi
-
-# ╔════════════════════════════════════════════════════════════════════════════╗
-# ║ LOGIN                                                                      ║
-# ╚════════════════════════════════════════════════════════════════════════════╝
-
-# if [[ $(uname) == "Linux" ]]; then
-#     if [ "$(tty)" = "/dev/tty1" ] ; then
-#       exec "_WINDOW_MANAGER_"
-#     fi
-# fi
