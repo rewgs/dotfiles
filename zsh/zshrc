@@ -15,16 +15,19 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export ZSH_CONFIG="$XDG_CONFIG_HOME/zsh"
 
 config_files=(
+    # This must go first
     "init.zsh"
+
+    "dotnet.zsh"
+    "homebrew.zsh"
     "oh-my.zsh"
-    "misc.zsh"
     "path.zsh"
     "rc.zsh"
     "vi.zsh"
 )
 
-for c in "${config_files[@]}"; do
-    source "$ZSH_CONFIG/$c"
+for file in "${config_files[@]}"; do
+    source "$ZSH_CONFIG/$file"
 done
 
 # zsh functions

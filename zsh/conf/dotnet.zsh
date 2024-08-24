@@ -13,5 +13,5 @@ _dotnet_zsh_complete() {
   _values = "${(ps:\n:)completions}"
 }
 
+# Registers the autocompletes with zsh
 compdef _dotnet_zsh_complete dotnet
-
