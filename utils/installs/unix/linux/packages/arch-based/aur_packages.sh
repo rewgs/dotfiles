@@ -1,6 +1,6 @@
 #!/bin/bash
 
-AUR_PACKAGES=(
+aur_packages=(
     "cbonsai"
     "gotop" # like htop, ytop, etc written in go; also gotop-bin available
     "kanshi" # used for display configs in wayland window managers/desktop environments

@@ -1,4 +1,3 @@
-declare -a packages 
 packages=(
     # NOTE: commented-out packages are incorrect package names (as these were copied from 
     # apt script above); need to find correct package name for Pacman
@@ -17,6 +16,7 @@ packages=(
     "docker"
     "docker-compose"
     "element-desktop"
+    "flatpak"
     "foot"
     "fuzzel"
     "fwupd" # great utility for updating/managing hardware firmware
@@ -40,6 +40,7 @@ packages=(
     "net-tools"
     "nmap"
     "obsidian"
+    "openvpn" # required for ProtonVPN
     "pass"
     "picom"
     "podman"
@@ -65,6 +66,7 @@ packages=(
     "tree"
     "unzip"
     "vim"
+    "wireguard-tools" # required for ProtonVPN
     "wl-clipboard" # dead simple clipboard utility for Wayland-based window managers; https://github.com/bugaevc/wl-clipboard
     "wget"
     "xorg"
