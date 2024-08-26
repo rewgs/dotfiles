@@ -19,6 +19,7 @@ packages=(
     "element-desktop"
     "foot"
     "fuzzel"
+    "fwupd" # great utility for updating/managing hardware firmware
     "fzf"
     "git"
     "github-cli"
@@ -39,7 +40,9 @@ packages=(
     "net-tools"
     "nmap"
     "obsidian"
+    "pass"
     "picom"
+    "podman"
     "qemu-full"
     "qt6-base"
     "qtcreator"
@@ -57,6 +60,7 @@ packages=(
     "tailscale" # run `sudo systemctl enable --now tailscaled` to start, and then `sudo tailscale up` and `sudo tailscale up --ssh`
     # "tgt"
     "thefuck"
+    "thunderbird"
     "tldr"
     "tree"
     "unzip"

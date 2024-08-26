@@ -5,3 +5,9 @@ set recolor true
 
 # inverts colors (dark/light mode)
 map <C-i> recolor 
+
+# NOTE:
+# z: zoom...
+#   z: reset zoom
+#   i: zoom in
+#   o: zoom out

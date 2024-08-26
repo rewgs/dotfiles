@@ -108,8 +108,9 @@
 	    "format": "disk {specific_free:0.0f}GB/{specific_total:0.0f}GB",
 	    "unit": "GB"
     },
-    // "battery": {
-    // },
+    "battery": {
+        "format": "battery {}%"
+    },
     // "tray": {
     //     "icon-size": 21,
     //     "spacing": 10

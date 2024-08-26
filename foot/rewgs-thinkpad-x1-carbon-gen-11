@@ -9,7 +9,7 @@ term=xterm-256color # required for proper colors in tmux
 # title=foot
 # locked-title=no
 
-font=FiraCode Nerd Font:size=12
+font=FiraCode Nerd Font:size=10
 # font-bold=<bold variant of regular font>
 # font-italic=<italic variant of regular font>
 # font-bold-italic=<bold+italic variant of regular font>
@@ -21,7 +21,7 @@ font=FiraCode Nerd Font:size=12
 # underline-offset=<font metrics>
 # underline-thickness=<font underline thickness>
 # box-drawings-uses-font-glyphs=no
-dpi-aware=no
+dpi-aware=yes
 
 # initial-window-size-pixels=700x500  # Or,
 # initial-window-size-chars=<COLSxROWS>
