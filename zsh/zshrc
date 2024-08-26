@@ -18,12 +18,12 @@ config_files=(
     # This must go first
     "init.zsh"
 
-    "dotnet.zsh"
     "homebrew.zsh"
     "oh-my.zsh"
     "path.zsh"
     "rc.zsh"
     "vi.zsh"
+    "dotnet.zsh"
 )
 
 for file in "${config_files[@]}"; do
