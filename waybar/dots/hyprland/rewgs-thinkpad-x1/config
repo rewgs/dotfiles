@@ -14,8 +14,9 @@
     "modules-right": [
         "pulseaudio", 
         "network", 
-        "cpu", 
-        "memory", 
+        // "cpu", 
+        // "memory", 
+        // TODO: change color of disk module
         "disk",
         // "backlight",
         "battery",
