@@ -173,34 +173,34 @@ local keys = {
     -- tmux
     ---------------------------------------------------------------------------
     -- pane - resize
-    { key = 'H',    mods = 'ALT|SHIFT',   action = actions.tmux.pane.resize.left },
-    { key = 'J',    mods = 'ALT|SHIFT',   action = actions.tmux.pane.resize.down },
-    { key = 'K',    mods = 'ALT|SHIFT',   action = actions.tmux.pane.resize.up },
-    { key = 'L',    mods = 'ALT|SHIFT',   action = actions.tmux.pane.resize.right },
+    { key = 'H',    mods = 'ALT|SHIFT',     action = actions.tmux.pane.resize.left },
+    { key = 'J',    mods = 'ALT|SHIFT',     action = actions.tmux.pane.resize.down },
+    { key = 'K',    mods = 'ALT|SHIFT',     action = actions.tmux.pane.resize.up },
+    { key = 'L',    mods = 'ALT|SHIFT',     action = actions.tmux.pane.resize.right },
 
     -- pane - select
-    { key = 'h',    mods = 'ALT',         action = actions.tmux.pane.select.left },
-    { key = 'j',    mods = 'ALT',         action = actions.tmux.pane.select.down },
-    { key = 'k',    mods = 'ALT',         action = actions.tmux.pane.select.up },
-    { key = 'l',    mods = 'ALT',         action = actions.tmux.pane.select.right },
+    { key = 'h',    mods = 'ALT',           action = actions.tmux.pane.select.left },
+    { key = 'j',    mods = 'ALT',           action = actions.tmux.pane.select.down },
+    { key = 'k',    mods = 'ALT',           action = actions.tmux.pane.select.up },
+    { key = 'l',    mods = 'ALT',           action = actions.tmux.pane.select.right },
 
     -- pane - split
-    { key = '|',    mods = 'ALT|SHIFT',   action = actions.tmux.pane.split.horizontal },   -- NOTE: weirdly, SHIFT must be included even if `key` requires SHIFT.
-    { key = '_',    mods = 'ALT|SHIFT',   action = actions.tmux.pane.split.vertical },
+    { key = '|',    mods = 'ALT|SHIFT',     action = actions.tmux.pane.split.horizontal },   -- NOTE: weirdly, SHIFT must be included even if `key` requires SHIFT.
+    { key = '_',    mods = 'ALT|SHIFT',     action = actions.tmux.pane.split.vertical },
 
     -- pane - swap
     -- { key = '=',    mods = 'ALT|CTRL',     action = actions.tmux.pane.swap.clockwise },
     -- { key = '-',    mods = 'ALT|CTRL',     action = actions.tmux.pane.swap.counter_clockwise },
 
     -- session
-    { key = 'R',    mods = 'ALT|SHIFT',   action = actions.tmux.session.rename },
-    { key = 'S',    mods = 'ALT|SHIFT',   action = actions.tmux.session.restore },
-    { key = 's',    mods = 'ALT',         action = actions.tmux.session.save },
+    { key = 'R',    mods = 'ALT|SHIFT',     action = actions.tmux.session.rename },
+    { key = 'S',    mods = 'ALT|SHIFT',     action = actions.tmux.session.restore },
+    { key = 's',    mods = 'ALT',           action = actions.tmux.session.save },
 
     -- window
-    { key = 'w',    mods = 'ALT',         action = actions.tmux.window.close },
-    { key = 'r',    mods = 'ALT',         action = actions.tmux.window.rename },
-    { key = 't',    mods = 'ALT',         action = actions.tmux.window.new },
+    { key = 'w',    mods = 'ALT',           action = actions.tmux.window.close },
+    { key = 'r',    mods = 'ALT',           action = actions.tmux.window.rename },
+    { key = 't',    mods = 'ALT',           action = actions.tmux.window.new },
     { key = 'Tab',  mods = 'CTRL',          action = actions.tmux.window.select.next },
     { key = 'Tab',  mods = 'CTRL|SHIFT',    action = actions.tmux.window.select.previous },
 }
