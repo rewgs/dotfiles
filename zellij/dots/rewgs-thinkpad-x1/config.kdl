@@ -14,7 +14,6 @@ keybinds clear-defaults=true {
         bind "t" { NewTab; SwitchToMode "Normal"; }
         bind "n" { GoToNextTab; SwitchToMode "Normal"; }
         bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
-
         bind "w" { CloseTab; SwitchToMode "Normal"; }
 
 
@@ -39,7 +38,15 @@ keybinds clear-defaults=true {
         // bind "R" { SwitchToMode "renametab"; }
 
         bind "w" { CloseFocus; SwitchToMode "Normal"; }
+
+        // sessions
+        bind "s" { SwitchToMode "Session"; }
     }
+
+    session {
+
+    }
+
 
     // renametab {
     // }
