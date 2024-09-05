@@ -16,9 +16,10 @@
         "network", 
         // "cpu", 
         // "memory", 
-        // TODO: change color of disk module
-        "disk",
+        // "disk",
         // "backlight",
+
+        // TODO: better color for battery module
         "battery",
         // "tray",
         "clock",
