@@ -1,7 +1,4 @@
-# For $0 to equal the script/zsh function name, the "main" function 
-# must also be the same as the script/zsh function name. Hence, instead of 
-# `main()`, I have `verify_dotfiles_symlinks()`.
-get_dotfiles_path () {
+get_dotfiles_path() {
     cd "$ZFUNCS" || return
     local THIS_SCRIPT="$(realpath $0)"
 
@@ -23,3 +20,4 @@ get_dotfiles_path () {
 
     echo "$(realpath $DOTFILES_DIR_PATH)"
 }
+
