@@ -10,6 +10,48 @@
 # ╚═════════════════════════════════════════════════════════════════════════════╝
 
 
+get_dotfiles_path() {
+    local this_file="$(realpath "${(%):-%x}")"
+
+    local dots="$(realpath "$(dirname "$this_file")")"
+    if [[ "$(basename "$dots")" != "dots" ]]; then 
+        return 1
+    fi
+
+    local zsh="$(dirname "$dots")"
+    if [[ "$(basename "$zsh")" != "zsh" ]]; then 
+        return 1
+    fi
+
+    local dotfiles="$(dirname "$zsh")"
+    if [[ "$(basename "$dotfiles")" != "dotfiles" ]]; then 
+        return 1
+    fi
+
+    echo "$(realpath "$dotfiles")"
+}
+
+
+source_config_files() {
+    local config_dir="$1"
+    local config_files=(
+        # This must go first
+        "init.zsh"
+    
+        "homebrew.zsh"
+        "oh-my.zsh"
+        "path.zsh"
+        "rc.zsh"
+        "vi.zsh"
+        "dotnet.zsh"
+    )
+    
+    for file in "${config_files[@]}"; do
+        source "$config_dir/$file"
+    done
+}
+
+
 recursively_source_functions() {
     local dir="$1"
     for file in "$dir"/*; do
@@ -19,9 +61,7 @@ recursively_source_functions() {
             # echo "Entering $file..."
             recursively_source_functions "$(realpath $file)"
         else # [[ -f "$file" ]]; then
-            if [[ "$(basename $file)" != "get_dotfiles_path" ]]; then 
-                autoload -Uz "$file"; 
-            fi
+            autoload -Uz "$file"; 
         fi
     done
 }
@@ -44,46 +84,13 @@ recursively_source_aliases() {
 
 
 export XDG_CONFIG_HOME="$HOME/.config"
-
-# This is symlinked to dotfiles/zsh/conf
 export ZSH_CONFIG="$XDG_CONFIG_HOME/zsh"
-
-local config_files=(
-    # This must go first
-    "init.zsh"
-
-    "homebrew.zsh"
-    "oh-my.zsh"
-    "path.zsh"
-    "rc.zsh"
-    "vi.zsh"
-    "dotnet.zsh"
-)
-
-for file in "${config_files[@]}"; do
-    source "$ZSH_CONFIG/$file"
-done
-
-# zsh functions
-ZFUNCS="$ZSH_CONFIG/functions"
-FPATH="${ZFUNCS}:$FPATH"
-
-# dotfiles function
-# source this first so that all other functions can see the $DOTFILES var
-source "$ZFUNCS/get_dotfiles_path"
 export DOTFILES="$(get_dotfiles_path)"
 
+ZALIASES="$ZSH_CONFIG/aliases"
+ZFUNCS="$ZSH_CONFIG/functions"
+FPATH="$ZFUNCS:$FPATH"
 
-# NOTE: this is destructive! Stock dotfiles *files*, such as .bashrc, .zshrc, 
-# etc, WILL BE DELETED! 
-# They will be replaced by symlinks pointing to $DOTFILES/$file. 
-# THIS WILL HAPPEN SILENTLY.
-# TODO: 
-# - Add user verifcation for file deletion and symlinking.
-# - Do the above ^ for individual files, files of a given group (i.e. all bash 
-#   files, all zsh files, etc), or *all* dotfiles.
-# verify_dotfiles
-
-# These functions enable entering of directories/following of symlinks.
+source_config_files "$ZSH_CONFIG"
 recursively_source_functions "$ZFUNCS"
-recursively_source_aliases "$ZSH_CONFIG/aliases"
+recursively_source_aliases "$ZALIASES"

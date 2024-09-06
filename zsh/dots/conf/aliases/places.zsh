@@ -25,8 +25,8 @@ places::alias "$HOME/second-brain" "B"
 # dotfiles
 # alias dotfiles="cd $DOTFILES"
 # alias dots="cd $DOTFILES"
-# alias d="cd $DOTFILES"
-places::alias "$DOTFILES" "d"
+alias d="cd $DOTFILES"
+# places::alias "$DOTFILES" "d"
 
 # src
 # if [[ -d "$HOME/src" ]]; then
