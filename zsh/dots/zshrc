@@ -40,7 +40,6 @@ source_config_files() {
     
         "homebrew.zsh"
         "oh-my.zsh"
-        "path.zsh"
         "rc.zsh"
         "vi.zsh"
         "dotnet.zsh"
