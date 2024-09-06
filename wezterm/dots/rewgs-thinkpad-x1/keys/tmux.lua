@@ -167,7 +167,7 @@ local keys = {
     ---------------------------------------------------------------------------
     { key = 'c',    mods = 'CTRL|SHIFT',    action = wezterm.action.CopyTo "ClipboardAndPrimarySelection" },
     { key = 'v',    mods = 'CTRL|SHIFT',    action = wezterm.action.PasteFrom "PrimarySelection" },
-    -- { key = 'v',    mods = 'CTRL|SHIFT',    action = wezterm.action.PasteFrom "Clipboard" },
+    { key = 'v',    mods = 'CTRL|SHIFT',    action = wezterm.action.PasteFrom "Clipboard" },
 
     ---------------------------------------------------------------------------
     -- tmux
