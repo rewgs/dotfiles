@@ -26,6 +26,7 @@ return {
                 "pyright",
                 "tailwindcss",
                 "tsserver",
+                -- "ts_ls",
             },
         })
     end
