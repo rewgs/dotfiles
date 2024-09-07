@@ -1,5 +1,10 @@
 # zsh
 
+Shell files (`.zshenv`, `.zshrc`, etc) are located in the [`dots`](./dots) directory.
+
+Any other zsh-related tools are located in this directory, on the same level as [`dots`](./dots):
+- [oh-my-zsh](./oh-my-zsh)
+
 ## Sourcing order
 
 Definitions:
