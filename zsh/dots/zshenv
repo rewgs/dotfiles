@@ -55,45 +55,41 @@ get_dotfiles_path() {
     echo "$(realpath "$dotfiles")"
 }
 
-get_zsh_conf_dir() {
-    local this_file="$(realpath "${(%):-%x}")"
+# get_zsh_conf_dir() {
+#     local this_file="$(realpath "${(%):-%x}")"
+#
+#     local dots="$(realpath "$(dirname "$this_file")")"
+#     if [[ "$(basename "$dots")" != "dots" ]]; then 
+#         return 1
+#     fi
+#
+#     echo "$(realpath "$dots/conf")"
+# }
 
-    local dots="$(realpath "$(dirname "$this_file")")"
-    if [[ "$(basename "$dots")" != "dots" ]]; then 
-        return 1
-    fi
-
-    echo "$(realpath "$dots/conf")"
-}
-
-
-# ╔════════════════════════════════════════════════════════════════════════════╗
-# ║ environment variables                                                      ║
-# ╚════════════════════════════════════════════════════════════════════════════╝
-
-export EDITOR='nvim'
-# export BROWSER='google-chrome-stable'
-
-export ZSH_CONFIG="$(get_zsh_conf_dir)"
-export DOTFILES="$(get_dotfiles_path)"
-
-source_config_files "$ZSH_CONFIG"
-
-if [[ "$(uname)" == "Linux" ]]; then
-    export XDG_CONFIG_HOME="$HOME/.config"
-fi
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
-# ║ PATH                                                                       ║
+# ║ environment                                                                ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-# Notes:
+# NOTE: on $PATH
 # - prepending $PATH: assures that the system looks in this custom path *after* 
 #   searching default locations first.
 # - appending :$PATH assures that the system looks in this custom path *before* 
 #   searching default locations.
 
-# bin repo
+# These two are most likely the same
+export XDG_CONFIG_HOME="$HOME/.config"
+export ZSH_CONFIG="$XDG_CONFIG_HOME/zsh"
+# export ZSH_CONFIG="$(get_zsh_conf_dir)"
+
+source_config_files "$ZSH_CONFIG"
+
+export EDITOR='nvim'
+# export BROWSER='google-chrome-stable'
+export DOTFILES="$(get_dotfiles_path)"
+
+
+# my bin repo
 if [[ -d "$HOME/bin/src" ]] || [[ -L "$HOME/bin/src" ]]; then
     export REWGS_BIN="$HOME/bin/src"
     # export PATH="$REWGS_BIN:$PATH"
@@ -116,8 +112,9 @@ export PATH="/usr/local/bin:$PATH"
 
 
 # broot
-# source $HOME/.config/broot/launcher/bash/br
-export PATH="$HOME/.config/broot/launcher/bash:$PATH"
+if [[ -d "$HOME/.config/broot" ]]; then
+    export PATH="$HOME/.config/broot/launcher/bash:$PATH"
+fi
 
 
 # flutter
@@ -200,7 +197,9 @@ fi
 
 
 # poetry
-export PATH="$PATH:$HOME/.poetry/bin"
+if [[ -d "HOME/.poetry" ]] || [[ -L "$HOME/.poetry" ]]; then
+    export PATH="$PATH:$HOME/.poetry/bin"
+fi
 
 
 # rbenv

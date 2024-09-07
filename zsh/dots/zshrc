@@ -13,11 +13,11 @@
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-recursively_source_functions() {
+recursively_source_zfuncs() {
     local dir="$1"
     for file in "$dir"/*; do
         if [[ -d "$file" ]]; then
-            recursively_source_functions "$(realpath $file)"
+            recursively_source_zfuncs "$(realpath $file)"
         else
             autoload -Uz "$file"; 
         fi
@@ -38,10 +38,10 @@ recursively_source_aliases() {
 
 
 ZALIASES="$ZSH_CONFIG/aliases"
-ZFUNCS="$ZSH_CONFIG/functions"
+ZFUNCS="$ZSH_CONFIG/zfuncs"
 FPATH="$ZFUNCS:$FPATH"
 
-recursively_source_functions "$ZFUNCS"
+recursively_source_zfuncs "$ZFUNCS"
 recursively_source_aliases "$ZALIASES"
 
 source "$ZSH_CONFIG/oh-my.zsh"

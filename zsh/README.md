@@ -28,7 +28,7 @@ This is any process called by an already-logged-in user that does not and cannot
 3. `.zlogin`
 4. `.zlogout` (on logout)
 
-Note that `.zshrc` is *not* sourced in this context!
+Note that `.zshrc` is *not* sourced in this context! **Anything that must be accessible via a login script must not rely on anything setup in `.zshrc`!**
 
 
 ### interactive non-login shell
