@@ -13,9 +13,215 @@
 #   .zlogin     (if login)          → 
 #   .zlogout    (sometimes)
 
-export EDITOR='nvim'
-export BROWSER='google-chrome-stable'
 
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ functions                                                                  ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+source_config_files() {
+    local config_dir="$1"
+    local config_files=(
+        "init.zsh" # This must go first
+        "homebrew.zsh"
+        # "oh-my.zsh" # move to zshrc
+        "rc.zsh"
+        "vi.zsh"
+        "dotnet.zsh"
+    )
+    
+    for file in "${config_files[@]}"; do
+        source "$config_dir/$file"
+    done
+}
+
+get_dotfiles_path() {
+    local this_file="$(realpath "${(%):-%x}")"
+
+    local dots="$(realpath "$(dirname "$this_file")")"
+    if [[ "$(basename "$dots")" != "dots" ]]; then 
+        return 1
+    fi
+
+    local zsh="$(dirname "$dots")"
+    if [[ "$(basename "$zsh")" != "zsh" ]]; then 
+        return 1
+    fi
+
+    local dotfiles="$(dirname "$zsh")"
+    if [[ "$(basename "$dotfiles")" != "dotfiles" ]]; then 
+        return 1
+    fi
+
+    echo "$(realpath "$dotfiles")"
+}
+
+get_zsh_conf_dir() {
+    local this_file="$(realpath "${(%):-%x}")"
+
+    local dots="$(realpath "$(dirname "$this_file")")"
+    if [[ "$(basename "$dots")" != "dots" ]]; then 
+        return 1
+    fi
+
+    echo "$(realpath "$dots/conf")"
+}
+
+
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ environment variables                                                      ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+export EDITOR='nvim'
+# export BROWSER='google-chrome-stable'
+
+export ZSH_CONFIG="$(get_zsh_conf_dir)"
+export DOTFILES="$(get_dotfiles_path)"
+
+source_config_files "$ZSH_CONFIG"
+
+if [[ "$(uname)" == "Linux" ]]; then
+    export XDG_CONFIG_HOME="$HOME/.config"
+fi
+
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ PATH                                                                       ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+# Notes:
+# - prepending $PATH: assures that the system looks in this custom path *after* 
+#   searching default locations first.
+# - appending :$PATH assures that the system looks in this custom path *before* 
+#   searching default locations.
+
+# bin repo
+if [[ -d "$HOME/bin/src" ]] || [[ -L "$HOME/bin/src" ]]; then
+    export REWGS_BIN="$HOME/bin/src"
+    # export PATH="$REWGS_BIN:$PATH"
+    # for dir in "$REWGS_BIN/*/"; do
+    #     PATH+=":$dir"
+    # done
+
+    if [[ $(uname) == "Darwin" ]]; then
+        # export PATH=$PATH:$(find "$REWGS_BIN" -type d -maxdepth 1 | paste -sd ":" -)
+        export PATH=$PATH:$(find "$REWGS_BIN" -type d | paste -sd ":" -)
+    elif [[ $(uname) == "Linux" ]]; then
+        # export PATH=$PATH:$(find "$REWGS_BIN" -maxdepth 1 -type d | paste -sd ":" -)
+        export PATH=$PATH:$(find "$REWGS_BIN" -type d | paste -sd ":" -)
+    fi
+fi
+
+# other user bin directories
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+
+
+# broot
+# source $HOME/.config/broot/launcher/bash/br
+export PATH="$HOME/.config/broot/launcher/bash:$PATH"
+
+
+# flutter
+export PATH="$HOME/src/flutter/bin:$PATH"
+
+
+# golang
+# export GOPATH="$HOME/go"
+# export GOBIN="$GOPATH/bin"
+# export PATH="$GOPATH:$PATH"
+# export PATH="$GOBIN:$PATH"
+
+
+# homebrew
+if [[ $(uname) == "Darwin" ]]; then
+    export PATH="$PATH:/opt/homebrew/bin"
+    export PATH="$PATH:/opt/homebrew/sbin"
+    export PATH="$PATH:/opt/homebrew/Cellar"
+elif [[ "$(uname)" == "Linux" ]] && [[ "$(uname -i)" == "x86_64" ]] && [[ "$(whoami)" != "root" ]]; then
+    if [[ -d "/home/linuxbrew" ]]; then
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    fi
+fi
+
+
+# jetbrains
+if [[ $(uname) == "Darwin" ]]; then
+    export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
+elif [[ $(uname) == "Linux" ]]; then
+    export PATH="$HOME/opt/JetBrains:$PATH"
+fi
+
+
+# nim
+export PATH="$PATH:$HOME/.nimble/bin"
+
+
+# nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" 
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+
+# Added by OrbStack: command-line tools and integration
+if [[ $(uname) == "Darwin" ]]; then
+    source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+fi
+
+
+# phpenv
+if [[ -d "$HOME/.phpenv" ]]; then
+    export PATH="$HOME/.phpenv/bin:$PATH"
+    eval "$(phpenv init -)"
+fi
+
+
+# pyenv
+# the following must be in both .zshrc (for interactive login shells) and .zprofile (for non-interactive login shells)
+if [[ -d "$HOME/.pyenv" ]]; then
+    if [[ $(uname) == "Darwin" ]]; then
+        export PYENV_ROOT="$HOME/.pyenv"
+        command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+        eval "$(pyenv init -)"
+    elif [[ $(uname) == "Linux" ]]; then
+        # This checks if the current shell is WSL.
+        if [[ $(grep -i Microsoft /proc/version) ]]; then
+            # On a machine that has pyenv-win installed on the Windows side, as this messes with the 
+            # usual $PYENV_ROOT and tries to run `eval "$(pyenv init -)"` in 
+            # `/mnt/c/Users/"$(whoami)"/.pyenv` and thus returns a `bad interpreter` error.
+            export PYENV_ROOT="/home/"$(whoami)"/.pyenv"
+            export PATH="$PYENV_ROOT/bin:$PATH"
+            eval "$(pyenv init -)"
+        else 
+            # The usual works just fine on non-WSL Linux (this is the same as the "Darwin" branch above).
+            export PYENV_ROOT="$HOME/.pyenv"
+            command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+            eval "$(pyenv init -)"
+        fi
+    fi
+fi
+
+
+# poetry
+export PATH="$PATH:$HOME/.poetry/bin"
+
+
+# rbenv
+if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
+    eval "$(~/.rbenv/bin/rbenv init - zsh)"
+fi
+
+
+# reaper
+if [[ $(uname) == "Darwin" ]]; then
+    alias reaper_exec="/Applications/REAPER.app/Contents/MacOS/REAPER"
+    alias REAPER="cd $HOME/Library/Application\ Support/REAPER"
+    alias ReaScripts="cd $HOME/Library/Application\ Support/REAPER/Scripts"
+    alias rewgsReaScripts="cd $HOME/Library/Application\ Support/REAPER/Scripts/rewgs-reaper-scripts"
+elif [[ $(uname) == "Linux" ]]; then
+    export PATH="$HOME/opt/REAPER:$PATH"
+fi
+
+
+# rust
 if [[ -d "$HOME/.cargo" ]]; then
     . "$HOME/.cargo/env"
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi

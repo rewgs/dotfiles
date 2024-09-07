@@ -9,57 +9,16 @@
 # ║ multiple files. .zshrc now sources other files definied in $ZSH_CONFIG.     ║
 # ╚═════════════════════════════════════════════════════════════════════════════╝
 
-
-get_dotfiles_path() {
-    local this_file="$(realpath "${(%):-%x}")"
-
-    local dots="$(realpath "$(dirname "$this_file")")"
-    if [[ "$(basename "$dots")" != "dots" ]]; then 
-        return 1
-    fi
-
-    local zsh="$(dirname "$dots")"
-    if [[ "$(basename "$zsh")" != "zsh" ]]; then 
-        return 1
-    fi
-
-    local dotfiles="$(dirname "$zsh")"
-    if [[ "$(basename "$dotfiles")" != "dotfiles" ]]; then 
-        return 1
-    fi
-
-    echo "$(realpath "$dotfiles")"
-}
-
-
-source_config_files() {
-    local config_dir="$1"
-    local config_files=(
-        # This must go first
-        "init.zsh"
-    
-        "homebrew.zsh"
-        "oh-my.zsh"
-        "rc.zsh"
-        "vi.zsh"
-        "dotnet.zsh"
-    )
-    
-    for file in "${config_files[@]}"; do
-        source "$config_dir/$file"
-    done
-}
-
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ functions                                                                  ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
 
 recursively_source_functions() {
     local dir="$1"
     for file in "$dir"/*; do
-        # NOTE: Removing symlink check -- not sure that's needed?
-        # if [[ -d "$file" ]] || [[ -L "$file" ]]; then
         if [[ -d "$file" ]]; then
-            # echo "Entering $file..."
             recursively_source_functions "$(realpath $file)"
-        else # [[ -f "$file" ]]; then
+        else
             autoload -Uz "$file"; 
         fi
     done
@@ -69,27 +28,20 @@ recursively_source_functions() {
 recursively_source_aliases() {
     local dir="$1"
     for file in "$dir"/*; do
-        # NOTE: Removing symlink check -- not sure that's needed?
-        # if [[ -d "$file" ]] || [[ -L "$file" ]]; then
         if [[ -d "$file" ]]; then
-            # echo "Entering $file..."
             recursively_source_aliases "$(realpath $file)"
-        else # [[ -f "$file" ]]; then
-            # echo "Sourcing $file..."
+        else
             source "$file"
         fi
     done
 }
 
 
-export XDG_CONFIG_HOME="$HOME/.config"
-export ZSH_CONFIG="$XDG_CONFIG_HOME/zsh"
-export DOTFILES="$(get_dotfiles_path)"
-
 ZALIASES="$ZSH_CONFIG/aliases"
 ZFUNCS="$ZSH_CONFIG/functions"
 FPATH="$ZFUNCS:$FPATH"
 
-source_config_files "$ZSH_CONFIG"
 recursively_source_functions "$ZFUNCS"
 recursively_source_aliases "$ZALIASES"
+
+source "$ZSH_CONFIG/oh-my.zsh"

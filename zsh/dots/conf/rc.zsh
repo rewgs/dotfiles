@@ -2,7 +2,9 @@
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # configures the `fuck` command
-if command -v thefuck &> /dev/null; then eval $(thefuck --alias); fi
+if command -v thefuck &> /dev/null; then 
+    eval $(thefuck --alias)
+fi
 
 if command -v broot &> /dev/null; then
     if [[ $(uname) == "Darwin" ]]; then
