@@ -1,11 +1,14 @@
-require('mod-keys')
+-- This file specifies global shortcuts for opening or focusing apps.
 
+
+require('mod-keys')
 local HYPER = mod.hyper
--- local SHYPER = mod.sHyper
+
 
 local TERMINAL = 'wezterm'
 local BROWSER = 'Google Chrome'
-local ___ = 'return' -- makes 
+local ___ = 'return' -- makes formatting in `bindings` table cleaner
+
 
 local bindings = {
     { mod = HYPER,  key = ___, app = TERMINAL   },
@@ -13,6 +16,7 @@ local bindings = {
     { mod = HYPER,  key = 'i', app = BROWSER    },
     { mod = HYPER,  key = 'o', app = 'Obsidian' },
 }
+
 
 local function bind_keys(kbs)
     for _, b in ipairs(kbs) do
