@@ -22,20 +22,4 @@ for item in "$dots"/*; do
 
         ln -s "$item" "$dst"
     fi
-
-    # NOTE: No longer needed.
-    #
-    # if [[ -d "$item" ]]; then
-    #     conf="$HOME/.config"
-    #     if [[ ! -d "$conf" ]]; then
-    #         mkdir "$conf"
-    #     fi
-    #
-    #     dst="$conf/zsh"
-    #     if [[ -d "$dst" ]] || [[ -L "$dst" ]]; then
-    #         rm -rf "$dst"
-    #     fi
-    #
-    #     ln -s "$item" "$dst"
-    # fi
 done
