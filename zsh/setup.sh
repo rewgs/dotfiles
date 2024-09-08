@@ -1,25 +1,39 @@
 #!/bin/bash
 #
+# Setups up all zsh dotfiles, as well as oh-my-zsh.
+
 # Symlinks:
-# dots/zlogin   -> ~/.zlogin
-# dots/zlogout  -> ~/.zlogout
-# dots/zprofile -> ~/.zprofile
-# dots/zshenv   -> ~/.zshenv
-# dots/zshrc    -> ~/.zshrc
-# dots/conf     -> ~/.config/zsh
-
-
-dots="$(realpath "$(dirname "$BASH_SOURCE")"/dots)"
-
-for item in "$dots"/*; do
-    name="$(basename "$item")"
-
-    if [[ -f "$item" ]]; then
-        dst="$HOME/.$name"
-        if [[ -f "$dst" ]] || [[ -L "$dst" ]]; then
-            rm -f "$dst"
+#   $DOTFILES/zsh/dots/zlogin   -> ~/.zlogin
+#   $DOTFILES/zsh/dots/zlogout  -> ~/.zlogout
+#   $DOTFILES/zsh/dots/zprofile -> ~/.zprofile
+#   $DOTFILES/zsh/dots/zshenv   -> ~/.zshenv
+#   $DOTFILES/zsh/dots/zshrc    -> ~/.zshrc
+zsh-setup::dotfiles() {
+    dots="$(realpath "$(dirname "$BASH_SOURCE")"/dots)"
+    for item in "$dots"/*; do
+        name="$(basename "$item")"
+    
+        if [[ -f "$item" ]]; then
+            dst="$HOME/.$name"
+            if [[ -f "$dst" ]] || [[ -L "$dst" ]]; then
+                rm -f "$dst"
+            fi
+    
+            ln -s "$item" "$dst"
         fi
+    done
+}
 
-        ln -s "$item" "$dst"
-    fi
-done
+
+# Sources $DOTFILES/zsh/oh-my-zsh/setup.sh
+zsh-setup::oh-my-zsh() {
+    omz="$(realpath "$(dirname "$BASH_SOURCE")"/oh-my-zsh)"
+    source "$omz/setup.sh"
+}
+
+
+zsh-setup::main() {
+    zsh-setup::dotfiles
+    zsh-setup::oh-my-zsh
+}
+zsh-setup::main
