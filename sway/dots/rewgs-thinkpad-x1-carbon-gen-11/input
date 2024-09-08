@@ -1,0 +1,4 @@
+input "type:keyboard" {
+    # Swaps Caps Lock and Escape
+    xkb_options caps:swapescape
+}

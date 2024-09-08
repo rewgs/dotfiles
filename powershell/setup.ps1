@@ -20,18 +20,9 @@ function Install-Oh-My-Posh {
         brew update
         brew install jandedobbeleer/oh-my-posh/oh-my-posh
     }
-
-    if ($IsWindows) {
-        # choco
-        choco install oh-my-posh
-
-        # manual
-        # Set-ExecutionPolicy Bypass -Scope Process -Force
-        # Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
-
-        # manually adds oh-my-posh to PATH
-        # $env:Path += ";C:\Users\user\AppData\Local\Programs\oh-my-posh\bin"
-    }
+#     if ($IsWindows) {
+#         Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
+#     }
     else {
         Write-Output "Invalid operating system! Exiting now."
         exit
@@ -66,7 +57,7 @@ function Symlink-Profile([string]$thisFile) {
 
 
 function Main([string]$thisFile) {
-    Install-Oh-My-Posh
+    # Install-Oh-My-Posh
     Symlink-Profile $thisFile
 }
 

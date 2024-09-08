@@ -17,9 +17,21 @@ recursively_source_zfuncs() {
     local dir="$1"
     for file in "$dir"/*; do
         if [[ -d "$file" ]]; then
-            recursively_source_zfuncs "$(realpath $file)"
+            recursively_source_zfuncs "$(realpath "$file")"
         else
             autoload -Uz "$file"; 
+        fi
+    done
+}
+
+
+recursively_source_aliases() {
+    local dir="$1"
+    for file in "$dir"/*; do
+        if [[ -d "$file" ]]; then
+            recursively_source_aliases "$(realpath "$file")"
+        else
+            source "$file"
         fi
     done
 }
@@ -35,18 +47,10 @@ time_startup() {
     # Run as loop
     for i in $(seq 1 $num_loops); do 
         echo "Startup time test number $i of $num_loops:"
-        /usr/bin/time $shell --interactive -c exit
-    done
-}
-
-
-recursively_source_aliases() {
-    local dir="$1"
-    for file in "$dir"/*; do
-        if [[ -d "$file" ]]; then
-            recursively_source_aliases "$(realpath $file)"
-        else
-            source "$file"
+        if [[ "$(uname)" == "Darwin" ]]; then
+            /usr/bin/time $shell --interactive -c exit
+        elif [[ "$(uname)" == "Linux" ]]; then
+            time $shell --interactive -c exit
         fi
     done
 }
@@ -56,16 +60,18 @@ recursively_source_aliases() {
 # ║ run commands                                                               ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-ZALIASES="$ZSH_CONFIG/aliases"
-ZFUNCS="$ZSH_CONFIG/zfuncs"
-FPATH="$ZFUNCS:$FPATH"
+__zsh_conf="$(realpath "$DOTFILES/zsh/dots/conf")"
+zaliases="$(realpath "$__zsh_conf/aliases")"
+zfuncs="$(realpath "$__zsh_conf/zfuncs")"
 
-recursively_source_zfuncs "$ZFUNCS"
-recursively_source_aliases "$ZALIASES"
+FPATH="$zfuncs:$FPATH"
 
-source "$ZSH_CONFIG/oh-my.zsh"
-source "$ZSH_CONFIG/dotnet.zsh"
-source "$ZSH_CONFIG/vi.zsh"
+recursively_source_aliases "$zaliases"
+recursively_source_zfuncs "$zfuncs"
+
+source "$__zsh_conf/oh-my.zsh"
+source "$__zsh_conf/dotnet.zsh"
+source "$__zsh_conf/vi.zsh"
 
 # broot
 if command -v broot &> /dev/null; then
@@ -89,10 +95,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# Not sure if this is needed? Removing it SERIOUSLY speeds up shell startup time...
-# if command -v nvm &> /dev/null; then
-#     nvm use node > /dev/null
-# fi
 
 # phpenv
 if [[ -d "$HOME/.phpenv" ]]; then

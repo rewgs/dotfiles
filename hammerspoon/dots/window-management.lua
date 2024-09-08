@@ -6,7 +6,7 @@ hs.window.animationDuration = 0
 -- Loads defualt key bindings
 -- spoon.WindowHalfsAndThirds:bindHotkeys(spoon.WindowHalfsAndThirds.defaultHotkeys)
 
-local customHotkeys = {
+customHotkeys = {
     left_half       = { mod.hyper, "h" }, --
     right_half      = { mod.hyper, "l" }, --
     max_toggle      = { mod.hyper, "k" },
@@ -20,12 +20,12 @@ local customHotkeys = {
     third_up        = { mod.soHyper, "t" },
     third_down      = { mod.soHyper, "b" },
 
-    third_left      = { mod.oHyper, "h" }, -- moves *to* the left in thirds
-    third_right     = { mod.oHyper, "l" }, -- moves *to* the right in thirds
-    middle_third_h  = { mod.oHyper, "k" },
+    third_left      = { mod.hyper, "[" }, -- moves *to* the left in thirds
+    third_right     = { mod.hyper, "]" }, -- moves *to* the right in thirds
+    middle_third_h  = { mod.hyper, "\\" },
 
-    left_two_third  = { mod.soHyper, "h" },
-    right_two_third = { mod.soHyper, "l" },
+    left_two_third  = { mod.oHyper, "h" },
+    right_two_third = { mod.oHyper, "l" },
 
     top_left        = { mod.hyper, "u" },
     top_right       = { mod.hyper, "o" },

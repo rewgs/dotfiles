@@ -1,7 +1,8 @@
 # which machine; choose one
-include ./rewgs-endeavour/main
-include ./rewgs-nas/main
+# include ./rewgs-endeavour/main
+# include ./rewgs-nas/main
 # include ./rewgs-thinkpad/main
+include ./rewgs-thinkpad-x1-carbon-gen-11/main
 
 include ./common/exts
 include ./common/idle

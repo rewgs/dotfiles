@@ -1,0 +1,43 @@
+set $ws01 "1"
+set $ws02 "2"
+set $ws03 "3"
+set $ws04 "4"
+set $ws05 "5"
+set $ws06 "6"
+set $ws07 "7"
+set $ws08 "8"
+set $ws09 "9"
+set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12"
+set $ws13 "13"
+set $ws14 "14"
+set $ws15 "15"
+set $ws16 "16"
+set $ws17 "17"
+set $ws18 "18"
+set $ws19 "19"
+set $ws20 "20"
+
+
+workspace $ws01 output $builtin_display 
+workspace $ws02 output $builtin_display 
+workspace $ws03 output $builtin_display 
+workspace $ws04 output $builtin_display 
+workspace $ws05 output $builtin_display 
+workspace $ws06 output $builtin_display
+workspace $ws07 output $builtin_display 
+workspace $ws08 output $builtin_display 
+workspace $ws09 output $builtin_display 
+workspace $ws10 output $builtin_display
+
+workspace $ws11 output $external_display 
+workspace $ws12 output $external_display 
+workspace $ws13 output $external_display 
+workspace $ws14 output $external_display 
+workspace $ws15 output $external_display 
+workspace $ws16 output $external_display
+workspace $ws17 output $external_display 
+workspace $ws18 output $external_display 
+workspace $ws19 output $external_display 
+workspace $ws20 output $external_display
