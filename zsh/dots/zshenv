@@ -39,17 +39,6 @@ get_dotfiles_path() {
     echo "$(realpath "$dotfiles")"
 }
 
-# get_zsh_conf_dir() {
-#     local this_file="$(realpath "${(%):-%x}")"
-#
-#     local dots="$(realpath "$(dirname "$this_file")")"
-#     if [[ "$(basename "$dots")" != "dots" ]]; then 
-#         return 1
-#     fi
-#
-#     echo "$(realpath "$dots/conf")"
-# }
-
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ environment                                                                ║
@@ -61,29 +50,23 @@ get_dotfiles_path() {
 # - appending :$PATH assures that the system looks in this custom path *before* 
 #   searching default locations.
 
-# These two are most likely the same
 export XDG_CONFIG_HOME="$HOME/.config"
-export ZSH_CONFIG="$XDG_CONFIG_HOME/zsh"
-# export ZSH_CONFIG="$(get_zsh_conf_dir)"
 
+if [[ "$(uname)" == "Linux" ]]; then
+    export BROWSER="zen-browser"
+elif [[ "$(uname)" == "Darwin" ]]; then
+    export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
+fi
 export EDITOR='nvim'
-# export BROWSER='google-chrome-stable'
 export DOTFILES="$(get_dotfiles_path)"
 
 
 # my bin repo
 if [[ -d "$HOME/bin/src" ]] || [[ -L "$HOME/bin/src" ]]; then
     export REWGS_BIN="$HOME/bin/src"
-    # export PATH="$REWGS_BIN:$PATH"
-    # for dir in "$REWGS_BIN/*/"; do
-    #     PATH+=":$dir"
-    # done
-
     if [[ $(uname) == "Darwin" ]]; then
-        # export PATH=$PATH:$(find "$REWGS_BIN" -type d -maxdepth 1 | paste -sd ":" -)
         export PATH=$PATH:$(find "$REWGS_BIN" -type d | paste -sd ":" -)
     elif [[ $(uname) == "Linux" ]]; then
-        # export PATH=$PATH:$(find "$REWGS_BIN" -maxdepth 1 -type d | paste -sd ":" -)
         export PATH=$PATH:$(find "$REWGS_BIN" -type d | paste -sd ":" -)
     fi
 fi
@@ -94,8 +77,8 @@ export PATH="/usr/local/bin:$PATH"
 
 
 # broot
-if [[ -d "$HOME/.config/broot" ]]; then
-    export PATH="$HOME/.config/broot/launcher/bash:$PATH"
+if [[ -d "$XDG_CONFIG_HOME/broot" ]]; then
+    export PATH="$XDG_CONFIG_HOME/broot/launcher/bash:$PATH"
 fi
 
 

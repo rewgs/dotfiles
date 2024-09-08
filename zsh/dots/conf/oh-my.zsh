@@ -8,7 +8,6 @@ plugins=(
     docker
     evalcache
     git 
-    # web-search
     zsh-nvm
 )
 
