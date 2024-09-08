@@ -1,21 +1,15 @@
-alias es="exec $SHELL && source_shell"
-
-
-# zshrc
-# alias z="$EDITOR $HOME/.zshrc"
-alias sz="source $HOME/.zshrc"
-alias ss="source_shell"
-
 # common commands and functions
 alias c="clear"
+alias cls=clear_then_ls_improved
+alias es="exec $SHELL"
+alias ss=source_shell
 
-if [[ $(uname) == "Darwin" ]] || [[ $(uname) == "Linux" ]]; then
-    alias ls=ls_improved
-elif [[ $(uname) == "FreeBSD" ]]; then
+if [[ "$(uname)" == "Darwin" ]] || [[ "$(uname)" == "Linux" ]]; then
+    alias -g ls=lsi
+elif [[ "$(uname)" == "FreeBSD" ]]; then
     alias ls="ls -al"
 fi
 
-alias cls=clear_then_ls_improved
 alias eh="echo 'You are using $HOST'"
 alias mkd="mkdir"
 alias mv="mv -i"
@@ -24,3 +18,18 @@ alias rm=rmi # `rmi()` is a function of mine, located at `$DOTFILES/zsh/conf/fun
 alias sdo=run_as_sudo
 
 alias powershell=pwsh
+
+# editors that aren't (n)vim
+alias h="hx"    # helix
+alias k="kak"   # kakoune
+alias n="nano"  # nano
+
+alias fetch="if command -v fastfetch &> /dev/null; then fastfetch; else neofetch; fi"
+
+# sed
+if [[ $(uname) == "Darwin" ]]; then
+    alias sed="gsed"
+fi
+
+# xplr
+alias x="xplr"

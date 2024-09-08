@@ -60,18 +60,18 @@ time_startup() {
 # ║ run commands                                                               ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-__zsh_conf="$(realpath "$DOTFILES/zsh/dots/conf")"
-zaliases="$(realpath "$__zsh_conf/aliases")"
-zfuncs="$(realpath "$__zsh_conf/zfuncs")"
+ZCONF="$(realpath "$DOTFILES/zsh/dots/conf")"
+ZFUNCS="$(realpath "$ZCONF/zfuncs")"
+ZALIASES="$(realpath "$ZCONF/aliases")"
 
-FPATH="$zfuncs:$FPATH"
+FPATH="$ZFUNCS:$FPATH"
 
-recursively_source_aliases "$zaliases"
-recursively_source_zfuncs "$zfuncs"
+recursively_source_zfuncs "$ZFUNCS"
+recursively_source_aliases "$ZALIASES"
 
-source "$__zsh_conf/oh-my.zsh"
-source "$__zsh_conf/dotnet.zsh"
-source "$__zsh_conf/vi.zsh"
+source "$ZCONF/oh-my.zsh"
+source "$ZCONF/dotnet.zsh"
+source "$ZCONF/vi.zsh"
 
 # broot
 if command -v broot &> /dev/null; then
