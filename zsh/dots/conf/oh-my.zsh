@@ -5,9 +5,9 @@ export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
 
 plugins=(
-    docker
+    # docker
     evalcache
-    git 
+    # git 
     zsh-nvm
 )
 
