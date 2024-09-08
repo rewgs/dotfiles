@@ -1,32 +1,37 @@
-#!/bin/env python3
-#
-# Sets up neovim on Unix systems.
-# Symlinks the `$DOTFILES/nvim/dots/${package_manager}` dir to `~/.config/nvim`.
+# Sets up neovim.
+# Symlinks the `$DOTFILES/nvim/dots/${package_manager}/${hostname}` dir to `~/.config/nvim`.
 #
 # TODO: Windows support
 
 
 from pathlib import Path
 from socket import gethostname
+from typing import Optional
 import sys
 
 
 def main():
-    PKG_MGR = sys.argv[1] # the first arg that isn't the script's name
-    DOTS = Path(__file__).parent.joinpath("dots").resolve(strict=True)
-    SRC = DOTS.joinpath(PKG_MGR, gethostname()).resolve(strict=True)
-    DST = Path.home().joinpath(".config", "nvim")
+    PACKAGE_MANAGER = "lazy"
 
-    if not DST.parent.exists():
-        Path.mkdir(DST.parent)
+    dots = Path(__file__).parent.joinpath("dots")
+    try:
+        dots_r = dots.resolve(strict=True)
+    except FileNotFoundError as error:
+        raise error
 
-    if not DST.exists():
-        DST.symlink_to(SRC)
+    src = dots_r.joinpath(PACKAGE_MANAGER, gethostname())
+    try:
+        src_r = src.resolve(strict=True)
+    except FileNotFoundError as error:
+        raise error
+
+    dst = Path.home().joinpath(".config", "nvim")
+    if not dst.parent.exists(): 
+        Path.mkdir(dst.parent)
+    if not dst.exists():
+        dst.symlink_to(src)
+        print(f"Symlinked {src} to {dst}!")
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        # TODO: Handle this more elegantly.
-        print("At least one argument is required! Specify which package manager to use (e.g. packer, lazy).")
-        exit()
     main()
