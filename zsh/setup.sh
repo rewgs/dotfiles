@@ -2,6 +2,14 @@
 #
 # Setups up all zsh dotfiles, as well as oh-my-zsh.
 
+
+# Sources $DOTFILES/zsh/oh-my-zsh/setup.sh
+zsh-setup::oh-my-zsh() {
+    omz="$(realpath "$(dirname "$BASH_SOURCE")"/oh-my-zsh)"
+    source "$omz/setup.sh"
+}
+
+
 # Symlinks:
 #   $DOTFILES/zsh/dots/zlogin   -> ~/.zlogin
 #   $DOTFILES/zsh/dots/zlogout  -> ~/.zlogout
@@ -25,15 +33,8 @@ zsh-setup::dotfiles() {
 }
 
 
-# Sources $DOTFILES/zsh/oh-my-zsh/setup.sh
-zsh-setup::oh-my-zsh() {
-    omz="$(realpath "$(dirname "$BASH_SOURCE")"/oh-my-zsh)"
-    source "$omz/setup.sh"
-}
-
-
 zsh-setup::main() {
-    zsh-setup::dotfiles
     zsh-setup::oh-my-zsh
+    zsh-setup::dotfiles
 }
 zsh-setup::main
