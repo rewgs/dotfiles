@@ -25,8 +25,7 @@ return {
                 "lua_ls",
                 "pyright",
                 "tailwindcss",
-                "tsserver",
-                -- "ts_ls",
+                "ts_ls",
             },
         })
     end
