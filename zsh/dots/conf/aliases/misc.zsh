@@ -3,10 +3,9 @@ alias h="hx"    # helix
 alias k="kak"   # kakoune
 alias n="nano"  # nano
 
-alias fetch="fastfetch"
-# alias fetch="neofetch"
-
 alias f="fzf"
+
+alias fetch="if command -v fastfetch &> /dev/null; then fastfetch; else neofetch; fi"
 
 # sed
 if [[ $(uname) == "Darwin" ]]; then

@@ -1,5 +1,6 @@
 # mv, improved.
 # Always confirms before deletion. Works on any number of files.
+# If moving ./* to a dir within ., this function intelligently moves all *but* that directory to that directory.
 #
 # FIXME:
 # - `$src` doesn't account for a single arg with spaces in it. A file named with two words (e.g. `some file.md`) is split into two args (e.g. `some` and `file.md`).

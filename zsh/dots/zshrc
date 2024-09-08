@@ -1,0 +1,122 @@
+# ╔═════════════════════════════════════════════════════════════════════════════╗
+# ║ .zshrc is for interactive shells. You set options for the interactive shell ║
+# ║ there with the setopt and unsetopt commands. You can also load shell        ║
+# ║ modules, set your history options, change your prompt, set up zle and       ║
+# ║ completion, etc. You also set any variables that are only used in the       ║
+# ║ interactive shell (e.g. $LS_COLORS).                                        ║
+# ║                                                                             ║
+# ║ In an effort to keep this maintainable, this file has been split into       ║
+# ║ multiple files. .zshrc now sources other files definied in $ZSH_CONFIG.     ║
+# ╚═════════════════════════════════════════════════════════════════════════════╝
+
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ functions                                                                  ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+recursively_source_zfuncs() {
+    local dir="$1"
+    for file in "$dir"/*; do
+        if [[ -d "$file" ]]; then
+            recursively_source_zfuncs "$(realpath $file)"
+        else
+            autoload -Uz "$file"; 
+        fi
+    done
+}
+
+
+# NOTE: Call this function to time zsh startup time.
+# Source: https://blog.mattclemente.com/2020/06/26/oh-my-zsh-slow-to-load/#how-to-test-your-shell-load-time
+time_startup() {
+    local num_loops=3
+
+    local shell=${1-$SHELL}
+
+    # Run as loop
+    for i in $(seq 1 $num_loops); do 
+        echo "Startup time test number $i of $num_loops:"
+        if [[ "$(uname)" == "Darwin" ]]; then
+            /usr/bin/time $shell --interactive -c exit
+        elif [[ "$(uname)" == "Linux" ]]; then
+            time $shell --interactive -c exit
+        fi
+    done
+}
+
+
+recursively_source_aliases() {
+    local dir="$1"
+    for file in "$dir"/*; do
+        if [[ -d "$file" ]]; then
+            recursively_source_aliases "$(realpath $file)"
+        else
+            source "$file"
+        fi
+    done
+}
+
+
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ run commands                                                               ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+ZALIASES="$ZSH_CONFIG/aliases"
+ZFUNCS="$ZSH_CONFIG/zfuncs"
+FPATH="$ZFUNCS:$FPATH"
+
+recursively_source_zfuncs "$ZFUNCS"
+recursively_source_aliases "$ZALIASES"
+
+source "$ZSH_CONFIG/oh-my.zsh"
+source "$ZSH_CONFIG/dotnet.zsh"
+source "$ZSH_CONFIG/vi.zsh"
+
+# broot
+if command -v broot &> /dev/null; then
+    if [[ $(uname) == "Darwin" ]]; then
+        source /Users/rewgs/.config/broot/launcher/bash/br
+    fi
+fi
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# homebrew
+if [[ "$(uname)" == "Linux" ]] && [[ "$(uname -i)" == "x86_64" ]] && [[ "$(whoami)" != "root" ]]; then
+    if [[ -d "/home/linuxbrew" ]]; then
+        _evalcache "/home/linuxbrew/.linuxbrew/bin/brew shellenv"
+        # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    fi
+fi
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Not sure if this is needed? Removing it SERIOUSLY speeds up shell startup time...
+# if command -v nvm &> /dev/null; then
+#     nvm use node > /dev/null
+# fi
+
+# phpenv
+if [[ -d "$HOME/.phpenv" ]]; then
+    export PATH="$HOME/.phpenv/bin:$PATH"
+    # eval "$(phpenv init -)"
+    _evalcache phpenv init -
+fi
+
+# pyenv
+# eval "$(pyenv init -)"
+_evalcache pyenv init -
+
+# rbenv
+if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
+    # eval "$(~/.rbenv/bin/rbenv init - zsh)"
+    _evalcache ~/.rbenv/bin/rbenv init - zsh
+fi
+
+# thefuck
+if command -v thefuck &> /dev/null; then 
+    # eval $(thefuck --alias)
+    _evalcache thefuck --alias
+fi
