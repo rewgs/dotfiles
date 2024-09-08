@@ -1,7 +1,14 @@
-require('mod-keys')
--- require('reload')
--- require('apps')
--- require('window-management') -- now using Phoenix for this
-require('spaces')
--- require('window-switcher')
--- require('yabai') -- not yet ready for primetime...
+-- local home = os.getenv("HOME")
+-- local src = home .. "/src"
+-- Spoons = src .. "/Spoons/Spoons/"
+
+require('modules.mod-keys')
+require('modules.reload')
+require('modules.apps.init')
+require('modules.spaces')
+
+-- NOTE: Using Phoenix for this until I can sort out the Spoons path issue.
+-- require('modules.window-management')
+
+-- require('modules.window-switcher')
+-- require('modules.yabai') -- not yet ready for primetime...
