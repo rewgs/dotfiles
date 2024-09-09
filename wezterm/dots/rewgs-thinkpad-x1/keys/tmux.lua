@@ -90,6 +90,11 @@ local actions = {
             },
         },
         session = {
+            overview = wezterm.action.Multiple {
+                wezterm.action.DisableDefaultAssignment,
+                wezterm.action.SendKey(TMUX_PREFIX),
+                wezterm.action.SendKey({ key = 'o' })
+            },
             rename = wezterm.action.Multiple {
                 wezterm.action.DisableDefaultAssignment,
                 wezterm.action.SendKey(TMUX_PREFIX),
@@ -193,6 +198,7 @@ local keys = {
     -- { key = '-',    mods = 'ALT|CTRL',     action = actions.tmux.pane.swap.counter_clockwise },
 
     -- session
+    { key = 'o',    mods = 'ALT',           action = actions.tmux.session.overview },
     { key = 'R',    mods = 'ALT|SHIFT',     action = actions.tmux.session.rename },
     { key = 'S',    mods = 'ALT|SHIFT',     action = actions.tmux.session.restore },
     { key = 's',    mods = 'ALT',           action = actions.tmux.session.save },
