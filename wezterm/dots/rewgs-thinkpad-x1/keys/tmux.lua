@@ -90,9 +90,6 @@ local actions = {
             },
         },
         session = {
-            -- FIXME: Why is this not working?!?!?!? It was literally fucking 
-            -- working two seconds ago, and now it just executes a blank command.
-            -- God I fucking hate computers sometimes.
             overview = wezterm.action.Multiple {
                 wezterm.action.DisableDefaultAssignment,
                 wezterm.action.SendKey(TMUX_PREFIX),
