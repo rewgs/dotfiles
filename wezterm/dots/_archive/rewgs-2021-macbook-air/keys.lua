@@ -19,10 +19,6 @@ local actions = {
     tab = {
         rename = wezterm.action.PromptInputLine {
             description = "Rename current tab",
-
-            -- NOTE: Even though the `pane` arg doesn't appear to be used anywhere in this 
-            -- function, removing it breaks the function. No idea why. Don't really care.
-            -- Just don't get rid of it.
             action = wezterm.action_callback(function(window, pane, line)
                 -- `line` will be `nil` if user only hits Escape without entering a value,
                 -- an empty string if user only hits Enter, 
@@ -31,24 +27,6 @@ local actions = {
                     window:active_tab():set_title(line)
                 end
             end),
-        },
-    },
-    workspace = {
-        launcher = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' },
-
-        -- FIXME:
-        rename = wezterm.action.PromptInputLine {
-            description = "Rename current workspace",
-            action = wezterm.action_callback(function(window, line)
-                -- `line` will be `nil` if user only hits Escape without entering a value,
-                -- an empty string if user only hits Enter, 
-                -- or the actual line of text they wrote.
-                if line then
-                    -- Neither of these approaches work. Not sure what I'm missing here.
-                    -- window:active_workspace():set_title(line)
-                    -- wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)
-                end
-            end)
         },
     },
 }
@@ -63,7 +41,6 @@ local keys = {
     { key = 'q',    mods = 'SUPER',         action = wezterm.action.QuitApplication },
     { key = 'n',    mods = 'SUPER',         action = wezterm.action.SpawnWindow },
     { key = 't',    mods = 'SUPER',         action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
-    { key = 'm',    mods = 'SUPER',         action = wezterm.action.Hide },
 
     ---------------------------------------------------------------------------
     -- clipboard
@@ -94,12 +71,6 @@ local keys = {
     { key = 'r', mods = 'SUPER', action = actions.tab.rename },
 
     -- { key = 's',    mods = 'SUPER',         action = wezterm.action.QuickSelect },
-
-    -- workspaces
-    { key = 'o', mods = 'SUPER', action = actions.workspace.launcher },
-
-    -- NOTE: actions.workspace.rename not working
-    -- { key = 'r', mods = 'SUPER|SHIFT', action = actions.workspace.rename },
 
     -- tabs
     { key = 'Tab', mods = 'CTRL', action = wezterm.action.ActivateTabRelative(1) },

@@ -1,5 +1,6 @@
 local wezterm = require('wezterm')
 local hostname = wezterm.hostname()
+print("Hostname: " .. hostname)
 
 -- https://wezfurlong.org/wezterm/config/lua/wezterm/config_builder.html
 -- @type config builder object
@@ -20,6 +21,7 @@ elseif hostname == 'rewgs-2021-macbook-air' then
     machine_config.apply_to_config(config)
 end
 
+-- require(hostname .. ".init").apply_to_config(config)
 
 -- common configs
 
