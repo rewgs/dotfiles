@@ -1,21 +1,21 @@
 #!/bin/bash
 #
-# Symlinks $DOTFILES/wezterm/dots to ~/.config/wezterm
+# Symlinks `$DOTFILES/wezterm/dots` to `~/.config/wezterm`.
 
 setup-wezterm::main() {
-    local SRC="$(realpath $(dirname $BASH_SOURCE))/dots"
-    local DST="$HOME/.config/wezterm"
+    local src="$(realpath $(dirname $BASH_SOURCE))/dots"
+    local dst="$HOME/.config/wezterm"
 
-    if [[ ! -d "$(dirname "$DST")" ]]; 
-        then mkdir -p "$(dirname "$DST")"; 
+    if [[ ! -d "$(dirname "$dst")" ]]; then
+        mkdir -p "$(dirname "$dst")"
     fi
 
-    if [[ -d "$DST" ]]; 
-        then rm -rf "$DST"; 
+    if [[ -d "$dst" ]] || [[ -L "$dst" ]]; then
+        rm -rf "$dst"
     fi
 
-    if [[ ! -L "$DST" ]]; 
-        then ln -s "$SRC" "$DST"; 
+    if [[ ! -L "$dst" ]]; then
+        ln -s "$src" "$dst"
     fi
 }
 setup-wezterm::main
