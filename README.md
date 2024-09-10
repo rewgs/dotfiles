@@ -12,6 +12,7 @@ This repo contains any and all dotfiles, configuration files, etc. Each tool con
 
 - window manager: [`hyprland`](./hypr). It's the best I've ever used by a mile.
 - bar: [`waybar`](./waybar). Pretty good, might move to `eww`.
+- using `hyprlock` and `hypridle` for screen lock and sleep, respectively, as well as `kanshi` for dynamically turning on/off my laptop display on my Thinkpad X1 Carbon when plugging into my 4k display (I like using one display, no more, no less). Unfortunately turning *off* the external display causes...something to crash (not sure if the problem lies with `kanshi`, `hyprlock`, or `hyprland` itself), resulting in the Wayland "red screen of death," so that's fun. For now, I'm just careful, I guess.
 
 ### macOS 
 
