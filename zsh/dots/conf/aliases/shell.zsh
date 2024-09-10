@@ -4,11 +4,11 @@ alias cls=clear_then_ls_improved
 alias es="exec $SHELL"
 alias ss=source_shell
 
-if [[ "$(uname)" == "Darwin" ]] || [[ "$(uname)" == "Linux" ]]; then
-    alias -g ls=lsi
-elif [[ "$(uname)" == "FreeBSD" ]]; then
-    alias ls="ls -al"
-fi
+# if [[ "$(uname)" == "Darwin" ]] || [[ "$(uname)" == "Linux" ]]; then
+    # alias -g ls=lsi
+# elif [[ "$(uname)" == "FreeBSD" ]]; then
+#     alias ls="ls -al"
+# fi
 
 alias eh="echo 'You are using $HOST'"
 alias mkd="mkdir"
