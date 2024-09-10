@@ -9,7 +9,7 @@ profile laptop {
 
 profile docked1 {
     output eDP-1 disable
-    output DP-1 {
+    output DP-1 enable {
         mode 3840x2160@60Hz
         position 0,0 
         scale 2
@@ -19,7 +19,7 @@ profile docked1 {
 
 profile docked2 {
     output eDP-1 disable
-    output DP-3 {
+    output DP-3 enable {
         mode 3840x2160@60Hz
         position 0,0 
         scale 2
