@@ -1,5 +1,7 @@
 # tailscale
-if [[ $(uname) == "Darwin" ]] &&  [[ ! -f "$HOME/go/bin/tailscale" ]]; then
+if [[ $(uname) == "Darwin" ]] && \
+[[ ! -f "$HOME/go/bin/tailscale" ]] && \
+[[ -f "/Applications/Tailscale.app/Contents/MacOS/Tailscale" ]]; then
     alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 fi
 
