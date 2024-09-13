@@ -80,6 +80,9 @@ if command -v broot &> /dev/null; then
     fi
 fi
 
+# fnm (nvm alternative)
+eval "$(fnm env --use-on-cd --shell zsh)"
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -91,10 +94,11 @@ if [[ "$(uname)" == "Linux" ]] && [[ "$(uname -i)" == "x86_64" ]] && [[ "$(whoam
     fi
 fi
 
+# NOTE: Using fnm instead.
 # nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # phpenv
 if [[ -d "$HOME/.phpenv" ]]; then
