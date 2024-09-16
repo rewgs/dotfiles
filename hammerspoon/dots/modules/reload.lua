@@ -1,4 +1,4 @@
-require('mod-keys')
+require('modules.mod-keys')
 
 hs.hotkey.bind(mod.hyper, 'r', function()
     hs.reload()

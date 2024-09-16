@@ -4,8 +4,8 @@
 
 require('modules.mod-keys')
 require('modules.reload')
-require('modules.apps.init')
 require('modules.spaces')
+-- require('modules.apps.init')
 
 -- NOTE: Using Phoenix for this until I can sort out the Spoons path issue.
 -- require('modules.window-management')

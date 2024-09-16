@@ -1,4 +1,4 @@
-require('mod-keys')
+require('modules.mod-keys')
 
 -- local _INFO = debug.getinfo.source:sub(2)
 -- hs.alert.show(_INFO, 5)
