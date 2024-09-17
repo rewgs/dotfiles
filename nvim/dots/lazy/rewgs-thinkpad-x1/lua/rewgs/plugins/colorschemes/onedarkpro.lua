@@ -83,7 +83,6 @@ return {
             which_key = true,
             vim_dadbod_ui = true,
           },
-        
           options = {
             cursorline = false, -- Use cursorline highlighting?
             transparency = false, -- Use a transparent background?
