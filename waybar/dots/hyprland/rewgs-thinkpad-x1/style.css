@@ -11,6 +11,9 @@ window#waybar {
     /* black */
     background-color: #000000; 
 
+    /* onedark "black" */
+    background-color: #282C34;
+
     /* gruvbox dark - dark0_hard */
     /* background-color: #1d2021; */
 
@@ -32,7 +35,10 @@ window#waybar {
 
 button {
     /* black */
-    background-color: #000000; 
+    /* background-color: #000000;  */
+
+    /* onedark "black" */
+    background-color: #282C34;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -64,7 +70,10 @@ button:hover {
 /* inactive */
 #workspaces button {
     /* black */
-    background-color: #000000;
+    /* background-color: #000000; */
+
+    /* onedark "black" */
+    background-color: #282C34;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -92,7 +101,10 @@ button:hover {
 
 #workspaces button:hover {
     /* black */
-    background-color: #000000;
+    /* background-color: #000000; */
+
+    /* onedark "black" */
+    background-color: #282C34;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -110,7 +122,10 @@ button:hover {
 /* #workspaces button.focused { */
 #workspaces button.active {
     /* black */
-    background-color: #000000;
+    /* background-color: #000000; */
+
+    /* onedark "black" */
+    background-color: #282C34;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -170,7 +185,10 @@ button:hover {
 
 #clock {
     /* black */
-    background-color: #000000;
+    /* background-color: #000000; */
+
+    /* onedark "black" */
+    background-color: #282C34;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -197,7 +215,10 @@ button:hover {
 
 #battery {
     /* black */
-    background-color: #000000; 
+    /* background-color: #000000;  */
+
+    /* onedark "black" */
+    background-color: #282C34;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -224,7 +245,10 @@ label:focus {
 
 #cpu {
     /* black */
-    background-color: #000000;
+    /* background-color: #000000; */
+
+    /* onedark "black" */
+    background-color: #282C34;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -235,7 +259,10 @@ label:focus {
 
 #memory {
     /* black */
-    background-color: #000000;
+    /* background-color: #000000; */
+
+    /* onedark "black" */
+    background-color: #282C34;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -251,6 +278,9 @@ label:focus {
     /* black */
     background-color: #000000; 
 
+    /* onedark "black" */
+    /* background-color: #282C34; */
+
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
 
@@ -263,7 +293,10 @@ label:focus {
 
 #backlight {
     /* black */
-    background-color: #000000; 
+    /* background-color: #000000;  */
+
+    /* onedark "black" */
+    background-color: #282C34;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -277,7 +310,10 @@ label:focus {
 
 #network {
     /* black */
-    background-color: #000000;
+    /* background-color: #000000; */
+
+    /* onedark "black" */
+    background-color: #282C34;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -296,7 +332,10 @@ label:focus {
 
 #pulseaudio {
     /* black */
-    background-color: #000000;
+    /* background-color: #000000; */
+
+    /* onedark "black" */
+    background-color: #282C34;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -337,8 +376,11 @@ label:focus {
     /* black */
     /* background-color: #000000; */
 
+    /* onedark "black" */
+    background-color: #282C34;
+
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 }
 
 #tray > .passive {
