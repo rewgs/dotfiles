@@ -12,7 +12,10 @@ window#waybar {
     background-color: #000000; 
 
     /* onedark "black" */
-    background-color: #282C34;
+    /* background-color: #282C34; */
+
+    /* onedark "black" -- darker */
+    background-color: #21252b;
 
     /* gruvbox dark - dark0_hard */
     /* background-color: #1d2021; */
@@ -41,7 +44,10 @@ button {
     /* background-color: #000000;  */
 
     /* onedark "black" */
-    background-color: #282C34;
+    /* background-color: #282C34; */
+
+    /* onedark "black" -- darker */
+    background-color: #21252b;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -71,6 +77,9 @@ button:hover {
 
     /* onedark grey */
     box-shadow: inset 0 -3px #B2B7C1;
+
+    /* onedark "black" */
+    /* box-shadow: inset 0 -3px #282C34; */
 }
 
 /* inactive */
@@ -79,7 +88,10 @@ button:hover {
     /* background-color: #000000; */
 
     /* onedark "black" */
-    background-color: #282C34;
+    /* background-color: #282C34; */
+
+    /* onedark "black" -- darker */
+    background-color: #21252b;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -113,7 +125,10 @@ button:hover {
     /* background-color: #000000; */
 
     /* onedark "black" */
-    background-color: #282C34;
+    /* background-color: #282C34; */
+
+    /* onedark "black" -- darker */
+    background-color: #21252b;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -137,7 +152,10 @@ button:hover {
     /* background-color: #000000; */
 
     /* onedark "black" */
-    background-color: #282C34;
+    /* background-color: #282C34; */
+
+    /* onedark "black" -- darker */
+    background-color: #21252b;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -233,7 +251,10 @@ button:hover {
     /* background-color: #000000;  */
 
     /* onedark "black" */
-    background-color: #282C34;
+    /* background-color: #282C34; */
+
+    /* onedark "black" -- darker */
+    background-color: #21252b;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -265,7 +286,10 @@ label:focus {
     /* background-color: #000000; */
 
     /* onedark "black" */
-    background-color: #282C34;
+    /* background-color: #282C34; */
+
+    /* onedark "black" -- darker */
+    background-color: #21252b;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -279,7 +303,10 @@ label:focus {
     /* background-color: #000000; */
 
     /* onedark "black" */
-    background-color: #282C34;
+    /* background-color: #282C34; */
+
+    /* onedark "black" -- darker */
+    background-color: #21252b;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -313,7 +340,10 @@ label:focus {
     /* background-color: #000000;  */
 
     /* onedark "black" */
-    background-color: #282C34;
+    /* background-color: #282C34; */
+
+    /* onedark "black" -- darker */
+    background-color: #21252b;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -330,7 +360,10 @@ label:focus {
     /* background-color: #000000; */
 
     /* onedark "black" */
-    background-color: #282C34;
+    /* background-color: #282C34; */
+
+    /* onedark "black" -- darker */
+    background-color: #21252b;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -355,7 +388,10 @@ label:focus {
     /* background-color: #000000; */
 
     /* onedark "black" */
-    background-color: #282C34;
+    /* background-color: #282C34; */
+
+    /* onedark "black" -- darker */
+    background-color: #21252b;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -400,7 +436,10 @@ label:focus {
     /* background-color: #000000; */
 
     /* onedark "black" */
-    background-color: #282C34;
+    /* background-color: #282C34; */
+
+    /* onedark "black" -- darker */
+    background-color: #21252b;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
