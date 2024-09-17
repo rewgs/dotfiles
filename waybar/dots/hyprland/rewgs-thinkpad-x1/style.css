@@ -9,13 +9,13 @@
 
 window#waybar {
     /* black */
-    /* background-color: #000000;  */
+    background-color: #000000; 
 
     /* gruvbox dark - dark0_hard */
     /* background-color: #1d2021; */
 
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     border-bottom: #000000;
@@ -31,8 +31,11 @@ window#waybar {
 }
 
 button {
+    /* black */
+    background-color: #000000; 
+
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
@@ -61,10 +64,10 @@ button:hover {
 /* inactive */
 #workspaces button {
     /* black */
-    /* background-color: #000000; */
+    background-color: #000000;
 
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 
     /* white */
     /* color: #ffffff; */
@@ -89,10 +92,10 @@ button:hover {
 
 #workspaces button:hover {
     /* black */
-    /* background-color: #000000; */
+    background-color: #000000;
 
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
     
     /* white */
     /* color: #ffffff; */
@@ -107,10 +110,10 @@ button:hover {
 /* #workspaces button.focused { */
 #workspaces button.active {
     /* black */
-    /* background-color: #000000; */
+    background-color: #000000;
 
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 
     /* white */
     /* box-shadow: inset 0 -3px #ffffff; */
@@ -167,10 +170,10 @@ button:hover {
 
 #clock {
     /* black */
-    /* background-color: #000000; */
+    background-color: #000000;
 
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 
     /* onedark grey */
     /* color: #B2B7C1; */
@@ -193,8 +196,11 @@ button:hover {
 }
 
 #battery {
+    /* black */
+    background-color: #000000; 
+
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 
     /* gruvbox dark - light0 */
     color: #fbf1c7;
@@ -218,10 +224,10 @@ label:focus {
 
 #cpu {
     /* black */
-    /* background-color: #000000; */
+    background-color: #000000;
 
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 
     /* onedark green */
     color: #81A273;
@@ -229,10 +235,10 @@ label:focus {
 
 #memory {
     /* black */
-    /* background-color: #000000; */
+    background-color: #000000;
 
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 
     /* onedark magenta */
     /* color: #C48AD6; */
@@ -242,8 +248,11 @@ label:focus {
 }
 
 #disk {
+    /* black */
+    background-color: #000000; 
+
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 
     /* gruvbox dark - light0_hard */
     /* color: #f9f5d7; */
@@ -253,8 +262,11 @@ label:focus {
 }
 
 #backlight {
+    /* black */
+    background-color: #000000; 
+
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 
     /* gruvbox dark - light0_hard */
     color: #f9f5d7;
@@ -265,10 +277,10 @@ label:focus {
 
 #network {
     /* black */
-    /* background-color: #000000; */
+    background-color: #000000;
 
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 
     /* gruvbox dark - bright_blue; */
     color: #83a598;
@@ -284,10 +296,10 @@ label:focus {
 
 #pulseaudio {
     /* black */
-    /* background-color: #000000; */
+    background-color: #000000;
 
     /* gruvbox dark - dark0 */
-    background-color: #282828;
+    /* background-color: #282828; */
 
     /* gruvbox dark - bright_orange */
     /* color: #fe8019; */
