@@ -115,7 +115,10 @@ button:hover {
     /* color: #83a598; */
 
     /* onedark grey */
-    color: #B2B7C1;
+    /* color: #B2B7C1; */
+
+    /* onedark dark grey */
+    color: #5c6370;
 
     padding: 0 5px;
 }
