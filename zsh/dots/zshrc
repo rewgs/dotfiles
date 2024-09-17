@@ -80,6 +80,16 @@ if command -v broot &> /dev/null; then
     fi
 fi
 
+# bun
+if [[ -d "$HOME/.bun" ]]; then
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH="$BUN_INSTALL/bin:$PATH"
+
+    # bun completions
+    [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+fi
+
+
 # fnm (nvm alternative)
 eval "$(fnm env --use-on-cd --shell zsh)"
 
@@ -122,3 +132,4 @@ if command -v thefuck &> /dev/null; then
     # eval $(thefuck --alias)
     _evalcache thefuck --alias
 fi
+
