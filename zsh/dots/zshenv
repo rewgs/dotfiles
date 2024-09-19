@@ -109,7 +109,7 @@ HOMEBREW_NO_AUTO_UPDATE=1
 if [[ $(uname) == "Darwin" ]]; then
     export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
 elif [[ $(uname) == "Linux" ]]; then
-    export PATH="$HOME/opt/JetBrains:$PATH"
+    export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
 fi
 
 
