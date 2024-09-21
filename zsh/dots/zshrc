@@ -104,6 +104,11 @@ if [[ "$(uname)" == "Linux" ]] && [[ "$(uname -i)" == "x86_64" ]] && [[ "$(whoam
     fi
 fi
 
+# lua/luarocks
+# eval $(luarocks path)
+_evalcache luarocks path
+
+
 # NOTE: Using fnm instead.
 # nvm
 # export NVM_DIR="$HOME/.nvm"
