@@ -106,7 +106,9 @@ fi
 
 # lua/luarocks
 # eval $(luarocks path)
-_evalcache luarocks path
+if command -v luarocks &> /dev/null; then
+    _evalcache luarocks path
+fi
 
 
 # NOTE: Using fnm instead.
