@@ -33,6 +33,7 @@ packages=(
     "libvirt"
     "llvm"
     "lua"
+    "luarocks"
     "lynx"
     "make"
     "ncdu"
