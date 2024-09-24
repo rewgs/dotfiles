@@ -111,7 +111,6 @@ if command -v luarocks &> /dev/null; then
 fi
 
 
-# NOTE: Using fnm instead.
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
