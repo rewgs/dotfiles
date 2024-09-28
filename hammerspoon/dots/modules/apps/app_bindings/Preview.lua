@@ -11,11 +11,11 @@ local bindings = {
     },
 }
 
-local function bind_keys(kbs)
-    if app:isFrontmost() then
-        for _, b in ipairs(kbs) do
-            hs.hotkey.bind(b.mod, b.key, b.action)
-        end
-    end
-end
-bind_keys(bindings)
+-- local function bind_keys(kbs)
+--     if app:isFrontmost() then
+--         for _, b in ipairs(kbs) do
+--             hs.hotkey.bind(b.mod, b.key, b.action)
+--         end
+--     end
+-- end
+-- bind_keys(bindings)
