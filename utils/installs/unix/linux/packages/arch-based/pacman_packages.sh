@@ -16,6 +16,7 @@ packages=(
     "docker"
     "docker-compose"
     "element-desktop"
+    "fastfetch"
     "flatpak"
     "foot"
     "fuzzel"
