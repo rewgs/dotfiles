@@ -7,9 +7,6 @@ places::alias() {
 }
 
 
-# personal connections and computers
-alias nas="ssh rewgs@rewgs-nas"
-alias vm="ssh rewgs@rewgs-nas-debian-vm"
 
 # personal bin
 places::alias "$HOME/bin" "b"
