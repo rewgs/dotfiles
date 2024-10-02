@@ -1,4 +1,27 @@
 # Reference: https://github.com/i3/i3/blob/next/etc/config
+#
+# All possible keys:
+# - Letters.        a, b, c, ..., z
+# - Numbers.        0, 1, 2, ..., 9
+# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+# - F-keys.         f1, f2, ..., f20
+# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
+#                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
+# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+#                   keypadMinus, keypadMultiply, keypadPlus
+# - Arrows.         left, down, up, right
+
+# All possible modifiers: cmd, alt, ctrl, shift
+
+# All possible commands: https://nikitabobko.github.io/AeroSpace/commands
+
+# FIXME: Nothing is being recognized as a valid key here.
+# alt-enter = '''exec-and-forget osascript -e '
+# tell application "Terminal"
+#     do script
+#     activate
+# end tell'
+# '''
 
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
@@ -11,11 +34,19 @@ after-login-command = []
 after-startup-command = [
     # Enables JankyBorders
     # https://github.com/FelixKratz/JankyBorders
-    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
+    'exec-and-forget borders',
+
+    # Enables sketchybar
+    'exec-and-forget sketchybar'
+]
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
 # Start AeroSpace at login
-start-at-login = true
+start-at-login = false
 
 # i3 doesn't have "normalizations" feature that why we disable them here.
 # But the feature is very helpful.
@@ -35,12 +66,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 8
-inner.vertical =   8
-outer.left =       8
-outer.bottom =     8
-outer.top =        8
-outer.right =      8
+inner.horizontal = 7
+inner.vertical =   7
+outer.left =       7
+outer.bottom =     7
+outer.top =        7
+outer.right =      7
 
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/goodness#open-a-new-window-with-applescript
@@ -69,9 +100,10 @@ alt-ctrl-j = 'move down'
 alt-ctrl-k = 'move up'
 alt-ctrl-l = 'move right'
 
+# FIXME:
 # Consider using 'join-with' command as a 'split' replacement if you want to enable normalizations
-# alt-h = 'split horizontal'
-# alt-v = 'split vertical'
+# alt-minus = 'split horizontal'
+# alt-backslash = 'split vertical'
 # cmd-ctrl-shift-backslash = 'split horizontal'
 # cmd-ctrl-shift-minus = 'split vertical'
 
@@ -125,3 +157,15 @@ t = 'resize height +50'
 shift-t = 'resize height -50'
 enter = 'mode main'
 esc = 'mode main'
+
+# FIXME: This doesn't work.
+# Would love to resize like Hyprland, but multi commands don't work.
+# alt-shift-h = 'mode main'; 'resize width +50'
+# alt-shift-j = 'mode main'; 'resize width +50'
+# alt-shift-k = 'mode main'; 'resize width +50'
+# alt-shift-l = 'mode main'; 'resize width +50'
+
+# FIXME: Not working...
+# https://nikitabobko.github.io/AeroSpace/commands.html#resize
+# alt-shift-minus = 'resize smart -50'
+# alt-shift-equal = 'resize smart +50'
