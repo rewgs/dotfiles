@@ -4,7 +4,12 @@
 # exec --no-startup-id hsetroot -solid "#282828"
 hsetroot -solid "#282828" &
 picom &
+
 # exec dwm
-exec i3
+# exec i3
+
+while true; do
+    dwm >/dev/null 2>&1
+done
 
 # . /etc/X11/Xsession

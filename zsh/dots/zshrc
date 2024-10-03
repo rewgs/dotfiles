@@ -144,4 +144,3 @@ if command -v thefuck &> /dev/null; then
     # eval $(thefuck --alias)
     _evalcache thefuck --alias
 fi
-
