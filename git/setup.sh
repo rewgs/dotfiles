@@ -27,7 +27,7 @@ symlink_config() {
 symlink_ignore() {
     local src="$1/ignore"
     local dst="$HOME/.config/git/ignore"
-    local dst_parent="$(realpath "$(dirname "$dst")")"
+    local dst_parent="$(dirname "$dst")"
     if [[ ! -d "$dst_parent" ]]; then
         mkdir -p "$dst_parent"
     fi
@@ -37,7 +37,7 @@ symlink_ignore() {
 
 main() {
     local dots="$(realpath "$(dirname "$BASH_SOURCE")/dots")"
-    # symlink_config "$dots"
+    symlink_config "$dots"
     symlink_ignore "$dots"
 }
 main
