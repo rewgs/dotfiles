@@ -91,7 +91,13 @@ fi
 
 
 # fnm (nvm alternative)
-# eval "$(fnm env --use-on-cd --shell zsh)"
+# fnm
+FNM_PATH="/home/rewgs/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+    export PATH="/home/rewgs/.local/share/fnm:$PATH"
+    # eval "`fnm env`"
+    eval "$(fnm env --use-on-cd --shell zsh)"
+fi
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
