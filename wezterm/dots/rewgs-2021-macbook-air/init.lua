@@ -10,7 +10,7 @@ function module.apply_to_config(config)
     -- Source: https://github.com/wez/wezterm/issues/2669
     config.window_decorations = 'RESIZE|MACOS_FORCE_DISABLE_SHADOW'
 
-    config.native_macos_fullscreen_mode = true
+    config.native_macos_fullscreen_mode = false
     config.quit_when_all_windows_are_closed = false
 
     appearance.apply_to_config(config)
