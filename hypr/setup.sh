@@ -1,9 +1,49 @@
 #!/bin/bash
 #
-# Symlinks `dots` to `~/.config/hypr`.
+# Ensures that all files in `common/` are symlinked to directory named $HOSTNAME.
+# Symlinks $HOSTNAME dir to ~/.config/hypr
 
-setup-hypr::main() {
-    local src="$(realpath $(dirname "${BASH_SOURCE}"))/dots"
+
+# TODO: Add files to exclude (e.g. hypridle, hyprlock, hyprpaper)
+hyprland::symlink-common() {
+    local src_dir="$(realpath $(dirname "${BASH_SOURCE}"))/dots/common"
+    local dst_dir="$(realpath $(dirname "${BASH_SOURCE}"))/dots/$HOSTNAME"
+
+    # echo "src_dir: $src_dir"
+    # echo "dst_dir: $dst_dir"
+
+    for src_file in "$src_dir"/*; do
+        local src="$src_dir/$(basename $src_file)"
+        # echo "src: $src"
+
+        for dst_file in "$dst_dir"/*; do
+            local old_dst="$dst_dir/$(basename $dst_file)"
+            local new_dst="$dst_dir/$(basename $src_file)"
+
+            # echo "old_dst: $old_dst"
+            # echo "new_dst: $new_dst"
+
+            # Delete the old symlinks.
+            if [[ "$(basename $src)" == "$(basename $old_dst)" ]] && [[ -L "$old_dst" ]]; then
+                # echo "These match:"
+                # echo "$src"
+                # echo "$old_dst"
+                # echo "Deleting $old_dst"
+                # echo ""
+                rm -i "$old_dst"
+            fi
+
+            if [[ ! -L "$new_dst" ]]; then
+                ln -s "$src" "$new_dst"
+                echo "Symlinked $src to $new_dst!"
+            fi
+        done
+    done
+}
+
+
+hyprland::symlink-dirs() {
+    local src="$(realpath $(dirname "${BASH_SOURCE}"))/dots/$HOSTNAME"
     local dst="$HOME/.config/hypr"
 
     if [[ ! -d "$(dirname "$dst")" ]]; then
@@ -18,4 +58,7 @@ setup-hypr::main() {
         ln -s "$src" "$dst"
     fi
 }
-setup-hypr::main
+
+
+hyprland::symlink-dirs
+hyprland::symlink-common
