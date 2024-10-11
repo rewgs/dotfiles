@@ -4,11 +4,11 @@ local module = {}
 local ssh_domains = {
     {
         connect_automatically = false,
-        multiplexing = 'WezTerm',
-        name = 'rewgs-nas-debian-vm',
-        remote_address = 'rewgs-nas-debian-vm.tailed4ac.ts.net',
+        -- multiplexing = 'WezTerm',
+        name = 'rewgs-nas-arch-vm',
+        -- remote_address = 'rewgs@rewgs-nas-arch-vm.tailed4ac.ts.net:8080',
+        remote_address = 'rewgs-nas-arch-vm:8080',
         remote_wezterm_path = "/usr/bin/wezterm",
-        -- timeout = 60,
         username = 'rewgs',
     },
 }
