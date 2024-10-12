@@ -160,10 +160,42 @@ local keys = {
     { key = 'l',    mods = 'CMD',         action = wezterm.action.DisableDefaultAssignment },
 
     ---------------------------------------------------------------------------
-    -- meta
+    -- wezterm
     ---------------------------------------------------------------------------
+    ---
+    -- meta
     { key = 'r',    mods = 'CMD',           action = actions.meta.reload_config },
     { key = 'f',    mods = 'CMD',         action = actions.meta.toggle_fullscreen },
+
+    { key = 'r',    mods = 'CMD|CTRL',  action = actions.meta.reload_config },
+    { key = 'f',    mods = 'CMD|CTRL',  action = actions.meta.toggle_fullscreen },
+    { key = 'q',    mods = 'CMD|CTRL',  action = wezterm.action.QuitApplication },
+    { key = 'n',    mods = 'CMD|CTRL',  action = wezterm.action.SpawnWindow },
+    { key = 't',    mods = 'CMD|CTRL',  action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
+    { key = 'm',    mods = 'CMD|CTRL',  action = wezterm.action.Hide },
+    ---
+    -- tabs
+    { key = 'Tab',  mods = 'CMD|CTRL', action = wezterm.action.ActivateTabRelative(1) },
+    { key = 'Tab',  mods = 'CMD|CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
+    { key = '1',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(0) },
+    { key = '2',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(1) },
+    { key = '3',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(2) },
+    { key = '4',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(3) },
+    { key = '5',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(4) },
+    { key = '6',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(5) },
+    { key = '7',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(6) },
+    { key = '8',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(7) },
+    { key = '9',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(8) },
+    { key = '0',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(9) },
+
+    -- Closes the current pane. 
+    -- If that was the last pane in the tab, closes the tab. If that was the last tab, closes that 
+    -- window. If that was the last window, wezterm terminates. The act of closing a pane shuts down 
+    -- the PTY associated with the pane and then kills the process associated with that pane. When 
+    -- confirm is true, an overlay will render over the pane to ask you to confirm whether you want 
+    -- to close it. See also skip_close_confirmation_for_processes_named. If confirm is false, then 
+    -- this action will immediately close the pane without prompting.
+    { key = 'w',    mods = 'CMD|CTRL',         action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 
     ---------------------------------------------------------------------------
     -- clipboard
@@ -188,7 +220,8 @@ local keys = {
     { key = 'l',    mods = 'CMD',           action = actions.tmux.pane.select.right },
 
     -- pane - split
-    { key = '|',    mods = 'CMD|SHIFT',     action = actions.tmux.pane.split.horizontal },   -- NOTE: weirdly, SHIFT must be included even if `key` requires SHIFT.
+    -- NOTE: weirdly, SHIFT must be included even if `key` requires SHIFT.
+    { key = '|',    mods = 'CMD|SHIFT',     action = actions.tmux.pane.split.horizontal },
     { key = '_',    mods = 'CMD|SHIFT',     action = actions.tmux.pane.split.vertical },
 
     -- pane - swap

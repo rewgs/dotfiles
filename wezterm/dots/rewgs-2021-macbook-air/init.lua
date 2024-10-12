@@ -2,8 +2,8 @@ local module = {}
 
 local appearance = require('rewgs-2021-macbook-air.appearance')
 local font = require('rewgs-2021-macbook-air.font')
-local keys = require('rewgs-2021-macbook-air.keys')
--- local keys = require('rewgs-2021-macbook-air.tmux_keys')
+-- local keys = require('rewgs-2021-macbook-air.keys.standard')
+local keys = require('rewgs-2021-macbook-air.keys.tmux')
 
 function module.apply_to_config(config)
     -- The latter vastly helps overall system graphics performance.
