@@ -30,6 +30,10 @@ tpm::main() {
             rm -f  "$dst"
         fi
 
+        if [[ ! -d "$(dirname "$dst")" ]]; then
+            mkdir -p "$(dirname "$dst")"
+        fi
+
         if [[ ! -L "$dst" ]]; then
             ln -s "$src" "$dst"
         fi
