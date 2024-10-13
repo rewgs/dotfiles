@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Symlinks `$DOTFILES/tmux/dots/tmux.conf` to `~/.tmux.conf`.
+# NOTE: Forcefully and silently pre-existing files or symlinks!
 
 tpm::main() {
     local src="$HOME/src"
@@ -14,8 +15,6 @@ tpm::main() {
     
         if [[ ! -d "$repo_dst" ]]; then
             git clone "$repo_url" "$repo_dst"
-            echo "Cloned tpm repo to $repo_dst!"
-            return 0
         fi
     }
 
@@ -23,8 +22,17 @@ tpm::main() {
         local src="$repo_dst"
         local dst="$HOME/.tmux/plugins/tpm"
 
-        # TODO: left off here
-        # if [[ ! -d]]
+        if [[ -d "$dst" ]]; then
+            sudo rm -rf  "$dst"
+        fi
+
+        if [[ -L "$dst" ]]; then
+            rm -f  "$dst"
+        fi
+
+        if [[ ! -L "$dst" ]]; then
+            ln -s "$src" "$dst"
+        fi
     }
 
     tpm::clone-repo
@@ -38,11 +46,12 @@ tmux::symlink-dotfiles() {
     local src="$dots/tmux.conf"
     local dst="$HOME/.tmux.conf"
 
+    if [[ -f "$dst" ]] || [[ -L "$dst" ]]; then
+        rm -f "$dst"
+    fi
+
     if [[ ! -L "$dst" ]]; then
         ln -s "$src" "$dst"
-        echo "Symlinked $src to $dst!"
-    else
-        echo "$src already symlinked to $dst!"
     fi
 }
 
