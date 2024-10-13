@@ -14,10 +14,10 @@ Phoenix.set({
   openAtLogin: true,
 });
 
-Key.on('r', SOHYPER, () => {
-    Phoenix.reload()
-    Phoenix.notify("Reloaded");
-});
+// Key.on('r', SOHYPER, () => {
+//     Phoenix.reload()
+//     Phoenix.notify("Reloaded");
+// });
 
 
 //-----------------------------------------------------------------------------
