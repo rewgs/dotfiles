@@ -45,3 +45,9 @@ tmux::symlink-dotfiles() {
         echo "$src already symlinked to $dst!"
     fi
 }
+
+tmux::main() {
+    tpm::main
+    tmux::symlink-dotfiles
+}
+tmux::main
