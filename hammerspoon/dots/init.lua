@@ -3,7 +3,7 @@
 -- Spoons = src .. "/Spoons/Spoons/"
 
 require('modules.mod-keys')
-require('modules.reload')
+-- require('modules.reload')
 require('modules.spaces')
 require('modules.apps.init')
 
