@@ -18,6 +18,41 @@ local actions = {
             wezterm.action.ToggleFullScreen
         },
     },
+    tab = {
+        rename = wezterm.action.PromptInputLine {
+            description = "Rename current tab",
+
+            -- NOTE: Even though the `pane` arg doesn't appear to be used anywhere in this 
+            -- function, removing it breaks the function. No idea why. Don't really care.
+            -- Just don't get rid of it.
+            action = wezterm.action_callback(function(window, pane, line)
+                -- `line` will be `nil` if user only hits Escape without entering a value,
+                -- an empty string if user only hits Enter, 
+                -- or the actual line of text they wrote.
+                if line then
+                    window:active_tab():set_title(line)
+                end
+            end),
+        },
+    },
+    workspace = {
+        launcher = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' },
+
+        -- FIXME:
+        rename = wezterm.action.PromptInputLine {
+            description = "Rename current workspace",
+            action = wezterm.action_callback(function(window, line)
+                -- `line` will be `nil` if user only hits Escape without entering a value,
+                -- an empty string if user only hits Enter, 
+                -- or the actual line of text they wrote.
+                if line then
+                    -- Neither of these approaches work. Not sure what I'm missing here.
+                    -- window:active_workspace():set_title(line)
+                    -- wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)
+                end
+            end)
+        },
+    },
     tmux = {
         pane = {
             resize = {
@@ -162,17 +197,16 @@ local keys = {
     ---------------------------------------------------------------------------
     -- wezterm
     ---------------------------------------------------------------------------
-    ---
     -- meta
-    { key = 'r',    mods = 'CMD',           action = actions.meta.reload_config },
+    -- { key = 'r',    mods = 'CMD',           action = actions.meta.reload_config },
     { key = 'f',    mods = 'CMD',         action = actions.meta.toggle_fullscreen },
 
-    { key = 'r',    mods = 'CMD|CTRL',  action = actions.meta.reload_config },
+    -- { key = 'r',    mods = 'CMD|CTRL',  action = actions.meta.reload_config },
     { key = 'f',    mods = 'CMD|CTRL',  action = actions.meta.toggle_fullscreen },
     { key = 'q',    mods = 'CMD|CTRL',  action = wezterm.action.QuitApplication },
-    { key = 'n',    mods = 'CMD|CTRL',  action = wezterm.action.SpawnWindow },
+    { key = 'n',    mods = 'CMD',  action = wezterm.action.SpawnWindow },
     { key = 't',    mods = 'CMD|CTRL',  action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
-    { key = 'm',    mods = 'CMD|CTRL',  action = wezterm.action.Hide },
+    { key = 'm',    mods = 'CMD',  action = wezterm.action.Hide },
     ---
     -- tabs
     { key = 'Tab',  mods = 'CMD|CTRL', action = wezterm.action.ActivateTabRelative(1) },
@@ -187,6 +221,7 @@ local keys = {
     { key = '8',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(7) },
     { key = '9',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(8) },
     { key = '0',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(9) },
+    { key = 'r',    mods = 'CMD|CTRL', action = actions.tab.rename },
 
     -- Closes the current pane. 
     -- If that was the last pane in the tab, closes the tab. If that was the last tab, closes that 
@@ -236,7 +271,7 @@ local keys = {
 
     -- window
     { key = 'w',    mods = 'CMD',           action = actions.tmux.window.close },
-    { key = 'r',    mods = 'CMD',           action = actions.tmux.window.rename },
+    { key = 'r',    mods = 'CMD',      action = actions.tmux.window.rename },
     { key = 't',    mods = 'CMD',           action = actions.tmux.window.new },
     { key = 'Tab',  mods = 'CTRL',          action = actions.tmux.window.select.next },
     { key = 'Tab',  mods = 'CTRL|SHIFT',    action = actions.tmux.window.select.previous },
