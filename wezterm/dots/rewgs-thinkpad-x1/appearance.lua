@@ -79,6 +79,8 @@ function module.apply_to_config(config)
     config.show_tab_index_in_tab_bar = false
     config.tab_and_split_indices_are_zero_based = true
     config.use_fancy_tab_bar = true
+
+    -- config.window_background_opacity = 0.8
 end
 
 
