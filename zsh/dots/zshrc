@@ -94,13 +94,11 @@ fi
 
 
 # fnm (nvm alternative)
-# fnm
-FNM_PATH="/home/rewgs/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-    export PATH="/home/rewgs/.local/share/fnm:$PATH"
-    # eval "`fnm env`"
-    eval "$(fnm env --use-on-cd --shell zsh)"
-fi
+# FNM_PATH="/home/rewgs/.local/share/fnm"
+# if [ -d "$FNM_PATH" ]; then
+#     export PATH="/home/rewgs/.local/share/fnm:$PATH"
+#     eval "$(fnm env --use-on-cd --shell zsh)"
+# fi
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -118,7 +116,6 @@ fi
 if command -v luarocks &> /dev/null; then
     _evalcache luarocks path
 fi
-
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
