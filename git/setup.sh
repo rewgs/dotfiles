@@ -18,26 +18,23 @@ symlink_dotfile() {
 }
 
 symlink_config() {
-    local src="$1/config"
+    local dots="$(realpath "$(dirname "$BASH_SOURCE")/dots")"
+    local src="$dots/config"
     local dst="$HOME/.gitconfig"
 
     symlink_dotfile "$src" "$dst"
 }
 
 symlink_ignore() {
-    local src="$1/ignore"
-    local dst="$HOME/.config/git/ignore"
-    local dst_parent="$(dirname "$dst")"
-    if [[ ! -d "$dst_parent" ]]; then
-        mkdir -p "$dst_parent"
-    fi
+    local dots="$(realpath "$(dirname "$BASH_SOURCE")/dots")"
+    local src="$dots/ignore"
+    local dst="$HOME/.gitignore"
 
     symlink_dotfile "$src" "$dst"
 }
 
 main() {
-    local dots="$(realpath "$(dirname "$BASH_SOURCE")/dots")"
-    symlink_config "$dots"
-    symlink_ignore "$dots"
+    symlink_config
+    symlink_ignore
 }
 main
