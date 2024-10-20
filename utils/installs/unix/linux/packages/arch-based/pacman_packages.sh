@@ -17,6 +17,7 @@ packages=(
     "docker-compose"
     "element-desktop"
     "fastfetch"
+    "firefox"
     "flatpak"
     "foot"
     "fuzzel"
@@ -40,6 +41,7 @@ packages=(
     "ncdu"
     "neofetch"
     "net-tools"
+    "networkmanager" # nmcli, nmtui
     "nmap"
     "nnn" # cli file manager
     "obsidian"

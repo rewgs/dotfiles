@@ -3,13 +3,14 @@ local module = {}
 
 local ssh_domains = {
     {
-        connect_automatically = false,
-        -- multiplexing = 'WezTerm',
+        -- FIXME:
         name = 'rewgs-nas-arch-vm',
-        -- remote_address = 'rewgs@rewgs-nas-arch-vm.tailed4ac.ts.net:8080',
-        remote_address = 'rewgs-nas-arch-vm:8080',
+        connect_automatically = false,
+        multiplexing = 'WezTerm',
+        remote_address = 'rewgs-nas-arch-vm',
         remote_wezterm_path = "/usr/bin/wezterm",
         username = 'rewgs',
+        default_prog = { "zsh" },
     },
 }
 
