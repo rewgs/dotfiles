@@ -5,8 +5,16 @@ Shell files (`.zshenv`, `.zshrc`, etc) are located in the [`dots`](./dots) direc
 Any other zsh-related tools are located in this directory, on the same level as [`dots`](./dots):
 - [oh-my-zsh](./oh-my-zsh)
 
-## Sourcing order
 
+## TODO
+- Fix the `~/.oh-my-zsh/oh-my-zsh.sh` sourcing issue.
+- I've had to put more in `.zshrc` than I'd like. Simplify and put more back into `.zshenv` where possible.
+- Could not for the life of me to get `npm` to work when installing `node` via `fnm`. Currently using `nvm` again, but it drastically reduces shell sourcing speed, even with `evalcache` and the oh-my-zsh plugin. Try `fnm` again and iron out the kinks.
+- CentOS doesn't like autoloading my zfuncs. Why?
+- Find a lighter alternative to oh-my-zsh, or perhaps even go back to bash?
+
+
+## Sourcing order
 Definitions:
 - Interactive: As the term implies: Interactive means that the commands are run with user-interaction from keyboard. E.g. the shell can prompt the user to enter input.
 - Non-interactive: the shell is probably run from an automated process so it can't assume it can request input or that someone will see the output. E.g., maybe it is best to write output to a log file.
@@ -24,7 +32,6 @@ This is a standard terminal or ssh session.
 4. `.zlogin`
 5. `.zlogout` (on logout)
 
-
 ### non-interactive login shell
 This is any process called by an already-logged-in user that does not and cannot take interactive input from the keyboard, e.g. a script.
 
@@ -35,7 +42,6 @@ This is any process called by an already-logged-in user that does not and cannot
 
 Note that `.zshrc` is *not* sourced in this context! **Anything that must be accessible via a login script must not rely on anything setup in `.zshrc`!**
 
-
 ### interactive non-login shell
 This like an interactive login shell, except that it's a shell session subsequently called by an already-logged-in user, e.g. after re-sourcing your zsh.
 
@@ -44,14 +50,12 @@ This like an interactive login shell, except that it's a shell session subsequen
 
 Note that `.zprofile`, `.zlogin`, and `.zlogout` are *not* sourced in this context!
 
-
 ### non-interactive non-login shell
 This is a subsequent shell context from an already-logged-in shell, e.g. a subshell in a script.
 
 1. `.zshenv`
 
 Note that `.zshrc`, `.zprofile`, `.zlogin`, and `.zlogout` are *not* sourced in this context!
-
 
 ### conclusions
 Put most configuration in `.zshenv`. This way, all contexts will use what is defined there in all contexts.
