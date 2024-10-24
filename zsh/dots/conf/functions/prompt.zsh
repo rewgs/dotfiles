@@ -110,8 +110,8 @@ prompt_purity_precmd() {
 prompt_purification_setup() {
     # Display git branch
 
-    autoload -Uz add-zsh-hook
-    add-zsh-hook precmd prompt_purity_precmd
+    # autoload -Uz add-zsh-hook
+    # add-zsh-hook precmd prompt_purity_precmd
 
     ZSH_THEME_GIT_PROMPT_PREFIX=" %F{red}λ%f:"
     ZSH_THEME_GIT_PROMPT_DIRTY=""

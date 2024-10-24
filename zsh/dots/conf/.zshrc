@@ -62,10 +62,6 @@ FPATH="$ZFUNCS:$FPATH"
 recursively_source_zfuncs "$ZFUNCS"
 recursively_source_aliases "$ZALIASES"
 
-autoload -U compinit; compinit
-
-# source "$ZCONF/oh-my.zsh"
-# source "$ZCONF/dotnet.zsh"
 source "$ZDOTDIR/vi.zsh"
 
 # prompt
@@ -162,8 +158,23 @@ if command -v thefuck &> /dev/null; then
     # _evalcache thefuck --alias
 fi
 
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ plugins                                                                    ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+# TODO: Add setup script for this.
+# autocomplete
+# source "$HOME/src/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+# bindkey              '^I' menu-select
+# bindkey "$terminfo[kcbt]" menu-select
+# bindkey -M menuselect              '^I'         menu-complete
+# bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
+
+autoload -U compinit; compinit
+source "$HOME/src/fzf-tab/fzf-tab.plugin.zsh"
+
 # Syntax highlighting
 # NOTE: This must be last
-if [[ -d "$HOME/src/zsh-syntax-highlighting" ]] || [[ -L "$HOME/src/zsh-syntax-highlighting" ]]; then
-    source "$HOME/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-fi
+# if [[ -d "$HOME/src/zsh-syntax-highlighting" ]] || [[ -L "$HOME/src/zsh-syntax-highlighting" ]]; then
+#     source "$HOME/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# fi
