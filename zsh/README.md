@@ -15,9 +15,11 @@ I was using Oh My Zsh for a long time, but realized I was only using, like, 1% o
 - Ruby management: `rbenv`
 - Caching: `smartcache` (similar to `evalcache`, but it automatically updates caches for you)
 - Completion: Copied straight from [here](https://github.com/Phantas0s/.dotfiles/blob/master/zsh/completion.zsh). Don't need to fix what isn't broken.
+- Plugin management: totally manual! I simply clone the repos and source them. Setup scripts are [here](./plugins/).
 
 
 ## TODO
+- More plugin setup scripts, including Starship.
 - I've had to put more in `.zshrc` than I'd like, such as `pyenv` and `volta`. Simplify and put more back into `.zshenv` where possible.
 
 ## Sourcing order
