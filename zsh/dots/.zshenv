@@ -1,20 +1,4 @@
 # ╔════════════════════════════════════════════════════════════════════════════╗
-# ║ about this file                                                            ║
-# ╚════════════════════════════════════════════════════════════════════════════╝
-
-# zshenv is always sourced. It often contains exported variables that should be available to other 
-# programs. For example, $PATH, $EDITOR, and $PAGER are often set in .zshenv. Also, you can set 
-# $ZDOTDIR in .zshenv to specify an alternative location for the rest of your zsh configuration.
-
-# load order: 
-#   .zshenv                         → 
-#   .zprofile   (if login)          → 
-#   .zshrc      (if interactive)    → 
-#   .zlogin     (if login)          → 
-#   .zlogout    (sometimes)
-
-
-# ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -51,7 +35,6 @@ export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
 export HISTSIZE=10000 # Maximum events for internal history
 export SAVEHIST=10000 # Maximum events in history file
 
-# export ZCONF="$XDG_CONFIG_HOME/zsh"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZFUNCS="$ZDOTDIR/functions"
 export ZALIASES="$ZDOTDIR/aliases"
@@ -86,7 +69,6 @@ fi
 #   searching default locations first.
 # - appending :$PATH assures that the system looks in this custom path *before* 
 #   searching default locations.
-
 
 # other user bin directories
 export PATH="$HOME/.local/bin:$PATH"
@@ -130,30 +112,6 @@ export PATH="$PATH:$HOME/.nimble/bin"
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 fi
-
-# pyenv
-# export PYENV_ROOT="/home/$(whoami)/.pyenv" # Using this instead of $HOME to account for WSL.
-# if [[ -d "$PYENV_ROOT" ]] || [[ -L "$PYENV_ROOT" ]]; then
-# if command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-# fi
-
-# if [[ -d "$HOME/.pyenv" ]] || [[ -L "$HOME/.pyenv" ]]; then
-#     # This checks if the current shell is being run via WSL.
-#     # On a machine that has pyenv-win installed on the Windows side, as this 
-#     # messes with the usual $PYENV_ROOT and tries to run `eval "$(pyenv init -)"` 
-#     # in `/mnt/c/Users/"$(whoami)"/.pyenv` and thus returns a `bad interpreter` 
-#     # error.
-#     if [[ $(uname) == "Linux" ]] && [[ $(grep -i Microsoft /proc/version) ]]; then
-#         export PYENV_ROOT="/home/"$(whoami)"/.pyenv"
-#         # NOTE: Not sure if these two lines are needed, due to the lines below?
-#         # export PATH="$PYENV_ROOT/bin:$PATH"
-#         # eval "$(pyenv init -)"
-#     else
-#         # All other cases (macOS, non-WSL Linux, etc)
-#         export PYENV_ROOT="$HOME/.pyenv"
-#     fi
-#     command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-# fi
 
 # poetry
 if [[ -d "HOME/.poetry" ]] || [[ -L "$HOME/.poetry" ]]; then
