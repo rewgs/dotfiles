@@ -157,6 +157,7 @@ prompt::main() {
     prompt::git-branch
     # RPROMPT='$(prompt::git-info)'
     # PROMPT=$'%B➜ %F{white}%~ $(prompt::git-info) %F{blue}~%f%b '
-    PROMPT=$'%B%F{green}➜%f %F{blue}%~ $(prompt::git-info)$(prompt::git-status)%b '
+    # PROMPT=$'%B%F{green}➜%f %F{blue}%~ $(prompt::git-info)$(prompt::git-status)%b '
+    PROMPT=$'%B%F{green}➜%f %F{blue}%~ $(prompt::git-info)%b '
 }
 prompt::main
