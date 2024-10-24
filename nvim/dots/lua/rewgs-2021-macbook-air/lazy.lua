@@ -10,8 +10,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
     { 
-        { import = "rewgs.plugins" }, 
-        { import = "rewgs.plugins.lsp" } 
+        { import = vim.fn.hostname() .. "." .. "plugins" }, 
+        { import = vim.fn.hostname() .. "." .. "plugins.lsp" }, 
     }, 
     {
         checker = {
