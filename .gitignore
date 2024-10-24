@@ -7,3 +7,5 @@ lazy-lock.json
 # zsh
 .zcompdump
 .zsh_history
+/zsh/dots/conf/.zcompdump
+/zsh/dots/conf/.zsh_history
