@@ -51,23 +51,30 @@ get_dotfiles_path() {
 #   searching default locations.
 
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
+export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
 
+export ZCONF="$XDG_CONFIG_HOME/zsh"
+export ZFUNCS="$ZCONF/functions"
+export ZALIASES="$ZCONF/aliases"
+
+export EDITOR='nvim'
+export DOTFILES="$(get_dotfiles_path)"
+
+# browser
 if [[ "$(uname)" == "Linux" ]]; then
     export BROWSER="zen-browser"
 elif [[ "$(uname)" == "Darwin" ]]; then
     export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
 fi
-export EDITOR='nvim'
-export DOTFILES="$(get_dotfiles_path)"
-
 
 # my bin repo
 if [[ -d "$HOME/bin/src" ]] || [[ -L "$HOME/bin/src" ]]; then
-    export REWGS_BIN="$HOME/bin/src"
+    export BIN="$HOME/bin/src"
     if [[ $(uname) == "Darwin" ]]; then
-        export PATH=$PATH:$(find "$REWGS_BIN" -type d | paste -sd ":" -)
+        export PATH=$PATH:$(find "$BIN" -type d | paste -sd ":" -)
     elif [[ $(uname) == "Linux" ]]; then
-        export PATH=$PATH:$(find "$REWGS_BIN" -type d | paste -sd ":" -)
+        export PATH=$PATH:$(find "$BIN" -type d | paste -sd ":" -)
     fi
 fi
 
@@ -75,23 +82,19 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
-
 # broot
 if [[ -d "$XDG_CONFIG_HOME/broot" ]]; then
     export PATH="$XDG_CONFIG_HOME/broot/launcher/bash:$PATH"
 fi
 
-
 # flutter
 export PATH="$HOME/src/flutter/bin:$PATH"
 
-
 # golang
 export GOPATH="$HOME/go"
-export GOBIN="$GOPATH/bin"
 export PATH="$GOPATH:$PATH"
+export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
-
 
 # homebrew
 if [[ $(uname) == "Darwin" ]]; then
@@ -104,7 +107,6 @@ HOMEBREW_NO_ENV_HINTS=1
 # Prevents homebrew from automatically updating all packages when installing a package.
 HOMEBREW_NO_AUTO_UPDATE=1
 
-
 # jetbrains
 if [[ $(uname) == "Darwin" ]]; then
     export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
@@ -112,16 +114,13 @@ elif [[ $(uname) == "Linux" ]]; then
     export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
 fi
 
-
 # nim
 export PATH="$PATH:$HOME/.nimble/bin"
-
 
 # Added by OrbStack: command-line tools and integration
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 fi
-
 
 # pyenv
 # export PYENV_ROOT="/home/$(whoami)/.pyenv" # Using this instead of $HOME to account for WSL.
@@ -147,12 +146,10 @@ fi
 #     command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 # fi
 
-
 # poetry
 if [[ -d "HOME/.poetry" ]] || [[ -L "$HOME/.poetry" ]]; then
     export PATH="$PATH:$HOME/.poetry/bin"
 fi
-
 
 # reaper
 if [[ $(uname) == "Darwin" ]]; then
@@ -163,7 +160,6 @@ if [[ $(uname) == "Darwin" ]]; then
 elif [[ $(uname) == "Linux" ]]; then
     export PATH="$HOME/opt/REAPER:$PATH"
 fi
-
 
 # rust
 if [[ -d "$HOME/.cargo" ]]; then

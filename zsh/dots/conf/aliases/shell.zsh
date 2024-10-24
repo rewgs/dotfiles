@@ -26,9 +26,10 @@ alias n="nano"  # nano
 
 alias fetch="if command -v fastfetch &> /dev/null; then fastfetch; else neofetch; fi"
 
-# sed
+# GNU utils on macOS
 if [[ $(uname) == "Darwin" ]]; then
     alias sed="gsed"
+    alias grep="ggrep"
 fi
 
 # xplr

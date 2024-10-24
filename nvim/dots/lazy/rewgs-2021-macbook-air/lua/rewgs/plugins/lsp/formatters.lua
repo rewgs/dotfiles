@@ -11,7 +11,7 @@ return {
 			javascript = { "prettierd", "prettier", stop_after_first = true }, -- `stop_after_first`: Only run the first available formatter in the list. Defaults to false.
 			lua = { "stylua" },
 			php = { "php-cs-fixer" },
-			python = { "isort", "black" },
+			python = { "ruff", "black", stop_after_first = true },
 		},
 
 		formatters = {
