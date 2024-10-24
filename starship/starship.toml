@@ -11,6 +11,9 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 [directory]
 truncation_length = 1
 
+[git_status]
+disabled = true
+
 [line_break]
 disabled = true
 
