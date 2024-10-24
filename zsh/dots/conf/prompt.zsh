@@ -6,7 +6,6 @@
 # pure (plugin)
 fpath+=($HOME/src/pure)
 autoload -U promptinit; promptinit
-
 zstyle ':prompt:pure:prompt:*' color cyan
-
+zstyle ':prompt:pure:path' color cyan
 prompt pure

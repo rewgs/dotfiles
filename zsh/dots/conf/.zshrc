@@ -54,7 +54,8 @@ _comp_options+=(globdots) # With hidden files
 source "$ZDOTDIR/completion.zsh"
 
 # prompt
-source "$ZDOTDIR/prompt.zsh"
+# NOTE: Not using -- replaced with Starship.
+# source "$ZDOTDIR/prompt.zsh"
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ plugins - pre-RCs                                                          ║
@@ -163,3 +164,6 @@ fi
 # if [[ -d "$HOME/src/zsh-syntax-highlighting" ]] || [[ -L "$HOME/src/zsh-syntax-highlighting" ]]; then
 #     source "$HOME/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # fi
+
+# Starship
+eval "$(starship init zsh)"

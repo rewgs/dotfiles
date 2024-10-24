@@ -59,6 +59,7 @@ function homebrew_installations () {
         "cmatrix"
         "coreutils" # required for gnu ls (i.e. `gls`, which my `ls_improved()` function uses)
         "cowsay"
+        "fnm" # Fast alternative to nvm
         "gh"
         "git"
         "glances"
