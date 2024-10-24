@@ -1,7 +1,13 @@
 #!/bin/bash
 #
-# Setups up all zsh dotfiles, as well as oh-my-zsh.
+# Setups up all zsh dotfiles, as well as all plugins.
 
+setup-zsh::plugins-dir() {
+    local dir="$HOME/src/zsh-plugins"
+    if [[ ! -d "$dir" ]]; then
+        mkdir -p "$dir"]
+    fi
+}
 
 # Symlinks: $DOTFILES/zsh/dots/.zshenv -> ~/.zshenv
 setup-zsh::zshenv() {
@@ -47,8 +53,9 @@ setup-zsh::plugins() {
 }
 
 setup-zsh::main() {
+    setup-zsh::plugins-dir
+    setup-zsh::plugins
     setup-zsh::zshenv
     setup-zsh::conf
-    setup-zsh::plugins
 }
 setup-zsh::main

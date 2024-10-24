@@ -13,6 +13,7 @@
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
+# TODO: Move to zfuncs
 recursively_source_zfuncs() {
     local dir="$1"
     for file in "$dir"/*; do
@@ -24,6 +25,7 @@ recursively_source_zfuncs() {
     done
 }
 
+# TODO: Move to zfuncs
 recursively_source_aliases() {
     local dir="$1"
     for file in "$dir"/*; do
@@ -34,25 +36,6 @@ recursively_source_aliases() {
         fi
     done
 }
-
-# NOTE: Call this function to time zsh startup time.
-# Source: https://blog.mattclemente.com/2020/06/26/oh-my-zsh-slow-to-load/#how-to-test-your-shell-load-time
-time_startup() {
-    local num_loops=3
-
-    local shell=${1-$SHELL}
-
-    # Run as loop
-    for i in $(seq 1 $num_loops); do 
-        echo "Startup time test number $i of $num_loops:"
-        if [[ "$(uname)" == "Darwin" ]]; then
-            /usr/bin/time $shell --interactive -c exit
-        elif [[ "$(uname)" == "Linux" ]]; then
-            time $shell --interactive -c exit
-        fi
-    done
-}
-
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ shell setup                                                                ║
@@ -71,18 +54,7 @@ _comp_options+=(globdots) # With hidden files
 source "$ZDOTDIR/completion.zsh"
 
 # prompt
-#
-# custom
-# fpath=("$ZDOTDIR/prompt.zsh" $fpath)
-# autoload -Uz prompt.zsh; prompt.zsh
-#
-# pure (plugin)
-fpath+=($HOME/src/pure)
-autoload -U promptinit; promptinit
-prompt pure
-
-# Enables tab-to-complete to find dotfiles without typing the leading period.
-setopt extendedglob
+source "$ZDOTDIR/prompt.zsh"
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ plugins - pre-RCs                                                          ║
@@ -128,7 +100,6 @@ fi
 if [[ "$(uname)" == "Linux" ]] && [[ "$(uname -i)" == "x86_64" ]] && [[ "$(whoami)" != "root" ]]; then
     if [[ -d "/home/linuxbrew" ]]; then
         # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-        # _evalcache "/home/linuxbrew/.linuxbrew/bin/brew shellenv"
         smartcache eval /home/linuxbrew/.linuxbrew/bin/brew shellenv
     fi
 fi
@@ -149,7 +120,6 @@ export NVM_DIR="$HOME/.nvm"
 if [[ -d "$HOME/.phpenv" ]] || [[ -L "$HOME/.phpenv" ]]; then
     export PATH="$HOME/.phpenv/bin:$PATH"
     # eval "$(phpenv init -)"
-    # _evalcache phpenv init -
     smartcache eval phpenv init -
 fi
 
@@ -159,21 +129,18 @@ if [[ -d "$PYENV_ROOT" ]] || [[ -L "$PYENV_ROOT" ]]; then
     export PYENV_ROOT
     export PATH="$PYENV_ROOT/bin:$PATH"
     # eval "$(pyenv init -)"
-    # _evalcache pyenv init -
     smartcache eval pyenv init -
 fi
 
 # rbenv
 if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
     # eval "$(~/.rbenv/bin/rbenv init - zsh)"
-    # _evalcache ~/.rbenv/bin/rbenv init - zsh
     smartcache eval ~/.rbenv/bin/rbenv init - zsh
 fi
 
 # thefuck
 if command -v thefuck &> /dev/null; then 
     # eval $(thefuck --alias)
-    # _evalcache thefuck --alias
     smartcache eval thefuck --alias
 fi
 
@@ -189,11 +156,11 @@ fi
 # bindkey -M menuselect              '^I'         menu-complete
 # bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
 
-# TODO: Add setup script for this.
-source "$HOME/src/fzf-tab/fzf-tab.plugin.zsh"
+# fzf-tab
+# source "$ZDOTDIR/fzf.zsh"
 
 # Syntax highlighting
 # NOTE: This must be last
-if [[ -d "$HOME/src/zsh-syntax-highlighting" ]] || [[ -L "$HOME/src/zsh-syntax-highlighting" ]]; then
-    source "$HOME/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-fi
+# if [[ -d "$HOME/src/zsh-syntax-highlighting" ]] || [[ -L "$HOME/src/zsh-syntax-highlighting" ]]; then
+#     source "$HOME/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# fi

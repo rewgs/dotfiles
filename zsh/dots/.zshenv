@@ -2,6 +2,7 @@
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
+# TODO: Move to zfuncs?
 get_dotfiles_path() {
     local this_file="$(realpath "${(%):-%x}")"
 
@@ -39,12 +40,15 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZFUNCS="$ZDOTDIR/functions"
 export ZALIASES="$ZDOTDIR/aliases"
 
+export SRC="$HOME/src"
+export ZPLUGINS="$SRC/zsh-plugins"
+
 export EDITOR='nvim'
 export DOTFILES="$(get_dotfiles_path)"
 
 # browser
 if [[ "$(uname)" == "Linux" ]]; then
-    export BROWSER="zen-browser"
+    export BROWSER="$(which firefox)"
 elif [[ "$(uname)" == "Darwin" ]]; then
     export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
 fi
@@ -58,6 +62,7 @@ if [[ -d "$HOME/bin/src" ]] || [[ -L "$HOME/bin/src" ]]; then
         export PATH=$PATH:$(find "$BIN" -type d | paste -sd ":" -)
     fi
 fi
+
 
 
 # ╔════════════════════════════════════════════════════════════════════════════╗

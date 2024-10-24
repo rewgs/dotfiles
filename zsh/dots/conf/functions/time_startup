@@ -1,0 +1,12 @@
+time_startup() {
+    local num_loops=3
+    local shell=${1-$SHELL}
+    for i in $(seq 1 $num_loops); do 
+        echo "Startup time test number $i of $num_loops:"
+        if [[ "$(uname)" == "Darwin" ]]; then
+            /usr/bin/time $shell --interactive -c exit
+        elif [[ "$(uname)" == "Linux" ]]; then
+            time $shell --interactive -c exit
+        fi
+    done
+}
