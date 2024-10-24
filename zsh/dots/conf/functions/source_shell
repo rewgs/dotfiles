@@ -2,6 +2,6 @@ source_shell () {
     if [[ $SHELL == "$(which bash)" ]]; then
         source "$HOME/.bashrc"
     elif [[ $SHELL == "$(which zsh)" ]]; then
-        source "$HOME/.zshrc"
+        source "$ZDOTDIR/.zshrc"
     fi
 }

@@ -55,16 +55,26 @@ time_startup() {
 
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
-# ║ run commands                                                               ║
+# ║ shell setup                                                                ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
 FPATH="$ZFUNCS:$FPATH"
 recursively_source_zfuncs "$ZFUNCS"
 recursively_source_aliases "$ZALIASES"
 
+autoload -U compinit; compinit
+
 # source "$ZCONF/oh-my.zsh"
 # source "$ZCONF/dotnet.zsh"
-source "$ZCONF/vi.zsh"
+source "$ZDOTDIR/vi.zsh"
+
+# prompt
+fpath=("$ZDOTDIR/prompt.zsh" $fpath)
+autoload -Uz prompt.zsh; prompt.zsh
+
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ run commands                                                               ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
 
 # broot
 if command -v broot &> /dev/null; then
@@ -150,4 +160,10 @@ fi
 if command -v thefuck &> /dev/null; then 
     eval $(thefuck --alias)
     # _evalcache thefuck --alias
+fi
+
+# Syntax highlighting
+# NOTE: This must be last
+if [[ -d "$HOME/src/zsh-syntax-highlighting" ]] || [[ -L "$HOME/src/zsh-syntax-highlighting" ]]; then
+    source "$HOME/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi

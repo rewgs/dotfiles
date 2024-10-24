@@ -41,22 +41,20 @@ get_dotfiles_path() {
 
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
-# ║ environment                                                                ║
+# ║ environment variables                                                      ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
-
-# NOTE: on $PATH
-# - prepending $PATH: assures that the system looks in this custom path *after* 
-#   searching default locations first.
-# - appending :$PATH assures that the system looks in this custom path *before* 
-#   searching default locations.
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
 
-export ZCONF="$XDG_CONFIG_HOME/zsh"
-export ZFUNCS="$ZCONF/functions"
-export ZALIASES="$ZCONF/aliases"
+export HISTSIZE=10000 # Maximum events for internal history
+export SAVEHIST=10000 # Maximum events in history file
+
+# export ZCONF="$XDG_CONFIG_HOME/zsh"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZFUNCS="$ZDOTDIR/functions"
+export ZALIASES="$ZDOTDIR/aliases"
 
 export EDITOR='nvim'
 export DOTFILES="$(get_dotfiles_path)"
@@ -77,6 +75,18 @@ if [[ -d "$HOME/bin/src" ]] || [[ -L "$HOME/bin/src" ]]; then
         export PATH=$PATH:$(find "$BIN" -type d | paste -sd ":" -)
     fi
 fi
+
+
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ PATH                                                                       ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+# NOTE: on $PATH
+# - prepending $PATH: assures that the system looks in this custom path *after* 
+#   searching default locations first.
+# - appending :$PATH assures that the system looks in this custom path *before* 
+#   searching default locations.
+
 
 # other user bin directories
 export PATH="$HOME/.local/bin:$PATH"
@@ -102,7 +112,6 @@ if [[ $(uname) == "Darwin" ]]; then
     export PATH="$PATH:/opt/homebrew/sbin"
     export PATH="$PATH:/opt/homebrew/Cellar"
 fi
-
 HOMEBREW_NO_ENV_HINTS=1
 # Prevents homebrew from automatically updating all packages when installing a package.
 HOMEBREW_NO_AUTO_UPDATE=1

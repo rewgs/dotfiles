@@ -2,25 +2,53 @@
 #
 # Setups up all zsh dotfiles, as well as oh-my-zsh.
 
-# Symlinks:
-#   $DOTFILES/zsh/dots/zlogin   -> ~/.zlogin
-#   $DOTFILES/zsh/dots/zlogout  -> ~/.zlogout
-#   $DOTFILES/zsh/dots/zprofile -> ~/.zprofile
-#   $DOTFILES/zsh/dots/zshenv   -> ~/.zshenv
-#   $DOTFILES/zsh/dots/zshrc    -> ~/.zshrc
-setup-zsh() {
-    dots="$(realpath "$(dirname "$BASH_SOURCE")"/dots)"
-    for item in "$dots"/*; do
-        name="$(basename "$item")"
 
-        if [[ -f "$item" ]]; then
-            dst="$HOME/.$name"
-            if [[ -f "$dst" ]] || [[ -L "$dst" ]]; then
-                rm -f "$dst"
-            fi
+# Symlinks: $DOTFILES/zsh/dots/.zshenv -> ~/.zshenv
+setup-zsh::zshenv() {
+    local dots="$(realpath "$(dirname "$BASH_SOURCE")"/dots)"
+    local src="$dots/.zshenv"
+    local dst="$HOME/.zshenv"
 
-            ln -s "$item" "$dst"
-        fi
+    if [[ -f "$dst" ]] || [[ -L "$dst" ]]; then
+        rm -f "$dst"
+    fi
+
+    if [[ ! -f "$dst" ]] || [[ ! -L "$dst" ]]; then
+        ln -s "$src" "$dst"
+    fi
+}
+
+# Symlinks: $DOTFILES/zsh/dots/conf -> $XDG_CONFIG_DIR/zsh (i.e. $ZDOTDIR)
+setup-zsh::conf() {
+    local dots="$(realpath "$(dirname "$BASH_SOURCE")"/dots)"
+    local src="$dots/conf"
+    local dst="$HOME/.config/zsh"
+    local config="$(dirname "$dst")"
+
+    if [[ ! -d "$config" ]]; then
+        mkdir "$config"
+    fi
+
+    if [[ -d "$dst" ]] || [[ -L "$dst" ]]; then
+        rm -rf "$dst"
+    fi
+
+    if [[ ! -d "$dst" ]] || [[ ! -L "$dst" ]]; then
+        ln -s "$src" "$dst"
+    fi
+}
+
+# Sources all plugins setup files.
+setup-zsh::plugins() {
+    local plugins="$(realpath "$(dirname "$BASH_SOURCE")"/plugins)"
+    for file in "$plugins"/*; do
+        source "$file"
     done
 }
-setup-zsh
+
+setup-zsh::main() {
+    setup-zsh::zshenv
+    setup-zsh::conf
+    setup-zsh::plugins
+}
+setup-zsh::main
