@@ -2,15 +2,19 @@
 lsi() {
     if [[ $(uname) == "Darwin" ]]; then
         if [[ $# -eq 0 ]]; then
-            gls --color -alh --group-directories-first
+            # gls --color -alh --group-directories-first
+            gls --color --group-directories-first
         else
-            gls "${1}" --color -alh --group-directories-first
+            # gls "${1}" --color -alh --group-directories-first
+            gls "${1}" --color --group-directories-first
         fi
     elif [[ $(uname) == "Linux" ]]; then
         if [[ $# -eq 0 ]]; then
-            ls -alh --color --group-directories-first
+            # ls -alh --color --group-directories-first
+            ls --color --group-directories-first
         else
-            ls "${1}" -alh --color --group-directories-first
+            # ls "${1}" -alh --color --group-directories-first
+            ls "${1}" --color --group-directories-first
         fi
     fi
 }
