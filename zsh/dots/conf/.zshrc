@@ -69,6 +69,13 @@ fpath=("$ZDOTDIR/prompt.zsh" $fpath)
 autoload -Uz prompt.zsh; prompt.zsh
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ plugins - pre-RCs                                                          ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+# TODO: Add setup script for this.
+source "$HOME/src/zsh-smartcache/zsh-smartcache.plugin.zsh"
+
+# ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ run commands                                                               ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -104,15 +111,17 @@ fi
 # homebrew
 if [[ "$(uname)" == "Linux" ]] && [[ "$(uname -i)" == "x86_64" ]] && [[ "$(whoami)" != "root" ]]; then
     if [[ -d "/home/linuxbrew" ]]; then
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
         # _evalcache "/home/linuxbrew/.linuxbrew/bin/brew shellenv"
+        smartcache eval /home/linuxbrew/.linuxbrew/bin/brew shellenv
     fi
 fi
 
 # lua/luarocks
 if command -v luarocks &> /dev/null; then
-    eval $(luarocks path)
+    # eval $(luarocks path)
     # _evalcache luarocks path
+    smartcache eval luarocks path
 fi
 
 # nvm
@@ -123,8 +132,9 @@ export NVM_DIR="$HOME/.nvm"
 # phpenv
 if [[ -d "$HOME/.phpenv" ]] || [[ -L "$HOME/.phpenv" ]]; then
     export PATH="$HOME/.phpenv/bin:$PATH"
-    eval "$(phpenv init -)"
+    # eval "$(phpenv init -)"
     # _evalcache phpenv init -
+    smartcache eval phpenv init -
 fi
 
 # pyenv
@@ -132,34 +142,27 @@ PYENV_ROOT="$HOME/.pyenv"
 if [[ -d "$PYENV_ROOT" ]] || [[ -L "$PYENV_ROOT" ]]; then
     export PYENV_ROOT
     export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
+    # eval "$(pyenv init -)"
     # _evalcache pyenv init -
+    smartcache eval pyenv init -
 fi
-
-# export PYENV_ROOT="$HOME/.pyenv"
-# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
-# _evalcache pyenv init -
-
-# if [[ -d "HOME/.pyenv" ]] || [[ -L "$HOME/.pyenv" ]]; then
-#     eval "$(pyenv init -)"
-    # _evalcache pyenv init -
-# fi
 
 # rbenv
 if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
-    eval "$(~/.rbenv/bin/rbenv init - zsh)"
+    # eval "$(~/.rbenv/bin/rbenv init - zsh)"
     # _evalcache ~/.rbenv/bin/rbenv init - zsh
+    smartcache eval ~/.rbenv/bin/rbenv init - zsh
 fi
 
 # thefuck
 if command -v thefuck &> /dev/null; then 
-    eval $(thefuck --alias)
+    # eval $(thefuck --alias)
     # _evalcache thefuck --alias
+    smartcache eval thefuck --alias
 fi
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
-# ║ plugins                                                                    ║
+# ║ plugins - post-RCs                                                         ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
 # TODO: Add setup script for this.
@@ -170,6 +173,7 @@ fi
 # bindkey -M menuselect              '^I'         menu-complete
 # bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
 
+# TODO: Add setup script for this.
 autoload -U compinit; compinit
 source "$HOME/src/fzf-tab/fzf-tab.plugin.zsh"
 
