@@ -6,3 +6,4 @@ lazy-lock.json
 
 # zsh
 .zcompdump
+.zsh_history
