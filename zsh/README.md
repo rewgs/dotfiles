@@ -1,18 +1,24 @@
 # zsh
 
-Shell files (`.zshenv`, `.zshrc`, etc) are located in the [`dots`](./dots) directory.
+All files are located in the [`dots`](./dots) directory. 
 
-Any other zsh-related tools are located in this directory, on the same level as [`dots`](./dots):
-- [oh-my-zsh](./oh-my-zsh)
+[`.zshenv`](./dots/.zshenv) sets environment variables, including `$ZDOTDIR`, to `XDG_CONFIG_DIR/zsh` (i.e. `~/.config/zsh`). The [`conf`](./dots/conf/) directory is symlinked to that.
+
+
+## Applications and plugins
+I was using Oh My Zsh for a long time, but realized I was only using, like, 1% of its capabilities, and it was slowing down my shell quite a bit. Rather than trying to make it work for me, I decided to just rip it out and replace the few things I used it for with either hand-rolled zsh or very specific plugins.
+
+- Prompt: Starship
+- NodeJS management: `volta`
+- PHP management: `phpenv`
+- Python management: `pyenv`
+- Ruby management: `rbenv`
+- Caching: `smartcache` (similar to `evalcache`, but it automatically updates caches for you)
+- Completion: Copied straight from [here](https://github.com/Phantas0s/.dotfiles/blob/master/zsh/completion.zsh). Don't need to fix what isn't broken.
 
 
 ## TODO
-- Fix the `~/.oh-my-zsh/oh-my-zsh.sh` sourcing issue.
-- I've had to put more in `.zshrc` than I'd like. Simplify and put more back into `.zshenv` where possible.
-- Could not for the life of me to get `npm` to work when installing `node` via `fnm`. Currently using `nvm` again, but it drastically reduces shell sourcing speed, even with `evalcache` and the oh-my-zsh plugin. Try `fnm` again and iron out the kinks.
-- CentOS doesn't like autoloading my zfuncs. Why?
-- Find a lighter alternative to oh-my-zsh, or perhaps even go back to bash?
-
+- I've had to put more in `.zshrc` than I'd like, such as `pyenv` and `volta`. Simplify and put more back into `.zshenv` where possible.
 
 ## Sourcing order
 Definitions:
