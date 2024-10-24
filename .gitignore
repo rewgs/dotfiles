@@ -3,3 +3,6 @@ btop.log
 
 # nvim
 lazy-lock.json
+
+# zsh
+.zcompdump
