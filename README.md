@@ -2,9 +2,15 @@
 
 This repo contains any and all dotfiles, configuration files, etc. Each tool contains its own `setup` script to symlink dotfiles/etc.
 
-- **shell:** [zsh](./zsh)
+<!-- 
+TODO: Share environment variables, aliases, etc between shells. 
+Sources: 
+https://unix.stackexchange.com/questions/3428/share-aliases-and-path-setting-between-zsh-and-bash
+https://stackoverflow.com/questions/34565843/how-can-zsh-and-normal-shell-share-environment-variables-and-aliases-without-cop
+-->
+**shell:** [zsh](./zsh)
 
-- **editor:** [neovim](./nvim)
+**editor:** [neovim](./nvim)
 
 ## Notes on GUI utilities
 
