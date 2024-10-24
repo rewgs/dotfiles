@@ -135,3 +135,6 @@ function Initialize-Aliases {
     Add-Aliases
 }
 Initialize-Aliases
+
+# Starship
+Invoke-Expression (&starship init powershell)
