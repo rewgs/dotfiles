@@ -86,13 +86,6 @@ if [[ -d "$HOME/.bun" ]]; then
     [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 fi
 
-# fnm (nvm alternative)
-# FNM_PATH="/home/rewgs/.local/share/fnm"
-# if [ -d "$FNM_PATH" ]; then
-#     export PATH="/home/rewgs/.local/share/fnm:$PATH"
-#     eval "$(fnm env --use-on-cd --shell zsh)"
-# fi
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -112,9 +105,9 @@ if command -v luarocks &> /dev/null; then
 fi
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # phpenv
 if [[ -d "$HOME/.phpenv" ]] || [[ -L "$HOME/.phpenv" ]]; then
@@ -142,6 +135,12 @@ fi
 if command -v thefuck &> /dev/null; then 
     # eval $(thefuck --alias)
     smartcache eval thefuck --alias
+fi
+
+# volta (alternative to nvm, fnm, etc)
+if [[ -d "$HOME/.volta" ]]; then
+    export VOLTA_HOME="$HOME/.volta"
+    export PATH="$PATH:$VOLTA_HOME/bin"
 fi
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
