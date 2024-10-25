@@ -20,6 +20,7 @@ return {
         mason_lspconfig.setup({
             ensure_installed = {
                 "cssls",
+                "gopls",
                 "html",
                 "lua_ls",
                 "pyright",
