@@ -1,40 +1,22 @@
 #!/bin/bash
 #
-# Symlinks `config` to `~/.gitconfig`, and `ignore` to `~/.config/git/ignore`.
+# Symlinks `dots` to `~/.config/git`.
 
 
-symlink_dotfile() {
-    local src="$1"
-    local dst="$2"
+setup-git::main() {
+    local src="$(realpath "$(dirname "$BASH_SOURCE")/dots")"
+    local dst="$HOME/.config/git"
 
-    if [[ -L "$dst" ]] || [[ -f "$dst" ]]; then 
-        rm -f "$dst"
+    if [[ ! -d "$(dirname "$dst")" ]]; then
+        mkdir "$(dirname "$dst")"
     fi
 
-    if [[ ! -L "$dst" ]] || [[ ! -f "$dst" ]]; then
-        echo "Symlinking $src to $dst"
+    if [[ -d "$dst" ]] || [[ -L "$dst" ]]; then 
+        rm -rf "$dst"
+    fi
+
+    if [[ ! -L "$dst" ]]; then
         ln -s "$src" "$dst"
     fi
 }
-
-symlink_config() {
-    local dots="$(realpath "$(dirname "$BASH_SOURCE")/dots")"
-    local src="$dots/config"
-    local dst="$HOME/.gitconfig"
-
-    symlink_dotfile "$src" "$dst"
-}
-
-symlink_ignore() {
-    local dots="$(realpath "$(dirname "$BASH_SOURCE")/dots")"
-    local src="$dots/ignore"
-    local dst="$HOME/.gitignore"
-
-    symlink_dotfile "$src" "$dst"
-}
-
-main() {
-    symlink_config
-    symlink_ignore
-}
-main
+setup-git::main
