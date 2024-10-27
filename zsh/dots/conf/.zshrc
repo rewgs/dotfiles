@@ -13,7 +13,6 @@
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-# TODO: Move to zfuncs
 recursively_source_zfuncs() {
     local dir="$1"
     for file in "$dir"/*; do
@@ -25,7 +24,6 @@ recursively_source_zfuncs() {
     done
 }
 
-# TODO: Move to zfuncs
 recursively_source_aliases() {
     local dir="$1"
     for file in "$dir"/*; do
@@ -88,7 +86,13 @@ if [[ -d "$HOME/.bun" ]]; then
 fi
 
 # fzf
+# Sources fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#
+# Sets fzf to open in a tmux popup.
+# Centered, 85% width/50% height.
+# (`--tmux` is silently ignored if not running in a tmux session).
+export FZF_DEFAULT_OPTS='--tmux 85%,50%'
 
 # homebrew
 if [[ "$(uname)" == "Linux" ]] && [[ "$(uname -i)" == "x86_64" ]] && [[ "$(whoami)" != "root" ]]; then
@@ -157,7 +161,7 @@ fi
 # bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
 
 # fzf-tab
-# source "$ZDOTDIR/fzf.zsh"
+# source "$ZDOTDIR/fzf-tab.zsh"
 
 # Syntax highlighting
 # NOTE: This must be last
