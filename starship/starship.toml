@@ -18,7 +18,7 @@ truncation_length = 1
 disabled = true
 
 [line_break]
-disabled = true
+disabled = false
 
 [nodejs]
 disabled = true

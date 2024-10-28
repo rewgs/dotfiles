@@ -1,3 +1,3 @@
 #!/bin/bash
 #
-# Symlinks `starship.toml` dir to ~/.config/starship.toml
+# Symlinks `starship.toml` to ~/.config/starship.toml
