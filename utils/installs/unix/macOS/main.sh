@@ -109,6 +109,10 @@ function homebrew_installations () {
         "tap oven-sh/bun"
         "install bun"
 
+        # fvm (Flutter Version Manager)
+        "tap leoafarias/fvm"
+        "install fvm"
+
         # next app (place-holder)
         # tap dev/app
         # install app
