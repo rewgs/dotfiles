@@ -50,6 +50,7 @@ source "$ZDOTDIR/vi.zsh"
 autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files
 source "$ZDOTDIR/completion.zsh"
+source "$ZDOTDIR/tailscale.zsh"
 
 # prompt
 # NOTE: Not using -- replaced with Starship.
@@ -83,6 +84,13 @@ if [[ -d "$HOME/.bun" ]]; then
 
     # bun completions
     [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+fi
+
+# fvm (Flutter Version Manager)
+# https://github.com/leoafarias/fvm
+# https://stackoverflow.com/a/72811898/7994254
+if [[ -d "$HOME/fvm/default/bin" ]]; then
+    export PATH="$PATH:$HOME/fvm/default/bin"
 fi
 
 # fzf
