@@ -1,51 +1,10 @@
 #!/bin/bash
-
-# ssh keys
-# github
 #
-# - Notes on Tailscale:
-#   - The App Store version *will not work!* `ssh` is not allowed with it, so do not install it.
-#   - install golang
-#   - `go install tailscale.com/cmd/tailscale{,d}@main` 
-#   - Add ~/go/bin to PATH: place `export PATH=$PATH:$(go env GOPATH)/bin` in .zshrc
-#   - Run `sudo tailscaled install-system-daemon` so that `tailscaled` runs in the background at startup
-#   - Authenticate as usual with `tailscale up` and `tailscale up --ssh`
+# Installs packages via Homebrew package manager.
 
 
-install_xcode_command_line_tools() {
-    xcode-select --install
-}
-
-
-install_from_app_store() {
-    apps=(
-        "Adblock Plus"
-        "BetterSnapTool"
-        "Bitwarden"
-        "Developer"
-        "Keynote"
-        "LanScan"
-        "Logic Pro"
-        "Microsoft Remote Desktop"
-        "Numbers"
-        "Pages"
-        "Slack"
-        "Tailscale"
-        "The Unarchiver"
-        "UTM"
-        "Vimari"
-        "WhatsApp"
-        "Xcode"
-    )
-    for (( i = 1; i <= $#apps; i++)) do
-        app_id=$(mas search "$apps[i]")
-        mas install "$app_id"
-    done
-}
-
-
-homebrew_installations() {
-    brew_packages=(
+homebrew::mainline-packages() {
+    packages=(
         "bettercap"
         "bpytop"
         "broot"
@@ -75,7 +34,16 @@ homebrew_installations() {
         # "koekeishiya/formulae/yabai"
     )
 
-    brew_casks=(
+    brew update && brew upgrade
+
+    for p in "${packages[@]}"; do
+        brew install "$p"
+    done
+}
+
+
+homebrew::casks() {
+    packages=(
         # "amethyst"
         "barrier"
         "blackhole-2ch"
@@ -94,10 +62,19 @@ homebrew_installations() {
         "rectangle"
     )
 
+    brew update && brew upgrade
+
+    for p in "${packages[@]}"; do
+        brew install --cask "$p"
+    done
+}
+
+
+homebrew::taps() {
     # Due to zsh not having nested arrays, the simplest way to keep tap and 
     # package installation commands together is to simply list them in order; 
     # therefore, always list the tap before the installation.
-    brew_taps=(
+    packages=(
         # bun
         "tap oven-sh/bun"
         "install bun"
@@ -112,13 +89,8 @@ homebrew_installations() {
     )
 
     brew update && brew upgrade
-    for (( i = 1; i <= $#brew_packages; i++)) do
-        brew install "$brew_packages[i]"
-    done
-    for (( i = 1; i <= $#brew_casks; i++ )) do
-        brew install --cask "$brew_casks[i]"
-    done
-    for (( i = 1; i <= $#brew_taps; i++ ))do
-        brew "$brew_taps[i]"
+
+    for p in "${packages[@]}"; do
+        brew "$p"
     done
 }
