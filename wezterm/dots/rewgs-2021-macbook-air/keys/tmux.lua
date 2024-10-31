@@ -22,12 +22,12 @@ local actions = {
         rename = wezterm.action.PromptInputLine {
             description = "Rename current tab",
 
-            -- NOTE: Even though the `pane` arg doesn't appear to be used anywhere in this 
+            -- NOTE: Even though the `pane` arg doesn't appear to be used anywhere in this
             -- function, removing it breaks the function. No idea why. Don't really care.
             -- Just don't get rid of it.
             action = wezterm.action_callback(function(window, pane, line)
                 -- `line` will be `nil` if user only hits Escape without entering a value,
-                -- an empty string if user only hits Enter, 
+                -- an empty string if user only hits Enter,
                 -- or the actual line of text they wrote.
                 if line then
                     window:active_tab():set_title(line)
@@ -43,7 +43,7 @@ local actions = {
             description = "Rename current workspace",
             action = wezterm.action_callback(function(window, line)
                 -- `line` will be `nil` if user only hits Escape without entering a value,
-                -- an empty string if user only hits Enter, 
+                -- an empty string if user only hits Enter,
                 -- or the actual line of text they wrote.
                 if line then
                     -- Neither of these approaches work. Not sure what I'm missing here.
@@ -182,102 +182,103 @@ local keys = {
     ---------------------------------------------------------------------------
     -- disabled
     ---------------------------------------------------------------------------
-    { key = '-',    mods = 'CMD',         action = wezterm.action.DisableDefaultAssignment },
-    { key = '-',    mods = 'CMD|SHIFT',   action = wezterm.action.DisableDefaultAssignment },
-    { key = '=',    mods = 'CMD',         action = wezterm.action.DisableDefaultAssignment },
-    { key = '=',    mods = 'CMD|SHIFT',   action = wezterm.action.DisableDefaultAssignment },
-    { key = '\\',   mods = 'CMD',         action = wezterm.action.DisableDefaultAssignment },
-    { key = '\\',   mods = 'CMD|SHIFT',   action = wezterm.action.DisableDefaultAssignment },
-    { key = 'p',    mods = 'CMD',         action = wezterm.action.DisableDefaultAssignment },
-    { key = 'h',    mods = 'CMD',         action = wezterm.action.DisableDefaultAssignment },
-    { key = 'j',    mods = 'CMD',         action = wezterm.action.DisableDefaultAssignment },
-    { key = 'k',    mods = 'CMD',         action = wezterm.action.DisableDefaultAssignment },
-    { key = 'l',    mods = 'CMD',         action = wezterm.action.DisableDefaultAssignment },
+    { key = '-',   mods = 'CMD',            action = wezterm.action.DisableDefaultAssignment },
+    { key = '-',   mods = 'CMD|SHIFT',      action = wezterm.action.DisableDefaultAssignment },
+    { key = '=',   mods = 'CMD',            action = wezterm.action.DisableDefaultAssignment },
+    { key = '=',   mods = 'CMD|SHIFT',      action = wezterm.action.DisableDefaultAssignment },
+    { key = '\\',  mods = 'CMD',            action = wezterm.action.DisableDefaultAssignment },
+    { key = '\\',  mods = 'CMD|SHIFT',      action = wezterm.action.DisableDefaultAssignment },
+    { key = 'p',   mods = 'CMD',            action = wezterm.action.DisableDefaultAssignment },
+    { key = 'h',   mods = 'CMD',            action = wezterm.action.DisableDefaultAssignment },
+    { key = 'j',   mods = 'CMD',            action = wezterm.action.DisableDefaultAssignment },
+    { key = 'k',   mods = 'CMD',            action = wezterm.action.DisableDefaultAssignment },
+    { key = 'l',   mods = 'CMD',            action = wezterm.action.DisableDefaultAssignment },
 
     ---------------------------------------------------------------------------
     -- wezterm
     ---------------------------------------------------------------------------
     -- meta
     -- { key = 'r',    mods = 'CMD',           action = actions.meta.reload_config },
-    { key = 'f',    mods = 'CMD',         action = actions.meta.toggle_fullscreen },
+    { key = 'f',   mods = 'CMD',            action = actions.meta.toggle_fullscreen },
 
     -- { key = 'r',    mods = 'CMD|CTRL',  action = actions.meta.reload_config },
-    { key = 'f',    mods = 'CMD|CTRL',  action = actions.meta.toggle_fullscreen },
-    { key = 'q',    mods = 'CMD|CTRL',  action = wezterm.action.QuitApplication },
-    { key = 'n',    mods = 'CMD',  action = wezterm.action.SpawnWindow },
-    { key = 't',    mods = 'CMD|CTRL',  action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
-    { key = 'm',    mods = 'CMD',  action = wezterm.action.Hide },
+    { key = 'f',   mods = 'CMD|CTRL',       action = actions.meta.toggle_fullscreen },
+    { key = 'q',   mods = 'CMD',            action = wezterm.action.QuitApplication },
+    { key = 'n',   mods = 'CMD',            action = wezterm.action.SpawnWindow },
+    { key = 't',   mods = 'CMD|CTRL',       action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
+    { key = 'm',   mods = 'CMD',            action = wezterm.action.Hide },
     ---
     -- tabs
-    { key = 'Tab',  mods = 'CMD|CTRL', action = wezterm.action.ActivateTabRelative(1) },
-    { key = 'Tab',  mods = 'CMD|CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
-    { key = '1',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(0) },
-    { key = '2',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(1) },
-    { key = '3',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(2) },
-    { key = '4',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(3) },
-    { key = '5',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(4) },
-    { key = '6',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(5) },
-    { key = '7',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(6) },
-    { key = '8',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(7) },
-    { key = '9',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(8) },
-    { key = '0',    mods = 'CMD|CTRL', action = wezterm.action.ActivateTab(9) },
-    { key = 'r',    mods = 'CMD|CTRL', action = actions.tab.rename },
+    { key = 'Tab', mods = 'CMD|CTRL',       action = wezterm.action.ActivateTabRelative(1) },
+    { key = 'Tab', mods = 'CMD|CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
+    { key = '1',   mods = 'CMD|CTRL',       action = wezterm.action.ActivateTab(0) },
+    { key = '2',   mods = 'CMD|CTRL',       action = wezterm.action.ActivateTab(1) },
+    { key = '3',   mods = 'CMD|CTRL',       action = wezterm.action.ActivateTab(2) },
+    { key = '4',   mods = 'CMD|CTRL',       action = wezterm.action.ActivateTab(3) },
+    { key = '5',   mods = 'CMD|CTRL',       action = wezterm.action.ActivateTab(4) },
+    { key = '6',   mods = 'CMD|CTRL',       action = wezterm.action.ActivateTab(5) },
+    { key = '7',   mods = 'CMD|CTRL',       action = wezterm.action.ActivateTab(6) },
+    { key = '8',   mods = 'CMD|CTRL',       action = wezterm.action.ActivateTab(7) },
+    { key = '9',   mods = 'CMD|CTRL',       action = wezterm.action.ActivateTab(8) },
+    { key = '0',   mods = 'CMD|CTRL',       action = wezterm.action.ActivateTab(9) },
+    { key = 'r',   mods = 'CMD|CTRL',       action = actions.tab.rename },
 
-    -- Closes the current pane. 
-    -- If that was the last pane in the tab, closes the tab. If that was the last tab, closes that 
-    -- window. If that was the last window, wezterm terminates. The act of closing a pane shuts down 
-    -- the PTY associated with the pane and then kills the process associated with that pane. When 
-    -- confirm is true, an overlay will render over the pane to ask you to confirm whether you want 
-    -- to close it. See also skip_close_confirmation_for_processes_named. If confirm is false, then 
+    -- Closes the current pane.
+    -- If that was the last pane in the tab, closes the tab. If that was the last tab, closes that
+    -- window. If that was the last window, wezterm terminates. The act of closing a pane shuts down
+    -- the PTY associated with the pane and then kills the process associated with that pane. When
+    -- confirm is true, an overlay will render over the pane to ask you to confirm whether you want
+    -- to close it. See also skip_close_confirmation_for_processes_named. If confirm is false, then
     -- this action will immediately close the pane without prompting.
-    { key = 'w',    mods = 'CMD|CTRL',         action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+    { key = 'w',   mods = 'CMD|CTRL',       action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 
     ---------------------------------------------------------------------------
     -- clipboard
     ---------------------------------------------------------------------------
-    { key = 'c',    mods = 'CMD',    action = wezterm.action.CopyTo "ClipboardAndPrimarySelection" },
-    { key = 'v',    mods = 'CMD',    action = wezterm.action.PasteFrom "PrimarySelection" },
-    { key = 'v',    mods = 'CMD',    action = wezterm.action.PasteFrom "Clipboard" },
+    { key = 'c',   mods = 'CMD',            action = wezterm.action.CopyTo "ClipboardAndPrimarySelection" },
+    { key = 'v',   mods = 'CMD',            action = wezterm.action.PasteFrom "PrimarySelection" },
+    { key = 'v',   mods = 'CMD',            action = wezterm.action.PasteFrom "Clipboard" },
 
     ---------------------------------------------------------------------------
     -- tmux
     ---------------------------------------------------------------------------
     -- pane - resize
-    { key = 'H',    mods = 'CMD|SHIFT',     action = actions.tmux.pane.resize.left },
-    { key = 'J',    mods = 'CMD|SHIFT',     action = actions.tmux.pane.resize.down },
-    { key = 'K',    mods = 'CMD|SHIFT',     action = actions.tmux.pane.resize.up },
-    { key = 'L',    mods = 'CMD|SHIFT',     action = actions.tmux.pane.resize.right },
+    { key = 'H',   mods = 'CMD|SHIFT',      action = actions.tmux.pane.resize.left },
+    { key = 'J',   mods = 'CMD|SHIFT',      action = actions.tmux.pane.resize.down },
+    { key = 'K',   mods = 'CMD|SHIFT',      action = actions.tmux.pane.resize.up },
+    { key = 'L',   mods = 'CMD|SHIFT',      action = actions.tmux.pane.resize.right },
 
     -- pane - select
-    { key = 'h',    mods = 'CMD',           action = actions.tmux.pane.select.left },
-    { key = 'j',    mods = 'CMD',           action = actions.tmux.pane.select.down },
-    { key = 'k',    mods = 'CMD',           action = actions.tmux.pane.select.up },
-    { key = 'l',    mods = 'CMD',           action = actions.tmux.pane.select.right },
+    { key = 'h',   mods = 'CMD',            action = actions.tmux.pane.select.left },
+    { key = 'j',   mods = 'CMD',            action = actions.tmux.pane.select.down },
+    { key = 'k',   mods = 'CMD',            action = actions.tmux.pane.select.up },
+    { key = 'l',   mods = 'CMD',            action = actions.tmux.pane.select.right },
 
     -- pane - split
     -- NOTE: weirdly, SHIFT must be included even if `key` requires SHIFT.
-    { key = '|',    mods = 'CMD|SHIFT',     action = actions.tmux.pane.split.horizontal },
-    { key = '_',    mods = 'CMD|SHIFT',     action = actions.tmux.pane.split.vertical },
+    { key = '|',   mods = 'CMD|SHIFT',      action = actions.tmux.pane.split.horizontal },
+    { key = '_',   mods = 'CMD|SHIFT',      action = actions.tmux.pane.split.vertical },
 
     -- pane - swap
     -- { key = '=',    mods = 'ALT|CTRL',     action = actions.tmux.pane.swap.clockwise },
     -- { key = '-',    mods = 'ALT|CTRL',     action = actions.tmux.pane.swap.counter_clockwise },
 
     -- session
-    { key = 'o',    mods = 'CMD',           action = actions.tmux.session.overview },
-    { key = 'R',    mods = 'CMD|SHIFT',     action = actions.tmux.session.rename },
-    { key = 'S',    mods = 'CMD|SHIFT',     action = actions.tmux.session.restore },
-    { key = 's',    mods = 'CMD',           action = actions.tmux.session.save },
+    { key = 'o',   mods = 'CMD',            action = actions.tmux.session.overview },
+    { key = 'R',   mods = 'CMD|SHIFT',      action = actions.tmux.session.rename },
+    { key = 'S',   mods = 'CMD|SHIFT',      action = actions.tmux.session.restore },
+    { key = 's',   mods = 'CMD',            action = actions.tmux.session.save },
 
     -- window
-    { key = 'w',    mods = 'CMD',           action = actions.tmux.window.close },
-    { key = 'r',    mods = 'CMD',      action = actions.tmux.window.rename },
-    { key = 't',    mods = 'CMD',           action = actions.tmux.window.new },
-    { key = 'Tab',  mods = 'CTRL',          action = actions.tmux.window.select.next },
-    { key = 'Tab',  mods = 'CTRL|SHIFT',    action = actions.tmux.window.select.previous },
+    { key = 'w',   mods = 'CMD',            action = actions.tmux.window.close },
+    { key = 'r',   mods = 'CMD',            action = actions.tmux.window.rename },
+    { key = 't',   mods = 'CMD',            action = actions.tmux.window.new },
+    { key = 'Tab', mods = 'CTRL',           action = actions.tmux.window.select.next },
+    { key = 'Tab', mods = 'CTRL|SHIFT',     action = actions.tmux.window.select.previous },
 }
 
 function module.apply_to_config(config)
     config.keys = keys
 end
+
 return module
