@@ -1,1 +1,1 @@
-alias wezterm="wezterm start --always-new-process"
+# alias wezterm="wezterm start --always-new-process"
