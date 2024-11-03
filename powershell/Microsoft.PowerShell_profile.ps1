@@ -1,29 +1,4 @@
 # =============================================================================
-# Oh-My-Posh
-# =============================================================================
-
-# # initializes Oh-My-Posh
-$private:themeName = "onehalf.minimal"
-$private:theme = "$themeName.omp.json"
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/$theme" | Invoke-Expression
-
-# vi mode
-Set-PSReadLineOption -EditMode Vi
-# Set-PSReadlineOption -ViModeIndicator Script -ViModeChangeHandler {
-    # Param($mode)
-    # $Env:SHELL_VI_MODE = $mode
-    # go back to the beginning of the line
-    # Write-Host -NoNewLine "`e[1000D"
-    # rewrite the prompt manually
-    # write-Host -NoNewLine (oh-my-posh --shell pwsh --config ~/.jandedobbeleer.omp.json)
-# }
-
-# Makes autocomplete more zsh-ish
-Set-PSReadLineKeyHandler -Chord "Tab" -Function MenuComplete
-Set-PSReadLineKeyHandler -Chord "RightArrow" -Function ForwardWord
-
-
-# =============================================================================
 # functions
 # =============================================================================
 
@@ -47,11 +22,11 @@ function touch {
 
 
 
-function Update-OhMyPosh {
-    if ($IsWindows) {
-        Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
-    }
-}
+# function Update-OhMyPosh {
+#     if ($IsWindows) {
+#         Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
+#     }
+# }
 
 
 function Open-ProfileWithNvim {
@@ -135,6 +110,27 @@ function Initialize-Aliases {
     Add-Aliases
 }
 Initialize-Aliases
+
+# =============================================================================
+# Setup
+# =============================================================================
+
+# vi mode
+Set-PSReadLineOption -EditMode Vi
+# Set-PSReadlineOption -ViModeIndicator Script -ViModeChangeHandler {
+    # Param($mode)
+    # $Env:SHELL_VI_MODE = $mode
+    # go back to the beginning of the line
+    # Write-Host -NoNewLine "`e[1000D"
+    # rewrite the prompt manually
+    # write-Host -NoNewLine (oh-my-posh --shell pwsh --config ~/.jandedobbeleer.omp.json)
+# }
+
+# Makes autocomplete more zsh-ish
+Set-PSReadLineKeyHandler -Chord "Tab" -Function MenuComplete
+Set-PSReadLineKeyHandler -Chord "RightArrow" -Function ForwardWord
+
+$PSStyle.FileInfo.Directory = ""
 
 # Starship
 Invoke-Expression (&starship init powershell)
