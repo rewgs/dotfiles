@@ -39,6 +39,13 @@ recursively_source_aliases() {
 # ║ shell setup                                                                ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
+# history
+SAVEHIST=1000
+HISTSIZE=1000
+HISTFILE=~/.zsh_history
+setopt INC_APPEND_HISTORY_TIME # See for details: https://unix.stackexchange.com/questions/389881/history-isnt-preserved-in-zsh/389883#389883
+
+# functions and aliases
 FPATH="$ZFUNCS:$FPATH"
 recursively_source_zfuncs "$ZFUNCS"
 recursively_source_aliases "$ZALIASES"
