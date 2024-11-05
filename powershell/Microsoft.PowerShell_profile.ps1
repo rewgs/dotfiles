@@ -6,11 +6,9 @@ function Reset-Shell {
     . $PROFILE
 }
 
-
 function grep {
   $input | out-string -stream | select-string $args
 }
-
 
 function touch {
 	param(
@@ -20,25 +18,14 @@ function touch {
 	echo $null >> $filename
 }
 
-
-
-# function Update-OhMyPosh {
-#     if ($IsWindows) {
-#         Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
-#     }
-# }
-
-
 function Open-ProfileWithNvim {
     nvim $PROFILE
 }
-
 
 function Invoke-ClearAndList {
     clear
     ls
 }
-
 
 function Invoke-GitFetchResetAndPull {
     git fetch --all
@@ -46,11 +33,32 @@ function Invoke-GitFetchResetAndPull {
     git pull
 }
 
-
 function Open-Dotfiles {
-    cd $HOME/dotfiles
+    $dir = Join-Path $HOME "dotfiles"
+    if (Test-Path $dir) {
+        Set-Location $dir
+    } else {
+        Write-Output "$dir does not exist!"
+    }
 }
 
+function Open-Sns {
+    $dir = Join-Path $HOME "work" "sns"
+    if (Test-Path $dir) {
+        Set-Location $dir
+    } else {
+        Write-Output "$dir does not exist!"
+    }
+}
+
+function Open-SnsDevelopment {
+    $dir = Join-Path $HOME "work" "sns" "development"
+    if (Test-Path $dir) {
+        Set-Location $dir
+    } else {
+        Write-Output "$dir does not exist!"
+    }
+}
 
 # =============================================================================
 # aliases 
@@ -72,16 +80,17 @@ function Remove-Aliases {
     }
 }
 
-
 function Add-Aliases {
     $aliases = @(
-        @{ name = 'es';    value = 'Reset-Shell' },
-        @{ name = 'c';     value = 'clear' },
-        @{ name = 'cls';   value = 'Invoke-ClearAndList' },
-        @{ name = 'v';     value = 'nvim' },
-        @{ name = 'vp';    value = 'Open-ProfileWithNvim' },
-        @{ name = 'gfarp'; value = 'Invoke-GitFetchResetAndPull' },
-        @{ name = 'd';     value = 'Open-Dotfiles' }
+        @{ name = 'es';     value = 'Reset-Shell' },
+        @{ name = 'c';      value = 'clear' },
+        @{ name = 'cls';    value = 'Invoke-ClearAndList' },
+        @{ name = 'v';      value = 'nvim' },
+        @{ name = 'vp';     value = 'Open-ProfileWithNvim' },
+        @{ name = 'gfarp';  value = 'Invoke-GitFetchResetAndPull' },
+        @{ name = 'd';      value = 'Open-Dotfiles' },
+        @{ name = 'sns';    value = 'Open-Sns' },
+        @{ name = 'snsd';   value = 'Open-SnsDevelopment' }
     )
 
     foreach ($a in $aliases) {
