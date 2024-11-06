@@ -60,18 +60,8 @@ function Open-SnsDevelopment {
     }
 }
 
+# TODO: Check if pyenv-win is installed; if not, install pyenv-win (see script in $DOTFILES/utils/installs/windows)
 function Install-PythonVersion {
-    <#
-    TODO:
-    1. Check if pyenv is installed
-
-    TODO:
-    2. If not, install pyenv (see script in $DOTFILES/utils/installs/windows)
-
-    3. Check if all versions in $version are installed. For each that is not:
-
-    4. 
-    #>
     Param (
         [Parameter(Mandatory=$True)]
         [String[]]$versions
@@ -81,8 +71,31 @@ function Install-PythonVersion {
         if (-Not ($version -in $installed)) {
             # write-output "$version is not installed!"
             pyenv install $version
+
+            $_python = Join-Path $env:PYENV_ROOT "versions" $version 
+            $python_exe = Join-Path $_python "python3.exe"
+
+            # Upgrade pip
+            $python_exe -m pip install --upgrade pip
+
+            # Install virtualenv
+            $python_exe -m pip install --user virtualenv
         }
     }
+}
+
+function Create-Venv {
+    python -m venv .venv
+}
+
+function Activate-Venv {
+    $activate_script = Join-Path $pwd ".venv" "Scripts" "activate"
+    .\$activate_script
+}
+
+# TODO: Make sure current directory contains a .venv.
+function Deactivate-Venv {
+    deactivate
 }
 
 # =============================================================================
