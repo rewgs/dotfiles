@@ -60,6 +60,26 @@ function Open-SnsDevelopment {
     }
 }
 
+function Install-PythonVersion {
+    <#
+    TODO:
+    1. Check if pyenv is installed
+
+    TODO:
+    2. If not, install pyenv (see script in $DOTFILES/utils/installs/windows)
+
+    3. Check if all versions in $version are installed. For each that is not:
+
+    4. 
+    #>
+    Param (
+        [Parameter(Mandatory=$True)]
+        [String[]]$versions
+    )
+    $installed = $(pyenv versions)
+    write-output $installed
+}
+
 # =============================================================================
 # aliases 
 # =============================================================================
