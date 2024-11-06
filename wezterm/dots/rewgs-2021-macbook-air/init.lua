@@ -2,6 +2,7 @@ local module = {}
 
 local appearance = require('rewgs-2021-macbook-air.appearance')
 local font = require('rewgs-2021-macbook-air.font')
+
 -- local keys = require('rewgs-2021-macbook-air.keys.standard')
 local keys = require('rewgs-2021-macbook-air.keys.tmux')
 
@@ -15,6 +16,8 @@ function module.apply_to_config(config)
 
     appearance.apply_to_config(config)
     font.apply_to_config(config)
+
     keys.apply_to_config(config)
 end
+
 return module

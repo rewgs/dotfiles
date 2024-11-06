@@ -77,7 +77,9 @@ function Install-PythonVersion {
         [String[]]$versions
     )
     $installed = $(pyenv versions)
-    write-output $installed
+    foreach ($i in $installed) {
+        write-output $i
+    }
 }
 
 # =============================================================================
