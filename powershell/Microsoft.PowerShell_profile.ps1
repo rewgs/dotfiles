@@ -75,11 +75,13 @@ function Install-PythonVersion {
             $_python = Join-Path $env:PYENV_ROOT "versions" $version 
             $python_exe = Join-Path $_python "python3.exe"
 
+            # FIXME: -m is throwing an "unexpected token error"
             # Upgrade pip
-            $python_exe -m pip install --upgrade pip
+            # $python_exe -m pip install --upgrade pip
 
+            # FIXME: -m is throwing an "unexpected token error"
             # Install virtualenv
-            $python_exe -m pip install --user virtualenv
+            # $python_exe -m pip install --user virtualenv
         }
     }
 }
