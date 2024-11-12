@@ -14,7 +14,8 @@
 # source ./gambit.zsh
 
 # Load more completions
-fpath=($DOTFILES/zsh/plugins/zsh-completions/src $fpath)
+# fpath=($DOTFILES/zsh/plugins/zsh-completions/src $fpath)
+fpath=($HOME/src/zsh-completions/src $fpath)
 
 # Should be called before compinit
 zmodload zsh/complist
