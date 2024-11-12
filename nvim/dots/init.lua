@@ -1,8 +1,8 @@
-local hostname = vim.fn.hostname()
+-- local hostname = vim.fn.hostname()
+-- local core = hostname .. "." .. "core"
+-- local lazy = hostname .. "." .. "lazy"
+-- require(core)
+-- require(lazy)
 
--- TODO: Check if directory exists; if not, handle somehow.
-local core = hostname .. "." .. "core"
-local lazy = hostname .. "." .. "lazy"
-
-require(core)
-require(lazy)
+require("core")
+require("plugins.lazy")
