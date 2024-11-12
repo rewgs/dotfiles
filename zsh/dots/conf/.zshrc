@@ -53,11 +53,12 @@ recursively_source_aliases "$ZALIASES"
 # vi mode
 source "$ZDOTDIR/vi.zsh"
 
+# NOTE: Moved to the bottom so that things like homebrew completion work.
 # autocomplete
-autoload -U compinit; compinit
-_comp_options+=(globdots) # With hidden files
-source "$ZDOTDIR/completion.zsh"
-source "$ZDOTDIR/tailscale.zsh"
+# autoload -Uz compinit; compinit
+# _comp_options+=(globdots) # With hidden files
+# source "$ZDOTDIR/completion.zsh"
+# source "$ZDOTDIR/tailscale.zsh"
 
 # prompt
 # NOTE: Not using -- replaced with Starship.
@@ -183,6 +184,12 @@ fi
 # if [[ -d "$HOME/src/zsh-syntax-highlighting" ]] || [[ -L "$HOME/src/zsh-syntax-highlighting" ]]; then
 #     source "$HOME/src/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # fi
+
+# autocomplete
+# autoload -Uz compinit; compinit
+# _comp_options+=(globdots) # With hidden files
+source "$ZDOTDIR/tailscale.zsh"
+source "$ZDOTDIR/completion.zsh"
 
 # Starship
 eval "$(starship init zsh)"
