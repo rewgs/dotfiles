@@ -5,7 +5,7 @@
 setup-zsh::plugins-dir() {
     local dir="$HOME/src/zsh-plugins"
     if [[ ! -d "$dir" ]]; then
-        mkdir -p "$dir"]
+        mkdir -p "$dir"
     fi
 }
 
