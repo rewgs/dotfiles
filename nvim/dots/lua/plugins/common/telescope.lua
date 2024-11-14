@@ -15,7 +15,7 @@ return {
             defaults = {
                 path_display = { "smart" }, -- intelligently truncuates file names if very long
                 mappings = {
-                    i = { -- keymaps for insert mode
+                    i = {                   -- keymaps for insert mode
                         ["<C-k>"] = actions.move_selection_previous,
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
