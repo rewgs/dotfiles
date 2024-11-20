@@ -4,10 +4,12 @@ alias cls=clear_then_ls_improved
 alias es="exec $SHELL"
 alias ss=source_shell
 
-if [[ "$(uname)" == "Darwin" ]] || [[ "$(uname)" == "Linux" ]]; then
-    alias -g ls=lsi
+if [[ "$(uname)" == "Darwin" ]]; then
+    alias ls="gls --color=always --group-directories-first"
 elif [[ "$(uname)" == "FreeBSD" ]]; then
     alias ls="ls -al"
+elif [[ "$(uname)" == "Linux" ]]; then
+    alias ls="ls --color=always --group-directories-first"
 fi
 
 alias eh="echo 'You are using $HOST'"
