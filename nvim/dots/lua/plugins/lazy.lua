@@ -12,6 +12,7 @@ require("lazy").setup(
     {
         { import = "plugins" .. "." .. "common" },
         { import = "plugins" .. "." .. "common" .. "." .. "lsp" },
+        -- TODO: Handle if this directory doesn't eixst.
         { import = "plugins" .. "." .. vim.fn.hostname() },
     },
     {
