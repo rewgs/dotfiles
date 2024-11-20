@@ -27,15 +27,16 @@
 
     // Modules configuration
     "hyprland/workspaces": {
-        "disable-scroll": true,
         "all-outputs": false,
+        "disable-scroll": true,
+        "on-click": "activate",
+        // "show-special": true,
         "warp-on-scroll": false,
 
         // "format": "{name}",
         // "format": {icon}",
         "format": "{name}: {icon}",
         "format-icons": {
-		     // "0": "",
 		     "1": "",
              "2": " ",
 		     "3": " ",
