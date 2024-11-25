@@ -188,7 +188,7 @@ fi
 # autocomplete
 # autoload -Uz compinit; compinit
 # _comp_options+=(globdots) # With hidden files
-source "$ZDOTDIR/tailscale.zsh"
+# source "$ZDOTDIR/tailscale.zsh"
 source "$ZDOTDIR/completion.zsh"
 
 # Starship
