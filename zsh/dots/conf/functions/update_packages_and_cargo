@@ -1,7 +1,0 @@
-function update_packages_and_cargo () {
-    update_packages
-
-    rustup update
-    cargo install cargo-update
-    cargo install-update -a
-}
