@@ -36,3 +36,7 @@ fi
 
 # xplr
 alias x="xplr"
+
+if [[ "$(uname)" == "Linux" ]]; then
+    alias open="xdg-open"
+fi

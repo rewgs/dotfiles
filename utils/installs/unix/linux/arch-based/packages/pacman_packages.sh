@@ -17,6 +17,7 @@ packages=(
     "docker-compose"
     "element-desktop"
     "fastfetch"
+    "feh" # image viewer
     "firefox"
     "flatpak"
     "foot"
@@ -64,6 +65,7 @@ packages=(
     "shellcheck" # not available for ARM
     "signal-desktop"
     "sshfs"
+    "sxiv" # image viewer
     "tailscale" # run `sudo systemctl enable --now tailscaled` to start, and then `sudo tailscale up` and `sudo tailscale up --ssh`
     # "tgt"
     "thefuck"

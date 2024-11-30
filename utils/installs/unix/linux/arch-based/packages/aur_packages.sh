@@ -11,6 +11,7 @@ aur_packages=(
     "kmonad-bin"
     "podman-desktop-bin"
     "powershell-bin"
+    "selectdefaultapplication-fork-git" # Great little utility for editing ~/.config/mimeapps.list
     "slack-desktop-wayland"
     "sublime-text-4"
     "sublime-merge"
