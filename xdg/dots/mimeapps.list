@@ -40,4 +40,4 @@ image/jpeg=sxiv.desktop
 image/tiff=sxiv.desktop
 image/x-tga=sxiv.desktop
 x-scheme-handler/jetbrains-gateway=jetbrains-gateway.desktop
-x-scheme-handler/fleet=jetbrains-fleet-8920ad43-5cf4-4add-b3b1-babc7f643fbe.desktop
+x-scheme-handler/fleet=jetbrains-fleet.desktop
