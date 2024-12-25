@@ -157,6 +157,8 @@ vmap <del> "_d
 " My stuff
 " ============================================================================
 
+set number
+
 " Toggle line comment
 nmap gcc :action CommentByLineComment<CR>
 vmap gcc :action CommentByLineComment<CR>
