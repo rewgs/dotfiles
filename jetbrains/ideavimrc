@@ -167,7 +167,4 @@ vmap gcc :action CommentByLineComment<CR>
 nmap <leader>w :action CloseActiveTab<CR>
 
 set ideajoin
-" Ataman plugin - leader key
-" https://github.com/Mishkun/ataman-intellij?tab=readme-ov-file#advanced-setup-for-ideavim-users
-" nnoremap <Space> :action LeaderAction<cr>
-" vnoremap <Space> :action LeaderAction<cr>
+set clipboard^=ideaput
