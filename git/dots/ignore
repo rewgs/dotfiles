@@ -21,4 +21,3 @@ venv
 # random files
 ._* # ZFS cache files
 .DS_Store
-
