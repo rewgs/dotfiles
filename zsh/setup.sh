@@ -2,11 +2,31 @@
 #
 # Setups up all zsh dotfiles, as well as all plugins.
 
-setup-zsh::plugins-dir() {
-    local dir="$HOME/src/zsh-plugins"
-    if [[ ! -d "$dir" ]]; then
-        mkdir -p "$dir"
+zsh_plugins_dir="$HOME/src/zsh-plugins"
+
+setup-zsh::check-plugins-dir() {
+    if [[ ! -d "$zsh_plugins_dir" ]]; then
+        mkdir -p "$zsh_plugins_dir"
     fi
+}
+
+setup-zsh::clone-plugin() {
+    local repo="$1"
+    local src="$HOME/src"
+    local dst="$zsh_plugins_dir"
+
+    if [[ ! -d "$src" ]] || [[ ! -L "$src" ]]; then
+        mkdir -p "$src"
+    fi
+
+    if [[ ! -d "$dst" ]] || [[ ! -L "$dst" ]]; then
+        git clone "$repo" "$dst"
+    fi
+}
+
+setup-zsh::clone-plugins() {
+    setup-zsh::clone-plugin "https://github.com/zsh-users/zsh-syntax-highlighting"
+    setup-zsh::clone-plugin "https://github.com/quarticcat/zsh-smartcache"
 }
 
 # Symlinks: $DOTFILES/zsh/dots/.zshenv -> ~/.zshenv
@@ -44,17 +64,9 @@ setup-zsh::conf() {
     fi
 }
 
-# Sources all plugins setup files.
-setup-zsh::plugins() {
-    local plugins="$(realpath "$(dirname "$BASH_SOURCE")"/plugins)"
-    for file in "$plugins"/*; do
-        source "$file"
-    done
-}
-
 setup-zsh::main() {
-    setup-zsh::plugins-dir
-    setup-zsh::plugins
+    setup-zsh::check-plugins-dir
+    setup-zsh::clone-plugins
     setup-zsh::zshenv
     setup-zsh::conf
 }

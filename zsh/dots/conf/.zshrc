@@ -68,8 +68,7 @@ source "$ZDOTDIR/vi.zsh"
 # ║ plugins - pre-RCs                                                          ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-# TODO: Add setup script for this.
-source "$HOME/src/zsh-smartcache/zsh-smartcache.plugin.zsh"
+source "$HOME/src/zsh-plugins/zsh-smartcache/zsh-smartcache.plugin.zsh"
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ run commands                                                               ║
