@@ -1,0 +1,71 @@
+#==============================================================================
+# font
+#==============================================================================
+font-family = FiraCode Nerd Font
+font-style = Retina
+# font-family = TX-02 Regular
+# font-feature = calt
+# font-feature = liga
+# font-feature = dlig
+font-size = 16
+font-thicken = false
+bold-is-bright = false
+
+
+#==============================================================================
+# window
+#==============================================================================
+window-inherit-font-size = false
+window-decoration = true
+window-padding-x = 8
+window-padding-y = 8
+macos-non-native-fullscreen = false
+
+
+#==============================================================================
+# titlebar
+#==============================================================================
+macos-titlebar-style = transparent
+title = " "
+macos-titlebar-proxy-icon = hidden
+window-title-font-family = FiraCode Nerd Font
+
+
+#==============================================================================
+# misc
+#==============================================================================
+shell-integration = zsh
+macos-option-as-alt = true
+theme = "OneHalfDark"
+resize-overlay = never
+
+
+#==============================================================================
+# keybinds
+#==============================================================================
+# unbind
+# keybind = cmd+h=unbind
+# keybind = cmd+j=unbind
+# keybind = cmd+k=unbind
+# keybind = cmd+l=unbind
+# keybind = cmd+o=unbind
+
+# navigation
+# NOTE: This requires changing the Hide Ghostty key command in System Settings.
+keybind = cmd+h=goto_split:left 
+keybind = cmd+j=goto_split:bottom
+keybind = cmd+k=goto_split:top
+keybind = cmd+l=goto_split:right
+
+# splits
+keybind = cmd+shift+\=new_split:right
+keybind = cmd+shift+-=new_split:down
+
+keybind = cmd+shift+h=resize_split:left,50
+keybind = cmd+shift+j=resize_split:down,50
+keybind = cmd+shift+k=resize_split:up,50
+keybind = cmd+shift+l=resize_split:right,50
+
+# misc
+keybind = cmd+f=toggle_fullscreen
+# keybind = cmd+o=toggle_tab_overview # not working
