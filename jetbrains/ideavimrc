@@ -1,7 +1,22 @@
 " ============================================================================
-" Copied from https://ztlevi.github.io/posts/The-Minimal-Spacemacs-Tweaks-for-Jetbrain-IDES/
+" Inspiration: https://ztlevi.github.io/posts/The-Minimal-Spacemacs-Tweaks-for-Jetbrain-IDES/
 " ============================================================================
 
+" Settings
+set number
+set gdefault
+set smartcase
+set surround
+set ideajoin
+set clipboard^=ideaput
+
+" use system clipboard
+set clipboard=unnamedplus,unnamed
+
+" Allow backspace and cursor keys to cross line boundaries
+set whichwrap+=<,>,h,l
+
+" Spacebar
 let mapleader = " "
 
 " ============================================================================
@@ -9,28 +24,36 @@ let mapleader = " "
 " h left, l right, k up, j down
 " ============================================================================
 nmap <leader>h <c-w>h
-nmap <leader>l <c-w>l
-nmap <leader>k <c-w>k
 nmap <leader>j <c-w>j
+nmap <leader>k <c-w>k
+nmap <leader>l <c-w>l
+
+" Same, but Command+h/j/k/l
+" NOTE: <D-> is Command key
+nmap <D-h> <c-w>h
+nmap <D-j> <c-w>j
+nmap <D-k> <c-w>k
+nmap <D-l> <c-w>l
+
 
 " Split vertically
 nmap <leader>\| <c-w>v
+nmap <D-|> <c-w>v
 
 " Split horizontally
 nmap <leader>_ <c-w>s
+nmap <D-S--> <c-w>s
 
 " NOTE: Currently commenting these out to not conflict with CloseActiveTab
 " nmap <leader>wc <c-w>c
 " nmap <leader>wm :action HideAllWindows<CR>
 " nmap <leader>wz :action ToggleDistractionFreeMode<CR>
-" vmap <leader>wv <c-w>v
-" vmap <leader>ws <c-w>s
 " vmap <leader>wc <c-w>c
 " vmap <leader>wm :<Backspace><Backspace><Backspace><Backspace><Backspace>action HideAllWindows<CR>
 " vmap <leader>wz :<Backspace><Backspace><Backspace><Backspace><Backspace>action ToggleDistractionFreeMode<CR>
 
 " ============================================================================
-" expand and collapse
+" expand and collapse (e.g. folds)
 " ============================================================================
 nmap zO :action ExpandAllRegions<CR>
 nmap zo :action ExpandRegion<CR>
@@ -61,21 +84,25 @@ nmap <leader>fb      :action ShowBookmarks<CR>
 nmap <leader>fd      :action SmartSearchAction<CR>
 nmap <leader>ff      :action SearchEverywhere<CR>
 nmap <leader>fs      :action SaveAll<CR>
-nmap <leader>ft      :action ActivateProjectToolWindow<CR>
+
+" redundant?
+" nmap <leader>ft      :action ActivateProjectToolWindow<CR>
+
 nmap <leader>im      :action ImplementMethods<CR>
 nmap <leader>ji      :action FileStructurePopup<CR>
 nmap <leader>jj      :action AceAction<CR>
 nmap <leader>jl      :action AceLineAction<CR>
-nmap <leader>m=      :action ReformatCode<CR>
+nmap <leader>rf      :action ReformatCode<CR>
 " nmap <leader>rR      :action RunClass<CR>
 " nmap <leader>rr      :action Run<CR>
 " nmap <leader>ss      :action Stop<CR>
 nmap <leader>tb      :action ToggleBookmark<CR>
 nmap <leader>tt      :action ToggleLineBreakpoint<CR>
-nmap gd              :action GotoDeclaration<CR>
-nmap gh              :action QuickJavaDoc<CR>
-nmap gr              :action FindUsages<CR>
-nmap gs              :action GotoSymbol<CR>
+
+nmap <leader>gd     :action GotoDeclaration<CR>
+nmap <leader>gh     :action QuickJavaDoc<CR>
+nmap <leader>gr     :action FindUsages<CR>
+nmap <leader>gs     :action GotoSymbol<CR>
 
 vmap <CR>            :<Backspace><Backspace><Backspace><Backspace><Backspace>action RecentFiles<CR>
 vmap <c-i>           :<Backspace><Backspace><Backspace><Backspace><Backspace>action Forward<CR>
@@ -116,8 +143,8 @@ vmap <tab>           :<Backspace><Backspace><Backspace><Backspace><Backspace>act
 vmap <delete>        <C-d>
 
 " Reload .ideavimrc
-nmap <leader>R :source ~/.ideavimrc<CR>
-vmap <leader>R :<Backspace><Backspace><Backspace><Backspace><Backspace>source ~/.ideavimrc<CR>
+nmap <leader><D-C-A-R> :source ~/.ideavimrc<CR>
+" vmap <leader>R :<Backspace><Backspace><Backspace><Backspace><Backspace>source ~/.ideavimrc<CR>
 
 " check the action list
 nmap <leader>al :actionlist<CR>
@@ -134,30 +161,13 @@ nmap <leader>sp :action FindInPath<CR>
 vmap <leader>sp :<Backspace><Backspace><Backspace><Backspace><Backspace>action FindInPath<CR>
 
 " replace in project
-nmap <leader>rp :action ReplaceInPath<CR>
-vmap <leader>rp :<Backspace><Backspace><Backspace><Backspace><Backspace>action FindInPath<CR>
+" nmap <leader>rp :action ReplaceInPath<CR>
+" vmap <leader>rp :<Backspace><Backspace><Backspace><Backspace><Backspace>action FindInPath<CR>
 
-set gdefault
-set smartcase
-
-
-" use system clipboard
-set clipboard=unnamedplus,unnamed
-
-set surround
-
-" Allow backspace and cursor keys to cross line boundaries
-set whichwrap+=<,>,h,l
 
 " black hole register
 vmap <backspace> "_d
 vmap <del> "_d
-
-" ============================================================================
-" My stuff
-" ============================================================================
-
-set number
 
 " Toggle line comment
 nmap gcc :action CommentByLineComment<CR>
@@ -166,5 +176,7 @@ vmap gcc :action CommentByLineComment<CR>
 " Close active tab
 nmap <leader>w :action CloseActiveTab<CR>
 
-set ideajoin
-set clipboard^=ideaput
+" Refactoring
+nmap <leader>rr :action RefactoringMenu
+" nmap <leader>rr :action Refactors.QuickListPopupAction
+nmap <leader>rn :action RenameElement<CR>
