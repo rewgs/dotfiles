@@ -12,6 +12,7 @@ setup-zsh::check-plugins-dir() {
 
 setup-zsh::clone-plugin() {
     local repo="$1"
+    local name="${repo##*/}" # Trims the last part of the URL, i.e. the name of the repo
     local src="$HOME/src"
     local dst="$zsh_plugins_dir"
 
@@ -20,7 +21,7 @@ setup-zsh::clone-plugin() {
     fi
 
     if [[ ! -d "$dst" ]] || [[ ! -L "$dst" ]]; then
-        git clone "$repo" "$dst"
+        git clone "$repo" "$dst/$name"
     fi
 }
 
