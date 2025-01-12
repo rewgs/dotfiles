@@ -13,7 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local hostSpecific = "plugins" .. "." .. vim.fn.hostname()
 -- If config for current host does not exist, uses MacBook Air's config.
-if vim.fn.isdirectory(hostSpecific) ~= 0 then
+-- Note that 0 in this case is returned if the directory does *not* exist.
+if vim.fn.isdirectory(hostSpecific) == 0 then
 	hostSpecific = "plugins" .. "." .. "rewgs-2021-macbook-air"
 end
 
