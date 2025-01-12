@@ -11,17 +11,16 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local hostSpecific = "plugins" .. "." .. vim.fn.hostname()
 -- If config for current host does not exist, uses MacBook Air's config.
--- local hostSpecific = "plugins" .. "." .. vim.fn.hostname()
--- if not hostSpecific then
--- 	hostSpecific = "plugins" .. "." .. "rewgs-2021-macbook-air"
--- end
+if vim.fn.isdirectory(hostSpecific) ~= 0 then
+	hostSpecific = "plugins" .. "." .. "rewgs-2021-macbook-air"
+end
 
 require("lazy").setup({
 	{ import = "plugins" .. "." .. "common" },
 	{ import = "plugins" .. "." .. "common" .. "." .. "lsp" },
-	-- { import = hostSpecific },
-	{ import = "plugins" .. "." .. vim.fn.hostname() or "plugins" .. "." .. "rewgs-2021-macbook-air" },
+	{ import = hostSpecific },
 }, {
 	checker = {
 		enabled = true,
