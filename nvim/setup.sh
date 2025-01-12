@@ -2,7 +2,6 @@
 #
 # Symlinks `dots` to `~/.config/nvim`.
 
-
 nvim-setup::main() {
     local src="$(realpath "$(dirname "$BASH_SOURCE")"/dots)"
     local dst="$HOME/.config/nvim"
@@ -19,3 +18,4 @@ nvim-setup::main() {
         ln -s "$src" "$dst"
     fi
 }
+nvim-setup::main
