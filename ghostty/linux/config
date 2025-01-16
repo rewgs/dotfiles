@@ -1,0 +1,63 @@
+#==============================================================================
+# font
+#==============================================================================
+font-family = FiraCode Nerd Font
+font-style = Retina
+font-size = 10
+bold-is-bright = false
+
+
+#==============================================================================
+# window
+#==============================================================================
+window-inherit-font-size = false
+window-decoration = false
+window-padding-x = 8
+# window-padding-y = 5
+
+
+#==============================================================================
+# titlebar
+#==============================================================================
+title = " "
+window-title-font-family = FiraCode Nerd Font
+
+
+#==============================================================================
+# misc
+#==============================================================================
+shell-integration = zsh
+theme = "OneHalfDark"
+resize-overlay = never
+
+
+#==============================================================================
+# keybinds
+#==============================================================================
+
+keybind = alt+r=reload_config
+keybind = alt+w=close_surface
+
+# tabs
+keybind = alt+n=new_window
+keybind = alt+t=new_tab
+
+# navigation
+keybind = alt+h=goto_split:left 
+keybind = alt+j=goto_split:bottom
+keybind = alt+k=goto_split:top
+keybind = alt+l=goto_split:right
+
+# splits
+keybind = alt+shift+\=new_split:right
+keybind = alt+shift+-=new_split:down
+keybind = alt+e=equalize_splits
+
+keybind = alt+shift+h=resize_split:left,50
+keybind = alt+shift+j=resize_split:down,50
+keybind = alt+shift+k=resize_split:up,50
+keybind = alt+shift+l=resize_split:right,50
+
+# misc
+keybind = alt+i=inspector:toggle
+# keybind = alt+o=toggle_tab_overview # not working
