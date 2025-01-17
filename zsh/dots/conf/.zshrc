@@ -74,6 +74,11 @@ source "$HOME/src/zsh-plugins/zsh-smartcache/zsh-smartcache.plugin.zsh"
 # ║ run commands                                                               ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
+# Fix for ghostty -- allows tmux over ssh to work properly
+if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+    export TERM=xterm-256color
+fi
+
 # broot
 if command -v broot &> /dev/null; then
     broot="$HOME/.config/broot"
