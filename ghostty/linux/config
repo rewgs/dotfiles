@@ -13,7 +13,7 @@ bold-is-bright = false
 window-inherit-font-size = false
 window-decoration = false
 window-padding-x = 8
-# window-padding-y = 5
+window-padding-y = 5
 
 
 #==============================================================================

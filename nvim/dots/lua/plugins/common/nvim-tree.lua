@@ -43,8 +43,10 @@ return {
             },
         })
 
+        -- TODO: Add file/dir deleting, making, etc.
         vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
-        vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Opens file explorer with current file selected" })
+        vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>",
+            { desc = "Opens file explorer with current file selected" })
         vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "" })
         vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "" })
     end

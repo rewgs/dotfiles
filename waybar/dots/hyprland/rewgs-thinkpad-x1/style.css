@@ -120,7 +120,8 @@ button:hover {
     /* onedark dark grey */
     color: #5c6370;
 
-    padding: 0 5px;
+    /* padding: 0 5px; */
+    padding: 0 0px;
 }
 
 #workspaces button:hover {
