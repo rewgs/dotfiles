@@ -3,7 +3,8 @@
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "FiraCode NF", "Font Awesome";
+    /* font-family: "FiraCode NF", "Font Awesome"; */
+    font-family: "Inter", "Font Awesome";
     font-size: 10px;
 }
 
@@ -15,7 +16,8 @@ window#waybar {
     /* background-color: #282C34; */
 
     /* onedark "black" -- darker */
-    background-color: #21252b;
+    /* background-color: #21252b; */
+    background-color: transparent;
 
     /* gruvbox dark - dark0_hard */
     /* background-color: #1d2021; */
@@ -47,7 +49,8 @@ button {
     /* background-color: #282C34; */
 
     /* onedark "black" -- darker */
-    background-color: #21252b;
+    /* background-color: #21252b; */
+    background-color: transparent;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -91,7 +94,8 @@ button:hover {
     /* background-color: #282C34; */
 
     /* onedark "black" -- darker */
-    background-color: #21252b;
+    /* background-color: #21252b; */
+    background-color: transparent;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -132,7 +136,8 @@ button:hover {
     /* background-color: #282C34; */
 
     /* onedark "black" -- darker */
-    background-color: #21252b;
+    /* background-color: #21252b; */
+    background-color: transparent;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -159,7 +164,8 @@ button:hover {
     /* background-color: #282C34; */
 
     /* onedark "black" -- darker */
-    background-color: #21252b;
+    /* background-color: #21252b; */
+    background-color: transparent;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -184,11 +190,13 @@ button:hover {
 }
 
 #workspaces button.urgent {
-    background-color: #D77F87;
+    /* background-color: #D77F87; */
+    background-color: transparent;
 }
 
 #mode {
-    background-color: #64727D;
+    /* background-color: #64727D; */
+    background-color: transparent;
     border-bottom: 3px solid #ffffff;
 }
 
@@ -245,7 +253,8 @@ button:hover {
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
+        /* background-color: #ffffff; */
+        background-color: transparent;
         color: #000000;
     }
 }
@@ -258,7 +267,8 @@ button:hover {
     /* background-color: #282C34; */
 
     /* onedark "black" -- darker */
-    background-color: #21252b;
+    /* background-color: #21252b; */
+    background-color: transparent;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -272,7 +282,8 @@ button:hover {
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
+    /* background-color: #f53c3c; */
+    background-color: transparent;
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -282,7 +293,8 @@ button:hover {
 }
 
 label:focus {
-    background-color: #000000;
+    /* background-color: #000000; */
+    background-color: transparent;
 }
 
 #cpu {
@@ -294,6 +306,7 @@ label:focus {
 
     /* onedark "black" -- darker */
     background-color: #21252b;
+    background-color: transparent;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -310,7 +323,8 @@ label:focus {
     /* background-color: #282C34; */
 
     /* onedark "black" -- darker */
-    background-color: #21252b;
+    /* background-color: #21252b; */
+    background-color: transparent;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -324,7 +338,8 @@ label:focus {
 
 #disk {
     /* black */
-    background-color: #000000;
+    /* background-color: #000000; */
+    background-color: transparent;
 
     /* onedark "black" */
     /* background-color: #282C34; */
@@ -347,7 +362,8 @@ label:focus {
     /* background-color: #282C34; */
 
     /* onedark "black" -- darker */
-    background-color: #21252b;
+    /* background-color: #21252b; */
+    background-color: transparent;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -367,7 +383,8 @@ label:focus {
     /* background-color: #282C34; */
 
     /* onedark "black" -- darker */
-    background-color: #21252b;
+    /* background-color: #21252b; */
+    background-color: transparent;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -383,7 +400,8 @@ label:focus {
     /* background-color: #e06c75; */
     /* color: #282c34; */
 
-    background-color: #000000;
+    /* background-color: #000000; */
+    background-color: transparent;
     color: #e06c75;
 }
 
@@ -395,7 +413,8 @@ label:focus {
     /* background-color: #282C34; */
 
     /* onedark "black" -- darker */
-    background-color: #21252b;
+    /* background-color: #21252b; */
+    background-color: transparent;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -414,7 +433,8 @@ label:focus {
     /* background-color: #90b1b1; */
     /* color: #2a5c45; */
 
-    background-color: #000000;
+    /* background-color: #000000; */
+    background-color: transparent;
     color: #90b1b1;
 }
 
@@ -443,7 +463,8 @@ label:focus {
     /* background-color: #282C34; */
 
     /* onedark "black" -- darker */
-    background-color: #21252b;
+    /* background-color: #21252b; */
+    background-color: transparent;
 
     /* gruvbox dark - dark0 */
     /* background-color: #282828; */
@@ -455,15 +476,18 @@ label:focus {
 
 #tray>.needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #e06c75;
+    /* background-color: #e06c75; */
+    background-color: transparent;
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    /* background-color: #2d3436; */
+    background-color: transparent;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
+    /* background-color: #ecf0f1; */
+    background-color: transparent;
     color: #2d3436;
 }
 
@@ -479,7 +503,8 @@ label:focus {
 /* } */
 
 #language {
-    background: #00b093;
+    /* background: #00b093; */
+    background: transparent;
     color: #740864;
     padding: 0 5px;
     margin: 0 5px;
@@ -496,13 +521,16 @@ label:focus {
 }
 
 #privacy-item.screenshare {
-    background-color: #cf5700;
+    /* background-color: #cf5700; */
+    background-color: transparent;
 }
 
 #privacy-item.audio-in {
-    background-color: #1ca000;
+    /* background-color: #1ca000; */
+    background-color: transparent;
 }
 
 #privacy-item.audio-out {
-    background-color: #0069d4;
+    /* background-color: #0069d4; */
+    background-color: transparent;
 }

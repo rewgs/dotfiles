@@ -25,7 +25,7 @@ local user_colors = {
     scrollbar_thumb = user_scheme.black,
     split           = user_scheme.black,
 
-    ansi = { -- i.e. "darks"
+    ansi            = { -- i.e. "darks"
         -- 'black',
         -- 'maroon',
         -- 'green',
@@ -44,7 +44,7 @@ local user_colors = {
         user_scheme.cyan,
         user_scheme.comment_grey,
     },
-    brights = {
+    brights         = {
         -- 'grey',
         -- 'red',
         -- 'lime',
@@ -65,12 +65,27 @@ local user_colors = {
     },
 }
 
+-- The `config.window_frame` table configures the fancy tab bar
+-- See: https://wezfurlong.org/wezterm/config/appearance.html?h=fancy#native-fancy-tab-bar-appearance
+local window_frame = {
+    font_size = 8,
+    -- active_titlebar_bg = user_scheme.black,
+    -- inactive_titlebar_bg = user_scheme.black,
+}
+
+-- local colors = {
+--     tab_bar = {
+--         inactive_tab_edge = user_scheme.black
+--     }
+-- }
+
 function module.apply_to_config(config)
     -- basics
     config.front_end = 'OpenGL'
 
     -- colors
     config.color_scheme = stock_scheme
+    config.colors = colors
     -- config.colors = user_colors
 
     -- tab bar
@@ -79,9 +94,9 @@ function module.apply_to_config(config)
     config.show_tab_index_in_tab_bar = false
     config.tab_and_split_indices_are_zero_based = true
     config.use_fancy_tab_bar = true
+    config.window_frame = window_frame
 
     -- config.window_background_opacity = 0.8
 end
-
 
 return module
