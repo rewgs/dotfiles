@@ -4,6 +4,7 @@
     "height": 24,       // Waybar height (to be removed for auto height)
     "spacing": 1,       // Gaps between modules (4px)
 
+    // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces"
     ],
@@ -13,7 +14,14 @@
     "modules-right": [
         "pulseaudio", 
         "network", 
-        "battery", // TODO: better color for battery module
+        // "cpu", 
+        // "memory", 
+        // "disk",
+        // "backlight",
+
+        // TODO: better color for battery module
+        "battery",
+        // "tray",
         "clock",
     ],
 
@@ -22,16 +30,46 @@
         "all-outputs": false,
         "disable-scroll": true,
         "on-click": "activate",
+        // "show-special": true,
         "warp-on-scroll": false,
 
         "format": "{name}",
+        // "format": {icon}",
+        // "format": "{name}: {icon}",
+        // "format-icons": {
+		//      "1": "",
+        //      "2": " ",
+		//      "3": " ",
+		//      // "3": "",
+		//      "4": "",
+		//      "5": "",
+        //      "6": "",
+        //      "7": "",
+        //      "8": "",
+        //      "9": "",
+        //     "10": "",
+	    // },
     },
 
     // docs: https://man.archlinux.org/man/extra/waybar/waybar-hyprland-window.5.en
     "hyprland/window": {
+        // "format": "{title}",
         "format": "{initialTitle}",
+        // "format": "{class}",
+        // "format": "{initialClass}",
+
+        // "format": "{}",
+        // "rewrite": {
+        //     // neovim -> wezterm
+        //     "v": "wezterm",
+
+        //     // Firefox
+        //     // "(.*) - Mozilla Firefox": "Firefox",
+        //     // "(.*) - Mozilla Firefox": "🌎 $1",
+        // },
     },
     "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -50,6 +88,8 @@
         "on-click": "pavucontrol"
     },
     "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        // "format-wifi": "{essid} ({signalStrength}%) ",
         "format-wifi": "{essid} ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
@@ -66,12 +106,18 @@
     },
     "disk": {
 	    "interval": 30,
+	    // 1434.25 GB out of 2000.00 GB available. Alternatively 1.4TiB out of 1.9TiB available.
+	    // "format": "{specific_free:0.2f} GB out of {specific_total:0.2f} GB available. Alternatively {free} out of {total} available",
 	    "format": "disk {specific_free:0.0f}GB/{specific_total:0.0f}GB",
 	    "unit": "GB"
     },
     "battery": {
         "format": "battery {}%"
     },
+    // "tray": {
+    //     "icon-size": 21,
+    //     "spacing": 10
+    // },
     "clock": {
         "timezone": "America/Los_Angeles",
         "format": "{:%Y-%m-%d %I:%M %p}"
