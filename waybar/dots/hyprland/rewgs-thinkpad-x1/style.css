@@ -9,30 +9,7 @@
 }
 
 window#waybar {
-    /* black */
-    /* background-color: #000000;  */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* onedark "black" -- darker */
-    /* background-color: #21252b; */
     background-color: transparent;
-
-    /* gruvbox dark - dark0_hard */
-    /* background-color: #1d2021; */
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
-
-    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-    border-bottom: #000000;
-
-    /* color: #ffffff; */
-    /* color: #ABB2BF; */
-
-    /* gruvbox dark - light0_hard */
-    /* color: #f9f5d7; */
 
     /* onedark grey */
     color: #B2B7C1;
@@ -42,18 +19,7 @@ window#waybar {
 }
 
 button {
-    /* black */
-    /* background-color: #000000;  */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* onedark "black" -- darker */
-    /* background-color: #21252b; */
     background-color: transparent;
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
 
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
@@ -68,58 +34,13 @@ button {
 button:hover {
     background: inherit;
 
-    /* line under button */
-    /* white */
-    /* box-shadow: inset 0 -3px #ffffff; */
-
-    /* gruvbox dark - light0_hard */
-    /* box-shadow: inset 0 -3px #f9f5d7; */
-
-    /* gruvbox dark - light0 */
-    /* box-shadow: inset 0 -3px #fbf1c7; */
-
     /* onedark grey */
     box-shadow: inset 0 -3px #B2B7C1;
-
-    /* onedark "black" */
-    /* box-shadow: inset 0 -3px #282C34; */
 }
 
 /* inactive */
 #workspaces button {
-    /* black */
-    /* background-color: #000000; */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* onedark "black" -- darker */
-    /* background-color: #21252b; */
     background-color: transparent;
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
-
-    /* white */
-    /* color: #ffffff; */
-
-    /* gruvbox dark - light0_hard */
-    /* color: #f9f5d7; */
-
-    /* gruvbox dark - light0 */
-    /* color: #fbf1c7; */
-
-    /* gruvbox dark - gray_245 */
-    /* color: #928374; */
-
-    /* gruvbox dark - gray_244 */
-    /* color: #928374; */
-
-    /* gruvboxdark - bright blue */
-    /* color: #83a598; */
-
-    /* onedark grey */
-    /* color: #B2B7C1; */
 
     /* onedark dark grey */
     color: #5c6370;
@@ -129,27 +50,7 @@ button:hover {
 }
 
 #workspaces button:hover {
-    /* black */
-    /* background-color: #000000; */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* onedark "black" -- darker */
-    /* background-color: #21252b; */
     background-color: transparent;
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
-
-    /* white */
-    /* color: #ffffff; */
-
-    /* gruvbox dark - light0_hard */
-    /* color: #f9f5d7; */
-
-    /* gruvbox dark - light0 */
-    /* color: #fbf1c7; */
 
     /* onedark grey */
     color: #B2B7C1;
@@ -157,45 +58,17 @@ button:hover {
 
 /* #workspaces button.focused { */
 #workspaces button.active {
-    /* black */
-    /* background-color: #000000; */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* onedark "black" -- darker */
-    /* background-color: #21252b; */
     background-color: transparent;
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
-
-    /* white */
-    /* box-shadow: inset 0 -3px #ffffff; */
-
-    /* onedark blue */
-    /* color: #79B3E2; */
-
-    /* gruvboxdark - bright blue */
-    /* color: #83a598; */
-
-    /* gruvbox dark - light0_hard */
-    /* color: #f9f5d7; */
-
-    /* gruvbox dark - light0 */
-    /* color: #fbf1c7; */
 
     /* onedark grey */
     color: #B2B7C1;
 }
 
 #workspaces button.urgent {
-    /* background-color: #D77F87; */
     background-color: transparent;
 }
 
 #mode {
-    /* background-color: #64727D; */
     background-color: transparent;
     border-bottom: 3px solid #ffffff;
 }
@@ -209,8 +82,8 @@ button:hover {
 #pulseaudio,
 #wireplumber,
 #tray {
-    padding: 5 10px;
     /* vertical, horizontal */
+    padding: 5 10px;
 }
 
 #window,
@@ -229,52 +102,19 @@ button:hover {
 }
 
 #clock {
-    /* black */
-    /* background-color: #000000; */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
-
     /* onedark grey */
     color: #B2B7C1;
-
-    /* gruvbox dark - light0_hard */
-    /* color: #f9f5d7; */
-
-    /* gruvbox dark - light0 */
-    /* color: #fbf1c7; */
-
-    /* gruvboxdark - bright blue */
-    /* color: #83a598; */
 }
 
 @keyframes blink {
     to {
-        /* background-color: #ffffff; */
         background-color: transparent;
         color: #000000;
     }
 }
 
 #battery {
-    /* black */
-    /* background-color: #000000;  */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* onedark "black" -- darker */
-    /* background-color: #21252b; */
     background-color: transparent;
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
-
-    /* gruvbox dark - light0 */
-    /* color: #fbf1c7; */
 
     /* onedark grey */
     color: #B2B7C1;
@@ -293,147 +133,56 @@ button:hover {
 }
 
 label:focus {
-    /* background-color: #000000; */
     background-color: transparent;
 }
 
 #cpu {
-    /* black */
-    /* background-color: #000000; */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* onedark "black" -- darker */
-    background-color: #21252b;
     background-color: transparent;
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
 
     /* onedark green */
     color: #81A273;
 }
 
 #memory {
-    /* black */
-    /* background-color: #000000; */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* onedark "black" -- darker */
-    /* background-color: #21252b; */
     background-color: transparent;
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
-
-    /* onedark magenta */
-    /* color: #C48AD6; */
 
     /* gruvbox dark - bright purple */
     color: #d3869b;
 }
 
 #disk {
-    /* black */
-    /* background-color: #000000; */
     background-color: transparent;
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
-
-    /* gruvbox dark - light0_hard */
-    /* color: #f9f5d7; */
 
     /* gruvbox dark - bright_blue; */
     color: #83a598;
 }
 
 #backlight {
-    /* black */
-    /* background-color: #000000;  */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* onedark "black" -- darker */
-    /* background-color: #21252b; */
     background-color: transparent;
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
 
     /* gruvbox dark - light0_hard */
     color: #f9f5d7;
-
-    /* og */
-    /* color: #90b1b1; */
 }
 
 #network {
-    /* black */
-    /* background-color: #000000; */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* onedark "black" -- darker */
-    /* background-color: #21252b; */
     background-color: transparent;
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
-
-    /* gruvbox dark - bright_blue; */
-    /* color: #83a598; */
-
     /* onedark grey */
     color: #B2B7C1;
 }
 
 #network.disconnected {
-    /* background-color: #e06c75; */
-    /* color: #282c34; */
-
-    /* background-color: #000000; */
     background-color: transparent;
     color: #e06c75;
 }
 
 #pulseaudio {
-    /* black */
-    /* background-color: #000000; */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* onedark "black" -- darker */
-    /* background-color: #21252b; */
     background-color: transparent;
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
-
-    /* gruvbox dark - bright_orange */
-    /* color: #fe8019; */
-
-    /* gruvbox dark - neutral_orange */
-    /* color: #d65d0e; */
 
     /* onedark grey */
     color: #B2B7C1;
 }
 
 #pulseaudio.muted {
-    /* background-color: #90b1b1; */
-    /* color: #2a5c45; */
-
-    /* background-color: #000000; */
     background-color: transparent;
     color: #90b1b1;
 }
@@ -456,18 +205,7 @@ label:focus {
 }
 
 #tray {
-    /* black */
-    /* background-color: #000000; */
-
-    /* onedark "black" */
-    /* background-color: #282C34; */
-
-    /* onedark "black" -- darker */
-    /* background-color: #21252b; */
     background-color: transparent;
-
-    /* gruvbox dark - dark0 */
-    /* background-color: #282828; */
 }
 
 #tray>.passive {
@@ -476,34 +214,19 @@ label:focus {
 
 #tray>.needs-attention {
     -gtk-icon-effect: highlight;
-    /* background-color: #e06c75; */
     background-color: transparent;
 }
 
 #idle_inhibitor {
-    /* background-color: #2d3436; */
     background-color: transparent;
 }
 
 #idle_inhibitor.activated {
-    /* background-color: #ecf0f1; */
     background-color: transparent;
     color: #2d3436;
 }
 
-/* :root { */
-/*     --onedark-black: #282c34; */
-/*     --onedark-blue: #61afef; */
-/*     --onedark-yellow: #e5c07b; */
-/*     --onedark-red: #e06c75; */
-/*     --onedark-white: #aab2bf; */
-/*     --onedark-green: #98c379; */
-/*     --onedark-visual-grey: #3e4452; */
-/*     --onedark-comment-grey: #5c6370; */
-/* } */
-
 #language {
-    /* background: #00b093; */
     background: transparent;
     color: #740864;
     padding: 0 5px;
@@ -521,16 +244,13 @@ label:focus {
 }
 
 #privacy-item.screenshare {
-    /* background-color: #cf5700; */
     background-color: transparent;
 }
 
 #privacy-item.audio-in {
-    /* background-color: #1ca000; */
     background-color: transparent;
 }
 
 #privacy-item.audio-out {
-    /* background-color: #0069d4; */
     background-color: transparent;
 }
