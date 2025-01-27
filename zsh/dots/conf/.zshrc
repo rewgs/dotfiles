@@ -146,6 +146,10 @@ fi
 if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
     # eval "$(~/.rbenv/bin/rbenv init - zsh)"
     smartcache eval ~/.rbenv/bin/rbenv init - zsh
+
+    FPATH=~/.rbenv/completions:"$FPATH"
+    autoload -U compinit
+    compinit
 fi
 
 # thefuck
