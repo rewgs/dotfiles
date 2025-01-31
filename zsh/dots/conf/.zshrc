@@ -117,7 +117,6 @@ export FZF_DEFAULT_OPTS='--tmux 85%,50%'
 # lua/luarocks
 if command -v luarocks &> /dev/null; then
     # eval $(luarocks path)
-    # _evalcache luarocks path
     smartcache eval luarocks path
 fi
 
@@ -144,8 +143,14 @@ fi
 
 # rbenv
 if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
-    # eval "$(~/.rbenv/bin/rbenv init - zsh)"
-    smartcache eval ~/.rbenv/bin/rbenv init - zsh
+    if [[ "$(uname)" == "Darwin" ]]; then
+        smartcache eval ~/.rbenv/bin/rbenv init - zsh
+    fi
+
+    # FIXME: smartcache isn't working for rbenv on Linux. Results in `command not found`.
+    if [[ "$(uname)" == "Linux" ]]; then
+        eval "$(~/.rbenv/bin/rbenv init - zsh)"
+    fi
 
     FPATH=~/.rbenv/completions:"$FPATH"
     autoload -U compinit
