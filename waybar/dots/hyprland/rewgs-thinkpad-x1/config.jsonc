@@ -73,7 +73,6 @@
         "format": "battery {}%"
     },
     "clock": {
-        "timezone": "America/Los_Angeles",
         "format": "{:%Y-%m-%d %I:%M %p}"
     },
 }
