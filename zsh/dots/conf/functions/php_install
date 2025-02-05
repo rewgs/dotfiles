@@ -1,0 +1,18 @@
+# FIXME:
+php_install() {
+    if [[ "$(uname)" == "Darwin" ]]; then
+        local version="$1"
+        opts=(
+            "--with-zlib-dir=$(brew --prefix zlib)"
+            "--with-bz2=$(brew --prefix bzip2)"
+            "--with-curl=$(brew --prefix curl)"
+            "--with-iconv=$(brew --prefix libiconv)"
+            "--with-libedit=$(brew --prefix libedit)"
+            "--with-tidy=$(brew --prefix tidy-html5)"
+            
+        )
+        export CXXFLAGS="-std=c++17"
+        PHP_BUILD_CONFIGURE_OPTS="${opts[@]}"
+        phpenv install "$version"
+    fi
+}

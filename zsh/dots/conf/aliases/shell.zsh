@@ -37,6 +37,9 @@ fi
 # xplr
 alias x="xplr"
 
+# yazi
+alias y="yazi"
+
 if [[ "$(uname)" == "Linux" ]]; then
     alias open="xdg-open"
 fi

@@ -100,8 +100,8 @@ if [[ $(uname) == "Darwin" ]]; then
     export PATH="$PATH:/opt/homebrew/Cellar"
 fi
 HOMEBREW_NO_ENV_HINTS=1
-# Prevents homebrew from automatically updating all packages when installing a package.
-HOMEBREW_NO_AUTO_UPDATE=1
+HOMEBREW_NO_AUTO_UPDATE=1 # Prevents homebrew from automatically updating all packages when installing a package.
+HOMEBREW_NO_INSTALL_UPGRADE=1
 
 # jetbrains
 if [[ $(uname) == "Darwin" ]]; then
