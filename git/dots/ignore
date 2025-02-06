@@ -18,6 +18,7 @@ venv
 .zcompdump*
 .zsh_history
 
+
 # random files
 ._* # ZFS cache files
 .DS_Store
