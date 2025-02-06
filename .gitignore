@@ -13,3 +13,5 @@ lazy-lock.json
 /zsh/dots/conf/.zcompdump
 /zsh/dots/conf/.zsh_history
 /zsh/dots/conf/.zsh_sessions
+/zsh/dots/conf/package.json
+/zsh/dots/conf/package-lock.json
