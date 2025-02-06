@@ -10,8 +10,9 @@ return {
 			javascript = { "prettierd", "prettier", stop_after_first = true }, -- `stop_after_first`: Only run the first available formatter in the list. Defaults to false.
 			lua = { "stylua" },
 			php = { "php-cs-fixer" },
+			-- NOTE: Formatting for Python is being handled via `none-ls.nvim`.
 			-- python = { "basedpyright", "pyright", "ruff-lsp", "black", stop_after_first = true },
-			python = { "black" },
+			-- python = { "black" },
 		},
 
 		formatters = {
