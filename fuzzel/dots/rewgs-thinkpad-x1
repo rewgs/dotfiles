@@ -12,10 +12,8 @@ inner-pad=10
 [colors]
 # onedark
 background=282c34ff
-# border=61afefff # standard
 border=79B3E2aa # pale blue
 match=abb2bfff
-# selection=61afefff # standard
 selection=79B3E2aa # pale blue
 selection-match=ffffffff
 selection-text=282c34ff

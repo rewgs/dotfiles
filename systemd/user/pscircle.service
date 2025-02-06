@@ -1,0 +1,9 @@
+[Unit]
+Description=Runs pscircle to continuously update desktop wallpaper 
+
+[Service]
+Environment=DISPLAY=:0
+ExecStart=pscircle --daemonize=true --loop_delay=0.5
+
+[Install]
+WantedBy=default.target

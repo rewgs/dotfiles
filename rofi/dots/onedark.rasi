@@ -26,14 +26,15 @@
   spacing: 0;
   background-color: transparent;
 
-  font: "Knack Nerd Font 14";
+  // font: "Knack Nerd Font 14";
   text-color: @text;
 }
 
 window {
   transparency: "real";
   fullscreen: true;
-  background-color: #282c34dd;
+  // background-color: #282c34dd;
+  background-color: #000000aa;
 }
 
 mainbox {
@@ -82,7 +83,7 @@ element urgent, element selected urgent {
 }
 
 element active, element selected active {
-  text-color: @purple;
+  text-color: @green;
 }
 
 message {
@@ -98,3 +99,4 @@ button selected {
   border-radius: 3px;
   background-color: @emphasis;
 }
+

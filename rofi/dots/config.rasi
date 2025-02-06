@@ -1,6 +1,6 @@
 configuration {
     modi: "window,run,ssh";
     font: "FiraCode NF 12";
-    show-icons: true;
+    show-icons: false;
 }
 @theme "onedark"
