@@ -95,6 +95,14 @@ return {
                     },
                 })
             end,
+
+            ["ruff"] = function()
+                lspconfig["ruff"].setup({
+                    capabilities = capabilities,
+                    settings = {
+                    },
+                })
+            end,
         })
     end,
 }
