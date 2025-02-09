@@ -70,6 +70,10 @@
 	    "unit": "GB"
     },
     "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
         "format": "battery {}%"
     },
     "clock": {
