@@ -50,7 +50,7 @@
         "on-click": "pavucontrol"
     },
     "network": {
-        "format-wifi": "{essid}  ",
+        "format-wifi": "{essid}   ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
@@ -89,7 +89,7 @@
         // "on-click": "2"
     },
     "clock": {
-        "format": "{:%Y-%m-%d %I:%M %p}"
+        "format": " {:%Y-%m-%d  %I:%M %p}"
     },
 }
 
