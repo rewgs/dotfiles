@@ -13,7 +13,7 @@
     "modules-right": [
         "pulseaudio", 
         "network", 
-        "battery", // TODO: better color for battery module
+        "battery",
         "clock",
     ],
 
@@ -50,7 +50,7 @@
         "on-click": "pavucontrol"
     },
     "network": {
-        "format-wifi": "{essid} ",
+        "format-wifi": "{essid}  ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
@@ -70,11 +70,23 @@
 	    "unit": "GB"
     },
     "battery": {
+        // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+        // "format": "{capacity}% <span font='Font Awesome 5 Free 11'>{icon}</span>",
+        "format": "{capacity}% {icon} ",
+
+        "format-icons": ["", "", "", "", ""],
+        "format-time": "{H}h{M}m",
+
+        "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+        "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
+
+        "interval": 30,
         "states": {
-            "warning": 30,
-            "critical": 15
+            "warning": 25,
+            "critical": 10
         },
-        "format": "battery {}%"
+        "tooltip": false,
+        // "on-click": "2"
     },
     "clock": {
         "format": "{:%Y-%m-%d %I:%M %p}"

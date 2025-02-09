@@ -2,10 +2,14 @@
 /* https://github.com/morhetz/gruvbox-contrib/blob/master/color.table */
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    /* font-family: "FiraCode NF", "Font Awesome"; */
-    font-family: "Inter", "Font Awesome";
+    border: none;
+    border-radius: 0;
+
+    /* font-family: "Berkeley Mono SemiBold", "Font Awesome"; */
+    font-family: "FiraCode Nerd Font", "Font Awesome";
+    /* font-family: "Inter", "Font Awesome"; */
     font-size: 10px;
+    font-weight: bold;
 }
 
 window#waybar {
@@ -25,9 +29,8 @@ button {
     box-shadow: inset 0 -3px transparent;
 
     /* Avoid rounded borders under each button name */
-    border: none;
-
-    border-radius: 0;
+    /* border: none; */
+    /* border-radius: 0; */
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -83,7 +86,7 @@ button:hover {
 #wireplumber,
 #tray {
     /* vertical, horizontal */
-    padding: 5 10px;
+    padding: 0 10px;
 }
 
 #window,
@@ -103,7 +106,13 @@ button:hover {
 
 #clock {
     /* onedark grey */
-    color: #B2B7C1;
+    /* color: #B2B7C1; */
+
+    /* onedark blue */
+    /* color: #61afef; */
+
+    /* onedark blue pale oled */
+    color: #79b3e2;
 }
 
 @keyframes blink {
@@ -117,12 +126,20 @@ button:hover {
     background-color: transparent;
 
     /* onedark grey */
-    color: #B2B7C1;
+    /* color: #B2B7C1; */
+
+    /* onedark green */
+    color: #98c379;
 }
 
 #battery.warning:not(.charging) {
     background-color: transparent;
-    color: #d19a66;
+
+    /* onedark dark yellow (i.e. orange) */
+    /* color: #d19a66; */
+
+    /* onedark light yellow */
+    color: #e5c07b;
 }
 
 #battery.critical:not(.charging) {
@@ -164,8 +181,12 @@ label:focus {
 
 #network {
     background-color: transparent;
+
     /* onedark grey */
-    color: #B2B7C1;
+    /* color: #B2B7C1; */
+
+    /* onedark magenta */
+    color: #c678dd;
 }
 
 #network.disconnected {
@@ -177,7 +198,10 @@ label:focus {
     background-color: transparent;
 
     /* onedark grey */
-    color: #B2B7C1;
+    /* color: #B2B7C1; */
+
+    /* onedark cyan */
+    color: #56b6c2;
 }
 
 #pulseaudio.muted {
