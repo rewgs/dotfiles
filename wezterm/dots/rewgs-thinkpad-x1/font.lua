@@ -12,4 +12,5 @@ function module.apply_to_config(config)
         weight = 'Regular'
     }
 end
+
 return module
