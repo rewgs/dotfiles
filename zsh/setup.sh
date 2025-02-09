@@ -26,8 +26,9 @@ setup-zsh::clone-plugin() {
 }
 
 setup-zsh::clone-plugins() {
-    setup-zsh::clone-plugin "https://github.com/zsh-users/zsh-syntax-highlighting"
+    setup-zsh::clone-plugin "https://github.com/zsh-users/zsh-completions.git"
     setup-zsh::clone-plugin "https://github.com/quarticcat/zsh-smartcache"
+    setup-zsh::clone-plugin "https://github.com/zsh-users/zsh-syntax-highlighting"
 }
 
 # Symlinks: $DOTFILES/zsh/dots/.zshenv -> ~/.zshenv
