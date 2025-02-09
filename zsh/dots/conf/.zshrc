@@ -70,6 +70,9 @@ source "$ZDOTDIR/vi.zsh"
 
 source "$HOME/src/zsh-plugins/zsh-smartcache/zsh-smartcache.plugin.zsh"
 
+# zsh-completions
+fpath=($HOME/src/zsh-plugins/zsh-completions/src $fpath)
+
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ run commands                                                               ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
