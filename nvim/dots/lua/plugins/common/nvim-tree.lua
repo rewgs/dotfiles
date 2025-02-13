@@ -4,11 +4,9 @@ return {
 	config = function()
 		local nvimtree = require("nvim-tree")
 
-		-- disables netrw
-		vim.g.loaded_netrw = 1
-		vim.g.loaded_netrwPlugin = 1
-
 		nvimtree.setup({
+			disable_netrw = true,
+			hijack_netrw = true,
 			actions = {
 				open_file = {
 					window_picker = {
@@ -38,14 +36,14 @@ return {
 				},
 			},
 			view = {
+				-- adaptive_size = true,
 				relativenumber = true,
 				side = "right",
 				width = 35,
 			},
 		})
 
-		-- TODO: Add file/dir deleting, making, etc.
-		vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
+		vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggles file explorer" })
 		vim.keymap.set(
 			"n",
 			"<leader>ef",
