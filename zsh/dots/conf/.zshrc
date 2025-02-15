@@ -68,10 +68,22 @@ source "$ZDOTDIR/vi.zsh"
 # ║ plugins - pre-RCs                                                          ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-source "$HOME/src/zsh-plugins/zsh-smartcache/zsh-smartcache.plugin.zsh"
+SRC="$HOME/src"
+ZPLUGINS="$SRC/zsh-plugins"
+# export "$SRC"
+# export "$ZPLUGINS"
+
+# zsh-smart-cache
+# source "$HOME/src/zsh-plugins/zsh-smartcache/zsh-smartcache.plugin.zsh"
+source "$ZPLUGINS/zsh-smartcache/zsh-smartcache.plugin.zsh"
 
 # zsh-completions
-fpath=($HOME/src/zsh-plugins/zsh-completions/src $fpath)
+# fpath=($HOME/src/zsh-plugins/zsh-completions/src $fpath)
+fpath=("$ZPLUGINS/zsh-completions/src" $fpath)
+
+# zsh per-directory history
+# source "$HOME/src/zsh-plugins/per-directory-history/per-directory-history.zsh"
+source "$ZPLUGINS/per-directory-history/per-directory-history.zsh"
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ run commands                                                               ║

@@ -40,8 +40,9 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZFUNCS="$ZDOTDIR/functions"
 export ZALIASES="$ZDOTDIR/aliases"
 
-export SRC="$HOME/src"
-export ZPLUGINS="$SRC/zsh-plugins"
+# Moved to zshrc
+# export SRC="$HOME/src"
+# export ZPLUGINS="$SRC/zsh-plugins"
 
 export EDITOR='nvim'
 export DOTFILES="$(get_dotfiles_path)"
