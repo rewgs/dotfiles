@@ -224,10 +224,15 @@ button:hover {
     color: rgba(121, 179, 226, 0.7);
 }
 
-/* #pulseaudio.muted { */
-/*     background-color: transparent; */
-/*     color: #90b1b1; */
-/* } */
+#pulseaudio.muted {
+    background-color: transparent;
+    /* onedark dark yellow (i.e. orange) */
+    /* color: #d19a66; */
+
+    /* onedark blue pale oled */
+    /* color: #79b3e2; */
+    color: rgba(121, 179, 226, 0.4);
+}
 
 /* #wireplumber { */
 /*     color: #000000; */
