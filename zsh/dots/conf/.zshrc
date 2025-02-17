@@ -129,6 +129,12 @@ fi
 # (`--tmux` is silently ignored if not running in a tmux session).
 export FZF_DEFAULT_OPTS='--tmux 85%,50%'
 
+# homebrew - Linux (NOTE: macOS brew is handedl in .zshenv)
+if [[ "$(uname)" == "Linux" ]] && [[ -d "/home/linuxbrew" ]]; then
+    # NOTE: Using `smartcache eval` doesn't appear to work
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # lua/luarocks
 if command -v luarocks &> /dev/null; then
     # eval $(luarocks path)
