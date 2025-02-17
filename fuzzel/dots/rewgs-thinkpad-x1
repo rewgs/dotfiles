@@ -29,5 +29,5 @@ text=efefefff
 # text=fbf1c7ff
 
 [border]
-width=3
-radius=3
+width=5
+radius=10
