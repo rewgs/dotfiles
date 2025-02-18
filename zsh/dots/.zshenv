@@ -114,6 +114,11 @@ fi
 # nim
 export PATH="$PATH:$HOME/.nimble/bin"
 
+# nix
+if [[ -d "$HOME/.nix-profile/bin" ]]; then
+    export PATH="$PATH:$HOME/.nix-profile/bin"
+fi
+
 # Added by OrbStack: command-line tools and integration
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.orbstack/shell/init.zsh 2>/dev/null || :
