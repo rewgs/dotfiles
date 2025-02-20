@@ -39,6 +39,8 @@ shell-integration = zsh
 macos-option-as-alt = true
 theme = "OneHalfDark"
 resize-overlay = never
+macos-icon = retro
+macos-icon-frame = beige
 
 
 #==============================================================================
