@@ -64,6 +64,10 @@ source "$ZDOTDIR/vi.zsh"
 # NOTE: Not using -- replaced with Starship.
 # source "$ZDOTDIR/prompt.zsh"
 
+# Somewhere along the line, ctrl+shift+tab stopped working.
+# This sets it.
+bindkey '^[[Z' reverse-menu-complete
+
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ plugins - pre-RCs                                                          ║
 # ╚════════════════════════════════════════════════════════════════════════════╝

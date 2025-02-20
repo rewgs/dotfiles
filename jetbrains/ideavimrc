@@ -100,7 +100,10 @@ nmap <leader>tb      :action ToggleBookmark<CR>
 nmap <leader>tt      :action ToggleLineBreakpoint<CR>
 
 nmap <leader>gd     :action GotoDeclaration<CR>
+
+" Shows floating docstring -- ignore the word 'Java' here
 nmap <leader>gh     :action QuickJavaDoc<CR>
+
 nmap <leader>gr     :action FindUsages<CR>
 nmap <leader>gs     :action GotoSymbol<CR>
 

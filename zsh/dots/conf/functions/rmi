@@ -2,35 +2,43 @@
 # Behaves the same whether it's run on a file or a directory. Always confirms before deletion.
 
 rmi () {
+    for arg in "$@"; do
+        if [[ -d "$arg" ]]; then
+            rm -r "$arg"
+        else
+            rm "$arg"
+        fi
+    done
+
     # macOS
-    if [[ $(uname) == "Darwin" ]]; then
-        for arg in "$@"; do
-            if [[ -d "$arg" ]]; then
-                rm -r -I "$arg"
-            else
-                rm -i "$arg"
-            fi
-        done
-    fi
+    # if [[ $(uname) == "Darwin" ]]; then
+    #     for arg in "$@"; do
+    #         if [[ -d "$arg" ]]; then
+    #             rm -r -I "$arg"
+    #         else
+    #             rm -i "$arg"
+    #         fi
+    #     done
+    # fi
 
     # Linux
-    if [[ $(uname) == "Linux" ]]; then
-        if [[ $(whoami) == "root" ]]; then
-            for arg in "$@"; do
-                if [[ -d "$arg" ]]; then
-                    rm -r -I "$arg"
-                else
-                    rm -i "$arg"
-                fi
-            done
-        else
-            for arg in "$@"; do
-                if [[ -d "$arg" ]]; then
-                    sudo rm -r -I "$arg"
-                else
-                    rm -i "$arg"
-                fi
-            done
-        fi
-    fi
+    # if [[ $(uname) == "Linux" ]]; then
+    #     if [[ $(whoami) == "root" ]]; then
+    #         for arg in "$@"; do
+    #             if [[ -d "$arg" ]]; then
+    #                 rm -r -I "$arg"
+    #             else
+    #                 rm -i "$arg"
+    #             fi
+    #         done
+    #     else
+    #         for arg in "$@"; do
+    #             if [[ -d "$arg" ]]; then
+    #                 sudo rm -r -I "$arg"
+    #             else
+    #                 rm -i "$arg"
+    #             fi
+    #         done
+    #     fi
+    # fi
 }

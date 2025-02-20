@@ -21,7 +21,7 @@ end
 
 require("lazy").setup({
 	{ import = "plugins" .. "." .. "common" },
-	{ import = "plugins" .. "." .. "common" .. "." .. "lsp" },
+	-- { import = "plugins" .. "." .. "common" .. "." .. "lsp" },
 	{ import = hostSpecific },
 }, {
 	checker = {

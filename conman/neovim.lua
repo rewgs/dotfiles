@@ -1,29 +1,25 @@
 local conman = require("conman")
-local dot = {}
 
-dot.name = "neovim"
-dot.altName = "nvim"
-dot.confs = {
-    darwin = {
-        src = conman.dotfiles .. dot.altName,
-        dst = os.getenv("XDG_CONFIG_HOME") .. "/" .. dot.altName,
-    },
-    linux = {
-        src = conman.dotfiles .. dot.altName,
-        dst = os.getenv("XDG_CONFIG_HOME") .. "/" .. dot.altName,
-    },
-    windows = {
-        src = conman.dotfiles .. dot.altName,
-        dst = os.getenv("HOME") .. "/AppData/Local/" .. dot.altName,
-    },
+local name = "neovim"
+local alias = { "nvim" }
+return {
+	name = name,
+	alias = alias,
+	dst = {
+		darwin = os.getenv("XDG_CONFIG_HOME") .. "/" .. alias[1],
+		linux = os.getenv("XDG_CONFIG_HOME") .. "/" .. alias[1],
+		windows = os.getenv("HOME") .. "/AppData/Local/" .. alias[1],
+	},
+
+	install = function()
+		-- TODO:
+		-- 1. Check if dst exists
+		--  - If so, delete it.
+		-- 2. Symlink src to dst -- NOTE: Need to be able to get src from Go!
+		--
+	end,
+
+	setup = function()
+		-- TODO:
+	end,
 }
-
--- TODO:
-dot.install = function()
-end
-
--- TODO:
--- dot.setup = function()
--- end
-
-return dot
