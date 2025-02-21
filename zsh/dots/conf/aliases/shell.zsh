@@ -43,3 +43,9 @@ alias y="yazi"
 if [[ "$(uname)" == "Linux" ]]; then
     alias open="xdg-open"
 fi
+
+# window managers and desktop environments
+if [[ "$(uname)" == "Linux" ]]; then
+    alias cosmic="start-cosmic"
+    alias xfce="startxfce4"
+fi
