@@ -1,5 +1,8 @@
 return {
 	"neovim/nvim-lspconfig",
+	-- opts = {
+	-- 	inlay_hints = { enabled = true },
+	-- },
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
@@ -15,9 +18,16 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
-				local opts = { buffer = ev.buf, silent = true }
+				local opts = {
+					buffer = ev.buf,
+					silent = true,
+					-- vim.lsp.inlay_hint.enable(),
+				}
 
 				-- set keybindings
+				-- opts.desc = "Toggle inlay hints"
+				-- vim.keymap.set("n", "<leader>gh", vim.lsp.inlay_hint.enable, opts)
+
 				opts.desc = "Show LSP references"
 				vim.keymap.set("n", "<leader>gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
@@ -58,6 +68,7 @@ return {
 				vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 			end,
 		})
+		-- vim.lsp.inlay_hint.enable(bufnr, true)
 
 		-- Used to enable autocompletion (assigned to every LSP server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -75,6 +86,49 @@ return {
 				lspconfig[server_name].setup({
 					capabilities = capabilities,
 				})
+			end,
+
+			["gopls"] = function()
+				lspconfig["gopls"].setup({
+					capabilities = capabilities,
+					settings = {
+						gopls = {
+							analyses = { shadow = true, unusedwrite = true, unusedvariable = true },
+							staticcheck = true,
+							gofumpt = true,
+							hints = {
+								assignVariableTypes = true,
+								compositeLiteralFields = true,
+								compositeLiteralTypes = true,
+								constantValues = true,
+								functionTypeParameters = true,
+								parameterNames = true,
+								rangeVariableTypes = true,
+							},
+						},
+					},
+				})
+
+				-- lspconfig["gopls"].setup({
+				-- 	settings = {
+				-- 		gopls = {
+				-- 			analyses = {
+				-- 				unusedparams = true,
+				-- 			},
+				-- 			staticcheck = true,
+				-- 			gofumpt = true,
+				-- 			hints = {
+				-- 				assignVariableTypes = true,
+				-- 				compositeLiteralFields = true,
+				-- 				compositeLiteralTypes = true,
+				-- 				constantValues = true,
+				-- 				functionTypeParameters = true,
+				-- 				parameterNames = true,
+				-- 				rangeVariableTypes = true,
+				-- 			},
+				-- 		},
+				-- 	},
+				-- })
 			end,
 
 			-- Custom handlers for specified servers
