@@ -1,6 +1,5 @@
 packages=(
-    # NOTE: commented-out packages are incorrect package names (as these were copied from 
-    # apt script above); need to find correct package name for Pacman
+    # NOTE: Commented-out packages are incorrect package names.
     "apache"
     "arp-scan"
     "automake"
@@ -54,18 +53,18 @@ packages=(
     "qt6-base"
     "qtcreator"
 
-    # AMAZING package -- finds the fastest `n` mirrors for pacman. 
+    # AMAZING package -- finds the fastest `n` mirrors for pacman.
     # Be sure to integrate with systemd:
     # `sudo systemctl enable reflector.timer`
     # `sudo systemctl start reflector.timer`
-    "reflector" 
+    "reflector"
     "ranger" # cli file manager
     "ripgrep"
     "samba"
     "shellcheck" # not available for ARM
     "signal-desktop"
     "sshfs"
-    "sxiv" # image viewer
+    "sxiv"      # image viewer
     "tailscale" # run `sudo systemctl enable --now tailscaled` to start, and then `sudo tailscale up` and `sudo tailscale up --ssh`
     # "tgt"
     "thefuck"
@@ -76,9 +75,17 @@ packages=(
     "vifm" # cli file manager
     "vim"
     "wireguard-tools" # required for ProtonVPN
-    "wl-clipboard" # dead simple clipboard utility for Wayland-based window managers; https://github.com/bugaevc/wl-clipboard
+    "wl-clipboard"    # dead simple clipboard utility for Wayland-based window managers; https://github.com/bugaevc/wl-clipboard
     "wget"
     "xorg"
     "zip"
     "zsh"
 )
+
+function pacman::main() {
+    sudo pacman -Syu
+    for package in "${packages[@]}"; do
+        sudo pacman -Sy --needed "$package" --noconfirm
+    done
+}
+pacman::main
