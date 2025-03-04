@@ -1,0 +1,38 @@
+{
+    // ====================================================
+    // main
+    // ====================================================
+    "layer": "top",     // places waybar in "front" of windows
+    "position": "top",
+    "height": 25,
+    "spacing": 4,
+
+
+    // ====================================================
+    // modules
+    // ====================================================
+    "modules_left": [
+        "hyprland/workspaces",
+    ],
+
+    "modules_center": [
+        "hyprland/window",
+    ],
+
+
+    // ====================================================
+    // modules config
+    // ====================================================
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "wrap-on-scroll": false,
+        "format": "{name}: {icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+        }
+    }
+}

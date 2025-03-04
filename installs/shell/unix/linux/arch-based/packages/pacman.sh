@@ -6,6 +6,7 @@ packages=(
     "base-devel" # equivalent to apt's built-essential
     "bettercap"
     "bpytop"
+    "brightnessctl" # for using media keys to control brightness
     "btop"
     "cmake"
     "cmatrix"
@@ -43,16 +44,17 @@ packages=(
     "net-tools"
     "networkmanager" # nmcli, nmtui
     "nmap"
-    "nnn" # cli file manager
+    "nnn"      # cli file manager
+    "nwg-look" # GTK settings manager for wayland environments
     "obsidian"
     "openvpn" # required for ProtonVPN
     "pass"
+    "pavucontrol" # for controlling volume via media keys
     "picom"
     "podman"
     "qemu-full"
     "qt6-base"
     "qtcreator"
-
     # AMAZING package -- finds the fastest `n` mirrors for pacman.
     # Be sure to integrate with systemd:
     # `sudo systemctl enable reflector.timer`
