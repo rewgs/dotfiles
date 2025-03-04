@@ -59,6 +59,14 @@ var aptPackages = []string{
 	"zsh",
 }
 
+func getSudo() string {
+	sudo, err := exec.LookPath("sudo")
+	if err != nil {
+		log.Fatal(err)
+	}
+	return sudo
+}
+
 func getApt() string {
 	apt, err := exec.LookPath("apt")
 	if err != nil {
@@ -68,15 +76,16 @@ func getApt() string {
 }
 
 func installAptPackages() {
+	sudo := getSudo()
 	apt := getApt()
 
-	update := exec.Command(apt, "update")
+	update := exec.Command(sudo, apt, "update")
 	if err := update.Run(); err != nil {
 		log.Fatal(err)
 	}
 
 	for _, pkg := range aptPackages {
-		install := exec.Command(apt, "install", "-y", pkg)
+		install := exec.Command(sudo, apt, "install", "-y", pkg)
 		err := install.Run()
 		if err != nil {
 			log.Fatal(err)
