@@ -17,6 +17,8 @@ func Setup() {
 		arch.Setup()
 	case "debian":
 		debian.Setup()
+	case "ubuntu":
+		debian.Setup()
 	case "rhel":
 		rhel.Setup()
 	default:
