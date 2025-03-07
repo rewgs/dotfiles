@@ -1,0 +1,3 @@
+package rhel
+
+func Setup() {}

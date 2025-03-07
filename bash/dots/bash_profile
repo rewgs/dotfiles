@@ -27,7 +27,6 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # rust
-. "$HOME/.cargo/env"
 
 #pyenv
 # export PYENV_ROOT="$HOME/.pyenv"

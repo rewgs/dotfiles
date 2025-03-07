@@ -99,10 +99,11 @@ if [[ $(uname) == "Darwin" ]]; then
     export PATH="$PATH:/opt/homebrew/bin"
     export PATH="$PATH:/opt/homebrew/sbin"
     export PATH="$PATH:/opt/homebrew/Cellar"
+
+    HOMEBREW_NO_ENV_HINTS=1
+    HOMEBREW_NO_AUTO_UPDATE=1 # Prevents homebrew from automatically updating all packages when installing a package.
+    HOMEBREW_NO_INSTALL_UPGRADE=1
 fi
-HOMEBREW_NO_ENV_HINTS=1
-HOMEBREW_NO_AUTO_UPDATE=1 # Prevents homebrew from automatically updating all packages when installing a package.
-HOMEBREW_NO_INSTALL_UPGRADE=1
 
 # jetbrains
 if [[ $(uname) == "Darwin" ]]; then
@@ -141,6 +142,11 @@ fi
 
 # rust
 if [[ -d "$HOME/.cargo" ]]; then
-    . "$HOME/.cargo/env"
-    export PATH="$HOME/.cargo/bin:$PATH"
+        export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# volta
+if [[ "$HOME/.volta" ]]; then
+    export VOLTA_HOME="$HOME/.volta"
+    export PATH="$VOLTA_HOME/bin:$PATH"
 fi

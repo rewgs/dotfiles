@@ -137,6 +137,10 @@ export FZF_DEFAULT_OPTS='--tmux 85%,50%'
 if [[ "$(uname)" == "Linux" ]] && [[ -d "/home/linuxbrew" ]]; then
     # NOTE: Using `smartcache eval` doesn't appear to work
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+    HOMEBREW_NO_ENV_HINTS=1
+    HOMEBREW_NO_AUTO_UPDATE=1 # Prevents homebrew from automatically updating all packages when installing a package.
+    HOMEBREW_NO_INSTALL_UPGRADE=1
 fi
 
 # lua/luarocks
@@ -194,6 +198,9 @@ if [[ -d "$HOME/.volta" ]]; then
     export PATH="$PATH:$VOLTA_HOME/bin"
 fi
 
+# yazi
+source "$ZDOTDIR/yazi.zsh"
+
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ plugins - post-RCs                                                         ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
@@ -223,3 +230,4 @@ source "$ZDOTDIR/completion.zsh"
 
 # Starship
 eval "$(starship init zsh)"
+

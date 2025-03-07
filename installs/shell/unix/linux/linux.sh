@@ -1,6 +1,7 @@
 #!/bin/bash
 
 arch_based=(
+    "Arch Linux"
     "EndeavourOS Linux"
 )
 
