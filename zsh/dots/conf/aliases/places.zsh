@@ -6,8 +6,6 @@ places::alias() {
     fi
 }
 
-
-
 # personal bin
 places::alias "$HOME/bin" "b"
 
@@ -20,11 +18,6 @@ places::alias "$DOTFILES" "d"
 # src
 places::alias "$HOME/src" "s"
 
-# work dirs
-
-# sns
-places::alias "$HOME/work/sns" "sns"
-places::alias "$HOME/work/sns/development" "snsd"
-
 # tapeop
 places::alias "$HOME/work/TapeOp" "to"
+places::alias "$HOME/work/TapeOp/development" "tod"
