@@ -3,14 +3,17 @@
 # Default config.
 
 options=(
-	style=round
-	width=7
-	hidpi=on
-	# active_color=0xffe2e2e3
-	# inactive_color=0xff414550
+    style=round
+    width=6
+    hidpi=on
 
-    active_color=0xff61afef
+    # active_color=0xffe2e2e3
+    # inactive_color=0xff414550
+
+    # active_color=0xff61afef
     # inactive_color=0xffabb2bf
+
+    active_color=0xaa61afef
 )
 
 borders "${options[@]}"

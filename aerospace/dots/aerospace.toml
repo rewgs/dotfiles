@@ -1,27 +1,5 @@
-# Reference: https://github.com/i3/i3/blob/next/etc/config
-#
-# All possible keys:
-# - Letters.        a, b, c, ..., z
-# - Numbers.        0, 1, 2, ..., 9
-# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
-# - F-keys.         f1, f2, ..., f20
-# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
-#                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
-# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
-#                   keypadMinus, keypadMultiply, keypadPlus
-# - Arrows.         left, down, up, right
-
-# All possible modifiers: cmd, alt, ctrl, shift
-
-# All possible commands: https://nikitabobko.github.io/AeroSpace/commands
-
-# FIXME: Nothing is being recognized as a valid key here.
-# alt-enter = '''exec-and-forget osascript -e '
-# tell application "Terminal"
-#     do script
-#     activate
-# end tell'
-# '''
+# Start AeroSpace at login
+start-at-login = true
 
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
@@ -37,23 +15,26 @@ after-startup-command = [
     'exec-and-forget borders',
 
     # Enables sketchybar
-    'exec-and-forget sketchybar'
+    # 'exec-and-forget sketchybar'
 ]
 
 # Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
-]
-
-# Start AeroSpace at login
-start-at-login = false
+# exec-on-workspace-change = ['/bin/bash', '-c',
+#     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+# ]
 
 # i3 doesn't have "normalizations" feature that why we disable them here.
 # But the feature is very helpful.
 # Normalizations eliminate all sorts of weird tree configurations that don't make sense.
 # Give normalizations a chance and enable them back.
-enable-normalization-flatten-containers = false
-enable-normalization-opposite-orientation-for-nested-containers = false
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# NOTE: from https://github.com/bfpimentel/nixos/blob/main/modules/home-manager/hosts/solaire/aerospace/config/aerospace.toml
+accordion-padding = 12
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'vertical'
+
 
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
@@ -66,14 +47,19 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 7
-inner.vertical =   7
-outer.left =       7
-outer.bottom =     7
-outer.top =        7
-outer.right =      7
+inner.horizontal = 14
+inner.vertical =   14
+outer.left =       14
+outer.bottom =     14
+outer.top =        34 # If using sketchybar, set this equal to its height
+outer.right =      14
 
 [mode.main.binding]
+cmd-h = [] # Disables "hide application"
+cmd-alt-h = [] # Disables "hide others"
+
+alt-tab = 'workspace-back-and-forth'
+
 # See: https://nikitabobko.github.io/AeroSpace/goodness#open-a-new-window-with-applescript
 # cmd-ctrl-enter = '''exec-and-forget osascript -e '
 # tell application "Terminal"
@@ -109,9 +95,9 @@ alt-ctrl-l = 'move right'
 
 alt-f = 'fullscreen'
 
-# alt-s = 'layout v_accordion' # 'layout stacking' in i3
-# alt-w = 'layout h_accordion' # 'layout tabbed' in i3
-# alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+alt-s = 'layout v_accordion' # 'layout stacking' in i3
+alt-t = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+alt-shift-t = 'layout tiles horizontal'
 
 ctrl-alt-f = 'layout floating tiling' # 'floating toggle' in i3
 
@@ -123,16 +109,16 @@ ctrl-alt-f = 'layout floating tiling' # 'floating toggle' in i3
 # should be supported at all https://github.com/nikitabobko/AeroSpace/issues/5
 # alt-a = 'focus parent'
 
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
+alt-1 = 'workspace 1' # main
+alt-2 = 'workspace 2' # Sparks & Shadows
+alt-3 = 'workspace 3' # TapeOp
+alt-4 = 'workspace 4' # messaging apps
+alt-5 = 'workspace 5' # spotify
 alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-alt-0 = 'workspace 10'
+alt-0 = 'workspace 10' # Obsidian
 
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
@@ -158,14 +144,3 @@ shift-t = 'resize height -50'
 enter = 'mode main'
 esc = 'mode main'
 
-# FIXME: This doesn't work.
-# Would love to resize like Hyprland, but multi commands don't work.
-# alt-shift-h = 'mode main'; 'resize width +50'
-# alt-shift-j = 'mode main'; 'resize width +50'
-# alt-shift-k = 'mode main'; 'resize width +50'
-# alt-shift-l = 'mode main'; 'resize width +50'
-
-# FIXME: Not working...
-# https://nikitabobko.github.io/AeroSpace/commands.html#resize
-# alt-shift-minus = 'resize smart -50'
-# alt-shift-equal = 'resize smart +50'
