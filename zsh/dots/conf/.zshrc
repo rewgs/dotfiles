@@ -230,4 +230,3 @@ source "$ZDOTDIR/completion.zsh"
 
 # Starship
 eval "$(starship init zsh)"
-
