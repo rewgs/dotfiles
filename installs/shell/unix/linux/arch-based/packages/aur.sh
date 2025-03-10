@@ -17,6 +17,7 @@ packages=(
     "slack-desktop-wayland"
     "sublime-text-4"
     "sublime-merge"
+    "swiftly-bin" # Swift language toolchain and version manager. Fantastic app.
     "uhk-agent-appimage"
     "ungoogled-chromium-bin"
     "visual-studio-code-bin"
