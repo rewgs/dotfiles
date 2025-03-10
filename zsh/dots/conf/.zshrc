@@ -201,6 +201,11 @@ fi
 # yazi
 source "$ZDOTDIR/yazi.zsh"
 
+# sns
+if [[ -f "$HOME/.sns/env/shell/main.sh" ]]; then
+    source "$HOME/.sns/env/shell/main.sh"
+fi
+
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ plugins - post-RCs                                                         ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
