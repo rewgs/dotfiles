@@ -3,6 +3,8 @@
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
 # TODO: Move to zfuncs?
+# FIXME: Deal with lack of `realpath`.
+# NOTE: On macOS, this depends upon the `coreutils` package, which contains `realpath`.
 get_dotfiles_path() {
     local this_file="$(realpath "${(%):-%x}")"
 
