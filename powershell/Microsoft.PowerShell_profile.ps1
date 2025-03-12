@@ -42,23 +42,25 @@ function Open-Dotfiles {
     }
 }
 
-function Open-Sns {
-    $dir = Join-Path $HOME "work" "sns"
-    if (Test-Path $dir) {
-        Set-Location $dir
-    } else {
-        Write-Output "$dir does not exist!"
-    }
-}
+# TODO: Move to Sparks-and-Shadows/env repo
+# function Open-Sns {
+#     $dir = Join-Path $HOME "work" "sns"
+#     if (Test-Path $dir) {
+#         Set-Location $dir
+#     } else {
+#         Write-Output "$dir does not exist!"
+#     }
+# }
 
-function Open-SnsDevelopment {
-    $dir = Join-Path $HOME "work" "sns" "development"
-    if (Test-Path $dir) {
-        Set-Location $dir
-    } else {
-        Write-Output "$dir does not exist!"
-    }
-}
+# TODO: Move to Sparks-and-Shadows/env repo
+# function Open-SnsDevelopment {
+#     $dir = Join-Path $HOME "work" "sns" "development"
+#     if (Test-Path $dir) {
+#         Set-Location $dir
+#     } else {
+#         Write-Output "$dir does not exist!"
+#     }
+# }
 
 # TODO: Check if pyenv-win is installed; if not, install pyenv-win (see script in $DOTFILES/utils/installs/windows)
 function Install-PythonVersion {
@@ -98,6 +100,19 @@ function Activate-Venv {
 # TODO: Make sure current directory contains a .venv.
 function Deactivate-Venv {
     deactivate
+}
+
+function Am-Admin {
+    [OutputType([bool])]
+
+    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+    $CheckforAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+    if ($CheckforAdmin) {
+        # Write-Host "PowerShell is running as administrator."
+        return $true
+    }
+    # Write-Host "PowerShell is not running as administrator."
+    return $false
 }
 
 # =============================================================================
