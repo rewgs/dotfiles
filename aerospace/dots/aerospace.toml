@@ -143,4 +143,5 @@ t = 'resize height +50'
 shift-t = 'resize height -50'
 enter = 'mode main'
 esc = 'mode main'
+alt-r = 'mode main'
 
