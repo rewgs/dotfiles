@@ -151,4 +151,8 @@ fi
 if [[ "$HOME/.volta" ]]; then
     export VOLTA_HOME="$HOME/.volta"
     export PATH="$VOLTA_HOME/bin:$PATH"
+
+    # Enables pnpm support.
+    # https://docs.volta.sh/advanced/pnpm
+    export VOLTA_FEATURE_PNPM=1
 fi
