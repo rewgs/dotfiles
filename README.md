@@ -18,8 +18,6 @@ Most `dots` directories are flat, but some are more complicated. For example, I'
 
 **editor:** [neovim](./nvim)
 
-## Notes on GUI utilities
-
 ### Linux
 
 - **Window manager:** [`hyprland`](./hypr). It's the best I've ever used by a mile.
