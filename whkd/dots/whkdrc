@@ -12,7 +12,7 @@ win + shift + o         : komorebic reload-configuration
 
 win + w                 : komorebic close
 win + f                 : komorebic toggle-maximize
-# alt + m                 : komorebic minimize
+win + m                 : komorebic minimize
 
 # Focus windows
 win + h                 : komorebic focus left
@@ -49,8 +49,8 @@ win + t                 : komorebic toggle-float
 win + shift + f         : komorebic toggle-monocle
 
 # Window manager options
-win + shift + r         : komorebic retile
-win + p                 : komorebic toggle-pause
+# win + shift + r         : komorebic retile
+# win + p                 : komorebic toggle-pause
 
 # Layouts
 win + x                 : komorebic flip-layout horizontal
