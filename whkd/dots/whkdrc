@@ -10,7 +10,8 @@
 # alt + f                 : if ($wshell.AppActivate('Firefox') -eq $False) { start firefox }
 # alt + b                 : if ($wshell.AppActivate('Chrome') -eq $False) { start chrome }
 
-win + return            : C:\Users\sns\AppData\Local\Microsoft\WindowsApps\wt.exe
+# FIXME:
+# win + enter            : C:\Users\sns\AppData\Local\Microsoft\WindowsApps\wt.exe
 
 win + w                 : komorebic close
 win + f                 : komorebic toggle-maximize
