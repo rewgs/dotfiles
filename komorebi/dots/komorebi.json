@@ -6,6 +6,7 @@
   "default_workspace_padding": 10,
   "default_container_padding": 10,
   "border": true,
+  "border_style": "System",
   "border_width": 6,
   "border_offset": -1,
   "theme": {
@@ -30,27 +31,39 @@
         },
         {
           "name": "2",
-          "layout": "VerticalStack"
+          "layout": "BSP"
         },
         {
           "name": "3",
-          "layout": "HorizontalStack"
+          "layout": "BSP"
         },
         {
           "name": "4",
-          "layout": "UltrawideVerticalStack"
+          "layout": "BSP"
         },
         {
           "name": "5",
-          "layout": "Rows"
+          "layout": "BSP"
         },
         {
           "name": "6",
-          "layout": "Grid"
+          "layout": "BSP"
         },
         {
           "name": "7",
-          "layout": "RightMainVerticalStack"
+          "layout": "BSP"
+        },
+        {
+          "name": "8",
+          "layout": "BSP"
+        },
+        {
+          "name": "9",
+          "layout": "BSP"
+        },
+        {
+          "name": "10",
+          "layout": "BSP"
         }
       ]
     }
