@@ -126,7 +126,7 @@ def main():
         raise Exception("This file must be in the root of the dotfiles repo!")
 
     # testing; TODO: Specify name with cli arg.
-    name = "cli-dev"
+    name = "basic cli"
     succeeded, failed = setup(dotfiles_dir, get_preset(name))
     if len(succeeded) == 0 or len(failed) > 0:
         raise Exception(
