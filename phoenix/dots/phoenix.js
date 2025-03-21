@@ -50,6 +50,8 @@ const maximized = Key.on("k", HYPER, () => {
   Window.focused().maximize();
 });
 
+// halves
+
 const leftHalf = Key.on("h", HYPER, () => {
   const window = Window.focused();
   const screenFrame = window.screen().flippedVisibleFrame();
@@ -71,6 +73,8 @@ const rightHalf = Key.on("l", HYPER, () => {
     height: screenFrame.height,
   });
 });
+
+// 1/3
 
 const leftThird = Key.on("h", OHYPER, () => {
   const window = Window.focused();
@@ -105,6 +109,8 @@ const rightThird = Key.on("l", OHYPER, () => {
   });
 });
 
+// 2/3
+
 const leftTwoThirds = Key.on("h", SOHYPER, () => {
   const window = Window.focused();
   const screenFrame = window.screen().flippedVisibleFrame();
@@ -126,6 +132,8 @@ const rightTwoThirds = Key.on("l", SOHYPER, () => {
     height: screenFrame.height,
   });
 });
+
+// quarters
 
 const upperLeftQuarter = Key.on(",", HYPER, () => {
   const window = Window.focused();
@@ -168,6 +176,122 @@ const lowerRightQuarter = Key.on(".", SHYPER, () => {
     y: screenFrame.y + screenFrame.height / 2,
     width: screenFrame.width / 2,
     height: screenFrame.height / 2,
+  });
+});
+
+// 1/5
+
+const firstFifth = Key.on("1", OHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x,
+    y: screenFrame.y,
+    width: screenFrame.width / 5,
+    height: screenFrame.height,
+  });
+});
+
+const secondFifth = Key.on("2", OHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x + screenFrame.width / 5,
+    y: screenFrame.y,
+    width: screenFrame.width / 5,
+    height: screenFrame.height,
+  });
+});
+
+const thirdFifth = Key.on("3", OHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x + (screenFrame.width / 5) * 2,
+    y: screenFrame.y,
+    width: screenFrame.width / 5,
+    height: screenFrame.height,
+  });
+});
+
+const fourthFifth = Key.on("4", OHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x + (screenFrame.width / 5) * 3,
+    y: screenFrame.y,
+    width: screenFrame.width / 5,
+    height: screenFrame.height,
+  });
+});
+
+const fifthFifth = Key.on("5", OHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x + (screenFrame.width / 5) * 4,
+    y: screenFrame.y,
+    width: screenFrame.width / 5,
+    height: screenFrame.height,
+  });
+});
+
+// 2/5
+
+const leftTwoFifths = Key.on("[", OHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x,
+    y: screenFrame.y,
+    width: (screenFrame.width / 5) * 2,
+    height: screenFrame.height,
+  });
+});
+
+const rightTwoFifths = Key.on("]", OHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x + (screenFrame.width / 5) * 3,
+    y: screenFrame.y,
+    width: (screenFrame.width / 5) * 2,
+    height: screenFrame.height,
+  });
+});
+
+// 3/5
+
+const leftThreeFifths = Key.on("[", SOHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x,
+    y: screenFrame.y,
+    width: (screenFrame.width / 5) * 3,
+    height: screenFrame.height,
+  });
+});
+
+const middleThreeFifths = Key.on("\\", SOHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x + screenFrame.width / 5,
+    y: screenFrame.y,
+    width: (screenFrame.width / 5) * 3,
+    height: screenFrame.height,
+  });
+});
+
+const rightThreeFifths = Key.on("]", SOHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x + (screenFrame.width / 5) * 2,
+    y: screenFrame.y,
+    width: (screenFrame.width / 5) * 3,
+    height: screenFrame.height,
   });
 });
 
