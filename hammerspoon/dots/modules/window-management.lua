@@ -12,7 +12,7 @@ local customHotkeys = {
 	right_half = { Mod.hyper, "l" }, --
 	max_toggle = { Mod.hyper, "k" },
 
-	center = { Mod.hyper, "c" }, -- retains size
+	-- center = { Mod.hyper, "c" }, -- retains size
 
 	-- max             = { mod.hyper, "m" },
 
@@ -29,9 +29,9 @@ local customHotkeys = {
 	right_two_third = { Mod.soHyper, "l" },
 
 	top_left = { Mod.hyper, "u" },
-	top_right = { Mod.hyper, "o" },
-	bottom_left = { Mod.hyper, "m" },
-	bottom_right = { Mod.hyper, "." },
+	top_right = { Mod.hyper, "p" },
+	bottom_left = { Mod.sHyper, "," }, -- <
+	bottom_right = { Mod.sHyper, "." }, -- >
 
 	undo = { Mod.soHyper, "z" },
 	larger = { Mod.soHyper, "w" }, -- i.e. "wider"
