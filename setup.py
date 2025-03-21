@@ -1,8 +1,3 @@
-# Runs one or more dotfiles' `setup.sh` scripts.
-# Options:
-# -A, --all: Finds and runs every single `setup.sh` script in this repo.
-# -p, --preset PRESET: Select a preset list of applications by name; a preset contains a subset of applications.
-
 # TODO:
 # - Be able to "copy" an already-existing Preset and add/subtract dots from it.
 #   For example, the "basic cli" preset with additional dots hyprland, waybar,
@@ -10,6 +5,11 @@
 #   It'd be great to be able to do something like:
 #   `duplicate_preset("basic cli").add_dots("hyprland", "waybar", "wezterm", "pacman")`
 # - Be sure this is running with a minimum version of Python. Dataclasses were introduced in 3.7 -- should probably be that.
+
+# Runs one or more dotfiles' `setup.sh` scripts.
+# Options:
+# -A, --all: Finds and runs every single `setup.sh` script in this repo.
+# -p, --preset PRESET: Select a preset list of applications by name; a preset contains a subset of applications.
 
 
 import subprocess
@@ -20,10 +20,11 @@ from platform import system
 
 @dataclass
 class Preset:
+    """A collection of dotfile-configured applications to setup, optionally contrained by operating system."""
     name: str
     dots: tuple[str, ...]
     # A value of None means that this Preset can be setup on any OS.
-    os: list[str] | None
+    os: str | tuple[str, ...]
 
 
 presets: tuple[Preset, ...] = (
@@ -40,10 +41,25 @@ presets: tuple[Preset, ...] = (
             "vim",
             "zsh",
         ),
-        os=[
+        os=(
             "Darwin",
             "Linux",
-        ],
+        ),
+    ),
+    Preset(
+        name="cross-platform cli",
+        dots=(
+            "git",
+            "nushell",
+            "nvim",
+            "powershell",
+            "starship",
+        ),
+        os=(
+            "Darwin",
+            "Linux",
+            "Windows",
+        ),
     ),
     Preset(
         name="arch gui",
@@ -62,18 +78,18 @@ presets: tuple[Preset, ...] = (
             "wezterm",
             "zsh",
         ),
-        os=["Linux"],
+        os=("Linux"),
     ),
 )
 
 
-def setup(preset: Preset, dotfiles_dir: Path) -> tuple[set[str], set[str]]:
+def setup(dotfiles_dir: Path, preset: Preset) -> tuple[set[str], set[str]]:
     """Runs the setup script for each dot in the specified Preset."""
 
     succeeded: set[str] = set()
     failed: set[str] = set()
 
-    if preset.os is not None and system() not in preset.os:
+    if system() not in preset.os:
         raise Exception("Invalid operating system!")
 
     for dot in preset.dots:
@@ -93,32 +109,25 @@ def setup(preset: Preset, dotfiles_dir: Path) -> tuple[set[str], set[str]]:
     return succeeded, failed
 
 
-def get_preset(name: str) -> Preset | None:
+def get_preset(name: str) -> Preset:
     """Searches for a Preset with the given name. Returns None if it can't be found."""
-
     preset: list[Preset] = [preset for preset in presets if preset.name == name]
     if len(preset) == 0:
-        return None
+        raise Exception(f"Could not find preset with name {name}!")
     # TODO:
     if len(preset) > 1:
         raise NotImplementedError
-
     return preset[0]
 
 
 def main():
-    this_file: Path = Path(__file__).resolve(strict=True)
-
-    dotfiles_dir: Path = this_file.parent
+    dotfiles_dir: Path = Path(__file__).resolve().parent
     if dotfiles_dir.name != "dotfiles":
-        raise Exception("setup.py must be in the root of the dotfiles repo!")
+        raise Exception("This file must be in the root of the dotfiles repo!")
 
     # testing; TODO: Specify name with cli arg.
-    name = "cli-dev"
-    preset = get_preset(name)
-    if preset is None:
-        raise Exception(f"Could not find preset with name {name}!")
-    succeeded, failed = setup(preset, dotfiles_dir)
+    name = "basic cli"
+    succeeded, failed = setup(dotfiles_dir, get_preset(name))
     if len(succeeded) == 0 or len(failed) > 0:
         raise Exception(
             f"The following dots failed to setup: {[dot for dot in failed]}"
