@@ -144,7 +144,7 @@ fi
 
 # rust
 if [[ -d "$HOME/.cargo" ]]; then
-        export PATH="$HOME/.cargo/bin:$PATH"
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # volta

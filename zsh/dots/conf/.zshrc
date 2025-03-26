@@ -149,6 +149,11 @@ if command -v luarocks &> /dev/null; then
     smartcache eval luarocks path
 fi
 
+# munki
+if [[ $(uname) == "Darwin" ]] && [[ -d "/usr/local/munki/" ]]; then
+    export PATH="$PATH:/usr/local/munki/"
+fi
+
 # nvm
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
