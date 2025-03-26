@@ -1,3 +1,9 @@
+# NOTE:
+# - Windows and splits don't behave as one would expect coming from tmux.
+#   Splits do not exist "within" windows -- rather, windows can be viewed *as* splits, 
+#   but removing the split doesn't necessarily delete the window. 
+#   Rather, that old split is now its own "tab."
+
 # =============================================================================
 # settings
 # =============================================================================
