@@ -1,0 +1,98 @@
+# =============================================================================
+# settings
+# =============================================================================
+
+# Turns off the startup message
+startup_message off
+
+# Home dir by default
+chdir
+
+# Automatically detach on hangup
+autodetach on
+
+# Longer scrollback value for new windows
+defscrollback 10000
+
+# Changes the escape key to Ctrl+p (like my tmux config's prefix key).
+escape ^pp
+
+# FIXME: 
+# Starts window numbers at 1 instead of 0
+# bind c screen 1
+# bind ^c screen 1
+# bind 0 select 10
+# screen 1
+
+# Choose one of the following to enable 256 colors.
+# NOTE: Neovim doesn't like either option; use vim instead when using screen.
+term xterm-256color
+# term screen-256color
+
+# Status bar
+truecolor on
+hardstatus off
+# hardstatus alwayslastline '%{#00ff00}[ %H ][%{#ffffff}%= %{7}%?%-Lw%?%{1;0}%{1}(%{15}%n%f%t%?(%u)%?%{1;0}%{1})%{7}%?%+Lw%? %=%{#00ff00}][ %{#00a5ff}%{6}%Y-%m-%d %{#ffffff}%{7}%0c%{#00ff00} ]'
+caption always "%{= bb}%{+b w}%n %t %h %=%l %H %c"
+hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+activity "Activity in %t(%n)"
+shelltitle "shell"
+shell -$SHELL
+
+# Turns off the visual bell
+vbell off
+
+# Gets rid of residual text after exiting editor
+altscreen on
+
+# =============================================================================
+# key bindings
+# =============================================================================
+
+# New "tab" (i.e. window)
+# Stock key binding: `c`
+bind t screen
+
+# Focus split
+bind h focus left
+bind j focus down
+bind k focus up
+bind l focus right
+
+# New vertical split
+# Stock key binding: `S`
+# Also automatically focuses the new split and creates a new console session in it.
+bind _ eval "split -h" "focus" "screen"
+
+# New horizontal split
+# Key binding did not change, but...
+# automatically focuses the new split and creates a new console session in it.
+bind | eval "split -v" "focus" "screen"
+
+# Change title
+# Stock key binding: `A`
+bind R title
+
+# Close the current "split" (i.e. region)
+# Stock key binding: `X`
+bind w remove
+
+# Close current "tab" (i.e. window)
+bind W kill
+
+# FIXME:
+# Closes all but the current window/split/region/etc.
+# Stock key binding: `Q`
+# bind W only
+
+# Kill all windows/splits/regions/etc and terminate screen.
+# Stock key binding: `\`
+bind Q quit
+
+# Show a list of all windows for selection.
+# Stock key binding: `"`
+bind o windowlist -b
+
+# Select next/previous window
+bind n next
+bind p prev
