@@ -125,13 +125,14 @@ if [[ -d "$HOME/fvm/default/bin" ]]; then
 fi
 
 # fzf
-# Sources fzf
+# sources fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-#
+
+# FIXME:Apparently the --tmux option *isn't* silently ignored. Just a Linux issue maybe?
 # Sets fzf to open in a tmux popup.
 # Centered, 85% width/50% height.
 # (`--tmux` is silently ignored if not running in a tmux session).
-export FZF_DEFAULT_OPTS='--tmux 85%,50%'
+# export FZF_DEFAULT_OPTS='--tmux 85%,50%'
 
 # homebrew - Linux (NOTE: macOS brew is handedl in .zshenv)
 if [[ "$(uname)" == "Linux" ]] && [[ -d "/home/linuxbrew" ]]; then
