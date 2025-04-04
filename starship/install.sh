@@ -12,6 +12,7 @@ starship::install() {
 
 starship::install::main() {
     if ! command -v cargo 2>&1 >/dev/null; then
+        # TODO: Prompt user for if they want to do this. On Arch, I like to install rustup via pacman.
         starship::install::install-rust
     fi
     cargo::install
