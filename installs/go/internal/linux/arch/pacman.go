@@ -69,6 +69,7 @@ var pacmanPackages = []string{
 	"reflector",
 	"ranger", // cli file manager
 	"ripgrep",
+	"rustup", // Then install rust via `rustup default stable`
 	"samba",
 	"shellcheck", // not available for ARM
 	"signal-desktop",
