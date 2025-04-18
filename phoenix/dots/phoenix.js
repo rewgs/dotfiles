@@ -295,6 +295,28 @@ const rightThreeFifths = Key.on("]", SOHYPER, () => {
   });
 });
 
+const leftFourFifths = Key.on("-", SOHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x,
+    y: screenFrame.y,
+    width: (screenFrame.width / 5) * 4,
+    height: screenFrame.height,
+  });
+});
+
+const rightFourFifths = Key.on("=", SOHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x + screenFrame.width / 5,
+    y: screenFrame.y,
+    width: (screenFrame.width / 5) * 4,
+    height: screenFrame.height,
+  });
+});
+
 // Key.on("[", SOHYPER, () => {
 //     debug("Center and resize to 2/3 of screen");
 //     const window = Window.focused();
@@ -311,19 +333,22 @@ const rightThreeFifths = Key.on("]", SOHYPER, () => {
 // spaces
 //--------------------------------------
 
-const moveWindowToNextSpace = Key.on("=", HYPER, () => {
-  const space = Space.active();
-  const window = Window.focused();
-  space.next().moveWindows([window]);
-  window.focus();
-});
+// FIXME:
+// const moveWindowToNextSpace = Key.on("=", HYPER, () => {
+//   const space = Space.active();
+//   const window = Window.focused();
+//   space.next().moveWindows([window]);
+//   window.focus();
+// });
 
-const moveWindowToPrevSpace = Key.on("-", HYPER, () => {
-  const space = Space.active();
-  const window = Window.focused();
-  space.next().moveWindows([window]);
-  window.focus();
-});
+// FIXME:
+// const moveWindowToPrevSpace = Key.on("-", HYPER, () => {
+//   const space = Space.active();
+//   const window = Window.focused();
+//   space.next().moveWindows([window]);
+//   window.focus();
+// });
 
+// TODO:
 // const missionControl = Key.on("up", HYPER, () => {
 // })
