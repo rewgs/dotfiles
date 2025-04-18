@@ -1,0 +1,8 @@
+# Looks through all files in current directory.
+# Copies formatter config files from `~/dotfiles/_formatters` based on file type:
+# - CSS: ~/dotfiles/_formatters/.prettierrc
+# - HTML: ~/dotfiles/_formatters/.prettierrc
+# - JavaScript: ~/dotfiles/_formatters/.prettierrc
+# - TypeScript: ~/dotfiles/_formatters/.prettierrc
+setup_formatters() {
+}
