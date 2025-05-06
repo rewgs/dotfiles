@@ -35,7 +35,7 @@ return {
 			ensure_installed = {
 				-- linters
 				"eslint_d",
-				"ruff",
+				-- "ruff",
 
 				-- formatters
 				"isort",
