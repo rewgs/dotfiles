@@ -5,7 +5,7 @@ $_thisDir = Split-Path -Parent $_thisFile
 $src = Join-Path -Path $_thisDir -ChildPath "dots"
 
 if ($IsWindows) {
-    $dst = Join-Path -Path $env:HOME -ChildPath "Documents" -AdditionalChildPath "PowerShell"
+    $dst = Join-Path -Path $env:HOMEPATH -ChildPath "Documents" -AdditionalChildPath "PowerShell"
 } else {
     $dst = "$HOME/.config/powershell"
 }
