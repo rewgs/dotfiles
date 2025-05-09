@@ -201,7 +201,8 @@ fi
 # volta (alternative to nvm, fnm, etc)
 if [[ -d "$HOME/.volta" ]]; then
     export VOLTA_HOME="$HOME/.volta"
-    export PATH="$PATH:$VOLTA_HOME/bin"
+    # export PATH="$PATH:$VOLTA_HOME/bin" # appending
+    export PATH="$VOLTA_HOME/bin:$PATH" # prepending
 fi
 
 # yazi

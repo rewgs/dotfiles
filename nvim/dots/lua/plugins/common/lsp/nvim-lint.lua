@@ -10,9 +10,11 @@ return {
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
-			javascript = { "eslint_d" },
-			typescript = { "eslint_d" },
-			svelte = { "eslint_d" },
+			-- This apparently causes some issues?
+			-- javascript = { "eslint_d" },
+			-- typescript = { "eslint_d" },
+			-- svelte = { "eslint_d" },
+
 			python = { "ruff" },
 		}
 

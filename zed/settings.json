@@ -16,7 +16,7 @@
   },
   "base_keymap": "VSCode",
   "cursor_blink": false,
-  "theme": "One Dark",
+  "theme": "One Dark Pro",
   "buffer_font_size": 15,
   "buffer_font_family": "FiraCode Nerd Font",
   "vim_mode": true,

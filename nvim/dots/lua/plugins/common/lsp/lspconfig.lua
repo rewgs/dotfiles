@@ -152,65 +152,65 @@ return {
 			end,
 
 			-- Using pylsp as LSP, but turning off all plugins/etc and letting ruff handle all of that.
-			["pylsp"] = function()
-				lspconfig["pylsp"].setup({
-					settings = {
-						pylsp = {
-							plugins = {
-								pyflakes = { enabled = false },
-								pycodestyle = { enabled = false },
-								autopep8 = { enabled = false },
-								yapf = { enabled = false },
-								mccabe = { enabled = false },
-								pylsp_mypy = { enabled = false },
-								pylsp_black = { enabled = false },
-								pylsp_isort = { enabled = false },
-							},
-						},
-					},
-				})
-			end,
+			-- ["pylsp"] = function()
+			-- 	lspconfig["pylsp"].setup({
+			-- 		settings = {
+			-- 			pylsp = {
+			-- 				plugins = {
+			-- 					pyflakes = { enabled = false },
+			-- 					pycodestyle = { enabled = false },
+			-- 					autopep8 = { enabled = false },
+			-- 					yapf = { enabled = false },
+			-- 					mccabe = { enabled = false },
+			-- 					pylsp_mypy = { enabled = false },
+			-- 					pylsp_black = { enabled = false },
+			-- 					pylsp_isort = { enabled = false },
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 	})
+			-- end,
 
-			["pyright"] = function()
-				lspconfig["pyright"].setup({
-					settings = {
-						pyright = {
-							-- Using Ruff's import organizer
-							disableOrganizeImports = true,
-						},
-						python = {
-							analysis = {
-								-- Ignore all files for analysis to exclusively use Ruff for linting
-								ignore = { "*" },
-							},
-						},
-					},
-				})
-			end,
+			-- ["pyright"] = function()
+			-- 	lspconfig["pyright"].setup({
+			-- 		settings = {
+			-- 			pyright = {
+			-- 				-- Using Ruff's import organizer
+			-- 				disableOrganizeImports = true,
+			-- 			},
+			-- 			python = {
+			-- 				analysis = {
+			-- 					-- Ignore all files for analysis to exclusively use Ruff for linting
+			-- 					ignore = { "*" },
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 	})
+			-- end,
 
-			["basedpyright"] = function()
-				lspconfig["basedpyright"].setup({
-					settings = {
-						basedpyright = {
-							-- Using Ruff's import organizer
-							disableOrganizeImports = true,
-						},
-						python = {
-							analysis = {
-								-- Ignore all files for analysis to exclusively use Ruff for linting
-								ignore = { "*" },
-							},
-						},
-					},
-				})
-			end,
+			-- ["basedpyright"] = function()
+			-- 	lspconfig["basedpyright"].setup({
+			-- 		settings = {
+			-- 			basedpyright = {
+			-- 				-- Using Ruff's import organizer
+			-- 				disableOrganizeImports = true,
+			-- 			},
+			-- 			python = {
+			-- 				analysis = {
+			-- 					-- Ignore all files for analysis to exclusively use Ruff for linting
+			-- 					ignore = { "*" },
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 	})
+			-- end,
 
-			["ruff"] = function()
-				lspconfig["ruff"].setup({
-					capabilities = capabilities,
-					settings = {},
-				})
-			end,
+			-- ["ruff"] = function()
+			-- 	lspconfig["ruff"].setup({
+			-- 		capabilities = capabilities,
+			-- 		settings = {},
+			-- 	})
+			-- end,
 		})
 	end,
 }
