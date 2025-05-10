@@ -1,9 +1,12 @@
 -- More or less followed this video: https://www.youtube.com/watch?v=ybUE4D80XSk
 
 return {
-	"williamboman/mason.nvim",
+	"mason-org/mason.nvim",
+	-- NOTE: Pinning version until I have time to deal with v2 API changes.
+	version = "1.11.0",
 	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
+		-- NOTE: Pinning version until I have time to deal with v2 API changes.
+		{ "mason-org/mason-lspconfig.nvim", version = "1.32.0" },
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
