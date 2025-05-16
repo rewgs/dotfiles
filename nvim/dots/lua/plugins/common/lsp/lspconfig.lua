@@ -1,11 +1,12 @@
 return {
 	"neovim/nvim-lspconfig",
-	-- opts = {
-	-- 	inlay_hints = { enabled = true },
-	-- },
+	opts = {
+		inlay_hints = { enabled = true },
+	},
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"mason-org/mason-lspconfig.nvim",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
 	},
@@ -80,7 +81,14 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		mason_lspconfig.setup_handlers({
+		-- mason_lspconfig.setup_handlers({
+		mason_lspconfig.setup({
+			ensure_installed = {
+				"clangd",
+				"gopls",
+				"lua_ls",
+			},
+
 			-- Default handler for installed servers
 			function(server_name)
 				lspconfig[server_name].setup({
