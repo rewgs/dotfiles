@@ -66,7 +66,12 @@ if [[ -d "$HOME/bin/src" ]] || [[ -L "$HOME/bin/src" ]]; then
     fi
 fi
 
-
+# wayland
+# some Electron-based apps, such as google-chat-linux, require this environment variable
+if [[ "$(uname)" == "Linux" ]]; then
+    # Values can be auto, x11, or wayland
+    export ELECTRON_OZONE_PLATFORM_HINT=auto
+fi
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ PATH                                                                       ║
