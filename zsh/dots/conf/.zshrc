@@ -192,6 +192,11 @@ if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
     compinit
 fi
 
+# rust
+if [[ -d "$HOME/.cargo" ]]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 # thefuck
 if command -v thefuck &> /dev/null; then 
     # eval $(thefuck --alias)

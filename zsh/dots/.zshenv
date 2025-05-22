@@ -142,10 +142,11 @@ elif [[ $(uname) == "Linux" ]]; then
     export PATH="$HOME/opt/REAPER:$PATH"
 fi
 
+# NOTE: Moved to .zshrc -- wasn't being seen in this file for some reason.
 # rust
-if [[ -d "$HOME/.cargo" ]]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
-fi
+# if [[ -d "$HOME/.cargo" ]]; then
+#     export PATH="$HOME/.cargo/bin:$PATH"
+# fi
 
 # volta
 if [[ "$HOME/.volta" ]]; then
