@@ -4,6 +4,8 @@ profile laptop {
         position 0,0 
         scale 2
     }
+
+    exec $HOME/dotfiles/utils/kanshi-profiles.py laptop
 }
 
 
@@ -15,4 +17,6 @@ profile docked {
         scale 2
     }
     output DP-2 disable
+
+    exec $HOME/dotfiles/utils/kanshi-profiles.py docked
 }
