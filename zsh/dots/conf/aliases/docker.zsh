@@ -1,1 +1,1 @@
-alias docker="sudo docker"
+# alias docker="sudo docker"

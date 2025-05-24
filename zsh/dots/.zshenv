@@ -66,7 +66,10 @@ if [[ -d "$HOME/bin/src" ]] || [[ -L "$HOME/bin/src" ]]; then
     fi
 fi
 
-
+# wayland
+if [[ "$(uname)" == "Linux" ]]; then
+    export ELECTRON_OZONE_PLATFORM_HINT="auto"
+fi
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ PATH                                                                       ║
