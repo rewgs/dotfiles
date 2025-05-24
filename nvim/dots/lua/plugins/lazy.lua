@@ -20,7 +20,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = "plugins" .. "." .. "common" },
-	{ import = "plugins" .. "." .. "common" .. "." .. "lsp" },
 	-- { import = hostSpecific },
 }, {
 	checker = {
