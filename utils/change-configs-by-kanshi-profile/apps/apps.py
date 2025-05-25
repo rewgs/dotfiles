@@ -1,3 +1,5 @@
+from typing import override
+
 from .base import CONFIG, DOTFILES, App
 
 
@@ -10,6 +12,7 @@ class Fuzzel(App):
         )
 
     # TODO:
+    @override
     def change_config(self, kanshi_profile: str): ...
 
 
@@ -22,6 +25,7 @@ class Hyprland(App):
         )
 
     # TODO:
+    @override
     def change_config(self, kanshi_profile: str): ...
 
 
@@ -34,6 +38,7 @@ class Waybar(App):
         )
 
     # TODO:
+    @override
     def change_config(self, kanshi_profile: str): ...
 
 
@@ -46,4 +51,5 @@ class Wezterm(App):
         )
 
     # TODO:
+    @override
     def change_config(self, kanshi_profile: str): ...

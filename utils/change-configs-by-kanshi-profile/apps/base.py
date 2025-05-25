@@ -29,4 +29,4 @@ class App(ABC):
 
     @abstractmethod
     def change_config(self, kanshi_profile: str):
-        """Changes to another config based on which Kanshi profile is active."""
+        """Changes to another config based on the provided Kanshi profile."""
