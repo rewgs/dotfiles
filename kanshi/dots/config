@@ -5,7 +5,7 @@ profile laptop {
         scale 2
     }
 
-    exec $HOME/dotfiles/utils/kanshi-profiles.py laptop
+    exec $HOME/dotfiles/utils/change-configs-by-kanshi-profile/main.py laptop
 }
 
 
@@ -18,5 +18,5 @@ profile docked {
     }
     output DP-2 disable
 
-    exec $HOME/dotfiles/utils/kanshi-profiles.py docked
+    exec $HOME/dotfiles/utils/change-configs-by-kanshi-profile/main.py docked
 }
