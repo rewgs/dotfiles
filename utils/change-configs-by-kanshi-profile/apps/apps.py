@@ -1,4 +1,4 @@
-from typing import override
+from socket import gethostname
 
 from .base import CONFIG, DOTFILES, App
 
@@ -8,12 +8,8 @@ class Fuzzel(App):
         super().__init__(
             name="fuzzel",
             src=DOTFILES.joinpath("fuzzel", "dots"),
-            dst=CONFIG.joinpath("fuzzel"),
+            dst=CONFIG.joinpath("fuzzel", "fuzzel.ini"),
         )
-
-    # TODO:
-    @override
-    def change_config(self, kanshi_profile: str): ...
 
 
 class Hyprland(App):
@@ -21,12 +17,8 @@ class Hyprland(App):
         super().__init__(
             name="hyprland",
             src=DOTFILES.joinpath("hypr", "dots"),
-            dst=CONFIG.joinpath("hypr"),
+            dst=DOTFILES.joinpath("hypr", "dots", gethostname()),
         )
-
-    # TODO:
-    @override
-    def change_config(self, kanshi_profile: str): ...
 
 
 class Waybar(App):
@@ -37,19 +29,11 @@ class Waybar(App):
             dst=CONFIG.joinpath("waybar"),
         )
 
-    # TODO:
-    @override
-    def change_config(self, kanshi_profile: str): ...
-
 
 class Wezterm(App):
     def __init__(self):
         super().__init__(
             name="wezterm",
             src=DOTFILES.joinpath("wezterm", "dots"),
-            dst=CONFIG.joinpath("wezterm"),
+            dst=DOTFILES.joinpath("wezterm", "dots", gethostname()),
         )
-
-    # TODO:
-    @override
-    def change_config(self, kanshi_profile: str): ...

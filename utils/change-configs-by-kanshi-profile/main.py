@@ -5,8 +5,6 @@
 # This is primarily for improving font sizes for a given kanshi profile;
 # e.g. font should be smaller when on laptop display, but larger when on Apple Pro Display XDR
 
-# class KanshiProfile:
-
 import sys
 
 from apps import to_config
