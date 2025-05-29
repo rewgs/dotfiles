@@ -12,6 +12,8 @@ from socket import gethostname
 
 from app import App
 
+from kanshi import Kanshi
+
 
 def __get_env_var_path(env_var: str) -> Path:
     path: str | None = os.getenv(env_var)
@@ -28,7 +30,7 @@ def __get_env_var_path(env_var: str) -> Path:
 DOTFILES: Path = __get_env_var_path("DOTFILES")
 CONFIG: Path = __get_env_var_path("XDG_CONFIG_HOME")
 
-to_config: list[App] = [
+to_config: tuple[App, ...] = (
     App(
         name="fuzzel",
         src=DOTFILES.joinpath("fuzzel", "dots"),
@@ -49,7 +51,7 @@ to_config: list[App] = [
         src=DOTFILES.joinpath("wezterm", "dots"),
         dst=DOTFILES.joinpath("wezterm", "dots", gethostname()),
     ),
-]
+)
 
 
 def main(kanshi_profile: str):

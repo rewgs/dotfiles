@@ -1,15 +1,15 @@
-import os
+from dataclasses import dataclass
 from pathlib import Path
 from socket import gethostname
 
 
+@dataclass
 class App:
     """An application configured via dotfiles."""
 
-    def __init__(self, name: str, src: Path, dst: Path):
-        self.name: str = name
-        self.src: Path = src
-        self.dst: Path = dst
+    name: str
+    src: Path
+    dst: Path
 
     def change_config(self, kanshi_profile: str):
         target_is_directory: bool = True
