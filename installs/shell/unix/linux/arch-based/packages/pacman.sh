@@ -48,6 +48,7 @@ packages=(
     "nwg-look" # GTK settings manager for wayland environments
     "obsidian"
     "openvpn" # required for ProtonVPN
+    "pamixer" # used by hypr to control volume
     "pass"
     "pavucontrol" # for controlling volume via media keys
     "picom"
@@ -79,6 +80,7 @@ packages=(
     "wireguard-tools" # required for ProtonVPN
     "wl-clipboard"    # dead simple clipboard utility for Wayland-based window managers; https://github.com/bugaevc/wl-clipboard
     "wget"
+    "xbindkeys"
     "xorg"
     "zip"
     "zsh"
