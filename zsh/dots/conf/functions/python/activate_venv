@@ -2,5 +2,8 @@ activate_venv () {
     source .venv/bin/activate
     which_python=$(which python)
     python_version=$(python --version)
-    echo "Using ${python_version} located at ${which_python}"
+    echo -e "\nUsing:"
+    echo -e "\t${python_version}"
+    echo -e "located at:"
+    echo -e "\t${which_python}\n"
 }
