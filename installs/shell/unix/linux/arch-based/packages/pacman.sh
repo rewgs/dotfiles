@@ -32,6 +32,7 @@ packages=(
     "go"
     "hsetroot"
     "htop"
+    "less" # can't believe this isn't installed by default!
     "lf"
     "libvirt"
     "llvm"
