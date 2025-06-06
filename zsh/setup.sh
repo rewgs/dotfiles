@@ -34,9 +34,20 @@ setup-zsh::clone-plugins() {
 
 # Symlinks: $DOTFILES/zsh/dots/.zshenv -> ~/.zshenv
 setup-zsh::zshenv() {
-    local dots="$(realpath "$(dirname "$BASH_SOURCE")"/dots)"
-    local src="$dots/.zshenv"
-    local dst="$HOME/.zshenv"
+    local dots
+    local src
+    local dst
+
+    src="$dots/.zshenv"
+    dst="$HOME/.zshenv"
+
+    if command -v realpath &> /dev/null; then
+        dots="$(realpath "$(dirname "$BASH_SOURCE")"/dots)"
+    else if command -v readlink &> /dev/null; then
+        dots="$(readlink -f "$(dirname "$BASH_SOURCE")"/dots)"
+    else
+        exit 1
+    fi
 
     if [[ -f "$dst" ]] || [[ -L "$dst" ]]; then
         rm -f "$dst"
