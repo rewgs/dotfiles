@@ -4,13 +4,13 @@
 
 zsh_plugins_dir="$HOME/src/zsh-plugins"
 
-setup-zsh::check-plugins-dir() {
+function check-plugins-dir() {
     if [[ ! -d "$zsh_plugins_dir" ]]; then
         mkdir -p "$zsh_plugins_dir"
     fi
 }
 
-setup-zsh::clone-plugin() {
+function clone-plugin() {
     local repo="$1"
     local name="${repo##*/}" # Trims the last part of the URL, i.e. the name of the repo
     local src="$HOME/src"
@@ -25,15 +25,15 @@ setup-zsh::clone-plugin() {
     fi
 }
 
-setup-zsh::clone-plugins() {
-    setup-zsh::clone-plugin "https://github.com/jimhester/per-directory-history"
-    setup-zsh::clone-plugin "https://github.com/zsh-users/zsh-completions.git"
-    setup-zsh::clone-plugin "https://github.com/quarticcat/zsh-smartcache"
-    setup-zsh::clone-plugin "https://github.com/zsh-users/zsh-syntax-highlighting"
+function clone-plugins() {
+    clone-plugin "https://github.com/jimhester/per-directory-history"
+    clone-plugin "https://github.com/zsh-users/zsh-completions.git"
+    clone-plugin "https://github.com/quarticcat/zsh-smartcache"
+    clone-plugin "https://github.com/zsh-users/zsh-syntax-highlighting"
 }
 
 # Symlinks: $DOTFILES/zsh/dots/.zshenv -> ~/.zshenv
-setup-zsh::zshenv() {
+function setup-zshenv() {
     local dots
     local src
     local dst
@@ -41,9 +41,9 @@ setup-zsh::zshenv() {
     src="$dots/.zshenv"
     dst="$HOME/.zshenv"
 
-    if command -v realpath &> /dev/null; then
+    if command -v realpath &>/dev/null; then
         dots="$(realpath "$(dirname "$BASH_SOURCE")"/dots)"
-    else if command -v readlink &> /dev/null; then
+    elif command -v readlink &>/dev/null; then
         dots="$(readlink -f "$(dirname "$BASH_SOURCE")"/dots)"
     else
         exit 1
@@ -59,7 +59,7 @@ setup-zsh::zshenv() {
 }
 
 # Symlinks: $DOTFILES/zsh/dots/conf -> $XDG_CONFIG_DIR/zsh (i.e. $ZDOTDIR)
-setup-zsh::conf() {
+function setup-zsh-conf() {
     local dots="$(realpath "$(dirname "$BASH_SOURCE")"/dots)"
     local src="$dots/conf"
     local dst="$HOME/.config/zsh"
@@ -78,10 +78,10 @@ setup-zsh::conf() {
     fi
 }
 
-setup-zsh::main() {
-    setup-zsh::check-plugins-dir
-    setup-zsh::clone-plugins
-    setup-zsh::zshenv
-    setup-zsh::conf
+function main() {
+    check-plugins-dir
+    clone-plugins
+    setup-zshenv
+    setup-zsh-conf
 }
-setup-zsh::main
+main
