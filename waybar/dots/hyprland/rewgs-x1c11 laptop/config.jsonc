@@ -93,5 +93,8 @@
         // "format": " {:%Y-%m-%d  %I:%M %p}"
         "format": " {:%I:%M %p}"
     },
+    "custom/spotify": {
+        "exec": "/usr/bin/python3"
+    },
 }
 
