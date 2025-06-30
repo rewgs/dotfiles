@@ -93,6 +93,12 @@ source "$ZPLUGINS/per-directory-history/per-directory-history.zsh"
 # ║ run commands                                                               ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
+# my bin repo
+if [[ -d "$HOME/bin/src" ]] || [[ -L "$HOME/bin/src" ]]; then
+    export BIN="$HOME/bin/src"
+    export PATH="$BIN:$PATH"
+fi
+
 # Fix for ghostty -- allows tmux over ssh to work properly
 if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
     export TERM=xterm-256color

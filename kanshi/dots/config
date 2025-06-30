@@ -17,6 +17,11 @@ profile docked {
         scale 2
     }
     output DP-2 disable
+    output HDMI-A-1 enable {
+        mode 1920x1080@74.97
+        position 3008,0
+        scale 1
+    }
 
     exec $HOME/dotfiles/utils/change-configs-by-kanshi-profile/main.py docked
 }

@@ -56,15 +56,6 @@ elif [[ "$(uname)" == "Darwin" ]]; then
     export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
 fi
 
-# my bin repo
-if [[ -d "$HOME/bin/src" ]] || [[ -L "$HOME/bin/src" ]]; then
-    export BIN="$HOME/bin/src"
-    if [[ $(uname) == "Darwin" ]]; then
-        export PATH=$PATH:$(find "$BIN" -type d | paste -sd ":" -)
-    elif [[ $(uname) == "Linux" ]]; then
-        export PATH=$PATH:$(find "$BIN" -type d | paste -sd ":" -)
-    fi
-fi
 
 # wayland
 if [[ "$(uname)" == "Linux" ]]; then

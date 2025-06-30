@@ -12,6 +12,7 @@ import (
 func Setup() {
 	var s sysinfo.SysInfo
 	s.GetSysInfo()
+
 	switch distro := s.OS.Vendor; distro {
 	case "arch":
 		arch.Setup()
