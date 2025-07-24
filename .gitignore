@@ -1,5 +1,6 @@
 # btop
 btop.log
+/btop/dots/btop.conf
 
 # nushell
 /nushell/dots/history.txt
