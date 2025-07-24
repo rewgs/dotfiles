@@ -40,6 +40,7 @@ packages=(
     "luarocks"
     "lynx"
     "make"
+    "man-db" # for reading man pages. Yes, this is actually required.
     "ncdu"
     "neofetch"
     "net-tools"

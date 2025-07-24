@@ -21,6 +21,7 @@ packages=(
     "uhk-agent-appimage"
     "ungoogled-chromium-bin"
     "visual-studio-code-bin"
+    "winbox" # Mikrotik router configuration GUI
     "xdg-utils" # after this, run xdg-settings set default-web-browser google-chrome.desktop
     "zen-browser-bin"
 )
