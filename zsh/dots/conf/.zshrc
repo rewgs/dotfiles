@@ -35,9 +35,37 @@ recursively_source_aliases() {
     done
 }
 
+get_dotfiles_path() {
+    local this_file="$(realpath "${(%):-%x}")"
+
+    local conf="$(realpath "$(dirname "$this_file")")"
+    if [[ "$(basename "$conf")" != "conf" ]]; then 
+        return 1
+    fi
+
+    local dots="$(realpath "$(dirname "$conf")")"
+    if [[ "$(basename "$dots")" != "dots" ]]; then
+        return 1
+    fi
+
+    local zsh="$(dirname "$dots")"
+    if [[ "$(basename "$zsh")" != "zsh" ]]; then 
+        return 1
+    fi
+
+    local dotfiles="$(dirname "$zsh")"
+    if [[ "$(basename "$dotfiles")" != "dotfiles" ]]; then 
+        return 1
+    fi
+
+    echo "$(realpath "$dotfiles")"
+}
+
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ shell setup                                                                ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
+
+export DOTFILES="$(get_dotfiles_path)"
 
 # history
 SAVEHIST=1000

@@ -2,31 +2,6 @@
 # ║ functions                                                                  ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
-# TODO: Move to zfuncs?
-# FIXME: Deal with lack of `realpath`.
-# NOTE: On macOS, this depends upon the `coreutils` package, which contains `realpath`.
-get_dotfiles_path() {
-    local this_file="$(realpath "${(%):-%x}")"
-
-    local dots="$(realpath "$(dirname "$this_file")")"
-    if [[ "$(basename "$dots")" != "dots" ]]; then 
-        return 1
-    fi
-
-    local zsh="$(dirname "$dots")"
-    if [[ "$(basename "$zsh")" != "zsh" ]]; then 
-        return 1
-    fi
-
-    local dotfiles="$(dirname "$zsh")"
-    if [[ "$(basename "$dotfiles")" != "dotfiles" ]]; then 
-        return 1
-    fi
-
-    echo "$(realpath "$dotfiles")"
-}
-
-
 # ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ environment variables                                                      ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
@@ -47,7 +22,6 @@ export ZALIASES="$ZDOTDIR/aliases"
 # export ZPLUGINS="$SRC/zsh-plugins"
 
 export EDITOR='nvim'
-export DOTFILES="$(get_dotfiles_path)"
 
 # browser
 if [[ "$(uname)" == "Linux" ]]; then
