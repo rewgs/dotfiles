@@ -24,14 +24,18 @@ return {
 			ensure_installed = {
 				-- linters
 				"eslint_d",
-				"ruff",
 
 				-- formatters
 				"isort",
+				-- "autopep8",
 				"black",
 				"prettier",
 				"prettierd",
 				"stylua",
+				-- "yapf",
+
+				-- both
+				-- "ruff",
 			},
 		})
 	end,

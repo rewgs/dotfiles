@@ -81,7 +81,6 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		-- mason_lspconfig.setup_handlers({
 		mason_lspconfig.setup({
 			ensure_installed = {
 				"clangd",
@@ -116,27 +115,6 @@ return {
 						},
 					},
 				})
-
-				-- lspconfig["gopls"].setup({
-				-- 	settings = {
-				-- 		gopls = {
-				-- 			analyses = {
-				-- 				unusedparams = true,
-				-- 			},
-				-- 			staticcheck = true,
-				-- 			gofumpt = true,
-				-- 			hints = {
-				-- 				assignVariableTypes = true,
-				-- 				compositeLiteralFields = true,
-				-- 				compositeLiteralTypes = true,
-				-- 				constantValues = true,
-				-- 				functionTypeParameters = true,
-				-- 				parameterNames = true,
-				-- 				rangeVariableTypes = true,
-				-- 			},
-				-- 		},
-				-- 	},
-				-- })
 			end,
 
 			-- Custom handlers for specified servers
@@ -153,26 +131,6 @@ return {
 							},
 							completion = {
 								callSnippet = "Replace",
-							},
-						},
-					},
-				})
-			end,
-
-			-- Using pylsp as LSP, but turning off all plugins/etc and letting ruff handle all of that.
-			["pylsp"] = function()
-				lspconfig["pylsp"].setup({
-					settings = {
-						pylsp = {
-							plugins = {
-								pyflakes = { enabled = false },
-								pycodestyle = { enabled = false },
-								autopep8 = { enabled = false },
-								yapf = { enabled = false },
-								mccabe = { enabled = false },
-								pylsp_mypy = { enabled = false },
-								pylsp_black = { enabled = false },
-								pylsp_isort = { enabled = false },
 							},
 						},
 					},
@@ -200,6 +158,12 @@ return {
 				lspconfig["ruff"].setup({
 					capabilities = capabilities,
 					settings = {},
+				})
+			end,
+
+			["black"] = function()
+				lspconfig["black"].setup({
+					prepend_args = { "--line-length", "120" },
 				})
 			end,
 		})
