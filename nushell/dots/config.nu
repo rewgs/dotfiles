@@ -1,4 +1,9 @@
-let dark_theme = {
+# External completer example
+# let carapace_completer = {|spans|
+#     carapace $spans.0 nushell ...$spans | from json
+# }
+
+const dark_theme = {
     # color for nushell primitives
     separator: white
     leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
@@ -65,7 +70,7 @@ let dark_theme = {
     shape_raw_string: light_purple
 }
 
-let light_theme = {
+const light_theme = {
     # color for nushell primitives
     separator: dark_gray
     leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
@@ -132,14 +137,10 @@ let light_theme = {
     shape_raw_string: light_purple
 }
 
-# External completer example
-# let carapace_completer = {|spans|
-#     carapace $spans.0 nushell ...$spans | from json
-# }
 
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
-    show_banner: true # true or false to enable or disable the welcome banner at startup
+    show_banner: false # true or false to enable or disable the welcome banner at startup
 
     ls: {
         use_ls_colors: true # use the LS_COLORS environment variable to colorize output
@@ -151,8 +152,8 @@ $env.config = {
     }
 
     table: {
-        mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
-        index_mode: always # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
+        mode: compact # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
+        index_mode: auto # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
         show_empty: true # show 'empty list' and 'empty record' placeholders for command output
         padding: { left: 1, right: 1 } # a left right padding of each column in a table
         trim: {
@@ -215,24 +216,24 @@ $env.config = {
         use_ls_colors: true # set this to true to enable file/path/directory completions using LS_COLORS
     }
 
-    filesize: {
-        metric: false # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
-        format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
-    }
+    # filesize: {
+    #     metric: false # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
+    #     format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
+    # }
 
     cursor_shape: {
         emacs: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (line is the default)
-        vi_insert: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (block is the default)
-        vi_normal: underscore # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
+        vi_insert: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (block is the default)
+        vi_normal: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
     }
 
     color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
     footer_mode: 25 # always, never, number_of_rows, auto
     float_precision: 2 # the precision for displaying floats in tables
-    buffer_editor: null # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
+    buffer_editor: nvim # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
     use_ansi_coloring: true
     bracketed_paste: true # enable bracketed paste, currently useless on windows
-    edit_mode: emacs # emacs, vi
+    edit_mode: vi # emacs, vi
     shell_integration: {
         # osc2 abbreviates the path if in the home_dir, sets the tab/window title, shows the running command in the tab/window title
         osc2: true
@@ -887,7 +888,17 @@ $env.config = {
             event: { edit: selectall }
         }
     ]
+
 }
+
+def cls [] {
+    clear
+    ls -al
+}
+
+# aliases
+alias c = clear
+alias d = cd ($env.HOME | path join "dotfiles")
 
 # Starship
 mkdir ($nu.data-dir | path join "vendor/autoload")
