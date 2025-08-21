@@ -30,7 +30,7 @@ return {
 				-- "autopep8",
 				"black",
 				"prettier",
-				"prettierd",
+				-- "prettierd",
 				"stylua",
 				-- "yapf",
 
