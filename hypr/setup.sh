@@ -5,6 +5,7 @@
 
 
 # TODO: Add files to exclude (e.g. hypridle, hyprlock, hyprpaper)
+# TODO: Use relative path to common files instead of absolute.
 hyprland::symlink-common() {
     local src_dir="$(realpath $(dirname "${BASH_SOURCE}"))/dots/common"
     local dst_dir="$(realpath $(dirname "${BASH_SOURCE}"))/dots/$HOSTNAME"
