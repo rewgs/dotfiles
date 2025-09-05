@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = "plugins" .. "." .. "common" },
-	{ import = "plugins" .. "." .. vim.fn.hostname() or nil }, -- Loads directory matching hostname if present
 }, {
 	checker = {
 		enabled = true,
