@@ -32,6 +32,7 @@ return {
 				"prettier",
 				-- "prettierd",
 				"stylua",
+				"typescript-language-server",
 				-- "yapf",
 
 				-- both
