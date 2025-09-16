@@ -210,6 +210,11 @@ if [[ -d "$PYENV_ROOT" ]] || [[ -L "$PYENV_ROOT" ]]; then
     smartcache eval pyenv init -
 fi
 
+# qt
+if [[ "$(uname)" == "Linux" ]]; then
+    export QT_QPA_PLATFORMTHEME="qt5ct:qt6ct"
+fi
+
 # rbenv
 if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
     if [[ "$(uname)" == "Darwin" ]]; then
