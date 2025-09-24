@@ -50,6 +50,7 @@ packages=(
     "nwg-look" # GTK settings manager for wayland environments
     "obsidian"
     "openvpn" # required for ProtonVPN
+    "pacman-contrib" # includes some nice quality-of-life scripts, such as `checkupdates`
     "pamixer" # used by hypr to control volume
     "pass"
     "pavucontrol" # for controlling volume via media keys
