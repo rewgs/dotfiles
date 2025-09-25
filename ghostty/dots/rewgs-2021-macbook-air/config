@@ -37,7 +37,7 @@ window-title-font-family = FiraCode Nerd Font
 #==============================================================================
 shell-integration = zsh
 macos-option-as-alt = true
-theme = "OneHalfDark"
+theme = One Half Dark
 resize-overlay = never
 macos-icon = retro
 macos-icon-frame = beige
