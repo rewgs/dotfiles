@@ -27,6 +27,7 @@ return {
 				-- typescript = { "prettierd" },
 				typescript = { "prettier" },
 			},
+
 			format_on_save = {
 				lsp_fallback = true,
 				async = false,

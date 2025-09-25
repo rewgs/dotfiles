@@ -253,8 +253,8 @@ fi
 source "$ZDOTDIR/yazi.zsh"
 
 # sns
-if [[ -f "$HOME/.sns/env/shell/main.sh" ]]; then
-    source "$HOME/.sns/env/shell/main.sh"
+if [[ -f "$HOME/.sns/env/shell/zsh/main.zsh" ]]; then
+    source "$HOME/.sns/env/shell/zsh/main.zsh"
 fi
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
