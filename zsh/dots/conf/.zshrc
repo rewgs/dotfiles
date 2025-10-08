@@ -212,7 +212,7 @@ fi
 
 # qt
 if [[ "$(uname)" == "Linux" ]]; then
-    export QT_QPA_PLATFORMTHEME="qt5ct:qt6ct"
+    QT_QPA_PLATFORMTHEME="qt5ct:qt6ct"
 fi
 
 # rbenv

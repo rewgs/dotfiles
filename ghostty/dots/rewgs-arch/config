@@ -23,14 +23,14 @@ window-padding-y = 5
 title = " "
 window-title-font-family = FiraCode Nerd Font
 gtk-wide-tabs = false
-gtk-tabs-location = left
+gtk-tabs-location = top
 
 
 #==============================================================================
 # misc
 #==============================================================================
 shell-integration = zsh
-theme = "OneHalfDark"
+theme = One Half Dark
 resize-overlay = never
 
 
