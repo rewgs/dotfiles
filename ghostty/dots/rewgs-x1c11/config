@@ -30,7 +30,7 @@ gtk-wide-tabs = false
 # misc
 #==============================================================================
 shell-integration = zsh
-theme = Atom One Dark
+theme = One Half Dark
 resize-overlay = never
 
 
