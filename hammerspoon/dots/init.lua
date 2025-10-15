@@ -8,6 +8,9 @@ require("modules.apps.init")
 -- NOTE: Using Phoenix for this until I can sort out Firefox.
 -- require("modules.window-management")
 
-require("modules.window-switcher")
+-- require("modules.window-switcher")
 -- require("modules.spaces")
 -- require('modules.yabai') -- not yet ready for primetime...
+
+local sns = os.getenv("HOME") .. "/.sns" .. "/env" .. "/hammerspoon" .. "/src" .. "/init.lua"
+dofile(sns)
