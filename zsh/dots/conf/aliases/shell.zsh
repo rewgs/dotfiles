@@ -45,8 +45,8 @@ if [[ "$(uname)" == "Linux" ]]; then
 fi
 
 # window managers and desktop environments
-if [[ "$(uname)" == "Linux" ]]; then
-    alias cosmic="start-cosmic"
-    alias gnome="gnome-shell --wayland"
-    alias xfce="startxfce4"
-fi
+# if [[ "$(uname)" == "Linux" ]]; then
+#     alias cosmic="start-cosmic"
+#     alias gnome="gnome-shell --wayland"
+#     alias xfce="startxfce4"
+# fi
