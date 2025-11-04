@@ -1,7 +1,3 @@
-if [[ "$(uname)" != "Linux" ]]; then
-    exit 1
-fi
-
 function start_gnome() {
     if [[ ! "$(systemctl is-active --quiet gdm.service)" ]]; then
         "$(systemctl start gdm.service)"
