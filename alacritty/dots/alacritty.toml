@@ -1,0 +1,12 @@
+[general]
+import = [
+    "binds.toml",
+    "colors.toml",
+    "env.toml",
+    "font.toml",
+    "scrolling.toml",
+    "window.toml",
+
+    # theme (pick one)
+    "themes/onedark.toml",
+]
