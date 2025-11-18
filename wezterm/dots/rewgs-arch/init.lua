@@ -1,6 +1,6 @@
 local module = {}
 
-local host = "rewgs-x1c11"
+local host = "rewgs-arch"
 
 local appearance = require(host .. ".appearance")
 local font = require(host .. ".font")
