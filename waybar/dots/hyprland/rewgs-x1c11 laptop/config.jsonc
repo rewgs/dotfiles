@@ -11,10 +11,11 @@
         "hyprland/window"
     ],
     "modules-right": [
+        "tray",
         "pulseaudio", 
         "network", 
         "battery",
-        "clock",
+        "clock"
     ],
 
     // Modules configuration
@@ -96,5 +97,9 @@
     "custom/spotify": {
         "exec": "/usr/bin/python3"
     },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    }
 }
 
