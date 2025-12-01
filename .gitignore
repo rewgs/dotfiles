@@ -2,6 +2,12 @@
 btop.log
 /btop/dots/btop.conf
 
+# halloy
+/halloy/dots/history/
+/halloy/dots/halloy.log
+/halloy/dots/window.json
+/halloy/dots/dashboard.json.gz
+
 # nushell
 /nushell/dots/history.txt
 

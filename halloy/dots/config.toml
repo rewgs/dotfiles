@@ -1,9 +1,42 @@
-# Halloy config.
-#
-# For a complete list of available options,
-# please visit https://halloy.chat/configuration/
+#################
+# customization #
+#################
 
-[servers.liberachat]
-nickname = "halloy6730"
-server = "irc.libera.chat"
-channels = ["#halloy"]
+theme = "One Dark"
+
+[font]
+family = "FiraCode Nerd Font"
+size = 14
+weight = "normal"
+
+###############
+# single pane #
+###############
+
+# source: https://halloy.chat/guides/single-pane.html#single-pane
+
+[actions.buffer]
+click_channel_name = "replace-pane"
+click_highlight = "replace-pane"
+click_username = "replace-pane"
+local = "replace-pane"
+message_channel = "replace-pane"
+message_user = "replace-pane"
+
+[actions.sidebar]
+buffer = "replace-pane"
+
+###########
+# servers #
+###########
+
+# [servers.liberachat]
+# nickname = "rewgs"
+# server = "irc.libera.chat"
+# channels = ["#halloy"]
+
+# open and free technology community
+[servers.oftc]
+nickname = "rewgs"
+server = "irc.oftc.net"       # "ircs://irc.oftc.net:6697"
+channels = ["#kernelnewbies"]
