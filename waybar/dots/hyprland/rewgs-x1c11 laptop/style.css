@@ -246,18 +246,18 @@ button:hover {
 /* #temperature.critical { */
 /* } */
 
-/* #tray { */
-/*     background-color: transparent; */
-/* } */
+#tray {
+  background-color: transparent;
+}
 
-/* #tray>.passive { */
-/*     -gtk-icon-effect: dim; */
-/* } */
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
 
-/* #tray>.needs-attention { */
-/*     -gtk-icon-effect: highlight; */
-/*     background-color: transparent; */
-/* } */
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: transparent;
+}
 
 /* #idle_inhibitor { */
 /*     background-color: transparent; */

@@ -7,7 +7,7 @@ local stock_scheme = "OneHalfDark"
 -- local stock_scheme = "Gruvbox Dark (Gogh)"
 
 -- local user_scheme = require('common.colors.rewgs_oled')
-local user_scheme = require('common.colors.onedark')
+local user_scheme = require("common.colors.onedark")
 -- local user_scheme = require('common.colors.onedark_dark')
 -- local user_scheme = require('common.colors.onedark_soft_oled')
 -- local user_scheme = require('common.colors.rewgs_onedark_pale')
@@ -15,62 +15,62 @@ local user_scheme = require('common.colors.onedark')
 -- local user_scheme = require('common.colors.rewgs_onedark_pale_oled_darker')
 
 local user_colors = {
-    foreground      = user_scheme.white,
-    background      = user_scheme.black,
-    cursor_bg       = user_scheme.white,
-    cursor_fg       = user_scheme.black,
-    cursor_border   = user_scheme.white,
-    selection_fg    = user_scheme.black,
-    selection_bg    = user_scheme.white,
-    scrollbar_thumb = user_scheme.black,
-    split           = user_scheme.black,
+	foreground = user_scheme.white,
+	background = user_scheme.black,
+	cursor_bg = user_scheme.white,
+	cursor_fg = user_scheme.black,
+	cursor_border = user_scheme.white,
+	selection_fg = user_scheme.black,
+	selection_bg = user_scheme.white,
+	scrollbar_thumb = user_scheme.black,
+	split = user_scheme.black,
 
-    ansi            = { -- i.e. "darks"
-        -- 'black',
-        -- 'maroon',
-        -- 'green',
-        -- 'olive',
-        -- 'navy',
-        -- 'purple',
-        -- 'teal',
-        -- 'silver',
+	ansi = { -- i.e. "darks"
+		-- 'black',
+		-- 'maroon',
+		-- 'green',
+		-- 'olive',
+		-- 'navy',
+		-- 'purple',
+		-- 'teal',
+		-- 'silver',
 
-        user_scheme.black,
-        user_scheme.dark_red,
-        user_scheme.green,
-        user_scheme.dark_yellow,
-        user_scheme.blue,
-        user_scheme.magenta,
-        user_scheme.cyan,
-        user_scheme.comment_grey,
-    },
-    brights         = {
-        -- 'grey',
-        -- 'red',
-        -- 'lime',
-        -- 'yellow',
-        -- 'blue',
-        -- 'fuchsia',
-        -- 'aqua',
-        -- 'white',
+		user_scheme.black,
+		user_scheme.dark_red,
+		user_scheme.green,
+		user_scheme.dark_yellow,
+		user_scheme.blue,
+		user_scheme.magenta,
+		user_scheme.cyan,
+		user_scheme.comment_grey,
+	},
+	brights = {
+		-- 'grey',
+		-- 'red',
+		-- 'lime',
+		-- 'yellow',
+		-- 'blue',
+		-- 'fuchsia',
+		-- 'aqua',
+		-- 'white',
 
-        user_scheme.gutter_grey,
-        user_scheme.light_red,
-        user_scheme.green,
-        user_scheme.light_yellow,
-        user_scheme.blue,
-        user_scheme.light_red,
-        user_scheme.blue,
-        user_scheme.white,
-    },
+		user_scheme.gutter_grey,
+		user_scheme.light_red,
+		user_scheme.green,
+		user_scheme.light_yellow,
+		user_scheme.blue,
+		user_scheme.light_red,
+		user_scheme.blue,
+		user_scheme.white,
+	},
 }
 
 -- The `config.window_frame` table configures the fancy tab bar
 -- See: https://wezfurlong.org/wezterm/config/appearance.html?h=fancy#native-fancy-tab-bar-appearance
 local window_frame = {
-    font_size = 8,
-    -- active_titlebar_bg = user_scheme.black,
-    -- inactive_titlebar_bg = user_scheme.black,
+	font_size = 8,
+	-- active_titlebar_bg = user_scheme.black,
+	-- inactive_titlebar_bg = user_scheme.black,
 }
 
 -- local colors = {
@@ -80,23 +80,23 @@ local window_frame = {
 -- }
 
 function module.apply_to_config(config)
-    -- basics
-    config.front_end = 'OpenGL'
+	-- basics
+	config.front_end = "OpenGL"
 
-    -- colors
-    config.color_scheme = stock_scheme
-    config.colors = colors
-    -- config.colors = user_colors
+	-- colors
+	config.color_scheme = stock_scheme
+	config.colors = colors
+	-- config.colors = user_colors
 
-    -- tab bar
-    config.enable_tab_bar = true
-    config.hide_tab_bar_if_only_one_tab = true
-    config.show_tab_index_in_tab_bar = false
-    config.tab_and_split_indices_are_zero_based = true
-    config.use_fancy_tab_bar = true
-    config.window_frame = window_frame
+	-- tab bar
+	config.enable_tab_bar = true
+	config.hide_tab_bar_if_only_one_tab = true
+	config.show_tab_index_in_tab_bar = false
+	config.tab_and_split_indices_are_zero_based = true
+	config.use_fancy_tab_bar = true
+	config.window_frame = window_frame
 
-    -- config.window_background_opacity = 0.8
+	-- config.window_background_opacity = 0.8
 end
 
 return module
