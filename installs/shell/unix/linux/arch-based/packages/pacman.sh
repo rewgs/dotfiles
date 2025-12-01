@@ -5,6 +5,7 @@ packages=(
     "automake"
     "base-devel" # equivalent to apt's built-essential
     "bettercap"
+    "bind" # installs the dig and host commands
     "bpytop"
     "brightnessctl" # for using media keys to control brightness
     "btop"
@@ -81,9 +82,11 @@ packages=(
     "vifm" # cli file manager
     "vim"
     "wireguard-tools" # required for ProtonVPN
+    "wireplumber"
     "wl-clipboard"    # dead simple clipboard utility for Wayland-based window managers; https://github.com/bugaevc/wl-clipboard
     "wget"
     "xbindkeys"
+    "xdg-desktop-portal-hyprland"
     "xorg"
     "zip"
     "zsh"

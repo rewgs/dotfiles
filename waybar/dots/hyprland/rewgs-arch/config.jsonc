@@ -110,9 +110,9 @@
         },
     },
 
-    // Samsung
+    // LG DualUp
     {
-        "output": "HDMI-A-1",
+        "output": "DP-2",
         "layer": "top",     // Waybar at top layer
         "position": "top",  // Waybar position (top|bottom|left|right)
         "height": 24,       // Waybar height (to be removed for auto height)
@@ -124,15 +124,15 @@
         "modules-center": [
             "hyprland/window"
         ],
-        "modules-right": [
+        // "modules-right": [
         //     "tray",
         //     "pulseaudio", 
         //     "network", 
         //     "cpu",
         //     "memory",
         //     "disk",
-            "clock",
-        ],
+        //     "clock",
+        // ],
     
         // Modules configuration
         "hyprland/workspaces": {
