@@ -35,8 +35,11 @@ vim.opt.clipboard:append("unnamedplus") -- Use system clipboard as default regis
 vim.opt.splitright = true -- Split new vertical buffers to the right.
 vim.opt.splitbelow = true -- Split new horizontal buffers to the bottom.
 
--- misc
+-- wraps
 vim.opt.wrap = false -- Disables line wrapping.
+vim.opt.linebreak = true -- Ensures that when a line wraps, it breaks at a word boundary (whitespace, punctation, etc) rather than splitting a word.
+
+-- misc
 vim.opt.cursorline = false -- Included for reference, even though false is default.
 -- vim.opt.noswapfile = true
 -- vim.opt.nobackup = true
