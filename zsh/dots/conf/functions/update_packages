@@ -1,20 +1,33 @@
 update_packages() {
-    if command -v apt >/dev/null; then
-        echo "Debian-based distribution"
-        sudo apt update
-        sudo apt upgrade -y
+    if [[ $(uname) == "Darwin" ]]; then
+        echo "Updating packages for macOS."
+        if command -v brew >/dev/null; then
+            echo "homebrew"
+            brew update
+            brew upgrade
+        fi
+        
         exit 0
-    elif command -v dnf >/dev/null; then
-        echo "Red Hat-based distribution (Fedora/CentOS/RHEL)"
-        sudo dnf upgrade --refresh --assumeyes
-        exit 0
-    elif command -v pacman >/dev/null; then
-        echo "Arch-based distribution"
-        sudo pacman -Syu --noconfirm
-        paru -Syu --noconfirm
-        exit 0
-    else
-        echo "Unknown distribution"
-        exit 1
+    fi
+
+    if [[ $(uname) == "Linux" ]]; then
+        if command -v apt >/dev/null; then
+            echo "Updating packages for Debian-based Linux distribution."
+            sudo apt update
+            sudo apt upgrade -y
+            exit 0
+        elif command -v dnf >/dev/null; then
+            echo "Updating packages for Red Hat-based distribution (Fedora/CentOS/RHEL) Linux distribution."
+            sudo dnf upgrade --refresh --assumeyes
+            exit 0
+        elif command -v pacman >/dev/null; then
+            echo "Updating packages for Arch-based Linux distribution."
+            sudo pacman -Syu --noconfirm
+            paru -Syu --noconfirm
+            exit 0
+        else
+            echo "Unknown Linux distribution; exiting."
+            exit 1
+        fi
     fi
 }
