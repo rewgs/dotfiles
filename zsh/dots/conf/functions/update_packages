@@ -7,7 +7,7 @@ update_packages() {
             brew upgrade
         fi
         
-        exit 0
+        return 0
     fi
 
     if [[ $(uname) == "Linux" ]]; then
@@ -15,19 +15,19 @@ update_packages() {
             echo "Updating packages for Debian-based Linux distribution."
             sudo apt update
             sudo apt upgrade -y
-            exit 0
+            return 0
         elif command -v dnf >/dev/null; then
             echo "Updating packages for Red Hat-based distribution (Fedora/CentOS/RHEL) Linux distribution."
             sudo dnf upgrade --refresh --assumeyes
-            exit 0
+            return 0
         elif command -v pacman >/dev/null; then
             echo "Updating packages for Arch-based Linux distribution."
             sudo pacman -Syu --noconfirm
             paru -Syu --noconfirm
-            exit 0
+            return 0
         else
             echo "Unknown Linux distribution; exiting."
-            exit 1
+            return 1
         fi
     fi
 }
