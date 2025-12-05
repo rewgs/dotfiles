@@ -1,3 +1,5 @@
 #!/bin/bash
 #
-# Symlinks dots to ~/Library/Application Support/halloy on macOS.
+# Symlinks dots to:
+# macOS: ~/Library/Application Support/halloy
+# Linux: ~/.config/halloy

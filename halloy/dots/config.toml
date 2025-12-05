@@ -36,7 +36,62 @@ buffer = "replace-pane"
 # channels = ["#halloy"]
 
 # open and free technology community
-[servers.oftc]
+# [servers.oftc]
+# nickname = "rewgs"
+# server = "irc.oftc.net"       # "ircs://irc.oftc.net:6697"
+# channels = ["#kernelnewbies"]
+
+[servers.libera] # successor to freenode
 nickname = "rewgs"
-server = "irc.oftc.net"       # "ircs://irc.oftc.net:6697"
-channels = ["#kernelnewbies"]
+server = "irc.libera.chat"
+channels = [
+    "####music",
+    "###hackers",
+    "#alerts",
+    "##AllNiteCafe",
+    "##allpolitics",
+    "##apple", # requires logged into NickServ account
+    "#archlinux", # requires logged into NickServ account
+    "#archlinux-offtopic", # requires logged into NickServ account
+    "#debian", 
+    "#kernel",
+    "#linux", 
+    "#linux-kernel", 
+    "##mac-social",
+    "##audio",
+    "##backend",
+    "#C++",
+    "##C++",
+    "##c++-basic",
+    "##C++-meeting",
+    "##C++-social",
+    "#trading",
+    "#stoicism",
+    "#SolarPunk",
+    "#socialism",
+    "#social-dev",
+    "#serenityos",
+    "#rmstalk",
+    "#robotics",
+    "#machinelearning-general",
+    "#ml-news",
+    "#retrocomputing",
+    "#indieweb",
+    "#opensourcemusicians", # requires logged into NickServ account
+    "#neovim",
+    "#linuxmusicians",
+    "#hackers",
+    "#hackernews",
+    "#go-nuts", #golang
+    "#gnu",
+    "#python",
+    "#kernelnewbies",
+    "##rust",
+]
+
+# FIXME:
+# jupiter broadcasting
+# [servers.jb]
+# nickname = "rewgs"
+# server = "irc.geekshed.net"
+# channels = ["#jupiterbroadcasting"]
