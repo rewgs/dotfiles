@@ -1,0 +1,11 @@
+Host nas rewgs-nas
+    Hostname rewgs-nas
+
+Host arch dev
+    Hostname rewgs-arch
+
+Host devm
+    Hostname rewgs-nas-arch-vm
+
+Host deb
+    Hostname rewgs-nas-debian-vm
