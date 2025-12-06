@@ -134,10 +134,13 @@ def create_symlink(link: Path, target: Path) -> None:
 
 
 def main() -> None:
-    SRC: Path = Path(__file__).parent.joinpath("rewgs_ssh_config")
-    DST: Path = Path.home().joinpath(".ssh", "rewgs_ssh_config")
+    SSH_CONFIG_NAME: str = "rewgs_ssh_config"
+
+    SRC: Path = Path(__file__).parent.joinpath(SSH_CONFIG_NAME)
+    DST: Path = Path.home().joinpath(".ssh", SSH_CONFIG_NAME)
+
     SSH_CONFIG: Path = Path.home().joinpath(".ssh", "config")
-    DIRECTIVE: str = "Include ~/.ssh/rewgs_ssh_config\n"
+    DIRECTIVE: str = f"Include ~/.ssh/{SSH_CONFIG_NAME}\n"
 
     # If ~/.ssh/config does not exist, the SNS file is symlinked to it.
     if not exists(SSH_CONFIG):

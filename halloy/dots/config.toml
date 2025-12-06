@@ -95,3 +95,8 @@ channels = [
 # nickname = "rewgs"
 # server = "irc.geekshed.net"
 # channels = ["#jupiterbroadcasting"]
+
+[servers.libera.sasl.plain]
+username = "rewgs"
+password_file = "/home/rewgs/sasl-pass"
+password_file_first_line_only = true
