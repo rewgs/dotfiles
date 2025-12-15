@@ -14,6 +14,7 @@
         "tray",
         "pulseaudio", 
         "network", 
+        "disk",
         "battery",
         "clock"
     ],
@@ -24,7 +25,6 @@
         "disable-scroll": true,
         "on-click": "activate",
         "warp-on-scroll": false,
-
         "format": " {name}",
     },
 
@@ -66,22 +66,22 @@
     "memory": {
         "format": "ram {}% "
     },
-    "disk": {
-	    "interval": 30,
-	    "format": "disk {specific_free:0.0f}GB/{specific_total:0.0f}GB",
-	    "unit": "GB"
-    },
+   "disk": {
+       "interval": 30,
+       "format": "disk {percentage_used}% used",
+       "unit": "GB"
+   },
     "battery": {
-        // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+         // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
         // "format": "{capacity}% <span font='Font Awesome 5 Free 11'>{icon}</span>",
         "format": "{capacity}% {icon} ",
-
+        
         "format-icons": ["", "", "", "", ""],
         "format-time": "{H}h{M}m",
-
+        
         "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
         "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
-
+        
         "interval": 30,
         "states": {
             "warning": 25,
@@ -89,17 +89,17 @@
         },
         "tooltip": false,
         // "on-click": "2"
-    },
-    "clock": {
-        // "format": " {:%Y-%m-%d  %I:%M %p}"
-        "format": " {:%I:%M %p}"
-    },
-    "custom/spotify": {
-        "exec": "/usr/bin/python3"
-    },
-    "tray": {
-        "icon-size": 15,
-        "spacing": 10
-    }
+   },
+   "clock": {
+       // "format": " {:%Y-%m-%d  %I:%M %p}"
+       "format": " {:%I:%M %p}"
+   },
+   "custom/spotify": {
+       "exec": "/usr/bin/python3"
+   },
+   "tray": {
+       "icon-size": 15,
+       "spacing": 10
+   }
 }
 
