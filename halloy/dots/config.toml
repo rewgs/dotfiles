@@ -30,16 +30,11 @@ buffer = "replace-pane"
 # servers #
 ###########
 
-# [servers.liberachat]
-# nickname = "rewgs"
-# server = "irc.libera.chat"
-# channels = ["#halloy"]
-
 # open and free technology community
 # [servers.oftc]
 # nickname = "rewgs"
 # server = "irc.oftc.net"       # "ircs://irc.oftc.net:6697"
-# channels = ["#kernelnewbies"]
+# channels = ["#kernelnewbies", "#bcache"]
 
 [servers.libera] # successor to freenode
 nickname = "rewgs"
