@@ -25,7 +25,6 @@
         "disable-scroll": true,
         "on-click": "activate",
         "warp-on-scroll": false,
-
         "format": " {name}",
     },
 
