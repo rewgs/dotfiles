@@ -2,7 +2,7 @@
 
 # installs according to the instructions here:
 # https://github.com/Morganamilo/paru
-install-paru::main() {
+function main() {
     local src="https://aur.archlinux.org/paru.git"
     local dst="$HOME/src/paru"
 
@@ -25,4 +25,4 @@ install-paru::main() {
     cd "$HOME/src/paru" || return
     makepkg -si
 }
-install-paru::main
+main
