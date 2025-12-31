@@ -21,11 +21,25 @@ EXCLUDED_DIRS: list[str] = [
     "evangelion",
     "flowers",
     "girl",
+    "halloween",
     "m-26.jp",
     "manga",
 ]
 
-EXCLUDED_FILES: list[str] = []
+EXCLUDED_FILES: list[str] = [
+    "a_blue_and_white_watercolor.jpg",
+    "a_cartoon_of_a_cat.png",
+    "a_cartoon_of_a_man_in_a_cape_standing_on_a_rock_with_a_fire_in_the_background.jpg",
+    "a_cup_with_a_straw.png",
+    "a_drawing_of_a_bird_in_a_circle.png",
+    "a_hand_holding_a_cable.jpg",
+    "a_large_stone_statues_in_water.png",
+    "a_painting_of_a_building_in_a_dark_landscape.png",
+    "a_pink_circle_with_different_shapes.jpg",
+    "a_colorful_rectangular_sign_with_white_text.png",
+    "a_video_game_screen_shot.png",
+    "a_woman_in_a_pink_dress_with_flowers_on_her_head.png",
+]
 
 
 # TODO: Don't search the root directory, and *then* exclude files if their parent
@@ -42,10 +56,10 @@ def choose_random_wallpaper(dir: Path) -> Path:
 
     filenames = resolved.rglob("*")
     not_excluded_files: list[Path] = [
-        Path(file) for file in filenames if file not in EXCLUDED_FILES
+        Path(file) for file in filenames if file.name not in EXCLUDED_FILES
     ]
     not_excluded_dirs: list[Path] = [
-        file for file in not_excluded_files if file.parent not in EXCLUDED_DIRS
+        file for file in not_excluded_files if file.parent.name not in EXCLUDED_DIRS
     ]
     valid_extensions: list[Path] = [
         file for file in not_excluded_dirs if file.suffix in EXTENSIONS
@@ -56,7 +70,12 @@ def choose_random_wallpaper(dir: Path) -> Path:
 
 def main():
     wallpaper = choose_random_wallpaper(WALLPAPERS_DIR)
-    print(wallpaper.as_posix())
+
+    w = wallpaper.as_posix()
+    with open(Path(Path.home()).joinpath(".wallpaper"), "w") as f:
+        _ = f.write(w)
+
+    print(w)
 
 
 if __name__ == "__main__":
