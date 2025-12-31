@@ -6,11 +6,13 @@ import random
 from pathlib import Path
 
 WALLPAPERS_DIR: Path = Path(Path.home()).joinpath("Pictures", "walls-main")
+
 EXTENSIONS: list[str] = [
     ".jpg",
     ".png",
     ".webp",
 ]
+
 EXCLUDED_DIRS: list[str] = [
     "animated",
     "anime",
@@ -22,10 +24,12 @@ EXCLUDED_DIRS: list[str] = [
     "m-26.jp",
     "manga",
 ]
+
 EXCLUDED_FILES: list[str] = []
 
 
-# TODO: Don't search the root directory, and *then* exclude files if their parent is in EXCLUDED_DIRS -- just search the non-excluded dirs from the get-go!
+# TODO: Don't search the root directory, and *then* exclude files if their parent
+# is in EXCLUDED_DIRS -- just search the non-excluded dirs from the get-go!
 def choose_random_wallpaper(dir: Path) -> Path:
     try:
         resolved: Path = dir.resolve(strict=True)
