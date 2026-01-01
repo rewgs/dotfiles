@@ -27,16 +27,20 @@ EXCLUDED_DIRS: list[str] = [
 ]
 
 EXCLUDED_FILES: list[str] = [
+    "a_black_and_white_picture_of_a_man_holding_a_devil.jpg",
     "a_blue_and_white_watercolor.jpg",
     "a_cartoon_of_a_cat.png",
     "a_cartoon_of_a_man_in_a_cape_standing_on_a_rock_with_a_fire_in_the_background.jpg",
+    "a_colorful_rectangular_sign_with_white_text.png",
     "a_cup_with_a_straw.png",
     "a_drawing_of_a_bird_in_a_circle.png",
+    "a_drawing_of_a_man_falling_down.jpg",
     "a_hand_holding_a_cable.jpg",
     "a_large_stone_statues_in_water.png",
     "a_painting_of_a_building_in_a_dark_landscape.png",
     "a_pink_circle_with_different_shapes.jpg",
-    "a_colorful_rectangular_sign_with_white_text.png",
+    "a_room_with_a_large_window_and_plants.jpg",
+    "a_small_town_with_many_houses.png",
     "a_video_game_screen_shot.png",
     "a_woman_in_a_pink_dress_with_flowers_on_her_head.png",
 ]

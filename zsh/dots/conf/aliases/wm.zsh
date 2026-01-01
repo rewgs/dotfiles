@@ -7,5 +7,6 @@ function start_gnome() {
 alias cosmic="start-cosmic"
 # alias gnome="gnome-shell --wayland"
 alias gnome=start_gnome
+alias hyprland="start-hyprland"
 alias plasma="/usr/bin/startplasma-wayland"
 alias xfce="startxfce4"
