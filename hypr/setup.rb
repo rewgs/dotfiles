@@ -18,6 +18,7 @@ require 'socket'
 # end
 
 ##
+# @param dir [String] the directory to search for a matching subdirectory.
 # @returns [Boolean, String|nil] whether a matching directory was found, and the path if so.
 def find_matching_dir(dir)
   Dir.each_child(dir) do |child|
