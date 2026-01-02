@@ -1,18 +1,19 @@
 font=FiraCode Nerd Font:size=11
-dpi-aware=no
+dpi-aware=yes
 fuzzy=yes
 prompt=""
 show-actions=no
 
-width=30
-horizontal-pad=10
-vertical-pad=10
-inner-pad=10
+width=24
+horizontal-pad=8
+vertical-pad=8
+inner-pad=8
 
 [colors]
 # onedark
 background=282c34ff
-border=79B3E2aa # pale blue
+# border=79B3E2aa # pale blue
+border=61afefff
 match=abb2bfff
 selection=79B3E2aa # pale blue
 selection-match=ffffffff
@@ -29,5 +30,5 @@ text=efefefff
 # text=fbf1c7ff
 
 [border]
-width=5
-radius=10
+width=4
+radius=8
