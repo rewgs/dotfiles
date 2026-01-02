@@ -4,7 +4,7 @@ fuzzy=yes
 prompt=""
 show-actions=no
 
-width=24
+width=36
 horizontal-pad=8
 vertical-pad=8
 inner-pad=8

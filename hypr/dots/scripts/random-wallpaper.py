@@ -49,6 +49,7 @@ EXCLUDED_FILES: list[str] = [
     "a_woman_in_a_pink_dress_with_flowers_on_her_head.png",
     "a_colorful_square_with_black_text_02.png",
     "a_pattern_of_flowers_and_leaves.jpg",
+    "a_pattern_of_flowers_and_leaves_01.jpg",
 ]
 
 
