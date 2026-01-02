@@ -47,6 +47,7 @@ EXCLUDED_FILES: list[str] = [
     "a_small_town_with_many_houses.png",
     "a_video_game_screen_shot.png",
     "a_woman_in_a_pink_dress_with_flowers_on_her_head.png",
+    "a_colorful_square_with_black_text_02.png",
 ]
 
 
@@ -88,3 +89,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
