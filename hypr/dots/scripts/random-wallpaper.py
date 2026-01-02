@@ -5,6 +5,7 @@
 import random
 from pathlib import Path
 
+# TODO: Add other directories to choose from.
 WALLPAPERS_DIR: Path = Path(Path.home()).joinpath("Pictures", "walls-main")
 
 EXTENSIONS: list[str] = [
@@ -27,6 +28,8 @@ EXCLUDED_DIRS: list[str] = [
 ]
 
 EXCLUDED_FILES: list[str] = [
+    "a_painting_of_people_in_traditional_clothing.jpg",
+    "a_group_of_trees_on_a_small_island_in_front_of_a_colorful_sky.png",
     "a_painting_of_flowers_on_a_surface.jpg",
     "a_kitten_sleeping_on_the_ground.jpg",
     "a_black_and_white_picture_of_a_man_holding_a_devil.jpg",
