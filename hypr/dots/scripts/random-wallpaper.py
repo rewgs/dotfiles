@@ -27,6 +27,8 @@ EXCLUDED_DIRS: list[str] = [
 ]
 
 EXCLUDED_FILES: list[str] = [
+    "a_painting_of_flowers_on_a_surface.jpg",
+    "a_kitten_sleeping_on_the_ground.jpg",
     "a_black_and_white_picture_of_a_man_holding_a_devil.jpg",
     "a_blue_and_grey_background.png",
     "a_blue_and_white_watercolor.jpg",
@@ -91,4 +93,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
