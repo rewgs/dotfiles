@@ -86,6 +86,7 @@ return {
 				"clangd",
 				"gopls",
 				"lua_ls",
+				"ruby_lsp",
 			},
 
 			-- Default handler for installed servers
