@@ -2,9 +2,14 @@
 /* https://github.com/morhetz/gruvbox-contrib/blob/master/color.table */
 
 * {
+<<<<<<< HEAD
+    background-color: transparent;
+    background-color: rgba(40, 44, 52, 0.8);
+=======
     /* background-color: transparent; */
     /* background-color: rgba(40, 44, 52, 0.8); */
     background-color: rgba(40, 44, 52, 1);
+>>>>>>> refs/remotes/origin/main
     /* background-color: rgba(0, 0, 0, 1); */
 
     border: none;
