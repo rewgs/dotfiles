@@ -6,7 +6,7 @@ import random
 from pathlib import Path
 
 # TODO: Add other directories to choose from.
-WALLPAPERS_DIR: Path = Path(Path.home()).joinpath("Pictures", "walls-main")
+WALLPAPERS_DIR: Path = Path(Path.home()).joinpath("Pictures", "walls")
 
 EXTENSIONS: list[str] = [
     ".jpg",
@@ -28,22 +28,32 @@ EXCLUDED_DIRS: list[str] = [
 ]
 
 EXCLUDED_FILES: list[str] = [
-	"a_woman_sitting_on_a_circle.jpg",
-	"a_cartoon_of_a_woman_with_her_arms_out.png",
-	"s61f586j38aa1.webp",
-	"a_sports_car_with_neon_lights.png",
-	"a_group_of_vases_with_faces_and_arrows.jpg",
-	"a_space_scene_with_planets_and_a_rocket.jpg",
-	"a_pile_of_wood_with_snow_on_top.jpg",
-	"a_black_and_orange_drawing_of_a_bug.png",
-	"a_cartoon_of_mountains_and_snow.png",
-	"a_green_and_blue_rectangular_sign_with_a_drawing_of_a_tree.png",
-	"a_cartoon_of_trees_on_a_hill_01.png",
-	"rpkljnon38aa1.webp",
-	"a_black_and_white_drawing_of_a_horse.png",
-	"a_colorful_planets_in_a_circle.jpg",
-	"a_lighthouse_in_front_of_a_building.jpg",
-	"a_woman_in_a_suit_and_tie.png",
+	"a_logo_on_a_red_background_01.png",
+	"a_drawing_of_a_spider_on_a_white_surface.png",
+	"a_hand_holding_a_cassette_tape.jpg",
+	"a_multicolored_speckled_surface.png",
+	"a_colorful_logo_with_white_text.png",
+	"a_moon_and_clouds_in_the_sky.jpg",
+	"a_drawing_of_a_city.jpg",
+	"a_group_of_bats_flying_in_the_sky.jpg",
+	"a_cartoon_of_a_robot.jpg",
+	"a_black_and_green_creature_with_yellow_and_green_objects.png",
+    "a_woman_sitting_on_a_circle.jpg",
+    "a_cartoon_of_a_woman_with_her_arms_out.png",
+    "s61f586j38aa1.webp",
+    "a_sports_car_with_neon_lights.png",
+    "a_group_of_vases_with_faces_and_arrows.jpg",
+    "a_space_scene_with_planets_and_a_rocket.jpg",
+    "a_pile_of_wood_with_snow_on_top.jpg",
+    "a_black_and_orange_drawing_of_a_bug.png",
+    "a_cartoon_of_mountains_and_snow.png",
+    "a_green_and_blue_rectangular_sign_with_a_drawing_of_a_tree.png",
+    "a_cartoon_of_trees_on_a_hill_01.png",
+    "rpkljnon38aa1.webp",
+    "a_black_and_white_drawing_of_a_horse.png",
+    "a_colorful_planets_in_a_circle.jpg",
+    "a_lighthouse_in_front_of_a_building.jpg",
+    "a_woman_in_a_suit_and_tie.png",
     "a_computer_screen_with_a_logo.png",
     "a_colorful_logo_with_text.png",
     "a_pair_of_playing_cards_on_a_black_surface.jpg",
