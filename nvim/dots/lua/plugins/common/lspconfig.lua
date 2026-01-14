@@ -142,8 +142,16 @@ return {
 				lspconfig["basedpyright"].setup({
 					settings = {
 						basedpyright = {
+							analysis = {
+								autoSearchPaths = true,
+								diagnosticMode = "workspace",
+								useLibraryCodeForTypes = true,
+							},
 							-- Using Ruff's import organizer
 							disableOrganizeImports = true,
+							-- reportAttributeAccessIssue = false,
+							-- reportUnannotatedClassAttribute = false,
+							-- reportIncompatibleUnannotatedOverride = false,
 						},
 						python = {
 							analysis = {

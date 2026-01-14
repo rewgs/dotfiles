@@ -15,16 +15,16 @@ weight = "normal"
 
 # source: https://halloy.chat/guides/single-pane.html#single-pane
 
-[actions.buffer]
-click_channel_name = "replace-pane"
-click_highlight = "replace-pane"
-click_username = "replace-pane"
-local = "replace-pane"
-message_channel = "replace-pane"
-message_user = "replace-pane"
+# [actions.buffer]
+# click_channel_name = "replace-pane"
+# click_highlight = "replace-pane"
+# click_username = "replace-pane"
+# local = "replace-pane"
+# message_channel = "replace-pane"
+# message_user = "replace-pane"
 
-[actions.sidebar]
-buffer = "replace-pane"
+# [actions.sidebar]
+# buffer = "replace-pane"
 
 ###########
 # servers #
