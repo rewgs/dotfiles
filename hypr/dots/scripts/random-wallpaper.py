@@ -28,6 +28,8 @@ EXCLUDED_DIRS: list[str] = [
 ]
 
 EXCLUDED_FILES: list[str] = [
+	"a_yellow_and_blue_sphere.png",
+	"a_close_up_of_a_wallpaper.png",
 	"a_woman_sitting_on_a_circle.jpg",
 	"a_cartoon_of_a_woman_with_her_arms_out.png",
 	"s61f586j38aa1.webp",
