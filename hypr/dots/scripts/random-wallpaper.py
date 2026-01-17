@@ -3,10 +3,9 @@
 # Chooses a random wallpaper from the `walls-main` repo.
 
 import random
+from dataclasses import dataclass, field
 from pathlib import Path
-
-# TODO: Add other directories to choose from.
-WALLPAPERS_DIR: Path = Path(Path.home()).joinpath("Pictures", "walls")
+from typing import NamedTuple
 
 EXTENSIONS: list[str] = [
     ".jpg",
@@ -14,7 +13,61 @@ EXTENSIONS: list[str] = [
     ".webp",
 ]
 
-EXCLUDED_DIRS: list[str] = [
+
+class Wallpaper(NamedTuple):
+    path: Path | None
+    rr: Exception | None
+
+
+@dataclass
+class Collection:
+    """Collection defines a directory of wallpapers."""
+
+    name: str
+    dir: Path
+    alt_dirs: list[Path] = field(default_factory=list)
+    excluded_dirs: list[str] = field(default_factory=list)
+    excluded_files: list[str] = field(default_factory=list)
+
+    # TODO: Don't search the root directory, and *then* exclude files if their parent is in EXCLUDED_DIRS -- just search the non-excluded dirs from the get-go!
+    def choose_random_wallpaper(self) -> Wallpaper:
+        try:
+            dir: Path = self.dir.resolve(strict=True)
+        except FileNotFoundError:
+            try:
+                alt_dir: Path = self.alt_dir.resolve(strict=True)
+            except FileNotFoundError as e:
+                print(f"Directories not found for Collection {self.name}")
+                return Wallpaper(None, e)
+            else:
+                ...
+        except Exception as e:
+            return Wallpaper(None, e)
+
+        filenames = self.dir.rglob("*")
+        not_excluded_files: list[Path] = [
+            Path(file) for file in filenames if file.name not in EXCLUDED_FILES
+        ]
+        not_excluded_dirs: list[Path] = [
+            file for file in not_excluded_files if file.parent.name not in EXCLUDED_DIRS
+        ]
+        valid_extensions: list[Path] = [
+            file for file in not_excluded_dirs if file.suffix in EXTENSIONS
+        ]
+        wallpaper = random.choice(valid_extensions)
+        return wallpaper
+
+
+collections: dict[str, Collection] = {
+    "local": Collection(name="local", dir=Path(Path.home()).joinpath("wallpapers")),
+    "walls": Collection(
+        name="walls repo",
+        dir=Path(Path.home()).joinpath("Pictures", "walls"),
+        alt_dir=Path(Path.home()).joinpath("Pictures", "walls-main"),
+    ),
+}
+
+collections["walls"].excluded_dirs = [
     "animated",
     "anime",
     "cherry",
@@ -27,17 +80,17 @@ EXCLUDED_DIRS: list[str] = [
     "manga",
 ]
 
-EXCLUDED_FILES: list[str] = [
-	"a_logo_on_a_red_background_01.png",
-	"a_drawing_of_a_spider_on_a_white_surface.png",
-	"a_hand_holding_a_cassette_tape.jpg",
-	"a_multicolored_speckled_surface.png",
-	"a_colorful_logo_with_white_text.png",
-	"a_moon_and_clouds_in_the_sky.jpg",
-	"a_drawing_of_a_city.jpg",
-	"a_group_of_bats_flying_in_the_sky.jpg",
-	"a_cartoon_of_a_robot.jpg",
-	"a_black_and_green_creature_with_yellow_and_green_objects.png",
+collections["walls"].excluded_files = [
+    "a_logo_on_a_red_background_01.png",
+    "a_drawing_of_a_spider_on_a_white_surface.png",
+    "a_hand_holding_a_cassette_tape.jpg",
+    "a_multicolored_speckled_surface.png",
+    "a_colorful_logo_with_white_text.png",
+    "a_moon_and_clouds_in_the_sky.jpg",
+    "a_drawing_of_a_city.jpg",
+    "a_group_of_bats_flying_in_the_sky.jpg",
+    "a_cartoon_of_a_robot.jpg",
+    "a_black_and_green_creature_with_yellow_and_green_objects.png",
     "a_woman_sitting_on_a_circle.jpg",
     "a_cartoon_of_a_woman_with_her_arms_out.png",
     "s61f586j38aa1.webp",
@@ -108,34 +161,15 @@ EXCLUDED_FILES: list[str] = [
 ]
 
 
-# TODO: Don't search the root directory, and *then* exclude files if their parent
-# is in EXCLUDED_DIRS -- just search the non-excluded dirs from the get-go!
-def choose_random_wallpaper(dir: Path) -> Path:
-    try:
-        resolved: Path = dir.resolve(strict=True)
-    except FileNotFoundError:
-        print(f"Wallpapers directory not found: {dir.as_posix()}")
-        exit()
-    except Exception as error:
-        print("Unexpected error")
-        raise error
-
-    filenames = resolved.rglob("*")
-    not_excluded_files: list[Path] = [
-        Path(file) for file in filenames if file.name not in EXCLUDED_FILES
-    ]
-    not_excluded_dirs: list[Path] = [
-        file for file in not_excluded_files if file.parent.name not in EXCLUDED_DIRS
-    ]
-    valid_extensions: list[Path] = [
-        file for file in not_excluded_dirs if file.suffix in EXTENSIONS
-    ]
-    wallpaper = random.choice(valid_extensions)
-    return wallpaper
-
-
 def main():
-    wallpaper = choose_random_wallpaper(WALLPAPERS_DIR)
+    collection = random.choice(list(collections.values()))
+
+    wallpaper, err = collection.choose_random_wallpaper()
+    if err is not None:
+        raise err
+    if wallpaper is None:
+        # TODO: Handle this better.
+        exit()
 
     w = wallpaper.as_posix()
     with open(Path(Path.home()).joinpath(".wallpaper"), "w") as f:
