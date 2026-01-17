@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 #
 # Chooses a random wallpaper from the `walls-main` repo.
+#
+# TODO:
+# - Do not allow a given wallpaper to be chosen twice before all others have been chosen.
 
 import random
 from pathlib import Path
 
 # TODO: Add other directories to choose from.
-WALLPAPERS_DIR: Path = Path(Path.home()).joinpath("Pictures", "walls")
+# WALLPAPERS_DIR: Path = Path(Path.home()).joinpath("Pictures", "walls")
+WALLPAPERS_DIR: Path = Path(Path.home()).joinpath("Pictures", "walls-main")
 
 EXTENSIONS: list[str] = [
     ".jpg",
@@ -153,7 +157,7 @@ def choose_random_wallpaper(dir: Path) -> Path:
 
 
 def main():
-    wallpaper = choose_random_wallpaper(WALLPAPERS_DIR)
+    wallpaper: Path = choose_random_wallpaper(WALLPAPERS_DIR)
 
     w = wallpaper.as_posix()
     with open(Path(Path.home()).joinpath(".wallpaper"), "w") as f:
