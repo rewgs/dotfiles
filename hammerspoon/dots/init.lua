@@ -12,5 +12,5 @@ require("modules.apps.init")
 -- require("modules.spaces")
 -- require('modules.yabai') -- not yet ready for primetime...
 
-local sns = os.getenv("HOME") .. "/.sns" .. "/env" .. "/hammerspoon" .. "/src" .. "/init.lua"
-dofile(sns)
+-- local sns = os.getenv("HOME") .. "/.sns" .. "/env" .. "/hammerspoon" .. "/src" .. "/init.lua"
+-- dofile(sns)

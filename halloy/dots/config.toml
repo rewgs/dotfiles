@@ -15,31 +15,26 @@ weight = "normal"
 
 # source: https://halloy.chat/guides/single-pane.html#single-pane
 
-[actions.buffer]
-click_channel_name = "replace-pane"
-click_highlight = "replace-pane"
-click_username = "replace-pane"
-local = "replace-pane"
-message_channel = "replace-pane"
-message_user = "replace-pane"
+# [actions.buffer]
+# click_channel_name = "replace-pane"
+# click_highlight = "replace-pane"
+# click_username = "replace-pane"
+# local = "replace-pane"
+# message_channel = "replace-pane"
+# message_user = "replace-pane"
 
-[actions.sidebar]
-buffer = "replace-pane"
+# [actions.sidebar]
+# buffer = "replace-pane"
 
 ###########
 # servers #
 ###########
 
-# [servers.liberachat]
-# nickname = "rewgs"
-# server = "irc.libera.chat"
-# channels = ["#halloy"]
-
 # open and free technology community
 # [servers.oftc]
 # nickname = "rewgs"
 # server = "irc.oftc.net"       # "ircs://irc.oftc.net:6697"
-# channels = ["#kernelnewbies"]
+# channels = ["#kernelnewbies", "#bcache"]
 
 [servers.libera] # successor to freenode
 nickname = "rewgs"

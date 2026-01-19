@@ -2,84 +2,87 @@
 /* https://github.com/morhetz/gruvbox-contrib/blob/master/color.table */
 
 * {
-  background-color: transparent;
+    /* background-color: transparent; */
+    /* background-color: rgba(40, 44, 52, 0.8); */
+    background-color: rgba(40, 44, 52, 1);
+    /* background-color: rgba(0, 0, 0, 1); */
 
-  border: none;
-  border-radius: 0;
+    border: none;
+    border-radius: 0;
 
-  /* font-family: "Berkeley Mono SemiBold", "Font Awesome"; */
-  font-family: "FiraCode Nerd Font", "Font Awesome";
-  /* font-family: "Inter", "Font Awesome"; */
-  font-size: 11px;
-  font-weight: bold;
+    /* font-family: "Berkeley Mono SemiBold", "Font Awesome"; */
+    font-family: "FiraCode Nerd Font", "Font Awesome";
+    /* font-family: "Inter", "Font Awesome"; */
+    font-size: 11px;
+    font-weight: bold;
 }
 
 window#waybar {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* onedark grey */
-  /* color: #B2B7C1; */
-  color: rgba(178, 183, 193, 0.8);
+    /* onedark grey */
+    /* color: #B2B7C1; */
+    color: rgba(178, 183, 193, 0.8);
 
-  transition-property: background-color;
-  transition-duration: 0.5s;
+    transition-property: background-color;
+    transition-duration: 0.5s;
 }
 
 button {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* Use box-shadow instead of border so the text isn't offset */
-  box-shadow: inset 0 -3px transparent;
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
 
-  /* Avoid rounded borders under each button name */
-  /* border: none; */
-  /* border-radius: 0; */
+    /* Avoid rounded borders under each button name */
+    /* border: none; */
+    /* border-radius: 0; */
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
-  background: inherit;
+    background: inherit;
 
-  /* onedark grey */
-  /* box-shadow: inset 0 -3px #B2B7C1; */
-  box-shadow: inset 0 -3px rgba(178, 183, 193, 0.9);
+    /* onedark grey */
+    /* box-shadow: inset 0 -3px #B2B7C1; */
+    box-shadow: inset 0 -3px rgba(178, 183, 193, 0.9);
 }
 
 /* #workspaces button.focused { */
 #workspaces button.active {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* onedark grey */
-  /* color: #B2B7C1; */
-  color: rgba(178, 183, 193, 0.9);
+    /* onedark grey */
+    /* color: #B2B7C1; */
+    color: rgba(178, 183, 193, 0.9);
 
-  /* onedark blue pale oled */
-  /* color: #79b3e2; */
-  /* color: rgba(121, 179, 226, 0.8); */
+    /* onedark blue pale oled */
+    /* color: #79b3e2; */
+    /* color: rgba(121, 179, 226, 0.8); */
 }
 
 #workspaces button:hover {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* onedark grey */
-  /* color: #B2B7C1; */
-  color: rgba(178, 183, 193, 0.8);
+    /* onedark grey */
+    /* color: #B2B7C1; */
+    color: rgba(178, 183, 193, 0.8);
 }
 
 /* inactive */
 #workspaces button {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* onedark dark grey */
-  /* color: #5c6370; */
-  /* color: rgba(92, 99, 112, 0.9); */
+    /* onedark dark grey */
+    /* color: #5c6370; */
+    /* color: rgba(92, 99, 112, 0.9); */
 
-  /* onedark grey */
-  /* color: #B2B7C1; */
-  color: rgba(178, 183, 193, 0.3);
+    /* onedark grey */
+    /* color: #B2B7C1; */
+    color: rgba(178, 183, 193, 0.3);
 
-  /* padding: 0 5px; */
-  padding: 0 0px;
+    /* padding: 0 5px; */
+    padding: 0 0px;
 }
 
 #clock,
@@ -91,39 +94,39 @@ button:hover {
 #pulseaudio,
 #wireplumber,
 #tray {
-  /* vertical, horizontal */
-  padding: 0 10px;
+    /* vertical, horizontal */
+    padding: 0 10px;
 }
 
 #window,
 #workspaces {
-  margin: 0 4px;
+    margin: 0 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
-  margin-left: 0;
+    margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
-  margin-right: 0;
+    margin-right: 0;
 }
 
 #clock {
-  /* onedark grey */
-  /* color: #B2B7C1; */
+    /* onedark grey */
+    /* color: #B2B7C1; */
 
-  /* onedark blue */
-  /* color: #61afef; */
+    /* onedark blue */
+    /* color: #61afef; */
 
-  /* onedark blue pale oled */
-  /* color: #79b3e2; */
-  /* color: rgba(121, 179, 226, 0.8); */
+    /* onedark blue pale oled */
+    /* color: #79b3e2; */
+    /* color: rgba(121, 179, 226, 0.8); */
 
-  /* onedark grey */
-  /* color: #B2B7C1; */
-  color: rgba(178, 183, 193, 0.7);
+    /* onedark grey */
+    /* color: #B2B7C1; */
+    color: rgba(178, 183, 193, 0.7);
 }
 
 /* @keyframes blink { */
@@ -134,103 +137,103 @@ button:hover {
 /* } */
 
 #battery {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* onedark grey */
-  /* color: #B2B7C1; */
+    /* onedark grey */
+    /* color: #B2B7C1; */
 
-  /* onedark green */
-  /* color: #98c379; */
-  color: rgba(152, 195, 121, 0.8);
+    /* onedark green */
+    /* color: #98c379; */
+    color: rgba(152, 195, 121, 0.8);
 }
 
 #battery.warning:not(.charging) {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* onedark dark yellow (i.e. orange) */
-  /* color: #d19a66; */
+    /* onedark dark yellow (i.e. orange) */
+    /* color: #d19a66; */
 
-  /* onedark light yellow */
-  /* color: #e5c07b; */
-  color: rgba(229, 192, 123, 1);
+    /* onedark light yellow */
+    /* color: #e5c07b; */
+    color: rgba(229, 192, 123, 1);
 }
 
 #battery.critical:not(.charging) {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* onedark light red */
-  /* color: #e06c75; */
-  color: rgba(224, 108, 117, 1);
+    /* onedark light red */
+    /* color: #e06c75; */
+    color: rgba(224, 108, 117, 1);
 }
 
 #cpu {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* onedark green */
-  color: #81a273;
+    /* onedark green */
+    color: #81a273;
 }
 
 #memory {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* gruvbox dark - bright purple */
-  color: #d3869b;
+    /* gruvbox dark - bright purple */
+    color: #d3869b;
 }
 
 #disk {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* gruvbox dark - bright_blue; */
-  color: #83a598;
+    /* gruvbox dark - bright_blue; */
+    color: #83a598;
 }
 
 #backlight {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* gruvbox dark - light0_hard */
-  color: #f9f5d7;
+    /* gruvbox dark - light0_hard */
+    color: #f9f5d7;
 }
 
 #network {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* onedark grey */
-  /* color: #B2B7C1; */
+    /* onedark grey */
+    /* color: #B2B7C1; */
 
-  /* onedark magenta */
-  color: #c678dd;
-  color: rgba(198, 120, 221, 0.8);
+    /* onedark magenta */
+    color: #c678dd;
+    color: rgba(198, 120, 221, 0.8);
 }
 
 #network.disconnected {
-  /* onedark light red */
-  /* color: #e06c75; */
-  color: rgba(224, 108, 117, 1);
+    /* onedark light red */
+    /* color: #e06c75; */
+    color: rgba(224, 108, 117, 1);
 }
 
 #pulseaudio {
-  /* background-color: transparent; */
+    /* background-color: transparent; */
 
-  /* onedark grey */
-  /* color: #B2B7C1; */
+    /* onedark grey */
+    /* color: #B2B7C1; */
 
-  /* onedark cyan */
-  /* color: #56b6c2; */
-  /* color: rgba(86, 182, 194, 0.8); */
+    /* onedark cyan */
+    /* color: #56b6c2; */
+    /* color: rgba(86, 182, 194, 0.8); */
 
-  /* onedark blue pale oled */
-  /* color: #79b3e2; */
-  color: rgba(121, 179, 226, 0.7);
+    /* onedark blue pale oled */
+    /* color: #79b3e2; */
+    color: rgba(121, 179, 226, 0.7);
 }
 
 #pulseaudio.muted {
-  background-color: transparent;
-  /* onedark dark yellow (i.e. orange) */
-  /* color: #d19a66; */
+    background-color: transparent;
+    /* onedark dark yellow (i.e. orange) */
+    /* color: #d19a66; */
 
-  /* onedark blue pale oled */
-  /* color: #79b3e2; */
-  color: rgba(121, 179, 226, 0.4);
+    /* onedark blue pale oled */
+    /* color: #79b3e2; */
+    color: rgba(121, 179, 226, 0.4);
 }
 
 /* #wireplumber { */
@@ -247,16 +250,16 @@ button:hover {
 /* } */
 
 #tray {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 #tray > .passive {
-  -gtk-icon-effect: dim;
+    -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-  -gtk-icon-effect: highlight;
-  background-color: transparent;
+    -gtk-icon-effect: highlight;
+    background-color: transparent;
 }
 
 /* #idle_inhibitor { */
