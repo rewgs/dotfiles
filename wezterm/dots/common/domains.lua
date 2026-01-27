@@ -3,10 +3,10 @@ local module = {}
 
 local ssh_domains = {
 	{
-		name = "arch-vm",
+		name = "debian-vm",
 		connect_automatically = false,
 		multiplexing = "WezTerm",
-		remote_address = "rewgs-nas-arch-vm",
+		remote_address = "rewgs-nas-debian-vm",
 		remote_wezterm_path = "/usr/bin/wezterm",
 		username = "rewgs",
 		default_prog = { "zsh" },
