@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	branch = "master",
 	event = { "BufReadPre", "BufNewFile" }, -- Instructs Lazy to load this plugin only when these events happen, i.e. whenever a new buffer or file is opened.
 	build = ":TSUpdate",
 	config = function()
