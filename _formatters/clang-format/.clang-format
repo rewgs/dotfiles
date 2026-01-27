@@ -3,6 +3,13 @@
 BasedOnStyle: LLVM
 IndentWidth: 4
 
+
+---
+
+Language: C
+
+AllowShortFunctionsOnASingleLine: None
+
 ---
 
 Language: Cpp
