@@ -19,7 +19,7 @@ EXTENSIONS: list[str] = [
 
 class Wallpaper(NamedTuple):
     path: Path | None
-    rr: Exception | None
+    err: Exception | None
 
 
 @dataclass
@@ -173,14 +173,13 @@ def main():
     if err is not None:
         raise err
     if wallpaper is None:
-        # TODO: Handle this better.
+        print("Could not pick wallpaper due to unknown reason. Exiting now.")
         exit()
-
-    w = wallpaper.as_posix()
-    with open(Path(Path.home()).joinpath(".wallpaper"), "w") as f:
-        _ = f.write(w)
-
-    print(w)
+    else:
+        w: str = wallpaper.as_posix()
+        with open(Path(Path.home()).joinpath(".wallpaper"), "w") as f:
+            _ = f.write(w)
+        print(w)
 
 
 if __name__ == "__main__":
