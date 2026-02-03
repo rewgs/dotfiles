@@ -50,7 +50,7 @@ button:hover {
 
 #workspaces button:hover {
     color: rgba(178, 183, 193, 1);
-    border-bottom: 2px solid rgba(178, 183, 193, 1);
+    /* border-bottom: 2px solid rgba(178, 183, 193, 1); */
 }
 
 #workspaces button {
