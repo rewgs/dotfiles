@@ -23,7 +23,8 @@ return {
 		mason_tool_installer.setup({
 			ensure_installed = {
 				-- linters
-				"eslint_d",
+				-- "eslint_d",
+				"eslint-lsp",
 
 				-- formatters
 				"isort",
