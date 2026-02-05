@@ -6,6 +6,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
@@ -87,16 +88,18 @@ return {
 				"gopls",
 				"lua_ls",
 				"ruby_lsp",
+				"svelte",
+				"ts_ls",
 			},
+			handlers = {
+				-- Default handler for installed servers
+				function(server_name)
+					lspconfig[server_name].setup({
+						capabilities = capabilities,
+					})
+				end,
 
-			-- Default handler for installed servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-
-			["gopls"] = function()
+				["gopls"] = function()
 				lspconfig["gopls"].setup({
 					capabilities = capabilities,
 					settings = {
@@ -175,6 +178,14 @@ return {
 					prepend_args = { "--line-length", "120" },
 				})
 			end,
+
+			["ts_ls"] = function()
+				lspconfig["ts_ls"].setup({
+					capabilities = capabilities,
+					settings = {},
+				})
+			end,
+			},
 		})
 	end,
 }
