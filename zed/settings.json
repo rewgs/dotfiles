@@ -17,7 +17,7 @@
     "dock": "right"
   },
   "features": {
-    "copilot": false
+    "edit_prediction_provider": "copilot"
   },
   "telemetry": {
     "diagnostics": false,
