@@ -50,9 +50,9 @@ packages=(
     "nnn"      # cli file manager
     "nwg-look" # GTK settings manager for wayland environments
     "obsidian"
-    "openvpn" # required for ProtonVPN
+    "openvpn"        # required for ProtonVPN
     "pacman-contrib" # includes some nice quality-of-life scripts, such as `checkupdates`
-    "pamixer" # used by hypr to control volume
+    "pamixer"        # used by hypr to control volume
     "pass"
     "pavucontrol" # for controlling volume via media keys
     "picom"
@@ -83,7 +83,7 @@ packages=(
     "vim"
     "wireguard-tools" # required for ProtonVPN
     "wireplumber"
-    "wl-clipboard"    # dead simple clipboard utility for Wayland-based window managers; https://github.com/bugaevc/wl-clipboard
+    "wl-clipboard" # dead simple clipboard utility for Wayland-based window managers; https://github.com/bugaevc/wl-clipboard
     "wget"
     "xbindkeys"
     "xdg-desktop-portal-hyprland"
@@ -92,10 +92,7 @@ packages=(
     "zsh"
 )
 
-function pacman::main() {
-    sudo pacman -Syu
-    for package in "${packages[@]}"; do
-        sudo pacman -Sy --needed "$package" --noconfirm
-    done
-}
-pacman::main
+sudo pacman -Syu
+for package in "${packages[@]}"; do
+    sudo pacman -S --needed "$package" --noconfirm
+done
