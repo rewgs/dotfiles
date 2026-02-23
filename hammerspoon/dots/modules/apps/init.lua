@@ -7,7 +7,6 @@ local HYPER = Mod.hyper
 
 local BROWSER = "/Applications/Zen Browser.app/Contents/MacOS/zen"
 
--- local TERMINAL = "/Applications/Ghostty.app/Contents/MacOS/ghostty"
 local TERMINAL = "/Applications/WezTerm.app/Contents/MacOS/wezterm"
 
 local MAIL = "/Applications/Mimestream.app/Contents/MacOS/Mimestream"
