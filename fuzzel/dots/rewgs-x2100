@@ -1,6 +1,6 @@
-######################
-# rewgs-x1c11 (laptop)
-######################
+###############
+# rewgs-x2100 #
+###############
 
 font=FiraCode Nerd Font:size=10
 dpi-aware=yes
@@ -14,24 +14,14 @@ vertical-pad=8
 inner-pad=8
 
 [colors]
-# onedark
-background=282c34ff
-# border=79B3E2aa # pale blue
-border=61afefff
-match=abb2bfff
-selection=79B3E2aa # pale blue
-selection-match=ffffffff
-selection-text=282c34ff
-text=efefefff
-
-# gruvbox
-# background=282828ff
-# border=83a598aa
-# match=000000ff
-# selection=83a598aa # background color of selected entry
-# selection-match=fbf1c7ff
-# selection-text=282828ff
-# text=fbf1c7ff
+# gruvbox-material dark hard
+background=1d2021ff
+border=7daea3ff
+match=a9b665ff
+selection=7daea3ff # background color of selected entry
+selection-match=1d2021ff
+selection-text=1d2021ff
+text=d4be98ff
 
 [border]
 width=4
