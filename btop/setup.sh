@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# Symlinks the `dots` directory to `~/.config/btop`.
+# Symlinks the `dots` subdirectory matching the machine's hostname to `~/.config/btop`.
 
 
 main() {
-    local src="$(realpath "$(dirname "$BASH_SOURCE")/dots")"
+    local src="$(realpath "$(dirname "$BASH_SOURCE")/dots/$HOSTNAME")"
     local dst="$HOME/.config/btop"
 
     local config="$(dirname "$dst")"
