@@ -1,21 +1,24 @@
-font=FiraCode Nerd Font:size=13
-dpi-aware=no
+######################
+# rewgs-x1c11 (laptop)
+######################
+
+font=FiraCode Nerd Font:size=10
+dpi-aware=yes
 fuzzy=yes
 prompt=""
 show-actions=no
 
-width=30
-horizontal-pad=10
-vertical-pad=10
-inner-pad=10
+width=36
+horizontal-pad=8
+vertical-pad=8
+inner-pad=8
 
 [colors]
 # onedark
 background=282c34ff
-# border=61afefff # standard
-border=79B3E2aa # pale blue
+# border=79B3E2aa # pale blue
+border=61afefff
 match=abb2bfff
-# selection=61afefff # standard
 selection=79B3E2aa # pale blue
 selection-match=ffffffff
 selection-text=282c34ff
@@ -31,5 +34,5 @@ text=efefefff
 # text=fbf1c7ff
 
 [border]
-width=3
-radius=3
+width=4
+radius=8

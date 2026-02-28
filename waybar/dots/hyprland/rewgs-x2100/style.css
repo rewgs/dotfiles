@@ -2,7 +2,10 @@
 /* https://github.com/morhetz/gruvbox-contrib/blob/master/color.table */
 
 * {
-  background-color: transparent;
+  /* background-color: transparent; */
+  /* background-color: rgba(40, 44, 52, 0.8); */
+  background-color: rgba(40, 44, 52, 1);
+  /* background-color: rgba(0, 0, 0, 1); */
 
   border: none;
   border-radius: 0;
@@ -10,7 +13,7 @@
   /* font-family: "Berkeley Mono SemiBold", "Font Awesome"; */
   font-family: "FiraCode Nerd Font", "Font Awesome";
   /* font-family: "Inter", "Font Awesome"; */
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -246,18 +249,18 @@ button:hover {
 /* #temperature.critical { */
 /* } */
 
-/* #tray { */
-/*     background-color: transparent; */
-/* } */
+#tray {
+  background-color: transparent;
+}
 
-/* #tray>.passive { */
-/*     -gtk-icon-effect: dim; */
-/* } */
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
 
-/* #tray>.needs-attention { */
-/*     -gtk-icon-effect: highlight; */
-/*     background-color: transparent; */
-/* } */
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: transparent;
+}
 
 /* #idle_inhibitor { */
 /*     background-color: transparent; */
