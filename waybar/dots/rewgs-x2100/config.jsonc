@@ -73,8 +73,8 @@
        "format": "disk {percentage_used}% used",
        "unit": "GB"
    },
-    "battery": {
-         // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+   "battery": {
+        // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
         // "format": "{capacity}% <span font='Font Awesome 5 Free 11'>{icon}</span>",
         "format": "{capacity}% {icon} ",
         
@@ -88,10 +88,10 @@
         "states": {
             "warning": 25,
             "critical": 10
-        },
-        "tooltip": false,
-        // "on-click": "2"
-   },
+            },
+           "tooltip": false,
+           // "on-click": "2"
+           },
    "clock": {
        // "format": " {:%Y-%m-%d  %I:%M %p}"
        "format": " {:%I:%M %p}"

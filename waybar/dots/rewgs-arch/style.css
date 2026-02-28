@@ -1,10 +1,8 @@
-/* gruvbox colors reference: */
-/* https://github.com/morhetz/gruvbox-contrib/blob/master/color.table */
+@import "../themes/gruvbox-material/index.css";
 
 * {
-    /* background-color: transparent; */
-    /* background-color: rgba(40, 44, 52, 0.8); */
-    background-color: rgba(40, 44, 52, 1);
+    /* background-color: rgba(40, 44, 52, 1); */
+    background-color: @
 
     border: none;
     border-radius: 0;
@@ -12,6 +10,7 @@
     /* font-family: "Berkeley Mono SemiBold", "Font Awesome"; */
     font-family: "FiraCode Nerd Font", "Font Awesome";
     /* font-family: "Inter", "Font Awesome"; */
+
     font-size: 14px;
     font-weight: bold;
 }
@@ -19,8 +18,6 @@
 window#waybar {
     /* background-color: transparent; */
 
-    /* onedark grey */
-    /* color: #B2B7C1; */
     color: rgba(178, 183, 193, 0.8);
 
     transition-property: background-color;
@@ -45,12 +42,10 @@ button:hover {
 
 #workspaces button.active {
     color: rgba(178, 183, 193, 1);
-    /* border-bottom: 2px solid rgba(178, 183, 193, 1); */
 }
 
 #workspaces button:hover {
     color: rgba(178, 183, 193, 1);
-    /* border-bottom: 2px solid rgba(178, 183, 193, 1); */
 }
 
 #workspaces button {
