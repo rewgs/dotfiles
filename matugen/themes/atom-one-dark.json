@@ -1,0 +1,24 @@
+{
+    "name": "atom-one-dark",
+    "mode": "dark",
+    "colors": {
+        "background": "#282c34",
+        "foreground": "#abb2bf",
+        "black": "#1e222a",
+        "red": "#e06c75",
+        "green": "#98c379",
+        "yellow": "#e5c07b",
+        "blue": "#61afef",
+        "magenta": "#c678dd",
+        "cyan": "#56b6c2",
+        "white": "#dcdfe4",
+        "bright_black": "#5c6370",
+        "bright_red": "#e06c75",
+        "bright_green": "#98c379",
+        "bright_yellow": "#e5c07b",
+        "bright_blue": "#61afef",
+        "bright_magenta": "#c678dd",
+        "bright_cyan": "#56b6c2",
+        "bright_white": "#ffffff"
+    }
+}
