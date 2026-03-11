@@ -14,6 +14,21 @@ run() {
     fi
 }
 
+# Tab-completion handler used by bind -x during config selection.
+# Reads from the global _FUZZEL_CONFIGS array.
+_fuzzel_tab_complete() {
+    local -a matches
+    mapfile -t matches < <(compgen -W "${_FUZZEL_CONFIGS[*]}" -- "${READLINE_LINE}")
+    if [[ ${#matches[@]} -eq 1 ]]; then
+        READLINE_LINE="${matches[0]}"
+        READLINE_POINT=${#READLINE_LINE}
+    elif [[ ${#matches[@]} -gt 1 ]]; then
+        echo
+        printf '  %s\n' "${matches[@]}"
+        echo -n "Which config to use as a base? ${READLINE_LINE}"
+    fi
+}
+
 main() {
     local dots_dir
     dots_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/dots"
@@ -26,17 +41,42 @@ main() {
         for dir in "${dots_dir}"/*/; do
             echo "  $(basename "${dir}")"
         done
+        echo
+
+        # Populate global for _fuzzel_tab_complete, then bind tab to it.
+        _FUZZEL_CONFIGS=()
+        for dir in "${dots_dir}"/*/; do
+            _FUZZEL_CONFIGS+=("$(basename "${dir}")")
+        done
+        bind -x '"\t":_fuzzel_tab_complete' 2>/dev/null
 
         local chosen
-        read -rp "Which config to use as a base? " chosen
+        read -re -p "Which config to use as a base? " chosen
+
+        bind '"\t":complete' 2>/dev/null
+        unset _FUZZEL_CONFIGS
 
         if [[ ! -d "${dots_dir}/${chosen}" ]]; then
             echo "Invalid choice '${chosen}'. Exiting."
             exit 1
         fi
 
-        echo "Copying '${chosen}' config to new directory '${HOSTNAME}'..."
-        run cp -r "${dots_dir}/${chosen}" "${host_dir}"
+        local action
+        while true; do
+            read -rp "Use '${chosen}' as-is, or copy it to create a new config for '${HOSTNAME}'? [use/copy] " action
+            case "${action}" in
+                use)  break ;;
+                copy) break ;;
+                *)    echo "Please enter 'use' or 'copy'." ;;
+            esac
+        done
+
+        if [[ "${action}" == "copy" ]]; then
+            echo "Copying '${chosen}' config to '${HOSTNAME}'..."
+            run cp -r "${dots_dir}/${chosen}" "${host_dir}"
+        else
+            host_dir="${dots_dir}/${chosen}"
+        fi
     fi
 
     local src
