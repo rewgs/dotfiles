@@ -1,0 +1,1 @@
+If subdirectory under `./dots/lua/plugins` matching `$HOSTNAME` does not exist, prompt user to select a pre-existing config to either use or copy (like fuzzel and some other dotfile-configured tools).
