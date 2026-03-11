@@ -1,19 +1,109 @@
 #!/bin/bash
 #
-# Symlinks the `dots` dir to `~/.config/kitty`.
-# NOTE: This will silently delete `~/.config/kitty` (whether it is a directory or symlink)!
-# TODO: This needs to be updated to pick the directory that matches the machine's hostname, not just the dots dir.
+# Finds the subdirectory in dots that matches the current machine's $HOSTNAME; if not found, prompts the user which machine's config to use, with an option to copy it and create a new config for the current machine. Symlinks the matching subdirectory to ~/.config/kitty.
+#
+# Run with -n/--dry-run flag to show what will happen and not actually execute.
 
-function main {
-    local src="$(realpath "$(dirname "${BASH_SOURCE}")/dots")"
-    local dst="$HOME/.config/kitty"
-
-    if [[ -d "$dst" ]]; then
-        rm -rf "$dst"
-    fi
-
-    if [[ ! -d "$dst" ]]; then
-        ln -s "$src" "$dst"
+run() {
+    if $DRY_RUN; then
+        echo "[dry-run] $*"
+    else
+        "$@"
     fi
 }
+
+# Tab-completion handler used by bind -x during config selection.
+# Reads from the global _KITTY_CONFIGS array.
+_kitty_tab_complete() {
+    local -a matches
+    mapfile -t matches < <(compgen -W "${_KITTY_CONFIGS[*]}" -- "${READLINE_LINE}")
+    if [[ ${#matches[@]} -eq 1 ]]; then
+        READLINE_LINE="${matches[0]}"
+        READLINE_POINT=${#READLINE_LINE}
+    elif [[ ${#matches[@]} -gt 1 ]]; then
+        echo
+        printf '  %s\n' "${matches[@]}"
+        echo -n "Which config to use as a base? ${READLINE_LINE}"
+    fi
+}
+
+main() {
+    local dots_dir
+    dots_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/dots"
+
+    local host_dir="${dots_dir}/${HOSTNAME}"
+
+    if [[ ! -d "${host_dir}" ]]; then
+        echo "No config found for hostname '${HOSTNAME}'."
+        echo "Available configs:"
+        for dir in "${dots_dir}"/*/; do
+            echo "  $(basename "${dir}")"
+        done
+        echo
+
+        _KITTY_CONFIGS=()
+        for dir in "${dots_dir}"/*/; do
+            _KITTY_CONFIGS+=("$(basename "${dir}")")
+        done
+        bind -x '"\t":_kitty_tab_complete' 2>/dev/null
+
+        local chosen
+        read -re -p "Which config to use as a base? " chosen
+
+        bind '"\t":complete' 2>/dev/null
+        unset _KITTY_CONFIGS
+
+        if [[ ! -d "${dots_dir}/${chosen}" ]]; then
+            echo "Invalid choice '${chosen}'. Exiting."
+            exit 1
+        fi
+
+        local action
+        while true; do
+            read -rp "Use '${chosen}' as-is, or copy it to create a new config for '${HOSTNAME}'? [use/copy] " action
+            case "${action}" in
+                use)  break ;;
+                copy) break ;;
+                *)    echo "Please enter 'use' or 'copy'." ;;
+            esac
+        done
+
+        if [[ "${action}" == "copy" ]]; then
+            echo "Copying '${chosen}' config to '${HOSTNAME}'..."
+            run cp -r "${dots_dir}/${chosen}" "${host_dir}"
+        else
+            host_dir="${dots_dir}/${chosen}"
+        fi
+    fi
+
+    local dst="${HOME}/.config/kitty"
+
+    if [[ -L "${dst}" ]] || [[ -f "${dst}" ]]; then
+        run rm "${dst}"
+    elif [[ -d "${dst}" ]]; then
+        echo "Warning: ${dst} is a real directory, not a symlink. Removing it."
+        run rm -rf "${dst}"
+    fi
+
+    run ln -s "${host_dir}" "${dst}"
+
+    if ! $DRY_RUN; then
+        echo "Symlinked:"
+        echo -e "\t${host_dir}"
+        echo -e "\tto"
+        echo -e "\t${dst}"
+    fi
+}
+
+DRY_RUN=false
+
+while [[ "$1" == -* ]]; do
+    case "$1" in
+    -n | --dry-run) DRY_RUN=true ;;
+    esac
+    shift
+done
+
+$DRY_RUN && echo "NOTE: This is a dry-run. No changes will be made."
+
 main
