@@ -178,11 +178,12 @@ if [[ "$(uname)" == "Linux" ]] && [[ -d "/home/linuxbrew" ]]; then
     HOMEBREW_NO_INSTALL_UPGRADE=1
 fi
 
+# FIXME: this is saying that lua is a bad interpreter on macOS.
 # lua/luarocks
-if command -v luarocks &> /dev/null; then
-    # eval $(luarocks path)
-    smartcache eval luarocks path
-fi
+# if command -v luarocks &> /dev/null; then
+#     # eval $(luarocks path)
+#     smartcache eval luarocks path
+# fi
 
 # munki
 if [[ $(uname) == "Darwin" ]] && [[ -d "/usr/local/munki/" ]]; then
