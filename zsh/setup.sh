@@ -1,102 +1,103 @@
 #!/bin/bash
 #
-# Setups up all zsh dotfiles, as well as all plugins.
+# Sets up zsh: symlinks .zshenv to $HOME and dots/conf to ~/.config/zsh, and
+# clones plugins to ~/src/zsh-plugins.
+# Run with -n/--dry-run flag to show what will happen and not actually execute.
 
-zsh_plugins_dir="$HOME/src/zsh-plugins"
-
-function check-plugins-dir() {
-    if [[ ! -d "$zsh_plugins_dir" ]]; then
-        mkdir -p "$zsh_plugins_dir"
-    fi
-}
-
-function clone-plugin() {
-    local repo="$1"
-    local name="${repo##*/}" # Trims the last part of the URL, i.e. the name of the repo
-    local src="$HOME/src"
-    local dst="$zsh_plugins_dir/$name"
-
-    if [[ ! -d "$src" ]] || [[ ! -L "$src" ]]; then
-        mkdir -p "$src"
-    fi
-
-    if [[ ! -d "$dst" ]] || [[ ! -L "$dst" ]]; then
-        git clone "$repo" "$dst"
-    fi
-}
-
-function clone-plugins() {
-    clone-plugin "https://github.com/jimhester/per-directory-history"
-    clone-plugin "https://github.com/zsh-users/zsh-completions.git"
-    clone-plugin "https://github.com/quarticcat/zsh-smartcache"
-    clone-plugin "https://github.com/zsh-users/zsh-syntax-highlighting"
-}
-
-function get-dots-path() {
-    local dots
-
-    if ! command -v realpath &>/dev/null; then
-        dots="$(readlink -f "$(dirname "$BASH_SOURCE")"/dots)"
+run() {
+    if $DRY_RUN; then
+        echo "[dry-run] $*"
     else
-        dots="$(realpath "$(dirname "$BASH_SOURCE")"/dots)"
+        "$@"
     fi
-
-    echo "$dots"
 }
 
-# Symlinks: $DOTFILES/zsh/dots/.zshenv -> ~/.zshenv
-function setup-zshenv() {
-    local src
-    local dst
+setup_plugins() {
+    local plugins_dir="${HOME}/src/zsh-plugins"
 
-    src="$(get-dots-path)/.zshenv"
-    dst="$HOME/.zshenv"
-
-    if [[ -f "$dst" ]] || [[ -L "$dst" ]]; then
-        rm -f "$dst"
+    if [[ ! -d "${plugins_dir}" ]]; then
+        run mkdir -p "${plugins_dir}"
     fi
 
-    if [[ ! -f "$dst" ]] || [[ ! -L "$dst" ]]; then
-        echo -e "\nLinking:"
-        echo -e "\t$src"
+    local -a plugins=(
+        "https://github.com/jimhester/per-directory-history"
+        "https://github.com/zsh-users/zsh-completions.git"
+        "https://github.com/quarticcat/zsh-smartcache"
+        "https://github.com/zsh-users/zsh-syntax-highlighting"
+    )
+
+    for repo in "${plugins[@]}"; do
+        local name="${repo##*/}"
+        local dst="${plugins_dir}/${name}"
+
+        if [[ -d "${dst}" ]]; then
+            echo "${name} already cloned, skipping."
+        else
+            run git clone "${repo}" "${dst}"
+        fi
+    done
+}
+
+setup_zshenv() {
+    local src dst
+    src="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/dots/.zshenv"
+    dst="${HOME}/.zshenv"
+
+    if [[ -f "${dst}" ]] || [[ -L "${dst}" ]]; then
+        run rm "${dst}"
+    fi
+
+    run ln -s "${src}" "${dst}"
+
+    if ! $DRY_RUN; then
+        echo "Symlinked:"
+        echo -e "\t${src}"
         echo -e "\tto"
-        echo -e "\t$dst\n"
-        ln -s "$src" "$dst"
+        echo -e "\t${dst}"
     fi
 }
 
-# Symlinks: $DOTFILES/zsh/dots/conf -> $XDG_CONFIG_DIR/zsh (i.e. $ZDOTDIR)
-function setup-zsh-conf() {
-    local src
-    local dst
-    local config
+setup_conf() {
+    local src dst
+    src="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/dots/conf"
+    dst="${HOME}/.config/zsh"
 
-    src="$(get-dots-path)/conf"
-    dst="$HOME/.config/zsh"
-
-    config="$(dirname "$dst")"
-
-    if [[ ! -d "$config" ]]; then
-        mkdir "$config"
+    if [[ ! -d "$(dirname "${dst}")" ]]; then
+        run mkdir -p "$(dirname "${dst}")"
     fi
 
-    if [[ -d "$dst" ]] || [[ -L "$dst" ]]; then
-        rm -rf "$dst"
+    if [[ -L "${dst}" ]] || [[ -f "${dst}" ]]; then
+        run rm "${dst}"
+    elif [[ -d "${dst}" ]]; then
+        echo "Warning: ${dst} is a real directory, not a symlink. Removing it."
+        run rm -rf "${dst}"
     fi
 
-    if [[ ! -d "$dst" ]] || [[ ! -L "$dst" ]]; then
-        echo -e "\nLinking:"
-        echo -e "\t$src"
+    run ln -s "${src}" "${dst}"
+
+    if ! $DRY_RUN; then
+        echo "Symlinked:"
+        echo -e "\t${src}"
         echo -e "\tto"
-        echo -e "\t$dst\n"
-        ln -s "$src" "$dst"
+        echo -e "\t${dst}"
     fi
 }
 
-function main() {
-    check-plugins-dir
-    clone-plugins
-    setup-zshenv
-    setup-zsh-conf
+main() {
+    setup_plugins
+    setup_zshenv
+    setup_conf
 }
+
+DRY_RUN=false
+
+while [[ "$1" == -* ]]; do
+    case "$1" in
+    -n | --dry-run) DRY_RUN=true ;;
+    esac
+    shift
+done
+
+$DRY_RUN && echo "NOTE: This is a dry-run. No changes will be made."
+
 main
