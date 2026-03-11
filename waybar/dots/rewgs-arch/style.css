@@ -1,8 +1,5 @@
-@import "../themes/gruvbox-material/index.css";
-
 * {
-    /* background-color: rgba(40, 44, 52, 1); */
-    background-color: @
+    background-color: rgba(40, 44, 52, 1);
 
     border: none;
     border-radius: 0;
