@@ -12,8 +12,10 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local hostname = vim.loop.os_gethostname()
 require("lazy").setup({
 	{ import = "plugins" .. "." .. "common" },
+	{ import = "plugins" .. "." .. hostname },
 }, {
 	checker = {
 		enabled = true,

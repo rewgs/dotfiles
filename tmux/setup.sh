@@ -2,6 +2,7 @@
 #
 # Symlinks `$DOTFILES/tmux/dots/tmux.conf` to `~/.tmux.conf`.
 # NOTE: Forcefully and silently pre-existing files or symlinks!
+# TODO: This needs to match a directory to a machine's hostname, not just the dots dir.
 
 tpm::main() {
     local src="$HOME/src"
@@ -46,8 +47,20 @@ tpm::main() {
 
 
 tmux::symlink-dotfiles() {
-    local dots="$(realpath "$(dirname "$BASH_SOURCE")"/dots)"
-    local src="$dots/tmux.conf"
+    local hostname="$HOSTNAME"
+    local dots="$(realpath "$(dirname $BASH_SOURCE)/dots/$hostname")"
+    local dots_dst="$HOME/.config/tmux"
+
+    if [[ -d "$dots_dst" ]] || [[ -L "$dots_dst" ]]; then
+        rm -rf "$dots_dst"
+    fi
+
+    if  [[ ! -L "$dots_dst" ]]; then
+        # echo -e "Symlinking $dots to $dots_dst"
+        ln -s "$dots" "$dots_dst"
+    fi
+
+    local src="$dots_dst/tmux.conf"
     local dst="$HOME/.tmux.conf"
 
     if [[ -f "$dst" ]] || [[ -L "$dst" ]]; then
@@ -55,6 +68,7 @@ tmux::symlink-dotfiles() {
     fi
 
     if [[ ! -L "$dst" ]]; then
+        # echo -e "Symlinking $src to $dst"
         ln -s "$src" "$dst"
     fi
 }

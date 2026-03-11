@@ -1,0 +1,3 @@
+[submodule "tmux/dots/rewgs-x2100/plugins/tmux-continuum"]
+	path = tmux/dots/rewgs-x2100/plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum
