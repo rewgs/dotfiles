@@ -2,7 +2,8 @@
 #
 # Sets up tmux:
 # - Finds the subdirectory in dots that matches $HOSTNAME; prompts if not found.
-# - Symlinks the matching dots dir to ~/.config/tmux.
+# - Creates ~/.config/tmux as a real directory and symlinks each item from the
+#   matching dots dir into it, keeping tpm plugin installs outside the dotfiles repo.
 # - Symlinks ~/.config/tmux/tmux.conf to ~/.tmux.conf.
 # - Clones tpm directly to ~/.tmux/plugins/tpm if not already present.
 #
@@ -80,21 +81,34 @@ setup_config() {
 
     local config_dst="${HOME}/.config/tmux"
 
-    if [[ -L "${config_dst}" ]] || [[ -f "${config_dst}" ]]; then
+    if [[ -L "${config_dst}" ]]; then
         run rm "${config_dst}"
-    elif [[ -d "${config_dst}" ]]; then
-        echo "Warning: ${config_dst} is a real directory, not a symlink. Removing it."
-        run rm -rf "${config_dst}"
     fi
 
-    run ln -s "${host_dir}" "${config_dst}"
-
-    if ! $DRY_RUN; then
-        echo "Symlinked:"
-        echo -e "\t${host_dir}"
-        echo -e "\tto"
-        echo -e "\t${config_dst}"
+    if [[ ! -d "${config_dst}" ]]; then
+        run mkdir -p "${config_dst}"
     fi
+
+    for item in "${host_dir}"/*; do
+        local name
+        name="$(basename "${item}")"
+        local dst="${config_dst}/${name}"
+
+        if [[ -L "${dst}" ]] || [[ -f "${dst}" ]]; then
+            run rm "${dst}"
+        elif [[ -d "${dst}" ]]; then
+            run rm -rf "${dst}"
+        fi
+
+        run ln -s "${item}" "${dst}"
+
+        if ! $DRY_RUN; then
+            echo "Symlinked:"
+            echo -e "\t${item}"
+            echo -e "\tto"
+            echo -e "\t${dst}"
+        fi
+    done
 
     local conf_dst="${HOME}/.tmux.conf"
 
