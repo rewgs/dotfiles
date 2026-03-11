@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Symlinks the files in dots dir to $HOME.
+# Run with -n/--dry-run flag to show what will happen and not actually execute.
 
 run() {
     if $DRY_RUN; then
