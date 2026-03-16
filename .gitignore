@@ -13,6 +13,7 @@ btop.log
 
 # nvim
 lazy-lock.json
+/nvim/dots/lua/plugins/machine
 
 # ruby
 .ruby-lsp

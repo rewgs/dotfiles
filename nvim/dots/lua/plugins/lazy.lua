@@ -12,10 +12,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local hostname = vim.loop.os_gethostname()
+local machine_dir = vim.fn.stdpath("config") .. "/lua/plugins/machine"
+local has_machine = vim.fn.isdirectory(machine_dir) == 1
+
 require("lazy").setup({
-	{ import = "plugins" .. "." .. "common" },
-	{ import = "plugins" .. "." .. hostname },
+	{ import = "plugins.common" },
+	has_machine and { import = "plugins.machine" } or nil,
 }, {
 	checker = {
 		enabled = true,
