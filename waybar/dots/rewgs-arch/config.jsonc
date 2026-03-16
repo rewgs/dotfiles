@@ -1,5 +1,5 @@
 [
-    // Apple Pro Display XDR
+    // Apple Pro Display XDR or Asus ProArt
     {
         "output": "DP-1",
         "layer": "top",     // Waybar at top layer
@@ -29,7 +29,6 @@
             "disable-scroll": true,
             "on-click": "activate",
             "warp-on-scroll": false,
-    
             "format": " {name}",
         },
     
@@ -112,7 +111,7 @@
 
     // LG DualUp
     {
-        "output": "DP-3",
+        "output": "HDMI-A-1",
         "layer": "top",     // Waybar at top layer
         "position": "top",  // Waybar position (top|bottom|left|right)
         "height": 24,       // Waybar height (to be removed for auto height)
