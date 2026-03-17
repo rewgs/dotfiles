@@ -9,7 +9,7 @@ profile laptop {
 }
 
 
-profile docked {
+profile docked-home {
     output eDP-1 disable
     output DP-1 enable {
         mode 6016x3384@60Hz
@@ -24,4 +24,17 @@ profile docked {
     }
 
     exec $HOME/dotfiles/utils/change-configs-by-kanshi-profile/main.py docked
+}
+
+profile docked-sns-bf2 {
+    output eDP-1 enable {
+        mode 2880x1800@90
+        position 0x1080
+        scale 2
+    }
+    output Dell Inc. DELL U4320Q BHD8R83 enable {
+        mode 3840x2160@60
+        position 0x0
+        scale 2
+    }
 }
