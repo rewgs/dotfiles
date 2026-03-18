@@ -35,6 +35,7 @@
         // docs: https://man.archlinux.org/man/extra/waybar/waybar-hyprland-window.5.en
         "hyprland/window": {
             "format": "{initialTitle}",
+            "separate-outputs": true
         },
         "pulseaudio": {
             "format": "{volume}% {icon} {format_source}",
@@ -146,6 +147,7 @@
         // docs: https://man.archlinux.org/man/extra/waybar/waybar-hyprland-window.5.en
         "hyprland/window": {
             "format": "{initialTitle}",
+            "separate-outputs": true
         },
         "pulseaudio": {
             "format": "{volume}% {icon} {format_source}",
