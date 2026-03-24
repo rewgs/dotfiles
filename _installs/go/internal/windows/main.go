@@ -1,3 +1,0 @@
-package windows
-
-func Setup() {}

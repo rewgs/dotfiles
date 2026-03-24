@@ -1,3 +1,0 @@
-package darwin
-
-func Setup() {}
