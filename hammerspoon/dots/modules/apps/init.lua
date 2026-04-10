@@ -2,21 +2,17 @@
 -- This file specifies global shortcuts for opening or focusing apps.
 --
 
-require("modules.mod-keys")
-local HYPER = Mod.hyper
+require("modules.mod")
 
-local BROWSER = "/Applications/Zen Browser.app/Contents/MacOS/zen"
-
-local TERMINAL = "/Applications/WezTerm.app/Contents/MacOS/wezterm"
-
-local MAIL = "/Applications/Mimestream.app/Contents/MacOS/Mimestream"
+local browser = "/Applications/Zen Browser.app/Contents/MacOS/zen"
+local terminaL = "/Applications/WezTerm.app/Contents/MacOS/wezterm"
+local mail = "/Applications/Mimestream.app/Contents/MacOS/Mimestream"
 
 local apps = {
-	{ mod = HYPER, key = "return", app = TERMINAL },
-	{ mod = HYPER, key = "e", app = "Finder" },
-	{ mod = HYPER, key = "i", app = BROWSER },
-	{ mod = HYPER, key = "o", app = "Obsidian" },
-	{ mod = HYPER, key = "m", app = MAIL },
+	{ mod = Mod.Hyper, key = "return", app = terminaL },
+	{ mod = Mod.Hyper, key = "e", app = "Finder" },
+	-- { mod = Mod.Hyper, key = "i", app = browser },
+	{ mod = Mod.Hyper, key = "m", app = MAIL },
 }
 
 local function bind_keys(kbs)

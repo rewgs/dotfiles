@@ -1,4 +1,4 @@
-require("modules.mod-keys")
+require("modules.mod")
 
 local hyper = Mod.hyper
 local shyper = Mod.sHyper
