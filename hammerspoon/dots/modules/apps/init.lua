@@ -5,11 +5,12 @@
 require("modules.mod")
 
 local browser = "/Applications/Zen Browser.app/Contents/MacOS/zen"
-local terminaL = "/Applications/WezTerm.app/Contents/MacOS/wezterm"
 local mail = "/Applications/Mimestream.app/Contents/MacOS/Mimestream"
+local terminal = "/Applications/iTerm.app/Contents/MacOS/iTerm2"
+-- local terminal = "/Applications/WezTerm.app/Contents/MacOS/wezterm"
 
 local apps = {
-	{ mod = Mod.Hyper, key = "return", app = terminaL },
+	{ mod = Mod.Hyper, key = "return", app = terminal },
 	{ mod = Mod.Hyper, key = "e", app = "Finder" },
 	-- { mod = Mod.Hyper, key = "i", app = browser },
 	{ mod = Mod.Hyper, key = "m", app = MAIL },
