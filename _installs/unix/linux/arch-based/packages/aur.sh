@@ -5,6 +5,7 @@ aur_helper="paru"
 packages=(
     "1password"
     "cbonsai"
+    "downgrade" # https://aur.archlinux.org/packages/downgrade
     "google-chrome-wayland-vulkan"
     "gotop-bin" # like htop, ytop, etc written in go; also gotop-bin available
     "hyprshot"  # screenshot utility for Hyprland
