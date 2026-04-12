@@ -1,6 +1,6 @@
 // mod keys
-const HYPER = ["command", "option", "control"];
-const SHYPER = ["command", "option", "control", "shift"];
+const HYPER = ["command", "control"];
+const SHYPER = ["command", "control", "shift"];
 
 //-----------------------------------------------------------------------------
 // META
