@@ -1,6 +1,8 @@
 // mod keys
 const HYPER = ["command", "control"];
+const OHYPER = ["command", "option", "control"];
 const SHYPER = ["command", "control", "shift"];
+const SOHYPER = ["command", "option", "control", "shift"];
 
 //-----------------------------------------------------------------------------
 // META
@@ -74,72 +76,62 @@ const rightHalf = Key.on("l", HYPER, () => {
 
 // 1/3
 
-// TODO: update
-//
-// const leftThird = Key.on("h", OHYPER, () => {
-//   const window = Window.focused();
-//   const screenFrame = window.screen().flippedVisibleFrame();
-//   window.setFrame({
-//     x: screenFrame.x,
-//     y: screenFrame.y,
-//     width: screenFrame.width / 3,
-//     height: screenFrame.height,
-//   });
-// });
+const leftThird = Key.on("h", OHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x,
+    y: screenFrame.y,
+    width: screenFrame.width / 3,
+    height: screenFrame.height,
+  });
+});
 
-// TODO: update
-//
-// const centerThird = Key.on("k", OHYPER, () => {
-//   const window = Window.focused();
-//   const screenFrame = window.screen().flippedVisibleFrame();
-//   window.setFrame({
-//     x: screenFrame.x + screenFrame.width / 3,
-//     y: screenFrame.y,
-//     width: screenFrame.width / 3,
-//     height: screenFrame.height,
-//   });
-// });
+const centerThird = Key.on("k", OHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x + screenFrame.width / 3,
+    y: screenFrame.y,
+    width: screenFrame.width / 3,
+    height: screenFrame.height,
+  });
+});
 
-// TODO: update
-//
-// const rightThird = Key.on("l", OHYPER, () => {
-//   const window = Window.focused();
-//   const screenFrame = window.screen().flippedVisibleFrame();
-//   window.setFrame({
-//     x: screenFrame.x + screenFrame.width / 1.5,
-//     y: screenFrame.y,
-//     width: screenFrame.width / 3,
-//     height: screenFrame.height,
-//   });
-// });
+const rightThird = Key.on("l", OHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x + screenFrame.width / 1.5,
+    y: screenFrame.y,
+    width: screenFrame.width / 3,
+    height: screenFrame.height,
+  });
+});
 
 // 2/3
 
-// TODO: update
-//
-// const leftTwoThirds = Key.on("h", SOHYPER, () => {
-//   const window = Window.focused();
-//   const screenFrame = window.screen().flippedVisibleFrame();
-//   window.setFrame({
-//     x: screenFrame.x,
-//     y: screenFrame.y,
-//     width: screenFrame.width / 1.5,
-//     height: screenFrame.height,
-//   });
-// });
+const leftTwoThirds = Key.on("h", SOHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x,
+    y: screenFrame.y,
+    width: screenFrame.width / 1.5,
+    height: screenFrame.height,
+  });
+});
 
-// TODO: update
-//
-// const rightTwoThirds = Key.on("l", SOHYPER, () => {
-//   const window = Window.focused();
-//   const screenFrame = window.screen().flippedVisibleFrame();
-//   window.setFrame({
-//     x: screenFrame.x + screenFrame.width / 3,
-//     y: screenFrame.y,
-//     width: screenFrame.width / 1.5,
-//     height: screenFrame.height,
-//   });
-// });
+const rightTwoThirds = Key.on("l", SOHYPER, () => {
+  const window = Window.focused();
+  const screenFrame = window.screen().flippedVisibleFrame();
+  window.setFrame({
+    x: screenFrame.x + screenFrame.width / 3,
+    y: screenFrame.y,
+    width: screenFrame.width / 1.5,
+    height: screenFrame.height,
+  });
+});
 
 // quarters
 
