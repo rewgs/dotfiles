@@ -1,7 +1,7 @@
 local yabaiOutput, _, _, _ = hs.execute("which yabai", true)
 local YABAI = string.gsub(yabaiOutput, "%s+", "")
 
-require("mod-keys")
+require("hammmodules.mod")
 local utils = require("utils")
 
 local HYPER = Mod.hyper

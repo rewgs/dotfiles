@@ -1,4 +1,4 @@
-require("modules.mod-keys")
+require("modules.mod")
 
 hs.loadSpoon("WindowHalfsAndThirds")
 

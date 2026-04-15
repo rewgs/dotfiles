@@ -1,7 +1,7 @@
 local spoons = os.getenv("HOME") .. "/src" .. "/Spoons" .. "/Spoons" .. "/?.spoon/init.lua"
 package.path = package.path .. ";" .. spoons
 
-require("modules.mod-keys")
+require("modules.mod")
 require("modules.reload")
 require("modules.apps.init")
 

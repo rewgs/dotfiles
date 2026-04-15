@@ -72,3 +72,5 @@ keybind = cmd+shift+l=resize_split:right,50
 # misc
 keybind = cmd+f=toggle_fullscreen
 # keybind = cmd+o=toggle_tab_overview # not working
+
+background-opacity = 1.00
