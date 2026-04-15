@@ -86,11 +86,13 @@ return {
 			ensure_installed = {
 				"clangd",
 				"gopls",
+				"html-lsp",
 				"lua_ls",
 				"ruby_lsp",
 				"svelte",
 				"ts_ls",
 			},
+
 			handlers = {
 				-- Default handler for installed servers
 				function(server_name)
@@ -100,91 +102,95 @@ return {
 				end,
 
 				["gopls"] = function()
-				lspconfig["gopls"].setup({
-					capabilities = capabilities,
-					settings = {
-						gopls = {
-							analyses = { shadow = true, unusedwrite = true, unusedvariable = true },
-							staticcheck = true,
-							gofumpt = true,
-							hints = {
-								assignVariableTypes = true,
-								compositeLiteralFields = true,
-								compositeLiteralTypes = true,
-								constantValues = true,
-								functionTypeParameters = true,
-								parameterNames = true,
-								rangeVariableTypes = true,
+					lspconfig["gopls"].setup({
+						capabilities = capabilities,
+						settings = {
+							gopls = {
+								analyses = { shadow = true, unusedwrite = true, unusedvariable = true },
+								staticcheck = true,
+								gofumpt = true,
+								hints = {
+									assignVariableTypes = true,
+									compositeLiteralFields = true,
+									compositeLiteralTypes = true,
+									constantValues = true,
+									functionTypeParameters = true,
+									parameterNames = true,
+									rangeVariableTypes = true,
+								},
 							},
 						},
-					},
-				})
-			end,
+					})
+				end,
 
-			-- Custom handlers for specified servers
-			-- Lua
-			["lua_ls"] = function()
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							-- Makes the language server recognize "vim" global
-							diagnostics = {
-								disable = { "missing-fields" },
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				})
-			end,
+				["html"] = function()
+					lspconfig["html"].setup({
+						capabilities = capabilities,
+					})
+				end,
 
-			["basedpyright"] = function()
-				lspconfig["basedpyright"].setup({
-					settings = {
-						basedpyright = {
-							analysis = {
-								autoSearchPaths = true,
-								diagnosticMode = "workspace",
-								useLibraryCodeForTypes = true,
-							},
-							-- Using Ruff's import organizer
-							disableOrganizeImports = true,
-							-- reportAttributeAccessIssue = false,
-							-- reportUnannotatedClassAttribute = false,
-							-- reportIncompatibleUnannotatedOverride = false,
-						},
-						python = {
-							analysis = {
-								-- Ignore all files for analysis to exclusively use Ruff for linting
-								ignore = { "*" },
+				["lua_ls"] = function()
+					lspconfig["lua_ls"].setup({
+						capabilities = capabilities,
+						settings = {
+							Lua = {
+								-- Makes the language server recognize "vim" global
+								diagnostics = {
+									disable = { "missing-fields" },
+									globals = { "vim" },
+								},
+								completion = {
+									callSnippet = "Replace",
+								},
 							},
 						},
-					},
-				})
-			end,
+					})
+				end,
 
-			["ruff"] = function()
-				lspconfig["ruff"].setup({
-					capabilities = capabilities,
-					settings = {},
-				})
-			end,
+				["basedpyright"] = function()
+					lspconfig["basedpyright"].setup({
+						settings = {
+							basedpyright = {
+								analysis = {
+									autoSearchPaths = true,
+									diagnosticMode = "workspace",
+									useLibraryCodeForTypes = true,
+								},
+								-- Using Ruff's import organizer
+								disableOrganizeImports = true,
+								-- reportAttributeAccessIssue = false,
+								-- reportUnannotatedClassAttribute = false,
+								-- reportIncompatibleUnannotatedOverride = false,
+							},
+							python = {
+								analysis = {
+									-- Ignore all files for analysis to exclusively use Ruff for linting
+									ignore = { "*" },
+								},
+							},
+						},
+					})
+				end,
 
-			["black"] = function()
-				lspconfig["black"].setup({
-					prepend_args = { "--line-length", "120" },
-				})
-			end,
+				["ruff"] = function()
+					lspconfig["ruff"].setup({
+						capabilities = capabilities,
+						settings = {},
+					})
+				end,
 
-			["ts_ls"] = function()
-				lspconfig["ts_ls"].setup({
-					capabilities = capabilities,
-					settings = {},
-				})
-			end,
+				["black"] = function()
+					lspconfig["black"].setup({
+						prepend_args = { "--line-length", "120" },
+					})
+				end,
+
+				["ts_ls"] = function()
+					lspconfig["ts_ls"].setup({
+						capabilities = capabilities,
+						settings = {},
+					})
+				end,
 			},
 		})
 	end,

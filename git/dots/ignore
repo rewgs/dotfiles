@@ -22,3 +22,5 @@ venv
 # random files
 ._* # ZFS cache files
 .DS_Store
+
+**/.claude/settings.local.json
