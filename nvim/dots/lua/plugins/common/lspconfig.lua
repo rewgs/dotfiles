@@ -86,7 +86,7 @@ return {
 			ensure_installed = {
 				"clangd",
 				"gopls",
-				"html-lsp",
+				"html",
 				"lua_ls",
 				"ruby_lsp",
 				"svelte",
