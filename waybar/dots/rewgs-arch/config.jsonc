@@ -13,8 +13,11 @@
             "hyprland/window"
         ],
         "modules-right": [
+            // "group/tray-expander",
             "tray",
+            // "bluetooth",
             "pulseaudio", 
+            "custom/ddc_brightness",
             "network", 
             "cpu",
             "memory",
@@ -138,6 +141,18 @@
             "format": " {:%I:%M %p}",
             "timezone": "America/Los_Angeles",
             "tooltip": false
+        },
+        "custom/ddc_brightness": {
+            "format": "{icon}",
+            "format-icons": ["", "", "", "", ""],
+            "exec": "bash -c 'v=$(ddcutil getvcp 10 | grep -oP \"current value =\\s*\\K[0-9]+\"); echo \"{\\\"percentage\\\": ${v:-0}}\"'",
+            "return-type": "json",
+            "on-scroll-up": "ddcutil setvcp 10 + 5",
+            "on-scroll-down": "ddcutil setvcp 10 - 5",
+            "on-click": "ddcutil setvcp 10 50",
+            "interval": 6,
+            "tooltip": true,
+            "tooltip-format": "Brightness: {percentage}%"
         }
     }
 ]
