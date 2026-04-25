@@ -47,7 +47,7 @@ button:hover {
 #workspaces button {
     /* color: rgba(178, 183, 193, 0.3); */
     color: @bg5;
-    padding: 0 4px;
+    padding: 0 0px;
 }
 
 #clock,
