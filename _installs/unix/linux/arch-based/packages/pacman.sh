@@ -77,6 +77,7 @@ packages=(
     "thefuck"
     "thunderbird"
     "tldr"
+    "traceroute"
     "tree"
     "unzip"
     "vifm" # cli file manager

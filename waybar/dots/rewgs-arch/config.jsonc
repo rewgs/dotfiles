@@ -14,6 +14,7 @@
         ],
         "modules-right": [
             "tray",
+            "custom/ddc_brightness",
             "pulseaudio", 
             "network", 
             "cpu",
@@ -103,6 +104,20 @@
             "icon-size": 14,
             "spacing": 10,
         },
+        "custom/ddc_brightness": {
+            "format": "{icon}",
+            "format-icons": ["", "", "", "", ""],
+            "exec": "bash -c 'v=$(ddcutil getvcp 10 | grep -oP \"current value =\\s*\\K[0-9]+\"); echo \"{\\\"percentage\\\": ${v:-0}}\"'",
+            "return-type": "json",
+            // "on-scroll-up": "ddcutil setvcp 10 + 15",
+            // "on-scroll-down": "ddcutil setvcp 10 - 15",
+            // "on-click": "ddcutil setvcp 10 100",
+            "on-click": "ddcutil setvcp 10 - 20",
+            "on-click-right": "ddcutil setvcp 10 + 20",
+            "interval": 1,
+            "tooltip": true,
+            "tooltip-format": "Brightness: {percentage}%"
+        }
     },
 
     

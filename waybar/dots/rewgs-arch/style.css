@@ -263,3 +263,10 @@ button:hover {
 /* #privacy-item.audio-out { */
 /*     background-color: transparent; */
 /* } */
+
+#custom-ddc_brightness {
+    /* Add your preferred background color here, e.g., #90b1b1 */
+    padding: 0 3px;
+    margin: 0 5px;
+    border-radius: 5px;
+}

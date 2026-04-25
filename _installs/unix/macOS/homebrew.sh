@@ -3,7 +3,7 @@
 # Installs packages via Homebrew package manager.
 
 
-homebrew::mainline-packages() {
+function mainline-packages {
     packages=(
         "bettercap"
         "bpytop"
@@ -42,7 +42,7 @@ homebrew::mainline-packages() {
 }
 
 
-homebrew::casks() {
+function casks {
     packages=(
         # "amethyst"
         "barrier"
@@ -70,7 +70,7 @@ homebrew::casks() {
 }
 
 
-homebrew::taps() {
+function taps {
     # Due to zsh not having nested arrays, the simplest way to keep tap and 
     # package installation commands together is to simply list them in order; 
     # therefore, always list the tap before the installation.
@@ -93,4 +93,11 @@ homebrew::taps() {
     for p in "${packages[@]}"; do
         brew "$p"
     done
+}
+
+
+function main {
+    mainline-packages
+    casks
+    taps
 }
