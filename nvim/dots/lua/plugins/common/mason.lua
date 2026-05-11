@@ -29,7 +29,7 @@ return {
 				-- formatters
 				"isort",
 				-- "autopep8",
-				"black",
+				-- "black",
 				"prettier",
 				-- "prettierd",
 				"stylua",

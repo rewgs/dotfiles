@@ -1,4 +1,4 @@
-Mod = {
+local mod = {
 	Hyper = { "cmd", "ctrl" },
 	-- oHyper = { "cmd", "ctrl", "option" },
 	-- sHyper = { "cmd", "ctrl", "shift" },
@@ -6,4 +6,6 @@ Mod = {
 	Shyper = { "cmd", "ctrl", "shift" },
 }
 
-return Mod
+return {
+	mod = mod,
+}

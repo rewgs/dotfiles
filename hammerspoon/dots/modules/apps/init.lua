@@ -2,26 +2,41 @@
 -- This file specifies global shortcuts for opening or focusing apps.
 --
 
-require("modules.mod")
+local mod = require("mod").mod
+local App = require("app").App
 
-local browser = "/Applications/Zen Browser.app/Contents/MacOS/zen"
-local mail = "/Applications/Mimestream.app/Contents/MacOS/Mimestream"
-local terminal = "/Applications/iTerm.app/Contents/MacOS/iTerm2"
--- local terminal = "/Applications/WezTerm.app/Contents/MacOS/wezterm"
+-- local hostname = socket.dns.gethostname()
+local username = os.getenv("USER") or os.getenv("USERNAME") or os.getenv("LOGNAME")
+
+local adminApp = "/Applications/"
+local userApp = "/Users/"
 
 local apps = {
-	{ mod = Mod.Hyper, key = "return", app = terminal },
-	{ mod = Mod.Hyper, key = "e", app = "Finder" },
-	-- { mod = Mod.Hyper, key = "i", app = browser },
-	{ mod = Mod.Hyper, key = "m", app = MAIL },
+	iterm2 = App:New("iTerm2"),
+	mimestream = App:New("Mimestream"),
+	zen = App:New("Zen"),
 }
 
-local function bind_keys(kbs)
-	for _, b in ipairs(kbs) do
-		hs.hotkey.bind(b.mod, b.key, function()
-			hs.application.launchOrFocus(b.app)
-		end)
-	end
-end
+local terminal = apps.iterm2
+local mail = apps.mimestream
+local browser = apps.zen
+
+-- TODO: Change to {mod = app.mod, key = app.key, name = app.name}
+local apps = {
+	{ mod = mod.Hyper, key = "return", app = terminal },
+	{ mod = mod.Hyper, key = "e", app = "Finder" },
+	{ mod = mod.Hyper, key = "i", app = browser },
+	{ mod = mod.Hyper, key = "m", app = mail },
+}
+
+-- FIXME:
+--
+-- local function bind_keys(apps)
+-- 	for _, app in ipairs(apps) do
+-- 		hs.hotkey.bind(app.mod, app.key, function()
+-- 			hs.application.launchOrFocus(app.path()
+-- 		end)
+-- 	end
+-- end
 
 bind_keys(apps)

@@ -2,7 +2,7 @@
 #
 # Sets up hammerspoon dotfiles.
 
-hammerspoon::symlink-dotfiles() {
+function symlink-dotfiles() {
     local src="$1"
     local dst="$HOME/.hammerspoon"
 
@@ -24,7 +24,7 @@ hammerspoon::symlink-dotfiles() {
 # Kinda hate that, as the only easy way to work with that is to keep the Spoons 
 # repo in my dotfiles repo as a git submodule.
 # That's just messy. Do not want.
-hammerspoon::spoons() {
+function spoons() {
     local src="$HOME/src"
 
     local repo_url="https://github.com/Hammerspoon/Spoons"
@@ -34,7 +34,7 @@ hammerspoon::spoons() {
         "WindowHalfsAndThirds"
     )
 
-    spoons::clone-repo() {
+    function clone-repo() {
         if [[ ! -d "$src" ]]; then 
             mkdir -p "$src"
         fi
@@ -50,7 +50,7 @@ hammerspoon::spoons() {
         return 0
     }
 
-    install-spoon() {
+    function install-spoon() {
         local spoon="$1"
         local spoons_dir="$repo_clone/Spoons"
         for file in "$spoons_dir"/*; do
@@ -86,17 +86,17 @@ hammerspoon::spoons() {
         done
     }
 
-    spoons::clone-repo
+    clone-repo
 
     for spoon in "${spoons[@]}"; do
         install-spoon "$spoon"
     done
 }
 
-hammerspoon::main() {
+main() {
     local dots="$(realpath "$(dirname "$BASH_SOURCE")/dots")"
 
-    hammerspoon::spoons
-    hammerspoon::symlink-dotfiles "$dots"
+    spoons
+    symlink-dotfiles "$dots"
 }
-hammerspoon::main
+main

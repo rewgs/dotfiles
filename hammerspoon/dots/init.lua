@@ -3,7 +3,7 @@ package.path = package.path .. ";" .. spoons
 
 require("modules.mod")
 require("modules.reload")
-require("modules.apps.init")
+-- require("modules.apps.init")
 
 -- NOTE: Using Phoenix for this until I can sort out Firefox.
 -- require("modules.window-management")

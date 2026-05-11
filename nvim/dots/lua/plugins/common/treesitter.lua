@@ -21,6 +21,9 @@ return {
 			-- improves syntax highlighting
 			highlight = {
 				enable = true,
+				-- workaround for Neovim 0.12.x nil-node injection bug in markdown fences
+				disable = { "markdown" },
+				additional_vim_regex_highlighting = { "markdown" },
 			},
 
 			-- improves indentation behavior

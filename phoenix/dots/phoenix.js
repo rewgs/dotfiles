@@ -4,10 +4,6 @@ const OHYPER = ["command", "option", "control"];
 const SHYPER = ["command", "control", "shift"];
 const SOHYPER = ["command", "option", "control", "shift"];
 
-//-----------------------------------------------------------------------------
-// META
-//-----------------------------------------------------------------------------
-
 Phoenix.set({
   daemon: false,
   openAtLogin: true,
@@ -22,31 +18,43 @@ Phoenix.set({
 // WINDOW MANAGEMENT
 //-----------------------------------------------------------------------------
 
-// const focusWest = Key.on("h", OHYPER, () => {
+// const focusWest = Key.on("h", HYPER, () => {
 //     const window = Window.focused();
-//     window.focusClosestNeighbor("west");
+//     if (window !== undefined) {
+//         window.focusClosestNeighbor("west");
+//     }
+//     return;
 // });
-//
-// const focusSouth = Key.on("j", OHYPER, () => {
+
+// const focusSouth = Key.on("j", HYPER, () => {
 //     const window = Window.focused();
-//     window.focusClosestNeighbor("south");
+//     if (window !== undefined) {
+//         window.focusClosestNeighbor("south");
+//     }
+//     return;
 // });
-//
-// const focusNorth = Key.on("k", OHYPER, () => {
+
+// const focusNorth = Key.on("k", HYPER, () => {
 //     const window = Window.focused();
-//     window.focusClosestNeighbor("north");
+//     if (window !== undefined) {
+//         window.focusClosestNeighbor("north");
+//     }
+//     return;
 // });
-//
-// const focusEast = Key.on("l", OHYPER, () => {
+
+// const focusEast = Key.on("l", HYPER, () => {
 //     const window = Window.focused();
-//     window.focusClosestNeighbor("east");
+//     if (window !== undefined) {
+//         window.focusClosestNeighbor("east");
+//     }
+//     return;
 // });
 
 //--------------------------------------
 // window tiling
 //--------------------------------------
 
-const maximized = Key.on("k", HYPER, () => {
+const maximize = Key.on("k", HYPER, () => {
   Window.focused().maximize();
 });
 
