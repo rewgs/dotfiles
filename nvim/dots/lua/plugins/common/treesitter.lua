@@ -1,32 +1,11 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	branch = "master",
+	branch = "main",
 	event = { "BufReadPre", "BufNewFile" }, -- Instructs Lazy to load this plugin only when these events happen, i.e. whenever a new buffer or file is opened.
 	build = ":TSUpdate",
 	config = function()
-		local treesitter = require("nvim-treesitter.configs")
-
-		treesitter.setup({
-			-- A list of parser names, or "all" (the listed parsers MUST always be installed)
-			-- Install parsers synchronously (only applied to `ensure_installed`)
-			sync_install = false,
-
-			-- Automatically install missing parsers when entering buffer
-			-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+		require("nvim-treesitter").setup({
 			auto_install = true,
-
-			-- List of parsers to ignore installing (or "all")
-			ignore_install = {},
-
-			-- improves syntax highlighting
-			highlight = {
-				enable = true,
-			},
-
-			-- improves indentation behavior
-			indent = {
-				enable = true,
-			},
 			ensure_installed = {
 				"bash",
 				"c",
@@ -51,17 +30,19 @@ return {
 				"vimdoc",
 				"yaml",
 			},
+		})
 
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					-- TODO: Figure out better key bindings for this.
-					-- init_selection = "<C-Space>",
-					-- node_incremental = "C-Space",
-					-- scope_incremental = false,
-					-- node_decremental = "<BS>",
-				},
-			},
+		-- Enable treesitter-based highlighting and indentation for all filetypes
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function(ev)
+				local buf = ev.buf
+				local ft = vim.bo[buf].filetype
+				local lang = vim.treesitter.language.get_lang(ft) or ft
+				local ok = pcall(vim.treesitter.start, buf, lang)
+				if ok then
+					vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end
+			end,
 		})
 	end,
 }
