@@ -1,70 +1,53 @@
+local langs = {
+	"bash",
+	"c",
+	"c_sharp",
+	"cpp",
+	"css",
+	"dockerfile",
+	"gitignore",
+	"go",
+	"html",
+	"javascript",
+	"json",
+	"lua",
+	"markdown",
+	"markdown_inline",
+	"python",
+	"ruby",
+	"rust",
+	"tsx",
+	"typescript",
+	"vim",
+	"vimdoc",
+	"yaml",
+}
+
 return {
 	"nvim-treesitter/nvim-treesitter",
-	branch = "master",
-	event = { "BufReadPre", "BufNewFile" }, -- Instructs Lazy to load this plugin only when these events happen, i.e. whenever a new buffer or file is opened.
+	branch = "main",
+	event = { "BufReadPre", "BufNewFile" },
 	build = ":TSUpdate",
 	config = function()
-		local treesitter = require("nvim-treesitter.configs")
+		require("nvim-treesitter").setup()
 
-		treesitter.setup({
-			-- A list of parser names, or "all" (the listed parsers MUST always be installed)
-			-- Install parsers synchronously (only applied to `ensure_installed`)
-			sync_install = false,
+		-- The main branch API dropped ensure_installed/auto_install from setup().
+		-- Install any missing parsers from our list on startup.
+		require("nvim-treesitter.install").install(langs)
 
-			-- Automatically install missing parsers when entering buffer
-			-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-			auto_install = true,
-
-			-- List of parsers to ignore installing (or "all")
-			ignore_install = {},
-
-			-- improves syntax highlighting
-			highlight = {
-				enable = true,
-				-- workaround for Neovim 0.12.x nil-node injection bug in markdown fences
-				disable = { "markdown" },
-				additional_vim_regex_highlighting = { "markdown" },
-			},
-
-			-- improves indentation behavior
-			indent = {
-				enable = true,
-			},
-			ensure_installed = {
-				"bash",
-				"c",
-				"c_sharp",
-				"cpp",
-				"css",
-				"dockerfile",
-				"gitignore",
-				"go",
-				"html",
-				"javascript",
-				"json",
-				"lua",
-				"markdown",
-				"markdown_inline",
-				"python",
-				"ruby",
-				"rust",
-				"tsx",
-				"typescript",
-				"vim",
-				"vimdoc",
-				"yaml",
-			},
-
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					-- TODO: Figure out better key bindings for this.
-					-- init_selection = "<C-Space>",
-					-- node_incremental = "C-Space",
-					-- scope_incremental = false,
-					-- node_decremental = "<BS>",
-				},
-			},
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function(ev)
+				local buf = ev.buf
+				local ft = vim.bo[buf].filetype
+				local lang = vim.treesitter.language.get_lang(ft) or ft
+				local ok = pcall(vim.treesitter.start, buf, lang)
+				if ok then
+					vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				else
+					-- Parser not in our list — try to auto-install it.
+					pcall(require("nvim-treesitter.install").install, { lang })
+				end
+			end,
 		})
 	end,
 }
