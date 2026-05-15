@@ -1,20 +1,20 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Variables/
 
 hl.config({
-    input = {
-        kb_layout  = "us",
-        kb_variant = "",
-        kb_model   = "",
-        kb_options = "caps:swapescape",  -- swaps Caps Lock and Escape
-        kb_rules   = "",
+	input = {
+		kb_layout = "us",
+		kb_variant = "",
+		kb_model = "",
+		kb_options = "caps:swapescape", -- swaps Caps Lock and Escape
+		kb_rules = "",
 
-        follow_mouse = 2,
-        sensitivity  = -0.25,  -- -1.0 - 1.0, 0 means no modification
+		follow_mouse = 2,
+		sensitivity = -0.25, -- -1.0 - 1.0, 0 means no modification
 
-        touchpad = {
-            disable_while_typing = true,
-            natural_scroll       = true,
-            scroll_factor        = 0.25,
-        },
-    },
+		touchpad = {
+			disable_while_typing = true,
+			natural_scroll = true,
+			scroll_factor = 0.25,
+		},
+	},
 })

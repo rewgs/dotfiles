@@ -6,7 +6,7 @@
 
 -- Asus ProArt 6k
 -- 200% looks like 3008x1692
-hl.monitor({ output = "DP-2", mode = "6016x3384@59.99", position = "0x0",    scale = 2 })
+hl.monitor({ output = "DP-2", mode = "6016x3384@59.99", position = "0x0", scale = 2 })
 -- hl.monitor({ output = "ASUSTek COMPUTER INC PA32QCV T7LMSV009353", mode = "6016x3384@59.99", position = "0x0", scale = 2 })
 
 -- LG DualUp

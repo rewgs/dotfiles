@@ -1,4 +1,4 @@
-mainMod      = "SUPER"
+mainMod = "SUPER"
 
 -- fileExplorer = "dolphin"
 fileExplorer = "nautilus"
