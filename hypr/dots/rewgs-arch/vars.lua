@@ -1,0 +1,18 @@
+mainMod      = "SUPER"
+
+-- fileExplorer = "dolphin"
+fileExplorer = "nautilus"
+-- fileExplorer = "thunar"
+
+-- terminal  = "ghostty"
+-- terminal  = "kitty"
+terminal = "wezterm"
+
+-- launcher = "dmenu-wl_run --font-name \"Inter\" --insensitive"
+launcher = "fuzzel"
+-- launcher = "rofi -show run"
+-- launcher = "tofi-drun"
+
+browser = "zen-browser"
+-- browser = "firefox"
+-- browser = "google-chrome-stable"
