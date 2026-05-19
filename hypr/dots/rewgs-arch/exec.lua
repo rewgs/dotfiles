@@ -1,5 +1,7 @@
 hl.on("hyprland.start", function()
+	-- NOTE: This is crashing since the move to Lua.
 	hl.exec_cmd("hypridle")
+
 	hl.exec_cmd("waybar")
 	-- hl.exec_cmd("kanshi")
 	hl.exec_cmd("hyprpm reload -n") -- loads plugins at startup; -n sends a notification if anything goes wrong
@@ -26,21 +28,4 @@ hl.on("hyprland.start", function()
 
 	-- random wallpaper using my script
 	-- hl.exec_cmd("swaybg --image \"$(python3 ~/dotfiles/hypr/dots/scripts/random-wallpaper.py)\" --mode fill")
-
-	-- =========================================================================
-	-- startup apps/workspaces
-	-- =========================================================================
-
-	-- FIXME: API change broke the stuff below.
-
-	-- -------------------------------------------------------------------------
-	-- 1 - main
-	-- -------------------------------------------------------------------------
-
-	-- hl.exec_cmd("[workspace 1 silent] ghostty")
-
-	-- -------------------------------------------------------------------------
-	-- 10 - Obsidian
-	-- -------------------------------------------------------------------------
-	-- hl.exec_cmd("[workspace 10 silent] obsidian")
 end)
