@@ -47,8 +47,8 @@ hl.bind("ALT + Tab", hl.dsp.group.next())
 hl.bind("ALT + SHIFT + Tab", hl.dsp.group.prev())
 
 -- Move window position within group (currently also used as tmux binds)
-hl.bind(mainMod .. " + ALT + CTRL + l", hl.dsp.layout("movegroupwindow f"))
-hl.bind(mainMod .. " + ALT + CTRL + h", hl.dsp.layout("movegroupwindow b"))
+hl.bind(mainMod .. " + ALT + CTRL + l", hl.dsp.group.move_window())
+hl.bind(mainMod .. " + ALT + CTRL + h", hl.dsp.group.move_window({ forward = false }))
 
 -- =============================================================================
 -- Focus
