@@ -168,14 +168,28 @@ fi
 # (`--tmux` is silently ignored if not running in a tmux session).
 # export FZF_DEFAULT_OPTS='--tmux 85%,50%'
 
-# homebrew - Linux (NOTE: macOS brew is handedl in .zshenv)
+# homebrew - macOS
+if [[ $(uname) == "Darwin" ]]; then
+    export PATH="$PATH:/opt/homebrew/bin"
+    export PATH="$PATH:/opt/homebrew/sbin"
+    export PATH="$PATH:/opt/homebrew/Cellar"
+
+    # Sets install path to user applications instead of global
+    export HOMEBREW_CASK_OPTS="--apdir=~/Applications"
+
+    export HOMEBREW_NO_ENV_HINTS=1
+    export HOMEBREW_NO_AUTO_UPDATE=1 # Prevents homebrew from automatically updating all packages when installing a package.
+    export HOMEBREW_NO_INSTALL_UPGRADE=1
+fi
+
+# homebrew - Linux 
 if [[ "$(uname)" == "Linux" ]] && [[ -d "/home/linuxbrew" ]]; then
     # NOTE: Using `smartcache eval` doesn't appear to work
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-    HOMEBREW_NO_ENV_HINTS=1
-    HOMEBREW_NO_AUTO_UPDATE=1 # Prevents homebrew from automatically updating all packages when installing a package.
-    HOMEBREW_NO_INSTALL_UPGRADE=1
+    export HOMEBREW_NO_ENV_HINTS=1
+    export HOMEBREW_NO_AUTO_UPDATE=1 # Prevents homebrew from automatically updating all packages when installing a package.
+    export HOMEBREW_NO_INSTALL_UPGRADE=1
 fi
 
 # FIXME: this is saying that lua is a bad interpreter on macOS.
@@ -218,8 +232,10 @@ fi
 
 # rbenv
 if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
+    # FIXME: not working on macOS now
     if [[ "$(uname)" == "Darwin" ]]; then
-        smartcache eval ~/.rbenv/bin/rbenv init - zsh
+        # smartcache eval ~/.rbenv/bin/rbenv init - zsh
+        eval "$(~/.rbenv/bin/rbenv init - zsh)"
     fi
 
     # FIXME: smartcache isn't working for rbenv on Linux. Results in `command not found`.
@@ -228,8 +244,7 @@ if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
     fi
 
     FPATH=~/.rbenv/completions:"$FPATH"
-    autoload -U compinit
-    compinit
+    autoload -U compinit; compinit
 fi
 
 # rust
