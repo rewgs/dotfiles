@@ -16,7 +16,7 @@ export LS_COLORS
 # for macOS, and .zshrc for Linux.
 if [[ "$(uname)" == "Darwin" ]]; then
     # NOTE: Can't use smartcache for some reason.
-    eval "$(brew shellenv)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Added by OrbStack: command-line tools and integration
