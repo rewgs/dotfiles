@@ -16,5 +16,5 @@ require("workspaces")
 require("xwayland")
 
 -- common
-require("common-binds")
-require("layouts")
+require("common.common-binds")
+require("common.layouts")

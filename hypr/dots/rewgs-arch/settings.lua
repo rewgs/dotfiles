@@ -1,4 +1,8 @@
--- See https://wiki.hypr.land/Configuring/Basics/Variables/
+local theme = require("common.themes.atom-one")
+local p = theme.override(theme.configurations.dark.palettes.default, {
+    groupbar_active_bg   = "#404452",
+    groupbar_active_text = "#b2b7c1",
+})
 
 hl.config({
 	ecosystem = {
@@ -13,8 +17,8 @@ hl.config({
 		border_size = 3,
 
 		col = {
-			active_border = "rgb(61afef)",
-			inactive_border = "rgba(00000000)",
+			active_border   = theme.rgb(p.blue),
+			inactive_border = theme.rgba("#000000", 0),
 		},
 
 		layout = "dwindle",
@@ -29,52 +33,49 @@ hl.config({
 		focus_removed_window = true,
 
 		col = {
-			border_active = "rgb(61afef)",
-			border_inactive = "rgba(00000000)", -- no border when inactive
+			border_active   = theme.rgb(p.blue),
+			border_inactive = theme.rgba("#000000", 0),
 		},
 
 		groupbar = {
 			enabled = true,
 			stacked = false,
 
-			indicator_gap = 0,
+			indicator_gap    = 0,
 			indicator_height = 0,
 
 			keep_upper_gap = false,
 
 			font_family = "FiraCode Nerd Font Retina",
-			font_size = 13,
-			height = 20,
+			font_size   = 13,
+			height      = 20,
 
-			gradients = true,
-			scrolling = false,
-			text_offset = 0,
+			gradients     = true,
+			scrolling     = false,
+			text_offset   = 0,
 
 			render_titles = true,
 
 			col = {
-				active = "rgb(404452)",
-				inactive = "rgba(21252bff)",
+				active   = theme.rgb(p.groupbar_active_bg),
+				inactive = theme.rgb(p.bg_d),
 			},
 
-			font_weight_active = "bold",
+			font_weight_active   = "bold",
 			font_weight_inactive = "normal",
 
-			text_color = "rgb(b2b7c1)",
-			text_color_inactive = "rgb(abb2bf)",
+			text_color          = theme.rgb(p.groupbar_active_text),
+			text_color_inactive = theme.rgb(p.fg),
 		},
 	},
 })
 
 hl.config({
 	misc = {
-		-- onedark "black"
-		-- background_color = "rgb(282C34)",
+		-- background_color = theme.rgb(p.bg0),
+		-- background_color = theme.rgb(p.bg_d),
 
-		-- onedark "black" -- darker
-		-- background_color = "rgb(21252b)",
-
-		disable_hyprland_logo = true,
+		disable_hyprland_logo    = true,
 		disable_splash_rendering = true,
 	},
 })
