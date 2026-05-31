@@ -31,8 +31,6 @@ hl.config({
 		focus_removed_window = true,
 
 		col = {
-			-- border_active = "rgb(61afef)",
-			-- border_inactive = "rgba(00000000)", -- no border when inactive
 			border_active = "rgb(7daea3)",
 			border_inactive = "rgba(00000000)",
 		},
@@ -57,8 +55,6 @@ hl.config({
 			render_titles = true,
 
 			col = {
-				-- active = "rgb(404452)",
-				-- inactive = "rgba(21252bff)",
 				active = "rgb(3c3836)",
 				inactive = "rgb(282828)",
 			},
@@ -66,8 +62,6 @@ hl.config({
 			font_weight_active = "bold",
 			font_weight_inactive = "normal",
 
-			-- text_color = "rgb(b2b7c1)",
-			-- text_color_inactive = "rgb(abb2bf)",
 			text_color = "rgb(d4be98)",
 			text_color_inactive = "rgb(ddc7a1)",
 		},
@@ -76,13 +70,8 @@ hl.config({
 
 hl.config({
 	misc = {
-		-- onedark "black"
-		-- background_color = "rgb(282C34)",
-
-		-- onedark "black" -- darker
-		-- background_color = "rgb(21252b)",
-
 		background_color = "rgb(1d2021)",
+		-- background_color = "rgb(282828)",
 
 		disable_hyprland_logo = true,
 		disable_splash_rendering = true,
