@@ -24,7 +24,7 @@ disabled = false
 disabled = true
 
 [python]
-disabled = true
+disabled = false
 
 # Disable the package module, hiding it from the prompt completely
 [package]

@@ -9,7 +9,7 @@ function mainline-packages {
         "bpytop"
         "broot"
         "btop"
-        "chromium --no-quarantine"
+        # "chromium --no-quarantine"
         "cmatrix"
         "coreutils" # required for gnu ls (i.e. `gls`, which my `ls_improved()` function uses)
         "cowsay"
@@ -101,3 +101,4 @@ function main {
     casks
     taps
 }
+main
