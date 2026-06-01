@@ -148,3 +148,16 @@ hl.bind(mainMod .. " + SHIFT + minus", hl.dsp.window.move({ workspace = "-1" }))
 
 -- Toggle waybar
 hl.bind(mainMod .. " + b", hl.dsp.exec_cmd("killall waybar || waybar"))
+
+-- FIXME: Triggering this crashes Hyprland!
+-- Renames the current workspace
+-- hl.bind(mainMod .. " + r", function()
+-- 	local handle = io.popen("fuzzel --dmenu -p 'Rename workspace:' </dev/null 2>/dev/null")
+-- 	if handle then
+-- 		local name = handle:read("*l")
+-- 		handle:close()
+-- 		if name and name ~= "" then
+-- 			hl.dispatch(hl.dsp.workspace.rename(name))
+-- 		end
+-- 	end
+-- end)
