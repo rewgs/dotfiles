@@ -60,7 +60,6 @@ export PATH="$HOME/src/flutter/bin:$PATH"
 
 # golang
 export GOPATH="$HOME/go"
-export PATH="$GOPATH:$PATH"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
 
