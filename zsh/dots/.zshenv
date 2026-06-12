@@ -127,4 +127,8 @@ if [[ -d "$HOME/.volta" ]]; then
     # https://docs.volta.sh/advanced/pnpm
     export VOLTA_FEATURE_PNPM=1
 fi
-. "$HOME/.cargo/env"
+
+# rust/cargo
+if [[ -f "$HOME/.cargo/env" ]]; then
+    . "$HOME/.cargo/env"
+fi
