@@ -243,8 +243,9 @@ if [[ -d "$HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
         eval "$(~/.rbenv/bin/rbenv init - zsh)"
     fi
 
+    # NOTE: compinit is run once, later, in completion.zsh (sourced last so it
+    # sees this FPATH entry). Don't run it here too.
     FPATH=~/.rbenv/completions:"$FPATH"
-    autoload -U compinit; compinit
 fi
 
 # rust
