@@ -98,7 +98,7 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 # poetry
-if [[ -d "HOME/.poetry" ]] || [[ -L "$HOME/.poetry" ]]; then
+if [[ -d "$HOME/.poetry" ]] || [[ -L "$HOME/.poetry" ]]; then
     export PATH="$PATH:$HOME/.poetry/bin"
 fi
 

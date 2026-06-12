@@ -231,7 +231,7 @@ if [[ "$(uname)" == "Linux" ]]; then
 fi
 
 # rbenv
-if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
+if [[ -d "$HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
     # FIXME: not working on macOS now
     if [[ "$(uname)" == "Darwin" ]]; then
         # smartcache eval ~/.rbenv/bin/rbenv init - zsh
