@@ -15,7 +15,7 @@ if ($onWindows) { . "$PSScriptRoot/windows.ps1" } else { . "$PSScriptRoot/unix.p
 
 # sns shell environment: provides `sns`/`snsd` (and the rclone wrapper). Loaded last so
 # its functions win. Mirrors the one-line import used by the zsh/bash configs.
-$snsProfile = Join-Path $HOME ".sns/env/shell/pwsh/main.ps1"
+$snsProfile = Join-Path $HOME ".sns/env/pwsh/main.ps1"
 if (Test-Path $snsProfile) { . $snsProfile }
 
 Remove-Variable onWindows, snsProfile -ErrorAction SilentlyContinue

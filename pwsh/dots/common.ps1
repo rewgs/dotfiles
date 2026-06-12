@@ -83,7 +83,7 @@ function Add-Aliases {
         @{ name = 'vp';     value = 'Open-ProfileWithNvim' },
         @{ name = 'gfarp';  value = 'Invoke-GitFetchResetAndPull' },
         @{ name = 'd';      value = 'Open-Dotfiles' }
-        # sns/snsd are provided by the sns config (~/.sns/env/shell/pwsh), imported
+        # sns/snsd are provided by the sns config (~/.sns/env/pwsh), imported
         # from the profile, so they are intentionally not defined here.
     )
 
