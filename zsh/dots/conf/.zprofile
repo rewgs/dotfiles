@@ -19,6 +19,5 @@ if [[ "$(uname)" == "Darwin" ]]; then
     eval "$(brew shellenv)"
 fi
 
-# Added by OrbStack: command-line tools and integration
-# This won't be added again if you remove it.
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+# NOTE: OrbStack init is sourced from .zshenv (which runs for every shell),
+# so it is intentionally not sourced here to avoid doing it twice.
