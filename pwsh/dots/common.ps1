@@ -45,28 +45,6 @@ function Open-Dotfiles {
     }
 }
 
-# TODO: Move to Sparks-and-Shadows/env repo
-# (The sns PowerShell config now provides `sns`/`snsd` when you import
-#  ~/.sns/env/shell/pwsh/main.ps1 from this profile.)
-# function Open-Sns {
-#     $dir = Join-Path $HOME "work" "sns"
-#     if (Test-Path $dir) {
-#         Set-Location $dir
-#     } else {
-#         Write-Output "$dir does not exist!"
-#     }
-# }
-
-# TODO: Move to Sparks-and-Shadows/env repo
-# function Open-SnsDevelopment {
-#     $dir = Join-Path $HOME "work" "sns" "development"
-#     if (Test-Path $dir) {
-#         Set-Location $dir
-#     } else {
-#         Write-Output "$dir does not exist!"
-#     }
-# }
-
 function Create-Venv {
     python -m venv .venv
 }
@@ -104,9 +82,9 @@ function Add-Aliases {
         @{ name = 'v';      value = 'nvim' },
         @{ name = 'vp';     value = 'Open-ProfileWithNvim' },
         @{ name = 'gfarp';  value = 'Invoke-GitFetchResetAndPull' },
-        @{ name = 'd';      value = 'Open-Dotfiles' },
-        @{ name = 'sns';    value = 'Open-Sns' },
-        @{ name = 'snsd';   value = 'Open-SnsDevelopment' }
+        @{ name = 'd';      value = 'Open-Dotfiles' }
+        # sns/snsd are provided by the sns config (~/.sns/env/shell/pwsh), imported
+        # from the profile, so they are intentionally not defined here.
     )
 
     foreach ($a in $aliases) {
