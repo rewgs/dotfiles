@@ -18,8 +18,16 @@ recursively_source_zfuncs() {
     for file in "$dir"/*; do
         if [[ -d "$file" ]]; then
             recursively_source_zfuncs "$(realpath "$file")"
+        elif [[ "$file" == *.zsh ]]; then
+            # .zsh files define/configure multiple named functions (and aren't
+            # single-function autoload bodies), so source them directly.
+            # Autoloading them would register a function literally named e.g.
+            # "go_to_dotfiles.zsh" and never define the real function.
+            source "$file"
         else
-            autoload -Uz "$file"; 
+            # Extensionless files are single-function autoload bodies whose
+            # function name is the basename.
+            autoload -Uz "$file"
         fi
     done
 }
