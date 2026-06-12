@@ -120,6 +120,31 @@ local keys = {
 	-- to close it. See also skip_close_confirmation_for_processes_named. If confirm is false, then
 	-- this action will immediately close the pane without prompting.
 	{ key = "w", mods = "SUPER", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+
+	-- Ligatures
+	-- {
+	-- 	key = "l",
+	-- 	"SUPER|SHIFT",
+	-- 	action = function()
+	-- 		config.harfbuzz_features = { "calt = 0", "clig = 0", "liga = 0" }
+	-- 	end,
+	-- },
+	--
+	-- {
+	-- 	key = "l",
+	-- 	mods = "SUPER|SHIFT",
+	-- 	action = wezterm.actionCallback(function(window)
+	-- 		local overrides = window:get_config_overrides() or {}
+	-- 		if not overrides.harfbuzz_features then
+	-- 			-- Disable ligatures
+	-- 			overrides.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
+	-- 		else
+	-- 			-- Re-enable ligatures
+	-- 			overrides.harfbuzz_features = nil
+	-- 		end
+	-- 		window:set_config_overrides(overrides)
+	-- 	end),
+	-- },
 }
 
 function module.apply_to_config(config)

@@ -13,9 +13,9 @@ hl.monitor({ output = "DP-2", mode = "6016x3384@59.99", position = "0x0", scale 
 -- 160% looks like 1600x1800
 -- hl.monitor({ output = "DP-3", mode = "2560x2880@59.98", position = "3008x0", scale = 1.3333334 })
 -- hl.monitor({ output = "DP-3", mode = "2560x2880@59.98", position = "3008x0", scale = 1.6, transform = 3 })  -- vertical
-hl.monitor({ output = "DP-3", mode = "2560x2880@59.98", position = "3008x0", scale = 1.6 })
+hl.monitor({ output = "DP-3", mode = "2560x2880@59.98", position = "3008x0", scale = 1.6 }) -- primary
 -- hl.monitor({ output = "DP-3", mode = "2560x2880@59.98", position = "3008x0", scale = 2 })
--- hl.monitor({ output = "DP-3", mode = "2560x1440@59.98", position = "3008x0", scale = 1.6 })  -- picture-in-picture mode
+-- hl.monitor({ output = "DP-3", mode = "2560x1440@59.98", position = "3008x0", scale = 1.6 }) -- picture-in-picture mode
 
 -- BenQ RD280OU
 -- hl.monitor({ output = "DP-1", mode = "3840x2560@59.98", position = "-3840x0",  scale = 1 })

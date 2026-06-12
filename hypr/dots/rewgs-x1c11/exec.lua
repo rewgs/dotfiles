@@ -24,7 +24,7 @@ hl.on("hyprland.start", function()
 	-- Choose one.
 	-- If using solid color, set in settings.lua instead.
 	--
-	hl.exec_cmd("swaybg --image ~/wallpapers/dark\\ 4k.jpg --mode fill")
+	hl.exec_cmd("swaybg --image ~/Pictures/wallpapers/dark\\ 4k.jpg --mode fill")
 
 	-- random wallpaper using my script
 	-- hl.exec_cmd("swaybg --image \"$(python3 ~/dotfiles/hypr/dots/scripts/random-wallpaper.py)\" --mode fill")

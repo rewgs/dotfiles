@@ -1,8 +1,6 @@
-local theme = require("common.themes.atom-one")
-local p = theme.override(theme.configurations.dark.palettes.default, {
-    groupbar_active_bg   = "#404452",
-    groupbar_active_text = "#b2b7c1",
-})
+local theme = require("common.themes.gruvbox-material")
+local bg    = theme.configurations.dark.palettes.hard
+local fg    = theme.configurations.dark.global.foregrounds.material
 
 hl.config({
 	ecosystem = {
@@ -17,7 +15,7 @@ hl.config({
 		border_size = 3,
 
 		col = {
-			active_border   = theme.rgb(p.blue),
+			active_border   = theme.rgb(fg.blue),
 			inactive_border = theme.rgba("#000000", 0),
 		},
 
@@ -33,7 +31,7 @@ hl.config({
 		focus_removed_window = true,
 
 		col = {
-			border_active   = theme.rgb(p.blue),
+			border_active   = theme.rgb(fg.blue),
 			border_inactive = theme.rgba("#000000", 0),
 		},
 
@@ -57,23 +55,23 @@ hl.config({
 			render_titles = true,
 
 			col = {
-				active   = theme.rgb(p.groupbar_active_bg),
-				inactive = theme.rgb(p.bg_d),
+				active   = theme.rgb(bg.bg3),
+				inactive = theme.rgb(bg.bg1),
 			},
 
 			font_weight_active   = "bold",
 			font_weight_inactive = "normal",
 
-			text_color          = theme.rgb(p.groupbar_active_text),
-			text_color_inactive = theme.rgb(p.fg),
+			text_color          = theme.rgb(fg.fg0),
+			text_color_inactive = theme.rgb(fg.fg1),
 		},
 	},
 })
 
 hl.config({
 	misc = {
-		-- background_color = theme.rgb(p.bg0),
-		-- background_color = theme.rgb(p.bg_d),
+		background_color = theme.rgb(bg.bg0),
+		-- background_color = theme.rgb(bg.bg1),
 
 		disable_hyprland_logo    = true,
 		disable_splash_rendering = true,

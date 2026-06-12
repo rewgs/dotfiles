@@ -12,12 +12,9 @@ export LS_COLORS
 
 # homebrew
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
-# Note that the instructions above specifically state to put this in .zprofile 
-# for macOS, and .zshrc for Linux.
-if [[ "$OS_NAME" == "Darwin" ]]; then
+# Note that the instructions above specifically state to put this in .zprofile for macOS, and .zshrc for Linux.
+if [[ "$(uname)" == "Darwin" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
     # NOTE: Can't use smartcache for some reason.
-    eval "$(brew shellenv)"
+    # smartcache eval /opt/homebrew/bin/brew shellenv
 fi
-
-# NOTE: OrbStack init is sourced from .zshenv (which runs for every shell),
-# so it is intentionally not sourced here to avoid doing it twice.

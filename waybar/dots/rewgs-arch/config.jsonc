@@ -1,33 +1,29 @@
 [
-    
-    {   // center display (Apple Pro Display XDR or Asus ProArt)
+    {
+        // center display (Apple Pro Display XDR or Asus ProArt)
         "output": "DP-2",
-        "layer": "top",     // Waybar at top layer
-        "position": "top",  // Waybar position (top|bottom|left|right)
-        "height": 24,       // Waybar height (to be removed for auto height)
-        "spacing": 1,       // Gaps between modules (4px)
-        "modules-left": [
-            "hyprland/workspaces"
-        ],
-        "modules-center": [
-            "hyprland/window"
-        ],
+        "layer": "top", // Waybar at top layer
+        "position": "top", // Waybar position (top|bottom|left|right)
+        "height": 24, // Waybar height (to be removed for auto height)
+        "spacing": 1, // Gaps between modules (4px)
+        "modules-left": ["hyprland/workspaces"],
+        "modules-center": ["hyprland/window"],
         "modules-right": [
             "tray",
             "custom/ddc_brightness",
-            "pulseaudio", 
-            "network", 
+            "pulseaudio",
+            "network",
             "cpu",
             "memory",
             "disk",
-            "clock",
+            "clock"
         ],
         "hyprland/workspaces": {
             "all-outputs": false,
             "disable-scroll": true,
             "on-click": "activate",
             "warp-on-scroll": false,
-            "format": " {name}",
+            "format": " {name}"
         },
         "hyprland/window": {
             "format": "{initialTitle}",
@@ -68,27 +64,27 @@
             "format": "ram {}% "
         },
         "disk": {
-    	    "interval": 30,
-    	    "format": "disk {percentage_used}% used",
-    	    "unit": "GB"
+            "interval": 30,
+            "format": "disk {percentage_used}% used",
+            "unit": "GB"
         },
         "battery": {
             // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
             // "format": "{capacity}% <span font='Font Awesome 5 Free 11'>{icon}</span>",
             "format": "{capacity}% {icon} ",
-    
+
             "format-icons": ["", "", "", "", ""],
             "format-time": "{H}h{M}m",
-    
+
             "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
             "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
-    
+
             "interval": 30,
             "states": {
                 "warning": 25,
                 "critical": 10
             },
-            "tooltip": false,
+            "tooltip": false
             // "on-click": "2"
         },
         "clock": {
@@ -102,7 +98,7 @@
         },
         "tray": {
             "icon-size": 14,
-            "spacing": 10,
+            "spacing": 10
         },
         "custom/ddc_brightness": {
             "format": "{icon}",
@@ -119,27 +115,22 @@
             "tooltip-format": "Brightness: {percentage}%"
         }
     },
-    {   // left display (BenQ RD280OU)
+    {
+        // left display (BenQ RD280OU)
         "output": "DP-1",
-        "layer": "top",     // Waybar at top layer
-        "position": "top",  // Waybar position (top|bottom|left|right)
-        "height": 24,       // Waybar height (to be removed for auto height)
-        "spacing": 1,       // Gaps between modules (4px)
-        "modules-left": [
-            "hyprland/workspaces"
-        ],
-        "modules-center": [
-            "hyprland/window"
-        ],
-        "modules-right": [
-            "clock",
-        ],
+        "layer": "top", // Waybar at top layer
+        "position": "top", // Waybar position (top|bottom|left|right)
+        "height": 24, // Waybar height (to be removed for auto height)
+        "spacing": 1, // Gaps between modules (4px)
+        "modules-left": ["hyprland/workspaces"],
+        "modules-center": ["hyprland/window"],
+        "modules-right": ["clock"],
         "hyprland/workspaces": {
             "all-outputs": false,
             "disable-scroll": true,
             "on-click": "activate",
             "warp-on-scroll": false,
-            "format": " {name}",
+            "format": " {name}"
         },
         "hyprland/window": {
             "format": "{initialTitle}",
@@ -152,27 +143,22 @@
             "tooltip": false
         }
     },
-    {   // right display (LG DualUp)
+    {
+        // right display (LG DualUp)
         "output": "DP-3",
-        "layer": "top",     // Waybar at top layer
-        "position": "top",  // Waybar position (top|bottom|left|right)
-        "height": 24,       // Waybar height (to be removed for auto height)
-        "spacing": 1,       // Gaps between modules (4px)
-        "modules-left": [
-            "hyprland/workspaces"
-        ],
-        "modules-center": [
-            "hyprland/window"
-        ],
-        "modules-right": [
-            "clock",
-        ],
+        "layer": "top", // Waybar at top layer
+        "position": "top", // Waybar position (top|bottom|left|right)
+        "height": 24, // Waybar height (to be removed for auto height)
+        "spacing": 1, // Gaps between modules (4px)
+        "modules-left": ["hyprland/workspaces"],
+        "modules-center": ["hyprland/window"],
+        "modules-right": ["clock"],
         "hyprland/workspaces": {
             "all-outputs": false,
             "disable-scroll": true,
             "on-click": "activate",
             "warp-on-scroll": false,
-            "format": " {name}",
+            "format": " {name}"
         },
         "hyprland/window": {
             "format": "{initialTitle}",

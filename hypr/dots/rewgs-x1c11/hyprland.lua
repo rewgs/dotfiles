@@ -1,5 +1,8 @@
+-- https://wiki.hypr.land/Configuring/Start/
+
 require("vars")
 require("binds")
+-- require("dispatch")
 require("exec")
 require("animations")
 require("decoration")
