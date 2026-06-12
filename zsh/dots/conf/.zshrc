@@ -143,7 +143,7 @@ fi
 # broot
 if command -v broot &> /dev/null; then
     broot="$HOME/.config/broot"
-    if [[ $(uname) == "Darwin" ]]; then
+    if [[ "$OS_NAME" == "Darwin" ]]; then
         if [[ -d "$broot" ]] || [[ -L "$broot" ]]; then
             source "$broot/launcher/bash/br"
         fi
@@ -177,7 +177,7 @@ fi
 # export FZF_DEFAULT_OPTS='--tmux 85%,50%'
 
 # homebrew - macOS
-if [[ $(uname) == "Darwin" ]]; then
+if [[ "$OS_NAME" == "Darwin" ]]; then
     export PATH="$PATH:/opt/homebrew/bin"
     export PATH="$PATH:/opt/homebrew/sbin"
     export PATH="$PATH:/opt/homebrew/Cellar"
@@ -191,7 +191,7 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 # homebrew - Linux 
-if [[ "$(uname)" == "Linux" ]] && [[ -d "/home/linuxbrew" ]]; then
+if [[ "$OS_NAME" == "Linux" ]] && [[ -d "/home/linuxbrew" ]]; then
     # NOTE: Using `smartcache eval` doesn't appear to work
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -208,7 +208,7 @@ fi
 # fi
 
 # munki
-if [[ $(uname) == "Darwin" ]] && [[ -d "/usr/local/munki/" ]]; then
+if [[ "$OS_NAME" == "Darwin" ]] && [[ -d "/usr/local/munki/" ]]; then
     export PATH="$PATH:/usr/local/munki/"
 fi
 
@@ -234,20 +234,20 @@ if [[ -d "$PYENV_ROOT" ]] || [[ -L "$PYENV_ROOT" ]]; then
 fi
 
 # qt
-if [[ "$(uname)" == "Linux" ]]; then
+if [[ "$OS_NAME" == "Linux" ]]; then
     QT_QPA_PLATFORMTHEME="qt5ct:qt6ct"
 fi
 
 # rbenv
 if [[ -d "$HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
     # FIXME: not working on macOS now
-    if [[ "$(uname)" == "Darwin" ]]; then
+    if [[ "$OS_NAME" == "Darwin" ]]; then
         # smartcache eval ~/.rbenv/bin/rbenv init - zsh
         eval "$(~/.rbenv/bin/rbenv init - zsh)"
     fi
 
     # FIXME: smartcache isn't working for rbenv on Linux. Results in `command not found`.
-    if [[ "$(uname)" == "Linux" ]]; then
+    if [[ "$OS_NAME" == "Linux" ]]; then
         eval "$(~/.rbenv/bin/rbenv init - zsh)"
     fi
 

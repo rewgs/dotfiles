@@ -6,6 +6,10 @@
 # ║ environment variables                                                      ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
+# Cache the OS name once. .zshenv is sourced first, so this is available in
+# .zprofile and .zshrc too, sparing a `uname` subprocess on every OS check.
+export OS_NAME="$(uname)"
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -24,11 +28,11 @@ export ZALIASES="$ZDOTDIR/aliases"
 export EDITOR='nvim'
 
 # browser
-if [[ "$(uname)" == "Linux" ]]; then
+if [[ "$OS_NAME" == "Linux" ]]; then
     if command -v firefox &> /dev/null; then
         export BROWSER="$(command -v firefox)"
     fi
-elif [[ "$(uname)" == "Darwin" ]]; then
+elif [[ "$OS_NAME" == "Darwin" ]]; then
     if [[ -x "/Applications/Firefox.app/Contents/MacOS/firefox" ]]; then
         export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
     fi
@@ -36,7 +40,7 @@ fi
 
 
 # wayland
-if [[ "$(uname)" == "Linux" ]]; then
+if [[ "$OS_NAME" == "Linux" ]]; then
     export ELECTRON_OZONE_PLATFORM_HINT="auto"
 fi
 
@@ -70,7 +74,7 @@ export PATH="$GOBIN:$PATH"
 # NOTE: Moved to .zshrc
 #
 # homebrew
-# if [[ $(uname) == "Darwin" ]]; then
+# if [[ "$OS_NAME" == "Darwin" ]]; then
 #     export PATH="$PATH:/opt/homebrew/bin"
 #     export PATH="$PATH:/opt/homebrew/sbin"
 #     export PATH="$PATH:/opt/homebrew/Cellar"
@@ -81,9 +85,9 @@ export PATH="$GOBIN:$PATH"
 # fi
 
 # jetbrains
-if [[ $(uname) == "Darwin" ]]; then
+if [[ "$OS_NAME" == "Darwin" ]]; then
     export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
-elif [[ $(uname) == "Linux" ]]; then
+elif [[ "$OS_NAME" == "Linux" ]]; then
     export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
 fi
 
@@ -96,7 +100,7 @@ if [[ -d "$HOME/.nix-profile/bin" ]]; then
 fi
 
 # Added by OrbStack: command-line tools and integration
-if [[ $(uname) == "Darwin" ]]; then
+if [[ "$OS_NAME" == "Darwin" ]]; then
     source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 fi
 
@@ -107,7 +111,7 @@ fi
 
 # reaper
 # NOTE: macOS reaper aliases live in aliases/reaper.zsh (interactive shells).
-if [[ $(uname) == "Linux" ]]; then
+if [[ "$OS_NAME" == "Linux" ]]; then
     export PATH="$HOME/opt/REAPER:$PATH"
 fi
 
