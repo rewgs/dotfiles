@@ -25,9 +25,13 @@ export EDITOR='nvim'
 
 # browser
 if [[ "$(uname)" == "Linux" ]]; then
-    export BROWSER="$(which firefox)"
+    if command -v firefox &> /dev/null; then
+        export BROWSER="$(command -v firefox)"
+    fi
 elif [[ "$(uname)" == "Darwin" ]]; then
-    export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
+    if [[ -x "/Applications/Firefox.app/Contents/MacOS/firefox" ]]; then
+        export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
+    fi
 fi
 
 
