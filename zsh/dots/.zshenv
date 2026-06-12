@@ -106,12 +106,8 @@ if [[ -d "$HOME/.poetry" ]] || [[ -L "$HOME/.poetry" ]]; then
 fi
 
 # reaper
-if [[ $(uname) == "Darwin" ]]; then
-    alias reaper_exec="/Applications/REAPER.app/Contents/MacOS/REAPER"
-    alias REAPER="cd $HOME/Library/Application\ Support/REAPER"
-    alias ReaScripts="cd $HOME/Library/Application\ Support/REAPER/Scripts"
-    alias rewgsReaScripts="cd $HOME/Library/Application\ Support/REAPER/Scripts/rewgs-reaper-scripts"
-elif [[ $(uname) == "Linux" ]]; then
+# NOTE: macOS reaper aliases live in aliases/reaper.zsh (interactive shells).
+if [[ $(uname) == "Linux" ]]; then
     export PATH="$HOME/opt/REAPER:$PATH"
 fi
 
