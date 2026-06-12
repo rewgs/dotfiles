@@ -68,8 +68,8 @@ get_dotfiles_path() {
 export DOTFILES="$(get_dotfiles_path)"
 
 # history
-SAVEHIST=1000
-HISTSIZE=1000
+SAVEHIST=10000
+HISTSIZE=10000
 HISTFILE=~/.zsh_history
 setopt INC_APPEND_HISTORY_TIME # See for details: https://unix.stackexchange.com/questions/389881/history-isnt-preserved-in-zsh/389883#389883
 
