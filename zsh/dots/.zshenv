@@ -6,8 +6,12 @@
 # ║ environment variables                                                      ║
 # ╚════════════════════════════════════════════════════════════════════════════╝
 
+# Cache the OS name once. .zshenv is sourced first, so this is available in
+# .zprofile and .zshrc too, sparing a `uname` subprocess on every OS check.
+export OS_NAME="$(uname)"
+
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
+export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 export HISTSIZE=10000 # Maximum events for internal history
@@ -24,15 +28,19 @@ export ZALIASES="$ZDOTDIR/aliases"
 export EDITOR='nvim'
 
 # browser
-if [[ "$(uname)" == "Linux" ]]; then
-    export BROWSER="$(which firefox)"
-elif [[ "$(uname)" == "Darwin" ]]; then
-    export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
+if [[ "$OS_NAME" == "Linux" ]]; then
+    if command -v firefox &> /dev/null; then
+        export BROWSER="$(command -v firefox)"
+    fi
+elif [[ "$OS_NAME" == "Darwin" ]]; then
+    if [[ -x "/Applications/Firefox.app/Contents/MacOS/firefox" ]]; then
+        export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
+    fi
 fi
 
 
 # wayland
-if [[ "$(uname)" == "Linux" ]]; then
+if [[ "$OS_NAME" == "Linux" ]]; then
     export ELECTRON_OZONE_PLATFORM_HINT="auto"
 fi
 
@@ -60,14 +68,13 @@ export PATH="$HOME/src/flutter/bin:$PATH"
 
 # golang
 export GOPATH="$HOME/go"
-export PATH="$GOPATH:$PATH"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
 
 # NOTE: Moved to .zshrc
 #
 # homebrew
-# if [[ $(uname) == "Darwin" ]]; then
+# if [[ "$OS_NAME" == "Darwin" ]]; then
 #     export PATH="$PATH:/opt/homebrew/bin"
 #     export PATH="$PATH:/opt/homebrew/sbin"
 #     export PATH="$PATH:/opt/homebrew/Cellar"
@@ -78,9 +85,9 @@ export PATH="$GOBIN:$PATH"
 # fi
 
 # jetbrains
-if [[ $(uname) == "Darwin" ]]; then
+if [[ "$OS_NAME" == "Darwin" ]]; then
     export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
-elif [[ $(uname) == "Linux" ]]; then
+elif [[ "$OS_NAME" == "Linux" ]]; then
     export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
 fi
 
@@ -93,22 +100,18 @@ if [[ -d "$HOME/.nix-profile/bin" ]]; then
 fi
 
 # Added by OrbStack: command-line tools and integration
-if [[ $(uname) == "Darwin" ]]; then
+if [[ "$OS_NAME" == "Darwin" ]]; then
     source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 fi
 
 # poetry
-if [[ -d "HOME/.poetry" ]] || [[ -L "$HOME/.poetry" ]]; then
+if [[ -d "$HOME/.poetry" ]] || [[ -L "$HOME/.poetry" ]]; then
     export PATH="$PATH:$HOME/.poetry/bin"
 fi
 
 # reaper
-if [[ $(uname) == "Darwin" ]]; then
-    alias reaper_exec="/Applications/REAPER.app/Contents/MacOS/REAPER"
-    alias REAPER="cd $HOME/Library/Application\ Support/REAPER"
-    alias ReaScripts="cd $HOME/Library/Application\ Support/REAPER/Scripts"
-    alias rewgsReaScripts="cd $HOME/Library/Application\ Support/REAPER/Scripts/rewgs-reaper-scripts"
-elif [[ $(uname) == "Linux" ]]; then
+# NOTE: macOS reaper aliases live in aliases/reaper.zsh (interactive shells).
+if [[ "$OS_NAME" == "Linux" ]]; then
     export PATH="$HOME/opt/REAPER:$PATH"
 fi
 
@@ -119,7 +122,7 @@ fi
 # fi
 
 # volta
-if [[ "$HOME/.volta" ]]; then
+if [[ -d "$HOME/.volta" ]]; then
     export VOLTA_HOME="$HOME/.volta"
     export PATH="$VOLTA_HOME/bin:$PATH"
 
@@ -127,4 +130,8 @@ if [[ "$HOME/.volta" ]]; then
     # https://docs.volta.sh/advanced/pnpm
     export VOLTA_FEATURE_PNPM=1
 fi
-. "$HOME/.cargo/env"
+
+# rust/cargo
+if [[ -f "$HOME/.cargo/env" ]]; then
+    . "$HOME/.cargo/env"
+fi

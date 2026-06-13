@@ -14,6 +14,9 @@ function module.apply_to_config(config)
 	config.native_macos_fullscreen_mode = true
 	config.quit_when_all_windows_are_closed = false
 
+	-- Added so that `shift+enter` works in Claude.
+	config.enable_kitty_keyboard = true
+
 	appearance.apply_to_config(config)
 	font.apply_to_config(config)
 

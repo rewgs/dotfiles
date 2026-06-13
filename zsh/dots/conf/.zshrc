@@ -18,8 +18,16 @@ recursively_source_zfuncs() {
     for file in "$dir"/*; do
         if [[ -d "$file" ]]; then
             recursively_source_zfuncs "$(realpath "$file")"
+        elif [[ "$file" == *.zsh ]]; then
+            # .zsh files define/configure multiple named functions (and aren't
+            # single-function autoload bodies), so source them directly.
+            # Autoloading them would register a function literally named e.g.
+            # "go_to_dotfiles.zsh" and never define the real function.
+            source "$file"
         else
-            autoload -Uz "$file"; 
+            # Extensionless files are single-function autoload bodies whose
+            # function name is the basename.
+            autoload -Uz "$file"
         fi
     done
 }
@@ -68,8 +76,8 @@ get_dotfiles_path() {
 export DOTFILES="$(get_dotfiles_path)"
 
 # history
-SAVEHIST=1000
-HISTSIZE=1000
+SAVEHIST=10000
+HISTSIZE=10000
 HISTFILE=~/.zsh_history
 setopt INC_APPEND_HISTORY_TIME # See for details: https://unix.stackexchange.com/questions/389881/history-isnt-preserved-in-zsh/389883#389883
 
@@ -135,7 +143,7 @@ fi
 # broot
 if command -v broot &> /dev/null; then
     broot="$HOME/.config/broot"
-    if [[ $(uname) == "Darwin" ]]; then
+    if [[ "$OS_NAME" == "Darwin" ]]; then
         if [[ -d "$broot" ]] || [[ -L "$broot" ]]; then
             source "$broot/launcher/bash/br"
         fi
@@ -169,7 +177,7 @@ fi
 # export FZF_DEFAULT_OPTS='--tmux 85%,50%'
 
 # homebrew - macOS
-if [[ $(uname) == "Darwin" ]]; then
+if [[ "$OS_NAME" == "Darwin" ]]; then
     export PATH="$PATH:/opt/homebrew/bin"
     export PATH="$PATH:/opt/homebrew/sbin"
     export PATH="$PATH:/opt/homebrew/Cellar"
@@ -183,7 +191,7 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 # homebrew - Linux 
-if [[ "$(uname)" == "Linux" ]] && [[ -d "/home/linuxbrew" ]]; then
+if [[ "$OS_NAME" == "Linux" ]] && [[ -d "/home/linuxbrew" ]]; then
     # NOTE: Using `smartcache eval` doesn't appear to work
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -200,7 +208,7 @@ fi
 # fi
 
 # munki
-if [[ $(uname) == "Darwin" ]] && [[ -d "/usr/local/munki/" ]]; then
+if [[ "$OS_NAME" == "Darwin" ]] && [[ -d "/usr/local/munki/" ]]; then
     export PATH="$PATH:/usr/local/munki/"
 fi
 
@@ -226,25 +234,26 @@ if [[ -d "$PYENV_ROOT" ]] || [[ -L "$PYENV_ROOT" ]]; then
 fi
 
 # qt
-if [[ "$(uname)" == "Linux" ]]; then
+if [[ "$OS_NAME" == "Linux" ]]; then
     QT_QPA_PLATFORMTHEME="qt5ct:qt6ct"
 fi
 
 # rbenv
-if [[ -d "HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
+if [[ -d "$HOME/.rbenv" ]] || [[ -L "$HOME/.rbenv" ]]; then
     # FIXME: not working on macOS now
-    if [[ "$(uname)" == "Darwin" ]]; then
+    if [[ "$OS_NAME" == "Darwin" ]]; then
         # smartcache eval ~/.rbenv/bin/rbenv init - zsh
         eval "$(~/.rbenv/bin/rbenv init - zsh)"
     fi
 
     # FIXME: smartcache isn't working for rbenv on Linux. Results in `command not found`.
-    if [[ "$(uname)" == "Linux" ]]; then
+    if [[ "$OS_NAME" == "Linux" ]]; then
         eval "$(~/.rbenv/bin/rbenv init - zsh)"
     fi
 
+    # NOTE: compinit is run once, later, in completion.zsh (sourced last so it
+    # sees this FPATH entry). Don't run it here too.
     FPATH=~/.rbenv/completions:"$FPATH"
-    autoload -U compinit; compinit
 fi
 
 # rust
