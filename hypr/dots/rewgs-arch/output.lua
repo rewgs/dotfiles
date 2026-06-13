@@ -9,7 +9,11 @@
 hl.monitor({ output = "DP-2", mode = "6016x3384@59.99", position = "0x0", scale = 2 })
 -- hl.monitor({ output = "ASUSTek COMPUTER INC PA32QCV T7LMSV009353", mode = "6016x3384@59.99", position = "0x0", scale = 2 })
 
--- LG DualUp
+-- LG DualUp (left)
+-- 160% looks like 1600x1800
+hl.monitor({ output = "DP-1", mode = "2560x2880@59.98", position = "-1600x0", scale = 1.6 }) -- primary
+
+-- LG DualUp (right)
 -- 160% looks like 1600x1800
 -- hl.monitor({ output = "DP-3", mode = "2560x2880@59.98", position = "3008x0", scale = 1.3333334 })
 -- hl.monitor({ output = "DP-3", mode = "2560x2880@59.98", position = "3008x0", scale = 1.6, transform = 3 })  -- vertical
