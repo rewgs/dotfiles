@@ -1,0 +1,1 @@
+- Linux: `~/.config/sublime-text/Packages/User/`
