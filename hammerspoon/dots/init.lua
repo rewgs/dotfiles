@@ -19,6 +19,11 @@ package.path = package.path .. ";" .. spoons
 -- own annotations/ dir; dots/.luarc.json points lua_ls at it.
 hs.loadSpoon("EmmyLua")
 
+-- EmmyLua's generated hs.lua lists hs.* functions but not its submodules
+-- (hs.window, hs.screen, ...), so `hs.` completion misses them. Re-apply the
+-- @field patch now, right after EmmyLua (re)generates annotations on load.
+require("modules.emmylua-patch")
+
 require("modules.mod")
 require("modules.reload")
 -- require("modules.apps.init")
@@ -32,4 +37,3 @@ require("modules.reload")
 
 -- local sns = os.getenv("HOME") .. "/.sns" .. "/env" .. "/hammerspoon" .. "/src" .. "/init.lua"
 -- dofile(sns)
-

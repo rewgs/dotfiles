@@ -18,9 +18,8 @@ function symlink-dotfiles() {
 }
 
 
-# Clones the Hammerspoon/Spoons repo to ~/src/Spoons (lean: no git submodule)
-# and unzips the spoons we use into ~/src/Spoons/Spoons/. Hammerspoon finds them
-# because dots/init.lua adds ~/src/Spoons/Spoons/?.spoon/init.lua to package.path.
+# Clones the Hammerspoon/Spoons repo to ~/src/Spoons and unzips the spoons we use into ~/src/Spoons/Spoons/. 
+# Hammerspoon finds them because dots/init.lua adds ~/src/Spoons/Spoons/?.spoon/init.lua to package.path.
 function spoons() {
     local src="$HOME/src"
 
