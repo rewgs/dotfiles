@@ -8,6 +8,9 @@
 # "docked" and "laptop"); the "laptop" option is always selected by this script.
 #
 # Run with -n/--dry-run flag to show what will happen and not actually execute.
+#
+# NOTE: This will currently fail on rewgs-arch, as I recently split that machine's config 
+# into two subdirectories -- one for hyprland, the other for niri.
 
 run() {
     if $DRY_RUN; then
