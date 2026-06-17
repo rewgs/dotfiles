@@ -18,20 +18,20 @@ function symlink-dotfiles() {
 }
 
 
-# FIXME: This approach doesn't seem to really work, as there doesn't appear to 
-# be a way to specify *where* Spoons live. Hammerspoon seems to only accept a 
-# path relative to the module that's using a Spoon.
-# Kinda hate that, as the only easy way to work with that is to keep the Spoons 
-# repo in my dotfiles repo as a git submodule.
-# That's just messy. Do not want.
+# Clones the Hammerspoon/Spoons repo to ~/src/Spoons and unzips the spoons we use into ~/src/Spoons/Spoons/. 
+# Hammerspoon finds them because dots/init.lua adds ~/src/Spoons/Spoons/?.spoon/init.lua to package.path.
 function spoons() {
     local src="$HOME/src"
 
     local repo_url="https://github.com/Hammerspoon/Spoons"
     local repo_clone="$src/Spoons"
 
+    # EmmyLua generates EmmyLua/lua-language-server annotations (autocomplete +
+    # type hints in the editor) for Hammerspoon and every other spoon unzipped
+    # here. dots/.luarc.json points lua_ls at its annotations/ dir.
     local spoons=(
         "WindowHalfsAndThirds"
+        "EmmyLua"
     )
 
     function clone-repo() {
