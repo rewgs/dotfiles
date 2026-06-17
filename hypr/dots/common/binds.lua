@@ -120,12 +120,12 @@ for i = 1, 10 do
 	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
 	hl.bind(mainMod .. " + CTRL + " .. key, hl.dsp.focus({ workspace = i + 10 }))
 	hl.bind(mainMod .. " + ALT + " .. key, hl.dsp.focus({ workspace = i + 20 }))
-	hl.bind(mainMod .. " + CTRL + ALT + " .. key, hl.dsp.focus({ workspace = i + 30 }))
+	-- hl.bind(mainMod .. " + CTRL + ALT + " .. key, hl.dsp.focus({ workspace = i + 30 }))
 
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 	hl.bind(mainMod .. " + CTRL + SHIFT + " .. key, hl.dsp.window.move({ workspace = i + 10 }))
 	hl.bind(mainMod .. " + ALT + SHIFT + " .. key, hl.dsp.window.move({ workspace = i + 20 }))
-	hl.bind(mainMod .. " + CTRL + ALT + SHIFT + " .. key, hl.dsp.window.move({ workspace = i + 30 }))
+	-- hl.bind(mainMod .. " + CTRL + ALT + SHIFT + " .. key, hl.dsp.window.move({ workspace = i + 30 }))
 end
 
 -- Incrementally (active workspaces, skips empty)
