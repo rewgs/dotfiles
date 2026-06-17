@@ -1,5 +1,6 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
+-- Asus (center)
 -- DP-2 workspaces (1-10)
 hl.workspace_rule({ workspace = "1", default = true, persistent = true, monitor = "DP-2" })
 hl.workspace_rule({ workspace = "2", default = false, persistent = false, monitor = "DP-2" })
@@ -12,7 +13,21 @@ hl.workspace_rule({ workspace = "8", default = false, persistent = false, monito
 hl.workspace_rule({ workspace = "9", default = false, persistent = false, monitor = "DP-2" })
 hl.workspace_rule({ workspace = "10", default = false, persistent = false, monitor = "DP-2" })
 
--- DP-3 workspaces (11-20)
+-- LG DualUp (left)
+-- DP-1 workspaces (11-20)
+hl.workspace_rule({ workspace = "11", default = true, persistent = true, monitor = "DP-1" })
+hl.workspace_rule({ workspace = "12", default = false, persistent = false, monitor = "DP-1" })
+hl.workspace_rule({ workspace = "13", default = false, persistent = false, monitor = "DP-1" })
+hl.workspace_rule({ workspace = "14", default = false, persistent = false, monitor = "DP-1" })
+hl.workspace_rule({ workspace = "15", default = false, persistent = false, monitor = "DP-1" })
+hl.workspace_rule({ workspace = "16", default = false, persistent = false, monitor = "DP-1" })
+hl.workspace_rule({ workspace = "17", default = false, persistent = false, monitor = "DP-1" })
+hl.workspace_rule({ workspace = "18", default = false, persistent = false, monitor = "DP-1" })
+hl.workspace_rule({ workspace = "19", default = false, persistent = false, monitor = "DP-1" })
+hl.workspace_rule({ workspace = "20", default = false, persistent = false, monitor = "DP-1" })
+
+-- LG DualUp (right)
+-- DP-3 workspaces (21-30)
 hl.workspace_rule({ workspace = "11", default = true, persistent = true, monitor = "DP-3" })
 hl.workspace_rule({ workspace = "12", default = false, persistent = false, monitor = "DP-3" })
 hl.workspace_rule({ workspace = "13", default = false, persistent = false, monitor = "DP-3" })

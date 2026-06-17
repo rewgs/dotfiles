@@ -1,0 +1,49 @@
+[
+	// ------------------------------------------------------------------------
+	// Resetting commands
+	// ------------------------------------------------------------------------
+
+	{ "keys": ["ctrl+d"], "command": "" },
+	{ "keys": ["ctrl+u"], "command": "" },
+
+	{ "keys": ["cut"], "command": "" },
+	{ "keys": ["ctrl+x"], "command": "" },
+	{ "keys": ["copy"], "command": "" },
+	{ "keys": ["ctrl+c"], "command": "" },
+	{ "keys": ["paste"], "command": "" },
+	{ "keys": ["ctrl+v"], "command": "" },
+	{ "keys": ["ctrl+shift+v"], "command": "" },
+	{ "keys": ["ctrl+k", "ctrl+v"], "command": "" },
+
+
+	// ------------------------------------------------------------------------
+	// vim emulation
+	// ------------------------------------------------------------------------
+
+	// NOTE: Not working!
+	{ "keys": ["ctrl+d"], "command": "next_view" },
+	{ "keys": ["ctrl+d"], "command": "next_view", "args": {"extend": true} },
+	{ "keys": ["ctrl+u"], "command": "prev_view" },
+	{ "keys": ["ctrl+u"], "command": "prev_view", "args": {"extend": true} },
+
+
+	// ------------------------------------------------------------------------
+	// tmux-like navigation
+	// ------------------------------------------------------------------------
+
+	// splits
+	{ "keys": ["ctrl+p", "h"], "command": "focus_neighboring_group", "args": {"forward": false} },
+	{ "keys": ["ctrl+p", "l"], "command": "focus_neighboring_group" },
+
+	// closing things
+	{ "keys": ["ctrl+p", "w"], "command": "close" },
+	{ "keys": ["ctrl+p", "w"], "command": "close_transient", "context":
+		[
+			{ "key": "group_has_transient_sheet", "operator": "equal", "operand": true }
+		]
+	},
+	{ "keys": ["ctrl+p", "w"], "command": "close_pane" },
+
+	// sidebar
+	{ "keys": ["ctrl+p", "ctrl+["], "command": "toggle_side_bar" },
+]
