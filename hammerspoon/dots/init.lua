@@ -1,5 +1,23 @@
+-- Enables inter-process communication
+-- https://www.hammerspoon.org/docs/hs.ipc.html
+require("hs.ipc")
+local ipcInstalled = hs.ipc.cliStatus()
+if not ipcInstalled then
+	local _ = hs.ipc.cliInstall()
+	-- local success = hs.ipc.cliInstall()
+	-- if not success then
+	-- end
+end
+
 local spoons = os.getenv("HOME") .. "/src" .. "/Spoons" .. "/Spoons" .. "/?.spoon/init.lua"
 package.path = package.path .. ";" .. spoons
+
+-- Generate EmmyLua annotations for Hammerspoon (and any installed Spoons) so
+-- editors running lua-language-server get autocomplete and type hints. Load it
+-- before any pathwatcher (e.g. modules.reload) so regenerating annotations
+-- doesn't trigger a config-reload loop. Annotations are written to the spoon's
+-- own annotations/ dir; dots/.luarc.json points lua_ls at it.
+hs.loadSpoon("EmmyLua")
 
 require("modules.mod")
 require("modules.reload")
@@ -14,3 +32,4 @@ require("modules.reload")
 
 -- local sns = os.getenv("HOME") .. "/.sns" .. "/env" .. "/hammerspoon" .. "/src" .. "/init.lua"
 -- dofile(sns)
+
