@@ -4,6 +4,7 @@ require("hs.ipc")
 local ipcInstalled = hs.ipc.cliStatus()
 if not ipcInstalled then
 	local _ = hs.ipc.cliInstall()
+	-- or...
 	-- local success = hs.ipc.cliInstall()
 	-- if not success then
 	-- end
@@ -19,9 +20,11 @@ package.path = package.path .. ";" .. spoons
 -- own annotations/ dir; dots/.luarc.json points lua_ls at it.
 hs.loadSpoon("EmmyLua")
 
--- EmmyLua's generated hs.lua lists hs.* functions but not its submodules
--- (hs.window, hs.screen, ...), so `hs.` completion misses them. Re-apply the
--- @field patch now, right after EmmyLua (re)generates annotations on load.
+-- EmmyLua's generated annotations have two gaps: hs.lua lists hs.* functions but
+-- not its submodules (hs.window, hs.screen, ...), and many methods are missing a
+-- @return type (e.g. hs.window:application()), which breaks chained-call
+-- completion. Re-apply the @field/@return patch now, right after EmmyLua
+-- (re)generates annotations on load.
 require("modules.emmylua-patch")
 
 require("modules.mod")
