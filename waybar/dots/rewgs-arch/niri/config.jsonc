@@ -1,0 +1,174 @@
+[
+    {
+        // center display (Apple Pro Display XDR or Asus ProArt)
+        "output": "DP-2",
+        "layer": "top", // Waybar at top layer
+        "position": "top", // Waybar position (top|bottom|left|right)
+        "height": 24, // Waybar height (to be removed for auto height)
+        "spacing": 1, // Gaps between modules (4px)
+        "modules-left": ["niri/workspaces"],
+        // "modules-center": ["niri/window"],
+        "modules-right": [
+            "tray",
+            "custom/ddc_brightness",
+            "pulseaudio",
+            "network",
+            "cpu",
+            "memory",
+            "disk",
+            "clock"
+        ],
+        "niri/workspaces": {
+            "all-outputs": false,
+            "disable-scroll": true,
+            "on-click": "activate",
+            "warp-on-scroll": false,
+            "format": " {name}"
+        },
+        // "niri/window": {
+        //     "format": "{initialTitle}",
+        //     "separate-outputs": true
+        // },
+        "pulseaudio": {
+            "format": "{volume}% {icon} {format_source}",
+            "format-bluetooth": "{volume}% {icon} {format_source}",
+            "format-bluetooth-muted": " {icon} {format_source}",
+            "format-muted": " {format_source}",
+            "format-source": "{volume}% ",
+            "format-source-muted": "",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""]
+            },
+            "on-click": "pavucontrol",
+            "ignored-sinks": "easyeffects"
+        },
+        "network": {
+            "format-wifi": "{essid}   ",
+            "format-ethernet": "{ipaddr}/{cidr} ",
+            "tooltip-format": "{ifname} via {gwaddr} ",
+            "format-linked": "{ifname} (No IP) ",
+            "format-disconnected": "Disconnected ⚠",
+            "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        },
+        "cpu": {
+            "format": "cpu {usage}% @ {avg_frequency} GHz ",
+            "tooltip": true
+        },
+        "memory": {
+            "format": "ram {}% "
+        },
+        "disk": {
+            "interval": 30,
+            "format": "disk {percentage_used}% used",
+            "unit": "GB"
+        },
+        "battery": {
+            // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+            // "format": "{capacity}% <span font='Font Awesome 5 Free 11'>{icon}</span>",
+            "format": "{capacity}% {icon} ",
+
+            "format-icons": ["", "", "", "", ""],
+            "format-time": "{H}h{M}m",
+
+            "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+            "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
+
+            "interval": 30,
+            "states": {
+                "warning": 25,
+                "critical": 10
+            },
+            "tooltip": false
+            // "on-click": "2"
+        },
+        "clock": {
+            "format": "{:%Y-%m-%d %I:%M %p}",
+            // "format": " {:%I:%M %p}",
+            "timezone": "America/Los_Angeles",
+            "tooltip": false
+        },
+        "custom/spotify": {
+            "exec": "/usr/bin/python3"
+        },
+        "tray": {
+            "icon-size": 14,
+            "spacing": 10
+        },
+        "custom/ddc_brightness": {
+            "format": "{icon}",
+            "format-icons": ["", "", "", "", ""],
+            "exec": "bash -c 'v=$(ddcutil getvcp 10 | grep -oP \"current value =\\s*\\K[0-9]+\"); echo \"{\\\"percentage\\\": ${v:-0}}\"'",
+            "return-type": "json",
+            // "on-scroll-up": "ddcutil setvcp 10 + 15",
+            // "on-scroll-down": "ddcutil setvcp 10 - 15",
+            // "on-click": "ddcutil setvcp 10 100",
+            "on-click": "ddcutil setvcp 10 - 20",
+            "on-click-right": "ddcutil setvcp 10 + 20",
+            "interval": 1,
+            "tooltip": true,
+            "tooltip-format": "Brightness: {percentage}%"
+        }
+    },
+    {
+        // left display (BenQ RD280OU)
+        "output": "DP-1",
+        "layer": "top", // Waybar at top layer
+        "position": "top", // Waybar position (top|bottom|left|right)
+        "height": 24, // Waybar height (to be removed for auto height)
+        "spacing": 1, // Gaps between modules (4px)
+        "modules-left": ["niri/workspaces"],
+        // "modules-center": ["niri/window"],
+        "modules-right": ["clock"],
+        "niri/workspaces": {
+            "all-outputs": false,
+            "disable-scroll": true,
+            "on-click": "activate",
+            "warp-on-scroll": false,
+            "format": " {name}"
+        },
+        // "niri/window": {
+        //     "format": "{initialTitle}",
+        //     "separate-outputs": true
+        // },
+        "clock": {
+            // "format": "{:%Y-%m-%d %I:%M %p}",
+            "format": " {:%I:%M %p}",
+            "timezone": "America/Los_Angeles",
+            "tooltip": false
+        }
+    },
+    {
+        // right display (LG DualUp)
+        "output": "DP-3",
+        "layer": "top", // Waybar at top layer
+        "position": "top", // Waybar position (top|bottom|left|right)
+        "height": 24, // Waybar height (to be removed for auto height)
+        "spacing": 1, // Gaps between modules (4px)
+        "modules-left": ["niri/workspaces"],
+        // "modules-center": ["niri/window"],
+        "modules-right": ["clock"],
+        "niri/workspaces": {
+            "all-outputs": false,
+            "disable-scroll": true,
+            "on-click": "activate",
+            "warp-on-scroll": false,
+            "format": " {name}"
+        },
+        // "niri/window": {
+        //     "format": "{initialTitle}",
+        //     "separate-outputs": true
+        // },
+        "clock": {
+            // "format": "{:%Y-%m-%d %I:%M %p}",
+            "format": " {:%I:%M %p}",
+            "timezone": "America/Los_Angeles",
+            "tooltip": false
+        }
+    }
+]
