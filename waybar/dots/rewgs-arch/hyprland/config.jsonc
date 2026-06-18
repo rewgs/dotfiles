@@ -1,7 +1,7 @@
 [
     {
         // center display (Apple Pro Display XDR or Asus ProArt)
-        "output": "DP-2",
+        "output": "DP-1",
         "layer": "top", // Waybar at top layer
         "position": "top", // Waybar position (top|bottom|left|right)
         "height": 24, // Waybar height (to be removed for auto height)
@@ -116,8 +116,8 @@
         }
     },
     {
-        // left display (BenQ RD280OU)
-        "output": "DP-1",
+        // left display (LG DualUp)
+        "output": "DP-2",
         "layer": "top", // Waybar at top layer
         "position": "top", // Waybar position (top|bottom|left|right)
         "height": 24, // Waybar height (to be removed for auto height)

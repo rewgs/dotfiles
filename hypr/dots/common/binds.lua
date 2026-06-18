@@ -20,6 +20,8 @@ hl.bind(mainMod .. " + d", hl.dsp.exec_cmd("discord"))
 -- Window states
 hl.bind(mainMod .. " + ALT + f", hl.dsp.window.float())
 hl.bind(mainMod .. " + f", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+
+-- Layouts
 hl.bind(mainMod .. " + t", hl.dsp.layout("togglesplit")) -- dwindle; preserve_split must be enabled
 
 -- Cycle windows
