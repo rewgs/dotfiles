@@ -12,7 +12,7 @@ hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd("kitty --class floaterm"
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(launcher))
 
 -- Apps
-hl.bind(mainMod .. " + e", hl.dsp.exec_cmd(fileExplorer))
+-- hl.bind(mainMod .. " + e", hl.dsp.exec_cmd(fileExplorer))
 hl.bind(mainMod .. " + i", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + o", hl.dsp.exec_cmd("obsidian"))
 hl.bind(mainMod .. " + d", hl.dsp.exec_cmd("discord"))

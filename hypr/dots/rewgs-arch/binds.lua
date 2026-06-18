@@ -12,3 +12,6 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
 -- FIXME: There's currently no way to pass the $1 argument.
 -- Rename active workspace with custom script
 -- hl.bind(mainMod .. " + r", hl.dsp.exec_cmd("../scripts/rename-workspace.py $1"))
+
+-- Yazi as file explorer
+hl.bind(mainMod .. " + e", hl.dsp.exec_cmd(terminal .. " -e yazi"))
