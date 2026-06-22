@@ -1,5 +1,9 @@
--- Volume and media controls
+-- display brightness controls
+local _dir = debug.getinfo(1, "S").source:match("@?(.*/)") or "./"
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(_dir .. "scripts/brightness.sh down"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(_dir .. "scripts/brightness.sh up"))
 
+-- volume and media controls
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("pamixer -t"))
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pamixer -i 5"))
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pamixer -d 5"))
