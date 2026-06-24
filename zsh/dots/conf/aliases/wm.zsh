@@ -4,7 +4,7 @@ function start_gnome() {
     fi
 }
 
-alias cosmic="start-cosmic"
+# alias cosmic="start-cosmic"
 # alias gnome="gnome-shell --wayland"
 # alias gnome=start_gnome
 # alias hyprland="start-hyprland"
