@@ -3,7 +3,6 @@
 BasedOnStyle: LLVM
 IndentWidth: 4
 
-
 ---
 
 Language: C
@@ -14,8 +13,7 @@ AllowShortFunctionsOnASingleLine: None
 
 Language: Cpp
 
-# Force pointers to the type for C++.
-DerivePointerAlignment: false
+DerivePointerAlignment: false # Force pointers to the type
 PointerAlignment: Left
 AllowShortFunctionsOnASingleLine: None
 
