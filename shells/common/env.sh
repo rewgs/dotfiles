@@ -68,6 +68,12 @@ if [ "$OS_NAME" = "Linux" ]; then
     export PATH="$HOME/opt/REAPER:$PATH"
 fi
 
+# vcpkg
+if [ -d "$HOME/src/vcpkg" ]; then
+    export VCPKG_ROOT="$HOME/src/vcpkg"
+    export PATH="$VCPKG_ROOT:$PATH"
+fi
+
 # volta
 if [ -d "$HOME/.volta" ]; then
     export VOLTA_HOME="$HOME/.volta"
