@@ -51,8 +51,9 @@ hl.config({
 			keep_upper_gap = false,
 
 			font_family = "FiraCode Nerd Font Retina",
-			font_size = 13,
-			height = 20,
+			font_size = 12,
+			-- height = 20,
+			height = 16,
 
 			gradients = true,
 			scrolling = false,
