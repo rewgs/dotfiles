@@ -1,9 +1,13 @@
-hl.env("XCURSOR_SIZE", "12")
-
-hl.env("HYPRCURSOR_THEME", "MyCursor")
-hl.env("HYPRCURSOR_SIZE", "12")
+-- Cursor
+hl.env("XCURSOR_THEME", "Adwaita")
+hl.env("XCURSOR_SIZE", "24")
 
 hl.env("WLR_NO_HARDWARE_CURSORS", "1")
+
+-- Theming
+-- GTK_THEME forces dark mode for GTK3 apps via env; GTK4/libadwaita use gsettings
+-- color-scheme (set in exec.lua on startup) instead.
+hl.env("GTK_THEME", "Adwaita:dark")
 
 -- XDG
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")

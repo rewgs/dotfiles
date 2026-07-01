@@ -1,7 +1,7 @@
 mainMod = "SUPER"
 
 -- fileExplorer = "dolphin"
-fileExplorer = "nautilus"
+-- fileExplorer = "nautilus"
 -- fileExplorer = "thunar"
 
 -- terminal  = "ghostty"

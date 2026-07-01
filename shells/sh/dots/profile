@@ -1,0 +1,4 @@
+if [ -d "$HOME/dotfiles" ]; then
+    export DOTFILES="$HOME/dotfiles"
+    . "$DOTFILES/shells/common/env.sh"
+fi
