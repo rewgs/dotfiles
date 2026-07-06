@@ -45,3 +45,9 @@ function Am-Admin {
     # Write-Host "PowerShell is not running as administrator."
     return $false
 }
+
+# adds ~/.local/bin to PATH
+$binPath = "$env:USERPROFILE\.local\bin"
+if ($env:Path -notcontains $binPath) {
+    $env:Path += ";$binPath"
+}
