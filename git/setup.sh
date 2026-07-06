@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# Symlinks `dots` to `~/.config/git`.
+# Symlinks `dots` dir to `~/.config/git`.
 
 
-setup-git::main() {
+main() {
     local src="$(realpath "$(dirname "$BASH_SOURCE")/dots")"
     local dst="$HOME/.config/git"
 
@@ -19,4 +19,4 @@ setup-git::main() {
         ln -s "$src" "$dst"
     fi
 }
-setup-git::main
+main
