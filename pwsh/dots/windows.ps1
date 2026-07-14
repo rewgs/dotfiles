@@ -45,3 +45,17 @@ function Am-Admin {
     # Write-Host "PowerShell is not running as administrator."
     return $false
 }
+
+# Session-scoped PATH additions (equivalent of `export PATH=$PATH:dir` on Unix).
+# Guarded by a split-based check (not `-notcontains` on the raw string, which
+# compares the whole string rather than individual entries) so re-sourcing the
+# profile via `Reset-Shell`/`es` doesn't pile up duplicate entries.
+function Add-ToPath {
+    param([Parameter(Mandatory=$true)][string]$Directory)
+    if ((Test-Path $Directory) -and ($env:Path -split ';') -notcontains $Directory) {
+        $env:Path += ";$Directory"
+    }
+}
+
+Add-ToPath "$env:USERPROFILE\.local\bin"
+Add-ToPath "C:\msys64\ucrt64\bin"
