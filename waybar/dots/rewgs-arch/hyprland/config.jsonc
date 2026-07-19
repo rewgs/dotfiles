@@ -7,7 +7,7 @@
         "height": 24, // Waybar height (to be removed for auto height)
         "spacing": 1, // Gaps between modules (4px)
         "modules-left": ["hyprland/workspaces"],
-        "modules-center": ["hyprland/window"],
+        // "modules-center": ["hyprland/window"],
         "modules-right": [
             "tray",
             "custom/ddc_brightness",
@@ -25,10 +25,10 @@
             "warp-on-scroll": false,
             "format": " {name}"
         },
-        "hyprland/window": {
-            "format": "{initialTitle}",
-            "separate-outputs": true
-        },
+        // "hyprland/window": {
+        //     "format": "{initialTitle}",
+        //     "separate-outputs": true
+        // },
         "pulseaudio": {
             "format": "{volume}% {icon} {format_source}",
             "format-bluetooth": "{volume}% {icon} {format_source}",
@@ -123,7 +123,7 @@
         "height": 24, // Waybar height (to be removed for auto height)
         "spacing": 1, // Gaps between modules (4px)
         "modules-left": ["hyprland/workspaces"],
-        "modules-center": ["hyprland/window"],
+        // "modules-center": ["hyprland/window"],
         "modules-right": ["clock"],
         "hyprland/workspaces": {
             "all-outputs": false,
@@ -132,10 +132,10 @@
             "warp-on-scroll": false,
             "format": " {name}"
         },
-        "hyprland/window": {
-            "format": "{initialTitle}",
-            "separate-outputs": true
-        },
+        // "hyprland/window": {
+        //     "format": "{initialTitle}",
+        //     "separate-outputs": true
+        // },
         "clock": {
             // "format": "{:%Y-%m-%d %I:%M %p}",
             "format": " {:%I:%M %p}",
@@ -151,7 +151,7 @@
         "height": 24, // Waybar height (to be removed for auto height)
         "spacing": 1, // Gaps between modules (4px)
         "modules-left": ["hyprland/workspaces"],
-        "modules-center": ["hyprland/window"],
+        // "modules-center": ["hyprland/window"],
         "modules-right": ["clock"],
         "hyprland/workspaces": {
             "all-outputs": false,
@@ -160,10 +160,10 @@
             "warp-on-scroll": false,
             "format": " {name}"
         },
-        "hyprland/window": {
-            "format": "{initialTitle}",
-            "separate-outputs": true
-        },
+        // "hyprland/window": {
+        //     "format": "{initialTitle}",
+        //     "separate-outputs": true
+        // },
         "clock": {
             // "format": "{:%Y-%m-%d %I:%M %p}",
             "format": " {:%I:%M %p}",
