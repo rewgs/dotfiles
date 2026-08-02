@@ -1,5 +1,6 @@
 -- LG DualUps in portrait
-local y_offset = 212
+-- local y_offset = 212
+local y_offset = 512
 
 -- LG DualUps in landscale
 -- local y_offset = 424
