@@ -4,8 +4,11 @@ Host nas rewgs-nas
 Host arch dev
     Hostname rewgs-arch
 
-Host devm
-    Hostname rewgs-nas-arch-vm
-
 Host deb
     Hostname rewgs-nas-debian-vm
+
+# QEMU/KVM VMs
+
+Host rewgs-arch-debian13-vm
+    Hostname 192.168.122.148
+    User rewgs
