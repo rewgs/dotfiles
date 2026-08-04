@@ -183,6 +183,19 @@ fi
 # (`--tmux` is silently ignored if not running in a tmux session).
 # export FZF_DEFAULT_OPTS='--tmux 85%,50%'
 
+# Google Cloud CLI
+GCLOUD_SDK="$HOME/src/google-cloud-sdk"
+if [[ -d "${GCLOUD_SDK}" ]]; then
+    if [ -f "${GCLOUD_SDK}/path.zsh.inc" ]; then 
+        . "${GCLOUD_SDK}/path.zsh.inc"
+    fi
+
+    if [ -f "${GCLOUD_SDK}/completion.zsh.inc" ]; then 
+        . "${GCLOUD_SDK}/completion.zsh.inc"
+    fi
+fi
+
+
 # homebrew - macOS
 if [[ "$OS_NAME" == "Darwin" ]]; then
     export PATH="$PATH:/opt/homebrew/bin"
@@ -318,3 +331,4 @@ source "$ZDOTDIR/completion.zsh"
 
 # Starship
 eval "$(starship init zsh)"
+
