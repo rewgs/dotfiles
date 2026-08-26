@@ -1,0 +1,9 @@
+[opener]
+vlc = [
+    { run = 'vlc %s', orphan = true, desc = "Open in VLC", for = "linux" }
+]
+
+[open]
+rules = [
+    { mime = "audio/*", use = "vlc" }
+]
