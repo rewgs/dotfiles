@@ -1,0 +1,18 @@
+.tab-close-button {
+  display: none !important;
+}
+
+/* Hide the audio playing and muted icons in tabs */
+.tab-icon-overlay[muted],
+.tab-icon-overlay[soundplaying] {
+  display: none !important;
+}
+
+/* FIXME: */
+/* custom site CSS */
+/* @-moz-document domain("phoronix.com") { */
+/*   body { */
+/*     background-color: #000000 !important; */
+/*   } */
+/* } */
+
