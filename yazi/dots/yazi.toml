@@ -1,12 +1,12 @@
 [opener]
 vlc = [
-    { run = 'vlc %s', orphan = true, desc = "Open in VLC", for = "unix" }
+    { run = 'vlc %s', orphan = true, desc = "Open in VLC", for = "linux" }
 ]
 feh = [
-    { run = 'feh %s', orphan = true, desc = "feh", for = "unix" }
+    { run = 'feh %s', orphan = true, desc = "feh", for = "linux" }
 ]
 zathura = [
-    { run = 'zathura %s', orphan = true, desc = "zathura", for = "unix" }
+    { run = 'zathura %s', orphan = true, desc = "zathura", for = "linux" }
 ]
 
 
