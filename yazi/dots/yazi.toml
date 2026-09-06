@@ -2,9 +2,18 @@
 vlc = [
     { run = 'vlc %s', orphan = true, desc = "Open in VLC", for = "linux" }
 ]
+feh = [
+    { run = 'feh %s', orphan = true, desc = "feh", for = "linux" }
+]
+zathura = [
+    { run = 'zathura %s', orphan = true, desc = "zathura", for = "linux" }
+]
+
 
 [open]
 rules = [
+    { mime = "application/pdf", use = ["zathura", "reveal"] },
     { mime = "audio/*", use = "vlc" },
+    { mime = "image/*", use = "feh" },
     { mime = "video/*", use = "vlc" },
 ]
