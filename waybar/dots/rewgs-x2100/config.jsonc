@@ -1,19 +1,14 @@
 {
-    "layer": "top",     // Waybar at top layer
-    "position": "top",  // Waybar position (top|bottom|left|right)
-    "height": 24,       // Waybar height (to be removed for auto height)
-    "spacing": 1,       // Gaps between modules (4px)
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 24, // Waybar height (to be removed for auto height)
+    "spacing": 1, // Gaps between modules (4px)
 
-    "modules-left": [
-        "hyprland/workspaces"
-    ],
-    "modules-center": [
-        "hyprland/window"
-    ],
+    "modules-left": ["hyprland/workspaces"],
     "modules-right": [
         "tray",
-        "pulseaudio", 
-        "network", 
+        "pulseaudio",
+        "network",
         "disk",
         "battery",
         "clock"
@@ -25,14 +20,7 @@
         "disable-scroll": true,
         "on-click": "activate",
         "warp-on-scroll": false,
-        "format": " {name}",
-    },
-
-    // docs: https://man.archlinux.org/man/extra/waybar/waybar-hyprland-window.5.en
-    "hyprland/window": {
-        "format": "{class}",
-        "rewrite": {
-        }
+        "format": " {name}"
     },
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
@@ -68,40 +56,39 @@
     "memory": {
         "format": "ram {}% "
     },
-   "disk": {
-       "interval": 30,
-       "format": "disk {percentage_used}% used",
-       "unit": "GB"
-   },
-   "battery": {
+    "disk": {
+        "interval": 30,
+        "format": "disk {percentage_used}% used",
+        "unit": "GB"
+    },
+    "battery": {
         // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
         // "format": "{capacity}% <span font='Font Awesome 5 Free 11'>{icon}</span>",
         "format": "{capacity}% {icon} ",
-        
+
         "format-icons": ["", "", "", "", ""],
         "format-time": "{H}h{M}m",
-        
+
         "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
         "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
-        
+
         "interval": 30,
         "states": {
             "warning": 25,
             "critical": 10
-            },
-           "tooltip": false,
-           // "on-click": "2"
-           },
-   "clock": {
-       // "format": " {:%Y-%m-%d  %I:%M %p}"
-       "format": " {:%I:%M %p}"
-   },
-   "custom/spotify": {
-       "exec": "/usr/bin/python3"
-   },
-   "tray": {
-       "icon-size": 15,
-       "spacing": 10
-   }
+        },
+        "tooltip": false
+        // "on-click": "2"
+    },
+    "clock": {
+        // "format": " {:%Y-%m-%d  %I:%M %p}"
+        "format": " {:%I:%M %p}"
+    },
+    "custom/spotify": {
+        "exec": "/usr/bin/python3"
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    }
 }
-
