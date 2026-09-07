@@ -14,6 +14,17 @@ hl.on("hyprland.start", function()
 	-- notification manager
 	hl.exec_cmd("dunst")
 
+	-- theming: set gsettings on each startup so these are declarative/source-controlled
+	-- GTK4/libadwaita ignores GTK_THEME and reads color-scheme from gsettings instead
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme prefer-dark")
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme Adwaita")
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme macOS")
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 23")
+
+	-- cursor: apply to the compositor itself (gsettings alone doesn't affect Hyprland's cursor)
+	-- prefers the hyprcursor theme (macOS-hypr); XWayland falls back to XCURSOR_THEME (macOS)
+	hl.exec_cmd("hyprctl setcursor macOS-hypr 23")
+
 	-- unbinds
 	hl.exec_cmd("hyprctl unbind SUPER, p")
 

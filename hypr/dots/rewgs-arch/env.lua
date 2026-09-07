@@ -1,8 +1,10 @@
 -- Cursor
-hl.env("XCURSOR_THEME", "Adwaita")
+-- XCURSOR_* is used by XWayland/GTK apps; HYPRCURSOR_* by native Wayland clients.
+-- macOS (xcursor) and macOS-hypr (hyprcursor) are the same theme in two formats.
+hl.env("XCURSOR_THEME", "macOS")
 hl.env("XCURSOR_SIZE", "24")
-
-hl.env("WLR_NO_HARDWARE_CURSORS", "1")
+hl.env("HYPRCURSOR_THEME", "macOS-hypr")
+hl.env("HYPRCURSOR_SIZE", "24")
 
 -- Theming
 -- GTK_THEME forces dark mode for GTK3 apps via env; GTK4/libadwaita use gsettings
