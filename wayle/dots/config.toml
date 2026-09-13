@@ -1,0 +1,137 @@
+# Wayle configuration file
+
+[bar]
+scale = 0.95
+bg = "transparent"
+button-bg-opacity = 0
+padding = 0.25
+padding-ends = 0.5
+module-gap = 0.5
+button-icon-size = 0.9
+button-icon-padding = 0.9
+button-label-size = 0.95
+button-label-padding = 1.0
+button-gap = 1.0
+
+# DP-1: center display (Apple Pro Display XDR / Asus ProArt)
+[[bar.layout]]
+monitor = "DP-1"
+left = ["dashboard", "hyprland-workspaces"]
+center = []
+right = ["systray", "media", "volume", "network", "cpu", "ram", "storage", "weather","clock"]
+
+# DP-2: left display (LG DualUp)
+[[bar.layout]]
+monitor = "DP-2"
+left = ["hyprland-workspaces"]
+center = []
+right = ["clock"]
+
+# DP-3: right display (LG DualUp)
+[[bar.layout]]
+monitor = "DP-3"
+left = ["hyprland-workspaces"]
+center = []
+right = ["clock"]
+
+[general]
+font-sans = "FiraCode Nerd Font Retina"
+font-mono = "FiraCode Nerd Font Retina"
+
+[modules.systray]
+icon-scale = 0.95
+item-gap = 0.7
+
+[modules.brightness]
+level-icons = [
+    "ld-sun-dim-symbolic",
+    "ld-sun-medium-symbolic",
+    "ld-sun-symbolic",
+]
+border-show = false
+border-color = "yellow"
+icon-show = true
+icon-color = "auto"
+icon-bg-color = "yellow"
+label-show = true
+label-color = "yellow"
+format = "{{ percent }}%"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = "dropdown:brightness"
+right-click = ""
+middle-click = ""
+scroll-up = ""
+scroll-down = ""
+thresholds = []
+
+[modules.media]
+
+[modules.volume]
+icon-show = true
+label-show = true
+
+
+[modules.network]
+wifi-disabled-icon = "cm-wireless-disabled-symbolic"
+wifi-acquiring-icon = "cm-wireless-acquiring-symbolic"
+wifi-offline-icon = "cm-wireless-offline-symbolic"
+wifi-connected-icon = "cm-wireless-connected-symbolic"
+wifi-signal-icons = [
+    "cm-wireless-signal-weak-symbolic",
+    "cm-wireless-signal-ok-symbolic",
+    "cm-wireless-signal-good-symbolic",
+    "cm-wireless-signal-excellent-symbolic",
+]
+wired-connected-icon = "cm-wired-symbolic"
+wired-acquiring-icon = "cm-wired-acquiring-symbolic"
+wired-disconnected-icon = "cm-wired-disconnected-symbolic"
+border-show = false
+border-color = "accent"
+icon-show = true
+icon-color = "auto"
+icon-bg-color = "accent"
+label-show = true
+label-color = "accent"
+label-max-length = 15
+button-bg-color = "bg-surface-elevated"
+left-click = "dropdown:network"
+right-click = ""
+middle-click = ""
+scroll-up = ""
+scroll-down = ""
+
+[modules.cpu]
+icon-show = true
+label-show = true
+
+[modules.ram]
+icon-show = true
+label-show = true
+
+[modules.storage]
+icon-show = true
+label-show = true
+
+[modules.weather]
+units = "imperial"
+
+[modules.clock]
+icon-show = false
+label-show = true
+
+# onedark
+[styling]
+theme-provider = "wayle"
+
+[styling.palette]
+bg = "#282c34"
+surface = "#31353f"
+elevated = "#393f4a"
+fg = "#abb2bf"
+fg-muted = "#5c6370"
+primary = "#61afef"
+red = "#e06c75"
+yellow = "#e5c07b"
+green = "#98c379"
+blue = "#61afef"

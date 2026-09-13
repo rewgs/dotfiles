@@ -1,0 +1,62 @@
+[bar]
+dropdown-shadow = false
+
+[[bar.layout]]
+monitor = "DP-1"
+show = true
+left = ["hyprland-workspaces"]
+center = []
+right = [
+    "systray",
+    "media",
+    "volume",
+    "network",
+    "cpu",
+    "ram",
+    "storage",
+    "weather",
+    "clock",
+    "dashboard",
+]
+
+[[bar.layout]]
+monitor = "DP-2"
+show = true
+left = ["hyprland-workspaces"]
+center = []
+right = ["clock"]
+
+[[bar.layout]]
+monitor = "DP-3"
+show = true
+left = ["hyprland-workspaces"]
+center = []
+right = ["clock"]
+
+[styling]
+scale = 1.0
+rounding = "none"
+
+[styling.palette]
+bg = "#21252b"
+surface = "#282c34"
+elevated = "#3e4451"
+fg = "#abb2bf"
+fg-muted = "#5c6370"
+primary = "#61afef"
+red = "#e06c75"
+yellow = "#e5c07b"
+green = "#98c379"
+blue = "#56b6c2"
+
+[modules.dashboard]
+border-color = "transparent"
+icon-color = "accent"
+icon-bg-color = "transparent"
+
+[modules.hyprland-workspaces]
+min-workspace-count = 10
+label-use-name = true
+label-size = 0.8500000238418579
+active-indicator = "underline"
+active-color = "border-accent"
