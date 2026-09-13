@@ -13,12 +13,12 @@ button-label-size = 0.95
 button-label-padding = 1.0
 button-gap = 1.0
 
-# DP-1: center display (Apple Pro Display XDR / Asus ProArt)
+# DP-1: center display (32" 6k Asus ProArt)
 [[bar.layout]]
 monitor = "DP-1"
-left = ["dashboard", "hyprland-workspaces"]
+left = ["hyprland-workspaces"]
 center = []
-right = ["systray", "media", "volume", "network", "cpu", "ram", "storage", "weather","clock"]
+right = ["systray", "media", "volume", "network", "cpu", "ram", "storage", "weather", "clock"]
 
 # DP-2: left display (LG DualUp)
 [[bar.layout]]
@@ -37,6 +37,10 @@ right = ["clock"]
 [general]
 font-sans = "FiraCode Nerd Font Retina"
 font-mono = "FiraCode Nerd Font Retina"
+
+[modules.hyprland-workspaces]
+min-workspace-count = 10
+active-indicator = "underline"
 
 [modules.systray]
 icon-scale = 0.95
@@ -119,6 +123,8 @@ units = "imperial"
 [modules.clock]
 icon-show = false
 label-show = true
+left-click = "dropdown:dashboard"
+label-color = "fg-subtle"
 
 # onedark
 [styling]
