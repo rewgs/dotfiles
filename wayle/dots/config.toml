@@ -119,9 +119,9 @@ button-bg-color = "transparent"
 icon-show = true
 label-show = true
 border-color = "transparent"
-icon-color = "red"
+icon-color = "#d19a66" # orange
 icon-bg-color = "transparent"
-label-color = "red"
+label-color = "#d19a66" # orange
 button-bg-color = "transparent"
 
 [modules.ram]
@@ -137,9 +137,9 @@ button-bg-color = "transparent"
 icon-show = true
 label-show = true
 border-color = "transparent"
-icon-color = "blue"
+icon-color = "#c678dd" # magenta
 icon-bg-color = "transparent"
-label-color = "blue"
+label-color = "#c678dd" # magenta
 button-bg-color = "transparent"
 
 [modules.weather]
@@ -156,11 +156,15 @@ label-show = true
 left-click = "dropdown:dashboard"
 label-color = "fg-subtle"
 
-# onedark
 [styling]
 theme-provider = "wayle"
 
 [styling.palette]
+###########################################################
+# onedark
+# https://github.com/onedarktheme/onedark
+###########################################################
+
 # bg = "#282c34"
 bg = "#21252b"
 # surface = "#31353f"
@@ -172,6 +176,6 @@ fg-muted = "#5c6370"
 primary = "#61afef"
 red = "#e06c75"
 yellow = "#e5c07b"
-blue = "#56b6c2"
 green = "#98c379"
-blue = "#61afef"
+blue = "#56b6c2"
+# blue = "#61afef"

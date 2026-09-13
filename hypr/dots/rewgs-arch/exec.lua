@@ -1,10 +1,10 @@
 hl.on("hyprland.start", function()
 	-- NOTE: This is crashing since the move to Lua.
-	hl.exec_cmd("hypridle")
+	-- hl.exec_cmd("hypridle")
 
-	hl.exec_cmd("waybar")
+	hl.exec_cmd("wayle panel start")
 	-- hl.exec_cmd("kanshi")
-	hl.exec_cmd("hyprpm reload -n") -- loads plugins at startup; -n sends a notification if anything goes wrong
+	-- hl.exec_cmd("hyprpm reload -n") -- loads plugins at startup; -n sends a notification if anything goes wrong
 	-- hl.exec_cmd("easyeffects --gapplication-service")
 
 	-- clipboard managers

@@ -7,7 +7,6 @@
         "height": 24, // Waybar height (to be removed for auto height)
         "spacing": 1, // Gaps between modules (4px)
         "modules-left": ["hyprland/workspaces"],
-        // "modules-center": ["hyprland/window"],
         "modules-right": [
             "tray",
             "custom/ddc_brightness",
@@ -25,10 +24,6 @@
             "warp-on-scroll": false,
             "format": " {name}"
         },
-        // "hyprland/window": {
-        //     "format": "{initialTitle}",
-        //     "separate-outputs": true
-        // },
         "pulseaudio": {
             "format": "{volume}% {icon} {format_source}",
             "format-bluetooth": "{volume}% {icon} {format_source}",
@@ -69,27 +64,20 @@
             "unit": "GB"
         },
         "battery": {
-            // "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
-            // "format": "{capacity}% <span font='Font Awesome 5 Free 11'>{icon}</span>",
             "format": "{capacity}% {icon} ",
-
             "format-icons": ["", "", "", "", ""],
             "format-time": "{H}h{M}m",
-
             "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
             "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
-
             "interval": 30,
             "states": {
                 "warning": 25,
                 "critical": 10
             },
             "tooltip": false
-            // "on-click": "2"
         },
         "clock": {
             "format": "{:%Y-%m-%d %I:%M %p}",
-            // "format": " {:%I:%M %p}",
             "timezone": "America/Los_Angeles",
             "tooltip": false
         },
@@ -98,16 +86,14 @@
         },
         "tray": {
             "icon-size": 14,
-            "spacing": 10
+            "spacing": 10,
+            "show-passive-items": true
         },
         "custom/ddc_brightness": {
             "format": "{icon}",
             "format-icons": ["", "", "", "", ""],
             "exec": "bash -c 'v=$(ddcutil getvcp 10 | grep -oP \"current value =\\s*\\K[0-9]+\"); echo \"{\\\"percentage\\\": ${v:-0}}\"'",
             "return-type": "json",
-            // "on-scroll-up": "ddcutil setvcp 10 + 15",
-            // "on-scroll-down": "ddcutil setvcp 10 - 15",
-            // "on-click": "ddcutil setvcp 10 100",
             "on-click": "ddcutil setvcp 10 - 20",
             "on-click-right": "ddcutil setvcp 10 + 20",
             "interval": 1,
@@ -123,7 +109,6 @@
         "height": 24, // Waybar height (to be removed for auto height)
         "spacing": 1, // Gaps between modules (4px)
         "modules-left": ["hyprland/workspaces"],
-        // "modules-center": ["hyprland/window"],
         "modules-right": ["clock"],
         "hyprland/workspaces": {
             "all-outputs": false,
@@ -132,12 +117,7 @@
             "warp-on-scroll": false,
             "format": " {name}"
         },
-        // "hyprland/window": {
-        //     "format": "{initialTitle}",
-        //     "separate-outputs": true
-        // },
         "clock": {
-            // "format": "{:%Y-%m-%d %I:%M %p}",
             "format": " {:%I:%M %p}",
             "timezone": "America/Los_Angeles",
             "tooltip": false
@@ -151,7 +131,6 @@
         "height": 24, // Waybar height (to be removed for auto height)
         "spacing": 1, // Gaps between modules (4px)
         "modules-left": ["hyprland/workspaces"],
-        // "modules-center": ["hyprland/window"],
         "modules-right": ["clock"],
         "hyprland/workspaces": {
             "all-outputs": false,
@@ -160,12 +139,7 @@
             "warp-on-scroll": false,
             "format": " {name}"
         },
-        // "hyprland/window": {
-        //     "format": "{initialTitle}",
-        //     "separate-outputs": true
-        // },
         "clock": {
-            // "format": "{:%Y-%m-%d %I:%M %p}",
             "format": " {:%I:%M %p}",
             "timezone": "America/Los_Angeles",
             "tooltip": false

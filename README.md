@@ -21,7 +21,7 @@ Most `dots` directories are flat, but some are more complicated. For example, I'
 ## Linux
 
 - **Window manager:** [`hyprland`](./hypr). It's the best I've ever used by a mile.
-- **Bar:** [`waybar`](./waybar). Pretty good, might move to `eww`.
+- **Bar:**[`wayle`](./wayle). Way using [`waybar`](./waybar) and was very happy with it, but one day it began crashing Hyprland and I couldn't figure out why. Switched to `wayle` and it's been working fine.
 - I'm using `hyprlock` and `hypridle` for screen lock and sleep, respectively, as well as `kanshi` for dynamically turning on/off my laptop display on my Thinkpad X1 Carbon when plugging into my 4k display (I like using one display, no more, no less). Unfortunately turning _off_ the external display causes...something to crash (not sure if the problem lies with `kanshi`, `hyprlock`, or `hyprland` itself), resulting in the Wayland "red screen of death," so that's fun. For now, I'm just careful, I guess.
 
 ## macOS
@@ -37,7 +37,7 @@ Most `dots` directories are flat, but some are more complicated. For example, I'
 ## TODO:
 
 - Share environment variables, aliases, etc between shells. Sources:
-  - https://unix.stackexchange.com/questions/3428/share-aliases-and-path-setting-between-zsh-and-bash
-  - https://stackoverflow.com/questions/34565843/how-can-zsh-and-normal-shell-share-environment-variables-and-aliases-without-cop
+    - https://unix.stackexchange.com/questions/3428/share-aliases-and-path-setting-between-zsh-and-bash
+    - https://stackoverflow.com/questions/34565843/how-can-zsh-and-normal-shell-share-environment-variables-and-aliases-without-cop
 - Update setup script to match new style:
-  - hyprland
+    - hyprland
