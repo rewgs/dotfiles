@@ -20,11 +20,11 @@ layer = "overlay"
 scale = 0.95
 bg = "transparent"
 button-bg-opacity = 0
-padding = 0.25
+padding = 0
 padding-ends = 0.5
 module-gap = 0.5
 button-icon-size = 0.9
-button-icon-padding = 0.9
+button-icon-padding = 0.1
 button-label-size = 0.95
 button-label-padding = 1.0
 button-gap = 1.0
@@ -34,7 +34,7 @@ button-gap = 1.0
 monitor = "DP-1"
 left = ["hyprland-workspaces"]
 center = []
-right = ["systray", "media", "cava", "volume", "netstat", "cpu", "ram", "storage", "weather", "notifications", "clock"]
+right = ["systray", "media", "cava", "volume", "cpu", "ram", "storage", "weather", "notifications", "clock"]
 
 # DP-2: left display (LG DualUp)
 [[bar.layout]]
@@ -51,7 +51,7 @@ center = []
 right = ["clock"]
 
 [modules.hyprland-workspaces]
-min-workspace-count = 20
+min-workspace-count = 1
 active-indicator = "underline"
 active-color = "accent"
 empty-color = "fg-muted"
