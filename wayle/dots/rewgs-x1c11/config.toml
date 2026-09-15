@@ -17,17 +17,17 @@ border = true
 layer = "overlay"
 
 [bar]
-scale = 0.75
+scale = 0.8
 bg = "transparent"
 button-bg-opacity = 0
-padding = 0.25
+padding = 0
 padding-ends = 0.5
 module-gap = 0.5
-button-icon-size = 0.9
-button-icon-padding = 0.9
-button-label-size = 0.95
+button-icon-size = 0.8
+button-icon-padding = 0.1
+button-label-size = 1
 button-label-padding = 1.0
-button-gap = 1.0
+button-gap = 0
 
 [[bar.layout]]
 monitor = "eDP-1"
