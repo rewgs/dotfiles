@@ -1,5 +1,21 @@
 # Wayle configuration file
 
+[general]
+font-sans = "FiraCode Nerd Font Retina"
+font-mono = "FiraCode Nerd Font Retina"
+tearing-mode = false
+
+# "on-screen display"
+# Handles transient events like volume and brightness.
+[osd]
+enabled = true
+position = "bottom"
+duration = 2500
+monitor = "primary"
+margin = 150.0
+border = true
+layer = "overlay"
+
 [bar]
 scale = 0.95
 bg = "transparent"
@@ -18,7 +34,7 @@ button-gap = 1.0
 monitor = "DP-1"
 left = ["hyprland-workspaces"]
 center = []
-right = ["systray", "media", "volume", "cpu", "ram", "storage", "weather", "clock"]
+right = ["systray", "media", "cava", "volume", "netstat", "cpu", "ram", "storage", "weather", "notifications", "clock"]
 
 # DP-2: left display (LG DualUp)
 [[bar.layout]]
@@ -34,14 +50,14 @@ left = ["hyprland-workspaces"]
 center = []
 right = ["clock"]
 
-[general]
-font-sans = "FiraCode Nerd Font Retina"
-font-mono = "FiraCode Nerd Font Retina"
-
 [modules.hyprland-workspaces]
-min-workspace-count = 10
+min-workspace-count = 20
 active-indicator = "underline"
+active-color = "accent"
+empty-color = "fg-muted"
+occupied-color = "fg"
 label-size = 0.85
+monitor-specific = true # Shows only workspaces belonging to that bar's monitor
 
 [modules.systray]
 icon-scale = 0.95
@@ -77,6 +93,10 @@ icon-bg-color = "transparent"
 label-color = "green"
 button-bg-color = "transparent"
 
+[modules.cava]
+style = "bars"
+color = "green"
+
 [modules.volume]
 icon-show = true
 label-show = true
@@ -84,6 +104,13 @@ border-color = "transparent"
 icon-color = "accent"
 icon-bg-color = "transparent"
 label-color = "accent"
+button-bg-color = "transparent"
+
+[modules.netstat]
+border-color = "transparent"
+icon-color = "red"
+icon-bg-color = "transparent"
+label-color = "red"
 button-bg-color = "transparent"
 
 [modules.network]
@@ -150,6 +177,13 @@ icon-bg-color = "transparent"
 label-color = "yellow"
 button-bg-color = "transparent"
 
+[modules.notifications]
+border-color = "transparent"
+icon-color = "blue"
+icon-bg-color = "transparent"
+label-color = "blue"
+button-bg-color = "transparent"
+
 [modules.clock]
 icon-show = false
 label-show = true
@@ -177,5 +211,5 @@ primary = "#61afef"
 red = "#e06c75"
 yellow = "#e5c07b"
 green = "#98c379"
-blue = "#56b6c2"
-# blue = "#61afef"
+teal = "#56b6c2"
+blue = "#61afef"
