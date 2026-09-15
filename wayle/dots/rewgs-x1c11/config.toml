@@ -17,7 +17,7 @@ border = true
 layer = "overlay"
 
 [bar]
-scale = 0.95
+scale = 0.8
 bg = "transparent"
 button-bg-opacity = 0
 padding = 0.25
@@ -29,29 +29,14 @@ button-label-size = 0.95
 button-label-padding = 1.0
 button-gap = 1.0
 
-# DP-1: center display (32" 6k Asus ProArt)
 [[bar.layout]]
-monitor = "DP-1"
+monitor = "eDP-1"
 left = ["hyprland-workspaces"]
 center = []
-right = ["systray", "media", "cava", "volume", "netstat", "cpu", "ram", "storage", "weather", "notifications", "clock"]
-
-# DP-2: left display (LG DualUp)
-[[bar.layout]]
-monitor = "DP-2"
-left = ["hyprland-workspaces"]
-center = []
-right = ["clock"]
-
-# DP-3: right display (LG DualUp)
-[[bar.layout]]
-monitor = "DP-3"
-left = ["hyprland-workspaces"]
-center = []
-right = ["clock"]
+right = ["systray", "media", "volume", "battery","cpu", "ram", "storage", "weather", "notifications", "clock"]
 
 [modules.hyprland-workspaces]
-min-workspace-count = 20
+min-workspace-count = 1
 active-indicator = "underline"
 active-color = "accent"
 empty-color = "fg-muted"
@@ -105,6 +90,15 @@ border-color = "transparent"
 icon-color = "accent"
 icon-bg-color = "transparent"
 label-color = "accent"
+button-bg-color = "transparent"
+
+[modules.battery]
+icon-show = true
+label-show = true
+border-color = "transparent"
+icon-color = "red"
+icon-bg-color = "transparent"
+label-color = "red"
 button-bg-color = "transparent"
 
 [modules.netstat]
