@@ -1,7 +1,6 @@
 local theme = require("common.themes.atom-one")
 local p = theme.override(theme.configurations.dark.palettes.default, {
 	groupbar_active_bg = "#404452",
-	groupbar_active_text = "#b2b7c1",
 })
 
 hl.config({
@@ -57,14 +56,14 @@ hl.config({
 			render_titles = true,
 
 			col = {
-				active = theme.rgb(p.groupbar_active_bg),
-				inactive = theme.rgb(p.bg_d),
+				active = theme.rgba(p.groupbar_active_bg, 0),
+				inactive = theme.rgba(p.bg_d, 0),
 			},
 
 			font_weight_active = "bold",
 			font_weight_inactive = "normal",
 
-			text_color = theme.rgb(p.groupbar_active_text),
+			text_color = theme.rgb(p.blue),
 			text_color_inactive = theme.rgb(p.fg),
 		},
 	},
