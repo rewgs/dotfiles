@@ -17,7 +17,7 @@ border = true
 layer = "overlay"
 
 [bar]
-scale = 0.8
+scale = 0.75
 bg = "transparent"
 button-bg-opacity = 0
 padding = 0.25
