@@ -19,3 +19,6 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
 
 -- Yazi as file explorer
 hl.bind(mainMod .. " + e", hl.dsp.exec_cmd(terminal .. " -e yazi"))
+
+-- Toggle waybar
+hl.bind(mainMod .. " + b", hl.dsp.exec_cmd("killall waybar || waybar"))

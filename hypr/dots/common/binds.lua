@@ -148,10 +148,6 @@ hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ workspace = "-1" }))
 hl.bind(mainMod .. " + SHIFT + equal", hl.dsp.window.move({ workspace = "+1" }))
 hl.bind(mainMod .. " + SHIFT + minus", hl.dsp.window.move({ workspace = "-1" }))
 
--- NOTE: Systems still using waybar should move this to their machine-specific binds.lua file.
--- Toggle waybar
--- hl.bind(mainMod .. " + b", hl.dsp.exec_cmd("killall waybar || waybar"))
-
 -- FIXME: Triggering this crashes Hyprland!
 -- Renames the current workspace
 -- hl.bind(mainMod .. " + r", function()
