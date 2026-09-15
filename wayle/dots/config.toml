@@ -96,6 +96,7 @@ button-bg-color = "transparent"
 [modules.cava]
 style = "bars"
 color = "green"
+left-click = "alsa-scarlett-gui"
 
 [modules.volume]
 icon-show = true
