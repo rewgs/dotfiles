@@ -1,3 +1,3 @@
 #!/bin/bash
 #
-# Symlinks dots to ~/.config/wayle
+# Symlinks dots/$HOST to ~/.config/wayle
