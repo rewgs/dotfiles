@@ -41,3 +41,13 @@ Most `dots` directories are flat, but some are more complicated. For example, I'
     - https://stackoverflow.com/questions/34565843/how-can-zsh-and-normal-shell-share-environment-variables-and-aliases-without-cop
 - Update setup script to match new style:
     - hyprland
+
+## Machines
+
+**`rewgs-arch`:** Arch desktop
+
+**`rewgs-x1c11`:** Lenovo Thinkpad X1 Carbon Gen 11
+
+**`rewgs-x2100`:** A modified Lenovo Thinkpad X201s by [`xyte.ch`](https://www.xyte.ch/shop/x2100-pricing/)
+
+**`rewgs-2021-macbook-air`:** Apple M1 MacBook Air
