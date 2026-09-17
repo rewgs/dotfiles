@@ -1,9 +1,5 @@
 # Wayle configuration file
 
-imports = [
-    "theme.toml"
-]
-
 [general]
 font-sans = "FiraCode Nerd Font Retina"
 font-mono = "FiraCode Nerd Font Retina"
@@ -189,3 +185,29 @@ icon-show = false
 label-show = true
 left-click = "dropdown:dashboard"
 label-color = "fg-subtle"
+
+[styling]
+theme-provider = "wayle"
+
+[styling.palette]
+###########################################################
+# onedark
+# https://github.com/onedarktheme/onedark
+###########################################################
+
+# bg = "#282c34"
+bg = "#21252b"
+# surface = "#31353f"
+surface = "#282c34"
+# elevated = "#393f4a"
+elevated = "#3e4451"
+fg = "#abb2bf"
+fg-muted = "#5c6370"
+# primary = "#61afef"
+primary = "#79b3e2" # onedark "blue pale oled"
+red = "#e06c75"
+yellow = "#e5c07b"
+green = "#98c379"
+teal = "#56b6c2"
+# blue = "#61afef"
+blue = "#79b3e2" # onedark "blue pale oled"
