@@ -43,6 +43,7 @@ empty-color = "fg-muted"
 occupied-color = "fg"
 label-size = 0.85
 monitor-specific = true # Shows only workspaces belonging to that bar's monitor
+show-special = false
 
 [modules.systray]
 icon-scale = 0.95
