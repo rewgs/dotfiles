@@ -1,0 +1,14 @@
+{
+    "apps": ["hyprland", "lualine", "neovim", "tmux", "waybar", "wezterm"],
+    "mode": "dark",
+    "overrides": {
+        "hyprland": {
+            "mode": "light"
+        },
+        "tmux": {
+            "theme": "material-gruvbox"
+        }
+    },
+    "theme": "atom one",
+    "variant": "vivid"
+}

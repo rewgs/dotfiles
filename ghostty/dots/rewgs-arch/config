@@ -11,7 +11,7 @@ font-family = FiraCode Nerd Font
 font-style = Retina
 
 font-size = 13
-bold-is-bright = false
+bold-is-bright = true
 
 
 #==============================================================================

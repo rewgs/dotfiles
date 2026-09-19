@@ -1,7 +1,6 @@
 local theme = require("common.themes.atom-one")
 local p = theme.override(theme.configurations.dark.palettes.default, {
-    groupbar_active_bg   = "#404452",
-    groupbar_active_text = "#b2b7c1",
+	groupbar_active_bg = "#404452",
 })
 
 hl.config({
@@ -17,7 +16,7 @@ hl.config({
 		border_size = 3,
 
 		col = {
-			active_border   = theme.rgb(p.blue),
+			active_border = theme.rgb(p.blue),
 			inactive_border = theme.rgba("#000000", 0),
 		},
 
@@ -33,7 +32,7 @@ hl.config({
 		focus_removed_window = true,
 
 		col = {
-			border_active   = theme.rgb(p.blue),
+			border_active = theme.rgb(p.blue),
 			border_inactive = theme.rgba("#000000", 0),
 		},
 
@@ -41,30 +40,30 @@ hl.config({
 			enabled = true,
 			stacked = false,
 
-			indicator_gap    = 0,
+			indicator_gap = 0,
 			indicator_height = 0,
 
 			keep_upper_gap = false,
 
 			font_family = "FiraCode Nerd Font Retina",
-			font_size   = 13,
-			height      = 20,
+			font_size = 13,
+			height = 20,
 
-			gradients     = true,
-			scrolling     = false,
-			text_offset   = 0,
+			gradients = true,
+			scrolling = false,
+			text_offset = 0,
 
 			render_titles = true,
 
 			col = {
-				active   = theme.rgb(p.groupbar_active_bg),
-				inactive = theme.rgb(p.bg_d),
+				active = theme.rgba(p.groupbar_active_bg, 0),
+				inactive = theme.rgba(p.bg_d, 0),
 			},
 
-			font_weight_active   = "bold",
+			font_weight_active = "bold",
 			font_weight_inactive = "normal",
 
-			text_color          = theme.rgb(p.groupbar_active_text),
+			text_color = theme.rgb(p.blue),
 			text_color_inactive = theme.rgb(p.fg),
 		},
 	},
@@ -75,7 +74,7 @@ hl.config({
 		-- background_color = theme.rgb(p.bg0),
 		-- background_color = theme.rgb(p.bg_d),
 
-		disable_hyprland_logo    = true,
+		disable_hyprland_logo = true,
 		disable_splash_rendering = true,
 	},
 })
