@@ -2,14 +2,17 @@
 # Loaded by Microsoft.PowerShell_profile.ps1 before common.ps1.
 
 # TODO: Check if pyenv-win is installed; if not, install pyenv-win (see script in $DOTFILES/utils/installs/windows)
-function Install-PythonVersion {
+function Install-PythonVersion
+{
     Param (
         [Parameter(Mandatory=$True)]
         [String[]]$versions
     )
     $installed = $(pyenv versions)
-    foreach ($version in $versions) {
-        if (-Not ($version -in $installed)) {
+    foreach ($version in $versions)
+    {
+        if (-Not ($version -in $installed))
+        {
             # write-output "$version is not installed!"
             pyenv install $version
 
@@ -28,17 +31,20 @@ function Install-PythonVersion {
 }
 
 # venv activation script lives under .venv\Scripts on Windows.
-function Activate-Venv {
+function Activate-Venv
+{
     $activate_script = Join-Path $pwd ".venv" "Scripts" "activate"
     .\$activate_script
 }
 
-function Am-Admin {
+function Am-Admin
+{
     [OutputType([bool])]
 
     $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     $CheckforAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-    if ($CheckforAdmin) {
+    if ($CheckforAdmin)
+    {
         # Write-Host "PowerShell is running as administrator."
         return $true
     }
@@ -50,12 +56,16 @@ function Am-Admin {
 # Guarded by a split-based check (not `-notcontains` on the raw string, which
 # compares the whole string rather than individual entries) so re-sourcing the
 # profile via `Reset-Shell`/`es` doesn't pile up duplicate entries.
-function Add-ToPath {
+function Add-ToPath
+{
     param([Parameter(Mandatory=$true)][string]$Directory)
-    if ((Test-Path $Directory) -and ($env:Path -split ';') -notcontains $Directory) {
+    if ((Test-Path $Directory) -and ($env:Path -split ';') -notcontains $Directory)
+    {
         $env:Path += ";$Directory"
     }
 }
 
 Add-ToPath "$env:USERPROFILE\.local\bin"
-Add-ToPath "C:\msys64\ucrt64\bin"
+
+# Added to Registry instead, as I need this to be seen by Cmd as well.
+# Add-ToPath "C:\msys64\ucrt64\bin"
