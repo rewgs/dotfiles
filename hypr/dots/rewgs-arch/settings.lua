@@ -78,3 +78,9 @@ hl.config({
 		disable_splash_rendering = true,
 	},
 })
+
+hl.config({
+	binds = {
+		allow_workspace_cycles = true,
+	},
+})
