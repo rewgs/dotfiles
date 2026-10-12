@@ -51,8 +51,8 @@ hl.window_rule({
 	},
 	float = true,
 	pin = true,
-	size = { 1040, 585 }, -- 16:9
-	move = { "monitor_w - 1060", "monitor_h - 605" }, -- bottom-right, 20px margin
+	size = { 960, 540 }, -- 16:9
+	move = { "monitor_w - 980", "monitor_h - 560" }, -- bottom-right, 20px margin
 	no_initial_focus = true,
 	suppress_event = "maximize",
 })
