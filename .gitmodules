@@ -1,3 +1,6 @@
 [submodule "tmux/dots/rewgs-x2100/plugins/tmux-continuum"]
 	path = tmux/dots/rewgs-x2100/plugins/tmux-continuum
 	url = https://github.com/tmux-plugins/tmux-continuum
+[submodule "yazi/dots/flavors/onedark.yazi"]
+	path = yazi/dots/flavors/onedark.yazi
+	url = https://github.com/rewgs/onedark.yazi
