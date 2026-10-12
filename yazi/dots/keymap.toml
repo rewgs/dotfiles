@@ -1,0 +1,14 @@
+[mgr]
+prepend_keymap = [
+    # rewgs-nas
+    { on = ["g", "n", "r"], run = "cd /mnt/rewgs-nas", desc = "Go to rewgs-nas root" },
+    { on = ["g", "n", "b"], run = "cd /mnt/rewgs-nas/books", desc = "Go to rewgs-nas books dir" },
+    { on = ["g", "n", "f"], run = "cd /mnt/rewgs-nas/finances", desc = "Go to rewgs-nas finances dir" },
+    { on = ["g", "n", "p"], run = "cd /mnt/rewgs-nas/photos", desc = "Go to rewgs-nas photos dir" },
+    { on = ["g", "n", "P"], run = "cd /mnt/rewgs-nas/projects", desc = "Go to rewgs-nas projects dir" },
+    { on = ["g", "n", "s"], run = "cd /mnt/rewgs-nas/sns", desc = "Go to rewgs-nas Sparks & Shadows dir" },
+    { on = ["g", "n", "t"], run = "cd /mnt/rewgs-nas/TapeOp", desc = "Go to rewgs-nas TapeOp dir" },
+
+    # local work dirs
+    { on = ["g", "w", "r"], run = "cd ~/work", desc = "Go to work dir root" }
+]
