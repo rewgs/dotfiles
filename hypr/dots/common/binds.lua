@@ -148,6 +148,12 @@ hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ workspace = "-1" }))
 hl.bind(mainMod .. " + SHIFT + equal", hl.dsp.window.move({ workspace = "+1" }))
 hl.bind(mainMod .. " + SHIFT + minus", hl.dsp.window.move({ workspace = "-1" }))
 
+-- Move window to next empty workspace
+hl.bind(mainMod .. " + CTRL + SHIFT + equal", hl.dsp.window.move({ workspace = "emptyn" }))
+
+-- Switch back to last used workspace
+hl.bind(mainMod .. " + grave", hl.dsp.focus({ workspace = "previous" }))
+
 -- FIXME: Triggering this crashes Hyprland!
 -- Renames the current workspace
 -- hl.bind(mainMod .. " + r", function()
