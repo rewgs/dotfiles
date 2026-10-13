@@ -2,9 +2,10 @@
 -- - Super + Alt + [h|j|k|l]: if window in that direction is a Group, join the group;
 --   otherwise, move window in that direction (i.e. current Super + Ctrl + [h|j|k|l]).
 
+hl.bind(mainMod .. " + SHIFT + r", hl.dsp.exec_cmd("hyprctl reload")) -- reload hyprland
+
 -- Window management
-hl.bind(mainMod .. " + w", hl.dsp.window.close())
-hl.bind(mainMod .. " + SHIFT + r", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind(mainMod .. " + w", hl.dsp.window.close()) -- close window
 
 -- Terminal and launcher
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
@@ -89,17 +90,25 @@ hl.bind(mainMod .. " + SHIFT + ALT + j", hl.dsp.window.resize({ x = 0, y = 10, r
 -- Move windows
 -- =============================================================================
 
--- Tiled
+-- NOTE: This also moves floating windows to the top left/top right/bottom left/bottom right corners
+--
+-- tiled
 hl.bind(mainMod .. " + CTRL + h", hl.dsp.window.move({ direction = "l" }))
 hl.bind(mainMod .. " + CTRL + l", hl.dsp.window.move({ direction = "r" }))
 hl.bind(mainMod .. " + CTRL + k", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mainMod .. " + CTRL + j", hl.dsp.window.move({ direction = "d" }))
 
--- Floating (keyboard)
+-- floating (keyboard)
+-- coarse
 hl.bind(mainMod .. " + CTRL + ALT + h", hl.dsp.window.move({ x = -100, y = 0, relative = true }))
 hl.bind(mainMod .. " + CTRL + ALT + j", hl.dsp.window.move({ x = 0, y = 100, relative = true }))
 hl.bind(mainMod .. " + CTRL + ALT + k", hl.dsp.window.move({ x = 0, y = -100, relative = true }))
 hl.bind(mainMod .. " + CTRL + ALT + l", hl.dsp.window.move({ x = 100, y = 0, relative = true }))
+-- fine
+hl.bind(mainMod .. " + CTRL + ALT + SHIFT + h", hl.dsp.window.move({ x = -10, y = 0, relative = true }))
+hl.bind(mainMod .. " + CTRL + ALT + SHIFT + j", hl.dsp.window.move({ x = 0, y = 10, relative = true }))
+hl.bind(mainMod .. " + CTRL + ALT + SHIFT + k", hl.dsp.window.move({ x = 0, y = -10, relative = true }))
+hl.bind(mainMod .. " + CTRL + ALT + SHIFT + l", hl.dsp.window.move({ x = 10, y = 0, relative = true }))
 
 -- Floating (mouse)
 -- left mouse button: 272, middle: 274, right: 273
