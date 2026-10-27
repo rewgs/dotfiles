@@ -8,7 +8,7 @@ require("env")
 require("input")
 require("output")
 require("settings")
--- require("windowrules")
+require("windowrules")
 require("workspaces")
 require("xwayland")
 

@@ -1,0 +1,191 @@
+# Wayle configuration file
+
+imports = [
+    "theme.toml"
+]
+
+[general]
+font-sans = "FiraCode Nerd Font Retina"
+font-mono = "FiraCode Nerd Font Retina"
+tearing-mode = false
+
+# "on-screen display"
+# Handles transient events like volume and brightness.
+[osd]
+enabled = true
+position = "bottom"
+duration = 2500
+monitor = "primary"
+margin = 150.0
+border = true
+layer = "overlay"
+
+[bar]
+scale = 0.8
+bg = "transparent"
+button-bg-opacity = 0
+padding = 0
+padding-ends = 0.5
+module-gap = 0.5
+button-icon-size = 0.8
+button-icon-padding = 0.1
+button-label-size = 1
+button-label-padding = 1.0
+button-gap = 0
+
+[[bar.layout]]
+monitor = "eDP-1"
+left = ["hyprland-workspaces"]
+center = []
+right = ["systray", "media", "volume", "battery","cpu", "ram", "storage", "weather", "notifications", "clock"]
+
+[modules.hyprland-workspaces]
+min-workspace-count = 1
+active-indicator = "underline"
+active-color = "accent"
+empty-color = "fg-muted"
+occupied-color = "fg"
+label-size = 0.85
+monitor-specific = true # Shows only workspaces belonging to that bar's monitor
+show-special = false
+
+[modules.systray]
+icon-scale = 0.95
+item-gap = 0.7
+
+[modules.brightness]
+level-icons = [
+    "ld-sun-dim-symbolic",
+    "ld-sun-medium-symbolic",
+    "ld-sun-symbolic",
+]
+border-show = false
+border-color = "yellow"
+icon-show = true
+icon-color = "auto"
+icon-bg-color = "yellow"
+label-show = true
+label-color = "yellow"
+format = "{{ percent }}%"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = "dropdown:brightness"
+right-click = ""
+middle-click = ""
+scroll-up = ""
+scroll-down = ""
+thresholds = []
+
+[modules.media]
+border-color = "transparent"
+icon-color = "green"
+icon-bg-color = "transparent"
+label-color = "green"
+button-bg-color = "transparent"
+
+[modules.cava]
+style = "bars"
+color = "green"
+left-click = "alsa-scarlett-gui"
+
+[modules.volume]
+icon-show = true
+label-show = true
+border-color = "transparent"
+icon-color = "accent"
+icon-bg-color = "transparent"
+label-color = "accent"
+button-bg-color = "transparent"
+
+[modules.battery]
+icon-show = true
+label-show = true
+border-color = "transparent"
+icon-color = "red"
+icon-bg-color = "transparent"
+label-color = "red"
+button-bg-color = "transparent"
+
+[modules.netstat]
+border-color = "transparent"
+icon-color = "red"
+icon-bg-color = "transparent"
+label-color = "red"
+button-bg-color = "transparent"
+
+[modules.network]
+wifi-disabled-icon = "cm-wireless-disabled-symbolic"
+wifi-acquiring-icon = "cm-wireless-acquiring-symbolic"
+wifi-offline-icon = "cm-wireless-offline-symbolic"
+wifi-connected-icon = "cm-wireless-connected-symbolic"
+wifi-signal-icons = [
+    "cm-wireless-signal-weak-symbolic",
+    "cm-wireless-signal-ok-symbolic",
+    "cm-wireless-signal-good-symbolic",
+    "cm-wireless-signal-excellent-symbolic",
+]
+wired-connected-icon = "cm-wired-symbolic"
+wired-acquiring-icon = "cm-wired-acquiring-symbolic"
+wired-disconnected-icon = "cm-wired-disconnected-symbolic"
+border-show = false
+icon-show = true
+label-show = true
+label-max-length = 15
+left-click = "dropdown:network"
+right-click = ""
+middle-click = ""
+scroll-up = ""
+scroll-down = ""
+border-color = "transparent"
+icon-color = "fg"
+icon-bg-color = "transparent"
+label-color = "fg"
+button-bg-color = "transparent"
+
+[modules.cpu]
+icon-show = true
+label-show = true
+border-color = "transparent"
+icon-color = "#d19a66" # orange
+icon-bg-color = "transparent"
+label-color = "#d19a66" # orange
+button-bg-color = "transparent"
+
+[modules.ram]
+icon-show = true
+label-show = true
+border-color = "transparent"
+icon-color = "green"
+icon-bg-color = "transparent"
+label-color = "green"
+button-bg-color = "transparent"
+
+[modules.storage]
+icon-show = true
+label-show = true
+border-color = "transparent"
+icon-color = "#c678dd" # magenta
+icon-bg-color = "transparent"
+label-color = "#c678dd" # magenta
+button-bg-color = "transparent"
+
+[modules.weather]
+units = "imperial"
+border-color = "transparent"
+icon-color = "yellow"
+icon-bg-color = "transparent"
+label-color = "yellow"
+button-bg-color = "transparent"
+
+[modules.notifications]
+border-color = "transparent"
+icon-color = "blue"
+icon-bg-color = "transparent"
+label-color = "blue"
+button-bg-color = "transparent"
+
+[modules.clock]
+icon-show = false
+label-show = true
+left-click = "dropdown:dashboard"
+label-color = "fg-subtle"

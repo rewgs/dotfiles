@@ -5,7 +5,7 @@ mainMod = "SUPER"
 -- fileExplorer = "thunar"
 
 -- terminal  = "ghostty"
--- terminal  = "kitty"
+-- terminal = "kitty"
 terminal = "wezterm"
 
 -- launcher = "dmenu-wl_run --font-name \"Inter\" --insensitive"

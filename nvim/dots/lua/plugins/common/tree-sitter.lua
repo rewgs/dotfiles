@@ -16,6 +16,7 @@ local langs = {
 	"python",
 	"ruby",
 	"rust",
+	"svelte",
 	"tsx",
 	"typescript",
 	"vim",

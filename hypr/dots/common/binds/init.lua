@@ -1,0 +1,7 @@
+require("common.binds.general")
+require("common.binds.apps")
+require("common.binds.groups")
+require("common.binds.focus")
+require("common.binds.resize")
+require("common.binds.move")
+require("common.binds.workspaces")
