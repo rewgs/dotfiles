@@ -8,7 +8,7 @@ return {
 			formatters_by_ft = {
 				c = { "clang-format" },
 				cpp = { "clang-format" },
-				css = { "prettier" },
+				css = { "prettier", "stylelint" },
 				html = { "prettier" },
 				javascript = { "prettier" },
 				json = { "prettier" },
@@ -28,6 +28,9 @@ return {
 			formatters = {
 				["clang-format"] = {
 					prepend_args = { "--style=file" }, -- Forces clang-format to hunt for the .clang-format file
+				},
+				stylelint = {
+					prepend_args = { "--config", vim.fn.expand("~/.config/stylelint/stylelintrc.json") },
 				},
 			},
 			format_on_save = {
