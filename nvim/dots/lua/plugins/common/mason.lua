@@ -32,6 +32,7 @@ return {
 				-- "black",
 				"prettier",
 				-- "prettierd",
+				"stylelint",
 				"stylua",
 				"typescript-language-server",
 				-- "yapf",

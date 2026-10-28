@@ -3,10 +3,12 @@
 #==============================================================================
 font-family = FiraCode Nerd Font
 font-style = Retina
+
 # font-family = TX-02 Regular
 # font-feature = calt
 # font-feature = liga
 # font-feature = dlig
+
 font-size = 16
 font-thicken = false
 bold-is-bright = false

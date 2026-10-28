@@ -203,7 +203,7 @@ if [[ "$OS_NAME" == "Darwin" ]]; then
     export PATH="$PATH:/opt/homebrew/Cellar"
 
     # Sets install path to user applications instead of global
-    export HOMEBREW_CASK_OPTS="--apdir=~/Applications"
+    export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
     export HOMEBREW_NO_ENV_HINTS=1
     export HOMEBREW_NO_AUTO_UPDATE=1 # Prevents homebrew from automatically updating all packages when installing a package.
