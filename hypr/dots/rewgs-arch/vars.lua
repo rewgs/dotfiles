@@ -16,3 +16,5 @@ launcher = "fuzzel"
 browser = "zen-browser"
 -- browser = "firefox"
 -- browser = "google-chrome-stable"
+
+music_player = "spotify"
