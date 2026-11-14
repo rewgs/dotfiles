@@ -1,0 +1,9 @@
+{
+    "presets": [
+        {
+            "name": "unix cli",
+            "platforms": ["Unix"],
+            "apps": ["bash", "nvim", "tmux", "zsh"]
+        }
+    ]
+}
