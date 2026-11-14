@@ -2,7 +2,6 @@
 #
 # Installs packages via MacPorts package manager.
 
-
 function main {
     local packages=(
         "bettercap"
@@ -41,7 +40,13 @@ function main {
 
     for p in "${packages[@]}"; do
         # NOTE: The -N flag is for non-interactive mode, i.e. confirmation checks will be skipped.
-        sudo port -N install "$p"
+
+        if ! port -q installed "$p" | grep -q "(active)"; then
+            echo "Installing $p..."
+            sudo port -N install "$p"
+        else
+            echo "$p is already installed; skipping."
+        fi
     done
 }
 main
