@@ -5,32 +5,30 @@
 function main {
     local packages=(
         "bettercap"
-        "blackhole-2ch"
-        "blackhole-16ch"
         "bpytop"
         "broot"
         "btop"
         "cmatrix"
         "coreutils" # required for gnu ls (i.e. `gls`, which my `ls_improved()` function uses)
         "cowsay"
-        "firefox"
+        # "firefox" # FIXME: package not found
         "fzf"
         "gh"
         "git"
         "glances"
-        "gnu-sed"
+        # "gnu-sed" # FIXME: package not found
         "go"
-        "google-chrome"
-        "hammerspoon"
+        # "google-chrome" # FIXME: package not found
+        # "hammerspoon" # FIXME: package not found
         "htop"
-        "jesseduffield/lazygit/lazygit"
-        "karabiner-elements"
-        "keyboard-maestro"
-        "mas" # https://github.com/mas-cli/mas
+        # "jesseduffield/lazygit/lazygit" # FIXME: package not found
+        # "karabiner-elements" # FIXME: package not found
+        # "keyboard-maestro" # FIXME: package not found
+        "mas" # https://github.com/mas-cli/mas # NOTE: Requires a full Xcode installation prior to installing.
         "neofetch"
-        "netcat"
-        "reaper"
-        "rectangle"
+        # "netcat" # FIXME: package not found
+        # "reaper" # FIXME: package not found
+        # "rectangle" # FIXME: package not found
         "ripgrep"
         "shellcheck"
         "thefuck"
