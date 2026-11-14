@@ -18,3 +18,10 @@ if [[ "$(uname)" == "Darwin" ]]; then
     # NOTE: Can't use smartcache for some reason.
     # smartcache eval /opt/homebrew/bin/brew shellenv
 fi
+
+# macports
+if [[ "$(uname)" == "Darwin" ]]; then
+    if [[ -d "/opt/local" ]]; then
+        export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+    fi
+fi
