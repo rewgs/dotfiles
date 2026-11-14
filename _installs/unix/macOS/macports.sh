@@ -3,37 +3,6 @@
 # Installs packages via MacPorts package manager.
 
 
-function {
-}
-
-
-# function casks {
-#     packages=(
-#         # "amethyst"
-#         "barrier"
-#         "blackhole-2ch"
-#         "blackhole-16ch"
-#         # "dozer" # FOSS menu bar organizer a la Bartender: https://github.com/Mortennn/Dozer
-#         "eloston-chromium --no-quarantine" # de-Googled Chromium
-#         "firefox"
-#         "font-fira-code-nerd-font"
-#         "google-chrome"
-#         "hammerspoon"
-#         # "hyperkey"
-#         "karabiner-elements"
-#         "keyboard-maestro"
-#         "obs"
-#         # "reaper"
-#         "rectangle"
-#     )
-#
-#     brew update && brew upgrade
-#
-#     for p in "${packages[@]}"; do
-#         brew install --cask "$p"
-#     done
-# }
-
 function main {
     local packages=(
         "bettercap"
