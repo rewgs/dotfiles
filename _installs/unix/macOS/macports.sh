@@ -35,7 +35,6 @@ function main {
         "ripgrep"
         "shellcheck"
         "thefuck"
-        "tldr"
     )
 
     sudo port selfupdate
