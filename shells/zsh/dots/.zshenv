@@ -15,3 +15,6 @@ export SAVEHIST=10000
 if [[ "$OS_NAME" == "Darwin" ]]; then
     source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 fi
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+. "$HOME/.cargo/env"
