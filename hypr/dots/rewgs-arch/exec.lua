@@ -1,3 +1,25 @@
+---@return nil | string
+local function get_random_wallpaper(path)
+	local files = {}
+
+	local p = io.popen('find "' .. path .. '" -maxdepth 1 -type f')
+	if not p then
+		return nil
+	end
+
+	for file in p:lines() do
+		table.insert(files, file)
+	end
+	p:close()
+
+	if #files == 0 then
+		return nil
+	end
+
+	math.randomseed(os.time())
+	return files[math.random(#files)]
+end
+
 hl.on("hyprland.start", function()
 	-- NOTE: This is crashing since the move to Lua.
 	-- hl.exec_cmd("hypridle")
@@ -35,10 +57,16 @@ hl.on("hyprland.start", function()
 	-- Choose one.
 	-- If using solid color, set in settings.lua instead.
 	--
-	-- hl.exec_cmd("swaybg --image ~/Pictures/wallpapers/dark\\ 4k.jpg --mode fill")
 	hl.exec_cmd("swaybg --image ~/Pictures/wallpapers/dark_4k_denoised.png --mode fill")
-	-- hl.exec_cmd("swaybg --image ~/Pictures/wallpapers/2049.jpg --mode fill")
+	-- hl.exec_cmd("swaybg --image ~/Pictures/wallpapers/rings.jpg --mode fill")
 
+	-- FIXME:
+	--
 	-- random wallpaper using my script
-	-- hl.exec_cmd("swaybg --image \"$(python3 ~/dotfiles/hypr/dots/scripts/random-wallpaper.py)\" --mode fill")
+	-- local home = os.getenv("HOME")
+	-- local wallpapers_dir = home .. "/Pictures/wallpapers"
+	-- local wallpaper = get_random_wallpaper(wallpapers_dir)
+	-- if wallpaper ~= nil then
+	-- 	hl.exec_cmd("swaybg --image " .. wallpaper .. " --mode fill")
+	-- end
 end)

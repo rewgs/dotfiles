@@ -1,15 +1,15 @@
 -- LG DualUps in portrait
 -- local y_offset = 212
-local y_offset = 512
+-- local y_offset = 512
 
 -- LG DualUps in landscale
 -- local y_offset = 424
 
 -- Asus ProArt 6k (center)
-hl.monitor({ output = "DP-1", mode = "6016x3384@59.99", position = "0x0", scale = 2 }) -- looks like 3008x1692
+hl.monitor({ output = "DP-1", mode = "6016x3384@59.99", position = "0x0", scale = 2, bitdepth = 10 }) -- looks like 3008x1692
 
 -- LG DualUp (left)
-hl.monitor({ output = "DP-3", mode = "2560x2880@59.98", position = "-1920x" .. y_offset, scale = 1.3333334 }) -- looks like 1920x2160
+-- hl.monitor({ output = "DP-3", mode = "2560x2880@59.98", position = "-1920x" .. y_offset, scale = 1.3333334 }) -- looks like 1920x2160
 -- hl.monitor({
 -- 	output = "DP-3",
 -- 	mode = "2560x2880@59.98",
@@ -21,7 +21,7 @@ hl.monitor({ output = "DP-3", mode = "2560x2880@59.98", position = "-1920x" .. y
 -- hl.monitor({ output = "DP-3", mode = "2560x2880@59.98", position = "-1600x0", scale = 1.6 }) -- looks like 1600x1800
 
 -- LG DualUp (right)
-hl.monitor({ output = "DP-2", mode = "2560x2880@59.98", position = "3008x" .. y_offset, scale = 1.3333334 }) -- looks like 2160x1920
+-- hl.monitor({ output = "DP-2", mode = "2560x2880@59.98", position = "3008x" .. y_offset, scale = 1.3333334 }) -- looks like 2160x1920
 -- hl.monitor({
 -- 	output = "DP-2",
 -- 	mode = "2560x2880@59.98",
@@ -33,4 +33,11 @@ hl.monitor({ output = "DP-2", mode = "2560x2880@59.98", position = "3008x" .. y_
 -- hl.monitor({ output = "DP-2", mode = "2560x2880@59.98", position = "3008x0", scale = 1.6 }) -- looks like 1800x1600
 
 -- 4k TV (far left)
-hl.monitor({ output = "HDMI-A-1", mode = "3840x2160@120.00", position = "-3840x" .. y_offset, scale = 2 }) -- looks like 1920x1080
+-- hl.monitor({ output = "HDMI-A-1", mode = "3840x2160@120.00", position = "-3840x" .. y_offset, scale = 2 }) -- looks like 1920x1080
+
+hl.config({
+	render = {
+		-- Disables auto-switching to HDR when fullscreen.
+		cm_auto_hdr = 0,
+	},
+})
