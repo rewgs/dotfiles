@@ -14,7 +14,16 @@ export LS_COLORS
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
 # Note that the instructions above specifically state to put this in .zprofile for macOS, and .zshrc for Linux.
 if [[ "$(uname)" == "Darwin" ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    # NOTE: Can't use smartcache for some reason.
-    # smartcache eval /opt/homebrew/bin/brew shellenv
+    if [[ -d "/opt/homebrew" ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+        # NOTE: Can't use smartcache for some reason.
+        # smartcache eval /opt/homebrew/bin/brew shellenv
+    fi
+fi
+
+# macports
+if [[ "$(uname)" == "Darwin" ]]; then
+    if [[ -d "/opt/local" ]]; then
+        export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+    fi
 fi

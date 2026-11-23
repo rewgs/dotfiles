@@ -14,6 +14,7 @@ function mainline-packages {
         "coreutils" # required for gnu ls (i.e. `gls`, which my `ls_improved()` function uses)
         "cowsay"
         "fnm" # Fast alternative to nvm
+        "fzf"
         "gh"
         "git"
         "glances"

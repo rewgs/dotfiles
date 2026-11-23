@@ -4,9 +4,9 @@ mainMod = "SUPER"
 -- fileExplorer = "nautilus"
 -- fileExplorer = "thunar"
 
--- terminal  = "ghostty"
+terminal = "ghostty"
 -- terminal = "kitty"
-terminal = "wezterm"
+-- terminal = "wezterm"
 
 -- launcher = "dmenu-wl_run --font-name \"Inter\" --insensitive"
 launcher = "fuzzel"
@@ -16,3 +16,5 @@ launcher = "fuzzel"
 browser = "zen-browser"
 -- browser = "firefox"
 -- browser = "google-chrome-stable"
+
+music_player = "spotify"

@@ -27,3 +27,7 @@
 	insteadOf = https://github.com/
 [core]
 	autocrlf = input
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
+[safe]
+	directory = /mnt/local/main/src/*

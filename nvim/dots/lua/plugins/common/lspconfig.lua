@@ -66,6 +66,9 @@ return {
 				opts.desc = "Show documentation for what is under cursor"
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
+				opts.desc = "Show signature help for call under cursor"
+				vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, opts) -- show signature for call under cursor
+
 				opts.desc = "Restart LSP"
 				vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 			end,

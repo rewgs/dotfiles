@@ -12,7 +12,6 @@ hl.config({
 hl.config({
 	master = {
 		allow_small_split = true,
-		special_scale_factor = 1,
 		mfact = 0.55,
 		-- new_is_master = true,
 		new_on_top = true,

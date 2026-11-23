@@ -12,11 +12,11 @@ export EDITOR='nvim'
 # browser
 if [ "$OS_NAME" = "Linux" ]; then
     if command -v firefox > /dev/null 2>&1; then
-        export BROWSER="$(command -v firefox)"
+        export BROWSER="$(command -v zen-browser)"
     fi
 elif [ "$OS_NAME" = "Darwin" ]; then
     if [ -x "/Applications/Firefox.app/Contents/MacOS/firefox" ]; then
-        export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
+        export BROWSER="/Applications/Zen Browser.app/Contents/MacOS/zen"
     fi
 fi
 
@@ -85,3 +85,4 @@ fi
 if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
+
