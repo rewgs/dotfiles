@@ -1,12 +1,12 @@
 mainMod = "SUPER"
 
 -- fileExplorer = "dolphin"
-fileExplorer = "nautilus"
+-- fileExplorer = "nautilus"
 -- fileExplorer = "thunar"
 
--- terminal  = "ghostty"
--- terminal  = "kitty"
-terminal = "wezterm"
+-- terminal = "ghostty"
+terminal = "kitty"
+-- terminal = "wezterm"
 
 -- launcher = "dmenu-wl_run --font-name \"Inter\" --insensitive"
 launcher = "fuzzel"
