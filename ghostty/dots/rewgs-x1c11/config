@@ -20,11 +20,12 @@ window-padding-y = 5
 #==============================================================================
 # titlebar
 #==============================================================================
-title = " "
+# title = " "
 window-title-font-family = FiraCode Nerd Font
-gtk-wide-tabs = false
-# gtk-tabs-location = left
-
+gtk-titlebar = true
+gtk-wide-tabs = true
+gtk-toolbar-style = "flat"
+gtk-titlebar-style = "native"
 
 #==============================================================================
 # misc
@@ -38,12 +39,13 @@ resize-overlay = never
 # keybinds
 #==============================================================================
 
-keybind = alt+r=reload_config
+keybind = ctrl+alt+r=reload_config
 keybind = alt+w=close_surface
 
 # tabs
 keybind = alt+n=new_window
 keybind = alt+t=new_tab
+keybind = alt+r=prompt_tab_title
 
 # navigation
 keybind = alt+h=goto_split:left 
